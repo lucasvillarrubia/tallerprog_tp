@@ -54,7 +54,13 @@ if(TALLER_CLIENT OR TALLER_EDITOR)
         URL https://github.com/libSDL2pp/libSDL2pp/archive/cc198c9a5657048bee67ece82de620b2d5661084.zip
     )
 
-    FetchContent_MakeAvailable(libSDL2pp)
+
+# set up SDL2pp library
+set(SDL2PP_WITH_IMAGE YES)
+set(SDL2PP_WITH_TTF YES)
+
+set(SDL2PP_WITH_MIXER YES)
+FetchContent_MakeAvailable(libSDL2pp)
 endif()
 
 # Program section
