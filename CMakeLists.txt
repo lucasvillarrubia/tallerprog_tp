@@ -29,7 +29,11 @@ message(CMAKE_CXX_COMPILER_ID="${CMAKE_CXX_COMPILER_ID}")
 
 # Define target: lib common between client, server and editor programs
 # HEY TODO XXX: change the name to something that you like
-add_library(taller_common STATIC)
+add_library(taller_common STATIC
+        common/socket.h
+        common/message.h
+        common/queue.h
+        common/thread.h)
 
 # add the source files that make the lib
 # HEY!! TODO XXX: add more subfolders here
@@ -67,7 +71,16 @@ endif()
 # ---------------
 if(TALLER_CLIENT)
     # HEY!! TODO XXX: Change the name of the executable to the one you like!
-    add_executable(taller_client)
+    add_executable(taller_client
+            client/client.h
+            client/client_protocol.h
+            client/client_exceptions.h
+            client/client_sender.h
+            client/client_receiver.h
+            client/client_client.cpp
+            client/client_protocol.cpp
+            client/display.h
+            client/event_listener.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_client taller_common SDL2pp::SDL2pp)
@@ -87,7 +100,18 @@ endif()
 
 if(TALLER_SERVER)
     # HEY!! TODO XXX: Change the name of the executable to the one you like!
-    add_executable(taller_server)
+    add_executable(taller_server
+            server/server.h
+            server/server_protocol.h
+            server/command.h
+            server/acceptor.h
+            server/gameplay.h
+            server/monitored_list.h
+            server/player.h
+            server/server_sender.h
+            server/server_receiver.h
+            server/cleaner.h
+            server/weapon.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)

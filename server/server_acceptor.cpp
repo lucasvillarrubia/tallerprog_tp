@@ -1,0 +1,43 @@
+#include <iostream>
+#include <utility>
+
+#include <sys/socket.h>
+
+// Para el SHUT_RDWR
+#include "../common/liberror.h"
+#include "../common/socket.h"
+
+#include "acceptor.h"
+
+
+Acceptor::Acceptor(const char* servname, MonitoredList& clients, Queue<Command>& usr_cmds):
+        is_running(true), acceptor(servname), player_list(clients), user_commands(usr_cmds) {}
+
+void Acceptor::run() {
+    try {
+        while (is_running.load()) {
+            Socket new_client = acceptor.accept();
+            Player* new_player = new Player(std::move(new_client), user_commands);
+            player_list.push_back(new_player);
+            new_player->start();
+            player_list.clean_up();
+        }
+    } catch (const LibError& e) {
+        is_running.store(false);
+    } catch (const std::exception& e) {
+        std::cerr << "Exception thrown on the acceptor thread: " << e.what() << '\n';
+        is_running.store(false);
+    } catch (...) {
+        std::cerr << "Unknown exception on the acceptor.\n";
+        is_running.store(false);
+    }
+}
+
+void Acceptor::stop() {
+    _keep_running = false;
+    is_running.store(false);
+    acceptor.shutdown(SHUT_RDWR);
+    acceptor.close();
+}
+
+Acceptor::~Acceptor() {}
