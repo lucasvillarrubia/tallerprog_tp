@@ -11,9 +11,6 @@
 //      y puede imprimirse por salida estándar.
 // RAII: no permite copia.
 
-// Nota: Como en el enunciado se aclara que son los mismos mensajes, lo dejé así.
-//      De otra forma servidor y cliente tendrían clases distintas de mensaje.
-
 
 class Message {
 private:

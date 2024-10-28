@@ -33,7 +33,15 @@ add_library(taller_common STATIC
         common/socket.h
         common/message.h
         common/queue.h
-        common/thread.h)
+        common/thread.h
+        common/resolvererror.h
+        common/liberror.h
+        common/resolver.h
+        common/common_liberror.cpp
+        common/common_message.cpp
+        common/common_resolver.cpp
+        common/common_resolvererror.cpp
+        common/common_socket.cpp)
 
 # add the source files that make the lib
 # HEY!! TODO XXX: add more subfolders here
@@ -111,7 +119,15 @@ if(TALLER_SERVER)
             server/server_sender.h
             server/server_receiver.h
             server/cleaner.h
-            server/weapon.h)
+            server/weapon.h
+            server/server_acceptor.cpp
+            server/server_gameplay.cpp
+            server/server_monitored_list.cpp
+            server/server_player.cpp
+            server/server_protocol.cpp
+            server/server_receiver.cpp
+            server/server_sender.cpp
+            server/server_server.cpp)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)

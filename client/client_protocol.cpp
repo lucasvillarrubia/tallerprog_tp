@@ -1,6 +1,5 @@
 #include "client_protocol.h"
 
-#include <string>
 #include <utility>
 
 #include <arpa/inet.h>
@@ -24,9 +23,10 @@ Message ClientProtocol::receive_message() {
         uint8_t reward_id;
         receive_string_message(player_name);
         receive_single_int_message(reward_id);
-        return Message(player_name, reward_id);
+        return {player_name, reward_id};
+        // return Message(player_name, reward_id);
     } else {
-        return Message();
+        return {};
     }
 }
 

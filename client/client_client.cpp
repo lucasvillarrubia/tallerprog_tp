@@ -6,8 +6,6 @@
 #include <utility>
 #include <vector>
 
-#include <arpa/inet.h>
-
 #include "../common/message.h"
 
 #include "client_exceptions.h"

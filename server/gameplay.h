@@ -18,8 +18,6 @@ const int DEFAULT_RESPAWN_ITERATIONS_BOX_4 = 15;
 
 
 // Objeto activo que representa al gameloop.
-// (Próximo a implementar) En este hilo está el único sleep del tp.
-//
 // Comparte:
 // - con el servidor, la queue de las acciones de los usuarios (mensajes ya deserializados).
 // - con el Acceptor, la lista de jugadores.

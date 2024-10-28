@@ -2,7 +2,6 @@
 #define CLIENT_EXCEPTIONS_H
 
 
-#include <exception>
 #include <stdexcept>
 
 

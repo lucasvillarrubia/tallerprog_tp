@@ -16,10 +16,6 @@
 // estándar.
 // RAII: no permite copia ni movimiento.
 
-// Nota: No llegué a hacer una clase Parser para la entrada del usuario, ni verificaciones.
-//      La excepción que planeaba "BadInput" se debería haber lanzado en el método
-//      perform_actions_by_command.
-
 
 class Client {
 private:
