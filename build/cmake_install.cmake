@@ -1,4 +1,4 @@
-# Install script for directory: /home/nishy/Desktop/taller de prog/tp-final/tallerprog_tp
+# Install script for directory: /home/lucas/CLionProjects/tallerprog_tp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,13 +44,13 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/nishy/Desktop/taller de prog/tp-final/tallerprog_tp/build/common/cmake_install.cmake")
-  include("/home/nishy/Desktop/taller de prog/tp-final/tallerprog_tp/build/_deps/libsdl2pp-build/cmake_install.cmake")
-  include("/home/nishy/Desktop/taller de prog/tp-final/tallerprog_tp/build/client/cmake_install.cmake")
-  include("/home/nishy/Desktop/taller de prog/tp-final/tallerprog_tp/build/server/cmake_install.cmake")
-  include("/home/nishy/Desktop/taller de prog/tp-final/tallerprog_tp/build/editor/cmake_install.cmake")
-  include("/home/nishy/Desktop/taller de prog/tp-final/tallerprog_tp/build/_deps/googletest-build/cmake_install.cmake")
-  include("/home/nishy/Desktop/taller de prog/tp-final/tallerprog_tp/build/tests/cmake_install.cmake")
+  include("/home/lucas/CLionProjects/tallerprog_tp/build/common/cmake_install.cmake")
+  include("/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build/cmake_install.cmake")
+  include("/home/lucas/CLionProjects/tallerprog_tp/build/client/cmake_install.cmake")
+  include("/home/lucas/CLionProjects/tallerprog_tp/build/server/cmake_install.cmake")
+  include("/home/lucas/CLionProjects/tallerprog_tp/build/editor/cmake_install.cmake")
+  include("/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-build/cmake_install.cmake")
+  include("/home/lucas/CLionProjects/tallerprog_tp/build/tests/cmake_install.cmake")
 
 endif()
 
@@ -62,5 +62,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/nishy/Desktop/taller de prog/tp-final/tallerprog_tp/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/lucas/CLionProjects/tallerprog_tp/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

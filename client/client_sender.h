@@ -4,5 +4,15 @@
 
 #ifndef CLIENT_SENDER_H
 #define CLIENT_SENDER_H
+#include "common/thread.h"
+#include "server/server_protocol.h"
 
-#endif //CLIENT_SENDER_H
+
+class ClientSender: public Thread
+{
+private:
+    ServerProtocol& protocol;
+};
+
+
+#endif

@@ -38,7 +38,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 53,
+				"line" : 54,
 				"parent" : 0
 			},
 			{
@@ -56,7 +56,7 @@
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 58,
+				"line" : 59,
 				"parent" : 0
 			},
 			{
@@ -76,7 +76,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=c++20 -fdiagnostics-color=always"
+					"fragment" : "-g -std=gnu++20 -fdiagnostics-color=always"
 				},
 				{
 					"backtrace" : 4,
@@ -170,7 +170,7 @@
 				9,
 				10,
 				11,
-				12
+				13
 			]
 		}
 	],
@@ -195,7 +195,8 @@
 				4,
 				5,
 				6,
-				13
+				12,
+				14
 			]
 		},
 		{
@@ -207,7 +208,7 @@
 				9,
 				10,
 				11,
-				12
+				13
 			]
 		}
 	],
@@ -277,6 +278,11 @@
 			"compileGroupIndex" : 0,
 			"path" : "common/common_socket.cpp",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "common/gamestate.h",
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 7,

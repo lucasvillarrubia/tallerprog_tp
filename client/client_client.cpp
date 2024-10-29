@@ -19,11 +19,9 @@
 const char END_OF_NAME = '\0';
 
 
-Client::Client(const char* hostname, const char* servname):
-        client(Socket(hostname, servname)), protocol(std::move(client)) {}
+Client::Client(const char* hostname, const char* servname): protocol(std::move(Socket(hostname, servname))) {}
 
 void Client::run() {
-
     try {
         print_ask_for_player_name();
         get_user_player_name();

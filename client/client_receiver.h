@@ -4,5 +4,15 @@
 
 #ifndef CLIENT_RECEIVER_H
 #define CLIENT_RECEIVER_H
+#include "common/thread.h"
+#include "server/server_protocol.h"
 
-#endif //CLIENT_RECEIVER_H
+
+class ClientReceiver: public Thread
+{
+private:
+    ServerProtocol& protocol;
+};
+
+
+#endif

@@ -11,7 +11,7 @@ const int ERROR = -1;
 
 int main(int argc, char* argv[]) {
     try {
-        const char* servname = NULL;
+        const char* servname = nullptr;
         if (argc != REQUIRED_ARGS_QTY) {
             std::cerr << "Bad Server program call. Expected: ./server servname"
                       << "\n";

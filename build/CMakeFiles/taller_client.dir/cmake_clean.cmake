@@ -1,4 +1,8 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/taller_client.dir/client/client_client.cpp.o"
+  "CMakeFiles/taller_client.dir/client/client_client.cpp.o.d"
+  "CMakeFiles/taller_client.dir/client/client_protocol.cpp.o"
+  "CMakeFiles/taller_client.dir/client/client_protocol.cpp.o.d"
   "CMakeFiles/taller_client.dir/client/main.cpp.o"
   "CMakeFiles/taller_client.dir/client/main.cpp.o.d"
   "taller_client"

@@ -51,42 +51,42 @@ build cmake_object_order_depends_target_taller_common: phony || .
 
 build CMakeFiles/taller_common.dir/common/common_liberror.cpp.o: CXX_COMPILER__taller_common_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/common/common_liberror.cpp || cmake_object_order_depends_target_taller_common
   DEP_FILE = CMakeFiles/taller_common.dir/common/common_liberror.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_common.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_common.dir/common
 
 build CMakeFiles/taller_common.dir/common/common_message.cpp.o: CXX_COMPILER__taller_common_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/common/common_message.cpp || cmake_object_order_depends_target_taller_common
   DEP_FILE = CMakeFiles/taller_common.dir/common/common_message.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_common.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_common.dir/common
 
 build CMakeFiles/taller_common.dir/common/common_resolver.cpp.o: CXX_COMPILER__taller_common_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/common/common_resolver.cpp || cmake_object_order_depends_target_taller_common
   DEP_FILE = CMakeFiles/taller_common.dir/common/common_resolver.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_common.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_common.dir/common
 
 build CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.o: CXX_COMPILER__taller_common_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/common/common_resolvererror.cpp || cmake_object_order_depends_target_taller_common
   DEP_FILE = CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_common.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_common.dir/common
 
 build CMakeFiles/taller_common.dir/common/common_socket.cpp.o: CXX_COMPILER__taller_common_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/common/common_socket.cpp || cmake_object_order_depends_target_taller_common
   DEP_FILE = CMakeFiles/taller_common.dir/common/common_socket.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_common.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_common.dir/common
 
 build CMakeFiles/taller_common.dir/common/foo.cpp.o: CXX_COMPILER__taller_common_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/common/foo.cpp || cmake_object_order_depends_target_taller_common
   DEP_FILE = CMakeFiles/taller_common.dir/common/foo.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_common.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_common.dir/common
@@ -118,21 +118,21 @@ build cmake_object_order_depends_target_taller_client: phony || cmake_object_ord
 
 build CMakeFiles/taller_client.dir/client/client_client.cpp.o: CXX_COMPILER__taller_client_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/client/client_client.cpp || cmake_object_order_depends_target_taller_client
   DEP_FILE = CMakeFiles/taller_client.dir/client/client_client.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2
   OBJECT_DIR = CMakeFiles/taller_client.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_client.dir/client
 
 build CMakeFiles/taller_client.dir/client/client_protocol.cpp.o: CXX_COMPILER__taller_client_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/client/client_protocol.cpp || cmake_object_order_depends_target_taller_client
   DEP_FILE = CMakeFiles/taller_client.dir/client/client_protocol.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2
   OBJECT_DIR = CMakeFiles/taller_client.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_client.dir/client
 
 build CMakeFiles/taller_client.dir/client/main.cpp.o: CXX_COMPILER__taller_client_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/client/main.cpp || cmake_object_order_depends_target_taller_client
   DEP_FILE = CMakeFiles/taller_client.dir/client/main.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2
   OBJECT_DIR = CMakeFiles/taller_client.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_client.dir/client
@@ -165,63 +165,63 @@ build cmake_object_order_depends_target_taller_server: phony || cmake_object_ord
 
 build CMakeFiles/taller_server.dir/server/server_acceptor.cpp.o: CXX_COMPILER__taller_server_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/server/server_acceptor.cpp || cmake_object_order_depends_target_taller_server
   DEP_FILE = CMakeFiles/taller_server.dir/server/server_acceptor.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_server.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_server.dir/server
 
 build CMakeFiles/taller_server.dir/server/server_gameplay.cpp.o: CXX_COMPILER__taller_server_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/server/server_gameplay.cpp || cmake_object_order_depends_target_taller_server
   DEP_FILE = CMakeFiles/taller_server.dir/server/server_gameplay.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_server.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_server.dir/server
 
 build CMakeFiles/taller_server.dir/server/server_monitored_list.cpp.o: CXX_COMPILER__taller_server_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/server/server_monitored_list.cpp || cmake_object_order_depends_target_taller_server
   DEP_FILE = CMakeFiles/taller_server.dir/server/server_monitored_list.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_server.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_server.dir/server
 
 build CMakeFiles/taller_server.dir/server/server_player.cpp.o: CXX_COMPILER__taller_server_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/server/server_player.cpp || cmake_object_order_depends_target_taller_server
   DEP_FILE = CMakeFiles/taller_server.dir/server/server_player.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_server.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_server.dir/server
 
 build CMakeFiles/taller_server.dir/server/server_protocol.cpp.o: CXX_COMPILER__taller_server_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/server/server_protocol.cpp || cmake_object_order_depends_target_taller_server
   DEP_FILE = CMakeFiles/taller_server.dir/server/server_protocol.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_server.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_server.dir/server
 
 build CMakeFiles/taller_server.dir/server/server_receiver.cpp.o: CXX_COMPILER__taller_server_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/server/server_receiver.cpp || cmake_object_order_depends_target_taller_server
   DEP_FILE = CMakeFiles/taller_server.dir/server/server_receiver.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_server.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_server.dir/server
 
 build CMakeFiles/taller_server.dir/server/server_sender.cpp.o: CXX_COMPILER__taller_server_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/server/server_sender.cpp || cmake_object_order_depends_target_taller_server
   DEP_FILE = CMakeFiles/taller_server.dir/server/server_sender.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_server.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_server.dir/server
 
 build CMakeFiles/taller_server.dir/server/server_server.cpp.o: CXX_COMPILER__taller_server_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/server/server_server.cpp || cmake_object_order_depends_target_taller_server
   DEP_FILE = CMakeFiles/taller_server.dir/server/server_server.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_server.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_server.dir/server
 
 build CMakeFiles/taller_server.dir/server/main.cpp.o: CXX_COMPILER__taller_server_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/server/main.cpp || cmake_object_order_depends_target_taller_server
   DEP_FILE = CMakeFiles/taller_server.dir/server/main.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
   OBJECT_DIR = CMakeFiles/taller_server.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_server.dir/server
@@ -254,7 +254,7 @@ build cmake_object_order_depends_target_taller_editor: phony || cmake_object_ord
 
 build CMakeFiles/taller_editor.dir/editor/main.cpp.o: CXX_COMPILER__taller_editor_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/editor/main.cpp || cmake_object_order_depends_target_taller_editor
   DEP_FILE = CMakeFiles/taller_editor.dir/editor/main.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2
   OBJECT_DIR = CMakeFiles/taller_editor.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_editor.dir/editor
@@ -287,7 +287,7 @@ build cmake_object_order_depends_target_taller_tests: phony || cmake_object_orde
 
 build CMakeFiles/taller_tests.dir/tests/foo.cpp.o: CXX_COMPILER__taller_tests_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/tests/foo.cpp || cmake_object_order_depends_target_taller_tests
   DEP_FILE = CMakeFiles/taller_tests.dir/tests/foo.cpp.o.d
-  FLAGS = -g -std=c++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
   INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/googletest-src/googlemock/include -isystem /home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/googletest-src/googletest/include -isystem /home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/googletest-src/googletest
   OBJECT_DIR = CMakeFiles/taller_tests.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_tests.dir/tests

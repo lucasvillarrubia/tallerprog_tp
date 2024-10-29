@@ -9,7 +9,7 @@ class LibError: public std::exception {
 public:
     LibError(int error_code, const char* fmt, ...) noexcept;
 
-    virtual const char* what() const noexcept;
+    const char* what() const noexcept override;
 
     virtual ~LibError();
 };

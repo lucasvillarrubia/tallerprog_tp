@@ -1,4 +1,4 @@
-# Install script for directory: /home/nishy/Desktop/taller de prog/tp-final/tallerprog_tp/client
+# Install script for directory: /home/lucas/CLionProjects/tallerprog_tp/client
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

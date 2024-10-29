@@ -1,4 +1,4 @@
-# Install script for directory: /home/nishy/Desktop/taller de prog/tp-final/tallerprog_tp/build/_deps/libsdl2pp-src
+# Install script for directory: /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

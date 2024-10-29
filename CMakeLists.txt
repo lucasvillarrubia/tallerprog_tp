@@ -11,7 +11,7 @@ endif()
 # strongly encouraged to enable this globally to avoid conflicts between
 # -Wpedantic being enabled and -std=c++20 and -std=gnu++20 for example
 # when compiling with PCH enabled
-set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_EXTENSIONS ON)
 
 project(taller_tp
     VERSION 1.0
@@ -41,7 +41,8 @@ add_library(taller_common STATIC
         common/common_message.cpp
         common/common_resolver.cpp
         common/common_resolvererror.cpp
-        common/common_socket.cpp)
+        common/common_socket.cpp
+        common/gamestate.h)
 
 # add the source files that make the lib
 # HEY!! TODO XXX: add more subfolders here
@@ -87,8 +88,9 @@ if(TALLER_CLIENT)
             client/client_receiver.h
             client/client_client.cpp
             client/client_protocol.cpp
-            client/display.h
-            client/event_listener.h)
+            client/renderer.h
+            client/event_listener.h
+            client/local_player.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_client taller_common SDL2pp::SDL2pp)
@@ -115,7 +117,7 @@ if(TALLER_SERVER)
             server/acceptor.h
             server/gameplay.h
             server/monitored_list.h
-            server/player.h
+            server/server_player.h
             server/server_sender.h
             server/server_receiver.h
             server/cleaner.h

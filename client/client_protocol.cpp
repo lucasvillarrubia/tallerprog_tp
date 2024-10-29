@@ -12,7 +12,7 @@ const int MESSAGE_HEADER = 0x03;
 const int PICKUP_MESSAGE_CODE = 0x04;
 
 
-ClientProtocol::ClientProtocol(Socket&& client_peer): peer(std::move(client_peer)) {}
+ClientProtocol::ClientProtocol(Socket&& skt): peer(std::move(skt)) {}
 
 Message ClientProtocol::receive_message() {
     uint8_t header, code;

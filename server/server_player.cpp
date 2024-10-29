@@ -3,7 +3,7 @@
 
 #include "../common/liberror.h"
 
-#include "player.h"
+#include "server_player.h"
 
 
 Player::Player(Socket&& skt, Queue<Command>& usr_entr):

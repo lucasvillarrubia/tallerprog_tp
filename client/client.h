@@ -5,21 +5,15 @@
 #include <string>
 #include <vector>
 
-#include "../common/socket.h"
-
 #include "client_protocol.h"
 
 
-// Clase de entidad de cliente. Sólo trabaja con un hilo (el main).
-// Ejecuta acciones del cliente según lo estipulado por el enunciado.
-// Imprime los mensajes recibidos desde el servidor y recibe los comandos del usuario por entrada
-// estándar.
+// Clase de entidad de cliente.
 // RAII: no permite copia ni movimiento.
 
 
 class Client {
 private:
-    Socket client;
     ClientProtocol protocol;
     std::vector<char> player_name;
     void print_ask_for_player_name();

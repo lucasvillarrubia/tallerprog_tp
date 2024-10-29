@@ -11,7 +11,7 @@ private:
 public:
     explicit ResolverError(int gai_errno);
 
-    virtual const char* what() const noexcept;
+    const char* what() const noexcept override;
 
     virtual ~ResolverError();
 };

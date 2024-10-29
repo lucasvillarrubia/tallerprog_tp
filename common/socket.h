@@ -17,8 +17,8 @@ public:
     Socket(const Socket&) = delete;
     Socket& operator=(const Socket&) = delete;
 
-    Socket(Socket&&) noexcept;
-    Socket& operator=(Socket&&) noexcept;
+    Socket(Socket&&);
+    Socket& operator=(Socket&&);
 
     int sendsome(const void* data, unsigned int sz, bool* was_closed);
 
