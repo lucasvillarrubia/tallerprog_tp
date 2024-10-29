@@ -13,6 +13,7 @@ private:
     Queue<Gamestate>& updates_feed;
 public:
     explicit Renderer(Queue<Gamestate>&);
+    void run() override;
 };
 
 

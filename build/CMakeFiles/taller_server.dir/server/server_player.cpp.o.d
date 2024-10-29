@@ -158,7 +158,7 @@ CMakeFiles/taller_server.dir/server/server_player.cpp.o: \
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/utility \
  /usr/include/c++/11/bits/stl_relops.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/../common/liberror.h \
- /home/lucas/CLionProjects/tallerprog_tp/server/player.h \
+ /home/lucas/CLionProjects/tallerprog_tp/server/server_player.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/../common/socket.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/command.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \

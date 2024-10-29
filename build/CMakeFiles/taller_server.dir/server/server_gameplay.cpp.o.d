@@ -219,7 +219,7 @@ CMakeFiles/taller_server.dir/server/server_gameplay.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/list.tcc \
- /home/lucas/CLionProjects/tallerprog_tp/server/player.h \
+ /home/lucas/CLionProjects/tallerprog_tp/server/server_player.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/../common/socket.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/server_receiver.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/server_protocol.h \

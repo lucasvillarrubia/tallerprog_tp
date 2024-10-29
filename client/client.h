@@ -6,6 +6,9 @@
 #include <vector>
 
 #include "client_protocol.h"
+#include "event_listener.h"
+#include "local_player.h"
+#include "renderer.h"
 
 
 // Clase de entidad de cliente.
@@ -14,14 +17,14 @@
 
 class Client {
 private:
-    ClientProtocol protocol;
-    std::vector<char> player_name;
-    void print_ask_for_player_name();
-    void get_user_player_name();
+    // ClientProtocol protocol;
+    Queue<Gameaction> events;
+    Queue<Gamestate> updates;
+    LocalPlayer player_comms;
+    // std::vector<char> player_name;
+    Renderer renderloop;
+    EventListener eventloop;
     std::string get_command_input();
-    void perform_actions_by_command(const std::string&);
-    void print_received_messages(const std::string&);
-    void send_pickup_message(const std::string&);
 
 public:
     explicit Client(const char*, const char*);

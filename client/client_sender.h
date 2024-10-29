@@ -4,14 +4,20 @@
 
 #ifndef CLIENT_SENDER_H
 #define CLIENT_SENDER_H
+
+
 #include "common/thread.h"
-#include "server/server_protocol.h"
+#include "client_protocol.h"
 
 
 class ClientSender: public Thread
 {
 private:
-    ServerProtocol& protocol;
+    ClientProtocol& protocol;
+public:
+    explicit ClientSender(ClientProtocol&);
+    void run() override;
+    ~ClientSender();
 };
 
 

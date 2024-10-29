@@ -42,7 +42,8 @@ add_library(taller_common STATIC
         common/common_resolver.cpp
         common/common_resolvererror.cpp
         common/common_socket.cpp
-        common/gamestate.h)
+        common/gamestate.h
+        common/gameaction.h)
 
 # add the source files that make the lib
 # HEY!! TODO XXX: add more subfolders here
@@ -90,7 +91,12 @@ if(TALLER_CLIENT)
             client/client_protocol.cpp
             client/renderer.h
             client/event_listener.h
-            client/local_player.h)
+            client/local_player.h
+            client/client_local_player.cpp
+            client/client_sender.cpp
+            client/client_receiver.cpp
+            client/client_renderer.cpp
+            client/client_event_listener.cpp)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_client taller_common SDL2pp::SDL2pp)

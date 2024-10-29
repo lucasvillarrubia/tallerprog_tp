@@ -25,8 +25,6 @@ private:
 
 public:
     explicit ClientProtocol(Socket&&);
-    Message receive_message();
-    void send_message(int, const std::vector<char>&);
     ClientProtocol(const ClientProtocol&) = delete;
     ClientProtocol& operator=(const ClientProtocol&) = delete;
     ~ClientProtocol();

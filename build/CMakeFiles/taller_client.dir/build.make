@@ -97,10 +97,80 @@ CMakeFiles/taller_client.dir/client/client_protocol.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_client.dir/client/client_protocol.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/client/client_protocol.cpp -o CMakeFiles/taller_client.dir/client/client_protocol.cpp.s
 
+CMakeFiles/taller_client.dir/client/client_local_player.cpp.o: CMakeFiles/taller_client.dir/flags.make
+CMakeFiles/taller_client.dir/client/client_local_player.cpp.o: ../client/client_local_player.cpp
+CMakeFiles/taller_client.dir/client/client_local_player.cpp.o: CMakeFiles/taller_client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/taller_client.dir/client/client_local_player.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_client.dir/client/client_local_player.cpp.o -MF CMakeFiles/taller_client.dir/client/client_local_player.cpp.o.d -o CMakeFiles/taller_client.dir/client/client_local_player.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/client_local_player.cpp
+
+CMakeFiles/taller_client.dir/client/client_local_player.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_client.dir/client/client_local_player.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/client/client_local_player.cpp > CMakeFiles/taller_client.dir/client/client_local_player.cpp.i
+
+CMakeFiles/taller_client.dir/client/client_local_player.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_client.dir/client/client_local_player.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/client/client_local_player.cpp -o CMakeFiles/taller_client.dir/client/client_local_player.cpp.s
+
+CMakeFiles/taller_client.dir/client/client_sender.cpp.o: CMakeFiles/taller_client.dir/flags.make
+CMakeFiles/taller_client.dir/client/client_sender.cpp.o: ../client/client_sender.cpp
+CMakeFiles/taller_client.dir/client/client_sender.cpp.o: CMakeFiles/taller_client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/taller_client.dir/client/client_sender.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_client.dir/client/client_sender.cpp.o -MF CMakeFiles/taller_client.dir/client/client_sender.cpp.o.d -o CMakeFiles/taller_client.dir/client/client_sender.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/client_sender.cpp
+
+CMakeFiles/taller_client.dir/client/client_sender.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_client.dir/client/client_sender.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/client/client_sender.cpp > CMakeFiles/taller_client.dir/client/client_sender.cpp.i
+
+CMakeFiles/taller_client.dir/client/client_sender.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_client.dir/client/client_sender.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/client/client_sender.cpp -o CMakeFiles/taller_client.dir/client/client_sender.cpp.s
+
+CMakeFiles/taller_client.dir/client/client_receiver.cpp.o: CMakeFiles/taller_client.dir/flags.make
+CMakeFiles/taller_client.dir/client/client_receiver.cpp.o: ../client/client_receiver.cpp
+CMakeFiles/taller_client.dir/client/client_receiver.cpp.o: CMakeFiles/taller_client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/taller_client.dir/client/client_receiver.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_client.dir/client/client_receiver.cpp.o -MF CMakeFiles/taller_client.dir/client/client_receiver.cpp.o.d -o CMakeFiles/taller_client.dir/client/client_receiver.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/client_receiver.cpp
+
+CMakeFiles/taller_client.dir/client/client_receiver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_client.dir/client/client_receiver.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/client/client_receiver.cpp > CMakeFiles/taller_client.dir/client/client_receiver.cpp.i
+
+CMakeFiles/taller_client.dir/client/client_receiver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_client.dir/client/client_receiver.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/client/client_receiver.cpp -o CMakeFiles/taller_client.dir/client/client_receiver.cpp.s
+
+CMakeFiles/taller_client.dir/client/client_renderer.cpp.o: CMakeFiles/taller_client.dir/flags.make
+CMakeFiles/taller_client.dir/client/client_renderer.cpp.o: ../client/client_renderer.cpp
+CMakeFiles/taller_client.dir/client/client_renderer.cpp.o: CMakeFiles/taller_client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/taller_client.dir/client/client_renderer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_client.dir/client/client_renderer.cpp.o -MF CMakeFiles/taller_client.dir/client/client_renderer.cpp.o.d -o CMakeFiles/taller_client.dir/client/client_renderer.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/client_renderer.cpp
+
+CMakeFiles/taller_client.dir/client/client_renderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_client.dir/client/client_renderer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/client/client_renderer.cpp > CMakeFiles/taller_client.dir/client/client_renderer.cpp.i
+
+CMakeFiles/taller_client.dir/client/client_renderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_client.dir/client/client_renderer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/client/client_renderer.cpp -o CMakeFiles/taller_client.dir/client/client_renderer.cpp.s
+
+CMakeFiles/taller_client.dir/client/client_event_listener.cpp.o: CMakeFiles/taller_client.dir/flags.make
+CMakeFiles/taller_client.dir/client/client_event_listener.cpp.o: ../client/client_event_listener.cpp
+CMakeFiles/taller_client.dir/client/client_event_listener.cpp.o: CMakeFiles/taller_client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/taller_client.dir/client/client_event_listener.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_client.dir/client/client_event_listener.cpp.o -MF CMakeFiles/taller_client.dir/client/client_event_listener.cpp.o.d -o CMakeFiles/taller_client.dir/client/client_event_listener.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/client_event_listener.cpp
+
+CMakeFiles/taller_client.dir/client/client_event_listener.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_client.dir/client/client_event_listener.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/client/client_event_listener.cpp > CMakeFiles/taller_client.dir/client/client_event_listener.cpp.i
+
+CMakeFiles/taller_client.dir/client/client_event_listener.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_client.dir/client/client_event_listener.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/client/client_event_listener.cpp -o CMakeFiles/taller_client.dir/client/client_event_listener.cpp.s
+
 CMakeFiles/taller_client.dir/client/main.cpp.o: CMakeFiles/taller_client.dir/flags.make
 CMakeFiles/taller_client.dir/client/main.cpp.o: ../client/main.cpp
 CMakeFiles/taller_client.dir/client/main.cpp.o: CMakeFiles/taller_client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/taller_client.dir/client/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/taller_client.dir/client/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_client.dir/client/main.cpp.o -MF CMakeFiles/taller_client.dir/client/main.cpp.o.d -o CMakeFiles/taller_client.dir/client/main.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/main.cpp
 
 CMakeFiles/taller_client.dir/client/main.cpp.i: cmake_force
@@ -115,6 +185,11 @@ CMakeFiles/taller_client.dir/client/main.cpp.s: cmake_force
 taller_client_OBJECTS = \
 "CMakeFiles/taller_client.dir/client/client_client.cpp.o" \
 "CMakeFiles/taller_client.dir/client/client_protocol.cpp.o" \
+"CMakeFiles/taller_client.dir/client/client_local_player.cpp.o" \
+"CMakeFiles/taller_client.dir/client/client_sender.cpp.o" \
+"CMakeFiles/taller_client.dir/client/client_receiver.cpp.o" \
+"CMakeFiles/taller_client.dir/client/client_renderer.cpp.o" \
+"CMakeFiles/taller_client.dir/client/client_event_listener.cpp.o" \
 "CMakeFiles/taller_client.dir/client/main.cpp.o"
 
 # External object files for target taller_client
@@ -122,6 +197,11 @@ taller_client_EXTERNAL_OBJECTS =
 
 taller_client: CMakeFiles/taller_client.dir/client/client_client.cpp.o
 taller_client: CMakeFiles/taller_client.dir/client/client_protocol.cpp.o
+taller_client: CMakeFiles/taller_client.dir/client/client_local_player.cpp.o
+taller_client: CMakeFiles/taller_client.dir/client/client_sender.cpp.o
+taller_client: CMakeFiles/taller_client.dir/client/client_receiver.cpp.o
+taller_client: CMakeFiles/taller_client.dir/client/client_renderer.cpp.o
+taller_client: CMakeFiles/taller_client.dir/client/client_event_listener.cpp.o
 taller_client: CMakeFiles/taller_client.dir/client/main.cpp.o
 taller_client: CMakeFiles/taller_client.dir/build.make
 taller_client: libtaller_common.a
@@ -132,7 +212,7 @@ taller_client: /usr/local/lib/libSDL2_ttf-2.0.so.0.2000.2
 taller_client: /usr/local/lib/libSDL2_mixer-2.0.so.0.600.3
 taller_client: /usr/lib/x86_64-linux-gnu/libSDL2.so
 taller_client: CMakeFiles/taller_client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable taller_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable taller_client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/taller_client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

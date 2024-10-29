@@ -14,27 +14,26 @@ const int PICKUP_MESSAGE_CODE = 0x04;
 
 ClientProtocol::ClientProtocol(Socket&& skt): peer(std::move(skt)) {}
 
-Message ClientProtocol::receive_message() {
-    uint8_t header, code;
-    receive_single_int_message(header);
-    receive_single_int_message(code);
-    if (theres_more_data_per_code(code)) {
-        std::vector<char> player_name;
-        uint8_t reward_id;
-        receive_string_message(player_name);
-        receive_single_int_message(reward_id);
-        return {player_name, reward_id};
-        // return Message(player_name, reward_id);
-    } else {
-        return {};
-    }
-}
+// Message ClientProtocol::receive_message() {
+//     uint8_t header, code;
+//     receive_single_int_message(header);
+//     receive_single_int_message(code);
+//     if (theres_more_data_per_code(code)) {
+//         std::vector<char> player_name;
+//         uint8_t reward_id;
+//         receive_string_message(player_name);
+//         receive_single_int_message(reward_id);
+//         return {player_name, reward_id};
+//     } else {
+//         return {};
+//     }
+// }
 
-void ClientProtocol::send_message(int box_id, const std::vector<char>& player_name) {
-    send_single_int_message(MESSAGE_HEADER);
-    send_string_message(player_name);
-    send_single_int_message(box_id);
-}
+// void ClientProtocol::send_message(int box_id, const std::vector<char>& player_name) {
+//     send_single_int_message(MESSAGE_HEADER);
+//     send_string_message(player_name);
+//     send_single_int_message(box_id);
+// }
 
 void ClientProtocol::receive_string_message(std::vector<char>& message) {
     bool server_was_disconnected = false;

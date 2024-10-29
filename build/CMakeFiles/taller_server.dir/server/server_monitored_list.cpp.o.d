@@ -161,7 +161,7 @@ CMakeFiles/taller_server.dir/server/server_monitored_list.cpp.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/lucas/CLionProjects/tallerprog_tp/server/player.h \
+ /home/lucas/CLionProjects/tallerprog_tp/server/server_player.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/../common/socket.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/server_receiver.h \
  /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_base.h \
