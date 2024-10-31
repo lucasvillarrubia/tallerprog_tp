@@ -157,7 +157,7 @@ CMakeFiles/taller_server.dir/server/main.cpp.o: \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc \
  /home/lucas/CLionProjects/tallerprog_tp/server/server.h \
- /home/lucas/CLionProjects/tallerprog_tp/server/../common/queue.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/queue.h \
  /usr/include/c++/11/climits \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
@@ -207,22 +207,27 @@ CMakeFiles/taller_server.dir/server/main.cpp.o: \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/bits/stl_queue.h \
- /home/lucas/CLionProjects/tallerprog_tp/server/acceptor.h \
- /home/lucas/CLionProjects/tallerprog_tp/server/../common/socket.h \
- /home/lucas/CLionProjects/tallerprog_tp/server/../common/thread.h \
+ /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/acceptor.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_sockets/socket.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/thread.h \
  /usr/include/c++/11/thread \
- /home/lucas/CLionProjects/tallerprog_tp/server/command.h \
- /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/command.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/monitored_list.h \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/list.tcc \
- /home/lucas/CLionProjects/tallerprog_tp/server/server_player.h \
- /home/lucas/CLionProjects/tallerprog_tp/server/server_receiver.h \
- /home/lucas/CLionProjects/tallerprog_tp/server/../common/message.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/command.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/player.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_receiver.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_protocol.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/comms/protocol.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/comms/receiver.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_sender.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_protocol.h \
+ /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/gameplay.h \
  /usr/include/c++/11/map /usr/include/c++/11/bits/stl_tree.h \
  /usr/include/c++/11/bits/node_handle.h \
  /usr/include/c++/11/bits/stl_map.h \
  /usr/include/c++/11/bits/stl_multimap.h \
  /usr/include/c++/11/bits/erase_if.h \
- /home/lucas/CLionProjects/tallerprog_tp/server/server_protocol.h \
- /home/lucas/CLionProjects/tallerprog_tp/server/server_sender.h \
- /home/lucas/CLionProjects/tallerprog_tp/server/gameplay.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h

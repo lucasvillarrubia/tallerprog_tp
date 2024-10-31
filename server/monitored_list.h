@@ -6,7 +6,7 @@
 #include <mutex>
 
 #include "command.h"
-#include "server_player.h"
+#include "player.h"
 
 
 // Clase monitor de lista con su propio mutex y la lista a proteger.

@@ -5,10 +5,10 @@
 #include <string>
 #include <vector>
 
-#include "client_protocol.h"
-#include "event_listener.h"
+#include "client_comms/client_protocol.h"
+#include "client_threads/event_listener.h"
 #include "local_player.h"
-#include "renderer.h"
+#include "client_threads/renderer.h"
 
 
 // Clase de entidad de cliente.
@@ -20,14 +20,15 @@ private:
     // ClientProtocol protocol;
     Queue<Gameaction> events;
     Queue<Gamestate> updates;
-    LocalPlayer player_comms;
+    // LocalPlayer player_comms;
     // std::vector<char> player_name;
     Renderer renderloop;
     EventListener eventloop;
     std::string get_command_input();
 
 public:
-    explicit Client(const char*, const char*);
+    // explicit Client(const char*, const char*);
+    explicit Client();
     void run();
     Client(const Client&) = delete;
     Client& operator=(const Client&) = delete;

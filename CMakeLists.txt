@@ -29,21 +29,29 @@ message(CMAKE_CXX_COMPILER_ID="${CMAKE_CXX_COMPILER_ID}")
 
 # Define target: lib common between client, server and editor programs
 # HEY TODO XXX: change the name to something that you like
+# TODO: Hay que mover estos paths al cmake que está en "common/", por ahora están acá porque el CLion los crea rápido!
 add_library(taller_common STATIC
-        common/socket.h
+        common/hands_on_sockets/socket.h
         common/message.h
-        common/queue.h
-        common/thread.h
-        common/resolvererror.h
-        common/liberror.h
-        common/resolver.h
-        common/common_liberror.cpp
-        common/common_message.cpp
-        common/common_resolver.cpp
-        common/common_resolvererror.cpp
-        common/common_socket.cpp
+        common/hands_on_threads/queue.h
+        common/hands_on_threads/thread.h
+        common/hands_on_sockets/resolvererror.h
+        common/hands_on_sockets/liberror.h
+        common/hands_on_sockets/resolver.h
+        common/hands_on_sockets/liberror.cpp
+        common/message.cpp
+        common/hands_on_sockets/resolver.cpp
+        common/hands_on_sockets/resolvererror.cpp
+        common/hands_on_sockets/socket.cpp
         common/gamestate.h
-        common/gameaction.h)
+        common/gameaction.h
+        common/comms/receiver.cpp
+        common/comms/receiver.h
+        common/comms/sender.cpp
+        common/comms/sender.h
+        common/comms/protocol.cpp
+        common/comms/protocol.h
+)
 
 # add the source files that make the lib
 # HEY!! TODO XXX: add more subfolders here
@@ -81,22 +89,23 @@ endif()
 # ---------------
 if(TALLER_CLIENT)
     # HEY!! TODO XXX: Change the name of the executable to the one you like!
+    # TODO: Hay que mover estos paths al cmake que está en "client/", por ahora están acá porque el CLion los crea rápido!
     add_executable(taller_client
             client/client.h
-            client/client_protocol.h
+            client/client_comms/client_protocol.h
             client/client_exceptions.h
-            client/client_sender.h
-            client/client_receiver.h
-            client/client_client.cpp
-            client/client_protocol.cpp
-            client/renderer.h
-            client/event_listener.h
+            client/client_comms/client_sender.h
+            client/client_comms/client_receiver.h
+            client/client.cpp
+            client/client_comms/client_protocol.cpp
+            client/client_threads/renderer.h
+            client/client_threads/event_listener.h
             client/local_player.h
-            client/client_local_player.cpp
-            client/client_sender.cpp
-            client/client_receiver.cpp
-            client/client_renderer.cpp
-            client/client_event_listener.cpp)
+            client/local_player.cpp
+            client/client_comms/client_sender.cpp
+            client/client_comms/client_receiver.cpp
+            client/client_threads/renderer.cpp
+            client/client_threads/event_listener.cpp)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_client taller_common SDL2pp::SDL2pp)
@@ -116,26 +125,26 @@ endif()
 
 if(TALLER_SERVER)
     # HEY!! TODO XXX: Change the name of the executable to the one you like!
+    # TODO: Hay que mover estos paths al cmake que está en "server/", por ahora están acá porque el CLion los crea rápido!
     add_executable(taller_server
             server/server.h
-            server/server_protocol.h
+            server/server_comms/server_protocol.h
             server/command.h
-            server/acceptor.h
-            server/gameplay.h
+            server/server_threads/acceptor.h
+            server/server_threads/gameplay.h
             server/monitored_list.h
-            server/server_player.h
-            server/server_sender.h
-            server/server_receiver.h
-            server/cleaner.h
+            server/player.h
+            server/server_comms/server_sender.h
+            server/server_comms/server_receiver.h
             server/weapon.h
-            server/server_acceptor.cpp
-            server/server_gameplay.cpp
-            server/server_monitored_list.cpp
-            server/server_player.cpp
-            server/server_protocol.cpp
-            server/server_receiver.cpp
-            server/server_sender.cpp
-            server/server_server.cpp)
+            server/server_threads/acceptor.cpp
+            server/server_threads/gameplay.cpp
+            server/monitored_list.cpp
+            server/player.cpp
+            server/server_comms/server_protocol.cpp
+            server/server_comms/server_receiver.cpp
+            server/server_comms/server_sender.cpp
+            server/server.cpp)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)

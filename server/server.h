@@ -2,10 +2,10 @@
 #define SERVER_H
 
 
-#include "../common/queue.h"
+#include "common/hands_on_threads/queue.h"
 
-#include "acceptor.h"
-#include "gameplay.h"
+#include "server_threads/acceptor.h"
+#include "server_threads/gameplay.h"
 #include "monitored_list.h"
 
 

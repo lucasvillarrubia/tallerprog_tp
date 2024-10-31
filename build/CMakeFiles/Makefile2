@@ -250,12 +250,12 @@ tests/clean:
 CMakeFiles/taller_common.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_common.dir/build.make CMakeFiles/taller_common.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_common.dir/build.make CMakeFiles/taller_common.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=42,43,44,45,46,47,48 "Built target taller_common"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=42,43,44,45,46,47,48,49,50,51 "Built target taller_common"
 .PHONY : CMakeFiles/taller_common.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/taller_common.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/taller_common.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 0
 .PHONY : CMakeFiles/taller_common.dir/rule
@@ -282,7 +282,7 @@ CMakeFiles/taller_client.dir/all: _deps/libsdl2pp-build/CMakeFiles/SDL2pp.dir/al
 
 # Build rule for subdir invocation for target.
 CMakeFiles/taller_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 40
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/taller_client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 0
 .PHONY : CMakeFiles/taller_client.dir/rule
@@ -303,12 +303,12 @@ CMakeFiles/taller_client.dir/clean:
 CMakeFiles/taller_server.dir/all: CMakeFiles/taller_common.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=51,52,53,54,55,56,57,58,59,60 "Built target taller_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=54,55,56,57,58,59,60,61,62,63 "Built target taller_server"
 .PHONY : CMakeFiles/taller_server.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/taller_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 20
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/taller_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 0
 .PHONY : CMakeFiles/taller_server.dir/rule
@@ -330,12 +330,12 @@ CMakeFiles/taller_editor.dir/all: CMakeFiles/taller_common.dir/all
 CMakeFiles/taller_editor.dir/all: _deps/libsdl2pp-build/CMakeFiles/SDL2pp.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_editor.dir/build.make CMakeFiles/taller_editor.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_editor.dir/build.make CMakeFiles/taller_editor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=49,50 "Built target taller_editor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=52,53 "Built target taller_editor"
 .PHONY : CMakeFiles/taller_editor.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/taller_editor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 33
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 36
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/taller_editor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 0
 .PHONY : CMakeFiles/taller_editor.dir/rule
@@ -358,12 +358,12 @@ CMakeFiles/taller_tests.dir/all: _deps/googletest-build/googletest/CMakeFiles/gt
 CMakeFiles/taller_tests.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_tests.dir/build.make CMakeFiles/taller_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_tests.dir/build.make CMakeFiles/taller_tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=61,62 "Built target taller_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=64,65 "Built target taller_tests"
 .PHONY : CMakeFiles/taller_tests.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/taller_tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 16
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/taller_tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles 0
 .PHONY : CMakeFiles/taller_tests.dir/rule

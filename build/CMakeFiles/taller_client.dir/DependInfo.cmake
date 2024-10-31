@@ -8,13 +8,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/lucas/CLionProjects/tallerprog_tp/client/client_client.cpp" "CMakeFiles/taller_client.dir/client/client_client.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_client.cpp.o.d"
-  "/home/lucas/CLionProjects/tallerprog_tp/client/client_event_listener.cpp" "CMakeFiles/taller_client.dir/client/client_event_listener.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_event_listener.cpp.o.d"
-  "/home/lucas/CLionProjects/tallerprog_tp/client/client_local_player.cpp" "CMakeFiles/taller_client.dir/client/client_local_player.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_local_player.cpp.o.d"
-  "/home/lucas/CLionProjects/tallerprog_tp/client/client_protocol.cpp" "CMakeFiles/taller_client.dir/client/client_protocol.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_protocol.cpp.o.d"
-  "/home/lucas/CLionProjects/tallerprog_tp/client/client_receiver.cpp" "CMakeFiles/taller_client.dir/client/client_receiver.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_receiver.cpp.o.d"
-  "/home/lucas/CLionProjects/tallerprog_tp/client/client_renderer.cpp" "CMakeFiles/taller_client.dir/client/client_renderer.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_renderer.cpp.o.d"
-  "/home/lucas/CLionProjects/tallerprog_tp/client/client_sender.cpp" "CMakeFiles/taller_client.dir/client/client_sender.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_sender.cpp.o.d"
+  "/home/lucas/CLionProjects/tallerprog_tp/client/client.cpp" "CMakeFiles/taller_client.dir/client/client.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client.cpp.o.d"
+  "/home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_protocol.cpp" "CMakeFiles/taller_client.dir/client/client_comms/client_protocol.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_comms/client_protocol.cpp.o.d"
+  "/home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_receiver.cpp" "CMakeFiles/taller_client.dir/client/client_comms/client_receiver.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_comms/client_receiver.cpp.o.d"
+  "/home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_sender.cpp" "CMakeFiles/taller_client.dir/client/client_comms/client_sender.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_comms/client_sender.cpp.o.d"
+  "/home/lucas/CLionProjects/tallerprog_tp/client/client_threads/event_listener.cpp" "CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o.d"
+  "/home/lucas/CLionProjects/tallerprog_tp/client/client_threads/renderer.cpp" "CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o.d"
+  "/home/lucas/CLionProjects/tallerprog_tp/client/local_player.cpp" "CMakeFiles/taller_client.dir/client/local_player.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/local_player.cpp.o.d"
   "/home/lucas/CLionProjects/tallerprog_tp/client/main.cpp" "CMakeFiles/taller_client.dir/client/main.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/main.cpp.o.d"
   )
 

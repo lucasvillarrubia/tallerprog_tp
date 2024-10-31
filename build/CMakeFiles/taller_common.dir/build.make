@@ -69,80 +69,122 @@ include CMakeFiles/taller_common.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/taller_common.dir/flags.make
 
-CMakeFiles/taller_common.dir/common/common_liberror.cpp.o: CMakeFiles/taller_common.dir/flags.make
-CMakeFiles/taller_common.dir/common/common_liberror.cpp.o: ../common/common_liberror.cpp
-CMakeFiles/taller_common.dir/common/common_liberror.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/taller_common.dir/common/common_liberror.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/common_liberror.cpp.o -MF CMakeFiles/taller_common.dir/common/common_liberror.cpp.o.d -o CMakeFiles/taller_common.dir/common/common_liberror.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/common_liberror.cpp
+CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.o: CMakeFiles/taller_common.dir/flags.make
+CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.o: ../common/hands_on_sockets/liberror.cpp
+CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.o -MF CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.o.d -o CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/liberror.cpp
 
-CMakeFiles/taller_common.dir/common/common_liberror.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/common_liberror.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/common_liberror.cpp > CMakeFiles/taller_common.dir/common/common_liberror.cpp.i
+CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/liberror.cpp > CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.i
 
-CMakeFiles/taller_common.dir/common/common_liberror.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/common_liberror.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/common_liberror.cpp -o CMakeFiles/taller_common.dir/common/common_liberror.cpp.s
+CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/liberror.cpp -o CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.s
 
-CMakeFiles/taller_common.dir/common/common_message.cpp.o: CMakeFiles/taller_common.dir/flags.make
-CMakeFiles/taller_common.dir/common/common_message.cpp.o: ../common/common_message.cpp
-CMakeFiles/taller_common.dir/common/common_message.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/taller_common.dir/common/common_message.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/common_message.cpp.o -MF CMakeFiles/taller_common.dir/common/common_message.cpp.o.d -o CMakeFiles/taller_common.dir/common/common_message.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/common_message.cpp
+CMakeFiles/taller_common.dir/common/message.cpp.o: CMakeFiles/taller_common.dir/flags.make
+CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp
+CMakeFiles/taller_common.dir/common/message.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/taller_common.dir/common/message.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/message.cpp.o -MF CMakeFiles/taller_common.dir/common/message.cpp.o.d -o CMakeFiles/taller_common.dir/common/message.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/message.cpp
 
-CMakeFiles/taller_common.dir/common/common_message.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/common_message.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/common_message.cpp > CMakeFiles/taller_common.dir/common/common_message.cpp.i
+CMakeFiles/taller_common.dir/common/message.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/message.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/message.cpp > CMakeFiles/taller_common.dir/common/message.cpp.i
 
-CMakeFiles/taller_common.dir/common/common_message.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/common_message.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/common_message.cpp -o CMakeFiles/taller_common.dir/common/common_message.cpp.s
+CMakeFiles/taller_common.dir/common/message.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/message.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/message.cpp -o CMakeFiles/taller_common.dir/common/message.cpp.s
 
-CMakeFiles/taller_common.dir/common/common_resolver.cpp.o: CMakeFiles/taller_common.dir/flags.make
-CMakeFiles/taller_common.dir/common/common_resolver.cpp.o: ../common/common_resolver.cpp
-CMakeFiles/taller_common.dir/common/common_resolver.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/taller_common.dir/common/common_resolver.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/common_resolver.cpp.o -MF CMakeFiles/taller_common.dir/common/common_resolver.cpp.o.d -o CMakeFiles/taller_common.dir/common/common_resolver.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/common_resolver.cpp
+CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.o: CMakeFiles/taller_common.dir/flags.make
+CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.o: ../common/hands_on_sockets/resolver.cpp
+CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.o -MF CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.o.d -o CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/resolver.cpp
 
-CMakeFiles/taller_common.dir/common/common_resolver.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/common_resolver.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/common_resolver.cpp > CMakeFiles/taller_common.dir/common/common_resolver.cpp.i
+CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/resolver.cpp > CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.i
 
-CMakeFiles/taller_common.dir/common/common_resolver.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/common_resolver.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/common_resolver.cpp -o CMakeFiles/taller_common.dir/common/common_resolver.cpp.s
+CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/resolver.cpp -o CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.s
 
-CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.o: CMakeFiles/taller_common.dir/flags.make
-CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.o: ../common/common_resolvererror.cpp
-CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.o -MF CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.o.d -o CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/common_resolvererror.cpp
+CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o: CMakeFiles/taller_common.dir/flags.make
+CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o: ../common/hands_on_sockets/resolvererror.cpp
+CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o -MF CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o.d -o CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/resolvererror.cpp
 
-CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/common_resolvererror.cpp > CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.i
+CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/resolvererror.cpp > CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.i
 
-CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/common_resolvererror.cpp -o CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.s
+CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/resolvererror.cpp -o CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.s
 
-CMakeFiles/taller_common.dir/common/common_socket.cpp.o: CMakeFiles/taller_common.dir/flags.make
-CMakeFiles/taller_common.dir/common/common_socket.cpp.o: ../common/common_socket.cpp
-CMakeFiles/taller_common.dir/common/common_socket.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/taller_common.dir/common/common_socket.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/common_socket.cpp.o -MF CMakeFiles/taller_common.dir/common/common_socket.cpp.o.d -o CMakeFiles/taller_common.dir/common/common_socket.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/common_socket.cpp
+CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o: CMakeFiles/taller_common.dir/flags.make
+CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o: ../common/hands_on_sockets/socket.cpp
+CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o -MF CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o.d -o CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/socket.cpp
 
-CMakeFiles/taller_common.dir/common/common_socket.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/common_socket.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/common_socket.cpp > CMakeFiles/taller_common.dir/common/common_socket.cpp.i
+CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/socket.cpp > CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.i
 
-CMakeFiles/taller_common.dir/common/common_socket.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/common_socket.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/common_socket.cpp -o CMakeFiles/taller_common.dir/common/common_socket.cpp.s
+CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/socket.cpp -o CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.s
+
+CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o: CMakeFiles/taller_common.dir/flags.make
+CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o: ../common/comms/receiver.cpp
+CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o -MF CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o.d -o CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/comms/receiver.cpp
+
+CMakeFiles/taller_common.dir/common/comms/receiver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/comms/receiver.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/comms/receiver.cpp > CMakeFiles/taller_common.dir/common/comms/receiver.cpp.i
+
+CMakeFiles/taller_common.dir/common/comms/receiver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/comms/receiver.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/comms/receiver.cpp -o CMakeFiles/taller_common.dir/common/comms/receiver.cpp.s
+
+CMakeFiles/taller_common.dir/common/comms/sender.cpp.o: CMakeFiles/taller_common.dir/flags.make
+CMakeFiles/taller_common.dir/common/comms/sender.cpp.o: ../common/comms/sender.cpp
+CMakeFiles/taller_common.dir/common/comms/sender.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/taller_common.dir/common/comms/sender.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/comms/sender.cpp.o -MF CMakeFiles/taller_common.dir/common/comms/sender.cpp.o.d -o CMakeFiles/taller_common.dir/common/comms/sender.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/comms/sender.cpp
+
+CMakeFiles/taller_common.dir/common/comms/sender.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/comms/sender.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/comms/sender.cpp > CMakeFiles/taller_common.dir/common/comms/sender.cpp.i
+
+CMakeFiles/taller_common.dir/common/comms/sender.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/comms/sender.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/comms/sender.cpp -o CMakeFiles/taller_common.dir/common/comms/sender.cpp.s
+
+CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o: CMakeFiles/taller_common.dir/flags.make
+CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o: ../common/comms/protocol.cpp
+CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o -MF CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o.d -o CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/comms/protocol.cpp
+
+CMakeFiles/taller_common.dir/common/comms/protocol.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/comms/protocol.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/comms/protocol.cpp > CMakeFiles/taller_common.dir/common/comms/protocol.cpp.i
+
+CMakeFiles/taller_common.dir/common/comms/protocol.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/comms/protocol.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/comms/protocol.cpp -o CMakeFiles/taller_common.dir/common/comms/protocol.cpp.s
 
 CMakeFiles/taller_common.dir/common/foo.cpp.o: CMakeFiles/taller_common.dir/flags.make
 CMakeFiles/taller_common.dir/common/foo.cpp.o: ../common/foo.cpp
 CMakeFiles/taller_common.dir/common/foo.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/taller_common.dir/common/foo.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/taller_common.dir/common/foo.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/foo.cpp.o -MF CMakeFiles/taller_common.dir/common/foo.cpp.o.d -o CMakeFiles/taller_common.dir/common/foo.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/foo.cpp
 
 CMakeFiles/taller_common.dir/common/foo.cpp.i: cmake_force
@@ -155,25 +197,31 @@ CMakeFiles/taller_common.dir/common/foo.cpp.s: cmake_force
 
 # Object files for target taller_common
 taller_common_OBJECTS = \
-"CMakeFiles/taller_common.dir/common/common_liberror.cpp.o" \
-"CMakeFiles/taller_common.dir/common/common_message.cpp.o" \
-"CMakeFiles/taller_common.dir/common/common_resolver.cpp.o" \
-"CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.o" \
-"CMakeFiles/taller_common.dir/common/common_socket.cpp.o" \
+"CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.o" \
+"CMakeFiles/taller_common.dir/common/message.cpp.o" \
+"CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.o" \
+"CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o" \
+"CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o" \
+"CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o" \
+"CMakeFiles/taller_common.dir/common/comms/sender.cpp.o" \
+"CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o" \
 "CMakeFiles/taller_common.dir/common/foo.cpp.o"
 
 # External object files for target taller_common
 taller_common_EXTERNAL_OBJECTS =
 
-libtaller_common.a: CMakeFiles/taller_common.dir/common/common_liberror.cpp.o
-libtaller_common.a: CMakeFiles/taller_common.dir/common/common_message.cpp.o
-libtaller_common.a: CMakeFiles/taller_common.dir/common/common_resolver.cpp.o
-libtaller_common.a: CMakeFiles/taller_common.dir/common/common_resolvererror.cpp.o
-libtaller_common.a: CMakeFiles/taller_common.dir/common/common_socket.cpp.o
+libtaller_common.a: CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.o
+libtaller_common.a: CMakeFiles/taller_common.dir/common/message.cpp.o
+libtaller_common.a: CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.o
+libtaller_common.a: CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o
+libtaller_common.a: CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o
+libtaller_common.a: CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o
+libtaller_common.a: CMakeFiles/taller_common.dir/common/comms/sender.cpp.o
+libtaller_common.a: CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o
 libtaller_common.a: CMakeFiles/taller_common.dir/common/foo.cpp.o
 libtaller_common.a: CMakeFiles/taller_common.dir/build.make
 libtaller_common.a: CMakeFiles/taller_common.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libtaller_common.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library libtaller_common.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/taller_common.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/taller_common.dir/link.txt --verbose=$(VERBOSE)
 
