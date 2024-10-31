@@ -11,17 +11,21 @@
 #include "common/hands_on_threads/queue.h"
 
 
-class LocalPlayer {
+class LocalPlayer
+{
 private:
-    // ClientProtocol protocol;
-    // ClientSender sender;
-    // ClientReceiver receiver;
-    Queue<Gameaction>& player_actions;
-    Queue<Gamestate>& server_updates;
+    std::atomic_bool is_online;
+    ClientProtocol protocol;
+    ClientSender sender;
+    ClientReceiver receiver;
 public:
-    // LocalPlayer(Socket&&, Queue<Gameaction>&, Queue<Gamestate>&);
-    LocalPlayer(Queue<Gameaction>&, Queue<Gamestate>&);
-    ~LocalPlayer();
+    LocalPlayer(Socket&&, Queue<Gameaction>&, Queue<Gamestate>&);
+    // void end_connection();
+    LocalPlayer(const LocalPlayer&) = delete;
+    LocalPlayer& operator=(const LocalPlayer&) = delete;
+    LocalPlayer(LocalPlayer&& other) = delete;
+    LocalPlayer& operator=(LocalPlayer&& other) = delete;
+    ~LocalPlayer() = default;
 };
 
 

@@ -12,8 +12,9 @@ class EventListener: public Thread
 private:
     Queue<Gameaction>& inputs;
 public:
-    EventListener(Queue<Gameaction>&);
+    explicit EventListener(Queue<Gameaction>&);
     void run() override;
+    ~EventListener() override = default;
 };
 
 

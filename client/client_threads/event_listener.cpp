@@ -5,6 +5,11 @@ EventListener::EventListener(Queue<Gameaction>& q): inputs(q) {}
 
 void EventListener::run()
 {
-
+    try
+    {
+    }
+    catch (...)
+    {
+    }
 }
 

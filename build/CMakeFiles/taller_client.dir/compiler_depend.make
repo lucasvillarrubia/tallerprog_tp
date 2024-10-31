@@ -165,18 +165,9 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: ../client/client.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
   /usr/include/c++/11/bits/charconv.h \
   /usr/include/c++/11/bits/basic_string.tcc \
-  /usr/include/c++/11/vector \
-  /usr/include/c++/11/bits/stl_uninitialized.h \
-  /usr/include/c++/11/bits/stl_vector.h \
-  /usr/include/c++/11/bits/stl_bvector.h \
-  /usr/include/c++/11/bits/vector.tcc \
-  ../client/client_comms/client_protocol.h \
-  ../common/hands_on_sockets/socket.h \
-  ../common/comms/protocol.h \
-  /usr/include/c++/11/atomic \
-  /usr/include/c++/11/bits/atomic_base.h \
-  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
-  /usr/include/c++/11/bits/atomic_wait.h \
+  ../client/client_threads/event_listener.h \
+  ../common/gameaction.h \
+  ../common/hands_on_threads/queue.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
@@ -187,19 +178,12 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: ../client/client.cpp \
   /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
   /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
   /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
-  /usr/include/unistd.h \
-  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
-  /usr/include/x86_64-linux-gnu/bits/environments.h \
-  /usr/include/x86_64-linux-gnu/bits/confname.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
-  /usr/include/linux/close_range.h \
-  /usr/include/syscall.h \
-  /usr/include/x86_64-linux-gnu/sys/syscall.h \
-  /usr/include/x86_64-linux-gnu/asm/unistd.h \
-  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \
-  /usr/include/x86_64-linux-gnu/bits/syscall.h \
+  /usr/include/c++/11/condition_variable \
+  /usr/include/c++/11/chrono \
+  /usr/include/c++/11/ratio \
+  /usr/include/c++/11/limits \
+  /usr/include/c++/11/ctime \
+  /usr/include/c++/11/bits/parse_numbers.h \
   /usr/include/c++/11/bits/std_mutex.h \
   /usr/include/c++/11/system_error \
   /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
@@ -209,28 +193,18 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: ../client/client.cpp \
   /usr/include/c++/11/bits/cxxabi_init_exception.h \
   /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/bits/nested_exception.h \
-  /usr/include/c++/11/mutex \
-  /usr/include/c++/11/tuple \
-  /usr/include/c++/11/utility \
-  /usr/include/c++/11/bits/stl_relops.h \
-  /usr/include/c++/11/array \
-  /usr/include/c++/11/bits/uses_allocator.h \
-  /usr/include/c++/11/bits/invoke.h \
-  /usr/include/c++/11/chrono \
-  /usr/include/c++/11/ratio \
-  /usr/include/c++/11/limits \
-  /usr/include/c++/11/ctime \
-  /usr/include/c++/11/bits/parse_numbers.h \
   /usr/include/c++/11/bits/unique_lock.h \
-  ../client/client_threads/event_listener.h \
-  ../common/gameaction.h \
-  ../common/hands_on_threads/queue.h \
-  /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/bits/shared_ptr.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/bits/allocated_ptr.h \
   /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/bits/unique_ptr.h \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
   /usr/include/c++/11/bits/ios_base.h \
@@ -252,6 +226,23 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: ../client/client.cpp \
   /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/stop_token \
+  /usr/include/c++/11/atomic \
+  /usr/include/c++/11/bits/atomic_base.h \
+  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/11/bits/atomic_wait.h \
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  /usr/include/syscall.h \
+  /usr/include/x86_64-linux-gnu/sys/syscall.h \
+  /usr/include/x86_64-linux-gnu/asm/unistd.h \
+  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \
+  /usr/include/x86_64-linux-gnu/bits/syscall.h \
   /usr/include/c++/11/bits/std_thread.h \
   /usr/include/c++/11/semaphore \
   /usr/include/c++/11/bits/semaphore_base.h \
@@ -261,9 +252,15 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: ../client/client.cpp \
   /usr/include/semaphore.h \
   /usr/include/x86_64-linux-gnu/bits/semaphore.h \
   /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_uninitialized.h \
   /usr/include/c++/11/bits/stl_deque.h \
   /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/mutex \
   /usr/include/c++/11/queue \
+  /usr/include/c++/11/vector \
+  /usr/include/c++/11/bits/stl_vector.h \
+  /usr/include/c++/11/bits/stl_bvector.h \
+  /usr/include/c++/11/bits/vector.tcc \
   /usr/include/c++/11/bits/stl_queue.h \
   ../common/hands_on_threads/thread.h \
   /usr/include/c++/11/iostream \
@@ -271,12 +268,15 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: ../client/client.cpp \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/thread \
   ../client/local_player.h \
+  ../client/client_comms/client_protocol.h \
+  ../common/hands_on_sockets/socket.h \
+  ../common/comms/protocol.h \
   ../client/client_comms/client_receiver.h \
   ../client/client_comms/client_protocol.h \
+  ../common/gamestate.h \
   ../common/comms/receiver.h \
   ../client/client_comms/client_sender.h \
   ../common/comms/sender.h \
-  ../common/gamestate.h \
   ../client/client_threads/renderer.h \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
@@ -286,8 +286,7 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: ../client/client.cpp \
   /usr/include/c++/11/bits/node_handle.h \
   /usr/include/c++/11/bits/stl_map.h \
   /usr/include/c++/11/bits/stl_multimap.h \
-  /usr/include/c++/11/bits/erase_if.h \
-  ../client/client_exceptions.h
+  /usr/include/c++/11/bits/erase_if.h
 
 CMakeFiles/taller_client.dir/client/client_comms/client_protocol.cpp.o: ../client/client_comms/client_protocol.cpp \
   /usr/include/stdc-predef.h \
@@ -731,6 +730,7 @@ CMakeFiles/taller_client.dir/client/client_comms/client_receiver.cpp.o: ../clien
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
+  ../common/gamestate.h \
   ../common/comms/receiver.h \
   ../common/hands_on_threads/thread.h \
   /usr/include/c++/11/iostream \
@@ -765,7 +765,19 @@ CMakeFiles/taller_client.dir/client/client_comms/client_receiver.cpp.o: ../clien
   /usr/include/c++/11/bits/this_thread_sleep.h \
   /usr/include/x86_64-linux-gnu/sys/time.h \
   /usr/include/semaphore.h \
-  /usr/include/x86_64-linux-gnu/bits/semaphore.h
+  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
+  ../common/hands_on_threads/queue.h \
+  /usr/include/c++/11/condition_variable \
+  /usr/include/c++/11/bits/shared_ptr.h \
+  /usr/include/c++/11/bits/shared_ptr_base.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/ext/concurrence.h \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/queue \
+  /usr/include/c++/11/bits/stl_queue.h
 
 CMakeFiles/taller_client.dir/client/client_comms/client_sender.cpp.o: ../client/client_comms/client_sender.cpp \
   /usr/include/stdc-predef.h \
@@ -988,6 +1000,7 @@ CMakeFiles/taller_client.dir/client/client_comms/client_sender.cpp.o: ../client/
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
+  ../common/gameaction.h \
   ../common/comms/sender.h \
   ../common/hands_on_threads/thread.h \
   /usr/include/c++/11/iostream \
@@ -1022,7 +1035,19 @@ CMakeFiles/taller_client.dir/client/client_comms/client_sender.cpp.o: ../client/
   /usr/include/c++/11/bits/this_thread_sleep.h \
   /usr/include/x86_64-linux-gnu/sys/time.h \
   /usr/include/semaphore.h \
-  /usr/include/x86_64-linux-gnu/bits/semaphore.h
+  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
+  ../common/hands_on_threads/queue.h \
+  /usr/include/c++/11/condition_variable \
+  /usr/include/c++/11/bits/shared_ptr.h \
+  /usr/include/c++/11/bits/shared_ptr_base.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/ext/concurrence.h \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/queue \
+  /usr/include/c++/11/bits/stl_queue.h
 
 CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o: ../client/client_threads/event_listener.cpp \
   /usr/include/stdc-predef.h \
@@ -1779,6 +1804,7 @@ CMakeFiles/taller_client.dir/client/local_player.cpp.o: ../client/local_player.c
   /usr/include/c++/11/bits/vector.tcc \
   ../client/client_comms/client_receiver.h \
   ../client/client_comms/client_protocol.h \
+  ../common/gamestate.h \
   ../common/comms/receiver.h \
   ../common/hands_on_threads/thread.h \
   /usr/include/c++/11/iostream \
@@ -1814,10 +1840,6 @@ CMakeFiles/taller_client.dir/client/local_player.cpp.o: ../client/local_player.c
   /usr/include/x86_64-linux-gnu/sys/time.h \
   /usr/include/semaphore.h \
   /usr/include/x86_64-linux-gnu/bits/semaphore.h \
-  ../client/client_comms/client_sender.h \
-  ../common/comms/sender.h \
-  ../common/gameaction.h \
-  ../common/gamestate.h \
   ../common/hands_on_threads/queue.h \
   /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/bits/shared_ptr.h \
@@ -1829,7 +1851,10 @@ CMakeFiles/taller_client.dir/client/local_player.cpp.o: ../client/local_player.c
   /usr/include/c++/11/bits/stl_deque.h \
   /usr/include/c++/11/bits/deque.tcc \
   /usr/include/c++/11/queue \
-  /usr/include/c++/11/bits/stl_queue.h
+  /usr/include/c++/11/bits/stl_queue.h \
+  ../client/client_comms/client_sender.h \
+  ../common/gameaction.h \
+  ../common/comms/sender.h
 
 CMakeFiles/taller_client.dir/client/main.cpp.o: ../client/main.cpp \
   /usr/include/stdc-predef.h \
@@ -2452,6 +2477,10 @@ _deps/libsdl2pp-src/SDL2pp/Font.hh:
 
 _deps/libsdl2pp-src/SDL2pp/SDLTTF.hh:
 
+/usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h:
+
+/usr/include/c++/11/cassert:
+
 /usr/include/c++/11/bits/stream_iterator.h:
 
 _deps/libsdl2pp-src/SDL2pp/RWops.hh:
@@ -2578,12 +2607,6 @@ _deps/libsdl2pp-src/SDL2pp/SDLImage.hh:
 
 ../client/client_comms/client_receiver.cpp:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h:
-
-/usr/include/c++/11/cassert:
-
-../client/client_exceptions.h:
-
 /usr/include/c++/11/bits/stl_multimap.h:
 
 /usr/include/SDL2/SDL_render.h:
@@ -2597,6 +2620,12 @@ _deps/libsdl2pp-src/SDL2pp/SDLImage.hh:
 _deps/libsdl2pp-src/SDL2pp/AudioDevice.hh:
 
 ../client/client_comms/client_receiver.h:
+
+../common/hands_on_sockets/socket.h:
+
+../client/client_threads/event_listener.cpp:
+
+../client/client_comms/client_protocol.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlintrin.h:
 
@@ -2618,15 +2647,13 @@ _deps/libsdl2pp-build/SDL2pp/Config.hh:
 
 ../common/hands_on_threads/thread.h:
 
-/usr/include/c++/11/bits/shared_ptr_atomic.h:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h:
 
-/usr/include/SDL2/SDL_clipboard.h:
+/usr/include/c++/11/bits/vector.tcc:
 
-/usr/include/c++/11/queue:
+/usr/include/SDL2/SDL_hidapi.h:
 
-/usr/include/c++/11/bits/deque.tcc:
-
-/usr/include/c++/11/deque:
+/usr/include/c++/11/bits/stl_vector.h:
 
 /usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
@@ -2635,10 +2662,6 @@ _deps/libsdl2pp-build/SDL2pp/Config.hh:
 /usr/include/pthread.h:
 
 /usr/include/x86_64-linux-gnu/bits/endian.h:
-
-/usr/include/c++/11/bits/stl_deque.h:
-
-/usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
 /usr/include/c++/11/bits/std_function.h:
 
@@ -2703,6 +2726,8 @@ _deps/libsdl2pp-build/SDL2pp/Config.hh:
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h:
 
 /usr/include/x86_64-linux-gnu/sys/syscall.h:
+
+/usr/include/c++/11/bits/deque.tcc:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/fxsrintrin.h:
 
@@ -2779,6 +2804,12 @@ _deps/libsdl2pp-src/SDL2pp/Mixer.hh:
 /usr/include/asm-generic/errno-base.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
+
+/usr/include/c++/11/bits/shared_ptr_atomic.h:
+
+/usr/include/SDL2/SDL_clipboard.h:
+
+/usr/include/c++/11/queue:
 
 /usr/include/SDL2/SDL_rwops.h:
 
@@ -2878,6 +2909,10 @@ _deps/libsdl2pp-src/SDL2pp/Color.hh:
 
 ../client/client.h:
 
+../common/comms/protocol.h:
+
+/usr/include/c++/11/ext/string_conversions.h:
+
 /usr/include/c++/11/bits/exception_ptr.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
@@ -2895,12 +2930,6 @@ _deps/libsdl2pp-src/SDL2pp/Color.hh:
 ../client/client_threads/renderer.h:
 
 /usr/include/c++/11/semaphore:
-
-/usr/include/x86_64-linux-gnu/bits/semaphore.h:
-
-/usr/include/c++/11/bits/shared_ptr.h:
-
-/usr/include/c++/11/bits/stl_construct.h:
 
 /usr/include/c++/11/bits/ranges_cmp.h:
 
@@ -2943,6 +2972,8 @@ _deps/libsdl2pp-src/SDL2pp/Music.hh:
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
+
+/usr/include/c++/11/deque:
 
 /usr/include/c++/11/ext/numeric_traits.h:
 
@@ -3000,8 +3031,6 @@ _deps/libsdl2pp-src/SDL2pp/Music.hh:
 
 /usr/include/c++/11/bits/ranges_base.h:
 
-../common/hands_on_sockets/socket.h:
-
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
 /usr/include/x86_64-linux-gnu/bits/local_lim.h:
@@ -3034,10 +3063,6 @@ _deps/libsdl2pp-src/SDL2pp/Point.hh:
 
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
-../client/client_threads/event_listener.cpp:
-
-../client/client_comms/client_protocol.h:
-
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
@@ -3047,6 +3072,12 @@ _deps/libsdl2pp-src/SDL2pp/Point.hh:
 /usr/include/c++/11/bits/invoke.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
+
+/usr/include/c++/11/bits/stl_bvector.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
 /usr/include/c++/11/mutex:
 
@@ -3144,41 +3175,11 @@ _deps/libsdl2pp-src/SDL2pp/AudioSpec.hh:
 
 /usr/include/c++/11/bits/basic_string.tcc:
 
-/usr/include/c++/11/vector:
+/usr/include/SDL2/SDL_scancode.h:
 
-/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
+/usr/include/c++/11/bits/hashtable.h:
 
-/usr/include/c++/11/bits/stl_uninitialized.h:
-
-/usr/include/SDL2/SDL_hidapi.h:
-
-/usr/include/c++/11/bits/stl_vector.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h:
-
-/usr/include/c++/11/system_error:
-
-/usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
-
-/usr/include/c++/11/bits/stl_bvector.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h:
-
-/usr/include/c++/11/bits/vector.tcc:
-
-/usr/include/c++/11/ext/string_conversions.h:
-
-../common/comms/protocol.h:
-
-/usr/include/c++/11/bits/atomic_lockfree_defines.h:
-
-/usr/include/string.h:
-
-/usr/include/c++/11/bits/streambuf.tcc:
+../common/hands_on_threads/queue.h:
 
 /usr/include/c++/11/bits/sstream.tcc:
 
@@ -3214,25 +3215,23 @@ _deps/libsdl2pp-src/SDL2pp/AudioSpec.hh:
 
 /usr/include/x86_64-linux-gnu/bits/uio_lim.h:
 
-/usr/include/c++/11/bits/ranges_algobase.h:
+/usr/include/c++/11/thread:
 
-/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+/usr/include/c++/11/condition_variable:
 
-/usr/include/c++/11/bits/exception_defines.h:
+/usr/include/c++/11/ratio:
 
-/usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
+/usr/include/c++/11/limits:
 
-/usr/include/x86_64-linux-gnu/bits/environments.h:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h:
 
-/usr/include/time.h:
+/usr/include/c++/11/bits/parse_numbers.h:
 
-/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h:
 
-/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
+/usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h:
 
-/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
-
-/usr/include/x86_64-linux-gnu/bits/syscall.h:
+/usr/include/c++/11/system_error:
 
 _deps/libsdl2pp-src/SDL2pp/ContainerRWops.hh:
 
@@ -3250,33 +3249,17 @@ _deps/libsdl2pp-src/SDL2pp/ContainerRWops.hh:
 
 /usr/include/c++/11/exception:
 
+/usr/include/c++/11/bits/shared_ptr.h:
+
+/usr/include/c++/11/bits/stl_construct.h:
+
+/usr/include/x86_64-linux-gnu/bits/semaphore.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h:
 
 /usr/include/c++/11/typeinfo:
 
 /usr/include/c++/11/bits/nested_exception.h:
-
-/usr/include/c++/11/thread:
-
-/usr/include/c++/11/condition_variable:
-
-/usr/include/c++/11/ratio:
-
-/usr/include/c++/11/limits:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h:
-
-/usr/include/c++/11/bits/parse_numbers.h:
-
-/usr/include/c++/11/bits/uses_allocator.h:
-
-/usr/include/c++/11/bits/unique_lock.h:
-
-/usr/include/SDL2/SDL_scancode.h:
-
-/usr/include/c++/11/bits/hashtable.h:
-
-../common/hands_on_threads/queue.h:
 
 /usr/include/c++/11/bits/refwrap.h:
 
@@ -3284,11 +3267,21 @@ _deps/libsdl2pp-src/SDL2pp/ContainerRWops.hh:
 
 /usr/include/c++/11/ostream:
 
+/usr/include/c++/11/bits/unique_lock.h:
+
+/usr/include/c++/11/bits/uses_allocator.h:
+
 /usr/include/c++/11/bits/ios_base.h:
 
 /usr/include/c++/11/bits/locale_classes.h:
 
 /usr/include/c++/11/bits/locale_classes.tcc:
+
+/usr/include/string.h:
+
+/usr/include/c++/11/bits/streambuf.tcc:
+
+/usr/include/c++/11/bits/atomic_lockfree_defines.h:
 
 /usr/include/c++/11/bits/uniform_int_dist.h:
 
@@ -3322,6 +3315,30 @@ _deps/libsdl2pp-src/SDL2pp/ContainerRWops.hh:
 
 /usr/include/c++/11/bits/basic_ios.tcc:
 
+/usr/include/c++/11/bits/ranges_algobase.h:
+
+/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
+
+/usr/include/c++/11/bits/exception_defines.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h:
+
+/usr/include/x86_64-linux-gnu/bits/environments.h:
+
+/usr/include/time.h:
+
+/usr/include/x86_64-linux-gnu/bits/setjmp.h:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
+
+/usr/include/c++/11/vector:
+
+/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
+
+/usr/include/x86_64-linux-gnu/bits/syscall.h:
+
 /usr/include/c++/11/bits/cpp_type_traits.h:
 
 /usr/include/c++/11/bits/stl_iterator_base_funcs.h:
@@ -3331,3 +3348,9 @@ _deps/libsdl2pp-src/SDL2pp/ContainerRWops.hh:
 /usr/include/c++/11/bits/semaphore_base.h:
 
 /usr/include/x86_64-linux-gnu/sys/time.h:
+
+/usr/include/c++/11/bits/stl_uninitialized.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/c++/11/bits/stl_deque.h:
