@@ -4,15 +4,16 @@
 
 
 Server::Server(const char* servname):
-        player_list(),
-        user_commands(),
         acceptor(servname, player_list, user_commands),
-        gameloop(player_list, user_commands) {}
+        gameloop(player_list, user_commands),
+        cleaner(player_list) {}
 
 void Server::run() {
-    try {
+    try
+    {
         acceptor.start();
         gameloop.start();
+        cleaner.start();
         std::string input;
         std::getline(std::cin, input);
         while (input != END_OF_PROGRAM_CODE) {
@@ -23,13 +24,16 @@ void Server::run() {
         gameloop.join();
         acceptor.stop();
         acceptor.join();
+        cleaner.stop();
+        cleaner.join();
         player_list.clear();
-
-    } catch (const std::exception& e) {
+    }
+    catch (const std::exception& e)
+    {
         std::cerr << "Exception caught in the main thread: " << e.what() << '\n';
-    } catch (...) {
+    }
+    catch (...)
+    {
         std::cerr << "Unknown exception on the server server.\n";
     }
 }
-
-Server::~Server() {}

@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_receiver.cpp" "CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o" "gcc" "CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o.d"
   "/home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_sender.cpp" "CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o" "gcc" "CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o.d"
   "/home/lucas/CLionProjects/tallerprog_tp/server/server_threads/acceptor.cpp" "CMakeFiles/taller_server.dir/server/server_threads/acceptor.cpp.o" "gcc" "CMakeFiles/taller_server.dir/server/server_threads/acceptor.cpp.o.d"
+  "/home/lucas/CLionProjects/tallerprog_tp/server/server_threads/cleaner.cpp" "CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o" "gcc" "CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o.d"
   "/home/lucas/CLionProjects/tallerprog_tp/server/server_threads/gameplay.cpp" "CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o" "gcc" "CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o.d"
   )
 

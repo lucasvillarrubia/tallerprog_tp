@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o.d"
   "CMakeFiles/taller_server.dir/server/server_threads/acceptor.cpp.o"
   "CMakeFiles/taller_server.dir/server/server_threads/acceptor.cpp.o.d"
+  "CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o"
+  "CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o.d"
   "CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o"
   "CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o.d"
   "taller_server"

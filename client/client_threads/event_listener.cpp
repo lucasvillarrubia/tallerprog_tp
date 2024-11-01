@@ -3,8 +3,7 @@
 
 EventListener::EventListener(Queue<Gameaction>& q): inputs(q) {}
 
-void EventListener::run()
-{
+void EventListener::run() {
     try
     {
     }

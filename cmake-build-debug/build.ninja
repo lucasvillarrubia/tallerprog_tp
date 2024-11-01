@@ -275,6 +275,13 @@ build CMakeFiles/taller_server.dir/server/server.cpp.o: CXX_COMPILER__taller_ser
   OBJECT_DIR = CMakeFiles/taller_server.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_server.dir/server
 
+build CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o: CXX_COMPILER__taller_server_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/cleaner.cpp || cmake_object_order_depends_target_taller_server
+  DEP_FILE = CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
+  OBJECT_DIR = CMakeFiles/taller_server.dir
+  OBJECT_FILE_DIR = CMakeFiles/taller_server.dir/server/server_threads
+
 build CMakeFiles/taller_server.dir/server/main.cpp.o: CXX_COMPILER__taller_server_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/server/main.cpp || cmake_object_order_depends_target_taller_server
   DEP_FILE = CMakeFiles/taller_server.dir/server/main.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
@@ -290,7 +297,7 @@ build CMakeFiles/taller_server.dir/server/main.cpp.o: CXX_COMPILER__taller_serve
 #############################################
 # Link the executable taller_server
 
-build taller_server: CXX_EXECUTABLE_LINKER__taller_server_Debug CMakeFiles/taller_server.dir/server/server_threads/acceptor.cpp.o CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o CMakeFiles/taller_server.dir/server/monitored_list.cpp.o CMakeFiles/taller_server.dir/server/player.cpp.o CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o CMakeFiles/taller_server.dir/server/server.cpp.o CMakeFiles/taller_server.dir/server/main.cpp.o | libtaller_common.a || libtaller_common.a
+build taller_server: CXX_EXECUTABLE_LINKER__taller_server_Debug CMakeFiles/taller_server.dir/server/server_threads/acceptor.cpp.o CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o CMakeFiles/taller_server.dir/server/monitored_list.cpp.o CMakeFiles/taller_server.dir/server/player.cpp.o CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o CMakeFiles/taller_server.dir/server/server.cpp.o CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o CMakeFiles/taller_server.dir/server/main.cpp.o | libtaller_common.a || libtaller_common.a
   FLAGS = -g
   LINK_LIBRARIES = libtaller_common.a
   OBJECT_DIR = CMakeFiles/taller_server.dir

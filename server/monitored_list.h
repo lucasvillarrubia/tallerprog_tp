@@ -9,12 +9,17 @@
 #include "player.h"
 
 
-// Clase monitor de lista con su propio mutex y la lista a proteger.
-// RAII: no permite copia.
+// coming soon acá:
+    // broadcast    ---> for_each   (*función*)
+    // clean_up     ---> remove_if  (*predicado*)
+// dejando clear como está, se tiene que aclarar que la lista sólo va a servir con punteros
+// (de cualquier cosa reservada en el heap, no se puede hacer un delete de cualquier cosa)
 
 
+//template <Typename T>
 class MonitoredList {
 private:
+    // std::list<T> list;
     std::list<Player*> list;
     std::mutex mtx;
 
@@ -26,7 +31,7 @@ public:
     void clear();
     MonitoredList(const MonitoredList&) = delete;
     MonitoredList& operator=(const MonitoredList&) = delete;
-    ~MonitoredList();
+    ~MonitoredList() = default;
 };
 
 

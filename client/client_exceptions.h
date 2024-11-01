@@ -7,7 +7,8 @@
 
 // Excepción lanzada sólo del lado del cliente cuando se cierra su comunicación externamente.
 
-struct ClosedSocket: public std::runtime_error {
+
+struct ClosedSocket: std::runtime_error {
     ClosedSocket(): std::runtime_error("The socket is closed.") {}
 };
 

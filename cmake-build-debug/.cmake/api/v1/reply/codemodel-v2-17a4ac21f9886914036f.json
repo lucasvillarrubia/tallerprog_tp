@@ -295,21 +295,21 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "taller_editor::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-taller_editor-Debug-dc53de35c5cd193462f0.json",
+					"jsonFile" : "target-taller_editor-Debug-380da1b628ca0ec1fa6c.json",
 					"name" : "taller_editor",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "taller_server::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-taller_server-Debug-f1ebdedd03d29a769671.json",
+					"jsonFile" : "target-taller_server-Debug-9a0a74aa7454d757a272.json",
 					"name" : "taller_server",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "taller_tests::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-taller_tests-Debug-28c802cb52d1e7605267.json",
+					"jsonFile" : "target-taller_tests-Debug-fa47a8e14f2d8a9f5c55.json",
 					"name" : "taller_tests",
 					"projectIndex" : 0
 				}

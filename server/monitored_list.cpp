@@ -34,5 +34,3 @@ void MonitoredList::clear() {
         delete player;
     }
 }
-
-MonitoredList::~MonitoredList() {}

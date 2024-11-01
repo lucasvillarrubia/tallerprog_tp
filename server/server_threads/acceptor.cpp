@@ -1,3 +1,5 @@
+#include "acceptor.h"
+
 #include <iostream>
 #include <utility>
 
@@ -7,14 +9,14 @@
 #include "common/hands_on_sockets/socket.h"
 #include "common/hands_on_sockets/liberror.h"
 
-#include "acceptor.h"
-
 
 Acceptor::Acceptor(const char* servname, MonitoredList& clients, Queue<Command>& usr_cmds):
-        is_running(true), acceptor(servname), player_list(clients), user_commands(usr_cmds) {}
+        is_running(false), acceptor(servname), player_list(clients), user_commands(usr_cmds) {}
 
 void Acceptor::run() {
-    try {
+    try
+    {
+        is_running.store(true);
         while (is_running.load()) {
             Socket new_client = acceptor.accept();
             Player* new_player = new Player(std::move(new_client), user_commands);
@@ -22,12 +24,18 @@ void Acceptor::run() {
             new_player->start();
             player_list.clean_up();
         }
-    } catch (const LibError& e) {
+    }
+    catch (const LibError& e)
+    {
         is_running.store(false);
-    } catch (const std::exception& e) {
+    }
+    catch (const std::exception& e)
+    {
         std::cerr << "Exception thrown on the acceptor thread: " << e.what() << '\n';
         is_running.store(false);
-    } catch (...) {
+    }
+    catch (...)
+    {
         std::cerr << "Unknown exception on the acceptor.\n";
         is_running.store(false);
     }
@@ -39,5 +47,3 @@ void Acceptor::stop() {
     acceptor.shutdown(SHUT_RDWR);
     acceptor.close();
 }
-
-Acceptor::~Acceptor() {}

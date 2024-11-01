@@ -144,7 +144,9 @@ if(TALLER_SERVER)
             server/server_comms/server_protocol.cpp
             server/server_comms/server_receiver.cpp
             server/server_comms/server_sender.cpp
-            server/server.cpp)
+            server/server.cpp
+            server/server_threads/cleaner.cpp
+            server/server_threads/cleaner.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)

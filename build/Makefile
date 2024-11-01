@@ -915,6 +915,30 @@ server/server_threads/acceptor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/server_threads/acceptor.cpp.s
 .PHONY : server/server_threads/acceptor.cpp.s
 
+server/server_threads/cleaner.o: server/server_threads/cleaner.cpp.o
+.PHONY : server/server_threads/cleaner.o
+
+# target to build an object file
+server/server_threads/cleaner.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o
+.PHONY : server/server_threads/cleaner.cpp.o
+
+server/server_threads/cleaner.i: server/server_threads/cleaner.cpp.i
+.PHONY : server/server_threads/cleaner.i
+
+# target to preprocess a source file
+server/server_threads/cleaner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.i
+.PHONY : server/server_threads/cleaner.cpp.i
+
+server/server_threads/cleaner.s: server/server_threads/cleaner.cpp.s
+.PHONY : server/server_threads/cleaner.s
+
+# target to generate assembly for a file
+server/server_threads/cleaner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.s
+.PHONY : server/server_threads/cleaner.cpp.s
+
 server/server_threads/gameplay.o: server/server_threads/gameplay.cpp.o
 .PHONY : server/server_threads/gameplay.o
 
@@ -1063,6 +1087,9 @@ help:
 	@echo "... server/server_threads/acceptor.o"
 	@echo "... server/server_threads/acceptor.i"
 	@echo "... server/server_threads/acceptor.s"
+	@echo "... server/server_threads/cleaner.o"
+	@echo "... server/server_threads/cleaner.i"
+	@echo "... server/server_threads/cleaner.s"
 	@echo "... server/server_threads/gameplay.o"
 	@echo "... server/server_threads/gameplay.i"
 	@echo "... server/server_threads/gameplay.s"

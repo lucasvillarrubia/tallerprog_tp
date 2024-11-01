@@ -3,8 +3,7 @@
 
 Renderer::Renderer(Queue<Gamestate>& q): updates_feed(q) {}
 
-void Renderer::run()
-{
+void Renderer::run() {
     try
     {
     }

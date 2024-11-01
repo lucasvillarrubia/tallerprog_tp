@@ -2,8 +2,6 @@
 #define CLIENT_H
 
 
-#include <string>
-
 #include "client_threads/event_listener.h"
 #include "local_player.h"
 #include "client_threads/renderer.h"
@@ -17,7 +15,7 @@ private:
     LocalPlayer connection;
     EventListener eventloop;
     Renderer renderloop;
-    std::string get_command_input();
+    // std::string get_command_input();
 public:
     Client(const char*, const char*);
     void run();
