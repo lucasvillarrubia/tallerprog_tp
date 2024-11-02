@@ -1,0 +1,16 @@
+#ifndef CLIENT_EXCEPTIONS_H
+#define CLIENT_EXCEPTIONS_H
+
+
+#include <stdexcept>
+
+
+// Excepción lanzada sólo del lado del cliente cuando se cierra su comunicación externamente.
+
+
+struct ClosedSocket: std::runtime_error {
+    ClosedSocket(): std::runtime_error("The socket is closed.") {}
+};
+
+
+#endif

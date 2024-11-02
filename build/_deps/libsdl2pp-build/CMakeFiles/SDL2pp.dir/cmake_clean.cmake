@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  ".8"
   "CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.o"
   "CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.o.d"
   "CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.o"

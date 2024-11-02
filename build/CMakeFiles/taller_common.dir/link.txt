@@ -1,2 +1,2 @@
-/usr/bin/ar qc libtaller_common.a CMakeFiles/taller_common.dir/common/foo.cpp.o
+/usr/bin/ar qc libtaller_common.a CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.o CMakeFiles/taller_common.dir/common/message.cpp.o CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.o CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o CMakeFiles/taller_common.dir/common/comms/sender.cpp.o CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o CMakeFiles/taller_common.dir/common/foo.cpp.o
 /usr/bin/ranlib libtaller_common.a
