@@ -26,11 +26,12 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						5,
+						1,
 						6,
 						7,
 						8,
-						9
+						9,
+						10
 					]
 				},
 				{
@@ -115,7 +116,7 @@
 						8
 					],
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-_deps.googletest-build.googlemock-Debug-f1a263c9386c3d788952.json",
+					"jsonFile" : "directory-_deps.googletest-build.googlemock-Debug-0a2a4fead5ac4e3a6e59.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.5"
@@ -125,14 +126,14 @@
 					"source" : "cmake-build-debug/_deps/googletest-src/googlemock",
 					"targetIndexes" : 
 					[
-						1,
-						2
+						2,
+						3
 					]
 				},
 				{
 					"build" : "_deps/googletest-build/googletest",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-_deps.googletest-build.googletest-Debug-359c63934a8ca46c67ba.json",
+					"jsonFile" : "directory-_deps.googletest-build.googletest-Debug-bc329bef4f0ea2165faf.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.5"
@@ -142,8 +143,8 @@
 					"source" : "cmake-build-debug/_deps/googletest-src/googletest",
 					"targetIndexes" : 
 					[
-						3,
-						4
+						4,
+						5
 					]
 				},
 				{
@@ -179,11 +180,12 @@
 					"name" : "taller_tp",
 					"targetIndexes" : 
 					[
-						5,
+						1,
 						6,
 						7,
 						8,
-						9
+						9,
+						10
 					]
 				},
 				{
@@ -223,8 +225,8 @@
 					"parentIndex" : 2,
 					"targetIndexes" : 
 					[
-						1,
-						2
+						2,
+						3
 					]
 				},
 				{
@@ -236,8 +238,8 @@
 					"parentIndex" : 3,
 					"targetIndexes" : 
 					[
-						3,
-						4
+						4,
+						5
 					]
 				}
 			],
@@ -249,6 +251,13 @@
 					"jsonFile" : "target-SDL2pp-Debug-42940512868b7f869f5f.json",
 					"name" : "SDL2pp",
 					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "copy_resources::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-copy_resources-Debug-7c8aa0948b23f6db18c6.json",
+					"name" : "copy_resources",
+					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 7,
@@ -281,7 +290,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "taller_client::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-taller_client-Debug-39f037e6d916c471dd33.json",
+					"jsonFile" : "target-taller_client-Debug-2aeb2ecf2c260eb4afe7.json",
 					"name" : "taller_client",
 					"projectIndex" : 0
 				},
@@ -295,21 +304,21 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "taller_editor::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-taller_editor-Debug-380da1b628ca0ec1fa6c.json",
+					"jsonFile" : "target-taller_editor-Debug-8e3cb36be89c88ed1321.json",
 					"name" : "taller_editor",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "taller_server::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-taller_server-Debug-9a0a74aa7454d757a272.json",
+					"jsonFile" : "target-taller_server-Debug-c8537ee991833c88b630.json",
 					"name" : "taller_server",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "taller_tests::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-taller_tests-Debug-fa47a8e14f2d8a9f5c55.json",
+					"jsonFile" : "target-taller_tests-Debug-3f5af02b8067bd2f3cc8.json",
 					"name" : "taller_tests",
 					"projectIndex" : 0
 				}

@@ -282,12 +282,6 @@ CMakeFiles/taller_server.dir/server/main.cpp.o: ../server/main.cpp \
   ../common/comms/sender.h \
   ../server/server_comms/server_protocol.h \
   ../server/server_threads/gameplay.h \
-  /usr/include/c++/11/map \
-  /usr/include/c++/11/bits/stl_tree.h \
-  /usr/include/c++/11/bits/node_handle.h \
-  /usr/include/c++/11/bits/stl_map.h \
-  /usr/include/c++/11/bits/stl_multimap.h \
-  /usr/include/c++/11/bits/erase_if.h \
   ../server/monitored_list.h \
   ../server/server_threads/cleaner.h
 
@@ -1125,12 +1119,6 @@ CMakeFiles/taller_server.dir/server/server.cpp.o: ../server/server.cpp \
   ../common/comms/sender.h \
   ../server/server_comms/server_protocol.h \
   ../server/server_threads/gameplay.h \
-  /usr/include/c++/11/map \
-  /usr/include/c++/11/bits/stl_tree.h \
-  /usr/include/c++/11/bits/node_handle.h \
-  /usr/include/c++/11/bits/stl_map.h \
-  /usr/include/c++/11/bits/stl_multimap.h \
-  /usr/include/c++/11/bits/erase_if.h \
   ../server/monitored_list.h \
   ../server/server_threads/cleaner.h
 
@@ -2734,6 +2722,12 @@ CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o: ../server/ser
   ../server/server_comms/server_protocol.h
 
 
+/usr/include/c++/11/bits/stl_multimap.h:
+
+/usr/include/c++/11/bits/stl_map.h:
+
+/usr/include/c++/11/map:
+
 ../server/server_threads/gameplay.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
@@ -2757,12 +2751,6 @@ CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o: ../server/ser
 ../server/monitored_list.cpp:
 
 ../server/server_threads/cleaner.h:
-
-/usr/include/c++/11/bits/stl_multimap.h:
-
-/usr/include/c++/11/bits/stl_map.h:
-
-/usr/include/c++/11/map:
 
 ../server/server_threads/gameplay.h:
 

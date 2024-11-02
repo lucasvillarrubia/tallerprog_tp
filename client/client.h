@@ -10,6 +10,9 @@
 class Client
 {
 private:
+    std::atomic_bool connected;
+    std::condition_variable connection_ended;
+    std::mutex mtx;
     Queue<Gameaction> events;
     Queue<Gamestate> updates;
     LocalPlayer connection;

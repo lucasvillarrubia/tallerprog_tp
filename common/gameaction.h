@@ -3,7 +3,9 @@
 
 
 struct Gameaction {
-    int id;
+    int player_id;
+    int type_id;
+    int key_id;
 };
 
 

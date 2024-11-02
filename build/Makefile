@@ -188,6 +188,19 @@ taller_client/fast:
 .PHONY : taller_client/fast
 
 #=============================================================================
+# Target rules for targets named copy_resources
+
+# Build rule for target.
+copy_resources: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 copy_resources
+.PHONY : copy_resources
+
+# fast build rule for target.
+copy_resources/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/copy_resources.dir/build.make CMakeFiles/copy_resources.dir/build
+.PHONY : copy_resources/fast
+
+#=============================================================================
 # Target rules for targets named taller_server
 
 # Build rule for target.
@@ -290,6 +303,30 @@ gtest_main: cmake_check_build_system
 gtest_main/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
+
+client/character.o: client/character.cpp.o
+.PHONY : client/character.o
+
+# target to build an object file
+client/character.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/character.cpp.o
+.PHONY : client/character.cpp.o
+
+client/character.i: client/character.cpp.i
+.PHONY : client/character.i
+
+# target to preprocess a source file
+client/character.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/character.cpp.i
+.PHONY : client/character.cpp.i
+
+client/character.s: client/character.cpp.s
+.PHONY : client/character.s
+
+# target to generate assembly for a file
+client/character.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/character.cpp.s
+.PHONY : client/character.cpp.s
 
 client/client.o: client/client.cpp.o
 .PHONY : client/client.o
@@ -482,6 +519,30 @@ client/main.s: client/main.cpp.s
 client/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/main.cpp.s
 .PHONY : client/main.cpp.s
+
+client/state_manager.o: client/state_manager.cpp.o
+.PHONY : client/state_manager.o
+
+# target to build an object file
+client/state_manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/state_manager.cpp.o
+.PHONY : client/state_manager.cpp.o
+
+client/state_manager.i: client/state_manager.cpp.i
+.PHONY : client/state_manager.i
+
+# target to preprocess a source file
+client/state_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/state_manager.cpp.i
+.PHONY : client/state_manager.cpp.i
+
+client/state_manager.s: client/state_manager.cpp.s
+.PHONY : client/state_manager.s
+
+# target to generate assembly for a file
+client/state_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/state_manager.cpp.s
+.PHONY : client/state_manager.cpp.s
 
 common/comms/protocol.o: common/comms/protocol.cpp.o
 .PHONY : common/comms/protocol.o
@@ -999,6 +1060,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... copy_resources"
 	@echo "... SDL2pp"
 	@echo "... gmock"
 	@echo "... gmock_main"
@@ -1009,6 +1071,9 @@ help:
 	@echo "... taller_editor"
 	@echo "... taller_server"
 	@echo "... taller_tests"
+	@echo "... client/character.o"
+	@echo "... client/character.i"
+	@echo "... client/character.s"
 	@echo "... client/client.o"
 	@echo "... client/client.i"
 	@echo "... client/client.s"
@@ -1033,6 +1098,9 @@ help:
 	@echo "... client/main.o"
 	@echo "... client/main.i"
 	@echo "... client/main.s"
+	@echo "... client/state_manager.o"
+	@echo "... client/state_manager.i"
+	@echo "... client/state_manager.s"
 	@echo "... common/comms/protocol.o"
 	@echo "... common/comms/protocol.i"
 	@echo "... common/comms/protocol.s"

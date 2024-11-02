@@ -14,12 +14,12 @@
 class LocalPlayer
 {
 private:
-    std::atomic_bool is_online;
+    std::atomic_bool& is_online;
     ClientProtocol protocol;
     ClientSender sender;
     ClientReceiver receiver;
 public:
-    LocalPlayer(Socket&&, Queue<Gameaction>&, Queue<Gamestate>&);
+    LocalPlayer(Socket&&, Queue<Gameaction>&, Queue<Gamestate>&, std::atomic_bool&);
     // void end_connection();
     LocalPlayer(const LocalPlayer&) = delete;
     LocalPlayer& operator=(const LocalPlayer&) = delete;

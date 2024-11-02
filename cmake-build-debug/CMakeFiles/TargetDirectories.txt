@@ -1,5 +1,6 @@
 /home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/CMakeFiles/taller_common.dir
 /home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/CMakeFiles/taller_client.dir
+/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/CMakeFiles/copy_resources.dir
 /home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/CMakeFiles/taller_server.dir
 /home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/CMakeFiles/taller_editor.dir
 /home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/CMakeFiles/taller_tests.dir

@@ -4,12 +4,11 @@
 #include <sstream>
 #include <utility>
 
-#include "../common/message.h"
-
 
 Client::Client(const char* hostname, const char* servname):
-        connection(std::move(Socket(hostname, servname)), events, updates),
-        eventloop(events),
+        connected(false),
+        connection(std::move(Socket(hostname, servname)), events, updates, connected),
+        eventloop(connected, connection_ended, events),
         renderloop(updates) {}
 
 void Client::run() {
@@ -19,7 +18,10 @@ void Client::run() {
         // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un
         renderloop.start();
         eventloop.start();
-        // while not (quit? -> YES)
+        while (connected.load()) {
+            std::unique_lock<std::mutex> lck(mtx);
+            connection_ended.wait(lck);
+        }
         events.close();
         updates.close();
         eventloop.stop();

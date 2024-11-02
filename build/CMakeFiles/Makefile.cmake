@@ -125,6 +125,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/taller_common.dir/DependInfo.cmake"
   "CMakeFiles/taller_client.dir/DependInfo.cmake"
+  "CMakeFiles/copy_resources.dir/DependInfo.cmake"
   "CMakeFiles/taller_server.dir/DependInfo.cmake"
   "CMakeFiles/taller_editor.dir/DependInfo.cmake"
   "CMakeFiles/taller_tests.dir/DependInfo.cmake"

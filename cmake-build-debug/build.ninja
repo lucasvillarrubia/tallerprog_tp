@@ -186,6 +186,20 @@ build CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o: C
   OBJECT_DIR = CMakeFiles/taller_client.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_client.dir/client/client_threads
 
+build CMakeFiles/taller_client.dir/client/character.cpp.o: CXX_COMPILER__taller_client_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/client/character.cpp || cmake_object_order_depends_target_taller_client
+  DEP_FILE = CMakeFiles/taller_client.dir/client/character.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2
+  OBJECT_DIR = CMakeFiles/taller_client.dir
+  OBJECT_FILE_DIR = CMakeFiles/taller_client.dir/client
+
+build CMakeFiles/taller_client.dir/client/state_manager.cpp.o: CXX_COMPILER__taller_client_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/client/state_manager.cpp || cmake_object_order_depends_target_taller_client
+  DEP_FILE = CMakeFiles/taller_client.dir/client/state_manager.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2
+  OBJECT_DIR = CMakeFiles/taller_client.dir
+  OBJECT_FILE_DIR = CMakeFiles/taller_client.dir/client
+
 build CMakeFiles/taller_client.dir/client/main.cpp.o: CXX_COMPILER__taller_client_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/client/main.cpp || cmake_object_order_depends_target_taller_client
   DEP_FILE = CMakeFiles/taller_client.dir/client/main.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
@@ -201,7 +215,7 @@ build CMakeFiles/taller_client.dir/client/main.cpp.o: CXX_COMPILER__taller_clien
 #############################################
 # Link the executable taller_client
 
-build taller_client: CXX_EXECUTABLE_LINKER__taller_client_Debug CMakeFiles/taller_client.dir/client/client.cpp.o CMakeFiles/taller_client.dir/client/client_comms/client_protocol.cpp.o CMakeFiles/taller_client.dir/client/local_player.cpp.o CMakeFiles/taller_client.dir/client/client_comms/client_sender.cpp.o CMakeFiles/taller_client.dir/client/client_comms/client_receiver.cpp.o CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o CMakeFiles/taller_client.dir/client/main.cpp.o | libtaller_common.a _deps/libsdl2pp-build/libSDL2pp.so.8.3.0 /usr/lib/x86_64-linux-gnu/libSDL2main.a /usr/local/lib/libSDL2_image-2.0.so.0.600.3 /usr/local/lib/libSDL2_ttf-2.0.so.0.2000.2 /usr/local/lib/libSDL2_mixer-2.0.so.0.600.3 /usr/lib/x86_64-linux-gnu/libSDL2.so || _deps/libsdl2pp-build/libSDL2pp.so libtaller_common.a _deps/libsdl2pp-build/libSDL2pp.so
+build taller_client: CXX_EXECUTABLE_LINKER__taller_client_Debug CMakeFiles/taller_client.dir/client/client.cpp.o CMakeFiles/taller_client.dir/client/client_comms/client_protocol.cpp.o CMakeFiles/taller_client.dir/client/local_player.cpp.o CMakeFiles/taller_client.dir/client/client_comms/client_sender.cpp.o CMakeFiles/taller_client.dir/client/client_comms/client_receiver.cpp.o CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o CMakeFiles/taller_client.dir/client/character.cpp.o CMakeFiles/taller_client.dir/client/state_manager.cpp.o CMakeFiles/taller_client.dir/client/main.cpp.o | libtaller_common.a _deps/libsdl2pp-build/libSDL2pp.so.8.3.0 /usr/lib/x86_64-linux-gnu/libSDL2main.a /usr/local/lib/libSDL2_image-2.0.so.0.600.3 /usr/local/lib/libSDL2_ttf-2.0.so.0.2000.2 /usr/local/lib/libSDL2_mixer-2.0.so.0.600.3 /usr/lib/x86_64-linux-gnu/libSDL2.so || _deps/libsdl2pp-build/libSDL2pp.so libtaller_common.a _deps/libsdl2pp-build/libSDL2pp.so
   FLAGS = -g
   LINK_LIBRARIES = -Wl,-rpath,/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-build:/usr/local/lib  libtaller_common.a  _deps/libsdl2pp-build/libSDL2pp.so.8.3.0  /usr/lib/x86_64-linux-gnu/libSDL2main.a  /usr/local/lib/libSDL2_image-2.0.so.0.600.3  /usr/local/lib/libSDL2_ttf-2.0.so.0.2000.2  /usr/local/lib/libSDL2_mixer-2.0.so.0.600.3  /usr/lib/x86_64-linux-gnu/libSDL2.so
   OBJECT_DIR = CMakeFiles/taller_client.dir
@@ -209,6 +223,12 @@ build taller_client: CXX_EXECUTABLE_LINKER__taller_client_Debug CMakeFiles/talle
   PRE_LINK = :
   TARGET_FILE = taller_client
   TARGET_PDB = taller_client.dbg
+
+
+#############################################
+# Utility command for copy_resources
+
+build copy_resources: phony CMakeFiles/copy_resources
 
 # =============================================================================
 # Object build statements for EXECUTABLE target taller_server
@@ -436,6 +456,13 @@ build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
   restat = 1
 
 build install/strip: phony CMakeFiles/install/strip.util
+
+
+#############################################
+# Custom command for CMakeFiles/copy_resources
+
+build CMakeFiles/copy_resources | ${cmake_ninja_workdir}CMakeFiles/copy_resources: CUSTOM_COMMAND
+  COMMAND = cd /home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug && /home/lucas/utilities/CLion-2024.2.2/clion-2024.2.2/bin/cmake/linux/x64/bin/cmake -E copy_directory /home/lucas/CLionProjects/tallerprog_tp/resources /home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/resources
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -1448,7 +1475,7 @@ build taller_common: phony libtaller_common.a
 #############################################
 # Folder: /home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug
 
-build all: phony libtaller_common.a taller_client taller_server taller_editor taller_tests common/all _deps/libsdl2pp-build/all client/all server/all editor/all _deps/googletest-build/all tests/all
+build all: phony libtaller_common.a taller_client copy_resources taller_server taller_editor taller_tests common/all _deps/libsdl2pp-build/all client/all server/all editor/all _deps/googletest-build/all tests/all
 
 # =============================================================================
 

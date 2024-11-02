@@ -75,14 +75,11 @@ if(TALLER_CLIENT OR TALLER_EDITOR)
         libSDL2pp
         URL https://github.com/libSDL2pp/libSDL2pp/archive/cc198c9a5657048bee67ece82de620b2d5661084.zip
     )
-
-
-# set up SDL2pp library
-set(SDL2PP_WITH_IMAGE YES)
-set(SDL2PP_WITH_TTF YES)
-
-set(SDL2PP_WITH_MIXER YES)
-FetchContent_MakeAvailable(libSDL2pp)
+    # set up SDL2pp library
+    set(SDL2PP_WITH_IMAGE YES)
+    set(SDL2PP_WITH_TTF YES)
+    set(SDL2PP_WITH_MIXER YES)
+    FetchContent_MakeAvailable(libSDL2pp)
 endif()
 
 # Program section
@@ -105,7 +102,12 @@ if(TALLER_CLIENT)
             client/client_comms/client_sender.cpp
             client/client_comms/client_receiver.cpp
             client/client_threads/renderer.cpp
-            client/client_threads/event_listener.cpp)
+            client/client_threads/event_listener.cpp
+            client/character.cpp
+            client/character.h
+            client/state_manager.cpp
+            client/state_manager.h
+            client/coordinates.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_client taller_common SDL2pp::SDL2pp)
@@ -121,6 +123,16 @@ if(TALLER_CLIENT)
 
     # Link the taller_common lib target
     target_link_libraries(taller_client taller_common SDL2pp::SDL2pp)
+
+    # Creo que estoy agregando la carpeta de imágenes acá
+    add_custom_target(copy_resources ALL
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_SOURCE_DIR}/resources ${CMAKE_BINARY_DIR}/resources
+    )
+
+    # Para la instalación??
+    #install(DIRECTORY resources/ DESTINATION ${CMAKE_INSTALL_PREFIX}/resources)
+
 endif()
 
 if(TALLER_SERVER)
