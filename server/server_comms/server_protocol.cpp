@@ -5,9 +5,9 @@
 
 ServerProtocol::ServerProtocol(Socket&& skt, std::atomic_bool& connection_status): Protocol(std::move(skt), connection_status) {}
 
-void ServerProtocol::send_message() {}
+void ServerProtocol::send_message(const Gamedata&) {}
 
-void ServerProtocol::receive_message() {}
+Gamedata ServerProtocol::receive_message() {}
 
 // EJEMPLOS PARA OVERLOADS DE SEND Y RECEIVE (del tp de threads):
 // Command ServerProtocol::receive_message() {

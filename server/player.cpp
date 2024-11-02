@@ -45,5 +45,3 @@ void Player::disconnect() {
     sender.stop();
     sender.join();
 }
-
-Player::~Player() {}

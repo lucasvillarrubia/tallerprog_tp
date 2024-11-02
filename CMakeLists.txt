@@ -43,14 +43,13 @@ add_library(taller_common STATIC
         common/hands_on_sockets/resolver.cpp
         common/hands_on_sockets/resolvererror.cpp
         common/hands_on_sockets/socket.cpp
-        common/gamestate.h
-        common/gameaction.h
         common/comms/receiver.cpp
         common/comms/receiver.h
         common/comms/sender.cpp
         common/comms/sender.h
         common/comms/protocol.cpp
         common/comms/protocol.h
+        common/gamedata.h
 )
 
 # add the source files that make the lib

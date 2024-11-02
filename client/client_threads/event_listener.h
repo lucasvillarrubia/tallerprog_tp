@@ -6,7 +6,7 @@
 #include <SDL_events.h>
 #include <SDL_keycode.h>
 
-#include "common/gameaction.h"
+#include "common/gamedata.h"
 #include "common/hands_on_threads/queue.h"
 #include "common/hands_on_threads/thread.h"
 

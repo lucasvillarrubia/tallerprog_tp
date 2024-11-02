@@ -17,8 +17,8 @@ class ServerProtocol: public Protocol
 {
 public:
     ServerProtocol(Socket&&, std::atomic_bool&);
-    void send_message() override;
-    void receive_message() override;
+    void send_message(const Gamedata&) override;
+    Gamedata receive_message() override;
     ~ServerProtocol() override = default;
 };
 

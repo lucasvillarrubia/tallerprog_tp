@@ -2,7 +2,7 @@
 #define RENDERER_H
 
 
-#include "common/gamestate.h"
+#include "common/gamedata.h"
 #include "common/hands_on_threads/queue.h"
 #include "common/hands_on_threads/thread.h"
 

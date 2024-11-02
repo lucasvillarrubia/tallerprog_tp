@@ -5,8 +5,7 @@
 #include "client_comms/client_protocol.h"
 #include "client_comms/client_receiver.h"
 #include "client_comms/client_sender.h"
-#include "common/gameaction.h"
-#include "common/gamestate.h"
+#include "common/gamedata.h"
 #include "common/hands_on_sockets/socket.h"
 #include "common/hands_on_threads/queue.h"
 

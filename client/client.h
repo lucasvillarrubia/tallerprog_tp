@@ -5,6 +5,7 @@
 #include "client_threads/event_listener.h"
 #include "local_player.h"
 #include "client_threads/renderer.h"
+#include "common/gamedata.h"
 
 
 class Client

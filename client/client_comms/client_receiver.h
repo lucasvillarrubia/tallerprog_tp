@@ -4,7 +4,7 @@
 
 #include "client_protocol.h"
 
-#include "common/gamestate.h"
+#include "common/gamedata.h"
 #include "common/comms/receiver.h"
 #include "common/hands_on_threads/queue.h"
 

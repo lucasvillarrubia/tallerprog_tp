@@ -3,6 +3,7 @@
 
 
 #include "command.h"
+#include "client/character.h"
 
 #include "common/hands_on_sockets/socket.h"
 #include "common/hands_on_threads/queue.h"
@@ -17,7 +18,8 @@
 // RAII: no permite copia ni movimiento (contiene Threads).
 
 
-class Player {
+class Player
+{
 private:
     Queue<Command>& server_messages;
     std::atomic_bool client_is_disconnected;
@@ -25,7 +27,7 @@ private:
     Queue<Command> messages_queue;
     ServerSender sender;
     ServerReceiver receiver;
-
+    Character state;
 public:
     Player(Socket&&, Queue<Command>&);
     void start();
@@ -36,7 +38,7 @@ public:
     Player& operator=(const Player&) = delete;
     Player(Player&& other) = delete;
     Player& operator=(Player&& other) = delete;
-    ~Player();
+    ~Player() = default;
 };
 
 
