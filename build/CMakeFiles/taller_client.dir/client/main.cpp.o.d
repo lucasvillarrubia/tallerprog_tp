@@ -143,7 +143,7 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: \
  /usr/include/SDL2/SDL_sensor.h /usr/include/SDL2/SDL_quit.h \
  /usr/include/SDL2/SDL_gesture.h /usr/include/SDL2/SDL_touch.h \
  /usr/include/SDL2/SDL_keycode.h \
- /home/lucas/CLionProjects/tallerprog_tp/./common/gameaction.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/queue.h \
  /usr/include/c++/11/climits \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
@@ -264,7 +264,6 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/protocol.h \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_receiver.h \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_protocol.h \
- /home/lucas/CLionProjects/tallerprog_tp/./common/gamestate.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/receiver.h \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \

@@ -177,4 +177,5 @@ CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_sockets/socket.h

@@ -219,6 +219,7 @@ CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o: ../common/comms/protoc
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
+  ../common/gamedata.h \
   ../common/hands_on_sockets/socket.h \
   ../common/hands_on_sockets/liberror.h \
   /usr/include/c++/11/iostream \
@@ -2145,6 +2146,10 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/c++/11/bits/vector.tcc:
 
+../common/gamedata.h:
+
+/usr/include/c++/11/bits/locale_classes.h:
+
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
 /usr/include/c++/11/cstdint:
@@ -2154,8 +2159,6 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 /usr/include/c++/11/ostream:
 
 /usr/include/c++/11/bits/ios_base.h:
-
-/usr/include/c++/11/bits/locale_classes.h:
 
 /usr/include/c++/11/bits/locale_classes.tcc:
 

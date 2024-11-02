@@ -142,7 +142,7 @@ CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o: \
  /usr/include/SDL2/SDL_sensor.h /usr/include/SDL2/SDL_quit.h \
  /usr/include/SDL2/SDL_gesture.h /usr/include/SDL2/SDL_touch.h \
  /usr/include/SDL2/SDL_keycode.h \
- /home/lucas/CLionProjects/tallerprog_tp/./common/gameaction.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/queue.h \
  /usr/include/c++/11/climits \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \

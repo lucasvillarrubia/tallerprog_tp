@@ -217,6 +217,7 @@ CMakeFiles/taller_server.dir/server/monitored_list.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_receiver.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_protocol.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/protocol.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/receiver.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/thread.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/istream \

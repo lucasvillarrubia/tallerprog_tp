@@ -2,7 +2,7 @@ CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/renderer.cpp \
  /usr/include/stdc-predef.h \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/renderer.h \
- /home/lucas/CLionProjects/tallerprog_tp/./common/gamestate.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/queue.h \
  /usr/include/c++/11/climits \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \

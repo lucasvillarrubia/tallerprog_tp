@@ -177,4 +177,5 @@ CMakeFiles/taller_client.dir/client/client_comms/client_protocol.cpp.o: \
  /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc
+ /usr/include/c++/11/bits/vector.tcc \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h

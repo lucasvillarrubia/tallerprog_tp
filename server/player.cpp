@@ -11,7 +11,7 @@ Player::Player(Socket&& skt, Queue<Command>& usr_entr):
         client_is_disconnected(true),
         protocol(std::move(skt), client_is_disconnected),
         sender(protocol, client_is_disconnected),
-        receiver(protocol, client_is_disconnected) {}
+        receiver(client_is_disconnected, protocol, q) {}
 
 void Player::start() {
     try {

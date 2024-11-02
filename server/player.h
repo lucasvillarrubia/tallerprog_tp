@@ -3,7 +3,7 @@
 
 
 #include "command.h"
-#include "client/character.h"
+//#include "client/character.h"
 
 #include "common/hands_on_sockets/socket.h"
 #include "common/hands_on_threads/queue.h"
@@ -27,7 +27,8 @@ private:
     Queue<Command> messages_queue;
     ServerSender sender;
     ServerReceiver receiver;
-    Character state;
+    //Character state;
+    Queue<Gameaction> q;
 public:
     Player(Socket&&, Queue<Command>&);
     void start();

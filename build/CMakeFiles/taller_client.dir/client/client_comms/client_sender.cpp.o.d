@@ -179,7 +179,7 @@ CMakeFiles/taller_client.dir/client/client_comms/client_sender.cpp.o: \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /home/lucas/CLionProjects/tallerprog_tp/./common/gameaction.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/thread.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/ostream \

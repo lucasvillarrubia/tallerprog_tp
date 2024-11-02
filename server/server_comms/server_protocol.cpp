@@ -7,7 +7,7 @@ ServerProtocol::ServerProtocol(Socket&& skt, std::atomic_bool& connection_status
 
 void ServerProtocol::send_message(const Gamedata&) {}
 
-Gamedata ServerProtocol::receive_message() {}
+Gamedata ServerProtocol::receive_message() {return {}; }
 
 // EJEMPLOS PARA OVERLOADS DE SEND Y RECEIVE (del tp de threads):
 // Command ServerProtocol::receive_message() {
