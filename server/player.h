@@ -3,7 +3,6 @@
 
 
 #include "command.h"
-//#include "client/character.h"
 
 #include "common/hands_on_sockets/socket.h"
 #include "common/hands_on_threads/queue.h"
@@ -21,18 +20,16 @@
 class Player
 {
 private:
-    Queue<Command>& server_messages;
+    Queue<Gameaction>& server_messages;
     std::atomic_bool client_is_disconnected;
     ServerProtocol protocol;
-    Queue<Command> messages_queue;
+    Queue<Gamestate> messages_queue;
     ServerSender sender;
     ServerReceiver receiver;
-    //Character state;
-    Queue<Gameaction> q;
 public:
-    Player(Socket&&, Queue<Command>&);
+    Player(Socket&&, Queue<Gameaction>&);
     void start();
-    void add_message_to_queue(const Command&);
+    void add_message_to_queue(const Gamestate&);
     bool is_connected();
     void disconnect();
     Player(const Player&) = delete;

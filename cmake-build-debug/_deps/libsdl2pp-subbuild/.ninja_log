@@ -1,15 +1,15 @@
 # ninja log v6
-930	966	1730491356104449068	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-update	47ad4f53578c6f56
-1015	1030	1730491356173449309	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-install	ce30b4db5b46b598
+1	36	1729977902990990288	libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-mkdir	3dceb5bcffda641
+1030	1071	1730491356211449441	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-test	c6bf9f37995d1943
 1071	1099	1730491356242449549	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/CMakeFiles/libsdl2pp-populate-complete	4baf5c737a0f31ad
 977	985	1730491356120449124	libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-configure	e593e01f123f412e
-967	977	1730491356120449124	libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-patch	b5c468b0f4c2b9ab
-967	977	1730491356120449124	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-patch	b5c468b0f4c2b9ab
 1015	1030	1730491356173449309	libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-install	ce30b4db5b46b598
 985	1015	1730491356142449200	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-build	816b8c59c11f601e
+967	977	1730491356120449124	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-patch	b5c468b0f4c2b9ab
 1071	1099	1730491356242449549	CMakeFiles/libsdl2pp-populate-complete	4baf5c737a0f31ad
-985	1015	1730491356142449200	libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-build	816b8c59c11f601e
-1071	1099	1730491356242449549	libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-done	4baf5c737a0f31ad
+967	977	1730491356120449124	libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-patch	b5c468b0f4c2b9ab
+1015	1030	1730491356173449309	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-install	ce30b4db5b46b598
+930	966	1730491356104449068	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-update	47ad4f53578c6f56
 1	930	1730491356074448963	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-download	eead47646765ae1a
 930	966	1730491356104449068	libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-update	47ad4f53578c6f56
 1	930	1730491356074448963	libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-download	eead47646765ae1a
@@ -17,5 +17,5 @@
 1	36	1729977902990990288	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-mkdir	3dceb5bcffda641
 1030	1071	1730491356211449441	libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-test	c6bf9f37995d1943
 977	985	1730491356120449124	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-configure	e593e01f123f412e
-1	36	1729977902990990288	libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-mkdir	3dceb5bcffda641
-1030	1071	1730491356211449441	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-test	c6bf9f37995d1943
+1071	1099	1730491356242449549	libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-done	4baf5c737a0f31ad
+985	1015	1730491356142449200	libsdl2pp-populate-prefix/src/libsdl2pp-populate-stamp/libsdl2pp-populate-build	816b8c59c11f601e

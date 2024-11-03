@@ -10,8 +10,8 @@ class ClientProtocol: public Protocol
 {
 public:
     ClientProtocol(Socket&&, std::atomic_bool&);
-    void send_message(const Gamedata&) override;
-    Gamedata receive_message() override;
+    void send_message(const Gameaction&);
+    void receive_message(Gamestate&);
     ~ClientProtocol() override = default;
 };
 

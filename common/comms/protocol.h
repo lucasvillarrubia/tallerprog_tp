@@ -26,8 +26,6 @@ protected:
     void send_string_message(const std::vector<char>&);
 public:
     Protocol(Socket&&, std::atomic_bool&);
-    virtual void send_message(const Gamedata&) = 0;
-    virtual Gamedata receive_message() = 0;
     void close_comms();
     Protocol(const Protocol&) = delete;
     Protocol& operator=(const Protocol&) = delete;

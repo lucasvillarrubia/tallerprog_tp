@@ -1,5 +1,5 @@
-#ifndef STATE_MANAGER_H
-#define STATE_MANAGER_H
+#ifndef CLIENT_STATE_MANAGER_H
+#define CLIENT_STATE_MANAGER_H
 
 
 #include <SDL_events.h>

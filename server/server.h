@@ -16,7 +16,7 @@ private:
     // si el servidor va a aguantar varias partidas, un atributo va a ser:
     // MonitoredList<Match> match_list;
     MonitoredList player_list;
-    Queue<Command> user_commands;
+    Queue<Gameaction> user_commands;
     Acceptor acceptor;
     Gameplay gameloop;
     Cleaner cleaner;

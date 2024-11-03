@@ -304,21 +304,21 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "taller_editor::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-taller_editor-Debug-429874e3f017b0874c3c.json",
+					"jsonFile" : "target-taller_editor-Debug-71bfe705ec6de4f712c1.json",
 					"name" : "taller_editor",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "taller_server::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-taller_server-Debug-ffc67212411cae935505.json",
+					"jsonFile" : "target-taller_server-Debug-a1f4cc46b1d9270e0923.json",
 					"name" : "taller_server",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "taller_tests::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-taller_tests-Debug-e038a8dd3f193cdaaddb.json",
+					"jsonFile" : "target-taller_tests-Debug-75527c5371f7edd916d9.json",
 					"name" : "taller_tests",
 					"projectIndex" : 0
 				}

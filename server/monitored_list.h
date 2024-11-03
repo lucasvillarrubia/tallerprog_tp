@@ -26,7 +26,7 @@ private:
 public:
     MonitoredList();
     void push_back(Player*);
-    void broadcast(const Command&);
+    void broadcast(const Gamestate&);
     void clean_up();
     void clear();
     MonitoredList(const MonitoredList&) = delete;

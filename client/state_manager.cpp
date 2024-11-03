@@ -1,5 +1,7 @@
 #include "state_manager.h"
 
+#include "common/gamedata.h"
+
 
 const float JUMP_STRENGTH = 15.0f;
 const float FLAP_STRENGTH = 1.0f; // Fuerza de aleteo en caída

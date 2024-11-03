@@ -8,7 +8,7 @@ void MonitoredList::push_back(Player* player) {
     list.push_back(player);
 }
 
-void MonitoredList::broadcast(const Command& announce) {
+void MonitoredList::broadcast(const Gamestate& announce) {
     std::unique_lock<std::mutex> lck(mtx);
     for (auto& player: list) {
         player->add_message_to_queue(announce);

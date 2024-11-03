@@ -228,5 +228,6 @@ CMakeFiles/taller_server.dir/server/server.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_protocol.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/gameplay.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/duck.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/cleaner.h

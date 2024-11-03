@@ -157,7 +157,11 @@ if(TALLER_SERVER)
             server/server_comms/server_sender.cpp
             server/server.cpp
             server/server_threads/cleaner.cpp
-            server/server_threads/cleaner.h)
+            server/server_threads/cleaner.h
+            server/duck.cpp
+            server/duck.h
+            server/state_manager.cpp
+            server/state_manager.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)

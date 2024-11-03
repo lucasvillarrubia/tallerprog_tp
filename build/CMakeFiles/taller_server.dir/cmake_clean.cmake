@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/taller_server.dir/server/duck.cpp.o"
+  "CMakeFiles/taller_server.dir/server/duck.cpp.o.d"
   "CMakeFiles/taller_server.dir/server/main.cpp.o"
   "CMakeFiles/taller_server.dir/server/main.cpp.o.d"
   "CMakeFiles/taller_server.dir/server/monitored_list.cpp.o"
@@ -19,6 +21,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o.d"
   "CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o"
   "CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o.d"
+  "CMakeFiles/taller_server.dir/server/state_manager.cpp.o"
+  "CMakeFiles/taller_server.dir/server/state_manager.cpp.o.d"
   "taller_server"
   "taller_server.pdb"
 )

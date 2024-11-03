@@ -53,7 +53,7 @@ int main() try {
             StateManager::update_duck_state(duck, event);
         }
         // Esto se va para el Renderer
-        duck.update_position(frame_delta, frame_ticks, renderer.GetOutputWidth());
+        duck.update_position(frame_delta, frame_ticks);
         int vcenter = renderer.GetOutputHeight() / 2;
         renderer.Clear();
         renderer.Copy(background, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));

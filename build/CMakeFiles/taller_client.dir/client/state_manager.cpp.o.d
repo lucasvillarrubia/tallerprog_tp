@@ -124,4 +124,5 @@ CMakeFiles/taller_client.dir/client/state_manager.cpp.o: \
  /usr/include/SDL2/SDL_sensor.h /usr/include/SDL2/SDL_quit.h \
  /usr/include/SDL2/SDL_gesture.h /usr/include/SDL2/SDL_touch.h \
  /home/lucas/CLionProjects/tallerprog_tp/client/character.h \
- /home/lucas/CLionProjects/tallerprog_tp/client/coordinates.h
+ /home/lucas/CLionProjects/tallerprog_tp/client/coordinates.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h

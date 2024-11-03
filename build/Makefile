@@ -784,6 +784,30 @@ editor/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_editor.dir/build.make CMakeFiles/taller_editor.dir/editor/main.cpp.s
 .PHONY : editor/main.cpp.s
 
+server/duck.o: server/duck.cpp.o
+.PHONY : server/duck.o
+
+# target to build an object file
+server/duck.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/duck.cpp.o
+.PHONY : server/duck.cpp.o
+
+server/duck.i: server/duck.cpp.i
+.PHONY : server/duck.i
+
+# target to preprocess a source file
+server/duck.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/duck.cpp.i
+.PHONY : server/duck.cpp.i
+
+server/duck.s: server/duck.cpp.s
+.PHONY : server/duck.s
+
+# target to generate assembly for a file
+server/duck.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/duck.cpp.s
+.PHONY : server/duck.cpp.s
+
 server/main.o: server/main.cpp.o
 .PHONY : server/main.o
 
@@ -1024,6 +1048,30 @@ server/server_threads/gameplay.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.s
 .PHONY : server/server_threads/gameplay.cpp.s
 
+server/state_manager.o: server/state_manager.cpp.o
+.PHONY : server/state_manager.o
+
+# target to build an object file
+server/state_manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/state_manager.cpp.o
+.PHONY : server/state_manager.cpp.o
+
+server/state_manager.i: server/state_manager.cpp.i
+.PHONY : server/state_manager.i
+
+# target to preprocess a source file
+server/state_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/state_manager.cpp.i
+.PHONY : server/state_manager.cpp.i
+
+server/state_manager.s: server/state_manager.cpp.s
+.PHONY : server/state_manager.s
+
+# target to generate assembly for a file
+server/state_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/state_manager.cpp.s
+.PHONY : server/state_manager.cpp.s
+
 tests/foo.o: tests/foo.cpp.o
 .PHONY : tests/foo.o
 
@@ -1131,6 +1179,9 @@ help:
 	@echo "... editor/main.o"
 	@echo "... editor/main.i"
 	@echo "... editor/main.s"
+	@echo "... server/duck.o"
+	@echo "... server/duck.i"
+	@echo "... server/duck.s"
 	@echo "... server/main.o"
 	@echo "... server/main.i"
 	@echo "... server/main.s"
@@ -1161,6 +1212,9 @@ help:
 	@echo "... server/server_threads/gameplay.o"
 	@echo "... server/server_threads/gameplay.i"
 	@echo "... server/server_threads/gameplay.s"
+	@echo "... server/state_manager.o"
+	@echo "... server/state_manager.i"
+	@echo "... server/state_manager.s"
 	@echo "... tests/foo.o"
 	@echo "... tests/foo.i"
 	@echo "... tests/foo.s"

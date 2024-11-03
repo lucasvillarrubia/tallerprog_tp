@@ -6,12 +6,12 @@
 #include "player.h"
 
 
-Player::Player(Socket&& skt, Queue<Command>& usr_entr):
+Player::Player(Socket&& skt, Queue<Gameaction>& usr_entr):
         server_messages(usr_entr),
         client_is_disconnected(true),
         protocol(std::move(skt), client_is_disconnected),
-        sender(protocol, client_is_disconnected),
-        receiver(client_is_disconnected, protocol, q) {}
+        sender(client_is_disconnected, protocol, messages_queue),
+        receiver(client_is_disconnected, protocol, server_messages) {}
 
 void Player::start() {
     try {
@@ -28,7 +28,7 @@ void Player::start() {
     }
 }
 
-void Player::add_message_to_queue(const Command& to_send) {
+void Player::add_message_to_queue(const Gamestate& to_send) {
     if (not client_is_disconnected.load()) {
         messages_queue.try_push(to_send);
     }
