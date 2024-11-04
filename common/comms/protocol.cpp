@@ -15,26 +15,26 @@ const char END_OF_MESSAGE = '\0';
 
 
 Protocol::Protocol(Socket&& skt, std::atomic_bool& connection_status):
-        peer(std::move(skt)), client_disconnected(connection_status) {}
+        peer(std::move(skt)), client_is_connected(connection_status) {}
 
 void Protocol::receive_single_int(uint8_t& message) {
-    if (client_disconnected.load())
+    if (not client_is_connected.load())
         return;
     bool client_was_disconnected = false;
     peer.recvall(&message, sizeof(uint8_t), &client_was_disconnected);
     if (client_was_disconnected)
-        client_disconnected.store(true);
+        client_is_connected.store(false);
 }
 
 void Protocol::receive_string(std::vector<char>& message) {
-    if (client_disconnected.load())
+    if (not client_is_connected.load())
         return;
     bool client_was_disconnected = false;
     uint16_t message_size = 0;
     peer.recvall(&message_size, sizeof(uint16_t), &client_was_disconnected);
     if (client_was_disconnected) {
         message.clear();
-        client_disconnected.store(true);
+        client_is_connected.store(false);
         return;
     }
     message_size = ntohs(message_size);
@@ -42,7 +42,7 @@ void Protocol::receive_string(std::vector<char>& message) {
     peer.recvall(from_server.data(), message_size, &client_was_disconnected);
     if (client_was_disconnected) {
         message.clear();
-        client_disconnected.store(true);
+        client_is_connected.store(false);
         return;
     }
     from_server.push_back(END_OF_MESSAGE);
@@ -51,28 +51,28 @@ void Protocol::receive_string(std::vector<char>& message) {
 }
 
 void Protocol::send_single_int(uint8_t message) {
-    if (client_disconnected.load())
+    if (not client_is_connected.load())
         return;
     bool client_was_disconnected = false;
     peer.sendall(&message, sizeof(uint8_t), &client_was_disconnected);
     if (client_was_disconnected)
-        client_disconnected.store(true);
+        client_is_connected.store(false);
 }
 
 void Protocol::send_string(const std::vector<char>& message) {
-    if (client_disconnected.load())
+    if (not client_is_connected.load())
         return;
     bool client_was_disconnected = false;
     uint16_t message_size = htons(message.size());
     peer.sendall(&message_size, sizeof(uint16_t), &client_was_disconnected);
     if (client_was_disconnected) {
-        client_disconnected.store(true);
+        client_is_connected.store(false);
         return;
     }
     message_size = ntohs(message_size);
     peer.sendall(message.data(), message_size, &client_was_disconnected);
     if (client_was_disconnected)
-        client_disconnected.store(true);
+        client_is_connected.store(false);
 }
 
 void Protocol::receive_single_float(float& message) {
@@ -99,5 +99,5 @@ void Protocol::close_comms() {
     } catch (const LibError& e) {
         std::cerr << "Se cerró el socket de un protocolo.\n";
     }
-    client_disconnected.store(true);
+    client_is_connected.store(false);
 }

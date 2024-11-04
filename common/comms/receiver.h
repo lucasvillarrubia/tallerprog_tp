@@ -14,7 +14,7 @@ class Receiver: public Thread
 {
 protected:
     std::atomic_bool is_running;
-    std::atomic_bool& client_disconnected;
+    std::atomic_bool& client_is_connected;
     virtual void receive_data() = 0;
 public:
     explicit Receiver(std::atomic_bool&);

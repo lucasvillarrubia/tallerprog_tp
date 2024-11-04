@@ -45,6 +45,7 @@ void Renderer::run() {
             if (updates_feed.try_pop(update))
             {
                 StateManager::update_duck(duck, update);
+                std::cout << "llegó un estado al renderer!" << "\n";
             }
             else
             {
@@ -64,12 +65,21 @@ void Renderer::run() {
             SDL_Delay(1);
         }
     }
+    catch (ClosedQueue const& e)
+    {
+        std::cerr << "Se cerró la queue del juego?! " << e.what() << '\n';
+    }
     catch (const std::exception& e)
     {
-        std::cerr << "Exception thrown on a client's eventloop: " << e.what() << '\n';
+        std::cerr << "Exception caught in the renderer thread: " << e.what() << '\n';
     }
     catch (...)
     {
-        std::cerr << "Unknown exception on a client's eventloop." << '\n';
+        std::cerr << "Unknown exception on the renderloop.\n";
     }
+}
+
+void Renderer::stop() {
+    _keep_running = false;
+    is_running.store(false);
 }

@@ -19,6 +19,7 @@ void Acceptor::run() {
         is_running.store(true);
         while (is_running.load()) {
             Socket new_client = acceptor.accept();
+            std::cout << "SE CONECTÓ UN CLIENTE :D\n";
             Player* new_player = new Player(std::move(new_client), user_commands);
             player_list.push_back(new_player);
             new_player->start();

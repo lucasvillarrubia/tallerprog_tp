@@ -1,5 +1,6 @@
 #include "client_protocol.h"
 
+#include <iostream>
 #include <utility>
 
 
@@ -7,7 +8,8 @@ ClientProtocol::ClientProtocol(Socket&& skt, std::atomic_bool& connection_status
 
 void ClientProtocol::send_message(const Gameaction& message)
 {
-    if (client_disconnected.load()) return;
+    std::cout << "entré al protocolo del cliente\n";
+    if (not client_is_connected.load()) return;
     send_single_int(message.player_id);
     send_single_int(message.type);
     send_single_int(message.key);
@@ -15,7 +17,7 @@ void ClientProtocol::send_message(const Gameaction& message)
 
 void ClientProtocol::receive_message(Gamestate& received)
 {
-    if (client_disconnected.load()) return;
+    if (not client_is_connected.load()) return;
     uint8_t character_id, run_state, jump_state, flap_state, move_direction;
     float pos_X, pos_Y, velocity_Y;
     receive_single_int(character_id);

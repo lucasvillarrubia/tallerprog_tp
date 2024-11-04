@@ -7,7 +7,7 @@ ServerProtocol::ServerProtocol(Socket&& skt, std::atomic_bool& connection_status
 
 void ServerProtocol::send_message(const Gamestate& message)
 {
-    if (client_disconnected.load()) return;
+    if (not client_is_connected.load()) return;
     send_single_int(message.player_id);
     send_single_float(message.pos_X);
     send_single_float(message.pos_Y);
@@ -20,7 +20,7 @@ void ServerProtocol::send_message(const Gamestate& message)
 
 void ServerProtocol::receive_message(Gameaction& received)
 {
-    if (client_disconnected.load()) return;
+    if (not client_is_connected.load()) return;
     uint8_t player, type, key;
     receive_single_int(player);
     receive_single_int(type);

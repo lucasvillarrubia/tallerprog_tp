@@ -216,4 +216,5 @@ CMakeFiles/taller_client.dir/client/local_player.cpp.o: \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
  /usr/include/c++/11/queue /usr/include/c++/11/bits/stl_queue.h \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_sender.h \
- /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h
+ /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_sockets/liberror.h

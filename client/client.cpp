@@ -14,6 +14,7 @@ Client::Client(const char* hostname, const char* servname):
 void Client::run() {
     try
     {
+        connection.start_communication();
         // pantalla de inicio
         // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un
         renderloop.start();
@@ -22,6 +23,7 @@ void Client::run() {
             std::unique_lock<std::mutex> lck(mtx);
             connection_ended.wait(lck);
         }
+        connection.end_connection();
         events.close();
         updates.close();
         eventloop.stop();

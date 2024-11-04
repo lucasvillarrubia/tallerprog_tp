@@ -15,6 +15,7 @@ private:
 public:
     explicit Renderer(Queue<Gamestate>&);
     void run() override;
+    void stop() override;
     ~Renderer() override = default;
 };
 

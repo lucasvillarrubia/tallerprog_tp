@@ -19,7 +19,7 @@ class Protocol
 protected:
     Socket peer;
     std::mutex mtx;
-    std::atomic_bool& client_disconnected;
+    std::atomic_bool& client_is_connected;
     void receive_single_int(uint8_t&);
     void receive_string(std::vector<char>&);
     void send_single_int(uint8_t);

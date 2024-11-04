@@ -33,6 +33,7 @@ private:
 public:
     EventListener(std::atomic_bool&, std::condition_variable&, Queue<Gameaction>&);
     void run() override;
+    void stop() override;
     ~EventListener() override = default;
 };
 
