@@ -20,10 +20,12 @@ protected:
     Socket peer;
     std::mutex mtx;
     std::atomic_bool& client_disconnected;
-    void receive_single_int_message(uint8_t&);
-    void receive_string_message(std::vector<char>&);
-    void send_single_int_message(uint8_t);
-    void send_string_message(const std::vector<char>&);
+    void receive_single_int(uint8_t&);
+    void receive_string(std::vector<char>&);
+    void send_single_int(uint8_t);
+    void send_string(const std::vector<char>&);
+    void receive_single_float(float&);
+    void send_single_float(float);
 public:
     Protocol(Socket&&, std::atomic_bool&);
     void close_comms();

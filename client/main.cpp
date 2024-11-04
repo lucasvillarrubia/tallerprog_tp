@@ -53,11 +53,11 @@ int main() try {
             StateManager::update_duck_state(duck, event);
         }
         // Esto se va para el Renderer
-        duck.update_position(frame_delta, frame_ticks);
+        duck.update_position(frame_delta);
         int vcenter = renderer.GetOutputHeight() / 2;
         renderer.Clear();
         renderer.Copy(background, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
-        int src_x = DUCK_SPRITE_WIDTH * duck.get_movement_phase();
+        int src_x = DUCK_SPRITE_WIDTH * duck.get_movement_phase(frame_ticks);
         int src_y = DUCK_MOVEMENT_SPRITES_LINE;
         Coordinates duck_position = duck.get_coordinates();
         SDL_RendererFlip flip = duck.is_moving_to_the_right() ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;

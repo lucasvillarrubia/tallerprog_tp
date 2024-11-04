@@ -10,6 +10,7 @@
 class Renderer: public Thread
 {
 private:
+    std::atomic_bool is_running;
     Queue<Gamestate>& updates_feed;
 public:
     explicit Renderer(Queue<Gamestate>&);

@@ -15,16 +15,12 @@ const int AVAILABLE_MOVEMENT_SPRITES = 6;
 
 Character::Character(): pos_X(INITIAL_X_COORDINATE), pos_Y(INITIAL_Y_COORDINATE), is_running(false), is_jumping(false), is_flapping(false) {}
 
-void Character::update_position(const unsigned int frame_delta, const unsigned int frame_ticks)
+void Character::update_position(const unsigned int frame_delta)
 {
     // std::cout << "veamos si cambia el render width: " << render_width << "\n";
     // Está corriendo (moviendose horizontalmente)
-    if (is_running) {
+    if (is_running)
         pos_X += frame_delta * X_CONSTANT_VELOCITY * (moving_right ? 1 : -1);
-        movement_phase = (frame_ticks / 100) % AVAILABLE_MOVEMENT_SPRITES;
-    } else {
-        movement_phase = 0;
-    }
     // Está saltando
     if (is_jumping) {
         float effective_gravity = (is_flapping && jump_velocity < 0) ? GRAVITY * GRAVITY_RESISTANCE_WHEN_FLAPPING : GRAVITY;
@@ -48,4 +44,6 @@ bool Character::is_moving_to_the_right() const { return moving_right; }
 
 Coordinates Character::get_coordinates() const { return {pos_X, pos_Y}; }
 
-int Character::get_movement_phase () const { return movement_phase; }
+int Character::get_movement_phase (const unsigned int frame_ticks) const {
+    return (is_running ? ((frame_ticks / 100) % AVAILABLE_MOVEMENT_SPRITES) : 0);
+}

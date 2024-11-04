@@ -41,3 +41,14 @@ void StateManager::update_duck_state(Character& duck, const SDL_Event event)
         }
     }
 }
+
+void StateManager::update_duck(Character& duki, Gamestate& new_state)
+{
+    duki.pos_X = new_state.pos_X;
+    duki.pos_Y = new_state.pos_Y;
+    duki.is_running = new_state.is_running;
+    duki.is_jumping = new_state.is_jumping;
+    duki.is_flapping = new_state.is_flapping;
+    duki.moving_right = new_state.move_direction;
+    duki.jump_velocity = new_state.jump_speed;
+}

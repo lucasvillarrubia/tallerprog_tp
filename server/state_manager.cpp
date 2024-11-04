@@ -19,13 +19,13 @@ Gamestate StateManager::update_duck_state(Duck& duck, const Gameaction& event)
     if (event.type == QUIT)
     {
         duck.exited = true;
-        return {0,0,0};
+        return {};
     }
     if (event.type == KEYDOWN) {
         switch (event.key) {
         case ESCAPE:
             duck.exited = true;
-            return {0,0,0};
+            return {};
         case RIGHT:
             duck.is_running = true;
             duck.moving_right = true;
@@ -57,8 +57,13 @@ Gamestate StateManager::update_duck_state(Duck& duck, const Gameaction& event)
         }
     }
     return {
+        1, // sería el player id
+        duck.pos_X,
+        duck.pos_Y,
         duck.is_running ? 1 : 0,
         duck.is_jumping ? 1 : 0,
-        duck.is_flapping ? 1 : 0
+        duck.is_flapping ? 1 : 0,
+        duck.moving_right ? 1 : 0,
+        duck.jump_velocity
     };
 }

@@ -1,5 +1,7 @@
 #include "protocol.h"
 
+#include <cmath>
+
 #include "common/hands_on_sockets/liberror.h"
 
 #include <iostream>
@@ -15,7 +17,7 @@ const char END_OF_MESSAGE = '\0';
 Protocol::Protocol(Socket&& skt, std::atomic_bool& connection_status):
         peer(std::move(skt)), client_disconnected(connection_status) {}
 
-void Protocol::receive_single_int_message(uint8_t& message) {
+void Protocol::receive_single_int(uint8_t& message) {
     if (client_disconnected.load())
         return;
     bool client_was_disconnected = false;
@@ -24,7 +26,7 @@ void Protocol::receive_single_int_message(uint8_t& message) {
         client_disconnected.store(true);
 }
 
-void Protocol::receive_string_message(std::vector<char>& message) {
+void Protocol::receive_string(std::vector<char>& message) {
     if (client_disconnected.load())
         return;
     bool client_was_disconnected = false;
@@ -48,7 +50,7 @@ void Protocol::receive_string_message(std::vector<char>& message) {
     message = from_server;
 }
 
-void Protocol::send_single_int_message(uint8_t message) {
+void Protocol::send_single_int(uint8_t message) {
     if (client_disconnected.load())
         return;
     bool client_was_disconnected = false;
@@ -57,7 +59,7 @@ void Protocol::send_single_int_message(uint8_t message) {
         client_disconnected.store(true);
 }
 
-void Protocol::send_string_message(const std::vector<char>& message) {
+void Protocol::send_string(const std::vector<char>& message) {
     if (client_disconnected.load())
         return;
     bool client_was_disconnected = false;
@@ -71,6 +73,22 @@ void Protocol::send_string_message(const std::vector<char>& message) {
     peer.sendall(message.data(), message_size, &client_was_disconnected);
     if (client_was_disconnected)
         client_disconnected.store(true);
+}
+
+void Protocol::receive_single_float(float& message) {
+    uint8_t integer, decimal;
+    receive_single_int(integer);
+    receive_single_int(decimal);
+    float fraction_part = decimal / 100.0f;
+    message = integer + fraction_part;
+}
+
+void Protocol::send_single_float(float message) {
+    float fraction_part = std::modf(message, &message);
+    uint8_t integer = static_cast<uint8_t>(message);
+    uint8_t decimal = static_cast<uint8_t>(fraction_part * 100);
+    send_single_int(integer);
+    send_single_int(decimal);
 }
 
 void Protocol::close_comms() {

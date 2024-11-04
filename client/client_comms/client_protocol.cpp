@@ -8,24 +8,25 @@ ClientProtocol::ClientProtocol(Socket&& skt, std::atomic_bool& connection_status
 void ClientProtocol::send_message(const Gameaction& message)
 {
     if (client_disconnected.load()) return;
-    send_single_int_message(message.player_id);
-    send_single_int_message(message.type);
-    send_single_int_message(message.key);
+    send_single_int(message.player_id);
+    send_single_int(message.type);
+    send_single_int(message.key);
 }
 
 void ClientProtocol::receive_message(Gamestate& received)
 {
     if (client_disconnected.load()) return;
-    uint8_t player, type, key;
-    // velocity_int, velocity_dec;
-    // float velocity_Y;
-    receive_single_int_message(player);
-    receive_single_int_message(type);
-    receive_single_int_message(key);
-    // receive_single_int_message(velocity_int);
-    // receive_single_int_message(velocity_dec);
-    received = Gamestate(player, type, key);
-    // received = Gamestate(player, type, key, velocity_Y);
+    uint8_t character_id, run_state, jump_state, flap_state, move_direction;
+    float pos_X, pos_Y, velocity_Y;
+    receive_single_int(character_id);
+    receive_single_float(pos_X);
+    receive_single_float(pos_Y);
+    receive_single_int(run_state);
+    receive_single_int(jump_state);
+    receive_single_int(flap_state);
+    receive_single_int(move_direction);
+    receive_single_float(velocity_Y);
+    received = Gamestate(character_id, pos_X, pos_Y, run_state, jump_state, flap_state, move_direction, velocity_Y);
 }
 
 // bool ClientProtocol::theres_more_data_per_code(int msg_code) {

@@ -12,14 +12,11 @@ const int AVAILABLE_MOVEMENT_SPRITES = 6;
 
 Duck::Duck(): pos_X(INITIAL_X_COORDINATE), pos_Y(INITIAL_Y_COORDINATE), is_running(false), is_jumping(false), is_flapping(false) {}
 
-void Duck::update_position(const unsigned int frame_delta, const unsigned int frame_ticks, const int render_width)
+void Duck::update_position(const unsigned int frame_delta)
 {
     // Está corriendo (moviendose horizontalmente)
     if (is_running) {
         pos_X += frame_delta * X_CONSTANT_VELOCITY * (moving_right ? 1 : -1);
-        movement_phase = (frame_ticks / 100) % AVAILABLE_MOVEMENT_SPRITES;
-    } else {
-        movement_phase = 0;
     }
     // Está saltando
     if (is_jumping) {
@@ -34,8 +31,8 @@ void Duck::update_position(const unsigned int frame_delta, const unsigned int fr
         }
     }
     // Llegó al límite de la pantalla ---> Se mueve la cámara
-    if (pos_X > render_width)
+    if (pos_X > 640)
         pos_X = -50;
     else if (pos_X < -50)
-        pos_X = render_width;
+        pos_X = 640;
 }

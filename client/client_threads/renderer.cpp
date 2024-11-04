@@ -1,13 +1,75 @@
 #include "renderer.h"
 
+#include <SDL.h>
 
-Renderer::Renderer(Queue<Gamestate>& q): updates_feed(q) {}
+#include "client/character.h"
+#include "client/state_manager.h"
+#include "SDL2pp/Renderer.hh"
+#include "SDL2pp/SDL.hh"
+#include "SDL2pp/Surface.hh"
+#include "SDL2pp/Texture.hh"
+#include "SDL2pp/Window.hh"
+
+
+const int DUCK_SPRITE_WIDTH = 64;
+const int DUCK_SPRITE_HEIGHT = 64;
+const int DUCK_MOVEMENT_SPRITES_LINE = 0;
+
+
+Renderer::Renderer(Queue<Gamestate>& q): is_running(false), updates_feed(q) {}
 
 void Renderer::run() {
     try
     {
+        is_running.store(true);
+        SDL2pp::SDL sdl(SDL_INIT_VIDEO);
+        SDL2pp::Window window(
+            "Duck Game",
+            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+            640, 480,
+            SDL_WINDOW_RESIZABLE
+        );
+        SDL2pp::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
+        SDL2pp::Texture background(renderer, "resources/fondo.png");
+        SDL2pp::Surface tempSurface("resources/Duck-removebg-preview.png");
+        SDL2pp::Texture sprites(renderer, tempSurface);
+        unsigned int prev_ticks = SDL_GetTicks();
+        // Después habría una lista de patos
+        Character duck;
+        while (is_running.load())
+        {
+            unsigned int frame_ticks = SDL_GetTicks();
+            unsigned int frame_delta = frame_ticks - prev_ticks;
+            prev_ticks = frame_ticks;
+            Gamestate update;
+            if (updates_feed.try_pop(update))
+            {
+                StateManager::update_duck(duck, update);
+            }
+            else
+            {
+                duck.update_position(frame_delta);
+            }
+            int vcenter = renderer.GetOutputHeight() / 2;
+            renderer.Clear();
+            renderer.Copy(background, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
+            int src_x = DUCK_SPRITE_WIDTH * duck.get_movement_phase(frame_ticks);
+            int src_y = DUCK_MOVEMENT_SPRITES_LINE;
+            Coordinates duck_position = duck.get_coordinates();
+            SDL_RendererFlip flip = duck.is_moving_to_the_right() ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+            SDL_Rect src_rect = { src_x, src_y, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
+            SDL_Rect dst_rect = { static_cast<int>(duck_position.pos_X), static_cast<int>(vcenter - 32 - duck_position.pos_Y), 64, 64 };
+            SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+            renderer.Present();
+            SDL_Delay(1);
+        }
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Exception thrown on a client's eventloop: " << e.what() << '\n';
     }
     catch (...)
     {
+        std::cerr << "Unknown exception on a client's eventloop." << '\n';
     }
 }

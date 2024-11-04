@@ -29,8 +29,7 @@ void Gameplay::run() {
             auto current_time = std::chrono::steady_clock::now();
             auto frame_delta = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - prev_time).count();
             prev_time = current_time;
-            // unsigned int frame_ticks = std::chrono::duration_cast<std::chrono::milliseconds>(current_time.time_since_epoch()).count();
-            duck.update_position(frame_delta, 0, 0);
+            duck.update_position(frame_delta);
             process_users_commands();
             std::this_thread::sleep_for(std::chrono::milliseconds(16)); // Maso 60 FPS
         }
