@@ -23,8 +23,8 @@ void EventListener::run() {
             const int type_code = codes_by_event_type.at(event.type);
             const int key_code = codes_by_key.at(event.key.keysym.sym);
             Gameaction new_action(1, type_code, key_code);
-            if (events.try_push(new_action))
-                std::cout << "Evento ya está en la queue para mandar! " << type_code << " " << key_code << "\n";
+            events.try_push(new_action);
+                // std::cout << "Evento ya está en la queue para mandar! " << type_code << " " << key_code << "\n";
             if(type == SDL_QUIT || key == SDLK_ESCAPE) {
                 game_on.store(false);
                 connection_ended.notify_all();

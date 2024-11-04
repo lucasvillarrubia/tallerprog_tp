@@ -45,7 +45,7 @@ void Renderer::run() {
             if (updates_feed.try_pop(update))
             {
                 StateManager::update_duck(duck, update);
-                std::cout << "llegó un estado al renderer!" << "\n";
+                // std::cout << "llegó un estado al renderer!" << "\n";
             }
             else
             {

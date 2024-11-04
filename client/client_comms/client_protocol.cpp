@@ -8,7 +8,7 @@ ClientProtocol::ClientProtocol(Socket&& skt, std::atomic_bool& connection_status
 
 void ClientProtocol::send_message(const Gameaction& message)
 {
-    std::cout << "entré al protocolo del cliente\n";
+    // std::cout << "entré al protocolo del cliente\n";
     if (not client_is_connected.load()) return;
     send_single_int(message.player_id);
     send_single_int(message.type);

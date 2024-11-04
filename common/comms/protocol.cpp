@@ -76,17 +76,21 @@ void Protocol::send_string(const std::vector<char>& message) {
 }
 
 void Protocol::receive_single_float(float& message) {
-    uint8_t integer, decimal;
+    uint8_t sign, integer, decimal;
+    receive_single_int(sign);
     receive_single_int(integer);
     receive_single_int(decimal);
     float fraction_part = decimal / 100.0f;
     message = integer + fraction_part;
+    message *= ((sign == 1) ? (-1) : 1);
 }
 
 void Protocol::send_single_float(float message) {
+    uint8_t sign = ((message < 0) ? 1 : 0);
     float fraction_part = std::modf(message, &message);
     uint8_t integer = static_cast<uint8_t>(message);
     uint8_t decimal = static_cast<uint8_t>(fraction_part * 100);
+    send_single_int(sign);
     send_single_int(integer);
     send_single_int(decimal);
 }

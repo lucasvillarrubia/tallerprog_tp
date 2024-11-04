@@ -18,6 +18,7 @@ private:
     Queue<Gameaction>& user_commands;
     Duck duck;
     void process_users_commands();
+    void send_all_initial_coordinates();
 public:
     Gameplay(MonitoredList&, Queue<Gameaction>&);
     void run() override;
