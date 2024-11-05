@@ -32,25 +32,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 140,
+				"line" : 141,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 176,
+				"line" : 181,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 167,
+				"line" : 172,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 173,
+				"line" : 178,
 				"parent" : 0
 			},
 			{
@@ -182,7 +182,9 @@
 				18,
 				20,
 				22,
-				24
+				24,
+				26,
+				28
 			]
 		}
 	],
@@ -240,7 +242,9 @@
 				19,
 				21,
 				23,
-				25
+				25,
+				27,
+				29
 			]
 		},
 		{
@@ -258,7 +262,9 @@
 				18,
 				20,
 				22,
-				24
+				24,
+				26,
+				28
 			]
 		}
 	],
@@ -393,6 +399,28 @@
 		{
 			"backtrace" : 1,
 			"path" : "server/state_manager.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "server/server_threads/match_manager.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "server/server_threads/match_manager.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "server/match.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "server/match.h",
 			"sourceGroupIndex" : 0
 		},
 		{

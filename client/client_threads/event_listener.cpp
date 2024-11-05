@@ -3,10 +3,11 @@
 #include <SDL_events.h>
 
 
-EventListener::EventListener(std::atomic_bool& connection, std::condition_variable& con_warner, Queue<Gameaction>& q):
+// EventListener::EventListener(std::atomic_bool& connection, std::condition_variable& con_warner, Queue<Gameaction>& q):
+EventListener::EventListener(std::atomic_bool& connection, Queue<Gameaction>& q):
         is_running(false),
         game_on(connection),
-        connection_ended(con_warner),
+        // connection_ended(con_warner),
         events(q) {}
 
 void EventListener::run() {
@@ -27,7 +28,7 @@ void EventListener::run() {
                 // std::cout << "Evento ya está en la queue para mandar! " << type_code << " " << key_code << "\n";
             if(type == SDL_QUIT || key == SDLK_ESCAPE) {
                 game_on.store(false);
-                connection_ended.notify_all();
+                // connection_ended.notify_all();
                 is_running.store(false);
             }
         }

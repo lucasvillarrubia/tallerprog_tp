@@ -6,14 +6,16 @@
 #include "local_player.h"
 #include "client_threads/renderer.h"
 #include "common/gamedata.h"
+#include "SDL2pp/Renderer.hh"
+#include "SDL2pp/Window.hh"
 
 
 class Client
 {
 private:
     std::atomic_bool connected;
-    std::condition_variable connection_ended;
-    std::mutex mtx;
+    // std::condition_variable connection_ended;
+    // std::mutex mtx;
     Queue<Gameaction> events;
     Queue<Gamestate> updates;
     LocalPlayer connection;

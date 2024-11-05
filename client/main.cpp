@@ -1,7 +1,11 @@
 #include <exception>
 #include <iostream>
+#include <SDL.h>
 
 #include "client.h"
+#include "SDL2pp/Renderer.hh"
+#include "SDL2pp/SDL.hh"
+#include "SDL2pp/Window.hh"
 
 
 const int REQUIRED_ARGS_QTY = 3;

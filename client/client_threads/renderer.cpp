@@ -16,12 +16,12 @@ const int DUCK_SPRITE_HEIGHT = 64;
 const int DUCK_MOVEMENT_SPRITES_LINE = 0;
 
 
-Renderer::Renderer(Queue<Gamestate>& q): is_running(false), updates_feed(q) {}
+Renderer::Renderer(std::atomic_bool& con_stat, Queue<Gamestate>& q): connected(con_stat), updates_feed(q) {}
 
 void Renderer::run() {
+    // std::unique_lock<std::mutex> lck(mtx);
     try
     {
-        is_running.store(true);
         SDL2pp::SDL sdl(SDL_INIT_VIDEO);
         SDL2pp::Window window(
             "Duck Game",
@@ -33,24 +33,25 @@ void Renderer::run() {
         SDL2pp::Texture background(renderer, "resources/fondo.png");
         SDL2pp::Surface tempSurface("resources/Duck-removebg-preview.png");
         SDL2pp::Texture sprites(renderer, tempSurface);
-        unsigned int prev_ticks = SDL_GetTicks();
+        // unsigned int prev_ticks = SDL_GetTicks();
         // Después habría una lista de patos
+        std::cout << "alto: " << renderer.GetOutputHeight() << " y ancho: " << renderer.GetOutputWidth() << "\n";
         Character duck;
-        while (is_running.load())
+        while (connected.load())
         {
             unsigned int frame_ticks = SDL_GetTicks();
-            unsigned int frame_delta = frame_ticks - prev_ticks;
-            prev_ticks = frame_ticks;
+            // unsigned int frame_delta = frame_ticks - prev_ticks;
+            // prev_ticks = frame_ticks;
             Gamestate update;
             if (updates_feed.try_pop(update))
             {
                 StateManager::update_duck(duck, update);
                 // std::cout << "llegó un estado al renderer!" << "\n";
             }
-            else
-            {
-                duck.update_position(frame_delta);
-            }
+            // else
+            // {
+            //     duck.update_position(frame_delta);
+            // }
             int vcenter = renderer.GetOutputHeight() / 2;
             renderer.Clear();
             renderer.Copy(background, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
@@ -77,9 +78,4 @@ void Renderer::run() {
     {
         std::cerr << "Unknown exception on the renderloop.\n";
     }
-}
-
-void Renderer::stop() {
-    _keep_running = false;
-    is_running.store(false);
 }
