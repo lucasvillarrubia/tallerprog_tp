@@ -5,17 +5,20 @@
 #include "common/gamedata.h"
 #include "common/hands_on_threads/queue.h"
 #include "common/hands_on_threads/thread.h"
+#include "SDL2pp/Renderer.hh"
+#include "SDL2pp/Window.hh"
 
 
-class Renderer: public Thread
+class Renderer
 {
 private:
-    std::atomic_bool is_running;
+    std::atomic_bool& connected;
     Queue<Gamestate>& updates_feed;
+    // std::mutex mtx;
 public:
-    explicit Renderer(Queue<Gamestate>&);
-    void run() override;
-    ~Renderer() override = default;
+    Renderer(std::atomic_bool&, Queue<Gamestate>&);
+    void run();
+    ~Renderer() = default;
 };
 
 

@@ -21,7 +21,7 @@ class Player
 {
 private:
     Queue<Gameaction>& server_messages;
-    std::atomic_bool client_is_disconnected;
+    std::atomic_bool client_is_connected;
     ServerProtocol protocol;
     Queue<Gamestate> messages_queue;
     ServerSender sender;

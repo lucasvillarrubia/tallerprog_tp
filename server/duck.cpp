@@ -16,13 +16,16 @@ void Duck::update_position(const unsigned int frame_delta)
 {
     // Está corriendo (moviendose horizontalmente)
     if (is_running) {
-        pos_X += frame_delta * X_CONSTANT_VELOCITY * (moving_right ? 1 : -1);
+        // pos_X += frame_delta * X_CONSTANT_VELOCITY * (moving_right ? 1 : -1);
+        pos_X += frame_delta * X_CONSTANT_VELOCITY * (moving_right ? 1 : -1) ;
     }
     // Está saltando
     if (is_jumping) {
         float effective_gravity = (is_flapping && jump_velocity < 0) ? GRAVITY * GRAVITY_RESISTANCE_WHEN_FLAPPING : GRAVITY;
-        pos_Y += jump_velocity * (frame_delta * TARGET_FRAME_TIME);
-        jump_velocity += effective_gravity * (frame_delta * TARGET_FRAME_TIME);
+        // pos_Y += jump_velocity * (frame_delta * TARGET_FRAME_TIME);
+        pos_Y += jump_velocity * (frame_delta);
+        // jump_velocity += effective_gravity * (frame_delta * TARGET_FRAME_TIME);
+        jump_velocity += effective_gravity * (frame_delta);
 
         if (pos_Y <= INITIAL_Y_COORDINATE) {
             pos_Y = INITIAL_Y_COORDINATE;
@@ -31,8 +34,8 @@ void Duck::update_position(const unsigned int frame_delta)
         }
     }
     // Llegó al límite de la pantalla ---> Se mueve la cámara
-    if (pos_X > 640)
-        pos_X = -50;
-    else if (pos_X < -50)
-        pos_X = 640;
+    if (pos_X > 1280)
+        pos_X = -100;
+    else if (pos_X < -100)
+        pos_X = 1280;
 }

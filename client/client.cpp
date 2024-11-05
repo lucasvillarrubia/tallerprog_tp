@@ -8,26 +8,34 @@
 Client::Client(const char* hostname, const char* servname):
         connected(false),
         connection(std::move(Socket(hostname, servname)), events, updates, connected),
-        eventloop(connected, connection_ended, events),
-        renderloop(updates) {}
+        eventloop(connected, events),
+        // eventloop(connected, connection_ended, events),
+        renderloop(connected, updates) {}
 
 void Client::run() {
+    connection.start_communication();
+    // pantalla de inicio
+    // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un
+    eventloop.start();
     try
     {
-        // pantalla de inicio
-        // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un
-        renderloop.start();
-        eventloop.start();
-        while (connected.load()) {
-            std::unique_lock<std::mutex> lck(mtx);
-            connection_ended.wait(lck);
-        }
+
+        renderloop.run();
+        // while (connected.load()) {
+        //     std::unique_lock<std::mutex> lck(mtx);
+        //     connection_ended.wait(lck);
+        // }
+        connection.end_connection();
         events.close();
         updates.close();
         eventloop.stop();
         eventloop.join();
-        renderloop.stop();
-        renderloop.join();
+        // renderloop.stop();
+        // renderloop.join();
+    }
+    catch (ClosedQueue const& e)
+    {
+        std::cerr << "Se cerró la queue del cliente?! " << e.what() << '\n';
     }
     catch (const std::exception& e)
     {

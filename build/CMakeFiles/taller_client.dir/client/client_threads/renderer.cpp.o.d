@@ -212,7 +212,7 @@ CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/thread.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/thread \
- /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_main.h \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Renderer.hh \
  /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_config.h \
  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
  /usr/include/SDL2/SDL_platform.h /usr/include/SDL2/begin_code.h \
@@ -241,11 +241,33 @@ CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o: \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
  /usr/include/c++/11/tr1/riemann_zeta.tcc \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
- /usr/include/SDL2/SDL_assert.h /usr/include/SDL2/SDL_atomic.h \
- /usr/include/SDL2/SDL_platform.h /usr/include/SDL2/SDL_audio.h \
- /usr/include/SDL2/SDL_error.h /usr/include/SDL2/SDL_endian.h \
- /usr/include/SDL2/SDL_mutex.h /usr/include/SDL2/SDL_thread.h \
- /usr/include/SDL2/SDL_rwops.h /usr/include/SDL2/SDL_clipboard.h \
+ /usr/include/SDL2/SDL_blendmode.h \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build/SDL2pp/Config.hh \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Optional.hh \
+ /usr/include/c++/11/optional \
+ /usr/include/c++/11/bits/enable_special_members.h \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Point.hh \
+ /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
+ /usr/include/c++/11/unordered_map /usr/include/c++/11/bits/hashtable.h \
+ /usr/include/c++/11/bits/hashtable_policy.h \
+ /usr/include/c++/11/bits/node_handle.h \
+ /usr/include/c++/11/bits/unordered_map.h \
+ /usr/include/c++/11/bits/erase_if.h /usr/include/SDL2/SDL_rect.h \
+ /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_error.h \
+ /usr/include/SDL2/SDL_pixels.h /usr/include/SDL2/SDL_endian.h \
+ /usr/include/SDL2/SDL_rwops.h \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build/SDL2pp/Export.hh \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Rect.hh \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Color.hh \
+ /usr/include/SDL2/SDL_pixels.h \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Window.hh \
+ /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_video.h \
+ /usr/include/SDL2/SDL_rect.h /usr/include/SDL2/SDL_surface.h \
+ /usr/include/SDL2/SDL_blendmode.h /usr/include/SDL2/SDL.h \
+ /usr/include/SDL2/SDL_main.h /usr/include/SDL2/SDL_assert.h \
+ /usr/include/SDL2/SDL_atomic.h /usr/include/SDL2/SDL_platform.h \
+ /usr/include/SDL2/SDL_audio.h /usr/include/SDL2/SDL_mutex.h \
+ /usr/include/SDL2/SDL_thread.h /usr/include/SDL2/SDL_clipboard.h \
  /usr/include/SDL2/SDL_cpuinfo.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/x86gprintrin.h \
@@ -332,8 +354,6 @@ CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o: \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h \
  /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_video.h \
- /usr/include/SDL2/SDL_pixels.h /usr/include/SDL2/SDL_rect.h \
- /usr/include/SDL2/SDL_surface.h /usr/include/SDL2/SDL_blendmode.h \
  /usr/include/SDL2/SDL_keyboard.h /usr/include/SDL2/SDL_keycode.h \
  /usr/include/SDL2/SDL_scancode.h /usr/include/SDL2/SDL_mouse.h \
  /usr/include/SDL2/SDL_joystick.h /usr/include/SDL2/SDL_gamecontroller.h \
@@ -352,25 +372,6 @@ CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./client/state_manager.h \
  /usr/include/SDL2/SDL_events.h \
  /home/lucas/CLionProjects/tallerprog_tp/./client/character.h \
- /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Renderer.hh \
- /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_blendmode.h \
- /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build/SDL2pp/Config.hh \
- /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Optional.hh \
- /usr/include/c++/11/optional \
- /usr/include/c++/11/bits/enable_special_members.h \
- /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Point.hh \
- /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
- /usr/include/c++/11/unordered_map /usr/include/c++/11/bits/hashtable.h \
- /usr/include/c++/11/bits/hashtable_policy.h \
- /usr/include/c++/11/bits/node_handle.h \
- /usr/include/c++/11/bits/unordered_map.h \
- /usr/include/c++/11/bits/erase_if.h /usr/include/SDL2/SDL_rect.h \
- /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build/SDL2pp/Export.hh \
- /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Rect.hh \
- /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Color.hh \
- /usr/include/SDL2/SDL_pixels.h \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SDL.hh \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Surface.hh \
- /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Texture.hh \
- /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Window.hh \
- /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_video.h
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Texture.hh

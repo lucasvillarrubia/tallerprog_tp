@@ -534,6 +534,28 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: ../client/client.cpp \
   ../client/client_comms/client_sender.h \
   ../common/comms/sender.h \
   ../client/client_threads/renderer.h \
+  _deps/libsdl2pp-src/SDL2pp/Renderer.hh \
+  /usr/include/SDL2/SDL_stdinc.h \
+  /usr/include/SDL2/SDL_blendmode.h \
+  _deps/libsdl2pp-build/SDL2pp/Config.hh \
+  _deps/libsdl2pp-src/SDL2pp/Optional.hh \
+  /usr/include/c++/11/optional \
+  /usr/include/c++/11/bits/enable_special_members.h \
+  _deps/libsdl2pp-src/SDL2pp/Point.hh \
+  /usr/include/c++/11/functional \
+  /usr/include/c++/11/bits/std_function.h \
+  /usr/include/c++/11/unordered_map \
+  /usr/include/c++/11/bits/hashtable.h \
+  /usr/include/c++/11/bits/hashtable_policy.h \
+  /usr/include/c++/11/bits/unordered_map.h \
+  /usr/include/SDL2/SDL_rect.h \
+  _deps/libsdl2pp-build/SDL2pp/Export.hh \
+  _deps/libsdl2pp-src/SDL2pp/Rect.hh \
+  _deps/libsdl2pp-src/SDL2pp/Color.hh \
+  /usr/include/SDL2/SDL_pixels.h \
+  _deps/libsdl2pp-src/SDL2pp/Window.hh \
+  /usr/include/SDL2/SDL_version.h \
+  /usr/include/SDL2/SDL_video.h \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc
 
@@ -757,7 +779,28 @@ CMakeFiles/taller_client.dir/client/client_comms/client_protocol.cpp.o: ../clien
   /usr/include/c++/11/bits/stl_vector.h \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
-  ../common/gamedata.h
+  ../common/gamedata.h \
+  /usr/include/c++/11/iostream \
+  /usr/include/c++/11/ostream \
+  /usr/include/c++/11/ios \
+  /usr/include/c++/11/bits/ios_base.h \
+  /usr/include/c++/11/bits/locale_classes.h \
+  /usr/include/c++/11/bits/locale_classes.tcc \
+  /usr/include/c++/11/streambuf \
+  /usr/include/c++/11/bits/streambuf.tcc \
+  /usr/include/c++/11/bits/basic_ios.h \
+  /usr/include/c++/11/bits/locale_facets.h \
+  /usr/include/c++/11/cwctype \
+  /usr/include/wctype.h \
+  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
+  /usr/include/c++/11/bits/streambuf_iterator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
+  /usr/include/c++/11/bits/locale_facets.tcc \
+  /usr/include/c++/11/bits/basic_ios.tcc \
+  /usr/include/c++/11/bits/ostream.tcc \
+  /usr/include/c++/11/istream \
+  /usr/include/c++/11/bits/istream.tcc
 
 CMakeFiles/taller_client.dir/client/client_comms/client_receiver.cpp.o: ../client/client_comms/client_receiver.cpp \
   /usr/include/stdc-predef.h \
@@ -1892,8 +1935,7 @@ CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o: ../client/cli
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/thread \
-  /usr/include/SDL2/SDL.h \
-  /usr/include/SDL2/SDL_main.h \
+  _deps/libsdl2pp-src/SDL2pp/Renderer.hh \
   /usr/include/SDL2/SDL_stdinc.h \
   /usr/include/SDL2/SDL_config.h \
   /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
@@ -1930,15 +1972,44 @@ CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o: ../client/cli
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
+  /usr/include/SDL2/SDL_blendmode.h \
+  _deps/libsdl2pp-build/SDL2pp/Config.hh \
+  _deps/libsdl2pp-src/SDL2pp/Optional.hh \
+  /usr/include/c++/11/optional \
+  /usr/include/c++/11/bits/enable_special_members.h \
+  _deps/libsdl2pp-src/SDL2pp/Point.hh \
+  /usr/include/c++/11/functional \
+  /usr/include/c++/11/bits/std_function.h \
+  /usr/include/c++/11/unordered_map \
+  /usr/include/c++/11/bits/hashtable.h \
+  /usr/include/c++/11/bits/hashtable_policy.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/unordered_map.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  /usr/include/SDL2/SDL_rect.h \
+  /usr/include/SDL2/SDL_stdinc.h \
+  /usr/include/SDL2/SDL_error.h \
+  /usr/include/SDL2/SDL_pixels.h \
+  /usr/include/SDL2/SDL_endian.h \
+  /usr/include/SDL2/SDL_rwops.h \
+  _deps/libsdl2pp-build/SDL2pp/Export.hh \
+  _deps/libsdl2pp-src/SDL2pp/Rect.hh \
+  _deps/libsdl2pp-src/SDL2pp/Color.hh \
+  /usr/include/SDL2/SDL_pixels.h \
+  _deps/libsdl2pp-src/SDL2pp/Window.hh \
+  /usr/include/SDL2/SDL_version.h \
+  /usr/include/SDL2/SDL_video.h \
+  /usr/include/SDL2/SDL_rect.h \
+  /usr/include/SDL2/SDL_surface.h \
+  /usr/include/SDL2/SDL_blendmode.h \
+  /usr/include/SDL2/SDL.h \
+  /usr/include/SDL2/SDL_main.h \
   /usr/include/SDL2/SDL_assert.h \
   /usr/include/SDL2/SDL_atomic.h \
   /usr/include/SDL2/SDL_platform.h \
   /usr/include/SDL2/SDL_audio.h \
-  /usr/include/SDL2/SDL_error.h \
-  /usr/include/SDL2/SDL_endian.h \
   /usr/include/SDL2/SDL_mutex.h \
   /usr/include/SDL2/SDL_thread.h \
-  /usr/include/SDL2/SDL_rwops.h \
   /usr/include/SDL2/SDL_clipboard.h \
   /usr/include/SDL2/SDL_cpuinfo.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h \
@@ -2027,10 +2098,6 @@ CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o: ../client/cli
   /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h \
   /usr/include/SDL2/SDL_events.h \
   /usr/include/SDL2/SDL_video.h \
-  /usr/include/SDL2/SDL_pixels.h \
-  /usr/include/SDL2/SDL_rect.h \
-  /usr/include/SDL2/SDL_surface.h \
-  /usr/include/SDL2/SDL_blendmode.h \
   /usr/include/SDL2/SDL_keyboard.h \
   /usr/include/SDL2/SDL_keycode.h \
   /usr/include/SDL2/SDL_scancode.h \
@@ -2062,33 +2129,9 @@ CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o: ../client/cli
   ../client/state_manager.h \
   /usr/include/SDL2/SDL_events.h \
   ../client/character.h \
-  _deps/libsdl2pp-src/SDL2pp/Renderer.hh \
-  /usr/include/SDL2/SDL_stdinc.h \
-  /usr/include/SDL2/SDL_blendmode.h \
-  _deps/libsdl2pp-build/SDL2pp/Config.hh \
-  _deps/libsdl2pp-src/SDL2pp/Optional.hh \
-  /usr/include/c++/11/optional \
-  /usr/include/c++/11/bits/enable_special_members.h \
-  _deps/libsdl2pp-src/SDL2pp/Point.hh \
-  /usr/include/c++/11/functional \
-  /usr/include/c++/11/bits/std_function.h \
-  /usr/include/c++/11/unordered_map \
-  /usr/include/c++/11/bits/hashtable.h \
-  /usr/include/c++/11/bits/hashtable_policy.h \
-  /usr/include/c++/11/bits/node_handle.h \
-  /usr/include/c++/11/bits/unordered_map.h \
-  /usr/include/c++/11/bits/erase_if.h \
-  /usr/include/SDL2/SDL_rect.h \
-  _deps/libsdl2pp-build/SDL2pp/Export.hh \
-  _deps/libsdl2pp-src/SDL2pp/Rect.hh \
-  _deps/libsdl2pp-src/SDL2pp/Color.hh \
-  /usr/include/SDL2/SDL_pixels.h \
   _deps/libsdl2pp-src/SDL2pp/SDL.hh \
   _deps/libsdl2pp-src/SDL2pp/Surface.hh \
-  _deps/libsdl2pp-src/SDL2pp/Texture.hh \
-  _deps/libsdl2pp-src/SDL2pp/Window.hh \
-  /usr/include/SDL2/SDL_version.h \
-  /usr/include/SDL2/SDL_video.h
+  _deps/libsdl2pp-src/SDL2pp/Texture.hh
 
 CMakeFiles/taller_client.dir/client/local_player.cpp.o: ../client/local_player.cpp \
   /usr/include/stdc-predef.h \
@@ -2362,15 +2405,12 @@ CMakeFiles/taller_client.dir/client/local_player.cpp.o: ../client/local_player.c
   /usr/include/c++/11/queue \
   /usr/include/c++/11/bits/stl_queue.h \
   ../client/client_comms/client_sender.h \
-  ../common/comms/sender.h
+  ../common/comms/sender.h \
+  ../common/hands_on_sockets/liberror.h
 
 CMakeFiles/taller_client.dir/client/main.cpp.o: ../client/main.cpp \
   /usr/include/stdc-predef.h \
-  ../client/client.h \
-  ../client/client_threads/event_listener.h \
-  /usr/include/c++/11/map \
-  /usr/include/c++/11/bits/stl_tree.h \
-  /usr/include/c++/11/bits/stl_algobase.h \
+  /usr/include/c++/11/exception \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
   /usr/include/features.h \
@@ -2383,14 +2423,45 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: ../client/main.cpp \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
   /usr/include/c++/11/pstl/pstl_config.h \
-  /usr/include/c++/11/bits/functexcept.h \
+  /usr/include/c++/11/bits/exception.h \
+  /usr/include/c++/11/bits/exception_ptr.h \
   /usr/include/c++/11/bits/exception_defines.h \
+  /usr/include/c++/11/bits/cxxabi_init_exception.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
+  /usr/include/c++/11/typeinfo \
+  /usr/include/c++/11/bits/hash_bytes.h \
+  /usr/include/c++/11/new \
+  /usr/include/c++/11/bits/move.h \
+  /usr/include/c++/11/type_traits \
+  /usr/include/c++/11/bits/nested_exception.h \
+  /usr/include/c++/11/iostream \
+  /usr/include/c++/11/ostream \
+  /usr/include/c++/11/ios \
+  /usr/include/c++/11/iosfwd \
+  /usr/include/c++/11/bits/stringfwd.h \
+  /usr/include/c++/11/bits/memoryfwd.h \
+  /usr/include/c++/11/bits/postypes.h \
+  /usr/include/c++/11/cwchar \
+  /usr/include/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/c++/11/bits/char_traits.h \
+  /usr/include/c++/11/bits/stl_algobase.h \
+  /usr/include/c++/11/bits/functexcept.h \
   /usr/include/c++/11/bits/cpp_type_traits.h \
   /usr/include/c++/11/ext/type_traits.h \
   /usr/include/c++/11/ext/numeric_traits.h \
   /usr/include/c++/11/bits/stl_pair.h \
-  /usr/include/c++/11/bits/move.h \
-  /usr/include/c++/11/type_traits \
   /usr/include/c++/11/compare \
   /usr/include/c++/11/concepts \
   /usr/include/c++/11/bits/stl_iterator_base_types.h \
@@ -2401,100 +2472,146 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: ../client/main.cpp \
   /usr/include/c++/11/bits/concept_check.h \
   /usr/include/c++/11/debug/assertions.h \
   /usr/include/c++/11/bits/stl_iterator.h \
-  /usr/include/c++/11/new \
-  /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/bits/stl_construct.h \
   /usr/include/c++/11/debug/debug.h \
   /usr/include/c++/11/bits/predefined_ops.h \
-  /usr/include/c++/11/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
-  /usr/include/c++/11/ext/new_allocator.h \
-  /usr/include/c++/11/bits/memoryfwd.h \
-  /usr/include/c++/11/bits/stl_function.h \
-  /usr/include/c++/11/backward/binders.h \
-  /usr/include/c++/11/ext/alloc_traits.h \
-  /usr/include/c++/11/bits/alloc_traits.h \
-  /usr/include/c++/11/ext/aligned_buffer.h \
-  /usr/include/c++/11/bits/node_handle.h \
-  /usr/include/c++/11/bits/stl_map.h \
-  /usr/include/c++/11/initializer_list \
-  /usr/include/c++/11/tuple \
-  /usr/include/c++/11/utility \
-  /usr/include/c++/11/bits/stl_relops.h \
-  /usr/include/c++/11/array \
-  /usr/include/c++/11/bits/range_access.h \
-  /usr/include/c++/11/bits/uses_allocator.h \
-  /usr/include/c++/11/bits/invoke.h \
-  /usr/include/c++/11/bits/stl_multimap.h \
-  /usr/include/c++/11/bits/erase_if.h \
-  /usr/include/SDL2/SDL_events.h \
-  /usr/include/SDL2/SDL_stdinc.h \
-  /usr/include/SDL2/SDL_config.h \
-  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
-  /usr/include/SDL2/SDL_platform.h \
-  /usr/include/SDL2/begin_code.h \
-  /usr/include/SDL2/close_code.h \
-  /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/include/c++/11/cstdint \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
+  /usr/include/stdint.h \
   /usr/include/x86_64-linux-gnu/bits/types.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
   /usr/include/x86_64-linux-gnu/bits/time64.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
-  /usr/include/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/c++/11/bits/localefwd.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
+  /usr/include/c++/11/clocale \
+  /usr/include/locale.h \
+  /usr/include/x86_64-linux-gnu/bits/locale.h \
+  /usr/include/c++/11/cctype \
+  /usr/include/ctype.h \
   /usr/include/x86_64-linux-gnu/bits/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endianness.h \
-  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
-  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
-  /usr/include/x86_64-linux-gnu/sys/select.h \
-  /usr/include/x86_64-linux-gnu/bits/select.h \
-  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/c++/11/bits/ios_base.h \
+  /usr/include/c++/11/ext/atomicity.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h \
+  /usr/include/pthread.h \
+  /usr/include/sched.h \
+  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
+  /usr/include/x86_64-linux-gnu/bits/sched.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
+  /usr/include/x86_64-linux-gnu/bits/cpu-set.h \
+  /usr/include/time.h \
+  /usr/include/x86_64-linux-gnu/bits/time.h \
+  /usr/include/x86_64-linux-gnu/bits/timex.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
+  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/timer_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
   /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
   /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h \
-  /usr/include/stdio.h \
-  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
-  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
-  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/floatn.h \
-  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
-  /usr/include/c++/11/stdlib.h \
+  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
+  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
+  /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
+  /usr/include/c++/11/bits/locale_classes.h \
+  /usr/include/c++/11/string \
+  /usr/include/c++/11/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/include/c++/11/ext/new_allocator.h \
+  /usr/include/c++/11/bits/ostream_insert.h \
+  /usr/include/c++/11/bits/cxxabi_forced.h \
+  /usr/include/c++/11/bits/stl_function.h \
+  /usr/include/c++/11/backward/binders.h \
+  /usr/include/c++/11/bits/stl_algo.h \
   /usr/include/c++/11/cstdlib \
   /usr/include/stdlib.h \
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
-  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
+  /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/include/endian.h \
+  /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/sys/select.h \
+  /usr/include/x86_64-linux-gnu/bits/select.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
   /usr/include/alloca.h \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   /usr/include/c++/11/bits/std_abs.h \
+  /usr/include/c++/11/bits/algorithmfwd.h \
+  /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/bits/stl_heap.h \
+  /usr/include/c++/11/bits/stl_tempbuf.h \
+  /usr/include/c++/11/bits/uniform_int_dist.h \
+  /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/bits/basic_string.h \
+  /usr/include/c++/11/ext/alloc_traits.h \
+  /usr/include/c++/11/bits/alloc_traits.h \
+  /usr/include/c++/11/string_view \
+  /usr/include/c++/11/bits/functional_hash.h \
+  /usr/include/c++/11/bits/ranges_base.h \
+  /usr/include/c++/11/bits/max_size_type.h \
+  /usr/include/c++/11/numbers \
+  /usr/include/c++/11/bits/string_view.tcc \
+  /usr/include/c++/11/ext/string_conversions.h \
+  /usr/include/c++/11/cstdio \
+  /usr/include/stdio.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
+  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
+  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
+  /usr/include/c++/11/cerrno \
+  /usr/include/errno.h \
+  /usr/include/x86_64-linux-gnu/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/include/x86_64-linux-gnu/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
+  /usr/include/c++/11/bits/charconv.h \
+  /usr/include/c++/11/bits/basic_string.tcc \
+  /usr/include/c++/11/bits/locale_classes.tcc \
+  /usr/include/c++/11/system_error \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
+  /usr/include/c++/11/stdexcept \
+  /usr/include/c++/11/streambuf \
+  /usr/include/c++/11/bits/streambuf.tcc \
+  /usr/include/c++/11/bits/basic_ios.h \
+  /usr/include/c++/11/bits/locale_facets.h \
+  /usr/include/c++/11/cwctype \
+  /usr/include/wctype.h \
+  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
+  /usr/include/c++/11/bits/streambuf_iterator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
+  /usr/include/c++/11/bits/locale_facets.tcc \
+  /usr/include/c++/11/bits/basic_ios.tcc \
+  /usr/include/c++/11/bits/ostream.tcc \
+  /usr/include/c++/11/istream \
+  /usr/include/c++/11/bits/istream.tcc \
+  /usr/include/SDL2/SDL.h \
+  /usr/include/SDL2/SDL_main.h \
+  /usr/include/SDL2/SDL_stdinc.h \
+  /usr/include/SDL2/SDL_config.h \
+  /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
+  /usr/include/SDL2/SDL_platform.h \
+  /usr/include/SDL2/begin_code.h \
+  /usr/include/SDL2/close_code.h \
+  /usr/include/c++/11/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/wchar.h \
-  /usr/include/x86_64-linux-gnu/bits/wchar.h \
-  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
-  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
   /usr/include/inttypes.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
-  /usr/include/stdint.h \
-  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
-  /usr/include/ctype.h \
   /usr/include/c++/11/math.h \
   /usr/include/c++/11/cmath \
   /usr/include/math.h \
@@ -2522,197 +2639,15 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: ../client/main.cpp \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
-  /usr/include/SDL2/SDL_error.h \
-  /usr/include/SDL2/SDL_video.h \
-  /usr/include/SDL2/SDL_pixels.h \
-  /usr/include/SDL2/SDL_endian.h \
-  /usr/include/SDL2/SDL_rect.h \
-  /usr/include/SDL2/SDL_rwops.h \
-  /usr/include/SDL2/SDL_surface.h \
-  /usr/include/SDL2/SDL_blendmode.h \
-  /usr/include/SDL2/SDL_keyboard.h \
-  /usr/include/SDL2/SDL_keycode.h \
-  /usr/include/SDL2/SDL_scancode.h \
-  /usr/include/SDL2/SDL_mouse.h \
-  /usr/include/SDL2/SDL_joystick.h \
-  /usr/include/SDL2/SDL_gamecontroller.h \
-  /usr/include/SDL2/SDL_sensor.h \
-  /usr/include/SDL2/SDL_quit.h \
-  /usr/include/SDL2/SDL_gesture.h \
-  /usr/include/SDL2/SDL_touch.h \
-  /usr/include/SDL2/SDL_keycode.h \
-  ../common/gamedata.h \
-  ../common/hands_on_threads/queue.h \
-  /usr/include/c++/11/climits \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
-  /usr/include/limits.h \
-  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
-  /usr/include/linux/limits.h \
-  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
-  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
-  /usr/include/c++/11/condition_variable \
-  /usr/include/c++/11/chrono \
-  /usr/include/c++/11/ratio \
-  /usr/include/c++/11/cstdint \
-  /usr/include/c++/11/ctime \
-  /usr/include/time.h \
-  /usr/include/x86_64-linux-gnu/bits/time.h \
-  /usr/include/x86_64-linux-gnu/bits/timex.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
-  /usr/include/c++/11/bits/parse_numbers.h \
-  /usr/include/c++/11/bits/std_mutex.h \
-  /usr/include/c++/11/system_error \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
-  /usr/include/c++/11/cerrno \
-  /usr/include/errno.h \
-  /usr/include/x86_64-linux-gnu/bits/errno.h \
-  /usr/include/linux/errno.h \
-  /usr/include/x86_64-linux-gnu/asm/errno.h \
-  /usr/include/asm-generic/errno.h \
-  /usr/include/asm-generic/errno-base.h \
-  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
-  /usr/include/c++/11/iosfwd \
-  /usr/include/c++/11/bits/stringfwd.h \
-  /usr/include/c++/11/bits/postypes.h \
-  /usr/include/c++/11/cwchar \
-  /usr/include/c++/11/stdexcept \
-  /usr/include/c++/11/exception \
-  /usr/include/c++/11/bits/exception_ptr.h \
-  /usr/include/c++/11/bits/cxxabi_init_exception.h \
-  /usr/include/c++/11/typeinfo \
-  /usr/include/c++/11/bits/hash_bytes.h \
-  /usr/include/c++/11/bits/nested_exception.h \
-  /usr/include/c++/11/string \
-  /usr/include/c++/11/bits/char_traits.h \
-  /usr/include/c++/11/bits/localefwd.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
-  /usr/include/c++/11/clocale \
-  /usr/include/locale.h \
-  /usr/include/x86_64-linux-gnu/bits/locale.h \
-  /usr/include/c++/11/cctype \
-  /usr/include/c++/11/bits/ostream_insert.h \
-  /usr/include/c++/11/bits/cxxabi_forced.h \
-  /usr/include/c++/11/bits/stl_algo.h \
-  /usr/include/c++/11/bits/algorithmfwd.h \
-  /usr/include/c++/11/bits/stl_heap.h \
-  /usr/include/c++/11/bits/stl_tempbuf.h \
-  /usr/include/c++/11/bits/uniform_int_dist.h \
-  /usr/include/c++/11/bits/basic_string.h \
-  /usr/include/c++/11/ext/atomicity.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h \
-  /usr/include/pthread.h \
-  /usr/include/sched.h \
-  /usr/include/x86_64-linux-gnu/bits/sched.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
-  /usr/include/x86_64-linux-gnu/bits/cpu-set.h \
-  /usr/include/x86_64-linux-gnu/bits/setjmp.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
-  /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
-  /usr/include/c++/11/string_view \
-  /usr/include/c++/11/bits/functional_hash.h \
-  /usr/include/c++/11/bits/ranges_base.h \
-  /usr/include/c++/11/bits/max_size_type.h \
-  /usr/include/c++/11/numbers \
-  /usr/include/c++/11/bits/string_view.tcc \
-  /usr/include/c++/11/ext/string_conversions.h \
-  /usr/include/c++/11/cstdio \
-  /usr/include/c++/11/bits/charconv.h \
-  /usr/include/c++/11/bits/basic_string.tcc \
-  /usr/include/c++/11/bits/unique_lock.h \
-  /usr/include/c++/11/bits/shared_ptr.h \
-  /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
-  /usr/include/c++/11/bits/refwrap.h \
-  /usr/include/c++/11/bits/unique_ptr.h \
-  /usr/include/c++/11/ostream \
-  /usr/include/c++/11/ios \
-  /usr/include/c++/11/bits/ios_base.h \
-  /usr/include/c++/11/bits/locale_classes.h \
-  /usr/include/c++/11/bits/locale_classes.tcc \
-  /usr/include/c++/11/streambuf \
-  /usr/include/c++/11/bits/streambuf.tcc \
-  /usr/include/c++/11/bits/basic_ios.h \
-  /usr/include/c++/11/bits/locale_facets.h \
-  /usr/include/c++/11/cwctype \
-  /usr/include/wctype.h \
-  /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h \
-  /usr/include/c++/11/bits/streambuf_iterator.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h \
-  /usr/include/c++/11/bits/locale_facets.tcc \
-  /usr/include/c++/11/bits/basic_ios.tcc \
-  /usr/include/c++/11/bits/ostream.tcc \
-  /usr/include/c++/11/ext/concurrence.h \
-  /usr/include/c++/11/stop_token \
-  /usr/include/c++/11/atomic \
-  /usr/include/c++/11/bits/atomic_base.h \
-  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
-  /usr/include/c++/11/bits/atomic_wait.h \
-  /usr/include/unistd.h \
-  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
-  /usr/include/x86_64-linux-gnu/bits/environments.h \
-  /usr/include/x86_64-linux-gnu/bits/confname.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
-  /usr/include/linux/close_range.h \
-  /usr/include/syscall.h \
-  /usr/include/x86_64-linux-gnu/sys/syscall.h \
-  /usr/include/x86_64-linux-gnu/asm/unistd.h \
-  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \
-  /usr/include/x86_64-linux-gnu/bits/syscall.h \
-  /usr/include/c++/11/bits/std_thread.h \
-  /usr/include/c++/11/semaphore \
-  /usr/include/c++/11/bits/semaphore_base.h \
-  /usr/include/c++/11/bits/atomic_timed_wait.h \
-  /usr/include/c++/11/bits/this_thread_sleep.h \
-  /usr/include/x86_64-linux-gnu/sys/time.h \
-  /usr/include/semaphore.h \
-  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
-  /usr/include/c++/11/deque \
-  /usr/include/c++/11/bits/stl_uninitialized.h \
-  /usr/include/c++/11/bits/stl_deque.h \
-  /usr/include/c++/11/bits/deque.tcc \
-  /usr/include/c++/11/mutex \
-  /usr/include/c++/11/queue \
-  /usr/include/c++/11/vector \
-  /usr/include/c++/11/bits/stl_vector.h \
-  /usr/include/c++/11/bits/stl_bvector.h \
-  /usr/include/c++/11/bits/vector.tcc \
-  /usr/include/c++/11/bits/stl_queue.h \
-  ../common/hands_on_threads/thread.h \
-  /usr/include/c++/11/iostream \
-  /usr/include/c++/11/istream \
-  /usr/include/c++/11/bits/istream.tcc \
-  /usr/include/c++/11/thread \
-  ../client/local_player.h \
-  ../client/client_comms/client_protocol.h \
-  ../common/hands_on_sockets/socket.h \
-  ../common/comms/protocol.h \
-  ../client/client_comms/client_receiver.h \
-  ../client/client_comms/client_protocol.h \
-  ../common/comms/receiver.h \
-  ../client/client_comms/client_sender.h \
-  ../common/comms/sender.h \
-  ../client/client_threads/renderer.h \
-  ../client/coordinates.h \
-  ../client/character.h \
-  ../client/state_manager.h \
-  /usr/include/SDL2/SDL.h \
-  /usr/include/SDL2/SDL_main.h \
   /usr/include/SDL2/SDL_assert.h \
   /usr/include/SDL2/SDL_atomic.h \
   /usr/include/SDL2/SDL_platform.h \
   /usr/include/SDL2/SDL_audio.h \
+  /usr/include/SDL2/SDL_error.h \
+  /usr/include/SDL2/SDL_endian.h \
   /usr/include/SDL2/SDL_mutex.h \
   /usr/include/SDL2/SDL_thread.h \
+  /usr/include/SDL2/SDL_rwops.h \
   /usr/include/SDL2/SDL_clipboard.h \
   /usr/include/SDL2/SDL_cpuinfo.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h \
@@ -2800,6 +2735,21 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: ../client/main.cpp \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h \
   /usr/include/SDL2/SDL_events.h \
+  /usr/include/SDL2/SDL_video.h \
+  /usr/include/SDL2/SDL_pixels.h \
+  /usr/include/SDL2/SDL_rect.h \
+  /usr/include/SDL2/SDL_surface.h \
+  /usr/include/SDL2/SDL_blendmode.h \
+  /usr/include/SDL2/SDL_keyboard.h \
+  /usr/include/SDL2/SDL_keycode.h \
+  /usr/include/SDL2/SDL_scancode.h \
+  /usr/include/SDL2/SDL_mouse.h \
+  /usr/include/SDL2/SDL_joystick.h \
+  /usr/include/SDL2/SDL_gamecontroller.h \
+  /usr/include/SDL2/SDL_sensor.h \
+  /usr/include/SDL2/SDL_quit.h \
+  /usr/include/SDL2/SDL_gesture.h \
+  /usr/include/SDL2/SDL_touch.h \
   /usr/include/SDL2/SDL_filesystem.h \
   /usr/include/SDL2/SDL_haptic.h \
   /usr/include/SDL2/SDL_hidapi.h \
@@ -2816,74 +2766,120 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: ../client/main.cpp \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_locale.h \
   /usr/include/SDL2/SDL_misc.h \
-  _deps/libsdl2pp-src/SDL2pp/SDL2pp.hh \
-  _deps/libsdl2pp-build/SDL2pp/Config.hh \
-  _deps/libsdl2pp-src/SDL2pp/SDL.hh \
+  ../client/client.h \
+  ../client/client_threads/event_listener.h \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  /usr/include/SDL2/SDL_events.h \
+  /usr/include/SDL2/SDL_keycode.h \
+  ../common/gamedata.h \
+  ../common/hands_on_threads/queue.h \
+  /usr/include/c++/11/climits \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
+  /usr/include/limits.h \
+  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+  /usr/include/linux/limits.h \
+  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
+  /usr/include/c++/11/condition_variable \
+  /usr/include/c++/11/chrono \
+  /usr/include/c++/11/ratio \
+  /usr/include/c++/11/ctime \
+  /usr/include/c++/11/bits/parse_numbers.h \
+  /usr/include/c++/11/bits/std_mutex.h \
+  /usr/include/c++/11/bits/unique_lock.h \
+  /usr/include/c++/11/bits/shared_ptr.h \
+  /usr/include/c++/11/bits/shared_ptr_base.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/bits/refwrap.h \
+  /usr/include/c++/11/bits/unique_ptr.h \
+  /usr/include/c++/11/ext/concurrence.h \
+  /usr/include/c++/11/stop_token \
+  /usr/include/c++/11/atomic \
+  /usr/include/c++/11/bits/atomic_base.h \
+  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/11/bits/atomic_wait.h \
+  /usr/include/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+  /usr/include/linux/close_range.h \
+  /usr/include/syscall.h \
+  /usr/include/x86_64-linux-gnu/sys/syscall.h \
+  /usr/include/x86_64-linux-gnu/asm/unistd.h \
+  /usr/include/x86_64-linux-gnu/asm/unistd_64.h \
+  /usr/include/x86_64-linux-gnu/bits/syscall.h \
+  /usr/include/c++/11/bits/std_thread.h \
+  /usr/include/c++/11/semaphore \
+  /usr/include/c++/11/bits/semaphore_base.h \
+  /usr/include/c++/11/bits/atomic_timed_wait.h \
+  /usr/include/c++/11/bits/this_thread_sleep.h \
+  /usr/include/x86_64-linux-gnu/sys/time.h \
+  /usr/include/semaphore.h \
+  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_uninitialized.h \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/mutex \
+  /usr/include/c++/11/queue \
+  /usr/include/c++/11/vector \
+  /usr/include/c++/11/bits/stl_vector.h \
+  /usr/include/c++/11/bits/stl_bvector.h \
+  /usr/include/c++/11/bits/vector.tcc \
+  /usr/include/c++/11/bits/stl_queue.h \
+  ../common/hands_on_threads/thread.h \
+  /usr/include/c++/11/thread \
+  ../client/local_player.h \
+  ../client/client_comms/client_protocol.h \
+  ../common/hands_on_sockets/socket.h \
+  ../common/comms/protocol.h \
+  ../client/client_comms/client_receiver.h \
+  ../client/client_comms/client_protocol.h \
+  ../common/comms/receiver.h \
+  ../client/client_comms/client_sender.h \
+  ../common/comms/sender.h \
+  ../client/client_threads/renderer.h \
+  _deps/libsdl2pp-src/SDL2pp/Renderer.hh \
   /usr/include/SDL2/SDL_stdinc.h \
-  _deps/libsdl2pp-build/SDL2pp/Export.hh \
-  _deps/libsdl2pp-src/SDL2pp/Exception.hh \
+  /usr/include/SDL2/SDL_blendmode.h \
+  _deps/libsdl2pp-build/SDL2pp/Config.hh \
   _deps/libsdl2pp-src/SDL2pp/Optional.hh \
   /usr/include/c++/11/optional \
   /usr/include/c++/11/bits/enable_special_members.h \
-  _deps/libsdl2pp-src/SDL2pp/AudioDevice.hh \
+  _deps/libsdl2pp-src/SDL2pp/Point.hh \
   /usr/include/c++/11/functional \
   /usr/include/c++/11/bits/std_function.h \
   /usr/include/c++/11/unordered_map \
   /usr/include/c++/11/bits/hashtable.h \
   /usr/include/c++/11/bits/hashtable_policy.h \
   /usr/include/c++/11/bits/unordered_map.h \
-  /usr/include/SDL2/SDL_audio.h \
-  /usr/include/SDL2/SDL_version.h \
-  _deps/libsdl2pp-src/SDL2pp/AudioSpec.hh \
-  _deps/libsdl2pp-src/SDL2pp/Wav.hh \
-  _deps/libsdl2pp-src/SDL2pp/Window.hh \
-  /usr/include/SDL2/SDL_video.h \
-  _deps/libsdl2pp-src/SDL2pp/Point.hh \
   /usr/include/SDL2/SDL_rect.h \
-  _deps/libsdl2pp-src/SDL2pp/Renderer.hh \
-  /usr/include/SDL2/SDL_blendmode.h \
+  _deps/libsdl2pp-build/SDL2pp/Export.hh \
   _deps/libsdl2pp-src/SDL2pp/Rect.hh \
   _deps/libsdl2pp-src/SDL2pp/Color.hh \
   /usr/include/SDL2/SDL_pixels.h \
-  _deps/libsdl2pp-src/SDL2pp/Surface.hh \
-  _deps/libsdl2pp-src/SDL2pp/Texture.hh \
-  _deps/libsdl2pp-src/SDL2pp/RWops.hh \
-  /usr/include/SDL2/SDL_rwops.h \
-  _deps/libsdl2pp-src/SDL2pp/ContainerRWops.hh \
-  /usr/include/c++/11/algorithm \
-  /usr/include/c++/11/bits/ranges_algo.h \
-  /usr/include/c++/11/bits/ranges_algobase.h \
-  /usr/include/c++/11/iterator \
-  /usr/include/c++/11/bits/stream_iterator.h \
-  /usr/include/c++/11/bits/ranges_util.h \
-  /usr/include/c++/11/pstl/glue_algorithm_defs.h \
-  /usr/include/c++/11/pstl/execution_defs.h \
-  _deps/libsdl2pp-src/SDL2pp/StreamRWops.hh \
-  /usr/include/c++/11/cassert \
-  /usr/include/assert.h \
-  _deps/libsdl2pp-src/SDL2pp/SDLTTF.hh \
-  _deps/libsdl2pp-src/SDL2pp/Font.hh \
-  /usr/local/include/SDL2/SDL_ttf.h \
-  /usr/include/SDL2/SDL.h \
-  /usr/include/SDL2/begin_code.h \
-  /usr/include/SDL2/close_code.h \
-  _deps/libsdl2pp-src/SDL2pp/SDLImage.hh \
-  _deps/libsdl2pp-src/SDL2pp/Chunk.hh \
-  /usr/local/include/SDL2/SDL_mixer.h \
-  /usr/include/SDL2/SDL_endian.h \
-  _deps/libsdl2pp-src/SDL2pp/Mixer.hh \
-  /usr/include/c++/11/memory \
-  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
-  /usr/include/c++/11/bits/align.h \
-  /usr/include/c++/11/bit \
-  /usr/include/c++/11/bits/shared_ptr_atomic.h \
-  /usr/include/c++/11/backward/auto_ptr.h \
-  /usr/include/c++/11/bits/ranges_uninitialized.h \
-  /usr/include/c++/11/bits/uses_allocator_args.h \
-  /usr/include/c++/11/pstl/glue_memory_defs.h \
-  _deps/libsdl2pp-src/SDL2pp/Music.hh \
-  _deps/libsdl2pp-src/SDL2pp/SDLMixer.hh \
-  /usr/local/include/SDL2/SDL_image.h
+  _deps/libsdl2pp-src/SDL2pp/Window.hh \
+  /usr/include/SDL2/SDL_version.h \
+  /usr/include/SDL2/SDL_video.h \
+  _deps/libsdl2pp-src/SDL2pp/SDL.hh
 
 CMakeFiles/taller_client.dir/client/state_manager.cpp.o: ../client/state_manager.cpp \
   /usr/include/stdc-predef.h \
@@ -3042,49 +3038,9 @@ CMakeFiles/taller_client.dir/client/state_manager.cpp.o: ../client/state_manager
   ../common/gamedata.h
 
 
-_deps/libsdl2pp-src/SDL2pp/SDLMixer.hh:
-
-/usr/include/c++/11/pstl/glue_memory_defs.h:
-
-/usr/include/c++/11/bit:
-
-/usr/include/c++/11/bits/stl_raw_storage_iter.h:
-
-/usr/include/c++/11/memory:
-
-/usr/local/include/SDL2/SDL_mixer.h:
-
-_deps/libsdl2pp-src/SDL2pp/Chunk.hh:
-
-_deps/libsdl2pp-src/SDL2pp/Font.hh:
-
-_deps/libsdl2pp-src/SDL2pp/SDLTTF.hh:
-
-/usr/include/c++/11/bits/stream_iterator.h:
-
-_deps/libsdl2pp-src/SDL2pp/RWops.hh:
-
-_deps/libsdl2pp-src/SDL2pp/Wav.hh:
-
-_deps/libsdl2pp-src/SDL2pp/SDL2pp.hh:
-
-/usr/include/c++/11/bits/uses_allocator_args.h:
-
-_deps/libsdl2pp-src/SDL2pp/Window.hh:
-
 _deps/libsdl2pp-src/SDL2pp/Texture.hh:
 
 _deps/libsdl2pp-src/SDL2pp/SDL.hh:
-
-_deps/libsdl2pp-src/SDL2pp/Surface.hh:
-
-_deps/libsdl2pp-src/SDL2pp/Rect.hh:
-
-/usr/include/c++/11/bits/hashtable_policy.h:
-
-/usr/include/c++/11/unordered_map:
-
-_deps/libsdl2pp-src/SDL2pp/Optional.hh:
 
 ../client/state_manager.h:
 
@@ -3101,12 +3057,6 @@ _deps/libsdl2pp-src/SDL2pp/Optional.hh:
 /usr/lib/gcc/x86_64-linux-gnu/11/include/amxbf16intrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h:
-
-/usr/include/c++/11/backward/auto_ptr.h:
-
-_deps/libsdl2pp-build/SDL2pp/Export.hh:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16vlintrin.h:
 
@@ -3156,10 +3106,6 @@ _deps/libsdl2pp-build/SDL2pp/Export.hh:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/wmmintrin.h:
 
-/usr/include/c++/11/bits/unordered_map.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/tmmintrin.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/pmmintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h:
@@ -3198,8 +3144,6 @@ _deps/libsdl2pp-build/SDL2pp/Export.hh:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/popcntintrin.h:
 
-/usr/include/c++/11/cassert:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h:
@@ -3228,19 +3172,35 @@ _deps/libsdl2pp-build/SDL2pp/Export.hh:
 
 /usr/include/SDL2/SDL_assert.h:
 
-/usr/include/c++/11/optional:
-
-/usr/include/SDL2/SDL.h:
-
 ../client/client_threads/renderer.cpp:
-
-_deps/libsdl2pp-src/SDL2pp/SDLImage.hh:
 
 ../client/client_comms/client_sender.cpp:
 
-../common/comms/sender.h:
+_deps/libsdl2pp-src/SDL2pp/Window.hh:
 
-_deps/libsdl2pp-src/SDL2pp/AudioDevice.hh:
+_deps/libsdl2pp-src/SDL2pp/Surface.hh:
+
+_deps/libsdl2pp-src/SDL2pp/Rect.hh:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h:
+
+_deps/libsdl2pp-build/SDL2pp/Export.hh:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/tmmintrin.h:
+
+/usr/include/c++/11/bits/unordered_map.h:
+
+/usr/include/c++/11/bits/hashtable_policy.h:
+
+/usr/include/c++/11/unordered_map:
+
+/usr/include/SDL2/SDL.h:
+
+/usr/include/c++/11/optional:
+
+_deps/libsdl2pp-src/SDL2pp/Optional.hh:
+
+../common/comms/sender.h:
 
 ../client/client_comms/client_receiver.h:
 
@@ -3265,8 +3225,6 @@ _deps/libsdl2pp-src/SDL2pp/AudioDevice.hh:
 /usr/include/c++/11/bits/stl_vector.h:
 
 /usr/include/c++/11/vector:
-
-/usr/include/c++/11/bits/shared_ptr_atomic.h:
 
 /usr/include/SDL2/SDL_clipboard.h:
 
@@ -3311,8 +3269,6 @@ _deps/libsdl2pp-src/SDL2pp/AudioDevice.hh:
 /usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/confname.h:
-
-/usr/include/c++/11/bits/ranges_algobase.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix_opt.h:
 
@@ -3389,8 +3345,6 @@ _deps/libsdl2pp-src/SDL2pp/AudioDevice.hh:
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
 /usr/include/strings.h:
-
-/usr/include/c++/11/bits/ranges_uninitialized.h:
 
 ../client/main.cpp:
 
@@ -3506,8 +3460,6 @@ _deps/libsdl2pp-src/SDL2pp/Renderer.hh:
 
 /usr/include/c++/11/tr1/exp_integral.tcc:
 
-/usr/include/c++/11/bits/ranges_algo.h:
-
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
 /usr/include/c++/11/bits/stl_iterator.h:
@@ -3542,8 +3494,6 @@ _deps/libsdl2pp-src/SDL2pp/Point.hh:
 
 /usr/include/wchar.h:
 
-/usr/local/include/SDL2/SDL_ttf.h:
-
 /usr/include/c++/11/bits/cxxabi_init_exception.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/clwbintrin.h:
@@ -3564,9 +3514,11 @@ _deps/libsdl2pp-src/SDL2pp/Point.hh:
 
 /usr/include/c++/11/bits/invoke.h:
 
-_deps/libsdl2pp-src/SDL2pp/Color.hh:
+../common/hands_on_sockets/liberror.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/xtestintrin.h:
+
+_deps/libsdl2pp-src/SDL2pp/Color.hh:
 
 /usr/include/c++/11/cstdint:
 
@@ -3620,10 +3572,6 @@ _deps/libsdl2pp-src/SDL2pp/Color.hh:
 
 /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h:
 
-/usr/include/c++/11/bits/ranges_util.h:
-
-_deps/libsdl2pp-src/SDL2pp/Exception.hh:
-
 /usr/include/SDL2/SDL_version.h:
 
 /usr/include/SDL2/begin_code.h:
@@ -3668,8 +3616,6 @@ _deps/libsdl2pp-src/SDL2pp/Exception.hh:
 
 /usr/include/c++/11/bits/char_traits.h:
 
-_deps/libsdl2pp-src/SDL2pp/Mixer.hh:
-
 /usr/include/asm-generic/errno-base.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h:
@@ -3695,8 +3641,6 @@ _deps/libsdl2pp-src/SDL2pp/Mixer.hh:
 /usr/include/c++/11/chrono:
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
-
-_deps/libsdl2pp-src/SDL2pp/Music.hh:
 
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
@@ -3778,10 +3722,6 @@ _deps/libsdl2pp-src/SDL2pp/Music.hh:
 
 /usr/include/c++/11/bits/hash_bytes.h:
 
-/usr/include/assert.h:
-
-_deps/libsdl2pp-src/SDL2pp/AudioSpec.hh:
-
 /usr/include/SDL2/SDL_joystick.h:
 
 /usr/include/c++/11/numbers:
@@ -3830,8 +3770,6 @@ _deps/libsdl2pp-src/SDL2pp/AudioSpec.hh:
 
 /usr/include/alloca.h:
 
-/usr/include/c++/11/pstl/execution_defs.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavesintrin.h:
 
 /usr/include/c++/11/bits/algorithmfwd.h:
@@ -3841,8 +3779,6 @@ _deps/libsdl2pp-src/SDL2pp/AudioSpec.hh:
 /usr/include/c++/11/iosfwd:
 
 /usr/include/c++/11/initializer_list:
-
-/usr/include/c++/11/iterator:
 
 /usr/include/x86_64-linux-gnu/bits/floatn.h:
 
@@ -3861,8 +3797,6 @@ _deps/libsdl2pp-src/SDL2pp/AudioSpec.hh:
 /usr/include/c++/11/bits/alloc_traits.h:
 
 /usr/include/c++/11/bits/functional_hash.h:
-
-/usr/include/c++/11/bits/align.h:
 
 /usr/include/c++/11/bits/max_size_type.h:
 
@@ -3926,15 +3860,11 @@ _deps/libsdl2pp-build/SDL2pp/Config.hh:
 
 /usr/include/c++/11/system_error:
 
-_deps/libsdl2pp-src/SDL2pp/ContainerRWops.hh:
-
 /usr/include/c++/11/ios:
 
 /usr/include/c++/11/utility:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
-
-/usr/include/c++/11/pstl/glue_algorithm_defs.h:
 
 /usr/include/c++/11/stdexcept:
 
@@ -3960,8 +3890,6 @@ _deps/libsdl2pp-src/SDL2pp/ContainerRWops.hh:
 
 /usr/include/c++/11/bits/streambuf_iterator.h:
 
-/usr/local/include/SDL2/SDL_image.h:
-
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
 
 /usr/include/c++/11/bits/this_thread_sleep.h:
@@ -3975,8 +3903,6 @@ _deps/libsdl2pp-src/SDL2pp/ContainerRWops.hh:
 /usr/include/c++/11/istream:
 
 /usr/include/c++/11/bits/istream.tcc:
-
-/usr/include/c++/11/algorithm:
 
 ../client/client.cpp:
 
@@ -4059,8 +3985,6 @@ _deps/libsdl2pp-src/SDL2pp/ContainerRWops.hh:
 /usr/lib/gcc/x86_64-linux-gnu/11/include/x86gprintrin.h:
 
 /usr/include/c++/11/tr1/riemann_zeta.tcc:
-
-_deps/libsdl2pp-src/SDL2pp/StreamRWops.hh:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h:
 

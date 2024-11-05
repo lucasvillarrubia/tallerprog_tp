@@ -8,19 +8,19 @@
 
 Player::Player(Socket&& skt, Queue<Gameaction>& usr_entr):
         server_messages(usr_entr),
-        client_is_disconnected(true),
-        protocol(std::move(skt), client_is_disconnected),
-        sender(client_is_disconnected, protocol, messages_queue),
-        receiver(client_is_disconnected, protocol, server_messages) {}
+        client_is_connected(false),
+        protocol(std::move(skt), client_is_connected),
+        sender(client_is_connected, protocol, messages_queue),
+        receiver(client_is_connected, protocol, server_messages) {}
 
 void Player::start() {
     try {
-        client_is_disconnected.store(false);
+        client_is_connected.store(true);
         receiver.start();
         sender.start();
     } catch (const LibError& e) {
         std::cerr << "Liberror en el player!\n";
-        client_is_disconnected.store(true);
+        client_is_connected.store(false);
     } catch (const std::exception& e) {
         std::cerr << e.what() << '\n';
     } catch (...) {
@@ -29,15 +29,15 @@ void Player::start() {
 }
 
 void Player::add_message_to_queue(const Gamestate& to_send) {
-    if (not client_is_disconnected.load()) {
+    if (client_is_connected.load()) {
         messages_queue.try_push(to_send);
     }
 }
 
-bool Player::is_connected() { return !client_is_disconnected.load(); }
+bool Player::is_connected() { return client_is_connected.load(); }
 
 void Player::disconnect() {
-    client_is_disconnected.store(true);
+    client_is_connected.store(false);
     messages_queue.close();
     protocol.close_comms();
     receiver.stop();

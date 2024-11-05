@@ -10,6 +10,6 @@ void ServerReceiver::receive_data()
 {
     Gameaction received_event;
     protocol.receive_message(received_event);
-    if (not client_disconnected.load())
+    if (client_is_connected.load())
         clients_actions.push(received_event);
 }

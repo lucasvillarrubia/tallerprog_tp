@@ -6,7 +6,7 @@ ServerSender::ServerSender(std::atomic_bool& con_stat, ServerProtocol& srv_prot,
 void ServerSender::send_data()
 {
     Gamestate new_event = server_messages.pop();
-    if (not client_disconnected.load())
+    if (client_is_connected.load())
         protocol.send_message(new_event);
 }
 

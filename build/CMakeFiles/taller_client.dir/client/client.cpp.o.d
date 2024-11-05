@@ -268,4 +268,21 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/renderer.h \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Renderer.hh \
+ /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_blendmode.h \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build/SDL2pp/Config.hh \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Optional.hh \
+ /usr/include/c++/11/optional \
+ /usr/include/c++/11/bits/enable_special_members.h \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Point.hh \
+ /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
+ /usr/include/c++/11/unordered_map /usr/include/c++/11/bits/hashtable.h \
+ /usr/include/c++/11/bits/hashtable_policy.h \
+ /usr/include/c++/11/bits/unordered_map.h /usr/include/SDL2/SDL_rect.h \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build/SDL2pp/Export.hh \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Rect.hh \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Color.hh \
+ /usr/include/SDL2/SDL_pixels.h \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Window.hh \
+ /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_video.h \
  /usr/include/c++/11/sstream /usr/include/c++/11/bits/sstream.tcc

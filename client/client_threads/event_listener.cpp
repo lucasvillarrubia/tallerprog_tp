@@ -3,10 +3,11 @@
 #include <SDL_events.h>
 
 
-EventListener::EventListener(std::atomic_bool& connection, std::condition_variable& con_warner, Queue<Gameaction>& q):
+// EventListener::EventListener(std::atomic_bool& connection, std::condition_variable& con_warner, Queue<Gameaction>& q):
+EventListener::EventListener(std::atomic_bool& connection, Queue<Gameaction>& q):
         is_running(false),
         game_on(connection),
-        connection_ended(con_warner),
+        // connection_ended(con_warner),
         events(q) {}
 
 void EventListener::run() {
@@ -23,21 +24,30 @@ void EventListener::run() {
             const int type_code = codes_by_event_type.at(event.type);
             const int key_code = codes_by_key.at(event.key.keysym.sym);
             Gameaction new_action(1, type_code, key_code);
-            events.push(new_action);
+            events.try_push(new_action);
+                // std::cout << "Evento ya está en la queue para mandar! " << type_code << " " << key_code << "\n";
             if(type == SDL_QUIT || key == SDLK_ESCAPE) {
                 game_on.store(false);
-                connection_ended.notify_all();
+                // connection_ended.notify_all();
                 is_running.store(false);
             }
         }
     }
+    catch (ClosedQueue const& e)
+    {
+        std::cerr << "Se cerró la queue del juego?! " << e.what() << '\n';
+    }
     catch (const std::exception& e)
     {
-        std::cerr << "Exception thrown on a client's eventloop: " << e.what() << '\n';
+        std::cerr << "Exception caught in the renderer thread: " << e.what() << '\n';
     }
     catch (...)
     {
-        std::cerr << "Unknown exception on a client's eventloop." << '\n';
+        std::cerr << "Unknown exception on the renderloop.\n";
     }
 }
 
+void EventListener::stop() {
+    _keep_running = false;
+    is_running.store(false);
+}

@@ -106,7 +106,8 @@ if(TALLER_CLIENT)
             client/character.h
             client/state_manager.cpp
             client/state_manager.h
-            client/coordinates.h)
+            client/coordinates.h
+    )
 
     # Make them depend on taller_common lib
     add_dependencies(taller_client taller_common SDL2pp::SDL2pp)
@@ -150,7 +151,7 @@ if(TALLER_SERVER)
             server/weapon.h
             server/server_threads/acceptor.cpp
             server/server_threads/gameplay.cpp
-            server/monitored_list.cpp
+            # server/monitored_list.cpp
             server/player.cpp
             server/server_comms/server_protocol.cpp
             server/server_comms/server_receiver.cpp
@@ -161,7 +162,11 @@ if(TALLER_SERVER)
             server/duck.cpp
             server/duck.h
             server/state_manager.cpp
-            server/state_manager.h)
+            server/state_manager.h
+            server/server_threads/match_manager.cpp
+            server/server_threads/match_manager.h
+            server/match.cpp
+            server/match.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)

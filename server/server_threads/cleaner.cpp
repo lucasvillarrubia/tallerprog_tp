@@ -1,6 +1,7 @@
 #include "cleaner.h"
 
-Cleaner::Cleaner(MonitoredList& player_list): is_running(false), players(player_list) {}
+
+Cleaner::Cleaner(MonitoredList<Match*>& match_list): is_running(false), matches(match_list) {}
 
 void Cleaner::run() {
     try
@@ -11,7 +12,7 @@ void Cleaner::run() {
             // si no, ver la manera de implementar un wait acá y que en el gameloop se notifique
             // cuando se desconecte un jugador (y se broadcastee ese estado a los jugadores)
             // la std::condition_variable la tendría Server (main thread), Cleaner y Gameloop sólo refs
-            players.clean_up();
+            matches.clean_up();
         }
     }
     catch (const std::exception& e)
