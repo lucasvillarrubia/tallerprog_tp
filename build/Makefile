@@ -832,29 +832,29 @@ server/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/main.cpp.s
 .PHONY : server/main.cpp.s
 
-server/monitored_list.o: server/monitored_list.cpp.o
-.PHONY : server/monitored_list.o
+server/match.o: server/match.cpp.o
+.PHONY : server/match.o
 
 # target to build an object file
-server/monitored_list.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/monitored_list.cpp.o
-.PHONY : server/monitored_list.cpp.o
+server/match.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/match.cpp.o
+.PHONY : server/match.cpp.o
 
-server/monitored_list.i: server/monitored_list.cpp.i
-.PHONY : server/monitored_list.i
+server/match.i: server/match.cpp.i
+.PHONY : server/match.i
 
 # target to preprocess a source file
-server/monitored_list.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/monitored_list.cpp.i
-.PHONY : server/monitored_list.cpp.i
+server/match.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/match.cpp.i
+.PHONY : server/match.cpp.i
 
-server/monitored_list.s: server/monitored_list.cpp.s
-.PHONY : server/monitored_list.s
+server/match.s: server/match.cpp.s
+.PHONY : server/match.s
 
 # target to generate assembly for a file
-server/monitored_list.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/monitored_list.cpp.s
-.PHONY : server/monitored_list.cpp.s
+server/match.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/match.cpp.s
+.PHONY : server/match.cpp.s
 
 server/player.o: server/player.cpp.o
 .PHONY : server/player.o
@@ -1048,6 +1048,30 @@ server/server_threads/gameplay.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.s
 .PHONY : server/server_threads/gameplay.cpp.s
 
+server/server_threads/match_manager.o: server/server_threads/match_manager.cpp.o
+.PHONY : server/server_threads/match_manager.o
+
+# target to build an object file
+server/server_threads/match_manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o
+.PHONY : server/server_threads/match_manager.cpp.o
+
+server/server_threads/match_manager.i: server/server_threads/match_manager.cpp.i
+.PHONY : server/server_threads/match_manager.i
+
+# target to preprocess a source file
+server/server_threads/match_manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.i
+.PHONY : server/server_threads/match_manager.cpp.i
+
+server/server_threads/match_manager.s: server/server_threads/match_manager.cpp.s
+.PHONY : server/server_threads/match_manager.s
+
+# target to generate assembly for a file
+server/server_threads/match_manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.s
+.PHONY : server/server_threads/match_manager.cpp.s
+
 server/state_manager.o: server/state_manager.cpp.o
 .PHONY : server/state_manager.o
 
@@ -1185,9 +1209,9 @@ help:
 	@echo "... server/main.o"
 	@echo "... server/main.i"
 	@echo "... server/main.s"
-	@echo "... server/monitored_list.o"
-	@echo "... server/monitored_list.i"
-	@echo "... server/monitored_list.s"
+	@echo "... server/match.o"
+	@echo "... server/match.i"
+	@echo "... server/match.s"
 	@echo "... server/player.o"
 	@echo "... server/player.i"
 	@echo "... server/player.s"
@@ -1212,6 +1236,9 @@ help:
 	@echo "... server/server_threads/gameplay.o"
 	@echo "... server/server_threads/gameplay.i"
 	@echo "... server/server_threads/gameplay.s"
+	@echo "... server/server_threads/match_manager.o"
+	@echo "... server/server_threads/match_manager.i"
+	@echo "... server/server_threads/match_manager.s"
 	@echo "... server/state_manager.o"
 	@echo "... server/state_manager.i"
 	@echo "... server/state_manager.s"

@@ -97,24 +97,10 @@ CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/gameplay.cpp -o CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.s
 
-CMakeFiles/taller_server.dir/server/monitored_list.cpp.o: CMakeFiles/taller_server.dir/flags.make
-CMakeFiles/taller_server.dir/server/monitored_list.cpp.o: ../server/monitored_list.cpp
-CMakeFiles/taller_server.dir/server/monitored_list.cpp.o: CMakeFiles/taller_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/taller_server.dir/server/monitored_list.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_server.dir/server/monitored_list.cpp.o -MF CMakeFiles/taller_server.dir/server/monitored_list.cpp.o.d -o CMakeFiles/taller_server.dir/server/monitored_list.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.cpp
-
-CMakeFiles/taller_server.dir/server/monitored_list.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_server.dir/server/monitored_list.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.cpp > CMakeFiles/taller_server.dir/server/monitored_list.cpp.i
-
-CMakeFiles/taller_server.dir/server/monitored_list.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_server.dir/server/monitored_list.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.cpp -o CMakeFiles/taller_server.dir/server/monitored_list.cpp.s
-
 CMakeFiles/taller_server.dir/server/player.cpp.o: CMakeFiles/taller_server.dir/flags.make
 CMakeFiles/taller_server.dir/server/player.cpp.o: ../server/player.cpp
 CMakeFiles/taller_server.dir/server/player.cpp.o: CMakeFiles/taller_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/taller_server.dir/server/player.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/taller_server.dir/server/player.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_server.dir/server/player.cpp.o -MF CMakeFiles/taller_server.dir/server/player.cpp.o.d -o CMakeFiles/taller_server.dir/server/player.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/player.cpp
 
 CMakeFiles/taller_server.dir/server/player.cpp.i: cmake_force
@@ -128,7 +114,7 @@ CMakeFiles/taller_server.dir/server/player.cpp.s: cmake_force
 CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o: CMakeFiles/taller_server.dir/flags.make
 CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o: ../server/server_comms/server_protocol.cpp
 CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o: CMakeFiles/taller_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o -MF CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o.d -o CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_protocol.cpp
 
 CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.i: cmake_force
@@ -142,7 +128,7 @@ CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.s: cmake_fo
 CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o: CMakeFiles/taller_server.dir/flags.make
 CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o: ../server/server_comms/server_receiver.cpp
 CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o: CMakeFiles/taller_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o -MF CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o.d -o CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_receiver.cpp
 
 CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.i: cmake_force
@@ -156,7 +142,7 @@ CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.s: cmake_fo
 CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o: CMakeFiles/taller_server.dir/flags.make
 CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o: ../server/server_comms/server_sender.cpp
 CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o: CMakeFiles/taller_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o -MF CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o.d -o CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_sender.cpp
 
 CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.i: cmake_force
@@ -170,7 +156,7 @@ CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.s: cmake_forc
 CMakeFiles/taller_server.dir/server/server.cpp.o: CMakeFiles/taller_server.dir/flags.make
 CMakeFiles/taller_server.dir/server/server.cpp.o: ../server/server.cpp
 CMakeFiles/taller_server.dir/server/server.cpp.o: CMakeFiles/taller_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/taller_server.dir/server/server.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/taller_server.dir/server/server.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_server.dir/server/server.cpp.o -MF CMakeFiles/taller_server.dir/server/server.cpp.o.d -o CMakeFiles/taller_server.dir/server/server.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server.cpp
 
 CMakeFiles/taller_server.dir/server/server.cpp.i: cmake_force
@@ -184,7 +170,7 @@ CMakeFiles/taller_server.dir/server/server.cpp.s: cmake_force
 CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o: CMakeFiles/taller_server.dir/flags.make
 CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o: ../server/server_threads/cleaner.cpp
 CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o: CMakeFiles/taller_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o -MF CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o.d -o CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/cleaner.cpp
 
 CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.i: cmake_force
@@ -198,7 +184,7 @@ CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.s: cmake_force
 CMakeFiles/taller_server.dir/server/duck.cpp.o: CMakeFiles/taller_server.dir/flags.make
 CMakeFiles/taller_server.dir/server/duck.cpp.o: ../server/duck.cpp
 CMakeFiles/taller_server.dir/server/duck.cpp.o: CMakeFiles/taller_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/taller_server.dir/server/duck.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/taller_server.dir/server/duck.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_server.dir/server/duck.cpp.o -MF CMakeFiles/taller_server.dir/server/duck.cpp.o.d -o CMakeFiles/taller_server.dir/server/duck.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/duck.cpp
 
 CMakeFiles/taller_server.dir/server/duck.cpp.i: cmake_force
@@ -212,7 +198,7 @@ CMakeFiles/taller_server.dir/server/duck.cpp.s: cmake_force
 CMakeFiles/taller_server.dir/server/state_manager.cpp.o: CMakeFiles/taller_server.dir/flags.make
 CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager.cpp
 CMakeFiles/taller_server.dir/server/state_manager.cpp.o: CMakeFiles/taller_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/taller_server.dir/server/state_manager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/taller_server.dir/server/state_manager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_server.dir/server/state_manager.cpp.o -MF CMakeFiles/taller_server.dir/server/state_manager.cpp.o.d -o CMakeFiles/taller_server.dir/server/state_manager.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/state_manager.cpp
 
 CMakeFiles/taller_server.dir/server/state_manager.cpp.i: cmake_force
@@ -223,10 +209,38 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_server.dir/server/state_manager.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/server/state_manager.cpp -o CMakeFiles/taller_server.dir/server/state_manager.cpp.s
 
+CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o: CMakeFiles/taller_server.dir/flags.make
+CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o: ../server/server_threads/match_manager.cpp
+CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o: CMakeFiles/taller_server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o -MF CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o.d -o CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/match_manager.cpp
+
+CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/match_manager.cpp > CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.i
+
+CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/match_manager.cpp -o CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.s
+
+CMakeFiles/taller_server.dir/server/match.cpp.o: CMakeFiles/taller_server.dir/flags.make
+CMakeFiles/taller_server.dir/server/match.cpp.o: ../server/match.cpp
+CMakeFiles/taller_server.dir/server/match.cpp.o: CMakeFiles/taller_server.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/taller_server.dir/server/match.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_server.dir/server/match.cpp.o -MF CMakeFiles/taller_server.dir/server/match.cpp.o.d -o CMakeFiles/taller_server.dir/server/match.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/match.cpp
+
+CMakeFiles/taller_server.dir/server/match.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_server.dir/server/match.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/server/match.cpp > CMakeFiles/taller_server.dir/server/match.cpp.i
+
+CMakeFiles/taller_server.dir/server/match.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_server.dir/server/match.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/server/match.cpp -o CMakeFiles/taller_server.dir/server/match.cpp.s
+
 CMakeFiles/taller_server.dir/server/main.cpp.o: CMakeFiles/taller_server.dir/flags.make
 CMakeFiles/taller_server.dir/server/main.cpp.o: ../server/main.cpp
 CMakeFiles/taller_server.dir/server/main.cpp.o: CMakeFiles/taller_server.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/taller_server.dir/server/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/taller_server.dir/server/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_server.dir/server/main.cpp.o -MF CMakeFiles/taller_server.dir/server/main.cpp.o.d -o CMakeFiles/taller_server.dir/server/main.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/main.cpp
 
 CMakeFiles/taller_server.dir/server/main.cpp.i: cmake_force
@@ -241,7 +255,6 @@ CMakeFiles/taller_server.dir/server/main.cpp.s: cmake_force
 taller_server_OBJECTS = \
 "CMakeFiles/taller_server.dir/server/server_threads/acceptor.cpp.o" \
 "CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o" \
-"CMakeFiles/taller_server.dir/server/monitored_list.cpp.o" \
 "CMakeFiles/taller_server.dir/server/player.cpp.o" \
 "CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o" \
 "CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o" \
@@ -250,6 +263,8 @@ taller_server_OBJECTS = \
 "CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o" \
 "CMakeFiles/taller_server.dir/server/duck.cpp.o" \
 "CMakeFiles/taller_server.dir/server/state_manager.cpp.o" \
+"CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o" \
+"CMakeFiles/taller_server.dir/server/match.cpp.o" \
 "CMakeFiles/taller_server.dir/server/main.cpp.o"
 
 # External object files for target taller_server
@@ -257,7 +272,6 @@ taller_server_EXTERNAL_OBJECTS =
 
 taller_server: CMakeFiles/taller_server.dir/server/server_threads/acceptor.cpp.o
 taller_server: CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o
-taller_server: CMakeFiles/taller_server.dir/server/monitored_list.cpp.o
 taller_server: CMakeFiles/taller_server.dir/server/player.cpp.o
 taller_server: CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o
 taller_server: CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o
@@ -266,11 +280,13 @@ taller_server: CMakeFiles/taller_server.dir/server/server.cpp.o
 taller_server: CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o
 taller_server: CMakeFiles/taller_server.dir/server/duck.cpp.o
 taller_server: CMakeFiles/taller_server.dir/server/state_manager.cpp.o
+taller_server: CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o
+taller_server: CMakeFiles/taller_server.dir/server/match.cpp.o
 taller_server: CMakeFiles/taller_server.dir/server/main.cpp.o
 taller_server: CMakeFiles/taller_server.dir/build.make
 taller_server: libtaller_common.a
 taller_server: CMakeFiles/taller_server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable taller_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable taller_server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/taller_server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
