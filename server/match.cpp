@@ -1,10 +1,14 @@
 #include "match.h"
 
+Match::Match()
+{
+}
+
 void Match::start()
 {
     try
     {
-        gameloop.start();
+        //gameloop.start();
     }
     catch (...)
     {
@@ -13,6 +17,14 @@ void Match::start()
 
 void Match::end()
 {
-    gameloop.stop();
-    gameloop.join();
+    //gameloop.stop();
+    //gameloop.join();
+}
+
+bool Match::is_connected()
+{ return true;
+}
+
+void Match::disconnect()
+{
 }

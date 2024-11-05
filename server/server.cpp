@@ -5,8 +5,9 @@
 
 Server::Server(const char* servname):
         acceptor(servname, player_list, user_commands),
+        match_creator(match_list, player_list),
         gameloop(player_list, user_commands),
-        cleaner(player_list) {}
+        cleaner(match_list) {}
 
 void Server::run() {
     try

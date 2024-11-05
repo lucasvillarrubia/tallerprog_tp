@@ -10,7 +10,7 @@
 #include "common/hands_on_sockets/liberror.h"
 
 
-Acceptor::Acceptor(const char* servname, MonitoredList& clients, Queue<Gameaction>& usr_cmds):
+Acceptor::Acceptor(const char* servname, MonitoredList<Player*>& clients, Queue<Gameaction>& usr_cmds):
         is_running(false), acceptor(servname), player_list(clients), user_commands(usr_cmds) {}
 
 void Acceptor::run() {

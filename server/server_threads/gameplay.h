@@ -14,7 +14,7 @@ class Gameplay: public Thread
 {
 private:
     std::atomic_bool is_running;
-    MonitoredList& players;
+    MonitoredList<Player*>& players;
     Queue<Gameaction>& user_commands;
     Duck duck;
     void process_users_commands();
@@ -26,7 +26,7 @@ private:
     void start_new_round();
     void send_victory_update();
 public:
-    Gameplay(MonitoredList&, Queue<Gameaction>&);
+    Gameplay(MonitoredList<Player*>&, Queue<Gameaction>&);
     void run() override;
     void stop() override;
     ~Gameplay() override = default;

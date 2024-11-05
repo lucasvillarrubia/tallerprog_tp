@@ -13,12 +13,13 @@ Client::Client(const char* hostname, const char* servname):
         renderloop(connected, updates) {}
 
 void Client::run() {
+    connection.start_communication();
+    // pantalla de inicio
+    // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un
+    eventloop.start();
     try
     {
-        connection.start_communication();
-        // pantalla de inicio
-        // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un
-        eventloop.start();
+
         renderloop.run();
         // while (connected.load()) {
         //     std::unique_lock<std::mutex> lck(mtx);
@@ -34,7 +35,7 @@ void Client::run() {
     }
     catch (ClosedQueue const& e)
     {
-        std::cerr << "Se cerró la queue del juego?! " << e.what() << '\n';
+        std::cerr << "Se cerró la queue del cliente?! " << e.what() << '\n';
     }
     catch (const std::exception& e)
     {

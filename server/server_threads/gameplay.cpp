@@ -7,7 +7,7 @@
 #include "server//state_manager.h"
 
 
-Gameplay::Gameplay(MonitoredList& player_list, Queue<Gameaction>& usr_cmds):
+Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_cmds):
         is_running(false), players(player_list), user_commands(usr_cmds) {
 }
 

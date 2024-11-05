@@ -151,7 +151,7 @@ if(TALLER_SERVER)
             server/weapon.h
             server/server_threads/acceptor.cpp
             server/server_threads/gameplay.cpp
-            server/monitored_list.cpp
+            # server/monitored_list.cpp
             server/player.cpp
             server/server_comms/server_protocol.cpp
             server/server_comms/server_receiver.cpp

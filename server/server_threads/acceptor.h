@@ -15,11 +15,11 @@ class Acceptor: public Thread
 private:
     std::atomic_bool is_running;
     Socket acceptor;
-    MonitoredList& player_list;
+    MonitoredList<Player*>& player_list;
     Queue<Gameaction>& user_commands;
 
 public:
-    Acceptor(const char*, MonitoredList&, Queue<Gameaction>&);
+    Acceptor(const char*, MonitoredList<Player*>&, Queue<Gameaction>&);
     void run() override;
     void stop() override;
     ~Acceptor() = default;

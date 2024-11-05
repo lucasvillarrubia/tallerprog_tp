@@ -38,6 +38,7 @@ void Renderer::run() {
         std::cout << "alto: " << renderer.GetOutputHeight() << " y ancho: " << renderer.GetOutputWidth() << "\n";
         Character duck;
         while (connected.load())
+        // while (true)
         {
             unsigned int frame_ticks = SDL_GetTicks();
             // unsigned int frame_delta = frame_ticks - prev_ticks;
@@ -64,11 +65,13 @@ void Renderer::run() {
             SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
             renderer.Present();
             SDL_Delay(1);
+            // if (not connected.load())
+            //     updates_feed.close();
         }
     }
     catch (ClosedQueue const& e)
     {
-        std::cerr << "Se cerró la queue del juego?! " << e.what() << '\n';
+        std::cerr << "Se cerró la queue del render?! " << e.what() << '\n';
     }
     catch (const std::exception& e)
     {
