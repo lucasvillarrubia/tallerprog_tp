@@ -11,7 +11,6 @@ private:
     bool is_flapping;
     bool moving_right;
     float jump_velocity;
-    int movement_phase;
 public:
     // esto para el primer intento nomás
     bool exited = false;

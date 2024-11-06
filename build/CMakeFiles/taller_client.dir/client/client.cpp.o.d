@@ -268,6 +268,8 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/renderer.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./client/character.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./client/coordinates.h \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Renderer.hh \
  /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_blendmode.h \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build/SDL2pp/Config.hh \

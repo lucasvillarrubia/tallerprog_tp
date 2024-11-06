@@ -2,6 +2,7 @@
 #define RENDERER_H
 
 
+#include "client/character.h"
 #include "common/gamedata.h"
 #include "common/hands_on_threads/queue.h"
 #include "common/hands_on_threads/thread.h"
@@ -16,6 +17,7 @@ private:
     Queue<Gamestate>& updates_feed;
     SDL2pp::Window& window;
     SDL2pp::Renderer& renderer;
+    Character duck;
 public:
     Renderer(std::atomic_bool&, Queue<Gamestate>&, SDL2pp::Window&, SDL2pp::Renderer&);
     void run();

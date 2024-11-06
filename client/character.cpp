@@ -4,7 +4,8 @@
 
 
 const float INITIAL_X_COORDINATE = 0.0f;
-const float INITIAL_Y_COORDINATE = -85.0f;
+const float INITIAL_Y_COORDINATE = 0.0f;
+// const float INITIAL_Y_COORDINATE = -85.0f;
 const float GRAVITY = -0.7f;
 const float X_CONSTANT_VELOCITY = 0.2f;
 const float TARGET_FRAME_RATE = 60.0f;
@@ -13,7 +14,15 @@ const float GRAVITY_RESISTANCE_WHEN_FLAPPING = 0.1f;
 const int AVAILABLE_MOVEMENT_SPRITES = 6;
 
 
-Character::Character(): pos_X(INITIAL_X_COORDINATE), pos_Y(INITIAL_Y_COORDINATE), is_running(false), is_jumping(false), is_flapping(false) {}
+Character::Character():
+        pos_X(INITIAL_X_COORDINATE),
+        pos_Y(INITIAL_Y_COORDINATE),
+        is_running(false),
+        is_jumping(false),
+        is_flapping(false),
+        moving_right(true),
+        jump_velocity(0.0f),
+        movement_phase(0) {}
 
 void Character::update_position(const unsigned int frame_delta)
 {
@@ -34,10 +43,10 @@ void Character::update_position(const unsigned int frame_delta)
         }
     }
     // Llegó al límite de la pantalla ---> Se mueve la cámara
-    if (pos_X > 640)
-        pos_X = -50;
-    else if (pos_X < -50)
-        pos_X = 640;
+    // if (pos_X > 640)
+    //     pos_X = -50;
+    // else if (pos_X < -50)
+    //     pos_X = 640;
 }
 
 bool Character::is_moving_to_the_right() const { return moving_right; }

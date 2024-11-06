@@ -534,6 +534,8 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: ../client/client.cpp \
   ../client/client_comms/client_sender.h \
   ../common/comms/sender.h \
   ../client/client_threads/renderer.h \
+  ../client/character.h \
+  ../client/coordinates.h \
   _deps/libsdl2pp-src/SDL2pp/Renderer.hh \
   /usr/include/SDL2/SDL_stdinc.h \
   /usr/include/SDL2/SDL_blendmode.h \
@@ -1785,6 +1787,8 @@ CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o: ../clie
 CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o: ../client/client_threads/renderer.cpp \
   /usr/include/stdc-predef.h \
   ../client/client_threads/renderer.h \
+  ../client/character.h \
+  ../client/coordinates.h \
   ../common/gamedata.h \
   ../common/hands_on_threads/queue.h \
   /usr/include/c++/11/climits \
@@ -2236,8 +2240,6 @@ CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o: ../client/cli
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_locale.h \
   /usr/include/SDL2/SDL_misc.h \
-  ../client/character.h \
-  ../client/coordinates.h \
   ../client/state_manager.h \
   /usr/include/SDL2/SDL_events.h \
   ../client/character.h \
@@ -2969,6 +2971,8 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: ../client/main.cpp \
   ../client/client_comms/client_sender.h \
   ../common/comms/sender.h \
   ../client/client_threads/renderer.h \
+  ../client/character.h \
+  ../client/coordinates.h \
   _deps/libsdl2pp-src/SDL2pp/Renderer.hh \
   /usr/include/SDL2/SDL_stdinc.h \
   /usr/include/SDL2/SDL_blendmode.h \

@@ -27,7 +27,7 @@ void Renderer::run() {
         // unsigned int prev_ticks = SDL_GetTicks();
         // Después habría una lista de patos
         // std::cout << "alto: " << renderer.GetOutputHeight() << " y ancho: " << renderer.GetOutputWidth() << "\n";
-        Character duck;
+        // Character duck;
         // if (connected.load())
         // while (true)
         // {
@@ -39,6 +39,8 @@ void Renderer::run() {
             while (updates_feed.try_pop(update))
             {
                 StateManager::update_duck(duck, update);
+                // std::cout << "coordenadas pato: x: " << duck.get_coordinates().pos_X << "; y: " << duck.get_coordinates().pos_Y << "\n";
+
                 // std::cout << "llegó un estado al renderer!" << "\n";
             }
             // else

@@ -111,9 +111,11 @@ void Protocol::receive_single_float(float& message) {
 
 void Protocol::send_single_float(float message) {
     uint8_t sign = ((message < 0) ? 1 : 0);
+    if (message < 0)
+        message *= -1;
     float fraction_part = std::modf(message, &message);
-    uint16_t integer = static_cast<uint8_t>(message);
-    uint16_t decimal = static_cast<uint8_t>(fraction_part * 100);
+    uint16_t integer = static_cast<uint16_t>(message);
+    uint16_t decimal = static_cast<uint16_t>(fraction_part * 100);
     send_single_8bit_int(sign);
     send_single_16bit_int(integer);
     send_single_16bit_int(decimal);
