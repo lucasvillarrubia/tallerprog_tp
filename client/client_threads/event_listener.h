@@ -11,12 +11,10 @@
 #include "common/hands_on_threads/thread.h"
 
 
-class EventListener: public Thread
+class EventListener
 {
 private:
-    std::atomic_bool is_running;
-    std::atomic_bool& game_on;
-    // std::condition_variable& connection_ended;
+    std::atomic_bool& connected;
     Queue<Gameaction>& events;
     // Por lo que leí también se puede usar SDL_EventFilter
     std::map<Uint32, int> codes_by_event_type = {
@@ -31,11 +29,10 @@ private:
         {SDLK_SPACE, 3}
     };
 public:
-    // EventListener(std::atomic_bool&, std::condition_variable&, Queue<Gameaction>&);
     EventListener(std::atomic_bool&, Queue<Gameaction>&);
-    void run() override;
-    void stop() override;
-    ~EventListener() override = default;
+    void run();
+    void stop();
+    ~EventListener() = default;
 };
 
 

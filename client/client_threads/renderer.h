@@ -14,9 +14,10 @@ class Renderer
 private:
     std::atomic_bool& connected;
     Queue<Gamestate>& updates_feed;
-    // std::mutex mtx;
+    SDL2pp::Window& window;
+    SDL2pp::Renderer& renderer;
 public:
-    Renderer(std::atomic_bool&, Queue<Gamestate>&);
+    Renderer(std::atomic_bool&, Queue<Gamestate>&, SDL2pp::Window&, SDL2pp::Renderer&);
     void run();
     ~Renderer() = default;
 };

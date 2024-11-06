@@ -26,6 +26,7 @@ int main(int argc, char* argv[]) {
         }
         hostname = argv[1];
         servname = argv[2];
+        SDL2pp::SDL sdl(SDL_INIT_VIDEO);
         Client client(hostname, servname);
         client.run();
         return SUCCESSFUL_RUN;

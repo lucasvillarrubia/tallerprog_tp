@@ -16,35 +16,27 @@ const int DUCK_SPRITE_HEIGHT = 64;
 const int DUCK_MOVEMENT_SPRITES_LINE = 0;
 
 
-Renderer::Renderer(std::atomic_bool& con_stat, Queue<Gamestate>& q): connected(con_stat), updates_feed(q) {}
+Renderer::Renderer(std::atomic_bool& con_stat, Queue<Gamestate>& q, SDL2pp::Window& w, SDL2pp::Renderer& r): connected(con_stat), updates_feed(q), window(w), renderer(r) {}
 
 void Renderer::run() {
-    // std::unique_lock<std::mutex> lck(mtx);
     try
     {
-        SDL2pp::SDL sdl(SDL_INIT_VIDEO);
-        SDL2pp::Window window(
-            "Duck Game",
-            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-            640, 480,
-            SDL_WINDOW_RESIZABLE
-        );
-        SDL2pp::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
         SDL2pp::Texture background(renderer, "resources/fondo.png");
         SDL2pp::Surface tempSurface("resources/Duck-removebg-preview.png");
         SDL2pp::Texture sprites(renderer, tempSurface);
         // unsigned int prev_ticks = SDL_GetTicks();
         // Después habría una lista de patos
-        std::cout << "alto: " << renderer.GetOutputHeight() << " y ancho: " << renderer.GetOutputWidth() << "\n";
+        // std::cout << "alto: " << renderer.GetOutputHeight() << " y ancho: " << renderer.GetOutputWidth() << "\n";
         Character duck;
-        while (connected.load())
+        // if (connected.load())
         // while (true)
-        {
+        // {
             unsigned int frame_ticks = SDL_GetTicks();
             // unsigned int frame_delta = frame_ticks - prev_ticks;
             // prev_ticks = frame_ticks;
             Gamestate update;
-            if (updates_feed.try_pop(update))
+            // while
+            while (updates_feed.try_pop(update))
             {
                 StateManager::update_duck(duck, update);
                 // std::cout << "llegó un estado al renderer!" << "\n";
@@ -64,10 +56,10 @@ void Renderer::run() {
             SDL_Rect dst_rect = { static_cast<int>(duck_position.pos_X), static_cast<int>(vcenter - 32 - duck_position.pos_Y), 64, 64 };
             SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
             renderer.Present();
+            // constante de Rate Loop
+            // arreglar frame drop
             SDL_Delay(1);
-            // if (not connected.load())
-            //     updates_feed.close();
-        }
+        // }
     }
     catch (ClosedQueue const& e)
     {

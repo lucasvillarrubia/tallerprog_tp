@@ -13,15 +13,15 @@
 class Client
 {
 private:
+    SDL2pp::Window window;
+    SDL2pp::Renderer renderer;
     std::atomic_bool connected;
-    // std::condition_variable connection_ended;
-    // std::mutex mtx;
+    std::atomic_bool game_on;
     Queue<Gameaction> events;
     Queue<Gamestate> updates;
     LocalPlayer connection;
     EventListener eventloop;
     Renderer renderloop;
-    // std::string get_command_input();
 public:
     Client(const char*, const char*);
     void run();

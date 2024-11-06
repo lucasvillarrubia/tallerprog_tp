@@ -1,55 +1,68 @@
 #include "client.h"
 
 #include <iostream>
+#include <SDL.h>
 #include <sstream>
 #include <utility>
 
+#include "SDL2pp/SDL.hh"
+
 
 Client::Client(const char* hostname, const char* servname):
+        window("Duck Game",
+            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+            640, 480,
+            SDL_WINDOW_RESIZABLE),
+        renderer(window, -1, SDL_RENDERER_ACCELERATED),
         connected(false),
+        game_on(false),
         connection(std::move(Socket(hostname, servname)), events, updates, connected),
-        eventloop(connected, events),
-        // eventloop(connected, connection_ended, events),
-        renderloop(connected, updates) {}
+        eventloop(game_on, events),
+        renderloop(game_on, updates, window, renderer) {}
 
 void Client::run() {
-    connection.start_communication();
-    // pantalla de inicio
-    // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un
-    eventloop.start();
     try
     {
-
-        renderloop.run();
-        // while (connected.load()) {
-        //     std::unique_lock<std::mutex> lck(mtx);
-        //     connection_ended.wait(lck);
-        // }
+        // SDL2pp::Window window(
+        //     "Duck Game",
+        //     SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+        //     640, 480,
+        //     SDL_WINDOW_RESIZABLE
+        // );
+        // SDL2pp::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
+        game_on.store(true);
+        connection.start_communication();
+        // pantalla de inicio
+        // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un
+        while (game_on.load() && connected.load())
+        {
+            eventloop.run();
+            if (not game_on.load()) break;
+            renderloop.run();
+        }
         connection.end_connection();
         events.close();
         updates.close();
-        eventloop.stop();
-        eventloop.join();
-        // renderloop.stop();
-        // renderloop.join();
     }
     catch (ClosedQueue const& e)
     {
         std::cerr << "Se cerró la queue del cliente?! " << e.what() << '\n';
+        connection.end_connection();
+        events.close();
+        updates.close();
     }
     catch (const std::exception& e)
     {
         std::cerr << "Exception thrown on a client's side: " << e.what() << '\n';
+        connection.end_connection();
+        events.close();
+        updates.close();
     }
     catch (...)
     {
         std::cerr << "Unknown exception on a client's side." << '\n';
+        connection.end_connection();
+        events.close();
+        updates.close();
     }
 }
-
-// ??? capaz sirve para cuando ingresan el nombre
-// std::string Client::get_command_input() {
-//     std::string input;
-//     std::getline(std::cin, input);
-//     return input;
-// }
