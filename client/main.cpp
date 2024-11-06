@@ -1,139 +1,132 @@
-#include "common/foo.h"
+#include "client.h"
+#include "coordinates.h"
+#include "character.h"
+#include "state_manager.h"
 
 #include <iostream>
-#include <string>
 #include <exception>
 
-#include <SDL2pp/SDL2pp.hh>
 #include <SDL2/SDL.h>
+#include <SDL2pp/SDL2pp.hh>
+#include <SDL_image.h>
+#include <SDL2pp/Renderer.hh>
+#include <SDL2pp/Texture.hh>
+#include <SDL2pp/Surface.hh>
+#include "mapa.h"
+#include "item_box.h"
 
 using namespace SDL2pp;
-using namespace std;
+
+const int DUCK_SPRITE_WIDTH = 64;
+const int DUCK_SPRITE_HEIGHT = 64;
+const int DUCK_MOVEMENT_SPRITES_LINE = 0;
+
 
 int main() try {
-    // Initialize SDL library
-    SDL sdl(SDL_INIT_VIDEO);
+    SDL2pp::SDL sdl(SDL_INIT_VIDEO);
+    SDL2pp::Window window(
+            "Duck Game",
+            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+            640, 480,
+            SDL_WINDOW_RESIZABLE
+    );
+    SDL2pp::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    // Create main window: 640x480 dimensions, resizable, "SDL2pp demo" title
-    Window window("SDL2pp demo",
-                  SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                  640, 480,
-                  SDL_WINDOW_RESIZABLE);
+    Mapa mapa(renderer, "resources/mapas/fondo_pantano.png");
 
-    // Create accelerated video renderer with default driver
-    Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
+    SDL2pp::Surface tempSurface("resources/Duck-removebg-preview.png");
+    SDL2pp::Texture sprites(renderer, tempSurface);
 
-    Texture background(renderer, std::string(DATA_PATH) + "/fondo.png");
+    SDL2pp::Surface duckingSurface("resources/pato_ducking.png");
+    SDL2pp::Texture duckingSprites(renderer, duckingSurface);
 
-    // Load the sprite sheet
-    Texture sprites(renderer, std::string(DATA_PATH) + "/Duck.png");
+    SDL2pp::Surface pistolSurface("resources/PC Computer - Duck Game - Pistol.png");
+    SDL2pp::Texture pistolSprites(renderer, pistolSurface);
 
-    // Game state
-    bool is_running = false; // whether the character is currently running
-    int run_phase = -1;      // run animation phase
-    float position = 0.0;    // player position
-    string direction = "right"; //indica hacia donde está viendo el pato
-    
+    std::vector<ItemBox> boxes;
+    boxes.emplace_back(renderer, "resources/box.png", 320.0f, -80.0f); // Primera caja
+    boxes.emplace_back(renderer, "resources/box.png", 200.0f, -50.0f); // Segunda caja
+
 
     unsigned int prev_ticks = SDL_GetTicks();
+    Character duck;
 
-    // Main loop
-    while (1) {
-        // Timing: calculate difference between this and previous frame in milliseconds
+    while (true) {
         unsigned int frame_ticks = SDL_GetTicks();
         unsigned int frame_delta = frame_ticks - prev_ticks;
         prev_ticks = frame_ticks;
 
-        // Event processing:
-        // - If window is closed, or Q or Escape buttons are pressed, quit the application
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
+            if (event.type == SDL_QUIT)
                 return 0;
-            } else if (event.type == SDL_KEYDOWN) {
-                switch (event.key.keysym.sym) {
-                    case SDLK_ESCAPE: case SDLK_q:
-                        return 0;
-                    case SDLK_RIGHT: 
-                        is_running = true;
-                        direction = "right";
-                        break;
-                    case SDLK_LEFT: 
-                    is_running = true; 
-                    direction = "left";
-                    break;
-                }
-            } else if (event.type == SDL_KEYUP) {
-                switch (event.key.keysym.sym) {
-                    case SDLK_RIGHT: is_running = false; break;
-                    case SDLK_LEFT: is_running = false; break;
-                }
+            if (event.type == SDL_KEYDOWN) {
+                if (event.key.keysym.sym == SDLK_ESCAPE)
+                    return 0;
             }
+            StateManager::update_duck_state(duck, event);
         }
 
-        // Update game state for this frame:
-        // if character is runnung, move it to the right
-        if (is_running) {
-            if (direction == "right"){
-                position += frame_delta * 0.2;
-            } else if (direction == "left") {
-                position -= frame_delta * 0.2;
-            }
-            
-            run_phase = (frame_ticks / 100) % 6;
-        } else {
-            run_phase = 0;
-        }
+        duck.update_position(frame_delta, frame_ticks, renderer.GetOutputWidth());
 
-        // If player passes past the right side of the window, wrap him to the left side
-        if (position > renderer.GetOutputWidth())
-            position = -50;
-        if (position < -50)
-            position = renderer.GetOutputWidth();
-
-        int vcenter = renderer.GetOutputHeight() / 2; // Y coordinate of window center
-
-        // Clear screen
+        // Limpiar y dibujar el mapa
         renderer.Clear();
+        mapa.dibujar_fondo(renderer); // Dibuja el fondo del mapa
 
-        renderer.Copy(background, Rect(0, 0, window.GetWidth(), window.GetHeight())); // Dibuja el fondo
+        int src_x;
+        int src_y;
+        Coordinates duck_position = duck.get_coordinates();
+        SDL_RendererFlip flip = duck.is_moving_to_the_right() ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
 
-        // Pick sprite from running animation sequence
-        int sprite_width = 64;  // Ancho de cada imagen del pato caminando
-        int sprite_high = 64;
-        int src_x = sprite_width * run_phase;  // Se mueve al siguiente frame horizontalmente
-        int src_y = 0;  // Y fijo en 0 si la animación está en la primera fila
+        if (duck.get_is_ducking()) {
+            src_x = 0;
+            src_y = 0;
+            SDL_Rect dst_rect = { static_cast<int>(duck_position.pos_X),
+                                  static_cast<int>(renderer.GetOutputHeight() / 2 - 32 - duck_position.pos_Y),
+                                  64, 64 };
 
-        // Dibujar el sprite del pato caminando
-        if (direction == "right") {
-            renderer.Copy(
-                    sprites,
-                    Rect(src_x, src_y, sprite_width, sprite_high),  // Ajusta 32 si el alto de cada sprite es distinto
-                    Rect((int)position, vcenter - 32, 64, 64)  // Escala de destino para que se vea más grande
-            );
-	} else if (direction == "left") {
-	    renderer.Copy(
-                    sprites,
-                    Rect(src_x, src_y, sprite_width, sprite_high),  // Ajusta 32 si el alto de cada sprite es distinto
-                    Rect((int)position, vcenter - 32, 64, 64),  // Escala de destino para que se vea más grande
-                    0.0,
-                    NullOpt,
-                    SDL_FLIP_HORIZONTAL
-            );
-	}
-        // Show rendered frame
+            SDL_RenderCopyEx(renderer.Get(), duckingSprites.Get(), nullptr, &dst_rect, 0.0, nullptr, flip);
+        } else {
+            src_x = DUCK_SPRITE_WIDTH * duck.get_movement_phase();
+            src_y = DUCK_MOVEMENT_SPRITES_LINE;
+
+            SDL_Rect src_rect = { src_x, src_y, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
+            SDL_Rect dst_rect = { static_cast<int>(duck_position.pos_X),
+                                  static_cast<int>(renderer.GetOutputHeight() / 2 - 32 - duck_position.pos_Y),
+                                  64, 64 };
+            SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+        }
+        
+        
+        //intento imprimir el arma
+        //seteo la posicion del arma segun la orientación del pato
+        float gun_position_x = duck.is_moving_to_the_right() ? duck_position.pos_X+16 : duck_position.pos_X;
+        //ubicacion del sprite en el png y sus dimensiones
+	SDL_Rect src_rect = { 1, 47, 32, 32 };
+        SDL_Rect dst_rect = { static_cast<int>(gun_position_x),
+                              static_cast<int>(renderer.GetOutputHeight() / 2 - 16 - duck_position.pos_Y),
+                                  48, 48 };
+            SDL_RenderCopyEx(renderer.Get(), pistolSprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+            
+            
+        // Verificar colisión con cada caja de premios en el vector
+        for (auto& box : boxes) {
+            if (!box.is_collected() && duck.is_on_item(box, renderer) && duck.get_is_grabbing()) {
+                box.set_collected(true);
+            }
+            // Renderizar la caja si no ha sido recogida
+            if (!box.is_collected()) {
+                box.render(renderer);
+            }
+        }
+
+
+
         renderer.Present();
-
-        // Frame limiter: sleep for a little bit to not eat 100% of CPU
         SDL_Delay(1);
     }
-
-
-
-    return 0;
 } catch (std::exception& e) {
-    // If case of error, print it and exit with error
-    std::cerr << e.what() << std::endl;
-    return 1;
+    std::cerr << "Error in client main. " << e.what() << "\n";
+    return -1;
 }
 

@@ -11,7 +11,7 @@ endif()
 # strongly encouraged to enable this globally to avoid conflicts between
 # -Wpedantic being enabled and -std=c++20 and -std=gnu++20 for example
 # when compiling with PCH enabled
-set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_EXTENSIONS ON)
 
 project(taller_tp
     VERSION 1.0
@@ -29,11 +29,33 @@ message(CMAKE_CXX_COMPILER_ID="${CMAKE_CXX_COMPILER_ID}")
 
 # Define target: lib common between client, server and editor programs
 # HEY TODO XXX: change the name to something that you like
-add_library(taller_common STATIC)
+# TODO: Hay que mover estos paths al cmake que está en "common/", por ahora están acá porque el CLion los crea rápido!
+add_library(taller_common STATIC
+        common/hands_on_sockets/socket.h
+        common/message.h
+        common/hands_on_threads/queue.h
+        common/hands_on_threads/thread.h
+        common/hands_on_sockets/resolvererror.h
+        common/hands_on_sockets/liberror.h
+        common/hands_on_sockets/resolver.h
+        common/hands_on_sockets/liberror.cpp
+        common/message.cpp
+        common/hands_on_sockets/resolver.cpp
+        common/hands_on_sockets/resolvererror.cpp
+        common/hands_on_sockets/socket.cpp
+        common/comms/receiver.cpp
+        common/comms/receiver.h
+        common/comms/sender.cpp
+        common/comms/sender.h
+        common/comms/protocol.cpp
+        common/comms/protocol.h
+        common/gamedata.h
+)
 
 # add the source files that make the lib
 # HEY!! TODO XXX: add more subfolders here
 add_subdirectory(common/)
+
 
 
 # set compiler warnings to the targets
@@ -53,21 +75,41 @@ if(TALLER_CLIENT OR TALLER_EDITOR)
         libSDL2pp
         URL https://github.com/libSDL2pp/libSDL2pp/archive/cc198c9a5657048bee67ece82de620b2d5661084.zip
     )
-
-
-# set up SDL2pp library
-set(SDL2PP_WITH_IMAGE YES)
-set(SDL2PP_WITH_TTF YES)
-
-set(SDL2PP_WITH_MIXER YES)
-FetchContent_MakeAvailable(libSDL2pp)
+    # set up SDL2pp library
+    set(SDL2PP_WITH_IMAGE YES)
+    set(SDL2PP_WITH_TTF YES)
+    set(SDL2PP_WITH_MIXER YES)
+    FetchContent_MakeAvailable(libSDL2pp)
 endif()
 
 # Program section
 # ---------------
 if(TALLER_CLIENT)
     # HEY!! TODO XXX: Change the name of the executable to the one you like!
-    add_executable(taller_client)
+    # TODO: Hay que mover estos paths al cmake que está en "client/", por ahora están acá porque el CLion los crea rápido!
+    add_executable(taller_client
+            client/client.h
+            client/client_comms/client_protocol.h
+            client/client_exceptions.h
+            client/client_comms/client_sender.h
+            client/client_comms/client_receiver.h
+            client/client.cpp
+            client/client_comms/client_protocol.cpp
+            client/client_threads/renderer.h
+            client/client_threads/event_listener.h
+            client/local_player.h
+            client/local_player.cpp
+            client/client_comms/client_sender.cpp
+            client/client_comms/client_receiver.cpp
+            client/client_threads/renderer.cpp
+            client/client_threads/event_listener.cpp
+            client/character.cpp
+            client/character.h
+            client/item_box.cpp
+            client/item_box.h
+            client/state_manager.cpp
+            client/state_manager.h
+            client/coordinates.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_client taller_common SDL2pp::SDL2pp)
@@ -83,11 +125,42 @@ if(TALLER_CLIENT)
 
     # Link the taller_common lib target
     target_link_libraries(taller_client taller_common SDL2pp::SDL2pp)
+
+    # Creo que estoy agregando la carpeta de imágenes acá
+    add_custom_target(copy_resources ALL
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_SOURCE_DIR}/resources ${CMAKE_BINARY_DIR}/resources
+    )
+
+    # Para la instalación??
+    #install(DIRECTORY resources/ DESTINATION ${CMAKE_INSTALL_PREFIX}/resources)
+
 endif()
 
 if(TALLER_SERVER)
     # HEY!! TODO XXX: Change the name of the executable to the one you like!
-    add_executable(taller_server)
+    # TODO: Hay que mover estos paths al cmake que está en "server/", por ahora están acá porque el CLion los crea rápido!
+    add_executable(taller_server
+            server/server.h
+            server/server_comms/server_protocol.h
+            server/command.h
+            server/server_threads/acceptor.h
+            server/server_threads/gameplay.h
+            server/monitored_list.h
+            server/player.h
+            server/server_comms/server_sender.h
+            server/server_comms/server_receiver.h
+            server/weapon.h
+            server/server_threads/acceptor.cpp
+            server/server_threads/gameplay.cpp
+            server/monitored_list.cpp
+            server/player.cpp
+            server/server_comms/server_protocol.cpp
+            server/server_comms/server_receiver.cpp
+            server/server_comms/server_sender.cpp
+            server/server.cpp
+            server/server_threads/cleaner.cpp
+            server/server_threads/cleaner.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)

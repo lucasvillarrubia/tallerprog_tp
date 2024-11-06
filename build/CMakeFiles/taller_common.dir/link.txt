@@ -1,2 +1,0 @@
-/usr/bin/ar qc libtaller_common.a CMakeFiles/taller_common.dir/common/foo.cpp.o
-/usr/bin/ranlib libtaller_common.a

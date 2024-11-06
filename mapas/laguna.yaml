@@ -1,0 +1,15 @@
+mapa:
+  ancho: 640
+  alto: 480
+  pisos:
+    - x: 0
+      y: 400
+      ancho: 640
+      alto: 80
+      textura: "resources/piso.png"
+  paredes:
+    - x: 100
+      y: 300
+      ancho: 20
+      alto: 100
+      textura: "resources/pared.png"

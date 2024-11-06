@@ -1,0 +1,3 @@
+/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/CMakeFiles/libsdl2pp-populate.dir
+/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/CMakeFiles/edit_cache.dir
+/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-subbuild/CMakeFiles/rebuild_cache.dir
