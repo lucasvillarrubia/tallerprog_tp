@@ -1,5 +1,9 @@
 #ifndef GAMEDATA_H
 #define GAMEDATA_H
+#include <list>
+#include <map>
+
+#include "coordinates.h"
 
 
 struct Gamedata {
@@ -8,6 +12,7 @@ struct Gamedata {
 };
 
 struct Gamestate: Gamedata {
+    int type;
     float pos_X;
     float pos_Y;
     int is_running;
@@ -15,6 +20,7 @@ struct Gamestate: Gamedata {
     int is_flapping;
     int move_direction;
     float jump_speed;
+    std::map<int, Coordinates> positions_by_id;
     Gamestate(): Gamedata(-1) {}
     Gamestate(
         const int player,
@@ -26,14 +32,32 @@ struct Gamestate: Gamedata {
         const int direction,
         const float jumpspeed
     ):
-    Gamedata(player),
-    pos_X(x),
-    pos_Y(y),
-    is_running(run),
-    is_jumping(jump),
-    is_flapping(flap),
-    move_direction(direction),
-    jump_speed(jumpspeed){}
+        Gamedata(player),
+        type(1),
+        pos_X(x),
+        pos_Y(y),
+        is_running(run),
+        is_jumping(jump),
+        is_flapping(flap),
+        move_direction(direction),
+        jump_speed(jumpspeed) {}
+    Gamestate(
+        const int player,
+        const int run,
+        const int jump,
+        const int flap,
+        const int direction
+        ):
+        Gamedata(player),
+        type(3),
+        is_running(run),
+        is_jumping(jump),
+        is_flapping(flap),
+        move_direction(direction) {}
+    Gamestate(std::map<int,Coordinates>& positions):
+        Gamedata(0),
+        type(2),
+        positions_by_id(positions) {}
 };
 
 struct Gameaction: Gamedata {

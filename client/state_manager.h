@@ -2,6 +2,7 @@
 #define CLIENT_STATE_MANAGER_H
 
 
+#include <list>
 #include <mutex>
 
 #include "character.h"
@@ -12,13 +13,17 @@ class StateManager
 {
 private:
     std::mutex mtx;
-    Character duki;
+    std::list<Character> dukis;
+    void update_duck_position(Character&, const Coordinates&);
+    void update_duck_state(const Gamestate& update);
 public:
     StateManager();
-    void update_duck(const Gamestate&);
-    bool is_moving_to_the_right();
-    Coordinates get_coordinates();
-    int get_movement_phase(unsigned int);
+    void update(const Gamestate&);
+    void update_ducks(const Gamestate&);
+    // bool is_moving_to_the_right();
+    // Coordinates get_coordinates();
+    // int get_movement_phase(unsigned int);
+    std::list<Character> get_characters_data();
     ~StateManager() = default;
 };
 

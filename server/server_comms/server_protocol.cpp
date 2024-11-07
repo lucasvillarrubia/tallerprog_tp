@@ -5,7 +5,7 @@
 
 ServerProtocol::ServerProtocol(Socket&& skt, std::atomic_bool& connection_status): Protocol(std::move(skt), connection_status) {}
 
-void ServerProtocol::send_message(const Gamestate& message)
+void ServerProtocol::send__message(const Gamestate& message)
 {
     if (not client_is_connected.load()) return;
     send_single_8bit_int(message.player_id);

@@ -290,14 +290,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "taller_client::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-taller_client-Debug-ae99ebdfa913ebfb3f62.json",
+					"jsonFile" : "target-taller_client-Debug-24edf15fb6161c47bdec.json",
 					"name" : "taller_client",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "taller_common::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-taller_common-Debug-a4874311246ad47503d5.json",
+					"jsonFile" : "target-taller_common-Debug-823e11722e4588fcf9e3.json",
 					"name" : "taller_common",
 					"projectIndex" : 0
 				},

@@ -2,27 +2,27 @@
 
 #include <iostream>
 
+//
+// const float INITIAL_X_COORDINATE = 0.0f;
+// const float INITIAL_Y_COORDINATE = 0.0f;
+// // const float INITIAL_Y_COORDINATE = -85.0f;
+// const float GRAVITY = -0.7f;
+// const float X_CONSTANT_VELOCITY = 0.2f;
+// const float TARGET_FRAME_RATE = 60.0f;
+// const float TARGET_FRAME_TIME = TARGET_FRAME_RATE / 1000.0f;
+// const float GRAVITY_RESISTANCE_WHEN_FLAPPING = 0.1f;
+// const int AVAILABLE_MOVEMENT_SPRITES = 6;
 
-const float INITIAL_X_COORDINATE = 0.0f;
-const float INITIAL_Y_COORDINATE = 0.0f;
-// const float INITIAL_Y_COORDINATE = -85.0f;
-const float GRAVITY = -0.7f;
-const float X_CONSTANT_VELOCITY = 0.2f;
-const float TARGET_FRAME_RATE = 60.0f;
-const float TARGET_FRAME_TIME = TARGET_FRAME_RATE / 1000.0f;
-const float GRAVITY_RESISTANCE_WHEN_FLAPPING = 0.1f;
-const int AVAILABLE_MOVEMENT_SPRITES = 6;
 
-
-Character::Character():
-        pos_X(INITIAL_X_COORDINATE),
-        pos_Y(INITIAL_Y_COORDINATE),
-        is_running(false),
-        is_jumping(false),
-        is_flapping(false),
-        moving_right(true),
-        jump_velocity(0.0f),
-        movement_phase(0) {}
+// Character::Character():
+//         pos_X(INITIAL_X_COORDINATE),
+//         pos_Y(INITIAL_Y_COORDINATE),
+//         is_running(false),
+//         is_jumping(false),
+//         is_flapping(false),
+//         moving_right(true),
+//         jump_velocity(0.0f),
+//         movement_phase(0) {}
 
 // void Character::update_position(const unsigned int frame_delta)
 // {

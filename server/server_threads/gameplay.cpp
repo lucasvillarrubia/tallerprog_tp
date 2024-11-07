@@ -10,12 +10,14 @@
 Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_cmds):
         is_running(false), players(player_list), user_commands(usr_cmds) {
     ducks_by_id.insert({1, Duck()});
+    ducks_by_id.insert({2, Duck()});
 }
 
 void Gameplay::process_users_commands() {
     Gameaction command;
     while (user_commands.try_pop(command)) {
         StateManager::update_duck_state(ducks_by_id.at(command.player_id), command);
+        Gamestate update = StateManager::get_duck_state(ducks_by_id.at(command.player_id), command.player_id);
         // duck.update_position(frame_delta);
         // Gamestate update = StateManager::get_duck_state(duck);
         // // por ahora, primero me conecto con un solo pato
@@ -31,24 +33,34 @@ void Gameplay::send_all_initial_coordinates()
 {
     for (auto& [id, duck]: ducks_by_id)
     {
-        Gamestate initial_duck_coordinates(id, 0.0f, 0.0f, 0, 0, 0, 1, 0.0f);
-        players.broadcast(initial_duck_coordinates);
+        if (id == 1)
+        {
+            Gamestate initial_duck_coordinates(id, 0.0f, 0.0f, 0, 0, 0, 1, 0.0f);
+            players.broadcast(initial_duck_coordinates);
+        }
+
+
+        else
+        {
+            Gamestate initial_duck_coordinates(id, 590.0f, 0.0f, 0, 0, 0, 1, 0.0f);
+            players.broadcast(initial_duck_coordinates);
+        }
+
+
     }
 }
 
 void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
 {
+    std::map<int, Coordinates> positions_by_id;
     for (auto& [id, duck]: ducks_by_id)
     {
-        if (duck.update_position(frame_delta))
-        // if (duck.update_position(frame_delta) and terrain.is_duck_position_valid())
-        {
-            Gamestate update = StateManager::get_duck_state(duck);
-            // por ahora, primero me conecto con un solo pato
-            players.broadcast(update);
-            // std::cout << "el pato cambió de posición\n";
-        }
+        duck.update_position(frame_delta);
+        // if (terrain.is_duck_position_valid())
+        positions_by_id.insert({id, StateManager::get_duck_coordinates(duck)});
     }
+    Gamestate update(positions_by_id);
+    players.broadcast(update);
 }
 
 void Gameplay::run() {

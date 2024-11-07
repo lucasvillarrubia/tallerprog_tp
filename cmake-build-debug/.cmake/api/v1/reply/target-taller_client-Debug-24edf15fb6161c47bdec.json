@@ -34,7 +34,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 91,
+				"line" : 92,
 				"parent" : 0
 			},
 			{
@@ -215,8 +215,8 @@
 				14,
 				15,
 				17,
-				20,
-				22
+				19,
+				21
 			]
 		}
 	],
@@ -309,9 +309,8 @@
 				9,
 				16,
 				18,
-				19,
-				21,
-				23
+				20,
+				22
 			]
 		},
 		{
@@ -327,8 +326,8 @@
 				14,
 				15,
 				17,
-				20,
-				22
+				19,
+				21
 			]
 		}
 	],
@@ -436,11 +435,6 @@
 		{
 			"backtrace" : 1,
 			"path" : "client/state_manager.h",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "client/coordinates.h",
 			"sourceGroupIndex" : 0
 		},
 		{

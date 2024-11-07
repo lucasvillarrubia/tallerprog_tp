@@ -22,14 +22,14 @@ Duck::Duck():
         moving_right(true),
         jump_velocity(0.0f){}
 
-bool Duck::update_position(const unsigned int frame_delta)
+void Duck::update_position(const unsigned int frame_delta)
 {
-    bool has_position_changed = false;
+    // bool has_position_changed = false;
     // Está corriendo (moviendose horizontalmente)
     if (is_running) {
         // pos_X += frame_delta * X_CONSTANT_VELOCITY * (moving_right ? 1 : -1);
         pos_X += X_CONSTANT_VELOCITY * (moving_right ? 1 : -1) ;
-        has_position_changed = true;
+        // has_position_changed = true;
     }
     // Está saltando
     if (is_jumping) {
@@ -48,20 +48,20 @@ bool Duck::update_position(const unsigned int frame_delta)
             is_jumping = false;
             is_flapping = false;
         }
-        has_position_changed = true;
+        // has_position_changed = true;
     }
     // Llegó al límite de la pantalla ---> Se mueve la cámara
     if (pos_X > 640.0f)
     {
         // std::cout << "se llegó al fin de la ventana???? posiciónX: " << pos_X << "\n";
         pos_X = -50.0f;
-        has_position_changed = true;
+        // has_position_changed = true;
     }
     else if (pos_X < -50.0f)
     {
         pos_X = 640.0f;
-        has_position_changed = true;
+        // has_position_changed = true;
     }
     // std::cout << "el pato está en las coordenadas x: " << pos_X << "; y: " << pos_Y << "\n";
-    return has_position_changed;
+    // return has_position_changed;
 }

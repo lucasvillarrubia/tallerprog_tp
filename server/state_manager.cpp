@@ -58,16 +58,18 @@ void StateManager::update_duck_state(Duck& duck, const Gameaction& event)
     }
 }
 
-Gamestate StateManager::get_duck_state(Duck& duck)
+Gamestate StateManager::get_duck_state(Duck& duck, int id)
 {
     return {
-        1, // sería el player id
-        duck.pos_X,
-        duck.pos_Y,
+        id,
         duck.is_running ? 1 : 0,
         duck.is_jumping ? 1 : 0,
         duck.is_flapping ? 1 : 0,
-        duck.moving_right ? 1 : 0,
-        duck.jump_velocity
+        duck.moving_right ? 1 : 0
     };
+}
+
+Coordinates StateManager::get_duck_coordinates(Duck& duck)
+{
+    return { duck.pos_X, duck.pos_Y };
 }

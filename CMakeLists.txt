@@ -52,6 +52,7 @@ add_library(taller_common STATIC
         common/gamedata.h
         common/map_entity.cpp
         common/map_entity.h
+        common/coordinates.h
 )
 
 # add the source files that make the lib
@@ -108,7 +109,6 @@ if(TALLER_CLIENT)
             client/character.h
             client/state_manager.cpp
             client/state_manager.h
-            client/coordinates.h
             client/client_threads/updater.cpp
             client/client_threads/updater.h
     )
