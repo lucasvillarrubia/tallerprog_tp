@@ -11,14 +11,6 @@ Coordinates Magnum::getPosition() {
 	return { positionX, positionY};
 }
 
-float Magnum::getPositionX() {
-	return positionX;
-}
-
-float Magnum::getPositionY() {
-	return positionY;
-}
-
 void Magnum::collected() {
 	pickedUp = true;
 }
@@ -31,10 +23,13 @@ bool Magnum::isPickedUp() {
 	return pickedUp;
 }
 
-void Magnum::shoot() {
-	if (!shooting) {
+MagnumAmmo Magnum::shoot() {
+	if (!shooting && pickedUp && (ammo > 0)) {
 		shooting = true;
+		ammo--;
+		return MagnumAmmo(positionX, positionY);
 	}
+	return MagnumAmmo(true);
 }
 
 void Magnum::stopShoot() {

@@ -2,6 +2,7 @@
 #define MAGNUM_H
 
 #include "coordinates.h"
+#include "MagnumAmmo.h"
 
 class Magnum {
 private:
@@ -14,12 +15,10 @@ public:
 	Magnum(float x, float y);
 	void updatePosition(float x, float y);
 	Coordinates getPosition();
-	float getPositionX();
-	float getPositionY();
 	void collected();
 	bool isShooting();
 	bool isPickedUp();
-	void shoot();
+	MagnumAmmo shoot();
 	void stopShoot();
 };
 

@@ -12,7 +12,7 @@ const float GRAVITY_RESISTANCE_WHEN_FLAPPING = 0.1f;
 const int AVAILABLE_MOVEMENT_SPRITES = 6;
 
 
-Character::Character(): pos_X(INITIAL_X_COORDINATE), pos_Y(INITIAL_Y_COORDINATE), is_running(false), is_jumping(false), is_flapping(false), is_ducking(false) , is_grabbing(false), is_shooting(false){}
+Character::Character(): pos_X(INITIAL_X_COORDINATE), pos_Y(INITIAL_Y_COORDINATE), is_running(false), is_jumping(false), is_flapping(false), is_ducking(false) , is_grabbing(false), is_shooting(false), withGun(false){}
 
 
 void Character::update_position(const unsigned int frame_delta, const unsigned int frame_ticks, const int render_width)
@@ -81,6 +81,8 @@ bool Character::is_on_gun(Magnum& magnum, SDL2pp::Renderer& renderer) const {
 bool Character::is_moving_to_the_right() const { return moving_right; }
 
 Coordinates Character::get_coordinates() const { return {pos_X, pos_Y}; }
+
+bool Character::get_is_shooting() const { return is_shooting; }
 
 bool Character::get_is_ducking() const { return is_ducking; }
 

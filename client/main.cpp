@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <exception>
+#include <vector>
 
 #include <SDL2/SDL.h>
 #include <SDL2pp/SDL2pp.hh>
@@ -16,6 +17,7 @@
 #include "mapa.h"
 #include "item_box.h"
 #include "Magnum.h"
+#include "MagnumAmmo.h"
 
 using namespace SDL2pp;
 
@@ -53,6 +55,7 @@ int main() try {
     unsigned int prev_ticks = SDL_GetTicks();
     Character duck;
     Magnum magnum(50, -85);
+    std::vector<MagnumAmmo> bullets;
 
     while (true) {
         unsigned int frame_ticks = SDL_GetTicks();
@@ -71,6 +74,14 @@ int main() try {
         }
 
         duck.update_position(frame_delta, frame_ticks, renderer.GetOutputWidth());
+
+	//actualizo la posicion de las balas
+	for (size_t i=0; i<bullets.size(); i++){
+	    if (!bullets[i].isDestroyed()) { 
+		bullets[i].updatePosition(frame_delta);
+	    }
+	    //las balas que alcanzaron su distancia límite no se actualizan
+	}
 
         // Limpiar y dibujar el mapa
         renderer.Clear();
@@ -109,8 +120,8 @@ int main() try {
         }       
         //ubicacion del sprite en el png y sus dimensiones
 	SDL_Rect src_rect = { 1, 47, 32, 32 };
-        SDL_Rect dst_rect = { static_cast<int>(magnum.getPositionX()),
-                              static_cast<int>(renderer.GetOutputHeight() / 2 - 16 - magnum.getPositionY()),
+        SDL_Rect dst_rect = { static_cast<int>(magnum.getPosition().pos_X),
+                              static_cast<int>(renderer.GetOutputHeight() / 2 - 16 - magnum.getPosition().pos_Y),
                                   48, 48 };
 	SDL_RendererFlip gunFlip = magnum.isPickedUp() ? flip : SDL_FLIP_NONE;
         SDL_RenderCopyEx(renderer.Get(), pistolSprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, gunFlip);
@@ -119,6 +130,28 @@ int main() try {
         if (!magnum.isPickedUp() && duck.is_on_gun(magnum, renderer) && duck.get_is_grabbing()) {
         	magnum.collected();
         }
+        
+        //realizo el disparo
+	if (duck.get_is_shooting()) {
+		MagnumAmmo bullet = magnum.shoot();
+            	if (!bullet.isDestroyed()) {
+            		bullets.push_back(bullet);
+            	}
+	}else{
+		magnum.stopShoot();
+	}
+	//intento imprimir todas las balas del escenario
+	for (size_t i=0; i<bullets.size(); i++){
+		if (bullets[i].isDestroyed()){
+			continue; //si las balas llegaron a su alcance limite no se imprimen
+		}
+		SDL_Rect src_bullet_rect = { 1, 89, 16, 16 };
+        	SDL_Rect dst_bullet_rect = { static_cast<int>(bullets[i].getPosition().pos_X),
+                              static_cast<int>(renderer.GetOutputHeight() / 2 - 16 - bullets[i].getPosition().pos_Y),
+                                  24, 24 };
+	SDL_RendererFlip bulletFlip = magnum.isPickedUp() ? flip : SDL_FLIP_NONE;
+        SDL_RenderCopyEx(renderer.Get(), pistolSprites.Get(), &src_bullet_rect, &dst_bullet_rect, 0.0, nullptr, bulletFlip);
+	}
         
         // Verificar colisión con cada caja de premios en el vector
         for (auto& box : boxes) {
