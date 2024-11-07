@@ -362,7 +362,7 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/receiver.h \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \
- /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/renderer.h \
+ /home/lucas/CLionProjects/tallerprog_tp/client/renderer.h \
  /home/lucas/CLionProjects/tallerprog_tp/./client/character.h \
  /home/lucas/CLionProjects/tallerprog_tp/./client/coordinates.h \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Renderer.hh \
@@ -382,4 +382,8 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: \
  /usr/include/SDL2/SDL_pixels.h \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Window.hh \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_video.h \
+ /home/lucas/CLionProjects/tallerprog_tp/client/state_manager.h \
+ /home/lucas/CLionProjects/tallerprog_tp/client/character.h \
+ /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/updater.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./client/state_manager.h \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SDL.hh

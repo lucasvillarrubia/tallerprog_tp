@@ -94,19 +94,21 @@ if(TALLER_CLIENT)
             client/client_comms/client_receiver.h
             client/client.cpp
             client/client_comms/client_protocol.cpp
-            client/client_threads/renderer.h
+            client/renderer.h
             client/client_threads/event_listener.h
             client/local_player.h
             client/local_player.cpp
             client/client_comms/client_sender.cpp
             client/client_comms/client_receiver.cpp
-            client/client_threads/renderer.cpp
+            client/renderer.cpp
             client/client_threads/event_listener.cpp
             client/character.cpp
             client/character.h
             client/state_manager.cpp
             client/state_manager.h
             client/coordinates.h
+            client/client_threads/updater.cpp
+            client/client_threads/updater.h
     )
 
     # Make them depend on taller_common lib

@@ -14,9 +14,10 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_receiver.cpp" "CMakeFiles/taller_client.dir/client/client_comms/client_receiver.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_comms/client_receiver.cpp.o.d"
   "/home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_sender.cpp" "CMakeFiles/taller_client.dir/client/client_comms/client_sender.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_comms/client_sender.cpp.o.d"
   "/home/lucas/CLionProjects/tallerprog_tp/client/client_threads/event_listener.cpp" "CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o.d"
-  "/home/lucas/CLionProjects/tallerprog_tp/client/client_threads/renderer.cpp" "CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o.d"
+  "/home/lucas/CLionProjects/tallerprog_tp/client/client_threads/updater.cpp" "CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o.d"
   "/home/lucas/CLionProjects/tallerprog_tp/client/local_player.cpp" "CMakeFiles/taller_client.dir/client/local_player.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/local_player.cpp.o.d"
   "/home/lucas/CLionProjects/tallerprog_tp/client/main.cpp" "CMakeFiles/taller_client.dir/client/main.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/main.cpp.o.d"
+  "/home/lucas/CLionProjects/tallerprog_tp/client/renderer.cpp" "CMakeFiles/taller_client.dir/client/renderer.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/renderer.cpp.o.d"
   "/home/lucas/CLionProjects/tallerprog_tp/client/state_manager.cpp" "CMakeFiles/taller_client.dir/client/state_manager.cpp.o" "gcc" "CMakeFiles/taller_client.dir/client/state_manager.cpp.o.d"
   )
 

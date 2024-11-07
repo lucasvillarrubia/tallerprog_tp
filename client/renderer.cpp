@@ -16,7 +16,7 @@ const int DUCK_SPRITE_HEIGHT = 64;
 const int DUCK_MOVEMENT_SPRITES_LINE = 0;
 
 
-Renderer::Renderer(std::atomic_bool& con_stat, Queue<Gamestate>& q, SDL2pp::Window& w, SDL2pp::Renderer& r): connected(con_stat), updates_feed(q), window(w), renderer(r) {}
+Renderer::Renderer(std::atomic_bool& con_stat, SDL2pp::Window& w, SDL2pp::Renderer& r, Queue<Gamestate>& q, StateManager& s): connected(con_stat), window(w), renderer(r), updates_feed(q), state(s) {}
 
 void Renderer::run() {
     try
@@ -35,13 +35,14 @@ void Renderer::run() {
             // unsigned int frame_delta = frame_ticks - prev_ticks;
             // prev_ticks = frame_ticks;
             Gamestate update;
-            // while
+            // // while
             while (updates_feed.try_pop(update))
             {
-                StateManager::update_duck(duck, update);
-                // std::cout << "coordenadas pato: x: " << duck.get_coordinates().pos_X << "; y: " << duck.get_coordinates().pos_Y << "\n";
-
-                // std::cout << "llegó un estado al renderer!" << "\n";
+                state.update_duck(update);
+            //     StateManager::update_duck(duck, update);
+            //     // std::cout << "coordenadas pato: x: " << duck.get_coordinates().pos_X << "; y: " << duck.get_coordinates().pos_Y << "\n";
+            //
+            //     // std::cout << "llegó un estado al renderer!" << "\n";
             }
             // else
             // {
@@ -50,10 +51,10 @@ void Renderer::run() {
             int vcenter = renderer.GetOutputHeight() / 2;
             renderer.Clear();
             renderer.Copy(background, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
-            int src_x = DUCK_SPRITE_WIDTH * duck.get_movement_phase(frame_ticks);
+            int src_x = DUCK_SPRITE_WIDTH * state.get_movement_phase(frame_ticks);
             int src_y = DUCK_MOVEMENT_SPRITES_LINE;
-            Coordinates duck_position = duck.get_coordinates();
-            SDL_RendererFlip flip = duck.is_moving_to_the_right() ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+            Coordinates duck_position = state.get_coordinates();
+            SDL_RendererFlip flip = state.is_moving_to_the_right() ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
             SDL_Rect src_rect = { src_x, src_y, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
             SDL_Rect dst_rect = { static_cast<int>(duck_position.pos_X), static_cast<int>(vcenter - 32 - duck_position.pos_Y), 64, 64 };
             SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
@@ -63,10 +64,10 @@ void Renderer::run() {
             SDL_Delay(1);
         // }
     }
-    catch (ClosedQueue const& e)
-    {
-        std::cerr << "Se cerró la queue del render?! " << e.what() << '\n';
-    }
+    // catch (ClosedQueue const& e)
+    // {
+    //     std::cerr << "Se cerró la queue del render?! " << e.what() << '\n';
+    // }
     catch (const std::exception& e)
     {
         std::cerr << "Exception caught in the renderer thread: " << e.what() << '\n';

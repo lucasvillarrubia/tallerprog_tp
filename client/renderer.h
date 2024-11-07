@@ -8,18 +8,20 @@
 #include "common/hands_on_threads/thread.h"
 #include "SDL2pp/Renderer.hh"
 #include "SDL2pp/Window.hh"
+#include "state_manager.h"
 
 
 class Renderer
 {
 private:
     std::atomic_bool& connected;
-    Queue<Gamestate>& updates_feed;
     SDL2pp::Window& window;
     SDL2pp::Renderer& renderer;
-    Character duck;
+    Queue<Gamestate>& updates_feed;
+    StateManager& state;
+    // Character duck;
 public:
-    Renderer(std::atomic_bool&, Queue<Gamestate>&, SDL2pp::Window&, SDL2pp::Renderer&);
+    Renderer(std::atomic_bool&, SDL2pp::Window&, SDL2pp::Renderer&, Queue<Gamestate>&, StateManager&);
     void run();
     ~Renderer() = default;
 };

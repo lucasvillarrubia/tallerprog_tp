@@ -15,7 +15,7 @@ public:
     // esto para el primer intento nomás
     bool exited = false;
     Duck();
-    void update_position(unsigned int);
+    bool update_position(unsigned int);
     // bool is_moving_to_the_right() const;
     // Coordinates get_coordinates() const;
     // int get_movement_phase () const;

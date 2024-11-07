@@ -4,46 +4,14 @@
 
 
 const float JUMP_STRENGTH = 15.0f;
-const float FLAP_STRENGTH = 1.0f; // Fuerza de aleteo en caída
+const float FLAP_STRENGTH = 1.0f;
+const int AVAILABLE_MOVEMENT_SPRITES = 6;
 
-void StateManager::update_duck_state(Character& duck, const SDL_Event event)
-{
-    if (event.type == SDL_KEYDOWN) {
-        switch (event.key.keysym.sym) {
-        case SDLK_RIGHT:
-            duck.is_running = true;
-            duck.moving_right = true;
-            break;
-        case SDLK_LEFT:
-            duck.is_running = true;
-            duck.moving_right = false;
-            break;
-        case SDLK_SPACE:
-            if (!duck.is_jumping) { // Si no está en el aire, inicia el salto
-                duck.is_jumping = true;
-                duck.is_flapping = true;
-                duck.jump_velocity = JUMP_STRENGTH;
-            } else if (!duck.is_flapping && duck.jump_velocity < 0) { // Si está en caída, activa el aleteo
-                duck.is_flapping = true;
-                duck.jump_velocity = FLAP_STRENGTH; // Aplica fuerza adicional en el aire
-            }
-            break;
-        }
-    } else if (event.type == SDL_KEYUP) {
-        switch (event.key.keysym.sym) {
-        case SDLK_RIGHT:
-        case SDLK_LEFT:
-            duck.is_running = false;
-            break;
-        case SDLK_SPACE:
-            duck.is_flapping = false;
-            break;
-        }
-    }
-}
 
-void StateManager::update_duck(Character& duki, Gamestate& new_state)
-{
+StateManager::StateManager() {}
+
+void StateManager::update_duck(const Gamestate& new_state) {
+    std::unique_lock<std::mutex> lck(mtx);
     duki.pos_X = new_state.pos_X;
     duki.pos_Y = new_state.pos_Y;
     duki.is_running = new_state.is_running;
@@ -51,4 +19,22 @@ void StateManager::update_duck(Character& duki, Gamestate& new_state)
     duki.is_flapping = new_state.is_flapping;
     duki.moving_right = new_state.move_direction;
     duki.jump_velocity = new_state.jump_speed;
+}
+
+bool StateManager::is_moving_to_the_right()
+{
+    std::unique_lock<std::mutex> lck(mtx);
+    return duki.moving_right;
+}
+
+Coordinates StateManager::get_coordinates()
+{
+    std::unique_lock<std::mutex> lck(mtx);
+    return {duki.pos_X, duki.pos_Y};
+}
+
+int StateManager::get_movement_phase (const unsigned int frame_ticks)
+{
+    std::unique_lock<std::mutex> lck(mtx);
+    return (duki.is_running ? ((frame_ticks / 100) % AVAILABLE_MOVEMENT_SPRITES) : 0);
 }

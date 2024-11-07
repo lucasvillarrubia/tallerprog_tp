@@ -17,7 +17,7 @@ private:
     MonitoredList<Player*>& players;
     Queue<Gameaction>& user_commands;
     Duck duck;
-    void process_users_commands(unsigned int);
+    void process_users_commands();
     void initialize_players();
     void send_all_initial_coordinates();
     void check_for_projectile_hit();

@@ -2,7 +2,7 @@
 #define CLIENT_STATE_MANAGER_H
 
 
-#include <SDL_events.h>
+#include <mutex>
 
 #include "character.h"
 #include "common/gamedata.h"
@@ -10,10 +10,16 @@
 
 class StateManager
 {
+private:
+    std::mutex mtx;
+    Character duki;
 public:
-    // Por ahora esto es static porque la clase no tiene atributos, falta completarla.
-    static void update_duck_state(Character&, SDL_Event);
-    static void update_duck(Character&, Gamestate&);
+    StateManager();
+    void update_duck(const Gamestate&);
+    bool is_moving_to_the_right();
+    Coordinates get_coordinates();
+    int get_movement_phase(unsigned int);
+    ~StateManager() = default;
 };
 
 

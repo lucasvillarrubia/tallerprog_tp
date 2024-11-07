@@ -11,14 +11,19 @@ Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_c
         is_running(false), players(player_list), user_commands(usr_cmds) {
 }
 
-void Gameplay::process_users_commands(unsigned int frame_delta) {
+void Gameplay::process_users_commands() {
     Gameaction command;
     while (user_commands.try_pop(command)) {
-        Gamestate update = StateManager::update_duck_state(duck, command);
-        duck.update_position(frame_delta);
-        // por ahora, primero me conecto con un solo pato
-        if (not duck.exited) players.broadcast(update);
+        StateManager::update_duck_state(duck, command);
+        // duck.update_position(frame_delta);
+        // Gamestate update = StateManager::get_duck_state(duck);
+        // // por ahora, primero me conecto con un solo pato
+        // if (not duck.exited) players.broadcast(update);
     }
+    // duck.update_position(frame_delta);
+    // Gamestate update = StateManager::get_duck_state(duck);
+    // // por ahora, primero me conecto con un solo pato
+    // if (not duck.exited) players.broadcast(update);
 }
 
 void Gameplay::send_all_initial_coordinates()
@@ -35,9 +40,16 @@ void Gameplay::run() {
         send_all_initial_coordinates();
         while (is_running.load()) {
             auto current_time = std::chrono::steady_clock::now();
+            process_users_commands();
             auto frame_delta = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - prev_time).count();
             prev_time = current_time;
-            process_users_commands(frame_delta);
+            if (duck.update_position(frame_delta))
+            {
+                Gamestate update = StateManager::get_duck_state(duck);
+                // por ahora, primero me conecto con un solo pato
+                if (not duck.exited) players.broadcast(update);
+                // std::cout << "el pato cambió de posición\n";
+            }
             std::this_thread::sleep_for(std::chrono::milliseconds(16)); // Maso 60 FPS
         }
     }

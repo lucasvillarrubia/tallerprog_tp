@@ -17,10 +17,10 @@ private:
     int movement_phase;
 public:
     Character();
-    void update_position(unsigned int);
-    bool is_moving_to_the_right() const;
-    Coordinates get_coordinates() const;
-    int get_movement_phase (unsigned int) const;
+    // void update_position(unsigned int);
+    // bool is_moving_to_the_right() const;
+    // Coordinates get_coordinates() const;
+    // int get_movement_phase (unsigned int) const;
     friend class StateManager;
 };
 

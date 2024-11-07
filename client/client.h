@@ -4,7 +4,9 @@
 
 #include "client_threads/event_listener.h"
 #include "local_player.h"
-#include "client_threads/renderer.h"
+#include "renderer.h"
+#include "state_manager.h"
+#include "client_threads/updater.h"
 #include "common/gamedata.h"
 #include "SDL2pp/Renderer.hh"
 #include "SDL2pp/Window.hh"
@@ -20,8 +22,10 @@ private:
     Queue<Gameaction> events;
     Queue<Gamestate> updates;
     LocalPlayer connection;
-    EventListener eventloop;
+    EventListener event_listener;
+    StateManager state;
     Renderer renderloop;
+    Updater updater;
 public:
     Client(const char*, const char*);
     void run();

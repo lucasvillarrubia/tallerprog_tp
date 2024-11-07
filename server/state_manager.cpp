@@ -14,18 +14,18 @@ const float JUMP_STRENGTH = 15.0f;
 const float FLAP_STRENGTH = 1.0f;
 
 
-Gamestate StateManager::update_duck_state(Duck& duck, const Gameaction& event)
+void StateManager::update_duck_state(Duck& duck, const Gameaction& event)
 {
     if (event.type == QUIT)
     {
         duck.exited = true;
-        return {};
+        return;
     }
     if (event.type == KEYDOWN) {
         switch (event.key) {
         case ESCAPE:
             duck.exited = true;
-            return {};
+            return;
         case RIGHT:
             duck.is_running = true;
             duck.moving_right = true;
@@ -56,6 +56,10 @@ Gamestate StateManager::update_duck_state(Duck& duck, const Gameaction& event)
             break;
         }
     }
+}
+
+Gamestate StateManager::get_duck_state(Duck& duck)
+{
     return {
         1, // sería el player id
         duck.pos_X,
