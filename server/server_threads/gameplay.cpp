@@ -9,12 +9,13 @@
 
 Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_cmds):
         is_running(false), players(player_list), user_commands(usr_cmds) {
+    ducks_by_id.insert({1, Duck()});
 }
 
 void Gameplay::process_users_commands() {
     Gameaction command;
     while (user_commands.try_pop(command)) {
-        StateManager::update_duck_state(duck, command);
+        StateManager::update_duck_state(ducks_by_id.at(command.player_id), command);
         // duck.update_position(frame_delta);
         // Gamestate update = StateManager::get_duck_state(duck);
         // // por ahora, primero me conecto con un solo pato
@@ -28,8 +29,26 @@ void Gameplay::process_users_commands() {
 
 void Gameplay::send_all_initial_coordinates()
 {
-    Gamestate initial_duck_coordinates(1, 0.0f, 0.0f, 0, 0, 0, 1, 0.0f);
-    players.broadcast(initial_duck_coordinates);
+    for (auto& [id, duck]: ducks_by_id)
+    {
+        Gamestate initial_duck_coordinates(id, 0.0f, 0.0f, 0, 0, 0, 1, 0.0f);
+        players.broadcast(initial_duck_coordinates);
+    }
+}
+
+void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
+{
+    for (auto& [id, duck]: ducks_by_id)
+    {
+        if (duck.update_position(frame_delta))
+        // if (duck.update_position(frame_delta) and terrain.is_duck_position_valid())
+        {
+            Gamestate update = StateManager::get_duck_state(duck);
+            // por ahora, primero me conecto con un solo pato
+            players.broadcast(update);
+            // std::cout << "el pato cambió de posición\n";
+        }
+    }
 }
 
 void Gameplay::run() {
@@ -43,13 +62,7 @@ void Gameplay::run() {
             process_users_commands();
             auto frame_delta = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - prev_time).count();
             prev_time = current_time;
-            if (duck.update_position(frame_delta))
-            {
-                Gamestate update = StateManager::get_duck_state(duck);
-                // por ahora, primero me conecto con un solo pato
-                if (not duck.exited) players.broadcast(update);
-                // std::cout << "el pato cambió de posición\n";
-            }
+            send_ducks_positions_updates(frame_delta);
             std::this_thread::sleep_for(std::chrono::milliseconds(16)); // Maso 60 FPS
         }
     }

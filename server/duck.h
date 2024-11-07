@@ -4,6 +4,7 @@
 
 class Duck {
 private:
+    int id;
     float pos_X;
     float pos_Y;
     bool is_running;
@@ -13,7 +14,7 @@ private:
     float jump_velocity;
 public:
     // esto para el primer intento nomás
-    bool exited = false;
+    // bool exited = false;
     Duck();
     bool update_position(unsigned int);
     // bool is_moving_to_the_right() const;

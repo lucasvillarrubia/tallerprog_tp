@@ -105,6 +105,13 @@ build CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o: CXX_COMPILER__ta
   OBJECT_DIR = CMakeFiles/taller_common.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_common.dir/common/comms
 
+build CMakeFiles/taller_common.dir/common/map_entity.cpp.o: CXX_COMPILER__taller_common_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/common/map_entity.cpp || cmake_object_order_depends_target_taller_common
+  DEP_FILE = CMakeFiles/taller_common.dir/common/map_entity.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
+  OBJECT_DIR = CMakeFiles/taller_common.dir
+  OBJECT_FILE_DIR = CMakeFiles/taller_common.dir/common
+
 build CMakeFiles/taller_common.dir/common/foo.cpp.o: CXX_COMPILER__taller_common_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/common/foo.cpp || cmake_object_order_depends_target_taller_common
   DEP_FILE = CMakeFiles/taller_common.dir/common/foo.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
@@ -120,7 +127,7 @@ build CMakeFiles/taller_common.dir/common/foo.cpp.o: CXX_COMPILER__taller_common
 #############################################
 # Link the static library libtaller_common.a
 
-build libtaller_common.a: CXX_STATIC_LIBRARY_LINKER__taller_common_Debug CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.o CMakeFiles/taller_common.dir/common/message.cpp.o CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.o CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o CMakeFiles/taller_common.dir/common/comms/sender.cpp.o CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o CMakeFiles/taller_common.dir/common/foo.cpp.o
+build libtaller_common.a: CXX_STATIC_LIBRARY_LINKER__taller_common_Debug CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.o CMakeFiles/taller_common.dir/common/message.cpp.o CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.o CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o CMakeFiles/taller_common.dir/common/comms/sender.cpp.o CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o CMakeFiles/taller_common.dir/common/map_entity.cpp.o CMakeFiles/taller_common.dir/common/foo.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles/taller_common.dir
   POST_BUILD = :
@@ -330,6 +337,13 @@ build CMakeFiles/taller_server.dir/server/match.cpp.o: CXX_COMPILER__taller_serv
   OBJECT_DIR = CMakeFiles/taller_server.dir
   OBJECT_FILE_DIR = CMakeFiles/taller_server.dir/server
 
+build CMakeFiles/taller_server.dir/server/terrain.cpp.o: CXX_COMPILER__taller_server_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/server/terrain.cpp || cmake_object_order_depends_target_taller_server
+  DEP_FILE = CMakeFiles/taller_server.dir/server/terrain.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
+  INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
+  OBJECT_DIR = CMakeFiles/taller_server.dir
+  OBJECT_FILE_DIR = CMakeFiles/taller_server.dir/server
+
 build CMakeFiles/taller_server.dir/server/main.cpp.o: CXX_COMPILER__taller_server_unscanned_Debug /home/lucas/CLionProjects/tallerprog_tp/server/main.cpp || cmake_object_order_depends_target_taller_server
   DEP_FILE = CMakeFiles/taller_server.dir/server/main.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror
@@ -345,7 +359,7 @@ build CMakeFiles/taller_server.dir/server/main.cpp.o: CXX_COMPILER__taller_serve
 #############################################
 # Link the executable taller_server
 
-build taller_server: CXX_EXECUTABLE_LINKER__taller_server_Debug CMakeFiles/taller_server.dir/server/server_threads/acceptor.cpp.o CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o CMakeFiles/taller_server.dir/server/player.cpp.o CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o CMakeFiles/taller_server.dir/server/server.cpp.o CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o CMakeFiles/taller_server.dir/server/duck.cpp.o CMakeFiles/taller_server.dir/server/state_manager.cpp.o CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o CMakeFiles/taller_server.dir/server/match.cpp.o CMakeFiles/taller_server.dir/server/main.cpp.o | libtaller_common.a || libtaller_common.a
+build taller_server: CXX_EXECUTABLE_LINKER__taller_server_Debug CMakeFiles/taller_server.dir/server/server_threads/acceptor.cpp.o CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o CMakeFiles/taller_server.dir/server/player.cpp.o CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o CMakeFiles/taller_server.dir/server/server.cpp.o CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o CMakeFiles/taller_server.dir/server/duck.cpp.o CMakeFiles/taller_server.dir/server/state_manager.cpp.o CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o CMakeFiles/taller_server.dir/server/match.cpp.o CMakeFiles/taller_server.dir/server/terrain.cpp.o CMakeFiles/taller_server.dir/server/main.cpp.o | libtaller_common.a || libtaller_common.a
   FLAGS = -g
   LINK_LIBRARIES = libtaller_common.a
   OBJECT_DIR = CMakeFiles/taller_server.dir

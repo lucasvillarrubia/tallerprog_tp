@@ -18,13 +18,13 @@ void StateManager::update_duck_state(Duck& duck, const Gameaction& event)
 {
     if (event.type == QUIT)
     {
-        duck.exited = true;
+        // duck.exited = true;
         return;
     }
     if (event.type == KEYDOWN) {
         switch (event.key) {
         case ESCAPE:
-            duck.exited = true;
+            // duck.exited = true;
             return;
         case RIGHT:
             duck.is_running = true;

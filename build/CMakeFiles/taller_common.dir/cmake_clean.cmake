@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o.d"
   "CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o"
   "CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o.d"
+  "CMakeFiles/taller_common.dir/common/map_entity.cpp.o"
+  "CMakeFiles/taller_common.dir/common/map_entity.cpp.o.d"
   "CMakeFiles/taller_common.dir/common/message.cpp.o"
   "CMakeFiles/taller_common.dir/common/message.cpp.o.d"
   "libtaller_common.a"

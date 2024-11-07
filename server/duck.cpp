@@ -33,7 +33,7 @@ bool Duck::update_position(const unsigned int frame_delta)
     }
     // Está saltando
     if (is_jumping) {
-    // if ((pos_Y != 0) or jump_velocity != 0) {
+        // if ((pos_Y != 0) or jump_velocity != 0) {
         // float effective_gravity = (is_flapping && jump_velocity < 0) ? GRAVITY * GRAVITY_RESISTANCE_WHEN_FLAPPING : GRAVITY;
         float effective_gravity = GRAVITY;
         pos_Y += jump_velocity * (frame_delta * TARGET_FRAME_TIME);

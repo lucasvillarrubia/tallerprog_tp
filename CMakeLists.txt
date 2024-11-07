@@ -50,6 +50,8 @@ add_library(taller_common STATIC
         common/comms/protocol.cpp
         common/comms/protocol.h
         common/gamedata.h
+        common/map_entity.cpp
+        common/map_entity.h
 )
 
 # add the source files that make the lib
@@ -168,7 +170,9 @@ if(TALLER_SERVER)
             server/server_threads/match_manager.cpp
             server/server_threads/match_manager.h
             server/match.cpp
-            server/match.h)
+            server/match.h
+            server/terrain.cpp
+            server/terrain.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)

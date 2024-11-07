@@ -418,6 +418,19 @@ CMakeFiles/taller_server.dir/server/main.cpp.o: ../server/main.cpp \
   /usr/include/x86_64-linux-gnu/asm/unistd_64.h \
   /usr/include/x86_64-linux-gnu/bits/syscall.h \
   /usr/include/c++/11/bits/std_mutex.h \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
   ../common/hands_on_threads/queue.h \
   /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/chrono \
@@ -430,14 +443,7 @@ CMakeFiles/taller_server.dir/server/main.cpp.o: ../server/main.cpp \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/bits/allocated_ptr.h \
   /usr/include/c++/11/bits/refwrap.h \
-  /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/bits/unique_ptr.h \
-  /usr/include/c++/11/utility \
-  /usr/include/c++/11/bits/stl_relops.h \
-  /usr/include/c++/11/tuple \
-  /usr/include/c++/11/array \
-  /usr/include/c++/11/bits/uses_allocator.h \
-  /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/stop_token \
   /usr/include/c++/11/bits/std_thread.h \
@@ -685,6 +691,19 @@ CMakeFiles/taller_server.dir/server/match.cpp.o: ../server/match.cpp \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
   /usr/include/c++/11/bits/charconv.h \
   /usr/include/c++/11/bits/basic_string.tcc \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
   ../common/hands_on_threads/queue.h \
   /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/chrono \
@@ -697,13 +716,7 @@ CMakeFiles/taller_server.dir/server/match.cpp.o: ../server/match.cpp \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/bits/allocated_ptr.h \
   /usr/include/c++/11/bits/refwrap.h \
-  /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/bits/unique_ptr.h \
-  /usr/include/c++/11/utility \
-  /usr/include/c++/11/bits/stl_relops.h \
-  /usr/include/c++/11/tuple \
-  /usr/include/c++/11/array \
-  /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
   /usr/include/c++/11/bits/ios_base.h \
@@ -722,7 +735,6 @@ CMakeFiles/taller_server.dir/server/match.cpp.o: ../server/match.cpp \
   /usr/include/c++/11/bits/locale_facets.tcc \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
-  /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/stop_token \
   /usr/include/c++/11/bits/std_thread.h \
@@ -1245,6 +1257,19 @@ CMakeFiles/taller_server.dir/server/server.cpp.o: ../server/server.cpp \
   /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
   /usr/include/c++/11/bits/charconv.h \
   /usr/include/c++/11/bits/basic_string.tcc \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
   ../common/hands_on_threads/queue.h \
   /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/chrono \
@@ -1257,13 +1282,7 @@ CMakeFiles/taller_server.dir/server/server.cpp.o: ../server/server.cpp \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/bits/allocated_ptr.h \
   /usr/include/c++/11/bits/refwrap.h \
-  /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/bits/unique_ptr.h \
-  /usr/include/c++/11/utility \
-  /usr/include/c++/11/bits/stl_relops.h \
-  /usr/include/c++/11/tuple \
-  /usr/include/c++/11/array \
-  /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
   /usr/include/c++/11/bits/ios_base.h \
@@ -1282,7 +1301,6 @@ CMakeFiles/taller_server.dir/server/server.cpp.o: ../server/server.cpp \
   /usr/include/c++/11/bits/locale_facets.tcc \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
-  /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/stop_token \
   /usr/include/c++/11/bits/std_thread.h \
@@ -2674,6 +2692,12 @@ CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o: ../server/serv
   ../server/server_comms/server_protocol.h \
   ../server/match.h \
   ../server/server_threads/gameplay.h \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
   ../server/command.h \
   ../server/duck.h
 
@@ -3215,13 +3239,19 @@ CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o: ../serve
   /usr/include/x86_64-linux-gnu/bits/semaphore.h \
   ../server/match.h \
   ../server/server_threads/gameplay.h \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
   ../common/hands_on_threads/queue.h \
   /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/bits/unique_lock.h \
   /usr/include/c++/11/bits/shared_ptr.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
   /usr/include/c++/11/bits/allocated_ptr.h \
-  /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/deque \
   /usr/include/c++/11/bits/stl_uninitialized.h \
@@ -3258,16 +3288,78 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager
   ../server/duck.h \
   ../common/gamedata.h
 
+CMakeFiles/taller_server.dir/server/terrain.cpp.o: ../server/terrain.cpp \
+  /usr/include/stdc-predef.h \
+  ../server/terrain.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_algobase.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
+  /usr/include/features.h \
+  /usr/include/features-time64.h \
+  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/bits/timesize.h \
+  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
+  /usr/include/c++/11/pstl/pstl_config.h \
+  /usr/include/c++/11/bits/functexcept.h \
+  /usr/include/c++/11/bits/exception_defines.h \
+  /usr/include/c++/11/bits/cpp_type_traits.h \
+  /usr/include/c++/11/ext/type_traits.h \
+  /usr/include/c++/11/ext/numeric_traits.h \
+  /usr/include/c++/11/bits/stl_pair.h \
+  /usr/include/c++/11/bits/move.h \
+  /usr/include/c++/11/type_traits \
+  /usr/include/c++/11/compare \
+  /usr/include/c++/11/concepts \
+  /usr/include/c++/11/bits/stl_iterator_base_types.h \
+  /usr/include/c++/11/bits/iterator_concepts.h \
+  /usr/include/c++/11/bits/ptr_traits.h \
+  /usr/include/c++/11/bits/ranges_cmp.h \
+  /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/11/bits/concept_check.h \
+  /usr/include/c++/11/debug/assertions.h \
+  /usr/include/c++/11/bits/stl_iterator.h \
+  /usr/include/c++/11/new \
+  /usr/include/c++/11/bits/exception.h \
+  /usr/include/c++/11/bits/stl_construct.h \
+  /usr/include/c++/11/debug/debug.h \
+  /usr/include/c++/11/bits/predefined_ops.h \
+  /usr/include/c++/11/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/include/c++/11/ext/new_allocator.h \
+  /usr/include/c++/11/bits/memoryfwd.h \
+  /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/ext/alloc_traits.h \
+  /usr/include/c++/11/bits/alloc_traits.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/list.tcc \
+  ../common/map_entity.h \
+  /usr/include/c++/11/cstdint \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/types.h \
+  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
+  /usr/include/x86_64-linux-gnu/bits/time64.h \
+  /usr/include/x86_64-linux-gnu/bits/wchar.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h
+
+
+../common/map_entity.h:
+
+../server/terrain.h:
 
 ../server/state_manager.cpp:
 
 ../server/state_manager.h:
-
-/usr/include/c++/11/bits/stl_multimap.h:
-
-/usr/include/c++/11/bits/stl_map.h:
-
-/usr/include/c++/11/map:
 
 ../server/server_threads/gameplay.cpp:
 
@@ -3323,13 +3415,15 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager
 
 /usr/include/c++/11/bits/deque.tcc:
 
+/usr/include/c++/11/bits/stl_uninitialized.h:
+
+/usr/include/c++/11/deque:
+
+/usr/include/x86_64-linux-gnu/sys/time.h:
+
 /usr/include/x86_64-linux-gnu/asm/bitsperlong.h:
 
 /usr/include/c++/11/backward/binders.h:
-
-/usr/include/c++/11/bits/node_handle.h:
-
-/usr/include/c++/11/iostream:
 
 /usr/include/x86_64-linux-gnu/sys/syscall.h:
 
@@ -3414,6 +3508,8 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
 /usr/include/c++/11/bits/predefined_ops.h:
+
+../server/terrain.cpp:
 
 /usr/include/c++/11/bits/atomic_wait.h:
 
@@ -3501,6 +3597,10 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
+/usr/include/c++/11/iostream:
+
+/usr/include/c++/11/bits/node_handle.h:
+
 /usr/include/c++/11/semaphore:
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
@@ -3520,8 +3620,6 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager
 /usr/include/asm-generic/errno-base.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
-
-/usr/include/c++/11/deque:
 
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
@@ -3655,19 +3753,13 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager
 
 /usr/include/features.h:
 
+/usr/include/c++/11/bits/stl_multimap.h:
+
 /usr/include/c++/11/bits/iterator_concepts.h:
 
 /usr/include/stdlib.h:
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
-
-/usr/include/c++/11/bits/erase_if.h:
-
-/usr/include/c++/11/bits/ptr_traits.h:
-
-/usr/include/stdint.h:
-
-/usr/include/endian.h:
 
 /usr/include/x86_64-linux-gnu/sys/types.h:
 
@@ -3675,9 +3767,9 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager
 
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
-/usr/include/c++/11/bits/stl_construct.h:
-
 /usr/include/x86_64-linux-gnu/bits/semaphore.h:
+
+/usr/include/c++/11/bits/stl_construct.h:
 
 /usr/include/c++/11/bits/shared_ptr.h:
 
@@ -3708,6 +3800,8 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager
 /usr/include/c++/11/bits/stl_heap.h:
 
 /usr/include/c++/11/bits/ranges_base.h:
+
+/usr/include/c++/11/map:
 
 /usr/include/stdc-predef.h:
 
@@ -3867,7 +3961,17 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager
 
 /usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
 
+/usr/include/c++/11/bits/stl_map.h:
+
 ../common/hands_on_threads/queue.h:
+
+/usr/include/c++/11/bits/ptr_traits.h:
+
+/usr/include/stdint.h:
+
+/usr/include/endian.h:
+
+/usr/include/c++/11/bits/erase_if.h:
 
 /usr/include/c++/11/thread:
 
@@ -3879,13 +3983,13 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager
 
 /usr/include/c++/11/bits/parse_numbers.h:
 
-/usr/include/linux/stddef.h:
-
-/usr/include/c++/11/bits/refwrap.h:
+/usr/include/c++/11/bits/uses_allocator.h:
 
 /usr/include/c++/11/bits/unique_lock.h:
 
-/usr/include/c++/11/bits/uses_allocator.h:
+/usr/include/linux/stddef.h:
+
+/usr/include/c++/11/bits/refwrap.h:
 
 ../server/server_comms/server_receiver.h:
 
@@ -3898,7 +4002,3 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager
 ../server/server_threads/match_manager.cpp:
 
 /usr/include/c++/11/bits/semaphore_base.h:
-
-/usr/include/x86_64-linux-gnu/sys/time.h:
-
-/usr/include/c++/11/bits/stl_uninitialized.h:

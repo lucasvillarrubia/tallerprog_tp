@@ -25,6 +25,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o.d"
   "CMakeFiles/taller_server.dir/server/state_manager.cpp.o"
   "CMakeFiles/taller_server.dir/server/state_manager.cpp.o.d"
+  "CMakeFiles/taller_server.dir/server/terrain.cpp.o"
+  "CMakeFiles/taller_server.dir/server/terrain.cpp.o.d"
   "taller_server"
   "taller_server.pdb"
 )

@@ -760,6 +760,30 @@ common/hands_on_sockets/socket.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_common.dir/build.make CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.s
 .PHONY : common/hands_on_sockets/socket.cpp.s
 
+common/map_entity.o: common/map_entity.cpp.o
+.PHONY : common/map_entity.o
+
+# target to build an object file
+common/map_entity.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_common.dir/build.make CMakeFiles/taller_common.dir/common/map_entity.cpp.o
+.PHONY : common/map_entity.cpp.o
+
+common/map_entity.i: common/map_entity.cpp.i
+.PHONY : common/map_entity.i
+
+# target to preprocess a source file
+common/map_entity.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_common.dir/build.make CMakeFiles/taller_common.dir/common/map_entity.cpp.i
+.PHONY : common/map_entity.cpp.i
+
+common/map_entity.s: common/map_entity.cpp.s
+.PHONY : common/map_entity.s
+
+# target to generate assembly for a file
+common/map_entity.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_common.dir/build.make CMakeFiles/taller_common.dir/common/map_entity.cpp.s
+.PHONY : common/map_entity.cpp.s
+
 common/message.o: common/message.cpp.o
 .PHONY : common/message.o
 
@@ -1120,6 +1144,30 @@ server/state_manager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/state_manager.cpp.s
 .PHONY : server/state_manager.cpp.s
 
+server/terrain.o: server/terrain.cpp.o
+.PHONY : server/terrain.o
+
+# target to build an object file
+server/terrain.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/terrain.cpp.o
+.PHONY : server/terrain.cpp.o
+
+server/terrain.i: server/terrain.cpp.i
+.PHONY : server/terrain.i
+
+# target to preprocess a source file
+server/terrain.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/terrain.cpp.i
+.PHONY : server/terrain.cpp.i
+
+server/terrain.s: server/terrain.cpp.s
+.PHONY : server/terrain.s
+
+# target to generate assembly for a file
+server/terrain.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/terrain.cpp.s
+.PHONY : server/terrain.cpp.s
+
 tests/foo.o: tests/foo.cpp.o
 .PHONY : tests/foo.o
 
@@ -1224,6 +1272,9 @@ help:
 	@echo "... common/hands_on_sockets/socket.o"
 	@echo "... common/hands_on_sockets/socket.i"
 	@echo "... common/hands_on_sockets/socket.s"
+	@echo "... common/map_entity.o"
+	@echo "... common/map_entity.i"
+	@echo "... common/map_entity.s"
 	@echo "... common/message.o"
 	@echo "... common/message.i"
 	@echo "... common/message.s"
@@ -1269,6 +1320,9 @@ help:
 	@echo "... server/state_manager.o"
 	@echo "... server/state_manager.i"
 	@echo "... server/state_manager.s"
+	@echo "... server/terrain.o"
+	@echo "... server/terrain.i"
+	@echo "... server/terrain.s"
 	@echo "... tests/foo.o"
 	@echo "... tests/foo.i"
 	@echo "... tests/foo.s"
