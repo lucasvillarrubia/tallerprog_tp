@@ -3,6 +3,7 @@
 #include "character.h"
 #include "state_manager.h"
 
+
 #include <iostream>
 #include <exception>
 
@@ -14,6 +15,7 @@
 #include <SDL2pp/Surface.hh>
 #include "mapa.h"
 #include "item_box.h"
+#include "Magnum.h"
 
 using namespace SDL2pp;
 
@@ -50,6 +52,7 @@ int main() try {
 
     unsigned int prev_ticks = SDL_GetTicks();
     Character duck;
+    Magnum magnum(50, -85);
 
     while (true) {
         unsigned int frame_ticks = SDL_GetTicks();
@@ -99,16 +102,24 @@ int main() try {
         
         
         //intento imprimir el arma
-        //seteo la posicion del arma segun la orientación del pato
-        float gun_position_x = duck.is_moving_to_the_right() ? duck_position.pos_X+16 : duck_position.pos_X;
+        if (magnum.isPickedUp()) {
+        	//seteo la posicion del arma segun la orientación del pato
+        	float gun_position_x = duck.is_moving_to_the_right() ? duck_position.pos_X+16 : duck_position.pos_X;
+        	magnum.updatePosition(gun_position_x, duck_position.pos_Y);
+        }       
         //ubicacion del sprite en el png y sus dimensiones
 	SDL_Rect src_rect = { 1, 47, 32, 32 };
-        SDL_Rect dst_rect = { static_cast<int>(gun_position_x),
-                              static_cast<int>(renderer.GetOutputHeight() / 2 - 16 - duck_position.pos_Y),
+        SDL_Rect dst_rect = { static_cast<int>(magnum.getPositionX()),
+                              static_cast<int>(renderer.GetOutputHeight() / 2 - 16 - magnum.getPositionY()),
                                   48, 48 };
-            SDL_RenderCopyEx(renderer.Get(), pistolSprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+	SDL_RendererFlip gunFlip = magnum.isPickedUp() ? flip : SDL_FLIP_NONE;
+        SDL_RenderCopyEx(renderer.Get(), pistolSprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, gunFlip);
             
-            
+        //Verifico colisión con el arma
+        if (!magnum.isPickedUp() && duck.is_on_gun(magnum, renderer) && duck.get_is_grabbing()) {
+        	magnum.collected();
+        }
+        
         // Verificar colisión con cada caja de premios en el vector
         for (auto& box : boxes) {
             if (!box.is_collected() && duck.is_on_item(box, renderer) && duck.get_is_grabbing()) {

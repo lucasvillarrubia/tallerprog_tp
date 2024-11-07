@@ -32,6 +32,9 @@ void StateManager::update_duck_state(Character& duck, const SDL_Event event)
             case SDLK_g:
                 duck.is_grabbing = true;
                 break;
+            case SDLK_f:
+            	duck.is_shooting = true;
+            	break;
         }
     } else if (event.type == SDL_KEYUP) {
         switch (event.key.keysym.sym) {
@@ -48,6 +51,9 @@ void StateManager::update_duck_state(Character& duck, const SDL_Event event)
             case SDLK_g:
                 duck.is_grabbing = false;
                 break;
+            case SDLK_f:
+            	duck.is_shooting = false;
+            	break;
         }
     }
 }

@@ -109,7 +109,9 @@ if(TALLER_CLIENT)
             client/item_box.h
             client/state_manager.cpp
             client/state_manager.h
-            client/coordinates.h)
+            client/coordinates.h
+            client/Magnum.h
+            client/Magnum.cpp)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_client taller_common SDL2pp::SDL2pp)

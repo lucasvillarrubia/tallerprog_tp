@@ -4,6 +4,7 @@
 
 #include "coordinates.h"
 #include "item_box.h"
+#include "Magnum.h"
 
 // hola
 
@@ -21,6 +22,7 @@ private:
     int movement_phase;
     bool is_ducking;
     bool is_grabbing;
+    bool is_shooting;
 
 public:
     Character();
@@ -31,6 +33,7 @@ public:
     bool get_is_ducking() const;
     void set_ducking(bool ducking);
     bool is_on_item(ItemBox& box, SDL2pp::Renderer& renderer) const;
+    bool is_on_gun(Magnum& magnum, SDL2pp::Renderer& renderer) const;
     bool get_is_grabbing() const;
     friend class StateManager; // Permite a StateManager acceder a miembros privados
 };

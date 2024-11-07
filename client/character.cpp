@@ -12,7 +12,7 @@ const float GRAVITY_RESISTANCE_WHEN_FLAPPING = 0.1f;
 const int AVAILABLE_MOVEMENT_SPRITES = 6;
 
 
-Character::Character(): pos_X(INITIAL_X_COORDINATE), pos_Y(INITIAL_Y_COORDINATE), is_running(false), is_jumping(false), is_flapping(false), is_ducking(false) , is_grabbing(false){}
+Character::Character(): pos_X(INITIAL_X_COORDINATE), pos_Y(INITIAL_Y_COORDINATE), is_running(false), is_jumping(false), is_flapping(false), is_ducking(false) , is_grabbing(false), is_shooting(false){}
 
 
 void Character::update_position(const unsigned int frame_delta, const unsigned int frame_ticks, const int render_width)
@@ -62,6 +62,21 @@ bool Character::is_on_item(ItemBox& box, SDL2pp::Renderer& renderer) const {
     return SDL_HasIntersection(&duck_rect, &box_rect);
 }
 
+bool Character::is_on_gun(Magnum& magnum, SDL2pp::Renderer& renderer) const {
+    Coordinates duck_position = { pos_X, pos_Y };  // Posición actual del pato
+    Coordinates gun_position = magnum.getPosition();
+
+    // Crear rectángulos para el pato y la caja
+    SDL_Rect duck_rect = { static_cast<int>(duck_position.pos_X),
+                           static_cast<int>(renderer.GetOutputHeight() / 2 - 32 - duck_position.pos_Y),
+                           64, 64 };
+    SDL_Rect gun_rect = { static_cast<int>(gun_position.pos_X),
+                          static_cast<int>(renderer.GetOutputHeight() / 2 - 32 - gun_position.pos_Y),
+                          64, 64 };
+
+    // Verificar si hay intersección entre el pato y la caja
+    return SDL_HasIntersection(&duck_rect, &gun_rect);
+}
 
 bool Character::is_moving_to_the_right() const { return moving_right; }
 
