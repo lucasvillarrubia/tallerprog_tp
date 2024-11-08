@@ -18,6 +18,7 @@
 #include "item_box.h"
 #include "Magnum.h"
 #include "MagnumAmmo.h"
+#include "ammo.h"
 
 using namespace SDL2pp;
 
@@ -79,6 +80,8 @@ int main() try {
 	for (size_t i=0; i<bullets.size(); i++){
 	    if (!bullets[i].isDestroyed()) { 
 		bullets[i].updatePosition(frame_delta);
+	    } else {
+	    	bullets.erase(bullets.begin()+i);
 	    }
 	    //las balas que alcanzaron su distancia límite no se actualizan
 	}
@@ -117,6 +120,7 @@ int main() try {
         	//seteo la posicion del arma segun la orientación del pato
         	float gun_position_x = duck.is_moving_to_the_right() ? duck_position.pos_X+16 : duck_position.pos_X;
         	magnum.updatePosition(gun_position_x, duck_position.pos_Y);
+        	magnum.updateDirection(duck.is_moving_to_the_right());
         }       
         //ubicacion del sprite en el png y sus dimensiones
 	SDL_Rect src_rect = { 1, 47, 32, 32 };
@@ -147,14 +151,14 @@ int main() try {
 		}
 		SDL_Rect src_bullet_rect = { 1, 89, 16, 16 };
         	SDL_Rect dst_bullet_rect = { static_cast<int>(bullets[i].getPosition().pos_X),
-                              static_cast<int>(renderer.GetOutputHeight() / 2 - 16 - bullets[i].getPosition().pos_Y),
+                              static_cast<int>(renderer.GetOutputHeight() / 2 - 8 - bullets[i].getPosition().pos_Y),
                                   24, 24 };
-	SDL_RendererFlip bulletFlip = magnum.isPickedUp() ? flip : SDL_FLIP_NONE;
+	SDL_RendererFlip bulletFlip = bullets[i].isMovingRight() ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
         SDL_RenderCopyEx(renderer.Get(), pistolSprites.Get(), &src_bullet_rect, &dst_bullet_rect, 0.0, nullptr, bulletFlip);
 	}
         
         // Verificar colisión con cada caja de premios en el vector
-        for (auto& box : boxes) {
+        /*for (auto& box : boxes) {
             if (!box.is_collected() && duck.is_on_item(box, renderer) && duck.get_is_grabbing()) {
                 box.set_collected(true);
             }
@@ -162,7 +166,8 @@ int main() try {
             if (!box.is_collected()) {
                 box.render(renderer);
             }
-        }
+        }*/
+        // comentado para poder ver mejor por pantalla a las balas
 
 
 

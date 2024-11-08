@@ -1,12 +1,18 @@
 #include "MagnumAmmo.h"
 
-MagnumAmmo::MagnumAmmo(float x, float y) : originX(x), originY(y), positionX(originX), positionY(originY), damagePoints(10), scope(20*16), destroyed(false) {}
+MagnumAmmo::MagnumAmmo(float x, float y, bool right) : Ammo(x,y,right), damagePoints(10), scope(20*16) {}
 
-MagnumAmmo::MagnumAmmo(bool destroy) : originX(0), originY(0), positionX(originX), positionY(originY), damagePoints(10), scope(20), destroyed(destroy){}
+MagnumAmmo::MagnumAmmo() :  Ammo(0, 0, true), damagePoints(10), scope(20) {
+	destroyed = true;
+}
 
-void MagnumAmmo::updatePosition(const unsigned int frame_delta) {
+void MagnumAmmo::updatePosition(const unsigned int frame_delta)  {
 	if (!destroyed){
-		positionX+= frame_delta * 0.3;
+		if (movingRight) {
+			positionX += frame_delta * 0.3;
+		} else {
+			positionX -= frame_delta * 0.3;
+		}
 		if (abs(positionX-originX) > scope) {
 			destroyed = true;
 		}
@@ -16,13 +22,5 @@ void MagnumAmmo::updatePosition(const unsigned int frame_delta) {
 float MagnumAmmo::impact() {
 	destroyed = true;
 	return damagePoints;
-}
-
-bool MagnumAmmo::isDestroyed() {
-	return destroyed;
-}
-
-Coordinates MagnumAmmo::getPosition() {
-	return { positionX, positionY};
 }
 

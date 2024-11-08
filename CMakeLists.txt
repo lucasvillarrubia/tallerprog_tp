@@ -110,6 +110,10 @@ if(TALLER_CLIENT)
             client/state_manager.cpp
             client/state_manager.h
             client/coordinates.h
+            client/gun.h
+            client/gun.cpp
+            client/ammo.h
+            client/ammo.cpp
             client/Magnum.h
             client/Magnum.cpp
             client/MagnumAmmo.h
