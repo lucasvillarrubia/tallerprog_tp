@@ -215,6 +215,14 @@ CMakeFiles/taller_server.dir/server/player.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_protocol.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/protocol.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
+ /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
+ /usr/include/c++/11/bits/list.tcc /usr/include/c++/11/map \
+ /usr/include/c++/11/bits/stl_tree.h \
+ /usr/include/c++/11/bits/node_handle.h \
+ /usr/include/c++/11/bits/stl_map.h \
+ /usr/include/c++/11/bits/stl_multimap.h \
+ /usr/include/c++/11/bits/erase_if.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/coordinates.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/receiver.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/thread.h \
  /usr/include/c++/11/thread \

@@ -16,7 +16,7 @@ void Updater::run()
             // while (updates_feed.try_pop(update))
             {
             }
-            state.update_duck(update);
+            state.update(update);
             // std::cout << "actualicé el estado del pato\n";
             // std::this_thread::sleep_for(std::chrono::milliseconds(16)); // Maso 60 FPS
         }

@@ -4,7 +4,6 @@
 CMakeFiles/taller_client.dir/client/character.cpp.o: ../client/character.cpp \
   /usr/include/stdc-predef.h \
   ../client/character.h \
-  ../client/coordinates.h \
   /usr/include/c++/11/iostream \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -374,6 +373,11 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: ../client/client.cpp \
   /usr/include/SDL2/SDL_touch.h \
   /usr/include/SDL2/SDL_keycode.h \
   ../common/gamedata.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/bits/list.tcc \
+  ../common/coordinates.h \
   ../common/hands_on_threads/queue.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
@@ -460,7 +464,6 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: ../client/client.cpp \
   /usr/include/c++/11/bits/unique_lock.h \
   /usr/include/c++/11/bits/shared_ptr.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
   /usr/include/c++/11/bits/refwrap.h \
   /usr/include/c++/11/bits/unique_ptr.h \
   /usr/include/c++/11/ostream \
@@ -535,7 +538,6 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: ../client/client.cpp \
   ../common/comms/sender.h \
   ../client/renderer.h \
   ../client/character.h \
-  ../client/coordinates.h \
   _deps/libsdl2pp-src/SDL2pp/Renderer.hh \
   /usr/include/SDL2/SDL_stdinc.h \
   /usr/include/SDL2/SDL_blendmode.h \
@@ -898,6 +900,18 @@ CMakeFiles/taller_client.dir/client/client_comms/client_protocol.cpp.o: ../clien
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
   ../common/gamedata.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -1142,6 +1156,18 @@ CMakeFiles/taller_client.dir/client/client_comms/client_receiver.cpp.o: ../clien
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
   ../common/gamedata.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h \
   ../common/comms/receiver.h \
   ../common/hands_on_threads/thread.h \
   /usr/include/c++/11/iostream \
@@ -1181,8 +1207,6 @@ CMakeFiles/taller_client.dir/client/client_comms/client_receiver.cpp.o: ../clien
   /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/bits/shared_ptr.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
-  /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/deque \
   /usr/include/c++/11/bits/stl_deque.h \
@@ -1412,6 +1436,18 @@ CMakeFiles/taller_client.dir/client/client_comms/client_sender.cpp.o: ../client/
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
   ../common/gamedata.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h \
   ../common/comms/sender.h \
   ../common/hands_on_threads/thread.h \
   /usr/include/c++/11/iostream \
@@ -1451,8 +1487,6 @@ CMakeFiles/taller_client.dir/client/client_comms/client_sender.cpp.o: ../client/
   /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/bits/shared_ptr.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
-  /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/deque \
   /usr/include/c++/11/bits/stl_deque.h \
@@ -1637,6 +1671,11 @@ CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o: ../clie
   /usr/include/SDL2/SDL_touch.h \
   /usr/include/SDL2/SDL_keycode.h \
   ../common/gamedata.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/bits/list.tcc \
+  ../common/coordinates.h \
   ../common/hands_on_threads/queue.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
@@ -1723,7 +1762,6 @@ CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o: ../clie
   /usr/include/c++/11/bits/unique_lock.h \
   /usr/include/c++/11/bits/shared_ptr.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
   /usr/include/c++/11/bits/refwrap.h \
   /usr/include/c++/11/bits/unique_ptr.h \
   /usr/include/c++/11/ostream \
@@ -1792,9 +1830,8 @@ CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o: ../client/clie
   /usr/include/stdc-predef.h \
   ../client/client_threads/updater.h \
   ../client/state_manager.h \
-  /usr/include/c++/11/mutex \
-  /usr/include/c++/11/tuple \
-  /usr/include/c++/11/utility \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
   /usr/include/features.h \
@@ -1807,20 +1844,16 @@ CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o: ../client/clie
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
   /usr/include/c++/11/pstl/pstl_config.h \
-  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/bits/functexcept.h \
+  /usr/include/c++/11/bits/exception_defines.h \
+  /usr/include/c++/11/bits/cpp_type_traits.h \
+  /usr/include/c++/11/ext/type_traits.h \
+  /usr/include/c++/11/ext/numeric_traits.h \
   /usr/include/c++/11/bits/stl_pair.h \
   /usr/include/c++/11/bits/move.h \
   /usr/include/c++/11/type_traits \
   /usr/include/c++/11/compare \
   /usr/include/c++/11/concepts \
-  /usr/include/c++/11/initializer_list \
-  /usr/include/c++/11/ext/numeric_traits.h \
-  /usr/include/c++/11/bits/cpp_type_traits.h \
-  /usr/include/c++/11/ext/type_traits.h \
-  /usr/include/c++/11/array \
-  /usr/include/c++/11/bits/functexcept.h \
-  /usr/include/c++/11/bits/exception_defines.h \
-  /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/c++/11/bits/stl_iterator_base_types.h \
   /usr/include/c++/11/bits/iterator_concepts.h \
   /usr/include/c++/11/bits/ptr_traits.h \
@@ -1834,7 +1867,23 @@ CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o: ../client/clie
   /usr/include/c++/11/bits/stl_construct.h \
   /usr/include/c++/11/debug/debug.h \
   /usr/include/c++/11/bits/predefined_ops.h \
+  /usr/include/c++/11/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/include/c++/11/ext/new_allocator.h \
+  /usr/include/c++/11/bits/memoryfwd.h \
   /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/ext/alloc_traits.h \
+  /usr/include/c++/11/bits/alloc_traits.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/mutex \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/array \
   /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/chrono \
@@ -1886,7 +1935,6 @@ CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o: ../client/clie
   /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
   /usr/include/c++/11/iosfwd \
   /usr/include/c++/11/bits/stringfwd.h \
-  /usr/include/c++/11/bits/memoryfwd.h \
   /usr/include/c++/11/bits/postypes.h \
   /usr/include/c++/11/cwchar \
   /usr/include/wchar.h \
@@ -1901,9 +1949,6 @@ CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o: ../client/clie
   /usr/include/c++/11/stdexcept \
   /usr/include/c++/11/string \
   /usr/include/c++/11/bits/char_traits.h \
-  /usr/include/c++/11/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
-  /usr/include/c++/11/ext/new_allocator.h \
   /usr/include/c++/11/bits/localefwd.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
   /usr/include/c++/11/clocale \
@@ -1955,8 +2000,6 @@ CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o: ../client/clie
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
-  /usr/include/c++/11/ext/alloc_traits.h \
-  /usr/include/c++/11/bits/alloc_traits.h \
   /usr/include/c++/11/string_view \
   /usr/include/c++/11/bits/functional_hash.h \
   /usr/include/c++/11/bits/ranges_base.h \
@@ -1976,8 +2019,14 @@ CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o: ../client/clie
   /usr/include/c++/11/bits/std_mutex.h \
   /usr/include/c++/11/bits/unique_lock.h \
   ../client/character.h \
-  ../client/coordinates.h \
   ../common/gamedata.h \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h \
   ../common/hands_on_threads/queue.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
@@ -1992,7 +2041,6 @@ CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o: ../client/clie
   /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/bits/shared_ptr.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
   /usr/include/c++/11/bits/refwrap.h \
   /usr/include/c++/11/bits/unique_ptr.h \
   /usr/include/c++/11/ostream \
@@ -2013,7 +2061,6 @@ CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o: ../client/clie
   /usr/include/c++/11/bits/locale_facets.tcc \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
-  /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/stop_token \
   /usr/include/c++/11/atomic \
@@ -2279,6 +2326,18 @@ CMakeFiles/taller_client.dir/client/local_player.cpp.o: ../client/local_player.c
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
   ../common/gamedata.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h \
   ../client/client_comms/client_receiver.h \
   ../client/client_comms/client_protocol.h \
   ../common/comms/receiver.h \
@@ -2320,8 +2379,6 @@ CMakeFiles/taller_client.dir/client/local_player.cpp.o: ../client/local_player.c
   /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/bits/shared_ptr.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
-  /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/deque \
   /usr/include/c++/11/bits/stl_deque.h \
@@ -2708,6 +2765,11 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: ../client/main.cpp \
   /usr/include/SDL2/SDL_events.h \
   /usr/include/SDL2/SDL_keycode.h \
   ../common/gamedata.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/bits/list.tcc \
+  ../common/coordinates.h \
   ../common/hands_on_threads/queue.h \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
@@ -2728,7 +2790,6 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: ../client/main.cpp \
   /usr/include/c++/11/bits/unique_lock.h \
   /usr/include/c++/11/bits/shared_ptr.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
   /usr/include/c++/11/bits/refwrap.h \
   /usr/include/c++/11/bits/unique_ptr.h \
   /usr/include/c++/11/ext/concurrence.h \
@@ -2782,7 +2843,6 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: ../client/main.cpp \
   ../common/comms/sender.h \
   ../client/renderer.h \
   ../client/character.h \
-  ../client/coordinates.h \
   _deps/libsdl2pp-src/SDL2pp/Renderer.hh \
   /usr/include/SDL2/SDL_stdinc.h \
   /usr/include/SDL2/SDL_blendmode.h \
@@ -2815,10 +2875,9 @@ CMakeFiles/taller_client.dir/client/renderer.cpp.o: ../client/renderer.cpp \
   /usr/include/stdc-predef.h \
   ../client/renderer.h \
   ../client/character.h \
-  ../client/coordinates.h \
   ../common/gamedata.h \
-  ../common/hands_on_threads/queue.h \
-  /usr/include/c++/11/climits \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
   /usr/include/features.h \
@@ -2831,6 +2890,58 @@ CMakeFiles/taller_client.dir/client/renderer.cpp.o: ../client/renderer.cpp \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
   /usr/include/c++/11/pstl/pstl_config.h \
+  /usr/include/c++/11/bits/functexcept.h \
+  /usr/include/c++/11/bits/exception_defines.h \
+  /usr/include/c++/11/bits/cpp_type_traits.h \
+  /usr/include/c++/11/ext/type_traits.h \
+  /usr/include/c++/11/ext/numeric_traits.h \
+  /usr/include/c++/11/bits/stl_pair.h \
+  /usr/include/c++/11/bits/move.h \
+  /usr/include/c++/11/type_traits \
+  /usr/include/c++/11/compare \
+  /usr/include/c++/11/concepts \
+  /usr/include/c++/11/bits/stl_iterator_base_types.h \
+  /usr/include/c++/11/bits/iterator_concepts.h \
+  /usr/include/c++/11/bits/ptr_traits.h \
+  /usr/include/c++/11/bits/ranges_cmp.h \
+  /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/11/bits/concept_check.h \
+  /usr/include/c++/11/debug/assertions.h \
+  /usr/include/c++/11/bits/stl_iterator.h \
+  /usr/include/c++/11/new \
+  /usr/include/c++/11/bits/exception.h \
+  /usr/include/c++/11/bits/stl_construct.h \
+  /usr/include/c++/11/debug/debug.h \
+  /usr/include/c++/11/bits/predefined_ops.h \
+  /usr/include/c++/11/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/include/c++/11/ext/new_allocator.h \
+  /usr/include/c++/11/bits/memoryfwd.h \
+  /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/ext/alloc_traits.h \
+  /usr/include/c++/11/bits/alloc_traits.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/stl_function.h \
+  /usr/include/c++/11/backward/binders.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h \
+  ../common/hands_on_threads/queue.h \
+  /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
   /usr/include/limits.h \
@@ -2845,7 +2956,6 @@ CMakeFiles/taller_client.dir/client/renderer.cpp.o: ../client/renderer.cpp \
   /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/chrono \
   /usr/include/c++/11/ratio \
-  /usr/include/c++/11/type_traits \
   /usr/include/c++/11/cstdint \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
@@ -2874,11 +2984,6 @@ CMakeFiles/taller_client.dir/client/renderer.cpp.o: ../client/renderer.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
   /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
   /usr/include/c++/11/bits/parse_numbers.h \
-  /usr/include/c++/11/ext/numeric_traits.h \
-  /usr/include/c++/11/bits/cpp_type_traits.h \
-  /usr/include/c++/11/ext/type_traits.h \
-  /usr/include/c++/11/concepts \
-  /usr/include/c++/11/compare \
   /usr/include/c++/11/bits/std_mutex.h \
   /usr/include/c++/11/system_error \
   /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h \
@@ -2892,7 +2997,6 @@ CMakeFiles/taller_client.dir/client/renderer.cpp.o: ../client/renderer.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
   /usr/include/c++/11/iosfwd \
   /usr/include/c++/11/bits/stringfwd.h \
-  /usr/include/c++/11/bits/memoryfwd.h \
   /usr/include/c++/11/bits/postypes.h \
   /usr/include/c++/11/cwchar \
   /usr/include/wchar.h \
@@ -2906,34 +3010,13 @@ CMakeFiles/taller_client.dir/client/renderer.cpp.o: ../client/renderer.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
   /usr/include/c++/11/stdexcept \
   /usr/include/c++/11/exception \
-  /usr/include/c++/11/bits/exception.h \
   /usr/include/c++/11/bits/exception_ptr.h \
-  /usr/include/c++/11/bits/exception_defines.h \
   /usr/include/c++/11/bits/cxxabi_init_exception.h \
   /usr/include/c++/11/typeinfo \
   /usr/include/c++/11/bits/hash_bytes.h \
-  /usr/include/c++/11/new \
-  /usr/include/c++/11/bits/move.h \
   /usr/include/c++/11/bits/nested_exception.h \
   /usr/include/c++/11/string \
   /usr/include/c++/11/bits/char_traits.h \
-  /usr/include/c++/11/bits/stl_algobase.h \
-  /usr/include/c++/11/bits/functexcept.h \
-  /usr/include/c++/11/bits/stl_pair.h \
-  /usr/include/c++/11/bits/stl_iterator_base_types.h \
-  /usr/include/c++/11/bits/iterator_concepts.h \
-  /usr/include/c++/11/bits/ptr_traits.h \
-  /usr/include/c++/11/bits/ranges_cmp.h \
-  /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
-  /usr/include/c++/11/bits/concept_check.h \
-  /usr/include/c++/11/debug/assertions.h \
-  /usr/include/c++/11/bits/stl_iterator.h \
-  /usr/include/c++/11/bits/stl_construct.h \
-  /usr/include/c++/11/debug/debug.h \
-  /usr/include/c++/11/bits/predefined_ops.h \
-  /usr/include/c++/11/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
-  /usr/include/c++/11/ext/new_allocator.h \
   /usr/include/c++/11/bits/localefwd.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
   /usr/include/c++/11/clocale \
@@ -2943,8 +3026,6 @@ CMakeFiles/taller_client.dir/client/renderer.cpp.o: ../client/renderer.cpp \
   /usr/include/ctype.h \
   /usr/include/c++/11/bits/ostream_insert.h \
   /usr/include/c++/11/bits/cxxabi_forced.h \
-  /usr/include/c++/11/bits/stl_function.h \
-  /usr/include/c++/11/backward/binders.h \
   /usr/include/c++/11/bits/stl_algo.h \
   /usr/include/c++/11/cstdlib \
   /usr/include/stdlib.h \
@@ -2968,11 +3049,9 @@ CMakeFiles/taller_client.dir/client/renderer.cpp.o: ../client/renderer.cpp \
   /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
   /usr/include/c++/11/bits/std_abs.h \
   /usr/include/c++/11/bits/algorithmfwd.h \
-  /usr/include/c++/11/initializer_list \
   /usr/include/c++/11/bits/stl_heap.h \
   /usr/include/c++/11/bits/stl_tempbuf.h \
   /usr/include/c++/11/bits/uniform_int_dist.h \
-  /usr/include/c++/11/bits/range_access.h \
   /usr/include/c++/11/bits/basic_string.h \
   /usr/include/c++/11/ext/atomicity.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h \
@@ -2986,8 +3065,6 @@ CMakeFiles/taller_client.dir/client/renderer.cpp.o: ../client/renderer.cpp \
   /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
-  /usr/include/c++/11/ext/alloc_traits.h \
-  /usr/include/c++/11/bits/alloc_traits.h \
   /usr/include/c++/11/string_view \
   /usr/include/c++/11/bits/functional_hash.h \
   /usr/include/c++/11/bits/ranges_base.h \
@@ -3007,15 +3084,8 @@ CMakeFiles/taller_client.dir/client/renderer.cpp.o: ../client/renderer.cpp \
   /usr/include/c++/11/bits/unique_lock.h \
   /usr/include/c++/11/bits/shared_ptr.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
   /usr/include/c++/11/bits/refwrap.h \
-  /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/bits/unique_ptr.h \
-  /usr/include/c++/11/utility \
-  /usr/include/c++/11/bits/stl_relops.h \
-  /usr/include/c++/11/tuple \
-  /usr/include/c++/11/array \
-  /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
   /usr/include/c++/11/bits/ios_base.h \
@@ -3034,7 +3104,6 @@ CMakeFiles/taller_client.dir/client/renderer.cpp.o: ../client/renderer.cpp \
   /usr/include/c++/11/bits/locale_facets.tcc \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
-  /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/stop_token \
   /usr/include/c++/11/atomic \
@@ -3126,9 +3195,7 @@ CMakeFiles/taller_client.dir/client/renderer.cpp.o: ../client/renderer.cpp \
   /usr/include/c++/11/unordered_map \
   /usr/include/c++/11/bits/hashtable.h \
   /usr/include/c++/11/bits/hashtable_policy.h \
-  /usr/include/c++/11/bits/node_handle.h \
   /usr/include/c++/11/bits/unordered_map.h \
-  /usr/include/c++/11/bits/erase_if.h \
   /usr/include/SDL2/SDL_rect.h \
   /usr/include/SDL2/SDL_stdinc.h \
   /usr/include/SDL2/SDL_error.h \
@@ -3277,9 +3344,8 @@ CMakeFiles/taller_client.dir/client/renderer.cpp.o: ../client/renderer.cpp \
 CMakeFiles/taller_client.dir/client/state_manager.cpp.o: ../client/state_manager.cpp \
   /usr/include/stdc-predef.h \
   ../client/state_manager.h \
-  /usr/include/c++/11/mutex \
-  /usr/include/c++/11/tuple \
-  /usr/include/c++/11/utility \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
   /usr/include/features.h \
@@ -3292,20 +3358,16 @@ CMakeFiles/taller_client.dir/client/state_manager.cpp.o: ../client/state_manager
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
   /usr/include/c++/11/pstl/pstl_config.h \
-  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/bits/functexcept.h \
+  /usr/include/c++/11/bits/exception_defines.h \
+  /usr/include/c++/11/bits/cpp_type_traits.h \
+  /usr/include/c++/11/ext/type_traits.h \
+  /usr/include/c++/11/ext/numeric_traits.h \
   /usr/include/c++/11/bits/stl_pair.h \
   /usr/include/c++/11/bits/move.h \
   /usr/include/c++/11/type_traits \
   /usr/include/c++/11/compare \
   /usr/include/c++/11/concepts \
-  /usr/include/c++/11/initializer_list \
-  /usr/include/c++/11/ext/numeric_traits.h \
-  /usr/include/c++/11/bits/cpp_type_traits.h \
-  /usr/include/c++/11/ext/type_traits.h \
-  /usr/include/c++/11/array \
-  /usr/include/c++/11/bits/functexcept.h \
-  /usr/include/c++/11/bits/exception_defines.h \
-  /usr/include/c++/11/bits/stl_algobase.h \
   /usr/include/c++/11/bits/stl_iterator_base_types.h \
   /usr/include/c++/11/bits/iterator_concepts.h \
   /usr/include/c++/11/bits/ptr_traits.h \
@@ -3319,7 +3381,23 @@ CMakeFiles/taller_client.dir/client/state_manager.cpp.o: ../client/state_manager
   /usr/include/c++/11/bits/stl_construct.h \
   /usr/include/c++/11/debug/debug.h \
   /usr/include/c++/11/bits/predefined_ops.h \
+  /usr/include/c++/11/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/include/c++/11/ext/new_allocator.h \
+  /usr/include/c++/11/bits/memoryfwd.h \
   /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/ext/alloc_traits.h \
+  /usr/include/c++/11/bits/alloc_traits.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/mutex \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/array \
   /usr/include/c++/11/bits/uses_allocator.h \
   /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/chrono \
@@ -3371,7 +3449,6 @@ CMakeFiles/taller_client.dir/client/state_manager.cpp.o: ../client/state_manager
   /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
   /usr/include/c++/11/iosfwd \
   /usr/include/c++/11/bits/stringfwd.h \
-  /usr/include/c++/11/bits/memoryfwd.h \
   /usr/include/c++/11/bits/postypes.h \
   /usr/include/c++/11/cwchar \
   /usr/include/wchar.h \
@@ -3386,9 +3463,6 @@ CMakeFiles/taller_client.dir/client/state_manager.cpp.o: ../client/state_manager
   /usr/include/c++/11/stdexcept \
   /usr/include/c++/11/string \
   /usr/include/c++/11/bits/char_traits.h \
-  /usr/include/c++/11/bits/allocator.h \
-  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
-  /usr/include/c++/11/ext/new_allocator.h \
   /usr/include/c++/11/bits/localefwd.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h \
   /usr/include/c++/11/clocale \
@@ -3440,8 +3514,6 @@ CMakeFiles/taller_client.dir/client/state_manager.cpp.o: ../client/state_manager
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
-  /usr/include/c++/11/ext/alloc_traits.h \
-  /usr/include/c++/11/bits/alloc_traits.h \
   /usr/include/c++/11/string_view \
   /usr/include/c++/11/bits/functional_hash.h \
   /usr/include/c++/11/bits/ranges_base.h \
@@ -3461,8 +3533,14 @@ CMakeFiles/taller_client.dir/client/state_manager.cpp.o: ../client/state_manager
   /usr/include/c++/11/bits/std_mutex.h \
   /usr/include/c++/11/bits/unique_lock.h \
   ../client/character.h \
-  ../client/coordinates.h \
-  ../common/gamedata.h
+  ../common/gamedata.h \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h
 
 
 _deps/libsdl2pp-src/SDL2pp/Texture.hh:
@@ -3605,8 +3683,6 @@ _deps/libsdl2pp-src/SDL2pp/SDL.hh:
 
 ../client/state_manager.h:
 
-_deps/libsdl2pp-src/SDL2pp/Window.hh:
-
 _deps/libsdl2pp-src/SDL2pp/Surface.hh:
 
 _deps/libsdl2pp-src/SDL2pp/Rect.hh:
@@ -3719,8 +3795,6 @@ _deps/libsdl2pp-src/SDL2pp/Optional.hh:
 
 /usr/include/c++/11/bits/refwrap.h:
 
-/usr/include/c++/11/bits/allocated_ptr.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h:
 
 /usr/include/c++/11/bits/parse_numbers.h:
@@ -3740,6 +3814,16 @@ _deps/libsdl2pp-src/SDL2pp/Optional.hh:
 /usr/include/x86_64-linux-gnu/bits/local_lim.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
+
+../common/coordinates.h:
+
+/usr/include/c++/11/bits/list.tcc:
+
+/usr/include/c++/11/bits/allocated_ptr.h:
+
+_deps/libsdl2pp-src/SDL2pp/Window.hh:
+
+/usr/include/c++/11/list:
 
 ../client/client_comms/client_receiver.cpp:
 
@@ -3863,6 +3947,10 @@ _deps/libsdl2pp-src/SDL2pp/Optional.hh:
 
 /usr/include/x86_64-linux-gnu/bits/types.h:
 
+/usr/include/c++/11/bits/stl_algo.h:
+
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+
 /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h:
 
 _deps/libsdl2pp-src/SDL2pp/Renderer.hh:
@@ -3939,9 +4027,23 @@ _deps/libsdl2pp-src/SDL2pp/Point.hh:
 
 /usr/include/c++/11/tuple:
 
-/usr/include/SDL2/SDL_keycode.h:
+/usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
 
-/usr/include/c++/11/bits/invoke.h:
+/usr/include/SDL2/SDL_video.h:
+
+/usr/include/SDL2/SDL_rect.h:
+
+/usr/include/c++/11/debug/assertions.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
+
+/usr/include/x86_64-linux-gnu/bits/timesize.h:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqvlintrin.h:
+
+/usr/include/c++/11/exception:
 
 ../common/hands_on_sockets/liberror.h:
 
@@ -3964,20 +4066,6 @@ _deps/libsdl2pp-src/SDL2pp/Color.hh:
 /usr/include/c++/11/debug/debug.h:
 
 /usr/include/features-time64.h:
-
-/usr/include/c++/11/pstl/pstl_config.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h:
-
-/usr/include/c++/11/type_traits:
-
-/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
-
-/usr/include/c++/11/cmath:
-
-/usr/include/c++/11/bits/allocator.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h:
 
@@ -4027,25 +4115,53 @@ _deps/libsdl2pp-src/SDL2pp/Color.hh:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
 
-/usr/include/SDL2/SDL_filesystem.h:
-
-/usr/include/c++/11/bits/iterator_concepts.h:
-
-/usr/include/c++/11/ext/numeric_traits.h:
-
-/usr/include/features.h:
-
-/usr/include/c++/11/bits/stl_multimap.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
 /usr/include/x86_64-linux-gnu/bits/timex.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
+/usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h:
+
+/usr/include/c++/11/type_traits:
+
+/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+
+/usr/include/c++/11/pstl/pstl_config.h:
+
+/usr/include/c++/11/cmath:
+
+/usr/include/c++/11/bits/allocator.h:
+
 /usr/include/c++/11/bits/char_traits.h:
 
 /usr/include/asm-generic/errno-base.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
+
+/usr/include/c++/11/chrono:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
+
+/usr/include/c++/11/bits/ostream_insert.h:
+
+/usr/include/c++/11/bits/invoke.h:
+
+/usr/include/SDL2/SDL_keycode.h:
+
+/usr/include/c++/11/ostream:
+
+../client/client_comms/client_protocol.cpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/long-double.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h:
 
@@ -4060,44 +4176,6 @@ _deps/libsdl2pp-src/SDL2pp/Color.hh:
 /usr/include/c++/11/bits/stl_algobase.h:
 
 /usr/include/c++/11/bits/nested_exception.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
-
-/usr/include/c++/11/bits/ostream_insert.h:
-
-/usr/include/c++/11/ostream:
-
-/usr/include/c++/11/chrono:
-
-/usr/include/x86_64-linux-gnu/bits/wordsize.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
-
-/usr/include/x86_64-linux-gnu/bits/timesize.h:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
-
-/usr/include/SDL2/SDL_video.h:
-
-/usr/include/SDL2/SDL_rect.h:
-
-/usr/include/c++/11/debug/assertions.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqvlintrin.h:
-
-/usr/include/c++/11/exception:
-
-../client/client_comms/client_protocol.cpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/long-double.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
@@ -4165,15 +4243,19 @@ _deps/libsdl2pp-src/SDL2pp/Color.hh:
 
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
-../client/coordinates.h:
-
 /usr/include/c++/11/streambuf:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++locale.h:
 
-/usr/include/c++/11/bits/stl_algo.h:
+/usr/include/c++/11/ext/numeric_traits.h:
 
-/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+/usr/include/features.h:
+
+/usr/include/c++/11/bits/stl_multimap.h:
+
+/usr/include/SDL2/SDL_filesystem.h:
+
+/usr/include/c++/11/bits/iterator_concepts.h:
 
 /usr/include/stdlib.h:
 
@@ -4340,6 +4422,8 @@ _deps/libsdl2pp-build/SDL2pp/Config.hh:
 /usr/include/SDL2/SDL_render.h:
 
 /usr/include/c++/11/bits/stl_map.h:
+
+/usr/include/c++/11/bits/stl_list.h:
 
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 

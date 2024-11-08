@@ -16,15 +16,19 @@ void StateManager::update(const Gamestate& update)
     switch (update.type)
     {
     case 1:
-        Character new_duki(update.player_id);
-        new_duki.pos_X = update.pos_X;
-        new_duki.pos_Y = update.pos_Y;
-        dukis.push_back(new_duki);
-        break;
+        {
+            Character new_duki(update.player_id);
+            new_duki.pos_X = update.pos_X;
+            new_duki.pos_Y = update.pos_Y;
+            dukis.push_back(new_duki);
+            break;
+        }
     case 3:
         update_duck_state(update);
         break;
-    default: update_ducks(update);
+    default:
+        update_ducks(update);
+        break;
     }
 
 }

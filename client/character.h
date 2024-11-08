@@ -2,9 +2,6 @@
 #define CHARACTER_H
 
 
-#include "coordinates.h"
-
-
 const float INITIAL_X_COORDINATE = 0.0f;
 const float INITIAL_Y_COORDINATE = 0.0f;
 // const float INITIAL_Y_COORDINATE = -85.0f;
@@ -35,7 +32,7 @@ struct Character {
     // bool is_moving_to_the_right() const;
     // Coordinates get_coordinates() const;
     // int get_movement_phase (unsigned int) const;
-    int Character::get_movement_phase (const unsigned int frame_ticks) const {
+    int get_movement_phase (const unsigned int frame_ticks) const {
         return (is_running ? ((frame_ticks / 100) % AVAILABLE_MOVEMENT_SPRITES) : 0);
     }
 };

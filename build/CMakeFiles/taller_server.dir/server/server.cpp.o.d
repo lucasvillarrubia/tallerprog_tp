@@ -227,6 +227,7 @@ CMakeFiles/taller_server.dir/server/server.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_protocol.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/protocol.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/coordinates.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/receiver.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \

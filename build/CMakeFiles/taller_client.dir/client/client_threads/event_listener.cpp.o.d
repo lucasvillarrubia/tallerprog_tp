@@ -143,6 +143,10 @@ CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o: \
  /usr/include/SDL2/SDL_gesture.h /usr/include/SDL2/SDL_touch.h \
  /usr/include/SDL2/SDL_keycode.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
+ /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/bits/list.tcc \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/coordinates.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/queue.h \
  /usr/include/c++/11/climits \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
@@ -211,7 +215,6 @@ CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o: \
  /usr/include/c++/11/bits/unique_lock.h \
  /usr/include/c++/11/bits/shared_ptr.h \
  /usr/include/c++/11/bits/shared_ptr_base.h \
- /usr/include/c++/11/bits/allocated_ptr.h \
  /usr/include/c++/11/bits/refwrap.h /usr/include/c++/11/bits/unique_ptr.h \
  /usr/include/c++/11/ostream /usr/include/c++/11/ios \
  /usr/include/c++/11/bits/ios_base.h \

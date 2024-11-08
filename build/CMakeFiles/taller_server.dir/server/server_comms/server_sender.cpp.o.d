@@ -179,6 +179,16 @@ CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o: \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
  /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
+ /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/ext/aligned_buffer.h \
+ /usr/include/c++/11/bits/list.tcc /usr/include/c++/11/map \
+ /usr/include/c++/11/bits/stl_tree.h \
+ /usr/include/c++/11/bits/node_handle.h \
+ /usr/include/c++/11/bits/stl_map.h \
+ /usr/include/c++/11/bits/stl_multimap.h \
+ /usr/include/c++/11/bits/erase_if.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/coordinates.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_sockets/socket.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/thread.h \
@@ -208,8 +218,6 @@ CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o: \
  /usr/include/c++/11/condition_variable \
  /usr/include/c++/11/bits/shared_ptr.h \
  /usr/include/c++/11/bits/shared_ptr_base.h \
- /usr/include/c++/11/bits/allocated_ptr.h \
- /usr/include/c++/11/ext/aligned_buffer.h \
  /usr/include/c++/11/ext/concurrence.h /usr/include/c++/11/deque \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
  /usr/include/c++/11/queue /usr/include/c++/11/bits/stl_queue.h

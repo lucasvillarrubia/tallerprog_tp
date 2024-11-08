@@ -480,6 +480,7 @@ CMakeFiles/taller_server.dir/server/main.cpp.o: ../server/main.cpp \
   ../server/server_comms/server_protocol.h \
   ../common/comms/protocol.h \
   ../common/gamedata.h \
+  ../common/coordinates.h \
   ../common/comms/receiver.h \
   ../server/server_comms/server_sender.h \
   ../common/comms/sender.h \
@@ -774,6 +775,7 @@ CMakeFiles/taller_server.dir/server/match.cpp.o: ../server/match.cpp \
   ../server/server_comms/server_protocol.h \
   ../common/comms/protocol.h \
   ../common/gamedata.h \
+  ../common/coordinates.h \
   ../common/comms/receiver.h \
   ../server/server_comms/server_sender.h \
   ../common/comms/sender.h \
@@ -1048,6 +1050,16 @@ CMakeFiles/taller_server.dir/server/player.cpp.o: ../server/player.cpp \
   ../server/server_comms/server_protocol.h \
   ../common/comms/protocol.h \
   ../common/gamedata.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h \
   ../common/comms/receiver.h \
   ../common/hands_on_threads/thread.h \
   /usr/include/c++/11/thread \
@@ -1340,6 +1352,7 @@ CMakeFiles/taller_server.dir/server/server.cpp.o: ../server/server.cpp \
   ../server/server_comms/server_protocol.h \
   ../common/comms/protocol.h \
   ../common/gamedata.h \
+  ../common/coordinates.h \
   ../common/comms/receiver.h \
   ../server/server_comms/server_sender.h \
   ../common/comms/sender.h \
@@ -1570,6 +1583,18 @@ CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o: ../serve
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
   ../common/gamedata.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h \
   ../common/hands_on_sockets/socket.h
 
 CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o: ../server/server_comms/server_receiver.cpp \
@@ -1793,6 +1818,18 @@ CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o: ../serve
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
   ../common/gamedata.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h \
   ../common/hands_on_sockets/socket.h \
   ../common/comms/receiver.h \
   ../common/hands_on_threads/thread.h \
@@ -1833,8 +1870,6 @@ CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o: ../serve
   /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/bits/shared_ptr.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
-  /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/deque \
   /usr/include/c++/11/bits/stl_deque.h \
@@ -2063,6 +2098,18 @@ CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o: ../server/
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
   ../common/gamedata.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h \
   ../common/hands_on_sockets/socket.h \
   ../common/comms/sender.h \
   ../common/hands_on_threads/thread.h \
@@ -2103,8 +2150,6 @@ CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o: ../server/
   /usr/include/c++/11/condition_variable \
   /usr/include/c++/11/bits/shared_ptr.h \
   /usr/include/c++/11/bits/shared_ptr_base.h \
-  /usr/include/c++/11/bits/allocated_ptr.h \
-  /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/ext/concurrence.h \
   /usr/include/c++/11/deque \
   /usr/include/c++/11/bits/stl_deque.h \
@@ -2388,6 +2433,13 @@ CMakeFiles/taller_server.dir/server/server_threads/acceptor.cpp.o: ../server/ser
   ../server/server_comms/server_protocol.h \
   ../common/comms/protocol.h \
   ../common/gamedata.h \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h \
   ../common/comms/receiver.h \
   ../server/server_comms/server_sender.h \
   ../common/comms/sender.h \
@@ -2686,18 +2738,19 @@ CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o: ../server/serv
   ../server/server_comms/server_protocol.h \
   ../common/comms/protocol.h \
   ../common/gamedata.h \
-  ../common/comms/receiver.h \
-  ../server/server_comms/server_sender.h \
-  ../common/comms/sender.h \
-  ../server/server_comms/server_protocol.h \
-  ../server/match.h \
-  ../server/server_threads/gameplay.h \
   /usr/include/c++/11/map \
   /usr/include/c++/11/bits/stl_tree.h \
   /usr/include/c++/11/bits/node_handle.h \
   /usr/include/c++/11/bits/stl_map.h \
   /usr/include/c++/11/bits/stl_multimap.h \
   /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h \
+  ../common/comms/receiver.h \
+  ../server/server_comms/server_sender.h \
+  ../common/comms/sender.h \
+  ../server/server_comms/server_protocol.h \
+  ../server/match.h \
+  ../server/server_threads/gameplay.h \
   ../server/command.h \
   ../server/duck.h
 
@@ -2985,6 +3038,7 @@ CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o: ../server/ser
   ../server/server_comms/server_protocol.h \
   ../common/comms/protocol.h \
   ../common/gamedata.h \
+  ../common/coordinates.h \
   ../common/comms/receiver.h \
   ../server/server_comms/server_sender.h \
   ../common/comms/sender.h \
@@ -3277,6 +3331,7 @@ CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o: ../serve
   ../server/server_comms/server_protocol.h \
   ../common/comms/protocol.h \
   ../common/gamedata.h \
+  ../common/coordinates.h \
   ../common/comms/receiver.h \
   ../server/server_comms/server_sender.h \
   ../common/comms/sender.h \
@@ -3286,7 +3341,71 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager
   /usr/include/stdc-predef.h \
   ../server/state_manager.h \
   ../server/duck.h \
-  ../common/gamedata.h
+  ../common/gamedata.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_algobase.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
+  /usr/include/features.h \
+  /usr/include/features-time64.h \
+  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/bits/timesize.h \
+  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
+  /usr/include/c++/11/pstl/pstl_config.h \
+  /usr/include/c++/11/bits/functexcept.h \
+  /usr/include/c++/11/bits/exception_defines.h \
+  /usr/include/c++/11/bits/cpp_type_traits.h \
+  /usr/include/c++/11/ext/type_traits.h \
+  /usr/include/c++/11/ext/numeric_traits.h \
+  /usr/include/c++/11/bits/stl_pair.h \
+  /usr/include/c++/11/bits/move.h \
+  /usr/include/c++/11/type_traits \
+  /usr/include/c++/11/compare \
+  /usr/include/c++/11/concepts \
+  /usr/include/c++/11/bits/stl_iterator_base_types.h \
+  /usr/include/c++/11/bits/iterator_concepts.h \
+  /usr/include/c++/11/bits/ptr_traits.h \
+  /usr/include/c++/11/bits/ranges_cmp.h \
+  /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/11/bits/concept_check.h \
+  /usr/include/c++/11/debug/assertions.h \
+  /usr/include/c++/11/bits/stl_iterator.h \
+  /usr/include/c++/11/new \
+  /usr/include/c++/11/bits/exception.h \
+  /usr/include/c++/11/bits/stl_construct.h \
+  /usr/include/c++/11/debug/debug.h \
+  /usr/include/c++/11/bits/predefined_ops.h \
+  /usr/include/c++/11/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/include/c++/11/ext/new_allocator.h \
+  /usr/include/c++/11/bits/memoryfwd.h \
+  /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/ext/alloc_traits.h \
+  /usr/include/c++/11/bits/alloc_traits.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/stl_function.h \
+  /usr/include/c++/11/backward/binders.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h
 
 CMakeFiles/taller_server.dir/server/terrain.cpp.o: ../server/terrain.cpp \
   /usr/include/stdc-predef.h \
@@ -3359,8 +3478,6 @@ CMakeFiles/taller_server.dir/server/terrain.cpp.o: ../server/terrain.cpp \
 
 ../server/state_manager.cpp:
 
-../server/state_manager.h:
-
 ../server/server_threads/gameplay.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h:
@@ -3384,6 +3501,10 @@ CMakeFiles/taller_server.dir/server/terrain.cpp.o: ../server/terrain.cpp \
 ../server/server_threads/cleaner.h:
 
 ../common/comms/sender.h:
+
+../server/state_manager.h:
+
+../common/coordinates.h:
 
 ../common/gamedata.h:
 
