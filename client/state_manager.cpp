@@ -1,5 +1,7 @@
 #include "state_manager.h"
 
+#include <iostream>
+
 #include "common/gamedata.h"
 
 
@@ -13,6 +15,7 @@ StateManager::StateManager() {}
 void StateManager::update(const Gamestate& update)
 {
     std::unique_lock<std::mutex> lck(mtx);
+    // std::cout << "el tipo de update que llegó es: " << update.type << "\n";
     switch (update.type)
     {
     case 1:
@@ -57,6 +60,7 @@ void StateManager::update_duck_state(const Gamestate& update)
             duki.is_jumping = update.is_jumping;
             duki.is_flapping = update.is_flapping;
             duki.moving_right = update.move_direction;
+            // std::cout << "se está moviendo a la derecha?: " << (duki.moving_right ? "SI\n" : "NO\n");
             break;
         }
     }

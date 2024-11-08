@@ -18,6 +18,7 @@ void Gameplay::process_users_commands() {
     while (user_commands.try_pop(command)) {
         StateManager::update_duck_state(ducks_by_id.at(command.player_id), command);
         Gamestate update = StateManager::get_duck_state(ducks_by_id.at(command.player_id), command.player_id);
+        players.broadcast(update);
         // duck.update_position(frame_delta);
         // Gamestate update = StateManager::get_duck_state(duck);
         // // por ahora, primero me conecto con un solo pato
