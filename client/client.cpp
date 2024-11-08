@@ -8,6 +8,8 @@
 #include "SDL2pp/SDL.hh"
 
 
+
+
 Client::Client(const char* hostname, const char* servname):
         window("Duck Game",
             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -21,6 +23,33 @@ Client::Client(const char* hostname, const char* servname):
         renderloop(game_on, window, renderer, updates, state),
         updater(updates, state) {}
 
+void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono::milliseconds rate)
+{
+    auto t1 = std::chrono::steady_clock::now();
+    int it = 0;
+    while (true)
+    {
+        processing(it);
+        if (not game_on.load() or not connected.load()) break;
+        auto t2 = std::chrono::steady_clock::now();
+        auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1);
+        auto rest = rate - elapsed;
+        if (rest.count() < 0)
+        {
+            auto behind = -rest;
+            auto lost = behind - behind % rate;
+            t1 += lost;
+            it += static_cast<int>(lost.count() / rate.count());
+        }
+        else
+        {
+            std::this_thread::sleep_for(rate);
+        }
+        t1 += rate;
+        ++it;
+    }
+}
+
 void Client::run() {
     try
     {
@@ -31,6 +60,7 @@ void Client::run() {
         //     SDL_WINDOW_RESIZABLE
         // );
         // SDL2pp::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
+        std::chrono::milliseconds rate(16);
         game_on.store(true);
         connection.start_communication();
         // updater.start();
@@ -38,9 +68,12 @@ void Client::run() {
         // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un
         while (game_on.load() && connected.load())
         {
-            event_listener.run();
-            if (not game_on.load()) break;
-            renderloop.run();
+            constant_rate_loop([&](int frame)
+            {
+                event_listener.run();
+                if (not game_on.load()) return;
+                renderloop.run(frame);
+            }, rate);
         }
         connection.end_connection();
         updates.close();

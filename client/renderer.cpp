@@ -34,7 +34,7 @@ void Renderer::draw_character(SDL2pp::Texture& sprites, Character character)
     SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 }
 
-void Renderer::run() {
+void Renderer::run(int frame) {
     try
     {
         SDL2pp::Texture background(renderer, "resources/fondo.png");
@@ -67,12 +67,13 @@ void Renderer::run() {
             renderer.Clear();
             renderer.Copy(background, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
             std::list<Character> character_list = state.get_characters_data();
-            unsigned int frame_ticks = SDL_GetTicks();
+            // unsigned int frame_ticks = SDL_GetTicks();
             int vcenter = renderer.GetOutputHeight() / 2;
             for (auto& character : character_list)
             {
                 // draw_character(sprites, character);
-                int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame_ticks);
+                // int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame_ticks);
+                int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame);
                 int src_y = DUCK_MOVEMENT_SPRITES_LINE;
                 // Coordinates duck_position = character.get_coordinates();
                 // SDL_RendererFlip flip = character.is_moving_to_the_right() ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;

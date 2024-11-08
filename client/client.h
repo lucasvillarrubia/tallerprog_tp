@@ -26,6 +26,7 @@ private:
     StateManager state;
     Renderer renderloop;
     Updater updater;
+    void constant_rate_loop(std::function<void(int)>, std::chrono::milliseconds);
 public:
     Client(const char*, const char*);
     void run();

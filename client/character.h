@@ -33,7 +33,8 @@ struct Character {
     // Coordinates get_coordinates() const;
     // int get_movement_phase (unsigned int) const;
     int get_movement_phase (const unsigned int frame_ticks) const {
-        return (is_running ? ((frame_ticks / 100) % AVAILABLE_MOVEMENT_SPRITES) : 0);
+        return (is_running ? (frame_ticks / AVAILABLE_MOVEMENT_SPRITES) % AVAILABLE_MOVEMENT_SPRITES : 0);
+        // return (is_running ? ((frame_ticks / 100) % AVAILABLE_MOVEMENT_SPRITES) : 0);
     }
 };
 

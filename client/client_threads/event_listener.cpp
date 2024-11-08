@@ -11,7 +11,7 @@ void EventListener::run() {
     try
     {
         SDL_Event event;
-        if (SDL_WaitEvent(&event) && connected.load())
+        if (SDL_PollEvent(&event) && connected.load())
         {
             Uint32 type = event.type;
             SDL_Keycode key = event.key.keysym.sym;

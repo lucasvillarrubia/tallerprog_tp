@@ -23,7 +23,8 @@ private:
 public:
     Renderer(std::atomic_bool&, SDL2pp::Window&, SDL2pp::Renderer&, Queue<Gamestate>&, StateManager&);
     void draw_character(SDL2pp::Texture&, Character);
-    void run();
+    // void run();
+    void run(int);
     ~Renderer() = default;
 };
 
