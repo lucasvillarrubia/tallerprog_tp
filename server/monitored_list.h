@@ -79,6 +79,11 @@ public:
         }
     }
 
+    int size()
+    {
+        return list.size();
+    }
+
     MonitoredList(const MonitoredList&) = delete;
     MonitoredList& operator=(const MonitoredList&) = delete;
     ~MonitoredList() = default;

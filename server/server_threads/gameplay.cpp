@@ -31,23 +31,24 @@ void Gameplay::process_users_commands() {
 
 void Gameplay::send_all_initial_coordinates()
 {
-    for (auto& [id, duck]: ducks_by_id)
+    if ((players.size() == 1))
     {
-        if (id == 1)
+        for (auto& [id, duck]: ducks_by_id)
         {
-            Gamestate initial_duck_coordinates(id, 0.0f, 0.0f, 0, 0, 0, 1, 0.0f);
-            players.broadcast(initial_duck_coordinates);
+            if (id == 1)
+            {
+                Gamestate initial_duck_coordinates(id, 0.0f, 0.0f, 0, 0, 0, 1, 0.0f);
+                players.broadcast(initial_duck_coordinates);
+            }
+            else
+            {
+                Gamestate initial_duck_coordinates(id, 590.0f, 0.0f, 0, 0, 0, 1, 0.0f);
+                players.broadcast(initial_duck_coordinates);
+            }
         }
-
-
-        else
-        {
-            Gamestate initial_duck_coordinates(id, 590.0f, 0.0f, 0, 0, 0, 1, 0.0f);
-            players.broadcast(initial_duck_coordinates);
-        }
-
-
+        ya_entro_cliente = true;
     }
+
 }
 
 void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
@@ -66,10 +67,13 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
 void Gameplay::run() {
     try
     {
+        ya_entro_cliente = false;
         is_running.store(true);
         auto prev_time = std::chrono::steady_clock::now();
         send_all_initial_coordinates();
         while (is_running.load()) {
+            if (not ya_entro_cliente)
+                send_all_initial_coordinates();
             auto current_time = std::chrono::steady_clock::now();
             process_users_commands();
             auto frame_delta = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - prev_time).count();

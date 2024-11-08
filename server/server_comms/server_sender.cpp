@@ -12,12 +12,15 @@ void ServerSender::send_data()
         {
         case 1:
             protocol.send_init_duck_message(new_event);
+            std::cout << "se mandó que hay un pato inicializado\n";
             break;
         case 2:
             protocol.send_ducks_positions_message(new_event);
+            std::cout << "se mandó una lista de posiciones\n";
             break;
         default:
             protocol.send_duck_state_message(new_event);
+            std::cout << "se mandó una actualización de estado\n";
             break;
         }
     }

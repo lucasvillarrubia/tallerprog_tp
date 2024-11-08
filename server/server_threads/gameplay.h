@@ -18,6 +18,7 @@ private:
     MonitoredList<Player*>& players;
     Queue<Gameaction>& user_commands;
     std::map<int, Duck> ducks_by_id;
+    bool ya_entro_cliente;
     // Duck duck;
     void process_users_commands();
     void initialize_players();
