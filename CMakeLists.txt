@@ -50,8 +50,7 @@ add_library(taller_common STATIC
         common/comms/protocol.cpp
         common/comms/protocol.h
         common/gamedata.h
-        common/map_entity.cpp
-        common/map_entity.h
+        common/rectangulo.h
         common/coordinates.h
 )
 

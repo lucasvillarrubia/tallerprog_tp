@@ -20,10 +20,14 @@ Duck::Duck():
         is_jumping(false),
         is_flapping(false),
         moving_right(true),
+        is_on_the_floor(false),
         jump_velocity(0.0f){}
 
 void Duck::update_position(const unsigned int frame_delta)
 {
+    // if (not is_on_the_floor) {
+    //     is_jumping = true;
+    // }
     // bool has_position_changed = false;
     // Está corriendo (moviendose horizontalmente)
     if (is_running) {
@@ -39,15 +43,16 @@ void Duck::update_position(const unsigned int frame_delta)
         pos_Y += jump_velocity * (frame_delta * TARGET_FRAME_TIME);
         // pos_Y += jump_velocity * (frame_delta);
         // pos_Y += jump_velocity;
-        jump_velocity += effective_gravity * (frame_delta * TARGET_FRAME_TIME);
+        // jump_velocity += effective_gravity * (frame_delta * TARGET_FRAME_TIME);
+        jump_velocity = effective_gravity * (frame_delta * TARGET_FRAME_TIME);
         // jump_velocity += effective_gravity * (frame_delta);
         // jump_velocity += effective_gravity;
 
-        if (pos_Y < INITIAL_Y_COORDINATE) {
-            pos_Y = INITIAL_Y_COORDINATE;
-            is_jumping = false;
-            is_flapping = false;
-        }
+        // if (pos_Y < INITIAL_Y_COORDINATE) {
+        //     pos_Y = INITIAL_Y_COORDINATE;
+        //     is_jumping = false;
+        //     is_flapping = false;
+        // }
         // has_position_changed = true;
     }
     // Llegó al límite de la pantalla ---> Se mueve la cámara
@@ -62,6 +67,19 @@ void Duck::update_position(const unsigned int frame_delta)
         pos_X = 640.0f;
         // has_position_changed = true;
     }
+    if (pos_Y < -50.0f)
+    {
+        // std::cout << "se llegó al fin de la ventana???? posiciónX: " << pos_X << "\n";
+        pos_Y = 500.0f;
+        // has_position_changed = true;
+    }
+
     // std::cout << "el pato está en las coordenadas x: " << pos_X << "; y: " << pos_Y << "\n";
     // return has_position_changed;
+    // std::cout << jump_velocity << " " << pos_Y << "\n";
+}
+
+void Duck::set_position(float x, float y) {
+    pos_X = x;
+    pos_Y = y;
 }

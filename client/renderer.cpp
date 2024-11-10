@@ -19,18 +19,18 @@ const int DUCK_MOVEMENT_SPRITES_LINE = 0;
 
 Renderer::Renderer(std::atomic_bool& con_stat, SDL2pp::Window& w, SDL2pp::Renderer& r, Queue<Gamestate>& q, StateManager& s): connected(con_stat), window(w), renderer(r), updates_feed(q), state(s) {}
 
-void Renderer::draw_character(SDL2pp::Texture& sprites, Character character)
+void Renderer::draw_character(SDL2pp::Texture& sprites, Character& character, int frame)
 {
-    unsigned int frame_ticks = SDL_GetTicks();
-    int vcenter = renderer.GetOutputHeight() / 2;
-    int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame_ticks);
+    int vcenter = renderer.GetOutputHeight();
+    // int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame_ticks);
+    int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame);
     int src_y = DUCK_MOVEMENT_SPRITES_LINE;
     // Coordinates duck_position = character.get_coordinates();
     // SDL_RendererFlip flip = character.is_moving_to_the_right() ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
     SDL_RendererFlip flip = character.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
     SDL_Rect src_rect = { src_x, src_y, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
     // SDL_Rect dst_rect = { static_cast<int>(duck_position.pos_X), static_cast<int>(vcenter - 32 - duck_position.pos_Y), 64, 64 };
-    SDL_Rect dst_rect = { static_cast<int>(character.pos_X), static_cast<int>(vcenter - 32 - character.pos_Y), 64, 64 };
+    SDL_Rect dst_rect = { static_cast<int>(character.pos_X), static_cast<int>(vcenter - character.pos_Y), 64, 64 };
     SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 }
 
@@ -66,22 +66,30 @@ void Renderer::run(int frame) {
             // }
             renderer.Clear();
             renderer.Copy(background, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
+
+        // DIBUJANDO ENTIDADES DE UN MAPA
+            SDL2pp::Rect plataforma(120, renderer.GetOutputHeight() - 64, 300, 100);
+        // { static_cast<int>(character.pos_X), static_cast<int>(vcenter - character.pos_Y), 64, 64 };
+            renderer.SetDrawColor(108, 59, 42);
+            renderer.FillRect(plataforma);
+        // DIBUJANDO PERSONAJES
             std::list<Character> character_list = state.get_characters_data();
             // unsigned int frame_ticks = SDL_GetTicks();
-            int vcenter = renderer.GetOutputHeight() / 2;
+            // int vcenter = renderer.GetOutputHeight() / 2;
+            // int vcenter = renderer.GetOutputHeight();
             for (auto& character : character_list)
             {
-                // draw_character(sprites, character);
-                // int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame_ticks);
-                int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame);
-                int src_y = DUCK_MOVEMENT_SPRITES_LINE;
-                // Coordinates duck_position = character.get_coordinates();
-                // SDL_RendererFlip flip = character.is_moving_to_the_right() ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
-                SDL_RendererFlip flip = character.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
-                SDL_Rect src_rect = { src_x, src_y, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
-                // SDL_Rect dst_rect = { static_cast<int>(duck_position.pos_X), static_cast<int>(vcenter - 32 - duck_position.pos_Y), 64, 64 };
-                SDL_Rect dst_rect = { static_cast<int>(character.pos_X), static_cast<int>(vcenter - 32 - character.pos_Y), 64, 64 };
-                SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+                draw_character(sprites, character, frame);
+                // //NOSIRVE int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame_ticks);
+                // int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame);
+                // int src_y = DUCK_MOVEMENT_SPRITES_LINE;
+                // //NOSIRVE Coordinates duck_position = character.get_coordinates();
+                // //NOSIRVE SDL_RendererFlip flip = character.is_moving_to_the_right() ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+                // SDL_RendererFlip flip = character.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+                // SDL_Rect src_rect = { src_x, src_y, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
+                // //NOSIRVE SDL_Rect dst_rect = { static_cast<int>(duck_position.pos_X), static_cast<int>(vcenter - 32 - duck_position.pos_Y), 64, 64 };
+                // SDL_Rect dst_rect = { static_cast<int>(character.pos_X), static_cast<int>(vcenter - character.pos_Y), 64, 64 }; // aca puede llegar a ir un - 32
+                // SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
             }
             renderer.Present();
             // constante de Rate Loop

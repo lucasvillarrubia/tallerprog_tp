@@ -2,12 +2,12 @@
 #define TERRAIN_H
 #include <list>
 
-#include "common/map_entity.h"
+#include "common/rectangulo.h"
 
 
 class Terrain {
 private:
-    std::list<MapEntity> map_entities;
+    std::list<Rectangulo> map_entities;
 public:
     Terrain();
     bool is_duck_position_valid(int, int);

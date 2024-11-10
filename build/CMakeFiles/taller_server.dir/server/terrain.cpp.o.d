@@ -45,7 +45,7 @@ CMakeFiles/taller_server.dir/server/terrain.cpp.o: \
  /usr/include/c++/11/bits/allocated_ptr.h \
  /usr/include/c++/11/ext/aligned_buffer.h \
  /usr/include/c++/11/bits/list.tcc \
- /home/lucas/CLionProjects/tallerprog_tp/./common/map_entity.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/rectangulo.h \
  /usr/include/c++/11/cstdint \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \

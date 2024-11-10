@@ -470,11 +470,13 @@ CMakeFiles/taller_server.dir/server/main.cpp.o
  /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_threads/thread.h
  /usr/include/c++/11/thread
  /home/lucas/CLionProjects/tallerprog_tp/server/command.h
- /home/lucas/CLionProjects/tallerprog_tp/server/duck.h
- /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/terrain.h
  /usr/include/c++/11/list
  /usr/include/c++/11/bits/stl_list.h
  /usr/include/c++/11/bits/list.tcc
+ /home/lucas/CLionProjects/tallerprog_tp/common/rectangulo.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/duck.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h
  /home/lucas/CLionProjects/tallerprog_tp/server/command.h
  /home/lucas/CLionProjects/tallerprog_tp/server/player.h
  /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/socket.h
@@ -766,11 +768,13 @@ CMakeFiles/taller_server.dir/server/match.cpp.o
  /usr/include/c++/11/bits/istream.tcc
  /usr/include/c++/11/thread
  /home/lucas/CLionProjects/tallerprog_tp/server/command.h
- /home/lucas/CLionProjects/tallerprog_tp/server/duck.h
- /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/terrain.h
  /usr/include/c++/11/list
  /usr/include/c++/11/bits/stl_list.h
  /usr/include/c++/11/bits/list.tcc
+ /home/lucas/CLionProjects/tallerprog_tp/common/rectangulo.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/duck.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h
  /home/lucas/CLionProjects/tallerprog_tp/server/command.h
  /home/lucas/CLionProjects/tallerprog_tp/server/player.h
  /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/socket.h
@@ -1345,11 +1349,13 @@ CMakeFiles/taller_server.dir/server/server.cpp.o
  /usr/include/c++/11/bits/istream.tcc
  /usr/include/c++/11/thread
  /home/lucas/CLionProjects/tallerprog_tp/server/command.h
- /home/lucas/CLionProjects/tallerprog_tp/server/duck.h
- /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/terrain.h
  /usr/include/c++/11/list
  /usr/include/c++/11/bits/stl_list.h
  /usr/include/c++/11/bits/list.tcc
+ /home/lucas/CLionProjects/tallerprog_tp/common/rectangulo.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/duck.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h
  /home/lucas/CLionProjects/tallerprog_tp/server/command.h
  /home/lucas/CLionProjects/tallerprog_tp/server/player.h
  /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/socket.h
@@ -2762,6 +2768,8 @@ CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o
  /home/lucas/CLionProjects/tallerprog_tp/server/match.h
  /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/gameplay.h
  /home/lucas/CLionProjects/tallerprog_tp/server/command.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/terrain.h
+ /home/lucas/CLionProjects/tallerprog_tp/common/rectangulo.h
  /home/lucas/CLionProjects/tallerprog_tp/server/duck.h
 
 CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o
@@ -3037,11 +3045,13 @@ CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o
  /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_threads/thread.h
  /usr/include/c++/11/thread
  /home/lucas/CLionProjects/tallerprog_tp/server/command.h
- /home/lucas/CLionProjects/tallerprog_tp/server/duck.h
- /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/terrain.h
  /usr/include/c++/11/list
  /usr/include/c++/11/bits/stl_list.h
  /usr/include/c++/11/bits/list.tcc
+ /home/lucas/CLionProjects/tallerprog_tp/common/rectangulo.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/duck.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h
  /home/lucas/CLionProjects/tallerprog_tp/server/command.h
  /home/lucas/CLionProjects/tallerprog_tp/server/player.h
  /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/socket.h
@@ -3331,11 +3341,13 @@ CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o
  /usr/include/c++/11/bits/vector.tcc
  /usr/include/c++/11/bits/stl_queue.h
  /home/lucas/CLionProjects/tallerprog_tp/server/command.h
- /home/lucas/CLionProjects/tallerprog_tp/server/duck.h
- /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/terrain.h
  /usr/include/c++/11/list
  /usr/include/c++/11/bits/stl_list.h
  /usr/include/c++/11/bits/list.tcc
+ /home/lucas/CLionProjects/tallerprog_tp/common/rectangulo.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/duck.h
+ /home/lucas/CLionProjects/tallerprog_tp/server/monitored_list.h
  /home/lucas/CLionProjects/tallerprog_tp/server/command.h
  /home/lucas/CLionProjects/tallerprog_tp/server/player.h
  /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/socket.h
@@ -3473,7 +3485,7 @@ CMakeFiles/taller_server.dir/server/terrain.cpp.o
  /usr/include/c++/11/bits/allocated_ptr.h
  /usr/include/c++/11/ext/aligned_buffer.h
  /usr/include/c++/11/bits/list.tcc
- /home/lucas/CLionProjects/tallerprog_tp/common/map_entity.h
+ /home/lucas/CLionProjects/tallerprog_tp/common/rectangulo.h
  /usr/include/c++/11/cstdint
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h
  /usr/include/stdint.h

@@ -760,30 +760,6 @@ common/hands_on_sockets/socket.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_common.dir/build.make CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.s
 .PHONY : common/hands_on_sockets/socket.cpp.s
 
-common/map_entity.o: common/map_entity.cpp.o
-.PHONY : common/map_entity.o
-
-# target to build an object file
-common/map_entity.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_common.dir/build.make CMakeFiles/taller_common.dir/common/map_entity.cpp.o
-.PHONY : common/map_entity.cpp.o
-
-common/map_entity.i: common/map_entity.cpp.i
-.PHONY : common/map_entity.i
-
-# target to preprocess a source file
-common/map_entity.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_common.dir/build.make CMakeFiles/taller_common.dir/common/map_entity.cpp.i
-.PHONY : common/map_entity.cpp.i
-
-common/map_entity.s: common/map_entity.cpp.s
-.PHONY : common/map_entity.s
-
-# target to generate assembly for a file
-common/map_entity.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_common.dir/build.make CMakeFiles/taller_common.dir/common/map_entity.cpp.s
-.PHONY : common/map_entity.cpp.s
-
 common/message.o: common/message.cpp.o
 .PHONY : common/message.o
 
@@ -1272,9 +1248,6 @@ help:
 	@echo "... common/hands_on_sockets/socket.o"
 	@echo "... common/hands_on_sockets/socket.i"
 	@echo "... common/hands_on_sockets/socket.s"
-	@echo "... common/map_entity.o"
-	@echo "... common/map_entity.i"
-	@echo "... common/map_entity.s"
 	@echo "... common/message.o"
 	@echo "... common/message.i"
 	@echo "... common/message.s"

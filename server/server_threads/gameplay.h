@@ -7,6 +7,7 @@
 #include "common/hands_on_threads/queue.h"
 #include "common/hands_on_threads/thread.h"
 #include "server/command.h"
+#include "server/terrain.h"
 #include "server/duck.h"
 #include "server/monitored_list.h"
 
@@ -19,6 +20,8 @@ private:
     Queue<Gameaction>& user_commands;
     std::map<int, Duck> ducks_by_id;
     bool ya_entro_cliente;
+    bool primera_caida;
+    Terrain terrain;
     // Duck duck;
     void process_users_commands();
     void initialize_players();

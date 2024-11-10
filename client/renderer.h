@@ -22,7 +22,7 @@ private:
     // Character duck;
 public:
     Renderer(std::atomic_bool&, SDL2pp::Window&, SDL2pp::Renderer&, Queue<Gamestate>&, StateManager&);
-    void draw_character(SDL2pp::Texture&, Character);
+    void draw_character(SDL2pp::Texture&, Character&, int);
     // void run();
     void run(int);
     ~Renderer() = default;

@@ -14,6 +14,10 @@ Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_c
 }
 
 void Gameplay::process_users_commands() {
+    if (primera_caida) {
+        ducks_by_id.at(1).set_is_NOT_on_the_floor();
+        primera_caida = false;
+    }
     Gameaction command;
     while (user_commands.try_pop(command)) {
         StateManager::update_duck_state(ducks_by_id.at(command.player_id), command);
@@ -38,7 +42,11 @@ void Gameplay::send_all_initial_coordinates()
         {
             if (id == 1)
             {
-                Gamestate initial_duck_coordinates(id, 0.0f, 0.0f, 0, 0, 0, 1, 0.0f);
+                float x = 125.0f;
+                float y = 300.0f;
+                Gamestate initial_duck_coordinates(id, x, y, 0, 0, 0, 1, 0.0f);
+                duck.set_position(x, y);
+                duck.set_is_on_the_floor();
                 players.broadcast(initial_duck_coordinates);
             }
             else
@@ -57,17 +65,32 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
     std::map<int, Coordinates> positions_by_id;
     for (auto& [id, duck]: ducks_by_id)
     {
+        Coordinates before_coordinates = StateManager::get_duck_coordinates(duck);
         duck.update_position(frame_delta);
-        // if (terrain.is_duck_position_valid())
+        Coordinates after_coordinates = StateManager::get_duck_coordinates(duck);
+        if (not terrain.is_duck_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y)) {
+            duck.set_position(before_coordinates.pos_X, before_coordinates.pos_Y);
+            // duck.toggle_on_the_floor();
+            duck.set_is_on_the_floor();
+            // std::cout << "se encontró el pato con la plataforma\n";
+        }
+        // else if ((before_coordinates.pos_X == after_coordinates.pos_X) and (before_coordinates.pos_Y == after_coordinates.pos_Y)) {
+        //     duck.set_is_on_the_floor();
+        // }
+        else {
+            duck.set_is_NOT_on_the_floor();
+        }
         positions_by_id.insert({id, StateManager::get_duck_coordinates(duck)});
     }
     Gamestate update(positions_by_id);
     players.broadcast(update);
+    // std::cout << "x: " << positions_by_id.at(1).pos_X << " y: " << positions_by_id.at(1).pos_Y << "\n";
 }
 
 void Gameplay::run() {
     try
     {
+        primera_caida = true;
         ya_entro_cliente = false;
         is_running.store(true);
         auto prev_time = std::chrono::steady_clock::now();

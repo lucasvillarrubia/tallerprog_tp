@@ -181,24 +181,10 @@ CMakeFiles/taller_common.dir/common/comms/protocol.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/comms/protocol.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/comms/protocol.cpp -o CMakeFiles/taller_common.dir/common/comms/protocol.cpp.s
 
-CMakeFiles/taller_common.dir/common/map_entity.cpp.o: CMakeFiles/taller_common.dir/flags.make
-CMakeFiles/taller_common.dir/common/map_entity.cpp.o: ../common/map_entity.cpp
-CMakeFiles/taller_common.dir/common/map_entity.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/taller_common.dir/common/map_entity.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/map_entity.cpp.o -MF CMakeFiles/taller_common.dir/common/map_entity.cpp.o.d -o CMakeFiles/taller_common.dir/common/map_entity.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/map_entity.cpp
-
-CMakeFiles/taller_common.dir/common/map_entity.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_common.dir/common/map_entity.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/common/map_entity.cpp > CMakeFiles/taller_common.dir/common/map_entity.cpp.i
-
-CMakeFiles/taller_common.dir/common/map_entity.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_common.dir/common/map_entity.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/common/map_entity.cpp -o CMakeFiles/taller_common.dir/common/map_entity.cpp.s
-
 CMakeFiles/taller_common.dir/common/foo.cpp.o: CMakeFiles/taller_common.dir/flags.make
 CMakeFiles/taller_common.dir/common/foo.cpp.o: ../common/foo.cpp
 CMakeFiles/taller_common.dir/common/foo.cpp.o: CMakeFiles/taller_common.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/taller_common.dir/common/foo.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/taller_common.dir/common/foo.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_common.dir/common/foo.cpp.o -MF CMakeFiles/taller_common.dir/common/foo.cpp.o.d -o CMakeFiles/taller_common.dir/common/foo.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/foo.cpp
 
 CMakeFiles/taller_common.dir/common/foo.cpp.i: cmake_force
@@ -219,7 +205,6 @@ taller_common_OBJECTS = \
 "CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o" \
 "CMakeFiles/taller_common.dir/common/comms/sender.cpp.o" \
 "CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o" \
-"CMakeFiles/taller_common.dir/common/map_entity.cpp.o" \
 "CMakeFiles/taller_common.dir/common/foo.cpp.o"
 
 # External object files for target taller_common
@@ -233,11 +218,10 @@ libtaller_common.a: CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.
 libtaller_common.a: CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o
 libtaller_common.a: CMakeFiles/taller_common.dir/common/comms/sender.cpp.o
 libtaller_common.a: CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o
-libtaller_common.a: CMakeFiles/taller_common.dir/common/map_entity.cpp.o
 libtaller_common.a: CMakeFiles/taller_common.dir/common/foo.cpp.o
 libtaller_common.a: CMakeFiles/taller_common.dir/build.make
 libtaller_common.a: CMakeFiles/taller_common.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX static library libtaller_common.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library libtaller_common.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/taller_common.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/taller_common.dir/link.txt --verbose=$(VERBOSE)
 

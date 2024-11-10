@@ -216,10 +216,12 @@ CMakeFiles/taller_server.dir/server/server.cpp.o: \
  /usr/include/c++/11/iostream /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/thread \
  /home/lucas/CLionProjects/tallerprog_tp/./server/command.h \
- /home/lucas/CLionProjects/tallerprog_tp/./server/duck.h \
- /home/lucas/CLionProjects/tallerprog_tp/./server/monitored_list.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/terrain.h \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/list.tcc \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/rectangulo.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/duck.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/monitored_list.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/command.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/player.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_sockets/socket.h \

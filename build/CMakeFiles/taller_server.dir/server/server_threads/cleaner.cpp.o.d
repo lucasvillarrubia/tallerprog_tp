@@ -231,4 +231,6 @@ CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./server/match.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/server_threads/gameplay.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/command.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/terrain.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/rectangulo.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/duck.h

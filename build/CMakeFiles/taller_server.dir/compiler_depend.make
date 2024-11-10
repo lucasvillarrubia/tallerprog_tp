@@ -468,11 +468,13 @@ CMakeFiles/taller_server.dir/server/main.cpp.o: ../server/main.cpp \
   ../common/hands_on_threads/thread.h \
   /usr/include/c++/11/thread \
   ../server/command.h \
-  ../server/duck.h \
-  ../server/monitored_list.h \
+  ../server/terrain.h \
   /usr/include/c++/11/list \
   /usr/include/c++/11/bits/stl_list.h \
   /usr/include/c++/11/bits/list.tcc \
+  ../common/rectangulo.h \
+  ../server/duck.h \
+  ../server/monitored_list.h \
   ../server/command.h \
   ../server/player.h \
   ../common/hands_on_sockets/socket.h \
@@ -763,11 +765,13 @@ CMakeFiles/taller_server.dir/server/match.cpp.o: ../server/match.cpp \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/thread \
   ../server/command.h \
-  ../server/duck.h \
-  ../server/monitored_list.h \
+  ../server/terrain.h \
   /usr/include/c++/11/list \
   /usr/include/c++/11/bits/stl_list.h \
   /usr/include/c++/11/bits/list.tcc \
+  ../common/rectangulo.h \
+  ../server/duck.h \
+  ../server/monitored_list.h \
   ../server/command.h \
   ../server/player.h \
   ../common/hands_on_sockets/socket.h \
@@ -1340,11 +1344,13 @@ CMakeFiles/taller_server.dir/server/server.cpp.o: ../server/server.cpp \
   /usr/include/c++/11/bits/istream.tcc \
   /usr/include/c++/11/thread \
   ../server/command.h \
-  ../server/duck.h \
-  ../server/monitored_list.h \
+  ../server/terrain.h \
   /usr/include/c++/11/list \
   /usr/include/c++/11/bits/stl_list.h \
   /usr/include/c++/11/bits/list.tcc \
+  ../common/rectangulo.h \
+  ../server/duck.h \
+  ../server/monitored_list.h \
   ../server/command.h \
   ../server/player.h \
   ../common/hands_on_sockets/socket.h \
@@ -2752,6 +2758,8 @@ CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o: ../server/serv
   ../server/match.h \
   ../server/server_threads/gameplay.h \
   ../server/command.h \
+  ../server/terrain.h \
+  ../common/rectangulo.h \
   ../server/duck.h
 
 CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o: ../server/server_threads/gameplay.cpp \
@@ -3026,11 +3034,13 @@ CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o: ../server/ser
   ../common/hands_on_threads/thread.h \
   /usr/include/c++/11/thread \
   ../server/command.h \
-  ../server/duck.h \
-  ../server/monitored_list.h \
+  ../server/terrain.h \
   /usr/include/c++/11/list \
   /usr/include/c++/11/bits/stl_list.h \
   /usr/include/c++/11/bits/list.tcc \
+  ../common/rectangulo.h \
+  ../server/duck.h \
+  ../server/monitored_list.h \
   ../server/command.h \
   ../server/player.h \
   ../common/hands_on_sockets/socket.h \
@@ -3319,11 +3329,13 @@ CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o: ../serve
   /usr/include/c++/11/bits/vector.tcc \
   /usr/include/c++/11/bits/stl_queue.h \
   ../server/command.h \
-  ../server/duck.h \
-  ../server/monitored_list.h \
+  ../server/terrain.h \
   /usr/include/c++/11/list \
   /usr/include/c++/11/bits/stl_list.h \
   /usr/include/c++/11/bits/list.tcc \
+  ../common/rectangulo.h \
+  ../server/duck.h \
+  ../server/monitored_list.h \
   ../server/command.h \
   ../server/player.h \
   ../common/hands_on_sockets/socket.h \
@@ -3459,7 +3471,7 @@ CMakeFiles/taller_server.dir/server/terrain.cpp.o: ../server/terrain.cpp \
   /usr/include/c++/11/bits/allocated_ptr.h \
   /usr/include/c++/11/ext/aligned_buffer.h \
   /usr/include/c++/11/bits/list.tcc \
-  ../common/map_entity.h \
+  ../common/rectangulo.h \
   /usr/include/c++/11/cstdint \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h \
   /usr/include/stdint.h \
@@ -3471,10 +3483,6 @@ CMakeFiles/taller_server.dir/server/terrain.cpp.o: ../server/terrain.cpp \
   /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
   /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h
 
-
-../common/map_entity.h:
-
-../server/terrain.h:
 
 ../server/state_manager.cpp:
 
@@ -3519,6 +3527,8 @@ CMakeFiles/taller_server.dir/server/terrain.cpp.o: ../server/terrain.cpp \
 /usr/include/c++/11/bits/stl_list.h:
 
 /usr/include/c++/11/list:
+
+../server/terrain.h:
 
 ../common/hands_on_threads/thread.h:
 
@@ -3589,6 +3599,8 @@ CMakeFiles/taller_server.dir/server/terrain.cpp.o: ../server/terrain.cpp \
 /usr/include/x86_64-linux-gnu/c++/11/bits/gthr-default.h:
 
 /usr/include/c++/11/ext/concurrence.h:
+
+../common/rectangulo.h:
 
 /usr/include/c++/11/bits/ios_base.h:
 
