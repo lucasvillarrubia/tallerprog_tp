@@ -114,6 +114,18 @@ if(TALLER_CLIENT)
             client/gun.cpp
             client/ammo.h
             client/ammo.cpp
+            client/AK47.h
+            client/AK47.cpp
+            client/AK47Ammo.h
+            client/AK47Ammo.cpp
+            client/CowboyPistol.h
+            client/CowboyPistol.cpp
+            client/CowboyPistolAmmo.h
+            client/CowboyPistolAmmo.cpp
+            client/DuelPistol.h
+            client/DuelPistol.cpp
+            client/DuelPistolAmmo.h
+            client/DuelPistolAmmo.cpp
             client/Magnum.h
             client/Magnum.cpp
             client/MagnumAmmo.h

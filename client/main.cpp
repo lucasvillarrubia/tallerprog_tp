@@ -56,6 +56,7 @@ int main() try {
     unsigned int prev_ticks = SDL_GetTicks();
     Character duck;
     Magnum magnum(50, -85);
+    
     std::vector<MagnumAmmo> bullets;
 
     while (true) {
