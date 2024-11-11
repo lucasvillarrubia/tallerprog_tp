@@ -36,58 +36,29 @@ void Duck::update_position(unsigned int frame_delta)
         is_jumping = true;
         // is_flapping = false;
     }
-    // bool has_position_changed = false;
-    // Está corriendo (moviendose horizontalmente)
     if (is_running) {
-        // pos_X += frame_delta * X_CONSTANT_VELOCITY * (moving_right ? 1 : -1);
         pos_X += X_CONSTANT_VELOCITY * (moving_right ? 1 : -1) ;
-        // has_position_changed = true;
     }
     // Está saltando
     if (is_jumping) {
         is_on_the_floor = false;
-        // if ((pos_Y != 0) or jump_velocity != 0) {
-        // float effective_gravity = (is_flapping && jump_velocity < 0) ? GRAVITY * GRAVITY_RESISTANCE_WHEN_FLAPPING : GRAVITY;
         float effective_gravity = GRAVITY;
         pos_Y += jump_velocity * (frame_delta * TARGET_FRAME_TIME);
-        // pos_Y += jump_velocity * (TARGET_FRAME_TIME);
-        // pos_Y += jump_velocity * (frame_delta);
-        // pos_Y += jump_velocity;
         jump_velocity += effective_gravity * (frame_delta * TARGET_FRAME_TIME);
-        // jump_velocity += effective_gravity * (TARGET_FRAME_TIME);
-        // jump_velocity = effective_gravity * (frame_delta * TARGET_FRAME_TIME);
-        // jump_velocity += effective_gravity * (frame_delta);
-        // jump_velocity += effective_gravity;
-
-        // if (pos_Y < 0.0f) {
-        //     pos_Y = 0.0f;
-        //     is_jumping = false;
-        //     is_flapping = false;
-        // }
-        // has_position_changed = true;
     }
     // Llegó al límite de la pantalla ---> Se mueve la cámara
     if (pos_X > 640.0f)
     {
-        // std::cout << "se llegó al fin de la ventana???? posiciónX: " << pos_X << "\n";
         pos_X = -50.0f;
-        // has_position_changed = true;
     }
     else if (pos_X < -50.0f)
     {
         pos_X = 640.0f;
-        // has_position_changed = true;
     }
     if (pos_Y < -64.0f)
     {
-        // std::cout << "se llegó al fin de la ventana???? posiciónX: " << pos_X << "\n";
         pos_Y = 544.0f;
-        // has_position_changed = true;
     }
-
-    // std::cout << "el pato está en las coordenadas x: " << pos_X << "; y: " << pos_Y << "\n";
-    // return has_position_changed;
-    // std::cout << jump_velocity << " " << pos_Y << "\n";
 }
 
 void Duck::set_position(float x, float y) {

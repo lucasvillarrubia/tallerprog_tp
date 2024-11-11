@@ -23,20 +23,11 @@ void Gameplay::process_users_commands() {
         StateManager::update_duck_state(ducks_by_id.at(command.player_id), command);
         Gamestate update = StateManager::get_duck_state(ducks_by_id.at(command.player_id), command.player_id);
         players.broadcast(update);
-        // duck.update_position(frame_delta);
-        // Gamestate update = StateManager::get_duck_state(duck);
-        // // por ahora, primero me conecto con un solo pato
-        // if (not duck.exited) players.broadcast(update);
         // Coordinates pato = StateManager::get_duck_coordinates(ducks_by_id.at(command.player_id));
         // std::cout << "x: " << pato.pos_X << " y: " << pato.pos_Y << "\n";
         float pato_velocidad = StateManager::get_duck_speed(ducks_by_id.at(command.player_id));
         std::cout << "velocidad: " << pato_velocidad << "\n";
     }
-
-    // duck.update_position(frame_delta);
-    // Gamestate update = StateManager::get_duck_state(duck);
-    // // por ahora, primero me conecto con un solo pato
-    // if (not duck.exited) players.broadcast(update);
 }
 
 void Gameplay::send_all_initial_coordinates()
@@ -75,13 +66,8 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
         Coordinates after_coordinates = StateManager::get_duck_coordinates(duck);
         if (not terrain.is_duck_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y)) {
             duck.set_position(before_coordinates.pos_X, before_coordinates.pos_Y);
-            // duck.toggle_on_the_floor();
             duck.set_is_on_the_floor();
-            // std::cout << "se encontró el pato con la plataforma\n";
         }
-        // else if ((before_coordinates.pos_X == after_coordinates.pos_X) and (before_coordinates.pos_Y == after_coordinates.pos_Y)) {
-        //     duck.set_is_on_the_floor();
-        // }
         else {
             duck.set_is_NOT_on_the_floor();
         }
