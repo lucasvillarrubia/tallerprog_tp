@@ -1,4 +1,4 @@
 CMakeFiles/taller_common.dir/common/foo.cpp.o: \
- /home/lucas/CLionProjects/tallerprog_tp/common/foo.cpp \
+ /home/nishy/Desktop/taller\ de\ prog/tallerprog_tp/common/foo.cpp \
  /usr/include/stdc-predef.h \
- /home/lucas/CLionProjects/tallerprog_tp/./common/foo.h
+ /home/nishy/Desktop/taller\ de\ prog/tallerprog_tp/./common/foo.h

@@ -9,6 +9,7 @@
 #include "SDL2pp/Renderer.hh"
 #include "SDL2pp/Window.hh"
 #include "state_manager.h"
+#include "mapa.h"
 
 
 class Renderer
@@ -24,7 +25,7 @@ public:
     Renderer(std::atomic_bool&, SDL2pp::Window&, SDL2pp::Renderer&, Queue<Gamestate>&, StateManager&);
     void draw_character(SDL2pp::Texture&, Character&, int);
     // void run();
-    void run(int);
+    void run(int, Mapa);
     ~Renderer() = default;
 };
 

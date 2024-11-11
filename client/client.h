@@ -10,7 +10,7 @@
 #include "common/gamedata.h"
 #include "SDL2pp/Renderer.hh"
 #include "SDL2pp/Window.hh"
-
+#include "mapa.h"
 
 class Client
 {
@@ -29,6 +29,7 @@ private:
     void constant_rate_loop(std::function<void(int)>, std::chrono::milliseconds);
 public:
     Client(const char*, const char*);
+    void cargar_mapa(Mapa&);
     void run();
     Client(const Client&) = delete;
     Client& operator=(const Client&) = delete;

@@ -1,3 +1,3 @@
-/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
-/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-subbuild/CMakeFiles/edit_cache.dir
-/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-subbuild/CMakeFiles/rebuild_cache.dir
+/home/nishy/Desktop/taller de prog/tallerprog_tp/build/_deps/googletest-subbuild/CMakeFiles/googletest-populate.dir
+/home/nishy/Desktop/taller de prog/tallerprog_tp/build/_deps/googletest-subbuild/CMakeFiles/edit_cache.dir
+/home/nishy/Desktop/taller de prog/tallerprog_tp/build/_deps/googletest-subbuild/CMakeFiles/rebuild_cache.dir
