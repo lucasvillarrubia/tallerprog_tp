@@ -7,7 +7,23 @@ void ServerSender::send_data()
 {
     Gamestate new_event = server_messages.pop();
     if (client_is_connected.load())
-        protocol.send_message(new_event);
+    {
+        switch (new_event.type)
+        {
+        case 1:
+            protocol.send_init_duck_message(new_event);
+            // std::cout << "se mandó que hay un pato inicializado\n";
+            break;
+        case 2:
+            protocol.send_ducks_positions_message(new_event);
+            // std::cout << "se mandó una lista de posiciones\n";
+            break;
+        default:
+            protocol.send_duck_state_message(new_event);
+            // std::cout << "se mandó una actualización de estado\n";
+            break;
+        }
+    }
 }
 
 

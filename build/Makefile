@@ -448,29 +448,29 @@ client/client_threads/event_listener.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.s
 .PHONY : client/client_threads/event_listener.cpp.s
 
-client/client_threads/renderer.o: client/client_threads/renderer.cpp.o
-.PHONY : client/client_threads/renderer.o
+client/client_threads/updater.o: client/client_threads/updater.cpp.o
+.PHONY : client/client_threads/updater.o
 
 # target to build an object file
-client/client_threads/renderer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o
-.PHONY : client/client_threads/renderer.cpp.o
+client/client_threads/updater.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o
+.PHONY : client/client_threads/updater.cpp.o
 
-client/client_threads/renderer.i: client/client_threads/renderer.cpp.i
-.PHONY : client/client_threads/renderer.i
+client/client_threads/updater.i: client/client_threads/updater.cpp.i
+.PHONY : client/client_threads/updater.i
 
 # target to preprocess a source file
-client/client_threads/renderer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.i
-.PHONY : client/client_threads/renderer.cpp.i
+client/client_threads/updater.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.i
+.PHONY : client/client_threads/updater.cpp.i
 
-client/client_threads/renderer.s: client/client_threads/renderer.cpp.s
-.PHONY : client/client_threads/renderer.s
+client/client_threads/updater.s: client/client_threads/updater.cpp.s
+.PHONY : client/client_threads/updater.s
 
 # target to generate assembly for a file
-client/client_threads/renderer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.s
-.PHONY : client/client_threads/renderer.cpp.s
+client/client_threads/updater.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.s
+.PHONY : client/client_threads/updater.cpp.s
 
 client/local_player.o: client/local_player.cpp.o
 .PHONY : client/local_player.o
@@ -519,6 +519,30 @@ client/main.s: client/main.cpp.s
 client/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/main.cpp.s
 .PHONY : client/main.cpp.s
+
+client/renderer.o: client/renderer.cpp.o
+.PHONY : client/renderer.o
+
+# target to build an object file
+client/renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/renderer.cpp.o
+.PHONY : client/renderer.cpp.o
+
+client/renderer.i: client/renderer.cpp.i
+.PHONY : client/renderer.i
+
+# target to preprocess a source file
+client/renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/renderer.cpp.i
+.PHONY : client/renderer.cpp.i
+
+client/renderer.s: client/renderer.cpp.s
+.PHONY : client/renderer.s
+
+# target to generate assembly for a file
+client/renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/renderer.cpp.s
+.PHONY : client/renderer.cpp.s
 
 client/state_manager.o: client/state_manager.cpp.o
 .PHONY : client/state_manager.o
@@ -1096,6 +1120,30 @@ server/state_manager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/state_manager.cpp.s
 .PHONY : server/state_manager.cpp.s
 
+server/terrain.o: server/terrain.cpp.o
+.PHONY : server/terrain.o
+
+# target to build an object file
+server/terrain.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/terrain.cpp.o
+.PHONY : server/terrain.cpp.o
+
+server/terrain.i: server/terrain.cpp.i
+.PHONY : server/terrain.i
+
+# target to preprocess a source file
+server/terrain.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/terrain.cpp.i
+.PHONY : server/terrain.cpp.i
+
+server/terrain.s: server/terrain.cpp.s
+.PHONY : server/terrain.s
+
+# target to generate assembly for a file
+server/terrain.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/terrain.cpp.s
+.PHONY : server/terrain.cpp.s
+
 tests/foo.o: tests/foo.cpp.o
 .PHONY : tests/foo.o
 
@@ -1161,15 +1209,18 @@ help:
 	@echo "... client/client_threads/event_listener.o"
 	@echo "... client/client_threads/event_listener.i"
 	@echo "... client/client_threads/event_listener.s"
-	@echo "... client/client_threads/renderer.o"
-	@echo "... client/client_threads/renderer.i"
-	@echo "... client/client_threads/renderer.s"
+	@echo "... client/client_threads/updater.o"
+	@echo "... client/client_threads/updater.i"
+	@echo "... client/client_threads/updater.s"
 	@echo "... client/local_player.o"
 	@echo "... client/local_player.i"
 	@echo "... client/local_player.s"
 	@echo "... client/main.o"
 	@echo "... client/main.i"
 	@echo "... client/main.s"
+	@echo "... client/renderer.o"
+	@echo "... client/renderer.i"
+	@echo "... client/renderer.s"
 	@echo "... client/state_manager.o"
 	@echo "... client/state_manager.i"
 	@echo "... client/state_manager.s"
@@ -1242,6 +1293,9 @@ help:
 	@echo "... server/state_manager.o"
 	@echo "... server/state_manager.i"
 	@echo "... server/state_manager.s"
+	@echo "... server/terrain.o"
+	@echo "... server/terrain.i"
+	@echo "... server/terrain.s"
 	@echo "... tests/foo.o"
 	@echo "... tests/foo.i"
 	@echo "... tests/foo.s"

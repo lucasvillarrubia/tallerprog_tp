@@ -50,6 +50,8 @@ add_library(taller_common STATIC
         common/comms/protocol.cpp
         common/comms/protocol.h
         common/gamedata.h
+        common/rectangulo.h
+        common/coordinates.h
 )
 
 # add the source files that make the lib
@@ -94,19 +96,20 @@ if(TALLER_CLIENT)
             client/client_comms/client_receiver.h
             client/client.cpp
             client/client_comms/client_protocol.cpp
-            client/client_threads/renderer.h
+            client/renderer.h
             client/client_threads/event_listener.h
             client/local_player.h
             client/local_player.cpp
             client/client_comms/client_sender.cpp
             client/client_comms/client_receiver.cpp
-            client/client_threads/renderer.cpp
+            client/renderer.cpp
             client/client_threads/event_listener.cpp
             client/character.cpp
             client/character.h
             client/state_manager.cpp
             client/state_manager.h
-            client/coordinates.h
+            client/client_threads/updater.cpp
+            client/client_threads/updater.h
     )
 
     # Make them depend on taller_common lib
@@ -166,7 +169,9 @@ if(TALLER_SERVER)
             server/server_threads/match_manager.cpp
             server/server_threads/match_manager.h
             server/match.cpp
-            server/match.h)
+            server/match.h
+            server/terrain.cpp
+            server/terrain.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)

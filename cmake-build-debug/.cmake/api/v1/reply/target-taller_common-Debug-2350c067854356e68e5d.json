@@ -38,7 +38,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 62,
+				"line" : 64,
 				"parent" : 0
 			},
 			{
@@ -56,7 +56,7 @@
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 67,
+				"line" : 69,
 				"parent" : 0
 			},
 			{
@@ -173,7 +173,7 @@
 				12,
 				14,
 				16,
-				19
+				21
 			]
 		}
 	],
@@ -202,7 +202,9 @@
 				15,
 				17,
 				18,
-				20
+				19,
+				20,
+				22
 			]
 		},
 		{
@@ -217,7 +219,7 @@
 				12,
 				14,
 				16,
-				19
+				21
 			]
 		}
 	],
@@ -324,6 +326,16 @@
 		{
 			"backtrace" : 1,
 			"path" : "common/gamedata.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "common/rectangulo.h",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "common/coordinates.h",
 			"sourceGroupIndex" : 0
 		},
 		{

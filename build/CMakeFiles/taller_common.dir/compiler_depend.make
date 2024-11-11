@@ -220,6 +220,18 @@ CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o: ../common/comms/protoc
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
   ../common/gamedata.h \
+  /usr/include/c++/11/list \
+  /usr/include/c++/11/bits/stl_list.h \
+  /usr/include/c++/11/bits/allocated_ptr.h \
+  /usr/include/c++/11/ext/aligned_buffer.h \
+  /usr/include/c++/11/bits/list.tcc \
+  /usr/include/c++/11/map \
+  /usr/include/c++/11/bits/stl_tree.h \
+  /usr/include/c++/11/bits/node_handle.h \
+  /usr/include/c++/11/bits/stl_map.h \
+  /usr/include/c++/11/bits/stl_multimap.h \
+  /usr/include/c++/11/bits/erase_if.h \
+  ../common/coordinates.h \
   ../common/hands_on_sockets/socket.h \
   /usr/include/c++/11/cmath \
   /usr/include/math.h \
@@ -1592,12 +1604,6 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
   /usr/include/c++/11/bits/vector.tcc
 
 
-/usr/include/c++/11/bits/stl_multimap.h:
-
-/usr/include/c++/11/bits/stl_map.h:
-
-/usr/include/c++/11/map:
-
 ../common/hands_on_sockets/resolvererror.cpp:
 
 ../common/hands_on_sockets/resolvererror.h:
@@ -1627,8 +1633,6 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 /usr/include/c++/11/deque:
 
 /usr/include/c++/11/ext/concurrence.h:
-
-/usr/include/c++/11/bits/allocated_ptr.h:
 
 ../common/hands_on_threads/queue.h:
 
@@ -1692,6 +1696,26 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
+/usr/include/semaphore.h:
+
+/usr/include/c++/11/cwctype:
+
+../common/hands_on_sockets/resolver.cpp:
+
+/usr/include/string.h:
+
+/usr/include/c++/11/bits/streambuf.tcc:
+
+/usr/include/c++/11/streambuf:
+
+/usr/include/c++/11/bits/locale_classes.tcc:
+
+/usr/include/c++/11/bits/locale_classes.h:
+
+/usr/include/c++/11/bits/ios_base.h:
+
+/usr/include/c++/11/ostream:
+
 /usr/include/c++/11/exception:
 
 /usr/include/c++/11/stdexcept:
@@ -1703,6 +1727,10 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 /usr/include/wchar.h:
 
 /usr/include/c++/11/bits/cxxabi_init_exception.h:
+
+/usr/include/c++/11/bits/basic_ios.h:
+
+/usr/include/c++/11/bits/uniform_int_dist.h:
 
 /usr/include/c++/11/bits/nested_exception.h:
 
@@ -1737,10 +1765,6 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 /usr/include/c++/11/backward/binders.h:
 
 /usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
-
-/usr/include/c++/11/bits/stl_tree.h:
-
-/usr/include/syscall.h:
 
 /usr/include/c++/11/tr1/ell_integral.tcc:
 
@@ -1812,6 +1836,10 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
+/usr/include/c++/11/bits/locale_facets.h:
+
+/usr/include/c++/11/bits/exception.h:
+
 /usr/include/x86_64-linux-gnu/bits/stdint-intn.h:
 
 /usr/include/x86_64-linux-gnu/bits/types.h:
@@ -1824,11 +1852,23 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/c++/11/tuple:
 
+/usr/include/syscall.h:
+
+/usr/include/c++/11/bits/stl_tree.h:
+
 ../common/comms/protocol.cpp:
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
+/usr/include/c++/11/bits/allocated_ptr.h:
+
 /usr/include/pthread.h:
+
+/usr/include/c++/11/ios:
+
+/usr/include/c++/11/utility:
+
+/usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
 
 /usr/include/c++/11/pstl/pstl_config.h:
 
@@ -1864,8 +1904,6 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/c++/11/bits/functexcept.h:
 
-/usr/include/c++/11/streambuf:
-
 /usr/include/x86_64-linux-gnu/c++/11/bits/gthr.h:
 
 /usr/include/c++/11/bits/predefined_ops.h:
@@ -1888,12 +1926,6 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/c++/11/tr1/bessel_function.tcc:
 
-../common/hands_on_sockets/resolver.cpp:
-
-/usr/include/string.h:
-
-/usr/include/c++/11/bits/streambuf.tcc:
-
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
 /usr/include/c++/11/ctime:
@@ -1904,9 +1936,13 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/features.h:
 
+/usr/include/c++/11/bits/stl_multimap.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
 /usr/include/c++/11/bits/exception_ptr.h:
+
+/usr/include/c++/11/list:
 
 /usr/include/x86_64-linux-gnu/bits/getopt_core.h:
 
@@ -2006,12 +2042,6 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h:
 
-/usr/include/c++/11/utility:
-
-/usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
-
-/usr/include/c++/11/ios:
-
 /usr/include/c++/11/bits/stl_relops.h:
 
 /usr/include/limits.h:
@@ -2064,6 +2094,8 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/c++/11/bits/stl_construct.h:
 
+../common/coordinates.h:
+
 /usr/include/c++/11/tr1/exp_integral.tcc:
 
 /usr/include/features-time64.h:
@@ -2110,17 +2142,9 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
-/usr/include/c++/11/ext/aligned_buffer.h:
-
 /usr/include/x86_64-linux-gnu/sys/types.h:
 
-/usr/include/c++/11/bits/erase_if.h:
-
-/usr/include/c++/11/bits/ptr_traits.h:
-
-/usr/include/stdint.h:
-
-/usr/include/endian.h:
+/usr/include/c++/11/ext/aligned_buffer.h:
 
 /usr/include/x86_64-linux-gnu/bits/byteswap.h:
 
@@ -2145,6 +2169,8 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 /usr/include/c++/11/bits/stl_heap.h:
 
 /usr/include/c++/11/bits/ranges_base.h:
+
+/usr/include/c++/11/map:
 
 ../common/hands_on_sockets/socket.h:
 
@@ -2202,7 +2228,21 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/c++/11/tr1/gamma.tcc:
 
-/usr/include/c++/11/bits/locale_classes.h:
+/usr/include/c++/11/bits/list.tcc:
+
+/usr/include/c++/11/bits/stl_map.h:
+
+/usr/include/c++/11/bits/stl_list.h:
+
+/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
+
+/usr/include/c++/11/bits/ptr_traits.h:
+
+/usr/include/stdint.h:
+
+/usr/include/endian.h:
+
+/usr/include/c++/11/bits/erase_if.h:
 
 /usr/include/c++/11/cstring:
 
@@ -2224,15 +2264,11 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
 
-/usr/include/c++/11/bits/ios_base.h:
+/usr/include/c++/11/iostream:
 
 /usr/include/c++/11/bits/node_handle.h:
 
-/usr/include/c++/11/iostream:
-
 /usr/include/x86_64-linux-gnu/bits/fp-fast.h:
-
-/usr/include/c++/11/bits/locale_classes.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 
@@ -2244,8 +2280,6 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
-/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
-
 /usr/include/c++/11/bits/specfun.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
@@ -2256,10 +2290,6 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 
 /usr/include/c++/11/tr1/poly_hermite.tcc:
 
-/usr/include/c++/11/bits/exception.h:
-
-/usr/include/c++/11/bits/locale_facets.h:
-
 /usr/include/c++/11/tr1/riemann_zeta.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
@@ -2267,13 +2297,3 @@ CMakeFiles/taller_common.dir/common/message.cpp.o: ../common/message.cpp \
 /usr/include/c++/11/cstdint:
 
 ../common/hands_on_sockets/liberror.h:
-
-/usr/include/c++/11/ostream:
-
-/usr/include/c++/11/bits/uniform_int_dist.h:
-
-/usr/include/c++/11/bits/basic_ios.h:
-
-/usr/include/semaphore.h:
-
-/usr/include/c++/11/cwctype:

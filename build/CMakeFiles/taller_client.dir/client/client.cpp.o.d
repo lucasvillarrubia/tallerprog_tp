@@ -144,6 +144,10 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: \
  /usr/include/SDL2/SDL_gesture.h /usr/include/SDL2/SDL_touch.h \
  /usr/include/SDL2/SDL_keycode.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
+ /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/bits/list.tcc \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/coordinates.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/queue.h \
  /usr/include/c++/11/climits \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
@@ -212,7 +216,6 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: \
  /usr/include/c++/11/bits/unique_lock.h \
  /usr/include/c++/11/bits/shared_ptr.h \
  /usr/include/c++/11/bits/shared_ptr_base.h \
- /usr/include/c++/11/bits/allocated_ptr.h \
  /usr/include/c++/11/bits/refwrap.h /usr/include/c++/11/bits/unique_ptr.h \
  /usr/include/c++/11/ostream /usr/include/c++/11/ios \
  /usr/include/c++/11/bits/ios_base.h \
@@ -267,7 +270,8 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/receiver.h \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \
- /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/renderer.h \
+ /home/lucas/CLionProjects/tallerprog_tp/client/renderer.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./client/character.h \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Renderer.hh \
  /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_blendmode.h \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build/SDL2pp/Config.hh \
@@ -285,4 +289,107 @@ CMakeFiles/taller_client.dir/client/client.cpp.o: \
  /usr/include/SDL2/SDL_pixels.h \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Window.hh \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_video.h \
- /usr/include/c++/11/sstream /usr/include/c++/11/bits/sstream.tcc
+ /home/lucas/CLionProjects/tallerprog_tp/client/state_manager.h \
+ /home/lucas/CLionProjects/tallerprog_tp/client/character.h \
+ /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/updater.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./client/state_manager.h \
+ /usr/include/SDL2/SDL.h /usr/include/SDL2/SDL_main.h \
+ /usr/include/SDL2/SDL_assert.h /usr/include/SDL2/SDL_atomic.h \
+ /usr/include/SDL2/SDL_platform.h /usr/include/SDL2/SDL_audio.h \
+ /usr/include/SDL2/SDL_mutex.h /usr/include/SDL2/SDL_thread.h \
+ /usr/include/SDL2/SDL_clipboard.h /usr/include/SDL2/SDL_cpuinfo.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/immintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/x86gprintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/ia32intrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/adxintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/bmiintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/bmi2intrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/cetintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/cldemoteintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/clflushoptintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/clwbintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/clzerointrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/enqcmdintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/fxsrintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/lzcntintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/lwpintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/movdirintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/mwaitxintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/pconfigintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/popcntintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/pkuintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/rdseedintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/rtmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/serializeintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/sgxintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/tbmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/tsxldtrkintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/uintrintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/waitpkgintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/wbnoinvdintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavecintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/xsaveoptintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/xsavesintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/xtestintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/hresetintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/pmmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/tmmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/smmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/wmmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avxintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avxvnniintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512fintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512erintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512pfintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512cdintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bwintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512dqintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vlbwintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vldqintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmaintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512ifmavlintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmiintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmivlintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124fmapsintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx5124vnniwintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2intrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vbmi2vlintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnniintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vnnivlintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vpopcntdqvlintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bitalgintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512vp2intersectvlintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/shaintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/fmaintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/f16cintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/gfniintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/vaesintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/vpclmulqdqintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16vlintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16intrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/amxtileintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/amxint8intrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/amxbf16intrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/prfchwintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/11/include/keylockerintrin.h \
+ /usr/include/SDL2/SDL_events.h /usr/include/SDL2/SDL_filesystem.h \
+ /usr/include/SDL2/SDL_haptic.h /usr/include/SDL2/SDL_hidapi.h \
+ /usr/include/SDL2/SDL_hints.h /usr/include/SDL2/SDL_loadso.h \
+ /usr/include/SDL2/SDL_log.h /usr/include/SDL2/SDL_messagebox.h \
+ /usr/include/SDL2/SDL_metal.h /usr/include/SDL2/SDL_power.h \
+ /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_shape.h \
+ /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
+ /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
+ /usr/include/SDL2/SDL_misc.h /usr/include/c++/11/sstream \
+ /usr/include/c++/11/bits/sstream.tcc \
+ /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SDL.hh

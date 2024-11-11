@@ -305,6 +305,10 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: \
  /usr/include/c++/11/bits/erase_if.h /usr/include/SDL2/SDL_events.h \
  /usr/include/SDL2/SDL_keycode.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
+ /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/bits/list.tcc \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/coordinates.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/queue.h \
  /usr/include/c++/11/climits \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
@@ -322,7 +326,6 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: \
  /usr/include/c++/11/bits/unique_lock.h \
  /usr/include/c++/11/bits/shared_ptr.h \
  /usr/include/c++/11/bits/shared_ptr_base.h \
- /usr/include/c++/11/bits/allocated_ptr.h \
  /usr/include/c++/11/bits/refwrap.h /usr/include/c++/11/bits/unique_ptr.h \
  /usr/include/c++/11/ext/concurrence.h /usr/include/c++/11/stop_token \
  /usr/include/c++/11/atomic /usr/include/c++/11/bits/atomic_base.h \
@@ -362,7 +365,8 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/receiver.h \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \
- /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/renderer.h \
+ /home/lucas/CLionProjects/tallerprog_tp/client/renderer.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./client/character.h \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Renderer.hh \
  /usr/include/SDL2/SDL_stdinc.h /usr/include/SDL2/SDL_blendmode.h \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build/SDL2pp/Config.hh \
@@ -380,4 +384,8 @@ CMakeFiles/taller_client.dir/client/main.cpp.o: \
  /usr/include/SDL2/SDL_pixels.h \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Window.hh \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_video.h \
+ /home/lucas/CLionProjects/tallerprog_tp/client/state_manager.h \
+ /home/lucas/CLionProjects/tallerprog_tp/client/character.h \
+ /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/updater.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./client/state_manager.h \
  /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SDL.hh

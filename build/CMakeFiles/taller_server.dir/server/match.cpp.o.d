@@ -165,7 +165,16 @@ CMakeFiles/taller_server.dir/server/match.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/c++/11/bits/charconv.h \
- /usr/include/c++/11/bits/basic_string.tcc \
+ /usr/include/c++/11/bits/basic_string.tcc /usr/include/c++/11/map \
+ /usr/include/c++/11/bits/stl_tree.h \
+ /usr/include/c++/11/ext/aligned_buffer.h \
+ /usr/include/c++/11/bits/node_handle.h \
+ /usr/include/c++/11/bits/stl_map.h /usr/include/c++/11/tuple \
+ /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h \
+ /usr/include/c++/11/array /usr/include/c++/11/bits/uses_allocator.h \
+ /usr/include/c++/11/bits/invoke.h \
+ /usr/include/c++/11/bits/stl_multimap.h \
+ /usr/include/c++/11/bits/erase_if.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/queue.h \
  /usr/include/c++/11/condition_variable /usr/include/c++/11/chrono \
  /usr/include/c++/11/ratio /usr/include/c++/11/limits \
@@ -174,10 +183,7 @@ CMakeFiles/taller_server.dir/server/match.cpp.o: \
  /usr/include/c++/11/bits/shared_ptr.h \
  /usr/include/c++/11/bits/shared_ptr_base.h \
  /usr/include/c++/11/bits/allocated_ptr.h \
- /usr/include/c++/11/bits/refwrap.h /usr/include/c++/11/bits/invoke.h \
- /usr/include/c++/11/bits/unique_ptr.h /usr/include/c++/11/utility \
- /usr/include/c++/11/bits/stl_relops.h /usr/include/c++/11/tuple \
- /usr/include/c++/11/array /usr/include/c++/11/bits/uses_allocator.h \
+ /usr/include/c++/11/bits/refwrap.h /usr/include/c++/11/bits/unique_ptr.h \
  /usr/include/c++/11/ostream /usr/include/c++/11/ios \
  /usr/include/c++/11/bits/ios_base.h \
  /usr/include/c++/11/bits/locale_classes.h \
@@ -192,7 +198,6 @@ CMakeFiles/taller_server.dir/server/match.cpp.o: \
  /usr/include/c++/11/bits/locale_facets.tcc \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc \
- /usr/include/c++/11/ext/aligned_buffer.h \
  /usr/include/c++/11/ext/concurrence.h /usr/include/c++/11/stop_token \
  /usr/include/c++/11/bits/std_thread.h /usr/include/c++/11/semaphore \
  /usr/include/c++/11/bits/semaphore_base.h \
@@ -210,10 +215,12 @@ CMakeFiles/taller_server.dir/server/match.cpp.o: \
  /usr/include/c++/11/iostream /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/thread \
  /home/lucas/CLionProjects/tallerprog_tp/./server/command.h \
- /home/lucas/CLionProjects/tallerprog_tp/./server/duck.h \
- /home/lucas/CLionProjects/tallerprog_tp/./server/monitored_list.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/terrain.h \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/list.tcc \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/rectangulo.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/duck.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/monitored_list.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/command.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/player.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_sockets/socket.h \
@@ -221,6 +228,7 @@ CMakeFiles/taller_server.dir/server/match.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_protocol.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/protocol.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/coordinates.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/receiver.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \

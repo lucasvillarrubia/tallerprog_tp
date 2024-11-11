@@ -2,6 +2,8 @@ CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/renderer.cpp \
  /usr/include/stdc-predef.h \
  /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/renderer.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./client/character.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./client/coordinates.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/queue.h \
  /usr/include/c++/11/climits \
@@ -367,8 +369,6 @@ CMakeFiles/taller_client.dir/client/client_threads/renderer.cpp.o: \
  /usr/include/SDL2/SDL_shape.h /usr/include/SDL2/SDL_system.h \
  /usr/include/SDL2/SDL_timer.h /usr/include/SDL2/SDL_version.h \
  /usr/include/SDL2/SDL_locale.h /usr/include/SDL2/SDL_misc.h \
- /home/lucas/CLionProjects/tallerprog_tp/./client/character.h \
- /home/lucas/CLionProjects/tallerprog_tp/./client/coordinates.h \
  /home/lucas/CLionProjects/tallerprog_tp/./client/state_manager.h \
  /usr/include/SDL2/SDL_events.h \
  /home/lucas/CLionProjects/tallerprog_tp/./client/character.h \
