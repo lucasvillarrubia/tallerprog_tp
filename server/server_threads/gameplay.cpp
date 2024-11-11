@@ -27,7 +27,12 @@ void Gameplay::process_users_commands() {
         // Gamestate update = StateManager::get_duck_state(duck);
         // // por ahora, primero me conecto con un solo pato
         // if (not duck.exited) players.broadcast(update);
+        // Coordinates pato = StateManager::get_duck_coordinates(ducks_by_id.at(command.player_id));
+        // std::cout << "x: " << pato.pos_X << " y: " << pato.pos_Y << "\n";
+        float pato_velocidad = StateManager::get_duck_speed(ducks_by_id.at(command.player_id));
+        std::cout << "velocidad: " << pato_velocidad << "\n";
     }
+
     // duck.update_position(frame_delta);
     // Gamestate update = StateManager::get_duck_state(duck);
     // // por ahora, primero me conecto con un solo pato

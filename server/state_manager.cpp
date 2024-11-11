@@ -35,14 +35,20 @@ void StateManager::update_duck_state(Duck& duck, const Gameaction& event)
             duck.moving_right = false;
             break;
         case SPACE:
-            if (!duck.is_jumping) {
+            if (!duck.is_jumping)
+            {
                 duck.is_jumping = true;
-                duck.is_flapping = true;
+                // duck.is_flapping = true;
                 duck.jump_velocity = JUMP_STRENGTH;
-            } else if (!duck.is_flapping && duck.jump_velocity < 0) {
-                duck.is_flapping = true;
-                duck.jump_velocity = FLAP_STRENGTH;
             }
+            // else if (duck.is_jumping && duck.jump_velocity < 0) {
+            //     duck.is_flapping = true;
+            //     duck.jump_velocity = FLAP_STRENGTH;
+            // }
+            // if (!duck.is_flapping && duck.jump_velocity < 0) {
+            //     duck.is_flapping = true;
+            //     duck.jump_velocity = FLAP_STRENGTH;
+            // }
             break;
         }
     } else if (event.type == KEYUP) {
@@ -51,9 +57,9 @@ void StateManager::update_duck_state(Duck& duck, const Gameaction& event)
         case LEFT:
             duck.is_running = false;
             break;
-        case SPACE:
-            duck.is_flapping = false;
-            break;
+        // case SPACE:
+        //     duck.is_flapping = false;
+        //     break;
         }
     }
 }
@@ -72,4 +78,9 @@ Gamestate StateManager::get_duck_state(Duck& duck, int id)
 Coordinates StateManager::get_duck_coordinates(Duck& duck)
 {
     return { duck.pos_X, duck.pos_Y };
+}
+
+float StateManager::get_duck_speed(Duck& duck)
+{
+    return duck.jump_velocity;
 }

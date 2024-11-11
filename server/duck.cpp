@@ -8,7 +8,7 @@ const float INITIAL_Y_COORDINATE = 0.0f;
 const float GRAVITY = -0.7f;
 const float X_CONSTANT_VELOCITY = 5.0f;
 const float TARGET_FRAME_RATE = 60.0f;
-const float TARGET_FRAME_TIME = TARGET_FRAME_RATE / 1000.0f;
+const float TARGET_FRAME_TIME = TARGET_FRAME_RATE / 1000.0f ;
 const float GRAVITY_RESISTANCE_WHEN_FLAPPING = 0.1f;
 const int AVAILABLE_MOVEMENT_SPRITES = 6;
 
@@ -23,11 +23,19 @@ Duck::Duck():
         is_on_the_floor(false),
         jump_velocity(0.0f){}
 
-void Duck::update_position(const unsigned int frame_delta)
+void Duck::update_position(unsigned int frame_delta)
 {
-    // if (not is_on_the_floor) {
-    //     is_jumping = true;
-    // }
+    if (is_on_the_floor)
+    {
+        is_jumping = false;
+        // is_flapping = false;
+        frame_delta++;
+        jump_velocity = 0;
+    }
+    if (not is_on_the_floor) {
+        is_jumping = true;
+        // is_flapping = false;
+    }
     // bool has_position_changed = false;
     // Está corriendo (moviendose horizontalmente)
     if (is_running) {
@@ -37,19 +45,22 @@ void Duck::update_position(const unsigned int frame_delta)
     }
     // Está saltando
     if (is_jumping) {
+        is_on_the_floor = false;
         // if ((pos_Y != 0) or jump_velocity != 0) {
         // float effective_gravity = (is_flapping && jump_velocity < 0) ? GRAVITY * GRAVITY_RESISTANCE_WHEN_FLAPPING : GRAVITY;
         float effective_gravity = GRAVITY;
         pos_Y += jump_velocity * (frame_delta * TARGET_FRAME_TIME);
+        // pos_Y += jump_velocity * (TARGET_FRAME_TIME);
         // pos_Y += jump_velocity * (frame_delta);
         // pos_Y += jump_velocity;
-        // jump_velocity += effective_gravity * (frame_delta * TARGET_FRAME_TIME);
-        jump_velocity = effective_gravity * (frame_delta * TARGET_FRAME_TIME);
+        jump_velocity += effective_gravity * (frame_delta * TARGET_FRAME_TIME);
+        // jump_velocity += effective_gravity * (TARGET_FRAME_TIME);
+        // jump_velocity = effective_gravity * (frame_delta * TARGET_FRAME_TIME);
         // jump_velocity += effective_gravity * (frame_delta);
         // jump_velocity += effective_gravity;
 
-        // if (pos_Y < INITIAL_Y_COORDINATE) {
-        //     pos_Y = INITIAL_Y_COORDINATE;
+        // if (pos_Y < 0.0f) {
+        //     pos_Y = 0.0f;
         //     is_jumping = false;
         //     is_flapping = false;
         // }
@@ -67,10 +78,10 @@ void Duck::update_position(const unsigned int frame_delta)
         pos_X = 640.0f;
         // has_position_changed = true;
     }
-    if (pos_Y < -50.0f)
+    if (pos_Y < -64.0f)
     {
         // std::cout << "se llegó al fin de la ventana???? posiciónX: " << pos_X << "\n";
-        pos_Y = 500.0f;
+        pos_Y = 544.0f;
         // has_position_changed = true;
     }
 

@@ -5,11 +5,11 @@
 
 class Rectangulo {
 public:
-    uint32_t x, y, ancho, alto;
+    float x, y, ancho, alto;
 
-    Rectangulo() : x(0), y(0), ancho(0), alto(0) {}
+    Rectangulo() : x(0.0f), y(0.0f), ancho(0.0f), alto(0.0f) {}
 
-    Rectangulo(uint32_t x, uint32_t y, uint32_t ancho, uint32_t alto)
+    Rectangulo(float x, float y, float ancho, float alto)
         : x(x), y(y), ancho(ancho), alto(alto) {}
 
     // Detección de colisión general (ambos ejes)

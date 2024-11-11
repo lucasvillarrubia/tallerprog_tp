@@ -20,12 +20,12 @@ public:
     void set_position(float, float);
     void set_is_NOT_on_the_floor() {
         is_on_the_floor = false;
-        is_jumping = true;
+        // is_jumping = true;
     }
     void set_is_on_the_floor() {
         is_on_the_floor = true;
-        is_jumping = false;
-        jump_velocity = 0;
+        // is_jumping = false;
+        // jump_velocity = 0;
     }
     void update_position(unsigned int);
     // bool is_moving_to_the_right() const;
