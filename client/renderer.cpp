@@ -10,7 +10,7 @@
 #include "SDL2pp/Surface.hh"
 #include "SDL2pp/Texture.hh"
 #include "SDL2pp/Window.hh"
-
+#include "mapa.h"
 
 const int DUCK_SPRITE_WIDTH = 64;
 const int DUCK_SPRITE_HEIGHT = 64;
@@ -30,11 +30,14 @@ void Renderer::draw_character(SDL2pp::Texture& sprites, Character& character, in
     SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 }
 
-void Renderer::run(int frame) {
+void Renderer::run(int frame, Mapa mapa) {
     try
     {
-        SDL2pp::Texture background(renderer, "resources/fondo.png");
+
+    //    SDL2pp::Texture background(renderer, "resources/fondo.png");
         // SDL2pp::Surface tempSurface("resources/Duck-removebg-preview.png");
+
+
         SDL2pp::Surface tempSurface("resources/Duck.png");
         SDL2pp::Texture sprites(renderer, tempSurface);
         Gamestate update;
@@ -42,15 +45,11 @@ void Renderer::run(int frame) {
             state.update(update);
         }
         renderer.Clear();
-        renderer.Copy(background, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
+        mapa.dibujar_fondo(renderer, "resources/fondo.png");
         // DIBUJANDO ENTIDADES DE UN MAPA
-        SDL2pp::Rect plataforma(120.0f, renderer.GetOutputHeight() - 50.0f, 400.0f, 50.0f);
-        SDL2pp::Rect plataforma_izq(0.0f, renderer.GetOutputHeight() - 150.0f - 50.0f, 100.0f, 50.0f);
-        SDL2pp::Rect plataforma_der(540.0f, renderer.GetOutputHeight() - 150.0f - 50.0f, 100.0f, 50.0f);
-        renderer.SetDrawColor(108, 59, 42);
-        renderer.FillRect(plataforma);
-        renderer.FillRect(plataforma_izq);
-        renderer.FillRect(plataforma_der);
+
+        mapa.renderizar(this->renderer.Get());
+
         // DIBUJANDO PERSONAJES
         std::list<Character> character_list = state.get_characters_data();
         for (auto& character : character_list) {

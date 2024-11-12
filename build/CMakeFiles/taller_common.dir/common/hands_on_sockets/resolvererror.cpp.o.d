@@ -1,5 +1,5 @@
 CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o: \
- /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/resolvererror.cpp \
+ /home/nishy/Desktop/taller\ de\ prog/tallerprog_tp/common/hands_on_sockets/resolvererror.cpp \
  /usr/include/stdc-predef.h /usr/include/arpa/inet.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -14,7 +14,7 @@ CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/time64.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
- /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/include/x86_64-linux-gnu/bits/socket.h \
  /usr/include/x86_64-linux-gnu/sys/types.h \
  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
@@ -56,17 +56,17 @@ CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
  /usr/include/x86_64-linux-gnu/bits/netdb.h \
- /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/resolvererror.h \
- /usr/include/c++/11/exception \
- /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
- /usr/include/c++/11/pstl/pstl_config.h \
- /usr/include/c++/11/bits/exception.h \
- /usr/include/c++/11/bits/exception_ptr.h \
- /usr/include/c++/11/bits/exception_defines.h \
- /usr/include/c++/11/bits/cxxabi_init_exception.h \
- /usr/include/c++/11/typeinfo /usr/include/c++/11/bits/hash_bytes.h \
- /usr/include/c++/11/new /usr/include/c++/11/bits/move.h \
- /usr/include/c++/11/type_traits \
- /usr/include/c++/11/bits/nested_exception.h
+ /home/nishy/Desktop/taller\ de\ prog/tallerprog_tp/common/hands_on_sockets/resolvererror.h \
+ /usr/include/c++/13/exception \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/cpu_defines.h \
+ /usr/include/c++/13/pstl/pstl_config.h \
+ /usr/include/c++/13/bits/exception.h \
+ /usr/include/c++/13/bits/exception_ptr.h \
+ /usr/include/c++/13/bits/exception_defines.h \
+ /usr/include/c++/13/bits/cxxabi_init_exception.h \
+ /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/hash_bytes.h \
+ /usr/include/c++/13/new /usr/include/c++/13/bits/move.h \
+ /usr/include/c++/13/type_traits \
+ /usr/include/c++/13/bits/nested_exception.h

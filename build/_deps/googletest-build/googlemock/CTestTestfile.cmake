@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googlemock
-# Build directory: /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-build/googlemock
+# Source directory: /home/nishy/Desktop/taller de prog/tallerprog_tp/build/_deps/googletest-src/googlemock
+# Build directory: /home/nishy/Desktop/taller de prog/tallerprog_tp/build/_deps/googletest-build/googlemock
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

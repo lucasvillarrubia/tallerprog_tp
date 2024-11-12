@@ -6,7 +6,7 @@
 #include <utility>
 
 #include "SDL2pp/SDL.hh"
-
+#include "mapa.h"
 
 
 
@@ -50,6 +50,33 @@ void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono
     }
 }
 
+void Client::cargar_mapa(Mapa& mapa) {
+    // Definir las plataformas y sus posiciones
+    Rectangulo plataforma(120.0f, renderer.GetOutputHeight() - 50.0f, 400.0f, 50.0f);
+    Rectangulo plataforma_izq(0.0f, renderer.GetOutputHeight() - 150.0f - 50.0f, 100.0f, 50.0f);
+    Rectangulo plataforma_der(540.0f, renderer.GetOutputHeight() - 150.0f - 50.0f, 100.0f, 50.0f);
+
+    // Agregar las plataformas con nombres únicos
+    mapa.agregarEntidad("piso_1", plataforma);
+    mapa.agregarEntidad("piso_2", plataforma_izq);
+    mapa.agregarEntidad("piso_3", plataforma_der);
+
+    // Cargar la textura para el piso
+    SDL_Surface* tempSurface = IMG_Load("resources/piso.png");
+    if (!tempSurface) {
+        throw std::runtime_error("Error loading image: resources/piso.png");
+    }
+
+    SDL_Texture* texturaPiso = SDL_CreateTextureFromSurface(this->renderer.Get(), tempSurface);
+    SDL_FreeSurface(tempSurface);
+    if (!texturaPiso) {
+        throw std::runtime_error("Error creating texture from surface for piso.png");
+    }
+
+    // Asignar la textura base "piso" a todas las plataformas de tipo "piso"
+    mapa.asignarTextura("piso", texturaPiso);
+}
+
 void Client::run() {
     try
     {
@@ -66,13 +93,18 @@ void Client::run() {
         // updater.start();
         // pantalla de inicio
         // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un
+
+
+        Mapa mapa;
+        cargar_mapa(mapa);
+
         while (game_on.load() && connected.load())
         {
             constant_rate_loop([&](int frame)
             {
                 event_listener.run();
                 if (not game_on.load()) return;
-                renderloop.run(frame);
+                renderloop.run(frame, mapa);
             }, rate);
         }
         connection.end_connection();
