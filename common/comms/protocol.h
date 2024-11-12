@@ -19,15 +19,17 @@ class Protocol
 protected:
     Socket peer;
     std::mutex mtx;
-    std::atomic_bool& client_disconnected;
-    void receive_single_int_message(uint8_t&);
-    void receive_string_message(std::vector<char>&);
-    void send_single_int_message(uint8_t);
-    void send_string_message(const std::vector<char>&);
+    std::atomic_bool& client_is_connected;
+    void receive_single_8bit_int(uint8_t&);
+    void receive_string(std::vector<char>&);
+    void send_single_8bit_int(uint8_t);
+    void send_string(const std::vector<char>&);
+    void receive_single_16bit_int(uint16_t&);
+    void send_single_16bit_int(uint16_t);
+    void receive_single_float(float&);
+    void send_single_float(float);
 public:
     Protocol(Socket&&, std::atomic_bool&);
-    virtual void send_message(const Gamedata&) = 0;
-    virtual Gamedata receive_message() = 0;
     void close_comms();
     Protocol(const Protocol&) = delete;
     Protocol& operator=(const Protocol&) = delete;

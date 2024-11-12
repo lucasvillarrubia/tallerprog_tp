@@ -8,7 +8,8 @@ ServerReceiver::ServerReceiver(std::atomic_bool& con_stat, ServerProtocol& srv_p
 
 void ServerReceiver::receive_data()
 {
-    Gameaction received_event = static_cast<Gameaction>(protocol.receive_message());
-    if (not client_disconnected.load())
+    Gameaction received_event;
+    protocol.receive_message(received_event);
+    if (client_is_connected.load())
         clients_actions.push(received_event);
 }

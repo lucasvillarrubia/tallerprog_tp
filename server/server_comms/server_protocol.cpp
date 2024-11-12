@@ -5,28 +5,60 @@
 
 ServerProtocol::ServerProtocol(Socket&& skt, std::atomic_bool& connection_status): Protocol(std::move(skt), connection_status) {}
 
-void ServerProtocol::send_message(const Gamedata&) {}
+void ServerProtocol::send_init_duck_message(const Gamestate& message)
+{
+    if (not client_is_connected.load()) return;
+    send_single_8bit_int(message.type);
+    send_single_8bit_int(message.player_id);
+    send_single_float(message.pos_X);
+    send_single_float(message.pos_Y);
+    send_single_8bit_int(message.is_running);
+    send_single_8bit_int(message.is_jumping);
+    send_single_8bit_int(message.is_flapping);
+    send_single_8bit_int(message.is_grabbing);
+	send_single_8bit_int(message.is_shooting);
+    send_single_8bit_int(message.move_direction);
+    send_single_float(message.jump_speed);
+}
 
-Gamedata ServerProtocol::receive_message() {return {}; }
+void ServerProtocol::send_single_duck_position_message(const int id, const Coordinates& position)
+{
+    send_single_8bit_int(id);
+    send_single_float(position.pos_X);
+    send_single_float(position.pos_Y);
+}
 
-// EJEMPLOS PARA OVERLOADS DE SEND Y RECEIVE (del tp de threads):
-// Command ServerProtocol::receive_message() {
-//     if (client_disconnected.load())
-//         return Command();
-//     uint8_t header, box_id;
-//     std::vector<char> player_name;
-//     receive_single_int_message(header);
-//     receive_string_message(player_name);
-//     receive_single_int_message(box_id);
-//     return Command(player_name, box_id);
-// }
-//
-// void ServerProtocol::send_pickup_message(int reward_id, const std::vector<char>& player_name) {
-//     if (client_disconnected.load())
-//         return;
-//     uint8_t reward = reward_id;
-//     send_single_int_message(MESSAGE_SENDING_HEADER);
-//     send_single_int_message(PICKUP_MSG_CODE);
-//     send_string_message(player_name);
-//     send_single_int_message(reward);
-// }
+void ServerProtocol::send_ducks_positions_message(const Gamestate& message)
+{
+    if (not client_is_connected.load()) return;
+    send_single_8bit_int(message.type);
+    uint8_t positions_count = message.positions_by_id.size();
+    send_single_8bit_int(positions_count);
+    for (auto& [id, position] : message.positions_by_id)
+    {
+        send_single_duck_position_message(id, position);
+    }
+}
+
+void ServerProtocol::send_duck_state_message(const Gamestate& message)
+{
+    if (not client_is_connected.load()) return;
+    send_single_8bit_int(message.type);
+    send_single_8bit_int(message.player_id);
+    send_single_8bit_int(message.is_running);
+    send_single_8bit_int(message.is_jumping);
+    send_single_8bit_int(message.is_flapping);
+    send_single_8bit_int(message.is_grabbing);
+	send_single_8bit_int(message.is_shooting);
+    send_single_8bit_int(message.move_direction);
+}
+
+void ServerProtocol::receive_message(Gameaction& received)
+{
+    if (not client_is_connected.load()) return;
+    uint8_t player, type, key;
+    receive_single_8bit_int(player);
+    receive_single_8bit_int(type);
+    receive_single_8bit_int(key);
+    received = Gameaction(player, type, key);
+}

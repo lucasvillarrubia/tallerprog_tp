@@ -50,12 +50,13 @@ add_library(taller_common STATIC
         common/comms/protocol.cpp
         common/comms/protocol.h
         common/gamedata.h
+        common/rectangulo.h
+        common/coordinates.h
 )
 
 # add the source files that make the lib
 # HEY!! TODO XXX: add more subfolders here
 add_subdirectory(common/)
-
 
 
 # set compiler warnings to the targets
@@ -95,41 +96,21 @@ if(TALLER_CLIENT)
             client/client_comms/client_receiver.h
             client/client.cpp
             client/client_comms/client_protocol.cpp
-            client/client_threads/renderer.h
+            client/renderer.h
             client/client_threads/event_listener.h
             client/local_player.h
             client/local_player.cpp
             client/client_comms/client_sender.cpp
             client/client_comms/client_receiver.cpp
-            client/client_threads/renderer.cpp
+            client/renderer.cpp
             client/client_threads/event_listener.cpp
             client/character.cpp
             client/character.h
-            client/item_box.cpp
-            client/item_box.h
             client/state_manager.cpp
             client/state_manager.h
-            client/coordinates.h
-            client/gun.h
-            client/gun.cpp
-            client/ammo.h
-            client/ammo.cpp
-            client/AK47.h
-            client/AK47.cpp
-            client/AK47Ammo.h
-            client/AK47Ammo.cpp
-            client/CowboyPistol.h
-            client/CowboyPistol.cpp
-            client/CowboyPistolAmmo.h
-            client/CowboyPistolAmmo.cpp
-            client/DuelPistol.h
-            client/DuelPistol.cpp
-            client/DuelPistolAmmo.h
-            client/DuelPistolAmmo.cpp
-            client/Magnum.h
-            client/Magnum.cpp
-            client/MagnumAmmo.h
-            client/MagnumAmmo.cpp)
+            client/client_threads/updater.cpp
+            client/client_threads/updater.h
+    )
 
     # Make them depend on taller_common lib
     add_dependencies(taller_client taller_common SDL2pp::SDL2pp)
@@ -173,14 +154,30 @@ if(TALLER_SERVER)
             server/weapon.h
             server/server_threads/acceptor.cpp
             server/server_threads/gameplay.cpp
-            server/monitored_list.cpp
+            # server/monitored_list.cpp
             server/player.cpp
             server/server_comms/server_protocol.cpp
             server/server_comms/server_receiver.cpp
             server/server_comms/server_sender.cpp
             server/server.cpp
             server/server_threads/cleaner.cpp
-            server/server_threads/cleaner.h)
+            server/server_threads/cleaner.h
+            server/duck.cpp
+            server/duck.h
+            server/state_manager.cpp
+            server/state_manager.h
+            server/server_threads/match_manager.cpp
+            server/server_threads/match_manager.h
+            server/match.cpp
+            server/match.h
+            server/terrain.cpp
+            server/terrain.h
+            server/item.h
+            server/item.cpp
+            server/gun.h
+            server/gun.cpp
+            server/ammo.h
+            server/ammo.cpp)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)

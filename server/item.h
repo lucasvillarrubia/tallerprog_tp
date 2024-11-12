@@ -1,25 +1,22 @@
-#ifndef GUN_H
-#define GUN_H
+#ifndef ITEM_H
+#define ITEM_H
 
 #include "coordinates.h"
 
-class Gun {
-protected:
+class Item {
+protected:	
 	float positionX;
 	float positionY;
-	bool shooting;
 	bool pickedUp;
 	bool rightDirection;
 public:
-	Gun(float x, float y);
+	Item(float x, float y);
 	void updatePosition(float x, float y);
 	void updateDirection(bool right);
 	Coordinates getPosition();
 	void collected();
-	bool isShooting();
 	bool isPickedUp();
-	void stopShoot();
-	virtual ~Gun() = default;
+	virtual ~Item() = default;
 };
 
 #endif

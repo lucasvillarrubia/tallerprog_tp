@@ -2,7 +2,6 @@
 #define DUELPISTOL_H
 
 #include "gun.h"
-#include "coordinates.h"
 #include "DuelPistolAmmo.h"
 
 class DuelPistol : public Gun {

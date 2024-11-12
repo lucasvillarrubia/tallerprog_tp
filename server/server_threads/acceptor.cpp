@@ -10,7 +10,7 @@
 #include "common/hands_on_sockets/liberror.h"
 
 
-Acceptor::Acceptor(const char* servname, MonitoredList& clients, Queue<Command>& usr_cmds):
+Acceptor::Acceptor(const char* servname, MonitoredList<Player*>& clients, Queue<Gameaction>& usr_cmds):
         is_running(false), acceptor(servname), player_list(clients), user_commands(usr_cmds) {}
 
 void Acceptor::run() {
@@ -19,6 +19,7 @@ void Acceptor::run() {
         is_running.store(true);
         while (is_running.load()) {
             Socket new_client = acceptor.accept();
+            std::cout << "SE CONECTÓ UN CLIENTE :D\n";
             Player* new_player = new Player(std::move(new_client), user_commands);
             player_list.push_back(new_player);
             new_player->start();

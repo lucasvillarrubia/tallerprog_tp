@@ -5,15 +5,16 @@
 
 Server::Server(const char* servname):
         acceptor(servname, player_list, user_commands),
+        match_creator(match_list, player_list),
         gameloop(player_list, user_commands),
-        cleaner(player_list) {}
+        cleaner(match_list) {}
 
 void Server::run() {
     try
     {
         acceptor.start();
         gameloop.start();
-        cleaner.start();
+        // cleaner.start();
         std::string input;
         std::getline(std::cin, input);
         while (input != END_OF_PROGRAM_CODE) {
@@ -24,8 +25,8 @@ void Server::run() {
         gameloop.join();
         acceptor.stop();
         acceptor.join();
-        cleaner.stop();
-        cleaner.join();
+        // cleaner.stop();
+        // cleaner.join();
         player_list.clear();
     }
     catch (const std::exception& e)
