@@ -70,11 +70,12 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
     std::map<int, Coordinates> positions_by_id;
     for (auto& [id, duck]: ducks_by_id)
     {
-        duck.update_position(frame_delta);
         Coordinates before_coordinates = StateManager::get_duck_coordinates(duck);
-        terrain.adjust_position_for_collisions(duck, before_coordinates);
+        duck.update_position(frame_delta);
+        Coordinates after_coordinates = StateManager::get_duck_coordinates(duck);
+        terrain.adjust_position_for_collisions(duck, before_coordinates, after_coordinates);
         Coordinates updated_position = StateManager::get_duck_coordinates(duck);
-        if ((id == 1) and (updated_position.pos_Y != before_coordinates.pos_Y))
+        if ((id == 1) and ((updated_position.pos_Y != after_coordinates.pos_Y) or (updated_position.pos_X != after_coordinates.pos_X)))
         {
             std::cout << "x: " << updated_position.pos_X << " y: " << updated_position.pos_Y << "\n";
         }

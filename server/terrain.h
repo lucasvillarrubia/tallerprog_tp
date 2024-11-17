@@ -15,7 +15,7 @@ private:
 public:
     Terrain();
     bool is_duck_position_valid(int, int);
-    void adjust_position_for_collisions(Duck&, const Coordinates&);
+    void adjust_position_for_collisions(Duck&, const Coordinates&, const Coordinates&);
     ~Terrain() = default;
 };
 

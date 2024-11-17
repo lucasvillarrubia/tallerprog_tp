@@ -27,12 +27,22 @@ void StateManager::update_duck_state(Duck& duck, const Gameaction& event)
             // duck.exited = true;
             return;
         case RIGHT:
-            duck.is_running = true;
-            duck.moving_right = true;
+            if (not duck.is_stomping_on_wall_from_right) {
+                duck.is_running = true;
+                duck.moving_right = true;
+            }
+            if (duck.is_stomping_on_wall_from_right) {
+                duck.is_stomping_on_wall_from_right = false;
+            }
             break;
         case LEFT:
-            duck.is_running = true;
-            duck.moving_right = false;
+            if (not duck.is_stomping_on_wall_from_left) {
+                duck.is_running = true;
+                duck.moving_right = false;
+            }
+            if (duck.is_stomping_on_wall_from_left) {
+                duck.is_stomping_on_wall_from_left = false;
+            }
             break;
         case SPACE:
             if (!duck.is_jumping)

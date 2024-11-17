@@ -13,6 +13,8 @@ private:
     bool is_flapping;
     bool moving_right;
     bool is_on_the_floor;
+    bool is_stomping_on_wall_from_right;
+    bool is_stomping_on_wall_from_left;
     float jump_velocity;
 public:
     // esto para el primer intento nomás
@@ -37,6 +39,14 @@ public:
     bool is_walking() const { return is_running; };
     bool is_moving_to_the_right() const { return moving_right; };
     bool is_on_the_ground() const { return is_on_the_floor; };
+    void set_is_stomping_on_wall_from_right() {
+        is_stomping_on_wall_from_right = true;
+        is_running = false;
+    }
+    void set_is_stomping_on_wall_from_left() {
+        is_stomping_on_wall_from_left = true;
+        is_running = false;
+    }
     // Coordinates get_coordinates() const;
     // int get_movement_phase () const;
     friend class StateManager;
