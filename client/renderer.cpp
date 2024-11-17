@@ -35,16 +35,34 @@ void Renderer::draw_character(SDL2pp::Texture& sprites, Character& character, in
 
     SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 }
+
 // renderizado de mapa con cámara:
 // - mapa en textura completa con foco en una parte del mapa
 // rectángulo que engloba a los patos
 // solo se renderiza rectángulo con patos
 
+void Renderer::calculate_zoom_offsets(float& offset_x, float& offset_y){
+    // Get the current window dimensions
+    int window_width = window.GetWidth();   // 640
+    int window_height = window.GetHeight(); // 480
+        
+    // Calculate how much the content size has changed due to zoom
+    float zoomed_width = window_width * zoom_factor;
+    float zoomed_height = window_height * zoom_factor;
+        
+    // Calculate the difference between original and zoomed size
+    float width_diff = zoomed_width - window_width;
+    float height_diff = zoomed_height - window_height;
+        
+    // Calculate offsets to center the content
+    // We divide by -2 because we want to move in the opposite direction of the zoom expansion
+    offset_x = width_diff / -1.0f;
+    offset_y = height_diff / -1.0f;
+}
+
 void Renderer::run(int frame) {
     try
     {
-
-
 
         SDL2pp::Texture background(renderer, "resources/fondo.png");
 
@@ -56,15 +74,17 @@ void Renderer::run(int frame) {
         }
 
         renderer.Clear();
-        renderer.Copy(background, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
 
         // DIBUJANDO ENTIDADES DE UN MAPA
-        this->set_zoom_factor(0.5f);
+        this->set_zoom_factor(0.5);
 
-        const float zoom_offset_x = window.GetWidth() * this->zoom_factor; 
-        const float zoom_offset_y = window.GetHeight() * this->zoom_factor; 
+        float zoom_offset_x, zoom_offset_y;
+
+        calculate_zoom_offsets(zoom_offset_x, zoom_offset_y);
 
         renderer.SetScale(this->zoom_factor, this->zoom_factor);
+
+        renderer.Copy(background, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
 
 
         SDL2pp::Rect plataforma(120.0f + zoom_offset_x, renderer.GetOutputHeight() + zoom_offset_y - 50.0f, 400.0f, 50.0f);

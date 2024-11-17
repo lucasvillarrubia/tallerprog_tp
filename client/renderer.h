@@ -21,6 +21,8 @@ private:
     StateManager& state;
     float zoom_factor;
 
+    
+
 public:
     Renderer(std::atomic_bool&, SDL2pp::Window&, SDL2pp::Renderer&, Queue<Gamestate>&, StateManager&);
     
@@ -28,8 +30,9 @@ public:
     void set_zoom_factor(float new_zoom_factor) { zoom_factor = new_zoom_factor; }
 
     void draw_character(SDL2pp::Texture&, Character&, int, const float zoom_offset_x, const float zoom_offset_y);
-    // void run();
     void run(int);
+    void calculate_zoom_offsets(float& offset_x, float& offset_y);
+
     ~Renderer() = default;
 };
 
