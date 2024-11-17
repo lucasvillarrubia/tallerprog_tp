@@ -2,6 +2,7 @@
 #define GAMEDATA_H
 #include <list>
 #include <map>
+#include <utility>
 
 #include "coordinates.h"
 
@@ -13,6 +14,8 @@ struct Gamedata {
 
 struct Gamestate: Gamedata {
     int type;
+    int gun_id;
+    int type_gun;
     float pos_X;
     float pos_Y;
     int is_running;
@@ -20,9 +23,14 @@ struct Gamestate: Gamedata {
     int is_flapping;
     int is_grabbing;
     int is_shooting;
+    int with_gun;
+    int with_armor;
+    int with_helmet;
     int move_direction;
     float jump_speed;
     std::map<int, Coordinates> positions_by_id;
+    std::map<int,std::pair<int, Coordinates>> guns_positions_by_type;
+    //int is_picked_up;
     Gamestate(): Gamedata(-1) {}
     Gamestate(
         const int player,
@@ -33,6 +41,9 @@ struct Gamestate: Gamedata {
         const int flap,
         const int grab,
         const int shoot,
+        const int gun,
+        const int armor,
+        const int helmet,
         const int direction,
         const float jumpspeed
     ):
@@ -43,8 +54,11 @@ struct Gamestate: Gamedata {
         is_running(run),
         is_jumping(jump),
         is_flapping(flap),
-        is_grabbiing(grab),
+        is_grabbing(grab),
         is_shooting(shoot),
+        with_gun(gun),
+        with_armor(armor),
+        with_helmet(helmet),
         move_direction(direction),
         jump_speed(jumpspeed) {}
     Gamestate(
@@ -54,6 +68,9 @@ struct Gamestate: Gamedata {
         const int flap,
         const int grab,
         const int shoot,
+        const int gun,
+        const int armor,
+        const int helmet,
         const int direction
         ):
         Gamedata(player),
@@ -61,13 +78,27 @@ struct Gamestate: Gamedata {
         is_running(run),
         is_jumping(jump),
         is_flapping(flap),
-        is_grabbiing(grab),
+        is_grabbing(grab),
         is_shooting(shoot),
+        with_gun(gun),
+        with_armor(armor),
+        with_helmet(helmet),
         move_direction(direction) {}
     Gamestate(std::map<int,Coordinates>& positions):
         Gamedata(0),
         type(2),
         positions_by_id(positions) {}
+	Gamestate(std::map<int,std::pair<int, Coordinates>> guns_positions):
+		Gamedata(0),
+		type(4),
+        guns_positions_by_type(guns_positions) {}
+    Gamestate(const int _id, const int _type_gun, const float x, const float y) :
+    	Gamedata(0),
+		type(5),
+        gun_id(_id),
+        type_gun(_type_gun),
+        pos_X(x),
+        pos_Y(y) {}
 };
 
 struct Gameaction: Gamedata {

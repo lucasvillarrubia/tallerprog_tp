@@ -1,7 +1,7 @@
 #ifndef ARMOR_H
 #define ARMOR_H
 
-#include "coordinates.h"
+#include "common/coordinates.h"
 #include "item.h"
 
 class Armor : public Item {

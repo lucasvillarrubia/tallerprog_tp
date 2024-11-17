@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <utility>
+#include <list>
 
 
 ClientProtocol::ClientProtocol(Socket&& skt, std::atomic_bool& connection_status): Protocol(std::move(skt), connection_status) {}
@@ -18,7 +19,7 @@ void ClientProtocol::send_message(const Gameaction& message)
 void ClientProtocol::receive_init_character_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
-    uint8_t character_id, run_state, jump_state, flap_state, grab_state, shoot_state, move_direction;
+    uint8_t character_id, run_state, jump_state, flap_state, grab_state, shoot_state, gun_state, armor_state, helmet_state, move_direction;
     float pos_X, pos_Y, velocity_Y;
     receive_single_8bit_int(character_id);
     receive_single_float(pos_X);
@@ -28,11 +29,23 @@ void ClientProtocol::receive_init_character_message(Gamestate& received)
     receive_single_8bit_int(flap_state);
     receive_single_8bit_int(grab_state);
     receive_single_8bit_int(shoot_state);
+    receive_single_8bit_int(gun_state);
+    receive_single_8bit_int(armor_state);
+    receive_single_8bit_int(helmet_state);
     receive_single_8bit_int(move_direction);
     receive_single_float(velocity_Y);
-    received = Gamestate(character_id, pos_X, pos_Y, run_state, jump_state, flap_state, grab_state, shoot_state, move_direction, velocity_Y);
+    received = Gamestate(character_id, pos_X, pos_Y, run_state, jump_state, flap_state, grab_state, shoot_state, gun_state, armor_state, helmet_state, move_direction, velocity_Y);
 }
 
+void ClientProtocol::receive_init_gun_message(Gamestate& received) {
+	uint8_t gun_id, type_gun;
+	float pos_X, pos_Y;
+    receive_single_8bit_int(gun_id);
+    receive_single_8bit_int(type_gun);
+    receive_single_float(pos_X);
+    receive_single_float(pos_Y);
+    received = Gamestate(gun_id, type_gun, pos_X, pos_Y);
+}
 // void ClientProtocol::receive_single_character_position_message()
 // {
 // }
@@ -55,18 +68,41 @@ void ClientProtocol::receive_characters_positions_message(Gamestate& received)
     received = Gamestate(positions_by_id);
 }
 
+void ClientProtocol::receive_guns_positions_message(Gamestate& received)
+{
+    if (not client_is_connected.load()) return;
+    std::map<int, std::pair<int, Coordinates>> positions_by_type;
+    uint8_t positions_count;
+    receive_single_8bit_int(positions_count);
+    for (int i = 0; i < positions_count; i++)
+    {
+        uint8_t id, type;
+        float pos_X, pos_Y;
+        receive_single_8bit_int(id);
+        receive_single_8bit_int(type);
+        receive_single_float(pos_X);
+        receive_single_float(pos_Y);
+        Coordinates coords = {pos_X, pos_Y};
+        positions_by_type[id] = std::make_pair(type, coords);
+    }
+    received = Gamestate(positions_by_type);
+}
+
 void ClientProtocol::receive_character_update_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
-    uint8_t player_id, run, jump, flap, grab, shoot, direction;
+    uint8_t player_id, run, jump, flap, grab, shoot, gun, armor, helmet, direction;
     receive_single_8bit_int(player_id);
     receive_single_8bit_int(run);
     receive_single_8bit_int(jump);
     receive_single_8bit_int(flap);
     receive_single_8bit_int(grab);
     receive_single_8bit_int(shoot);
+    receive_single_8bit_int(gun);
+    receive_single_8bit_int(armor);
+    receive_single_8bit_int(helmet);
     receive_single_8bit_int(direction);
-    received = Gamestate(player_id, run, jump, flap, grab, shoot, direction);
+    received = Gamestate(player_id, run, jump, flap, grab, shoot, gun, armor, helmet, direction);
 }
 
 void ClientProtocol::receive_message(Gamestate& received)
@@ -82,6 +118,12 @@ void ClientProtocol::receive_message(Gamestate& received)
     case 2:
         receive_characters_positions_message(received);
         break;
+    case 4:
+    	receive_guns_positions_message(received);
+    	break;
+    case 5:
+    	receive_init_gun_message(received);
+    	break;
     default:
         receive_character_update_message(received);
         break;

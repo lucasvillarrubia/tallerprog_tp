@@ -87,6 +87,9 @@ Gamestate StateManager::get_duck_state(Duck& duck, int id)
         duck.is_flapping ? 1 : 0,
         duck.is_grabbing ? 1 : 0,
         duck.is_shooting ? 1 : 0,
+        duck.with_gun ? 1 : 0,
+        duck.with_armor ? 1 : 0,
+        duck.with_helmet ? 1 : 0,
         duck.moving_right ? 1 : 0
     };
 }

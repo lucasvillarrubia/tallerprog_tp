@@ -3,7 +3,7 @@
 
 #include <cmath>
 #include "ammo.h"
-#include "coordinates.h"
+#include "common/coordinates.h"
 
 class MagnumAmmo : public Ammo {
 private:

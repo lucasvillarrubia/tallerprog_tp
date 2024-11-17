@@ -1,6 +1,6 @@
 #include "gun.h"
 
-Gun::Gun(float x, float y) : Item(x,y), shooting(false) {}
+Gun::Gun(float x, float y, float width, float height, int type) : Item(x, y, width, height, type), shooting(false) {}
 
 bool Gun::isShooting() {
 	return shooting;

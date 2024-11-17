@@ -8,7 +8,7 @@ class Gun : public Item{
 protected:
 	bool shooting;
 public:
-	Gun(float x, float y);
+	Gun(float x, float y, float width, float height, int type);
 	bool isShooting();
 	void stopShoot();
 	virtual ~Gun() = default;

@@ -16,11 +16,15 @@ const int AVAILABLE_MOVEMENT_SPRITES = 6;
 Duck::Duck():
         pos_X(INITIAL_X_COORDINATE),
         pos_Y(INITIAL_Y_COORDINATE),
+        //is_alive(true),
         is_running(false),
         is_jumping(false),
         is_flapping(false),
         is_grabbing(false),
         is_shooting(false),
+        with_gun(false),
+    	with_armor(false),
+    	with_helmet(false),
         moving_right(true),
         is_on_the_floor(false),
         jump_velocity(0.0f){}
@@ -66,4 +70,20 @@ void Duck::update_position(unsigned int frame_delta)
 void Duck::set_position(float x, float y) {
     pos_X = x;
     pos_Y = y;
+}
+
+bool Duck::wants_to_grab() {
+	return is_grabbing;
+}
+
+bool Duck::have_a_gun() {
+	return with_gun;
+}
+
+void Duck::pickup_gun() {
+	with_gun = true;
+}
+
+void Duck::drop_gun() {
+	with_gun = false;
 }

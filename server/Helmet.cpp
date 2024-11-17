@@ -1,4 +1,4 @@
 #include "Helmet.h"
 
-Helmet::Helmet(float x, float y) : Item(x,y) {}
+Helmet::Helmet(float x, float y) : Item(x,y,32,32) {}
 

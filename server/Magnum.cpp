@@ -1,6 +1,6 @@
 #include "Magnum.h"
 
-Magnum::Magnum(float x, float y): Gun(x,y), ammo(6) {}
+Magnum::Magnum(float x, float y): Gun(x,y,32,32, 8), ammo(6) {}
 
 MagnumAmmo Magnum::shoot() {
 	if (!shooting && pickedUp && (ammo > 0)) {
@@ -12,3 +12,8 @@ MagnumAmmo Magnum::shoot() {
 	return MagnumAmmo();
 }
 
+bool Magnum::is_duck_position_valid(float x, float y)
+{
+    Rectangulo character(x, y, 64.0f, 64.0f);
+    return hitbox.hay_colision(character);
+}

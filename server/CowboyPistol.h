@@ -2,7 +2,7 @@
 #define COWBOYPISTOL_H
 
 #include "gun.h"
-#include "coordinates.h"
+#include "common/coordinates.h"
 #include "CowboyPistolAmmo.h"
 
 class CowboyPistol : public Gun{

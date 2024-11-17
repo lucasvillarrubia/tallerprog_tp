@@ -1,7 +1,7 @@
 #ifndef AMMO_H
 #define AMMO_H
 
-#include "coordinates.h"
+#include "common/coordinates.h"
 
 class Ammo {
 protected:

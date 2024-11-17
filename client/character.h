@@ -17,6 +17,9 @@ struct Character {
     bool is_flapping;
     bool is_grabbing;
     bool is_shooting;
+    bool with_gun;
+    bool with_armor;
+    bool with_helmet;
     bool moving_right;
     float jump_velocity;
     int movement_phase;
@@ -29,6 +32,9 @@ struct Character {
         is_flapping(false),
     	is_grabbing(false),
     	is_shooting(false),
+        with_gun(false),
+    	with_armor(false),
+    	with_helmet(false),
         moving_right(true),
         jump_velocity(0.0f),
         movement_phase(0) {}
