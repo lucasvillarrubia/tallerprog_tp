@@ -19,10 +19,15 @@ private:
     SDL2pp::Renderer& renderer;
     Queue<Gamestate>& updates_feed;
     StateManager& state;
-    // Character duck;
+    float zoom_factor;
+
 public:
     Renderer(std::atomic_bool&, SDL2pp::Window&, SDL2pp::Renderer&, Queue<Gamestate>&, StateManager&);
-    void draw_character(SDL2pp::Texture&, Character&, int);
+    
+    float get_zoom_factor() const { return zoom_factor; }
+    void set_zoom_factor(float new_zoom_factor) { zoom_factor = new_zoom_factor; }
+
+    void draw_character(SDL2pp::Texture&, Character&, int, const float zoom_offset_x, const float zoom_offset_y);
     // void run();
     void run(int);
     ~Renderer() = default;
