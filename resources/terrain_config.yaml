@@ -1,0 +1,13 @@
+entities:
+  - x: 120.0
+    y: 0.0
+    width: 400.0
+    height: 50.0
+  - x: 0.0
+    y: 150.0
+    width: 100.0
+    height: 50.0
+  - x: 540.0
+    y: 150.0
+    width: 100.0
+    height: 50.0

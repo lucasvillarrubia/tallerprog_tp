@@ -47,9 +47,12 @@ void Renderer::run(int frame) {
         while (updates_feed.try_pop(update)) {
             state.update(update);
         }
+
         renderer.Clear();
         renderer.Copy(background, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
+
         // DIBUJANDO ENTIDADES DE UN MAPA
+
         SDL2pp::Rect plataforma(120.0f, renderer.GetOutputHeight() - 50.0f, 400.0f, 50.0f);
         SDL2pp::Rect plataforma_izq(0.0f, renderer.GetOutputHeight() - 150.0f - 50.0f, 100.0f, 50.0f);
         SDL2pp::Rect plataforma_der(540.0f, renderer.GetOutputHeight() - 150.0f - 50.0f, 100.0f, 50.0f);
@@ -57,6 +60,8 @@ void Renderer::run(int frame) {
         renderer.FillRect(plataforma);
         renderer.FillRect(plataforma_izq);
         renderer.FillRect(plataforma_der);
+
+        
         // DIBUJANDO PERSONAJES
         std::list<Character> character_list = state.get_characters_data();
         for (auto& character : character_list) {
