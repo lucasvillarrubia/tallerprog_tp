@@ -22,6 +22,7 @@ struct Gamestate: Gamedata {
     float jump_speed;
     std::map<int, Coordinates> positions_by_id;
     Gamestate(): Gamedata(-1) {}
+
     Gamestate(
         const int player,
         const float x,
@@ -41,6 +42,7 @@ struct Gamestate: Gamedata {
         is_flapping(flap),
         move_direction(direction),
         jump_speed(jumpspeed) {}
+
     Gamestate(
         const int player,
         const int run,
@@ -54,6 +56,7 @@ struct Gamestate: Gamedata {
         is_jumping(jump),
         is_flapping(flap),
         move_direction(direction) {}
+
     Gamestate(std::map<int,Coordinates>& positions):
         Gamedata(0),
         type(2),
@@ -63,8 +66,10 @@ struct Gamestate: Gamedata {
 struct Gameaction: Gamedata {
     int type;
     int key;
+    bool is_multiplayer;
     Gameaction(): Gamedata(-1) {}
     Gameaction(const int player, const int _type, const int _key): Gamedata(player), type(_type), key(_key) {}
+    Gameaction(const int player, const int _type, const bool mode): Gamedata(player), type(_type), is_multiplayer(mode) {}
 };
 
 

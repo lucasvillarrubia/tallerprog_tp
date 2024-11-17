@@ -38,6 +38,7 @@ void StateManager::update_duck_state(Duck& duck, const Gameaction& event)
             if (!duck.is_jumping)
             {
                 duck.is_jumping = true;
+                duck.is_on_the_floor = false;          
                 // duck.is_flapping = true;
                 duck.jump_velocity = JUMP_STRENGTH;
             }

@@ -73,15 +73,15 @@ CMakeFiles/taller_tests.dir/tests/foo.cpp.o: CMakeFiles/taller_tests.dir/flags.m
 CMakeFiles/taller_tests.dir/tests/foo.cpp.o: ../tests/foo.cpp
 CMakeFiles/taller_tests.dir/tests/foo.cpp.o: CMakeFiles/taller_tests.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/taller_tests.dir/tests/foo.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_tests.dir/tests/foo.cpp.o -MF CMakeFiles/taller_tests.dir/tests/foo.cpp.o.d -o CMakeFiles/taller_tests.dir/tests/foo.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/tests/foo.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_tests.dir/tests/foo.cpp.o -MF CMakeFiles/taller_tests.dir/tests/foo.cpp.o.d -o CMakeFiles/taller_tests.dir/tests/foo.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/tests/foo.cpp
 
 CMakeFiles/taller_tests.dir/tests/foo.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_tests.dir/tests/foo.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/tests/foo.cpp > CMakeFiles/taller_tests.dir/tests/foo.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/tests/foo.cpp > CMakeFiles/taller_tests.dir/tests/foo.cpp.i
 
 CMakeFiles/taller_tests.dir/tests/foo.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_tests.dir/tests/foo.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/tests/foo.cpp -o CMakeFiles/taller_tests.dir/tests/foo.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/tests/foo.cpp -o CMakeFiles/taller_tests.dir/tests/foo.cpp.s
 
 # Object files for target taller_tests
 taller_tests_OBJECTS = \

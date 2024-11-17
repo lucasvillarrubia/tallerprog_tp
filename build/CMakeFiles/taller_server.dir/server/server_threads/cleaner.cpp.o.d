@@ -195,16 +195,24 @@ CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o: \
  /usr/include/x86_64-linux-gnu/sys/time.h /usr/include/semaphore.h \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/monitored_list.h \
- /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
- /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
+ /usr/include/c++/11/unordered_map \
  /usr/include/c++/11/ext/aligned_buffer.h \
+ /usr/include/c++/11/bits/hashtable.h \
+ /usr/include/c++/11/bits/hashtable_policy.h \
+ /usr/include/c++/11/bits/enable_special_members.h \
+ /usr/include/c++/11/bits/node_handle.h \
+ /usr/include/c++/11/bits/unordered_map.h \
+ /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/vector \
+ /usr/include/c++/11/bits/stl_uninitialized.h \
+ /usr/include/c++/11/bits/stl_vector.h \
+ /usr/include/c++/11/bits/stl_bvector.h \
+ /usr/include/c++/11/bits/vector.tcc /usr/include/c++/11/list \
+ /usr/include/c++/11/bits/stl_list.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
  /usr/include/c++/11/bits/list.tcc /usr/include/c++/11/mutex \
  /usr/include/c++/11/bits/unique_lock.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/command.h \
- /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
- /usr/include/c++/11/bits/stl_vector.h \
- /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc \
  /home/lucas/CLionProjects/tallerprog_tp/./server/player.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_sockets/socket.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_threads/queue.h \
@@ -219,10 +227,8 @@ CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/protocol.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
  /usr/include/c++/11/map /usr/include/c++/11/bits/stl_tree.h \
- /usr/include/c++/11/bits/node_handle.h \
  /usr/include/c++/11/bits/stl_map.h \
  /usr/include/c++/11/bits/stl_multimap.h \
- /usr/include/c++/11/bits/erase_if.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/coordinates.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/receiver.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_sender.h \
@@ -233,4 +239,6 @@ CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./server/command.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/terrain.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/rectangulo.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/coordinates.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/duck.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/duck.h

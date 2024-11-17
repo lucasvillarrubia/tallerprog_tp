@@ -220,8 +220,15 @@ CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o: \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/list.tcc \
  /home/lucas/CLionProjects/tallerprog_tp/./common/rectangulo.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/coordinates.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./server/duck.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/duck.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/monitored_list.h \
+ /usr/include/c++/11/functional /usr/include/c++/11/bits/std_function.h \
+ /usr/include/c++/11/unordered_map /usr/include/c++/11/bits/hashtable.h \
+ /usr/include/c++/11/bits/hashtable_policy.h \
+ /usr/include/c++/11/bits/enable_special_members.h \
+ /usr/include/c++/11/bits/unordered_map.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/command.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/player.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_sockets/socket.h \
@@ -234,5 +241,4 @@ CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_protocol.h \
- /home/lucas/CLionProjects/tallerprog_tp/./server//state_manager.h \
- /home/lucas/CLionProjects/tallerprog_tp/./server//duck.h
+ /home/lucas/CLionProjects/tallerprog_tp/./server/state_manager.h

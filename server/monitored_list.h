@@ -2,6 +2,7 @@
 #define MONITORED_LIST_H
 
 
+#include <functional>
 #include <list>
 #include <mutex>
 
@@ -47,6 +48,13 @@ public:
         list.push_back(player);
     }
 
+    void for_each(std::function<void(T&)> func) {
+        std::lock_guard<std::mutex> lock(mtx);
+        for (auto& gameobject : list) {
+            func(gameobject);
+        }
+    }
+
     void broadcast(const Gamestate& announce) {
         std::unique_lock<std::mutex> lck(mtx);
         for (auto& player: list) {
@@ -82,6 +90,15 @@ public:
     int size()
     {
         return list.size();
+    }
+
+    bool contains(int player)
+    {
+        for (auto gameobject: list) {
+            if (gameobject.matches(player))
+                return true;
+        }
+        return false;
     }
 
     MonitoredList(const MonitoredList&) = delete;

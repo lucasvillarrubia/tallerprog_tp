@@ -4,7 +4,9 @@
 
 #include "gameplay.h"
 
-#include "server//state_manager.h"
+#include "server/state_manager.h"
+
+
 
 
 Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_cmds):
@@ -13,21 +15,11 @@ Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_c
     ducks_by_id.insert({2, Duck()});
 }
 
-void Gameplay::process_users_commands() {
-    if (primera_caida) {
-        ducks_by_id.at(1).set_is_NOT_on_the_floor();
-        primera_caida = false;
-    }
-    Gameaction command;
-    while (user_commands.try_pop(command)) {
-        StateManager::update_duck_state(ducks_by_id.at(command.player_id), command);
-        Gamestate update = StateManager::get_duck_state(ducks_by_id.at(command.player_id), command.player_id);
-        players.broadcast(update);
-        // Coordinates pato = StateManager::get_duck_coordinates(ducks_by_id.at(command.player_id));
-        // std::cout << "x: " << pato.pos_X << " y: " << pato.pos_Y << "\n";
-        float pato_velocidad = StateManager::get_duck_speed(ducks_by_id.at(command.player_id));
-        std::cout << "velocidad: " << pato_velocidad << "\n";
-    }
+void Gameplay::broadcast_for_all_players(const Gamestate& state)
+{
+    players.for_each([&state](Player* player) {
+        player->add_message_to_queue(state);
+    });
 }
 
 void Gameplay::send_all_initial_coordinates()
@@ -43,12 +35,14 @@ void Gameplay::send_all_initial_coordinates()
                 Gamestate initial_duck_coordinates(id, x, y, 0, 0, 0, 1, 0.0f);
                 duck.set_position(x, y);
                 duck.set_is_on_the_floor();
-                players.broadcast(initial_duck_coordinates);
+                // players.broadcast(initial_duck_coordinates);
+                broadcast_for_all_players(initial_duck_coordinates);
             }
             else
             {
                 Gamestate initial_duck_coordinates(id, 590.0f, 0.0f, 0, 0, 0, 1, 0.0f);
-                players.broadcast(initial_duck_coordinates);
+                // players.broadcast(initial_duck_coordinates);
+                broadcast_for_all_players(initial_duck_coordinates);
             }
         }
         ya_entro_cliente = true;
@@ -56,25 +50,39 @@ void Gameplay::send_all_initial_coordinates()
 
 }
 
+void Gameplay::process_users_commands() {
+    if (primera_caida) {
+        ducks_by_id.at(1).set_is_NOT_on_the_floor();
+        primera_caida = false;
+    }
+    Gameaction command;
+    while (user_commands.try_pop(command)) {
+        StateManager::update_duck_state(ducks_by_id.at(command.player_id), command);
+        Gamestate update = StateManager::get_duck_state(ducks_by_id.at(command.player_id), command.player_id);
+        broadcast_for_all_players(update);
+        // float pato_velocidad = StateManager::get_duck_speed(ducks_by_id.at(command.player_id));
+        // std::cout << "velocidad: " << pato_velocidad << "\n";
+    }
+}
+
 void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
 {
     std::map<int, Coordinates> positions_by_id;
     for (auto& [id, duck]: ducks_by_id)
     {
-        Coordinates before_coordinates = StateManager::get_duck_coordinates(duck);
         duck.update_position(frame_delta);
-        Coordinates after_coordinates = StateManager::get_duck_coordinates(duck);
-        if (not terrain.is_duck_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y)) {
-            duck.set_position(before_coordinates.pos_X, before_coordinates.pos_Y);
-            duck.set_is_on_the_floor();
+        Coordinates before_coordinates = StateManager::get_duck_coordinates(duck);
+        terrain.adjust_position_for_collisions(duck, before_coordinates);
+        Coordinates updated_position = StateManager::get_duck_coordinates(duck);
+        if ((id == 1) and (updated_position.pos_Y != before_coordinates.pos_Y))
+        {
+            std::cout << "x: " << updated_position.pos_X << " y: " << updated_position.pos_Y << "\n";
         }
-        else {
-            duck.set_is_NOT_on_the_floor();
-        }
-        positions_by_id.insert({id, StateManager::get_duck_coordinates(duck)});
+        positions_by_id.insert({id, updated_position});
     }
     Gamestate update(positions_by_id);
-    players.broadcast(update);
+    broadcast_for_all_players(update);
+    // players.broadcast(update);
     // std::cout << "x: " << positions_by_id.at(1).pos_X << " y: " << positions_by_id.at(1).pos_Y << "\n";
 }
 
@@ -90,9 +98,9 @@ void Gameplay::run() {
             if (not ya_entro_cliente)
                 send_all_initial_coordinates();
             auto current_time = std::chrono::steady_clock::now();
-            process_users_commands();
             auto frame_delta = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - prev_time).count();
             prev_time = current_time;
+            process_users_commands();
             send_ducks_positions_updates(frame_delta);
             std::this_thread::sleep_for(std::chrono::milliseconds(16)); // Maso 60 FPS
         }

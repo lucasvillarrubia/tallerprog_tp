@@ -13,6 +13,7 @@ public:
     void start();
     void end();
     bool is_connected();
+    bool matches(int);
     void disconnect();
 };
 

@@ -3,6 +3,7 @@ CMakeFiles/taller_server.dir/server/state_manager.cpp.o: \
  /usr/include/stdc-predef.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/state_manager.h \
  /home/lucas/CLionProjects/tallerprog_tp/server/duck.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/coordinates.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/gamedata.h \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \

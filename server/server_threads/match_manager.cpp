@@ -1,7 +1,7 @@
 #include "match_manager.h"
 
 
-MatchManager::MatchManager(MonitoredList<Match*>& m, MonitoredList<Player*>& p): is_running(false), matches(m), all_players(p) {}
+MatchManager::MatchManager(Queue<Gameaction>& q, MonitoredList<Player*>& p): is_running(false), users_commands(q), all_players(p) {}
 
 void MatchManager::start_match()
 {
@@ -17,13 +17,10 @@ void MatchManager::close_match()
 
 void MatchManager::run()
 {
-    is_running.store(true);
-    while (is_running.load()) {
-        if (true) {     //condicion para que empiece una partida
-            start_match();
-            matches.clean_up();
-        }
-    }
+    // is_running.store(true);
+    // while (is_running.load()) {
+    //     Gameaction action = users_commands.pop();
+    // }
 }
 
 void MatchManager::stop()

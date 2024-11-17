@@ -73,15 +73,15 @@ CMakeFiles/taller_editor.dir/editor/main.cpp.o: CMakeFiles/taller_editor.dir/fla
 CMakeFiles/taller_editor.dir/editor/main.cpp.o: ../editor/main.cpp
 CMakeFiles/taller_editor.dir/editor/main.cpp.o: CMakeFiles/taller_editor.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lucas/CLionProjects/tallerprog_tp/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/taller_editor.dir/editor/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_editor.dir/editor/main.cpp.o -MF CMakeFiles/taller_editor.dir/editor/main.cpp.o.d -o CMakeFiles/taller_editor.dir/editor/main.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/editor/main.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/taller_editor.dir/editor/main.cpp.o -MF CMakeFiles/taller_editor.dir/editor/main.cpp.o.d -o CMakeFiles/taller_editor.dir/editor/main.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/editor/main.cpp
 
 CMakeFiles/taller_editor.dir/editor/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/taller_editor.dir/editor/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/editor/main.cpp > CMakeFiles/taller_editor.dir/editor/main.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lucas/CLionProjects/tallerprog_tp/editor/main.cpp > CMakeFiles/taller_editor.dir/editor/main.cpp.i
 
 CMakeFiles/taller_editor.dir/editor/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/taller_editor.dir/editor/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/editor/main.cpp -o CMakeFiles/taller_editor.dir/editor/main.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lucas/CLionProjects/tallerprog_tp/editor/main.cpp -o CMakeFiles/taller_editor.dir/editor/main.cpp.s
 
 # Object files for target taller_editor
 taller_editor_OBJECTS = \

@@ -8,12 +8,13 @@
 class MatchManager: public Thread {
 private:
     std::atomic_bool is_running;
-    MonitoredList<Match*>& matches;
+    Queue<Gameaction>& users_commands;
     MonitoredList<Player*>& all_players;
+    MonitoredList<Match*> matches;
     void start_match();
     void close_match();
 public:
-    MatchManager(MonitoredList<Match*>&, MonitoredList<Player*>&);
+    MatchManager(Queue<Gameaction>&, MonitoredList<Player*>&);
     void run() override;
     void stop() override;
     ~MatchManager() override = default;

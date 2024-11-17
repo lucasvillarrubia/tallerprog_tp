@@ -1,0 +1,317 @@
+[
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_common.dir/common/hands_on_sockets/liberror.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/liberror.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/liberror.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_common.dir/common/message.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/message.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/common/message.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_common.dir/common/hands_on_sockets/resolver.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/resolver.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/resolver.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_common.dir/common/hands_on_sockets/resolvererror.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/resolvererror.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/resolvererror.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_common.dir/common/hands_on_sockets/socket.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/socket.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/common/hands_on_sockets/socket.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_common.dir/common/comms/receiver.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/comms/receiver.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/common/comms/receiver.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_common.dir/common/comms/sender.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/comms/sender.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/common/comms/sender.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_common.dir/common/comms/protocol.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/comms/protocol.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/common/comms/protocol.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_common.dir/common/foo.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/common/foo.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/common/foo.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_client.dir/client/client.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/client.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/client/client.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_client.dir/client/client_comms/client_protocol.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_protocol.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_protocol.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_client.dir/client/local_player.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/local_player.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/client/local_player.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_client.dir/client/client_comms/client_sender.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_sender.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_sender.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_client.dir/client/client_comms/client_receiver.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_receiver.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/client/client_comms/client_receiver.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_client.dir/client/renderer.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/renderer.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/client/renderer.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/event_listener.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/client/client_threads/event_listener.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_client.dir/client/character.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/character.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/client/character.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_client.dir/client/state_manager.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/state_manager.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/client/state_manager.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/client_threads/updater.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/client/client_threads/updater.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_client.dir/client/main.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/client/main.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/client/main.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/server_threads/acceptor.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/acceptor.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/server_threads/acceptor.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/server_threads/gameplay.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/gameplay.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/server_threads/gameplay.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/player.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/player.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/player.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/server_comms/server_protocol.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_protocol.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_protocol.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/server_comms/server_receiver.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_receiver.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_receiver.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/server_comms/server_sender.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_sender.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/server_comms/server_sender.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/server.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/server.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/server_threads/cleaner.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/cleaner.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/server_threads/cleaner.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/duck.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/duck.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/duck.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/state_manager.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/state_manager.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/state_manager.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/server_threads/match_manager.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/server_threads/match_manager.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/match.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/match.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/match.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/terrain.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/terrain.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/terrain.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_server.dir/server/main.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/server/main.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/server/main.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_editor.dir/editor/main.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/editor/main.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/editor/main.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googlemock/include -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest/include -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20 -o CMakeFiles/taller_tests.dir/tests/foo.cpp.o -c /home/lucas/CLionProjects/tallerprog_tp/tests/foo.cpp",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/tests/foo.cpp"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioDevice.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/AudioDevice.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/AudioDevice.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioLock.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/AudioLock.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/AudioLock.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/AudioSpec.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/AudioSpec.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/AudioSpec.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/Color.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Color.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Color.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/Exception.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Exception.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Exception.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/Point.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Point.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Point.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/RWops.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/RWops.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/RWops.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/Rect.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Rect.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Rect.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/Renderer.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Renderer.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Renderer.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/SDL.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SDL.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SDL.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/Surface.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Surface.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Surface.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/SurfaceLock.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SurfaceLock.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SurfaceLock.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/Texture.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Texture.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Texture.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/TextureLock.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/TextureLock.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/TextureLock.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/Wav.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Wav.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Wav.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/Window.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Window.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Window.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLTTF.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SDLTTF.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SDLTTF.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/Font.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Font.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Font.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLImage.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SDLImage.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SDLImage.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/Chunk.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Chunk.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Chunk.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/Mixer.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Mixer.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Mixer.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/Music.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Music.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/Music.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build",
+  "command": "/usr/bin/g++ -DSDL2pp_EXPORTS -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2 -g -fPIC -std=c++17 -o CMakeFiles/SDL2pp.dir/SDL2pp/SDLMixer.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SDLMixer.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src/SDL2pp/SDLMixer.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-build/googlemock",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googlemock/include -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googlemock -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest/include -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++20 -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googlemock/src/gmock-all.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-build/googlemock",
+  "command": "/usr/bin/g++  -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googlemock/include -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googlemock -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest/include -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++20 -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googlemock/src/gmock_main.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-build/googletest",
+  "command": "/usr/bin/g++  -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest/include -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++20 -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest/src/gtest-all.cc"
+},
+{
+  "directory": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-build/googletest",
+  "command": "/usr/bin/g++  -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest/include -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++20 -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "file": "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest/src/gtest_main.cc"
+}
+]

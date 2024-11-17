@@ -53,13 +53,6 @@ void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono
 void Client::run() {
     try
     {
-        // SDL2pp::Window window(
-        //     "Duck Game",
-        //     SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-        //     640, 480,
-        //     SDL_WINDOW_RESIZABLE
-        // );
-        // SDL2pp::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
         std::chrono::milliseconds rate(16);
         game_on.store(true);
         connection.start_communication();

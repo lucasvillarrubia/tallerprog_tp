@@ -30,9 +30,15 @@ void Renderer::draw_character(SDL2pp::Texture& sprites, Character& character, in
     SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 }
 
+// renderizado de mapa con cámara:
+// - mapa en textura completa con foco en una parte del mapa
+// rectángulo que engloba a los patos
+// solo se renderiza rectángulo con patos
+
 void Renderer::run(int frame) {
     try
     {
+        // mover texturas a una clase que esté en el cliente o en el renderer
         SDL2pp::Texture background(renderer, "resources/fondo.png");
         // SDL2pp::Surface tempSurface("resources/Duck-removebg-preview.png");
         SDL2pp::Surface tempSurface("resources/Duck.png");

@@ -25,23 +25,11 @@ Duck::Duck():
 
 void Duck::update_position(unsigned int frame_delta)
 {
-    if (is_on_the_floor)
-    {
-        is_jumping = false;
-        // is_flapping = false;
-        frame_delta++;
-        jump_velocity = 0;
-    }
-    if (not is_on_the_floor) {
-        is_jumping = true;
-        // is_flapping = false;
-    }
     if (is_running) {
         pos_X += X_CONSTANT_VELOCITY * (moving_right ? 1 : -1) ;
     }
     // Está saltando
-    if (is_jumping) {
-        is_on_the_floor = false;
+    if (is_jumping or not is_on_the_floor) {
         float effective_gravity = GRAVITY;
         pos_Y += jump_velocity * (frame_delta * TARGET_FRAME_TIME);
         jump_velocity += effective_gravity * (frame_delta * TARGET_FRAME_TIME);

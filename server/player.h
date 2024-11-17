@@ -31,6 +31,7 @@ public:
     void start();
     void add_message_to_queue(const Gamestate&);
     bool is_connected();
+    bool matches(int);
     void disconnect();
     Player(const Player&) = delete;
     Player& operator=(const Player&) = delete;

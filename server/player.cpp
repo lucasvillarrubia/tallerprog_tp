@@ -36,6 +36,11 @@ void Player::add_message_to_queue(const Gamestate& to_send) {
 
 bool Player::is_connected() { return client_is_connected.load(); }
 
+bool Player::matches(int)
+{
+    return true;
+}
+
 void Player::disconnect() {
     client_is_connected.store(false);
     messages_queue.close();

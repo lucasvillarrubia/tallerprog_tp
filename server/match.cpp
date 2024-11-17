@@ -25,6 +25,11 @@ bool Match::is_connected()
 { return true;
 }
 
+bool Match::matches(int)
+{
+    return true;
+}
+
 void Match::disconnect()
 {
 }

@@ -32,6 +32,7 @@ private:
     void send_player_loss_update();
     void start_new_round();
     void send_victory_update();
+    void broadcast_for_all_players(const Gamestate&);
 public:
     Gameplay(MonitoredList<Player*>&, Queue<Gameaction>&);
     void run() override;
