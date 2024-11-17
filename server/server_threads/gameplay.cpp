@@ -60,6 +60,7 @@ void Gameplay::process_users_commands() {
         StateManager::update_duck_state(ducks_by_id.at(command.player_id), command);
         Gamestate update = StateManager::get_duck_state(ducks_by_id.at(command.player_id), command.player_id);
         broadcast_for_all_players(update);
+        // send_ducks_positions_updates(1);
         // float pato_velocidad = StateManager::get_duck_speed(ducks_by_id.at(command.player_id));
         // std::cout << "velocidad: " << pato_velocidad << "\n";
     }
@@ -79,6 +80,10 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
         {
             std::cout << "x: " << updated_position.pos_X << " y: " << updated_position.pos_Y << "\n";
         }
+        // if (id == 1 and duck.is_on_the_ground())
+        // {
+        //     std::cout << "is on the ground\n";
+        // }
         positions_by_id.insert({id, updated_position});
     }
     Gamestate update(positions_by_id);

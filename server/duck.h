@@ -43,9 +43,18 @@ public:
         is_stomping_on_wall_from_right = true;
         is_running = false;
     }
+    void set_is_NOT_stomping_on_wall_from_right() {
+        is_stomping_on_wall_from_right = false;
+    }
     void set_is_stomping_on_wall_from_left() {
         is_stomping_on_wall_from_left = true;
         is_running = false;
+    }
+    void set_is_NOT_stomping_on_wall_from_left() {
+        is_stomping_on_wall_from_left = false;
+    }
+    void stop_flying() {
+        jump_velocity = 0.0f;
     }
     // Coordinates get_coordinates() const;
     // int get_movement_phase () const;
