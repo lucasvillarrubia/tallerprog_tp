@@ -6,6 +6,8 @@
 #include <utility>
 
 #include "SDL2pp/SDL.hh"
+#include <QApplication>
+#include "lobby/lobby.h"
 
 
 
@@ -56,6 +58,12 @@ void Client::run() {
         std::chrono::milliseconds rate(16);
         game_on.store(true);
         connection.start_communication();
+        int argc = 0;
+        char** argv = nullptr;
+        QApplication app(argc, argv);
+        lobby lobby;
+        lobby.show();
+        app.exec();
         // updater.start();
         // pantalla de inicio
         // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un

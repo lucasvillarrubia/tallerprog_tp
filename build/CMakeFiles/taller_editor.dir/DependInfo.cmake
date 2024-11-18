@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/lucas/CLionProjects/tallerprog_tp/editor/main.cpp" "CMakeFiles/taller_editor.dir/editor/main.cpp.o" "gcc" "CMakeFiles/taller_editor.dir/editor/main.cpp.o.d"
+  "/home/lucas/CLionProjects/tallerprog_tp/build/taller_editor_autogen/mocs_compilation.cpp" "CMakeFiles/taller_editor.dir/taller_editor_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/taller_editor.dir/taller_editor_autogen/mocs_compilation.cpp.o.d"
   )
 
 # Targets to which this target links.

@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-73368c82eb955bbd0b3d.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "duck_game_lobby",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "duck_game_lobby::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-duck_game_lobby-Debug-ed48d8ebbaeaa38b140e.json",
+					"name" : "duck_game_lobby",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "duck_game_lobby_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-duck_game_lobby_autogen-Debug-65834876d2cf64bc9573.json",
+					"name" : "duck_game_lobby_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "duck_game_lobby_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-duck_game_lobby_autogen_timestamp_deps-Debug-358779ec2a00d853e59a.json",
+					"name" : "duck_game_lobby_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/lucas/duck_game_lobby/build/Desktop_Qt_6_8_0-Debug",
+		"source" : "/home/lucas/duck_game_lobby"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

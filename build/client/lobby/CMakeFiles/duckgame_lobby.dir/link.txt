@@ -1,0 +1,2 @@
+/usr/bin/ar qc libduckgame_lobby.a CMakeFiles/duckgame_lobby.dir/duckgame_lobby_autogen/mocs_compilation.cpp.o
+/usr/bin/ranlib libduckgame_lobby.a

@@ -1,9 +1,9 @@
 #ifndef EVENT_LISTENER_H
 #define EVENT_LISTENER_H
 
-
+#include <atomic>
 #include <map>
-#include <SDL_events.h>
+#include <SDL2/SDL_events.h>
 #include <SDL_keycode.h>
 
 #include "common/gamedata.h"

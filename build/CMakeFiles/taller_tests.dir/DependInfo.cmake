@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/lucas/CLionProjects/tallerprog_tp/build/taller_tests_autogen/mocs_compilation.cpp" "CMakeFiles/taller_tests.dir/taller_tests_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/taller_tests.dir/taller_tests_autogen/mocs_compilation.cpp.o.d"
   "/home/lucas/CLionProjects/tallerprog_tp/tests/foo.cpp" "CMakeFiles/taller_tests.dir/tests/foo.cpp.o" "gcc" "CMakeFiles/taller_tests.dir/tests/foo.cpp.o.d"
   )
 

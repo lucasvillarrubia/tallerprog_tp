@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/.
+CXX_INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/build/taller_server_autogen/include -I/home/lucas/CLionProjects/tallerprog_tp/.
 
 CXX_FLAGS = -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20
 

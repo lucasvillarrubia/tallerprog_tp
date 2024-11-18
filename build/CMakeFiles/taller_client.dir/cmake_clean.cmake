@@ -1,4 +1,7 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/taller_client_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/taller_client_autogen.dir/ParseCache.txt"
+  "taller_client_autogen"
   "CMakeFiles/taller_client.dir/client/character.cpp.o"
   "CMakeFiles/taller_client.dir/client/character.cpp.o.d"
   "CMakeFiles/taller_client.dir/client/client.cpp.o"
@@ -13,6 +16,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/taller_client.dir/client/client_threads/event_listener.cpp.o.d"
   "CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o"
   "CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.o.d"
+  "CMakeFiles/taller_client.dir/client/lobby/lobby.cpp.o"
+  "CMakeFiles/taller_client.dir/client/lobby/lobby.cpp.o.d"
   "CMakeFiles/taller_client.dir/client/local_player.cpp.o"
   "CMakeFiles/taller_client.dir/client/local_player.cpp.o.d"
   "CMakeFiles/taller_client.dir/client/main.cpp.o"
@@ -21,6 +26,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/taller_client.dir/client/renderer.cpp.o.d"
   "CMakeFiles/taller_client.dir/client/state_manager.cpp.o"
   "CMakeFiles/taller_client.dir/client/state_manager.cpp.o.d"
+  "CMakeFiles/taller_client.dir/taller_client_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/taller_client.dir/taller_client_autogen/mocs_compilation.cpp.o.d"
   "taller_client"
   "taller_client.pdb"
 )

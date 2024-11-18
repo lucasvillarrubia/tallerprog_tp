@@ -10,7 +10,7 @@ endif()
 
 # strongly encouraged to enable this globally to avoid conflicts between
 # -Wpedantic being enabled and -std=c++20 and -std=gnu++20 for example
-# when compiling with PCH enabled
+# when compiling with PCH enableD
 set(CMAKE_CXX_EXTENSIONS ON)
 
 project(taller_tp
@@ -87,13 +87,23 @@ endif()
 # ---------------
 if(TALLER_CLIENT)
     ## lobby!
-    # set(CMAKE_AUTOUIC ON)
-    # set(CMAKE_AUTOMOC ON)
-    # set(CMAKE_AUTORCC ON)
+    if(NOT DEFINED QT_VERSION_MAJOR)
+        set(QT_VERSION_MAJOR 6)
+    endif()
+
+    find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+
+    # set_target_properties(taller_client PROPERTIES
+    #     AUTOMOC ON
+    #     AUTORCC ON
+    #     AUTOUIC ON
+    # )
+    set(CMAKE_AUTOUIC ON)
+    set(CMAKE_AUTOMOC ON)
+    set(CMAKE_AUTORCC ON)
 
     # find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
     # find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
-
 
     # HEY!! TODO XXX: Change the name of the executable to the one you like!
     # TODO: Hay que mover estos paths al cmake que está en "client/", por ahora están acá porque el CLion los crea rápido!
@@ -119,6 +129,9 @@ if(TALLER_CLIENT)
             client/state_manager.h
             client/client_threads/updater.cpp
             client/client_threads/updater.h
+            client/lobby/lobby.cpp
+            client/lobby/lobby.h
+            client/lobby/lobby.ui
     )
 
     # Make them depend on taller_common lib
@@ -127,7 +140,7 @@ if(TALLER_CLIENT)
     # Add source files and enable warnings
     # HEY!! TODO XXX: add more subfolders here
     add_subdirectory(client)
-    add_subdirectory(client/lobby)
+    # add_subdirectory(client/lobby)
 
     set_project_warnings(taller_client ${TALLER_MAKE_WARNINGS_AS_ERRORS} FALSE)
 
@@ -135,7 +148,13 @@ if(TALLER_CLIENT)
     target_include_directories(taller_client PRIVATE ${libSDL2pp_SOURCE_DIR})
 
     # Link the taller_common lib target
-    target_link_libraries(taller_client taller_common SDL2pp::SDL2pp)
+    target_link_libraries(
+        taller_client
+        taller_common
+        SDL2pp::SDL2pp
+        Qt${QT_VERSION_MAJOR}::Core
+        Qt${QT_VERSION_MAJOR}::Widgets
+    )
 
     # Creo que estoy agregando la carpeta de imágenes acá
     add_custom_target(copy_resources ALL

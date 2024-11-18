@@ -240,6 +240,58 @@ taller_tests/fast:
 .PHONY : taller_tests/fast
 
 #=============================================================================
+# Target rules for targets named taller_client_autogen
+
+# Build rule for target.
+taller_client_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 taller_client_autogen
+.PHONY : taller_client_autogen
+
+# fast build rule for target.
+taller_client_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client_autogen.dir/build.make CMakeFiles/taller_client_autogen.dir/build
+.PHONY : taller_client_autogen/fast
+
+#=============================================================================
+# Target rules for targets named taller_server_autogen
+
+# Build rule for target.
+taller_server_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 taller_server_autogen
+.PHONY : taller_server_autogen
+
+# fast build rule for target.
+taller_server_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server_autogen.dir/build.make CMakeFiles/taller_server_autogen.dir/build
+.PHONY : taller_server_autogen/fast
+
+#=============================================================================
+# Target rules for targets named taller_editor_autogen
+
+# Build rule for target.
+taller_editor_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 taller_editor_autogen
+.PHONY : taller_editor_autogen
+
+# fast build rule for target.
+taller_editor_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_editor_autogen.dir/build.make CMakeFiles/taller_editor_autogen.dir/build
+.PHONY : taller_editor_autogen/fast
+
+#=============================================================================
+# Target rules for targets named taller_tests_autogen
+
+# Build rule for target.
+taller_tests_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 taller_tests_autogen
+.PHONY : taller_tests_autogen
+
+# fast build rule for target.
+taller_tests_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_tests_autogen.dir/build.make CMakeFiles/taller_tests_autogen.dir/build
+.PHONY : taller_tests_autogen/fast
+
+#=============================================================================
 # Target rules for targets named SDL2pp
 
 # Build rule for target.
@@ -279,6 +331,32 @@ gmock_main/fast:
 .PHONY : gmock_main/fast
 
 #=============================================================================
+# Target rules for targets named gmock_autogen
+
+# Build rule for target.
+gmock_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_autogen
+.PHONY : gmock_autogen
+
+# fast build rule for target.
+gmock_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_autogen.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_autogen.dir/build
+.PHONY : gmock_autogen/fast
+
+#=============================================================================
+# Target rules for targets named gmock_main_autogen
+
+# Build rule for target.
+gmock_main_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gmock_main_autogen
+.PHONY : gmock_main_autogen
+
+# fast build rule for target.
+gmock_main_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main_autogen.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main_autogen.dir/build
+.PHONY : gmock_main_autogen/fast
+
+#=============================================================================
 # Target rules for targets named gtest
 
 # Build rule for target.
@@ -303,6 +381,32 @@ gtest_main: cmake_check_build_system
 gtest_main/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest_autogen
+
+# Build rule for target.
+gtest_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_autogen
+.PHONY : gtest_autogen
+
+# fast build rule for target.
+gtest_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_autogen.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_autogen.dir/build
+.PHONY : gtest_autogen/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main_autogen
+
+# Build rule for target.
+gtest_main_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main_autogen
+.PHONY : gtest_main_autogen
+
+# fast build rule for target.
+gtest_main_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main_autogen.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main_autogen.dir/build
+.PHONY : gtest_main_autogen/fast
 
 client/character.o: client/character.cpp.o
 .PHONY : client/character.o
@@ -471,6 +575,30 @@ client/client_threads/updater.s: client/client_threads/updater.cpp.s
 client/client_threads/updater.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/client_threads/updater.cpp.s
 .PHONY : client/client_threads/updater.cpp.s
+
+client/lobby/lobby.o: client/lobby/lobby.cpp.o
+.PHONY : client/lobby/lobby.o
+
+# target to build an object file
+client/lobby/lobby.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/lobby/lobby.cpp.o
+.PHONY : client/lobby/lobby.cpp.o
+
+client/lobby/lobby.i: client/lobby/lobby.cpp.i
+.PHONY : client/lobby/lobby.i
+
+# target to preprocess a source file
+client/lobby/lobby.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/lobby/lobby.cpp.i
+.PHONY : client/lobby/lobby.cpp.i
+
+client/lobby/lobby.s: client/lobby/lobby.cpp.s
+.PHONY : client/lobby/lobby.s
+
+# target to generate assembly for a file
+client/lobby/lobby.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/client/lobby/lobby.cpp.s
+.PHONY : client/lobby/lobby.cpp.s
 
 client/local_player.o: client/local_player.cpp.o
 .PHONY : client/local_player.o
@@ -1144,6 +1272,102 @@ server/terrain.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/server/terrain.cpp.s
 .PHONY : server/terrain.cpp.s
 
+taller_client_autogen/mocs_compilation.o: taller_client_autogen/mocs_compilation.cpp.o
+.PHONY : taller_client_autogen/mocs_compilation.o
+
+# target to build an object file
+taller_client_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/taller_client_autogen/mocs_compilation.cpp.o
+.PHONY : taller_client_autogen/mocs_compilation.cpp.o
+
+taller_client_autogen/mocs_compilation.i: taller_client_autogen/mocs_compilation.cpp.i
+.PHONY : taller_client_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+taller_client_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/taller_client_autogen/mocs_compilation.cpp.i
+.PHONY : taller_client_autogen/mocs_compilation.cpp.i
+
+taller_client_autogen/mocs_compilation.s: taller_client_autogen/mocs_compilation.cpp.s
+.PHONY : taller_client_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+taller_client_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_client.dir/build.make CMakeFiles/taller_client.dir/taller_client_autogen/mocs_compilation.cpp.s
+.PHONY : taller_client_autogen/mocs_compilation.cpp.s
+
+taller_editor_autogen/mocs_compilation.o: taller_editor_autogen/mocs_compilation.cpp.o
+.PHONY : taller_editor_autogen/mocs_compilation.o
+
+# target to build an object file
+taller_editor_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_editor.dir/build.make CMakeFiles/taller_editor.dir/taller_editor_autogen/mocs_compilation.cpp.o
+.PHONY : taller_editor_autogen/mocs_compilation.cpp.o
+
+taller_editor_autogen/mocs_compilation.i: taller_editor_autogen/mocs_compilation.cpp.i
+.PHONY : taller_editor_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+taller_editor_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_editor.dir/build.make CMakeFiles/taller_editor.dir/taller_editor_autogen/mocs_compilation.cpp.i
+.PHONY : taller_editor_autogen/mocs_compilation.cpp.i
+
+taller_editor_autogen/mocs_compilation.s: taller_editor_autogen/mocs_compilation.cpp.s
+.PHONY : taller_editor_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+taller_editor_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_editor.dir/build.make CMakeFiles/taller_editor.dir/taller_editor_autogen/mocs_compilation.cpp.s
+.PHONY : taller_editor_autogen/mocs_compilation.cpp.s
+
+taller_server_autogen/mocs_compilation.o: taller_server_autogen/mocs_compilation.cpp.o
+.PHONY : taller_server_autogen/mocs_compilation.o
+
+# target to build an object file
+taller_server_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/taller_server_autogen/mocs_compilation.cpp.o
+.PHONY : taller_server_autogen/mocs_compilation.cpp.o
+
+taller_server_autogen/mocs_compilation.i: taller_server_autogen/mocs_compilation.cpp.i
+.PHONY : taller_server_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+taller_server_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/taller_server_autogen/mocs_compilation.cpp.i
+.PHONY : taller_server_autogen/mocs_compilation.cpp.i
+
+taller_server_autogen/mocs_compilation.s: taller_server_autogen/mocs_compilation.cpp.s
+.PHONY : taller_server_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+taller_server_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_server.dir/build.make CMakeFiles/taller_server.dir/taller_server_autogen/mocs_compilation.cpp.s
+.PHONY : taller_server_autogen/mocs_compilation.cpp.s
+
+taller_tests_autogen/mocs_compilation.o: taller_tests_autogen/mocs_compilation.cpp.o
+.PHONY : taller_tests_autogen/mocs_compilation.o
+
+# target to build an object file
+taller_tests_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_tests.dir/build.make CMakeFiles/taller_tests.dir/taller_tests_autogen/mocs_compilation.cpp.o
+.PHONY : taller_tests_autogen/mocs_compilation.cpp.o
+
+taller_tests_autogen/mocs_compilation.i: taller_tests_autogen/mocs_compilation.cpp.i
+.PHONY : taller_tests_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+taller_tests_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_tests.dir/build.make CMakeFiles/taller_tests.dir/taller_tests_autogen/mocs_compilation.cpp.i
+.PHONY : taller_tests_autogen/mocs_compilation.cpp.i
+
+taller_tests_autogen/mocs_compilation.s: taller_tests_autogen/mocs_compilation.cpp.s
+.PHONY : taller_tests_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+taller_tests_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/taller_tests.dir/build.make CMakeFiles/taller_tests.dir/taller_tests_autogen/mocs_compilation.cpp.s
+.PHONY : taller_tests_autogen/mocs_compilation.cpp.s
+
 tests/foo.o: tests/foo.cpp.o
 .PHONY : tests/foo.o
 
@@ -1181,6 +1405,14 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... copy_resources"
+	@echo "... gmock_autogen"
+	@echo "... gmock_main_autogen"
+	@echo "... gtest_autogen"
+	@echo "... gtest_main_autogen"
+	@echo "... taller_client_autogen"
+	@echo "... taller_editor_autogen"
+	@echo "... taller_server_autogen"
+	@echo "... taller_tests_autogen"
 	@echo "... SDL2pp"
 	@echo "... gmock"
 	@echo "... gmock_main"
@@ -1212,6 +1444,9 @@ help:
 	@echo "... client/client_threads/updater.o"
 	@echo "... client/client_threads/updater.i"
 	@echo "... client/client_threads/updater.s"
+	@echo "... client/lobby/lobby.o"
+	@echo "... client/lobby/lobby.i"
+	@echo "... client/lobby/lobby.s"
 	@echo "... client/local_player.o"
 	@echo "... client/local_player.i"
 	@echo "... client/local_player.s"
@@ -1296,6 +1531,18 @@ help:
 	@echo "... server/terrain.o"
 	@echo "... server/terrain.i"
 	@echo "... server/terrain.s"
+	@echo "... taller_client_autogen/mocs_compilation.o"
+	@echo "... taller_client_autogen/mocs_compilation.i"
+	@echo "... taller_client_autogen/mocs_compilation.s"
+	@echo "... taller_editor_autogen/mocs_compilation.o"
+	@echo "... taller_editor_autogen/mocs_compilation.i"
+	@echo "... taller_editor_autogen/mocs_compilation.s"
+	@echo "... taller_server_autogen/mocs_compilation.o"
+	@echo "... taller_server_autogen/mocs_compilation.i"
+	@echo "... taller_server_autogen/mocs_compilation.s"
+	@echo "... taller_tests_autogen/mocs_compilation.o"
+	@echo "... taller_tests_autogen/mocs_compilation.i"
+	@echo "... taller_tests_autogen/mocs_compilation.s"
 	@echo "... tests/foo.o"
 	@echo "... tests/foo.i"
 	@echo "... tests/foo.s"

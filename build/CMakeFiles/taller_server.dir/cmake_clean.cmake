@@ -1,4 +1,7 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/taller_server_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/taller_server_autogen.dir/ParseCache.txt"
+  "taller_server_autogen"
   "CMakeFiles/taller_server.dir/server/duck.cpp.o"
   "CMakeFiles/taller_server.dir/server/duck.cpp.o.d"
   "CMakeFiles/taller_server.dir/server/main.cpp.o"
@@ -27,6 +30,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/taller_server.dir/server/state_manager.cpp.o.d"
   "CMakeFiles/taller_server.dir/server/terrain.cpp.o"
   "CMakeFiles/taller_server.dir/server/terrain.cpp.o.d"
+  "CMakeFiles/taller_server.dir/taller_server_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/taller_server.dir/taller_server_autogen/mocs_compilation.cpp.o.d"
   "taller_server"
   "taller_server.pdb"
 )

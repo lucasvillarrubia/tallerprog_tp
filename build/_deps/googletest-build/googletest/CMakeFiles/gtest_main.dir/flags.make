@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest/include -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest
+CXX_INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-build/googletest/gtest_main_autogen/include -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest/include -isystem /home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest
 
 CXX_FLAGS = -g -Wall -Wshadow -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -std=c++20
 

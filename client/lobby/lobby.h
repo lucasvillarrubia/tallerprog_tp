@@ -12,9 +12,11 @@ QT_END_NAMESPACE
 class lobby : public QMainWindow
 {
     Q_OBJECT
-
+private slots:
+    void on_pushButton_clicked();
 public:
     lobby(QWidget *parent = nullptr);
+    // void show();
     ~lobby();
 
 private:

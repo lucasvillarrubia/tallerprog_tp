@@ -6,7 +6,20 @@ lobby::lobby(QWidget *parent)
     , ui(new Ui::lobby)
 {
     ui->setupUi(this);
+    connect(ui->pushButton, &QPushButton::clicked, this, &lobby::on_pushButton_clicked);
 }
+
+void lobby::on_pushButton_clicked()
+{
+    this->close();  // This will close the window
+}
+
+// void lobby::show()
+// {
+//     this->show();
+// }
+
+// pushButton
 
 lobby::~lobby()
 {

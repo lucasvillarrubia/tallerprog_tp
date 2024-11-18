@@ -22,6 +22,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/lucas/CLionProjects/tallerprog_tp/server/server_threads/match_manager.cpp" "CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o" "gcc" "CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o.d"
   "/home/lucas/CLionProjects/tallerprog_tp/server/state_manager.cpp" "CMakeFiles/taller_server.dir/server/state_manager.cpp.o" "gcc" "CMakeFiles/taller_server.dir/server/state_manager.cpp.o.d"
   "/home/lucas/CLionProjects/tallerprog_tp/server/terrain.cpp" "CMakeFiles/taller_server.dir/server/terrain.cpp.o" "gcc" "CMakeFiles/taller_server.dir/server/terrain.cpp.o.d"
+  "/home/lucas/CLionProjects/tallerprog_tp/build/taller_server_autogen/mocs_compilation.cpp" "CMakeFiles/taller_server.dir/taller_server_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/taller_server.dir/taller_server_autogen/mocs_compilation.cpp.o.d"
   )
 
 # Targets to which this target links.

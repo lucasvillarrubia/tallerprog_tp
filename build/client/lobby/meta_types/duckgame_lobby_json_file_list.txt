@@ -1,0 +1,1 @@
+/home/lucas/CLionProjects/tallerprog_tp/build/client/lobby/duckgame_lobby_autogen/include/../EWIEGA46WW/moc_lobby.cpp.json

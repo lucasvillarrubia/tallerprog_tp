@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2
+CXX_INCLUDES = -I/home/lucas/CLionProjects/tallerprog_tp/build/taller_editor_autogen/include -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src -I/home/lucas/CLionProjects/tallerprog_tp/. -I/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build -isystem /usr/include/SDL2 -isystem /usr/local/include/SDL2
 
 CXX_FLAGS = -g -Wall -Wextra -Wmisleading-indentation -Wzero-as-null-pointer-constant -Wnon-virtual-dtor -Wunused -Woverloaded-virtual -Wpedantic -Wnull-dereference -Wformat=2 -Wimplicit-fallthrough -Wmismatched-tags -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wsuggest-override -Werror -std=gnu++20
 
