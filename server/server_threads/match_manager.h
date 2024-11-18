@@ -11,7 +11,8 @@ private:
     Queue<Gameaction>& users_commands;
     MonitoredList<Player*>& all_players;
     MonitoredList<Match*> matches;
-    void start_match();
+    void create_match(int);
+    void join_to_match(int, int);
     void close_match();
 public:
     MatchManager(Queue<Gameaction>&, MonitoredList<Player*>&);

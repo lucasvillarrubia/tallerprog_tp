@@ -55,6 +55,16 @@ public:
         }
     }
 
+    T get_by_id(int id) {
+        std::lock_guard<std::mutex> lock(mtx);
+        for (auto& gameobject : list) {
+            if (gameobject.matches(id)) {
+                return gameobject;
+            }
+        }
+        return nullptr;
+    }
+
     void broadcast(const Gamestate& announce) {
         std::unique_lock<std::mutex> lck(mtx);
         for (auto& player: list) {
@@ -62,9 +72,15 @@ public:
         }
     }
 
-    MonitoredList select_if()
-    {
-        return {};
+    MonitoredList select_if(std::function<bool(const T&)> predicate) {
+        MonitoredList<T> result;
+        std::lock_guard<std::mutex> lock(mtx);
+        for (const auto& item : list) {
+            if (predicate(item)) {
+                result.push_back(item);
+            }
+        }
+        return result;
     }
 
     void clean_up() {

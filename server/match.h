@@ -5,7 +5,7 @@
 
 class Match {
 private:
-    //MonitoredList<Player*> player_list;
+    MonitoredList<Player*> player_list;
     //Queue<Gameaction> user_commands;
     //Gameplay gameloop;
 public:
@@ -13,6 +13,7 @@ public:
     void start();
     void end();
     bool is_connected();
+    void add_player(Player*);
     bool matches(int);
     void disconnect();
 };

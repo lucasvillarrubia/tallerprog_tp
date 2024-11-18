@@ -25,6 +25,11 @@ bool Match::is_connected()
 { return true;
 }
 
+void Match::add_player(Player* player)
+{
+    player_list.push_back(player);
+}
+
 bool Match::matches(int)
 {
     return true;
