@@ -13,16 +13,17 @@
 
 
 Client::Client(const char* hostname, const char* servname):
-        window("Duck Game",
-            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-            640, 480,
-            SDL_WINDOW_RESIZABLE),
-        renderer(window, -1, SDL_RENDERER_ACCELERATED),
+        // window("Duck Game",
+        //     SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+        //     640, 480,
+        //     SDL_WINDOW_RESIZABLE),
+        // renderer(window, -1, SDL_RENDERER_ACCELERATED),
         connected(false),
         game_on(false),
         connection(std::move(Socket(hostname, servname)), events, updates, connected),
         event_listener(game_on, events),
-        renderloop(game_on, window, renderer, updates, state),
+        // renderloop(game_on, updates, state),
+        // renderloop(game_on, window, renderer, updates, state),
         updater(updates, state) {}
 
 void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono::milliseconds rate)
@@ -64,6 +65,8 @@ void Client::run() {
         lobby lobby;
         lobby.show();
         app.exec();
+        SDL2pp::SDL sdl(SDL_INIT_VIDEO);
+        Renderer renderloop(game_on, updates, state);
         // updater.start();
         // pantalla de inicio
         // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un

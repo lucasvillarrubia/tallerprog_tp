@@ -15,8 +15,8 @@
 class Client
 {
 private:
-    SDL2pp::Window window;
-    SDL2pp::Renderer renderer;
+    // SDL2pp::Window window;
+    // SDL2pp::Renderer renderer;
     std::atomic_bool connected;
     std::atomic_bool game_on;
     Queue<Gameaction> events;
@@ -24,7 +24,7 @@ private:
     LocalPlayer connection;
     EventListener event_listener;
     StateManager state;
-    Renderer renderloop;
+    // Renderer renderloop;
     Updater updater;
     void constant_rate_loop(std::function<void(int)>, std::chrono::milliseconds);
 public:

@@ -15,13 +15,16 @@ class Renderer
 {
 private:
     std::atomic_bool& connected;
-    SDL2pp::Window& window;
-    SDL2pp::Renderer& renderer;
+    SDL2pp::Window window;
+    // SDL2pp::Window& window;
+    SDL2pp::Renderer renderer;
+    // SDL2pp::Renderer& renderer;
     Queue<Gamestate>& updates_feed;
     StateManager& state;
     // Character duck;
 public:
-    Renderer(std::atomic_bool&, SDL2pp::Window&, SDL2pp::Renderer&, Queue<Gamestate>&, StateManager&);
+    // Renderer(std::atomic_bool&, SDL2pp::Window&, SDL2pp::Renderer&, Queue<Gamestate>&, StateManager&);
+    Renderer(std::atomic_bool&, Queue<Gamestate>&, StateManager&);
     void draw_character(SDL2pp::Texture&, Character&, int);
     // void run();
     void run(int);
