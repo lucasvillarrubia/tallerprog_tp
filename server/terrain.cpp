@@ -1,11 +1,28 @@
 #include "terrain.h"
 #include <iostream>
+#include <yaml-cpp/yaml.h>
+#include <vector>
+#include <fstream>
 
 Terrain::Terrain() {
-    map_entities.push_back(Rectangulo(120.0f, 0.0f, 400.0f, 50.0f));
-    // map_entities.push_back(Rectangulo(0.0f, 0.0f, 400.0f, 50.0f));
-    map_entities.push_back(Rectangulo(0.0f, 150.0f, 100.0f, 50.0f));
-    map_entities.push_back(Rectangulo(540.0f, 150.0f, 100.0f, 50.0f));
+    // Leer el archivo YAML
+    YAML::Node config = YAML::LoadFile("resources/terrain_config.yaml");
+
+    // Verificar si 'entities' está en el archivo
+    if (config["entities"]) {
+        // Recorrer las entidades en el archivo YAML
+        for (const auto& entity : config["entities"]) {
+            float x = entity["x"].as<float>();
+            float y = entity["y"].as<float>();
+            float width = entity["width"].as<float>();
+            float height = entity["height"].as<float>();
+
+            // Crear un nuevo Rectangulo y agregarlo a la lista
+            map_entities.push_back(Rectangulo(x, y, width, height));
+        }
+    } else {
+        std::cerr << "No se encontró la sección 'entities' en el archivo YAML." << std::endl;
+    }
 }
 // mapas de distintas rondas iguales
 // 2 para demo
