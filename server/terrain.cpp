@@ -6,7 +6,7 @@
 
 Terrain::Terrain() {
     // Leer el archivo YAML
-    YAML::Node config = YAML::LoadFile("resources/terrain_config.yaml");
+    YAML::Node config = YAML::LoadFile("resources/mapa_1.yaml");
 
     // Verificar si 'entities' está en el archivo
     if (config["entities"]) {

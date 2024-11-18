@@ -1,0 +1,61 @@
+entities:
+  - x: -50.0
+    y: 400.0
+    width: 1300.0
+    height: 50.0
+    texture: piso
+  - x: -50.0
+    y: -300.0
+    width: 1300.0
+    height: 50.0
+    texture: piso
+  - x: -50.0
+    y: -300.0
+    width: 50.0
+    height: 700.0
+    texture: pared
+  - x: 1200.0
+    y: -300.0
+    width: 50.0
+    height: 700.0
+    texture: pared
+  - x: 100.0
+    y: 250.0
+    width: 200.0
+    height: 30.0
+    texture: piso
+  - x: 900.0
+    y: 250.0
+    width: 200.0
+    height: 30.0
+    texture: piso
+  - x: 500.0
+    y: 150.0
+    width: 200.0
+    height: 30.0
+    texture: piso
+  - x: 500.0
+    y: -50.0
+    width: 200.0
+    height: 30.0
+    texture: piso
+  - x: 100.0
+    y: -150.0
+    width: 200.0
+    height: 30.0
+    texture: piso
+  - x: 900.0
+    y: -150.0
+    width: 200.0
+    height: 30.0
+    texture: piso
+  - x: 200.0
+    y: 0.0
+    width: 200.0
+    height: 30.0
+    texture: piso
+  - x: 800.0
+    y: 0.0
+    width: 200.0
+    height: 30.0
+    texture: piso

@@ -9,20 +9,21 @@
 #include "SDL2pp/Renderer.hh"
 #include "SDL2pp/Window.hh"
 #include "state_manager.h"
-
+#include "texture_manager.h"
 
 class Renderer
 {
 private:
+    
     std::atomic_bool& connected;
     SDL2pp::Window& window;
     SDL2pp::Renderer& renderer;
     Queue<Gamestate>& updates_feed;
     StateManager& state;
+    TextureManager textureManager;
     float zoom_factor;
 
     
-
 public:
     Renderer(std::atomic_bool&, SDL2pp::Window&, SDL2pp::Renderer&, Queue<Gamestate>&, StateManager&);
     

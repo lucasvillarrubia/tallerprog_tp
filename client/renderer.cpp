@@ -20,7 +20,7 @@ const int DUCK_SPRITE_HEIGHT = 64;
 const int DUCK_MOVEMENT_SPRITES_LINE = 0;
 
 
-Renderer::Renderer(std::atomic_bool& con_stat, SDL2pp::Window& w, SDL2pp::Renderer& r, Queue<Gamestate>& q, StateManager& s): connected(con_stat), window(w), renderer(r), updates_feed(q), state(s) {}
+Renderer::Renderer(std::atomic_bool& con_stat, SDL2pp::Window& w, SDL2pp::Renderer& r, Queue<Gamestate>& q, StateManager& s): connected(con_stat), window(w), renderer(r), updates_feed(q), state(s), textureManager(r) {}
 
 
 void Renderer::draw_character(SDL2pp::Texture& sprites, Character& character, int frame, const float zoom_offset_x, const float zoom_offset_y)
@@ -114,36 +114,48 @@ void Renderer::calculate_required_zoom(const std::vector<Coordinates>& duck_posi
     last_zoom = zoom_factor;
 }
 
-void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y){
-    YAML::Node config = YAML::LoadFile("resources/terrain_config.yaml");
-
+void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y) {
+    YAML::Node config = YAML::LoadFile("resources/mapa_1.yaml");
     if (!config["entities"] || !config["entities"].IsSequence()) {
         throw std::runtime_error("Error al leer entities en el archivo YAML");
     }
-
-    renderer.SetDrawColor(108, 59, 42);
 
     for (const auto& entity : config["entities"]) {
         float x = entity["x"].as<float>();
         float y = entity["y"].as<float>();
         float width = entity["width"].as<float>();
         float height = entity["height"].as<float>();
-
+        
         SDL2pp::Rect rect(
-            static_cast<int>(x + zoom_offset_x ),
+            static_cast<int>(x + zoom_offset_x),
             static_cast<int>(renderer.GetOutputHeight() + zoom_offset_y - y - height),
             static_cast<int>(width),
             static_cast<int>(height)
         );
 
-        renderer.FillRect(rect);
+        if (entity["texture"].IsDefined()) {
+            std::string textureName = entity["texture"].as<std::string>();
+            SDL2pp::Texture* texture = textureManager.getTextura(textureName);
+            
+            if (texture) {
+                renderer.Copy(*texture, SDL2pp::NullOpt, rect);
+            } else {
+                renderer.SetDrawColor(108, 59, 42);
+                renderer.FillRect(rect);
+            }
+        } else {
+            renderer.SetDrawColor(108, 59, 42);
+            renderer.FillRect(rect);
+        }
     }
 }
+
+
 
 void Renderer::run(int frame) {
     try {
         SDL2pp::Texture background(renderer, "resources/fondo.png");
-        SDL2pp::Surface tempSurface("resources/Duck.png");
+        SDL2pp::Surface tempSurface("resources/Duck-removebg-preview.png");
         SDL2pp::Texture sprites(renderer, tempSurface);
         
         Gamestate update;
