@@ -13,7 +13,7 @@
 #include "mapa.h"
 
 const int DUCK_SPRITE_WIDTH = 64;
-const int DUCK_SPRITE_HEIGHT = 64;
+const int DUCK_SPRITE_HEIGHT = 70;
 const int DUCK_MOVEMENT_SPRITES_LINE = 0;
 
 
@@ -38,8 +38,15 @@ void Renderer::run(int frame, Mapa mapa) {
         // SDL2pp::Surface tempSurface("resources/Duck-removebg-preview.png");
 
 
-        SDL2pp::Surface tempSurface("resources/Duck.png");
-        SDL2pp::Texture sprites(renderer, tempSurface);
+      //  SDL2pp::Surface tempSurface("resources/Duck.png");
+     //   SDL2pp::Texture sprites(renderer, tempSurface);
+
+        SDL2pp::Surface tempSurfaceGround("resources/Duck.png");
+        SDL2pp::Texture ground_sprites(renderer, tempSurfaceGround);
+
+        SDL2pp::Surface tempSurfaceAir("resources/aleteo.png");
+        SDL2pp::Texture air_sprites(renderer, tempSurfaceAir);
+
         Gamestate update;
         while (updates_feed.try_pop(update)) {
             state.update(update);
@@ -53,7 +60,8 @@ void Renderer::run(int frame, Mapa mapa) {
         // DIBUJANDO PERSONAJES
         std::list<Character> character_list = state.get_characters_data();
         for (auto& character : character_list) {
-            draw_character(sprites, character, frame);
+            SDL2pp::Texture& current_sprite = character.is_jumping ? air_sprites : ground_sprites;
+            draw_character(current_sprite, character, frame);
         }
         renderer.Present();
     }
