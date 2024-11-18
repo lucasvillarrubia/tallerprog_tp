@@ -31,8 +31,9 @@ public:
 
     void draw_character(SDL2pp::Texture&, Character&, int, const float zoom_offset_x, const float zoom_offset_y);
     void run(int);
-    void calculate_zoom_offsets(float& offset_x, float& offset_y);
-
+    void calculate_zoom_offsets(float& offset_x, float& offset_y, float avg_x, float avg_y);
+    void dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y);
+    void calculate_required_zoom(const std::vector<Coordinates>& duck_positions);
     ~Renderer() = default;
 };
 

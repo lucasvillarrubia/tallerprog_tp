@@ -35,18 +35,18 @@ void Duck::update_position(unsigned int frame_delta)
         jump_velocity += effective_gravity * (frame_delta * TARGET_FRAME_TIME);
     }
     // Llegó al límite de la pantalla ---> Se mueve la cámara
-    if (pos_X > 640.0f)
-    {
-        pos_X = -50.0f;
-    }
-    else if (pos_X < -50.0f)
-    {
-        pos_X = 640.0f;
-    }
-    if (pos_Y < -64.0f)
-    {
-        pos_Y = 544.0f;
-    }
+    // if (pos_X > 640.0f)
+    // {
+    //     pos_X = -50.0f;
+    // }
+    // else if (pos_X < -50.0f)
+    // {
+    //     pos_X = 640.0f;
+    // }
+    // if (pos_Y < -64.0f)
+    // {
+    //     pos_Y = 544.0f;
+    // }
 }
 
 void Duck::set_position(float x, float y) {
