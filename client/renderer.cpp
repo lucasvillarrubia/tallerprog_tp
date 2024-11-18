@@ -23,14 +23,20 @@ const int DUCK_MOVEMENT_SPRITES_LINE = 0;
 Renderer::Renderer(std::atomic_bool& con_stat, SDL2pp::Window& w, SDL2pp::Renderer& r, Queue<Gamestate>& q, StateManager& s): connected(con_stat), window(w), renderer(r), updates_feed(q), state(s), textureManager(r) {}
 
 
-void Renderer::draw_character(SDL2pp::Texture& sprites, Character& character, int frame, const float zoom_offset_x, const float zoom_offset_y)
+void Renderer::draw_character(Character& character, int frame, const float zoom_offset_x, const float zoom_offset_y)
 {
+    SDL2pp::Texture* sprite = textureManager.getDuckSprite(character.id);
+    if (!sprite) {
+        // Handle the case where the texture is missing (e.g., log an error or use a default texture)
+        return;
+    }
+
     int vcenter = renderer.GetOutputHeight();
     int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame);
     int src_y = DUCK_MOVEMENT_SPRITES_LINE;
     SDL_RendererFlip flip = character.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+    
     SDL_Rect src_rect = { src_x, src_y, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
-
     SDL_Rect dst_rect = { 
         static_cast<int>(character.pos_X + zoom_offset_x), 
         static_cast<int>(vcenter - DUCK_SPRITE_HEIGHT - character.pos_Y + zoom_offset_y), 
@@ -38,7 +44,8 @@ void Renderer::draw_character(SDL2pp::Texture& sprites, Character& character, in
         DUCK_SPRITE_HEIGHT 
     };
 
-    SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+    // Render the character sprite with the correct flipping and scaling
+    SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 }
 // renderizado de mapa con cámara:
 // - mapa en textura completa con foco en una parte del mapa
@@ -155,7 +162,7 @@ void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y
 void Renderer::run(int frame) {
     try {
         SDL2pp::Texture background(renderer, "resources/fondo_azul.png");
-        SDL2pp::Surface tempSurface("resources/Duck-removebg-preview.png");
+        SDL2pp::Surface tempSurface("resources/Pink_Duck_Sprites.png");
         SDL2pp::Texture sprites(renderer, tempSurface);
         
         Gamestate update;
@@ -165,8 +172,8 @@ void Renderer::run(int frame) {
 
         renderer.Clear();
 
-        // Get duck positions
         std::list<Character> character_list = state.get_characters_data();
+        
         std::vector<Coordinates> duck_positions;
         float sum_x = 0.0f;
         float sum_y = 0.0f;
@@ -177,27 +184,22 @@ void Renderer::run(int frame) {
             sum_y += character.pos_Y;
         }
         
-        // Calculate average positions for both X and Y
         float avg_x = duck_positions.empty() ? 0.0f : sum_x / duck_positions.size();
         float avg_y = duck_positions.empty() ? 0.0f : sum_y / duck_positions.size();
 
         calculate_required_zoom(duck_positions);
         
-        // Calculate offsets for both centering and zooming
         float zoom_offset_x, zoom_offset_y;
         calculate_zoom_offsets(zoom_offset_x, zoom_offset_y, avg_x, avg_y);
 
-        // Apply zoom
         renderer.SetScale(this->zoom_factor, this->zoom_factor);
         
-        // Draw background
         renderer.Copy(background, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
     
-        // Draw map and characters with calculated offsets
         dibujar_mapa(zoom_offset_x, zoom_offset_y);
 
         for (auto& character : character_list) {
-            draw_character(sprites, character, frame, zoom_offset_x, zoom_offset_y);
+            draw_character(character, frame, zoom_offset_x, zoom_offset_y);
         }
         
         renderer.Present();

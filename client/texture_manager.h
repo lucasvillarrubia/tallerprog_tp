@@ -14,14 +14,15 @@ class TextureManager {
 private:
     SDL2pp::Renderer& renderer;
     std::map<std::string, std::unique_ptr<SDL2pp::Texture>> texturas;
-
+    std::unordered_map<int, std::unique_ptr<SDL2pp::Texture>> duck_sprites;
+    
 public:
     TextureManager(SDL2pp::Renderer& renderer) : renderer(renderer) {
         cargarTexturas();
+        cargarDuckSprites();
     }
 
     void cargarTexturas() {
-        // Cargamos todas las texturas necesarias
         cargarTextura("piso_laguna", "resources/piso_laguna.png");
         cargarTextura("pared_laguna", "resources/pared_laguna.png");
         cargarTextura("piso_azul", "resources/piso_azul.png");
@@ -39,6 +40,26 @@ public:
             return it->second.get();
         }
         return nullptr;
+    }
+
+    void cargarDuckSprites() {
+        cargarDuckSprite(1, "resources/White_Duck_Sprites.png");
+        cargarDuckSprite(2, "resources/Blue_Duck_Sprites.png");
+        cargarDuckSprite(3, "resources/Pink_Duck_Sprites.png");
+        cargarDuckSprite(4, "resources/Yellow_Duck_Sprites.png");
+    }
+
+    void cargarDuckSprite(int id, const std::string& path) {
+        SDL2pp::Surface surface(path);
+        duck_sprites[id] = std::make_unique<SDL2pp::Texture>(renderer, surface);
+    }
+
+    SDL2pp::Texture* getDuckSprite(int id) {
+        auto it = duck_sprites.find(id);
+        if (it != duck_sprites.end()) {
+            return it->second.get();
+        }
+        return nullptr; 
     }
 };
 
