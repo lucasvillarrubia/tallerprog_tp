@@ -22,8 +22,10 @@ public:
 
     void cargarTexturas() {
         // Cargamos todas las texturas necesarias
-        cargarTextura("piso", "resources/piso.png");
-        cargarTextura("pared", "resources/pared.png");
+        cargarTextura("piso_laguna", "resources/piso_laguna.png");
+        cargarTextura("pared_laguna", "resources/pared_laguna.png");
+        cargarTextura("piso_azul", "resources/piso_azul.png");
+        cargarTextura("pared_azul", "resources/pared_azul.png");
     }
 
     void cargarTextura(const std::string& nombre, const std::string& path) {

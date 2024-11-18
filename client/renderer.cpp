@@ -115,7 +115,7 @@ void Renderer::calculate_required_zoom(const std::vector<Coordinates>& duck_posi
 }
 
 void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y) {
-    YAML::Node config = YAML::LoadFile("resources/mapa_1.yaml");
+    YAML::Node config = YAML::LoadFile("resources/mapa_azul.yaml");
     if (!config["entities"] || !config["entities"].IsSequence()) {
         throw std::runtime_error("Error al leer entities en el archivo YAML");
     }
@@ -154,7 +154,7 @@ void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y
 
 void Renderer::run(int frame) {
     try {
-        SDL2pp::Texture background(renderer, "resources/fondo.png");
+        SDL2pp::Texture background(renderer, "resources/fondo_azul.png");
         SDL2pp::Surface tempSurface("resources/Duck-removebg-preview.png");
         SDL2pp::Texture sprites(renderer, tempSurface);
         
