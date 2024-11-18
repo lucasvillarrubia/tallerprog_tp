@@ -23,8 +23,7 @@ CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
-//Choose the type of build, options are: None Debug Release RelWithDebInfo
-// MinSizeRel ...
+//No help, variable specified on the command line.
 CMAKE_BUILD_TYPE:STRING=Debug
 
 //Enable/Disable color output during build.
@@ -328,6 +327,9 @@ PNG_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libpng.so
 //Path to a file.
 PNG_PNG_INCLUDE_DIR:PATH=/usr/include
 
+//The directory containing a CMake configuration file for QT.
+QT_DIR:PATH=QT_DIR-NOTFOUND
+
 //The directory containing a CMake configuration file for SDL2.
 SDL2_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SDL2
 
@@ -363,6 +365,15 @@ ZLIB_LIBRARY_DEBUG:FILEPATH=ZLIB_LIBRARY_DEBUG-NOTFOUND
 
 //Path to a library.
 ZLIB_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libz.so
+
+//Value Computed by CMake
+duckgame_lobby_BINARY_DIR:STATIC=/home/lucas/CLionProjects/tallerprog_tp/build/client/lobby
+
+//Value Computed by CMake
+duckgame_lobby_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+duckgame_lobby_SOURCE_DIR:STATIC=/home/lucas/CLionProjects/tallerprog_tp/client/lobby
 
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-build/googlemock
@@ -578,7 +589,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=10
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

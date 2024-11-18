@@ -59,6 +59,10 @@ void Client::run() {
         // updater.start();
         // pantalla de inicio
         // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un
+        Gameaction create(1, 0, 4, 0);
+        events.try_push(create);
+        Gameaction start(1, 1, 6, 0);
+        events.try_push(start);
         while (game_on.load() && connected.load())
         {
             constant_rate_loop([&](int frame)

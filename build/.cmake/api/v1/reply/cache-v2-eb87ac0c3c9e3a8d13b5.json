@@ -51,7 +51,7 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel ..."
+					"value" : "No help, variable specified on the command line."
 				}
 			],
 			"type" : "STRING",
@@ -1814,6 +1814,18 @@
 			"value" : "/usr/include"
 		},
 		{
+			"name" : "QT_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for QT."
+				}
+			],
+			"type" : "PATH",
+			"value" : "QT_DIR-NOTFOUND"
+		},
+		{
 			"name" : "SDL2_DIR",
 			"properties" : 
 			[
@@ -2028,6 +2040,42 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "GTest"
+		},
+		{
+			"name" : "duckgame_lobby_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/lucas/CLionProjects/tallerprog_tp/build/client/lobby"
+		},
+		{
+			"name" : "duckgame_lobby_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "OFF"
+		},
+		{
+			"name" : "duckgame_lobby_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/lucas/CLionProjects/tallerprog_tp/client/lobby"
 		},
 		{
 			"name" : "generated_dir",

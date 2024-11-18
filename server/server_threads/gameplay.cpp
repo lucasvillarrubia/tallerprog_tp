@@ -24,8 +24,8 @@ void Gameplay::broadcast_for_all_players(const Gamestate& state)
 
 void Gameplay::send_all_initial_coordinates()
 {
-    if ((players.size() == 1))
-    {
+    // if ((players.size() == 1))
+    // {
         for (auto& [id, duck]: ducks_by_id)
         {
             if (id == 1)
@@ -45,9 +45,8 @@ void Gameplay::send_all_initial_coordinates()
                 broadcast_for_all_players(initial_duck_coordinates);
             }
         }
-        ya_entro_cliente = true;
-    }
-
+        // ya_entro_cliente = true;
+    // }
 }
 
 void Gameplay::process_users_commands() {
@@ -96,13 +95,13 @@ void Gameplay::run() {
     try
     {
         primera_caida = true;
-        ya_entro_cliente = false;
+        // ya_entro_cliente = false;
         is_running.store(true);
         auto prev_time = std::chrono::steady_clock::now();
         send_all_initial_coordinates();
         while (is_running.load()) {
-            if (not ya_entro_cliente)
-                send_all_initial_coordinates();
+            // if (not ya_entro_cliente)
+            // send_all_initial_coordinates();
             auto current_time = std::chrono::steady_clock::now();
             auto frame_delta = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - prev_time).count();
             prev_time = current_time;

@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "taller_editor"
+			"path" : "taller_tests"
 		}
 	],
 	"backtrace" : 1,
@@ -32,25 +32,25 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 191,
+				"line" : 234,
 				"parent" : 0
 			},
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 206,
+				"line" : 260,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 194,
+				"line" : 238,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 0,
-				"line" : 200,
+				"line" : 249,
 				"parent" : 0
 			},
 			{
@@ -68,13 +68,19 @@
 			{
 				"command" : 6,
 				"file" : 0,
-				"line" : 203,
+				"line" : 242,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 252,
 				"parent" : 0
 			},
 			{
 				"command" : 7,
 				"file" : 0,
-				"line" : 198,
+				"line" : 246,
 				"parent" : 0
 			}
 		]
@@ -163,25 +169,21 @@
 			[
 				{
 					"backtrace" : 7,
-					"path" : "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-src"
-				},
-				{
-					"backtrace" : 2,
 					"path" : "/home/lucas/CLionProjects/tallerprog_tp/."
 				},
 				{
-					"backtrace" : 2,
-					"path" : "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build"
+					"backtrace" : 8,
+					"path" : "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googlemock/include"
+				},
+				{
+					"backtrace" : 8,
+					"isSystem" : true,
+					"path" : "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest/include"
 				},
 				{
 					"backtrace" : 2,
 					"isSystem" : true,
-					"path" : "/usr/include/SDL2"
-				},
-				{
-					"backtrace" : 2,
-					"isSystem" : true,
-					"path" : "/usr/local/include/SDL2"
+					"path" : "/home/lucas/CLionProjects/tallerprog_tp/build/_deps/googletest-src/googletest"
 				}
 			],
 			"language" : "CXX",
@@ -189,7 +191,7 @@
 			{
 				"backtraces" : 
 				[
-					1
+					2
 				],
 				"standard" : "20"
 			},
@@ -206,11 +208,15 @@
 			"id" : "taller_common::@6890427a1f51a3e7e1df"
 		},
 		{
-			"backtrace" : 3,
-			"id" : "SDL2pp::@c1dffb1e063009f08a34"
+			"backtrace" : 2,
+			"id" : "gtest::@1ea2dfc0605fe3ab2a3f"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "gtest_main::@1ea2dfc0605fe3ab2a3f"
 		}
 	],
-	"id" : "taller_editor::@6890427a1f51a3e7e1df",
+	"id" : "taller_tests::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -224,44 +230,24 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "-Wl,-rpath,/home/lucas/CLionProjects/tallerprog_tp/build/_deps/libsdl2pp-build:/usr/local/lib",
-				"role" : "libraries"
-			},
-			{
 				"backtrace" : 2,
 				"fragment" : "libtaller_common.a",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "_deps/libsdl2pp-build/libSDL2pp.so.8.3.0",
+				"fragment" : "lib/libgtest_main.a",
 				"role" : "libraries"
 			},
 			{
-				"fragment" : "/usr/lib/x86_64-linux-gnu/libSDL2main.a",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "/usr/local/lib/libSDL2_image-2.0.so.0.600.3",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "/usr/local/lib/libSDL2_ttf-2.0.so.0.2000.2",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "/usr/local/lib/libSDL2_mixer-2.0.so.0.600.3",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "/usr/lib/x86_64-linux-gnu/libSDL2.so",
+				"fragment" : "lib/libgtest.a",
 				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
-	"name" : "taller_editor",
-	"nameOnDisk" : "taller_editor",
+	"name" : "taller_tests",
+	"nameOnDisk" : "taller_tests",
 	"paths" : 
 	{
 		"build" : ".",
@@ -287,9 +273,9 @@
 	"sources" : 
 	[
 		{
-			"backtrace" : 8,
+			"backtrace" : 9,
 			"compileGroupIndex" : 0,
-			"path" : "editor/main.cpp",
+			"path" : "tests/foo.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

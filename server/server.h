@@ -22,7 +22,7 @@ private:
     Acceptor acceptor;
     MatchManager match_creator;
     // cada partida va tener un Gameplay
-    Gameplay gameloop;
+    // Gameplay gameloop;
     Cleaner cleaner;
 public:
     explicit Server(const char*);

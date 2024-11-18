@@ -11,6 +11,7 @@ void ClientProtocol::send_message(const Gameaction& message)
     // std::cout << "entré al protocolo del cliente\n";
     if (not client_is_connected.load()) return;
     send_single_8bit_int(message.player_id);
+    send_single_8bit_int(message.match);
     send_single_8bit_int(message.type);
     send_single_8bit_int(message.key);
 }

@@ -5,19 +5,19 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class Lobby;
+class lobby;
 }
 QT_END_NAMESPACE
 
-class Lobby : public QMainWindow
+class lobby : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    Lobby(QWidget *parent = nullptr);
-    ~Lobby();
+    lobby(QWidget *parent = nullptr);
+    ~lobby();
 
 private:
-    Ui::Lobby *ui;
+    Ui::lobby *ui;
 };
 #endif // LOBBY_H

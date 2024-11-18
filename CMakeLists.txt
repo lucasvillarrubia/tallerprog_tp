@@ -86,6 +86,15 @@ endif()
 # Program section
 # ---------------
 if(TALLER_CLIENT)
+    ## lobby!
+    # set(CMAKE_AUTOUIC ON)
+    # set(CMAKE_AUTOMOC ON)
+    # set(CMAKE_AUTORCC ON)
+
+    # find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
+    # find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+
+
     # HEY!! TODO XXX: Change the name of the executable to the one you like!
     # TODO: Hay que mover estos paths al cmake que está en "client/", por ahora están acá porque el CLion los crea rápido!
     add_executable(taller_client
@@ -118,6 +127,7 @@ if(TALLER_CLIENT)
     # Add source files and enable warnings
     # HEY!! TODO XXX: add more subfolders here
     add_subdirectory(client)
+    add_subdirectory(client/lobby)
 
     set_project_warnings(taller_client ${TALLER_MAKE_WARNINGS_AS_ERRORS} FALSE)
 

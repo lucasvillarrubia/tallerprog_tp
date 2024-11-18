@@ -2,6 +2,7 @@
 #define GAMEDATA_H
 #include <list>
 #include <map>
+#include <string>
 
 #include "coordinates.h"
 
@@ -21,6 +22,8 @@ struct Gamestate: Gamedata {
     int move_direction;
     float jump_speed;
     std::map<int, Coordinates> positions_by_id;
+    std::string message;
+
     Gamestate(): Gamedata(-1) {}
 
     Gamestate(
@@ -61,14 +64,26 @@ struct Gamestate: Gamedata {
         Gamedata(0),
         type(2),
         positions_by_id(positions) {}
+
+    Gamestate(const int player, const std::string& msg): Gamedata(player), type(4), message(msg) {}
 };
 
 struct Gameaction: Gamedata {
+    int match;
     int type;
     int key;
     bool is_multiplayer;
     Gameaction(): Gamedata(-1) {}
-    Gameaction(const int player, const int _type, const int _key): Gamedata(player), type(_type), key(_key) {}
+    Gameaction(
+        const int player,
+        const int _match,
+        const int _type,
+        const int _key
+        ):
+        Gamedata(player),
+        match(_match),
+        type(_type),
+        key(_key) {}
     Gameaction(const int player, const int _type, const bool mode): Gamedata(player), type(_type), is_multiplayer(mode) {}
 };
 
