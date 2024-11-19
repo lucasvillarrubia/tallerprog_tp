@@ -29,8 +29,9 @@ Renderer::Renderer(std::atomic_bool& con_stat, Queue<Gamestate>& q, StateManager
             SDL_WINDOW_RESIZABLE),
         renderer(window, -1, SDL_RENDERER_ACCELERATED),
         updates_feed(q),
-        textureManager(r),
-        state(s) {}
+        state(s),
+        textureManager(renderer)
+        {}
 
 
 
