@@ -91,7 +91,7 @@ struct Gamestate: Gamedata {
         Gamedata(0),
         type(2),
         positions_by_id(positions) {}
-	Gamestate(std::map<int,std::pair<int, Coordinates>> guns_positions):
+	Gamestate(std::map<int,std::pair<int, Coordinates>>& guns_positions):
 		Gamedata(0),
 		type(4),
         guns_positions_by_type(guns_positions) {}
@@ -110,7 +110,7 @@ struct Gamestate: Gamedata {
     	type_gun(_type_gun),
     	pos_X(x),
     	pos_Y(y) {}
-    Gamestate(const int flag, std::map<int,std::pair<int, Coordinates>> bullets_positions) :
+    Gamestate(const int flag, std::map<int,std::pair<int, Coordinates>>& bullets_positions) :
     	Gamedata(0),
     	type(7),
     	is_bullet_data(flag),

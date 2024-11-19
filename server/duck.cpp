@@ -67,6 +67,10 @@ void Duck::update_position(unsigned int frame_delta)
     }
 }
 
+bool Duck::is_moving_to_the_right() const {
+	return moving_right;
+}
+
 void Duck::set_position(float x, float y) {
     pos_X = x;
     pos_Y = y;

@@ -6,7 +6,7 @@
 
 #include "server//state_manager.h"
 
-#define FLAG 1
+#define FLAG 2
 
 
 Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_cmds):
@@ -88,10 +88,11 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
         }
         if (duck.have_a_gun()) {
         	gun->updatePosition(after_coordinates.pos_X, after_coordinates.pos_Y);
+        	gun->updateDirection(duck.is_moving_to_the_right());
         	if (duck.shooting()) {
         		if (gun->shoot(balas_disparadas, bullets)) {
         			Coordinates bullet_position = bullets.back().second->getPosition();
-        			Gamestate initial_bullet_coordinates(FLAG, balas_disparadas,gun->getType(), bullet_position.pos_X, bullet_position.pos_Y);
+        			Gamestate initial_bullet_coordinates(balas_disparadas, balas_disparadas, gun->getType(), bullet_position.pos_X, bullet_position.pos_Y);
         			players.broadcast(initial_bullet_coordinates);
         		}
         	}else{
@@ -120,25 +121,26 @@ void Gameplay::send_bullets_positions_updates(const unsigned int frame_delta) {
 		//Coordinates before_coordinates = bullet->getPosition();
 		bullet.second->update_position(frame_delta);
 		Coordinates after_coordinates = bullet.second->getPosition();
-		/*if (not terrain.is_bullet_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y)) {
+		if (not terrain.is_bullet_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y)) {
 			bullet.second->impact();
+			Gamestate update(FLAG, bullet.first);
+			players.broadcast(update);
 			//enviar coords de impacto
 			continue;
-		}*/
+		}
 		//if (colision contra pato){
 			//duck.damage(bullet.impact)
 		//}
 		if (bullet.second->is_destroyed()) {
 			Gamestate update(FLAG, bullet.first);
 			players.broadcast(update);
-			std::cout<<std::to_string(bullet.first)<<": destroyed"<<std::endl;
 			continue;
 		}
 		bullets_positions.insert({bullet.first, std::make_pair(bullet.second->getType(), after_coordinates)});
 	}
-	bullets.remove_if([](auto& bullet){ return bullet.second->is_destroyed(); });
 	Gamestate update(FLAG, bullets_positions);
 	players.broadcast(update);
+	bullets.remove_if([](auto& bullet){ return bullet.second->is_destroyed(); });
 }
 
 void Gameplay::run() {

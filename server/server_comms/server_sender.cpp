@@ -26,7 +26,6 @@ void ServerSender::send_data()
         	break;
         case 6:
         	protocol.send_init_bullet_message(new_event);
-        	std::cout<<"se disparo una bala"<<std::endl;
         	break;
         case 7:
         	protocol.send_bullets_positions_message(new_event);

@@ -89,7 +89,7 @@ void Renderer::run(int frame) {
         		draw_bullet(pistol_sprites, bullet);
         	}
         }
-        std::cout<<std::to_string(bullet_list.size())<<std::endl;
+        //std::cout<<std::to_string(bullet_list.size())<<std::endl;
         renderer.Present();
     }
     catch (ClosedQueue const& e)

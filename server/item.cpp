@@ -29,3 +29,6 @@ bool Item::isPickedUp() {
 	return pickedUp;
 }
 
+bool Item::is_pointing_to_the_right() const {
+	return rightDirection;
+}

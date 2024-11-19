@@ -20,6 +20,7 @@ public:
 	int getType();
 	void collected();
 	bool isPickedUp();
+	bool is_pointing_to_the_right() const;
 	virtual ~Item() = default;
 };
 
