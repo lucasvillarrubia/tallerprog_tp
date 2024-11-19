@@ -13,6 +13,7 @@
 
 
 Client::Client(const char* hostname, const char* servname):
+        app(argc, argv),
         // window("Duck Game",
         //     SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
         //     640, 480,
@@ -24,7 +25,9 @@ Client::Client(const char* hostname, const char* servname):
         event_listener(game_on, events),
         // renderloop(game_on, updates, state),
         // renderloop(game_on, window, renderer, updates, state),
-        updater(updates, state) {}
+        updater(updates, state) {
+            connect(&gamelobby, &lobby::create_one_player_match, this, &Client::handle_create_one_player_match);
+        }
 
 void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono::milliseconds rate)
 {
@@ -59,21 +62,21 @@ void Client::run() {
         std::chrono::milliseconds rate(16);
         game_on.store(true);
         connection.start_communication();
-        int argc = 0;
-        char** argv = nullptr;
-        QApplication app(argc, argv);
-        lobby lobby;
-        lobby.show();
+        // int argc = 0;
+        // char** argv = nullptr;
+        // QApplication app(argc, argv);
+        // lobby lobby;
+        gamelobby.show();
         app.exec();
         SDL2pp::SDL sdl(SDL_INIT_VIDEO);
         Renderer renderloop(game_on, updates, state);
         // updater.start();
         // pantalla de inicio
         // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un
-        Gameaction create(1, 0, 4, 0);
-        events.try_push(create);
-        Gameaction start(1, 1, 6, 0);
-        events.try_push(start);
+        // Gameaction create(1, 0, 4, 0);
+        // events.try_push(create);
+        // Gameaction start(1, 1, 6, 0);
+        // events.try_push(start);
         while (game_on.load() && connected.load())
         {
             constant_rate_loop([&](int frame)
@@ -116,4 +119,29 @@ void Client::run() {
         // updater.join();
         events.close();
     }
+}
+
+void Client::handle_create_one_player_match()
+{
+    std::cout << "create one player match\n";
+    Gameaction create(1, 0, 4, 0);
+    events.try_push(create);
+}
+
+void Client::handle_create_two_player_match()
+{
+    Gameaction create(1, 0, 7, 0);
+    events.try_push(create);
+}
+
+void Client::handle_create_three_player_match()
+{
+    Gameaction create(1, 0, 8, 0);
+    events.try_push(create);
+}
+
+void Client::handle_join_match()
+{
+    Gameaction start(1, 1, 5, 0);
+    events.try_push(start);
 }

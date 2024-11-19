@@ -82,7 +82,8 @@ Gamestate StateManager::get_duck_state(Duck& duck, int id)
         duck.is_running ? 1 : 0,
         duck.is_jumping ? 1 : 0,
         duck.is_flapping ? 1 : 0,
-        duck.moving_right ? 1 : 0
+        duck.moving_right ? 1 : 0,
+        duck.is_alive ? 1 : 0
     };
 }
 
@@ -94,4 +95,9 @@ Coordinates StateManager::get_duck_coordinates(Duck& duck)
 float StateManager::get_duck_speed(Duck& duck)
 {
     return duck.jump_velocity;
+}
+
+int StateManager::get_duck_is_alive(Duck& duck)
+{
+    return duck.is_alive;
 }

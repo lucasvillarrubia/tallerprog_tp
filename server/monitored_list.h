@@ -119,8 +119,10 @@ public:
     void clear() {
         std::unique_lock<std::mutex> lck(mtx);
         for (auto player: list) {
-            player->disconnect();
-            delete player;
+            if (player != nullptr) {
+                player->disconnect();
+                delete player;
+            }
         }
     }
 

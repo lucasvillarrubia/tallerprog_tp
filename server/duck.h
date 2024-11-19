@@ -15,6 +15,7 @@ private:
     bool is_on_the_floor;
     bool is_stomping_on_wall_from_right;
     bool is_stomping_on_wall_from_left;
+    bool is_alive;
     float jump_velocity;
 public:
     // esto para el primer intento nomás
@@ -55,6 +56,9 @@ public:
     }
     void stop_flying() {
         jump_velocity = 0.0f;
+    }
+    void set_is_NOT_alive() {
+        is_alive = false;
     }
     // Coordinates get_coordinates() const;
     // int get_movement_phase () const;

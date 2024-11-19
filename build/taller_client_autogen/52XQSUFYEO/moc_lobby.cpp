@@ -22,19 +22,32 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_lobby_t {
-    const uint offsetsAndSize[6];
-    char stringdata0[29];
+    const uint offsetsAndSize[20];
+    char stringdata0[235];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_lobby_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_lobby_t qt_meta_stringdata_lobby = {
     {
 QT_MOC_LITERAL(0, 5), // "lobby"
-QT_MOC_LITERAL(6, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(28, 0) // ""
+QT_MOC_LITERAL(6, 23), // "create_one_player_match"
+QT_MOC_LITERAL(30, 0), // ""
+QT_MOC_LITERAL(31, 23), // "create_two_player_match"
+QT_MOC_LITERAL(55, 25), // "create_three_player_match"
+QT_MOC_LITERAL(81, 10), // "join_match"
+QT_MOC_LITERAL(92, 37), // "on_createOnePlayerMatchButton..."
+QT_MOC_LITERAL(130, 37), // "on_createTwoPlayerMatchButton..."
+QT_MOC_LITERAL(168, 39), // "on_createThreePlayerMatchButt..."
+QT_MOC_LITERAL(208, 26) // "on_joinMatchButton_clicked"
 
     },
-    "lobby\0on_pushButton_clicked\0"
+    "lobby\0create_one_player_match\0\0"
+    "create_two_player_match\0"
+    "create_three_player_match\0join_match\0"
+    "on_createOnePlayerMatchButton_clicked\0"
+    "on_createTwoPlayerMatchButton_clicked\0"
+    "on_createThreePlayerMatchButton_clicked\0"
+    "on_joinMatchButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -44,17 +57,35 @@ static const uint qt_meta_data_lobby[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       4,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    0,   62,    2, 0x06,    1 /* Public */,
+       3,    0,   63,    2, 0x06,    2 /* Public */,
+       4,    0,   64,    2, 0x06,    3 /* Public */,
+       5,    0,   65,    2, 0x06,    4 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x08,    1 /* Private */,
+       6,    0,   66,    2, 0x08,    5 /* Private */,
+       7,    0,   67,    2, 0x08,    6 /* Private */,
+       8,    0,   68,    2, 0x08,    7 /* Private */,
+       9,    0,   69,    2, 0x08,    8 /* Private */,
+
+ // signals: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -66,8 +97,45 @@ void lobby::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void 
         auto *_t = static_cast<lobby *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_pushButton_clicked(); break;
+        case 0: _t->create_one_player_match(); break;
+        case 1: _t->create_two_player_match(); break;
+        case 2: _t->create_three_player_match(); break;
+        case 3: _t->join_match(); break;
+        case 4: _t->on_createOnePlayerMatchButton_clicked(); break;
+        case 5: _t->on_createTwoPlayerMatchButton_clicked(); break;
+        case 6: _t->on_createThreePlayerMatchButton_clicked(); break;
+        case 7: _t->on_joinMatchButton_clicked(); break;
         default: ;
+        }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        {
+            using _t = void (lobby::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&lobby::create_one_player_match)) {
+                *result = 0;
+                return;
+            }
+        }
+        {
+            using _t = void (lobby::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&lobby::create_two_player_match)) {
+                *result = 1;
+                return;
+            }
+        }
+        {
+            using _t = void (lobby::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&lobby::create_three_player_match)) {
+                *result = 2;
+                return;
+            }
+        }
+        {
+            using _t = void (lobby::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&lobby::join_match)) {
+                *result = 3;
+                return;
+            }
         }
     }
     (void)_a;
@@ -80,8 +148,8 @@ const QMetaObject lobby::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_lobby_t
-, QtPrivate::TypeAndForceComplete<lobby, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<lobby, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -108,15 +176,39 @@ int lobby::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 8)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 8;
     }
     return _id;
+}
+
+// SIGNAL 0
+void lobby::create_one_player_match()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+}
+
+// SIGNAL 1
+void lobby::create_two_player_match()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
+}
+
+// SIGNAL 2
+void lobby::create_three_player_match()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+}
+
+// SIGNAL 3
+void lobby::join_match()
+{
+    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

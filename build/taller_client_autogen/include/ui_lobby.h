@@ -24,10 +24,12 @@ class Ui_lobby
 {
 public:
     QWidget *centralwidget;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
+    QPushButton *createOnePlayerMatchButton;
+    QPushButton *joinMatchButton;
     QLabel *label;
     QLabel *label_2;
+    QPushButton *createTwoPlayerMatchButton;
+    QPushButton *createThreePlayerMatchButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -64,23 +66,24 @@ public:
         lobby->setPalette(palette);
         centralwidget = new QWidget(lobby);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(290, 170, 231, 81));
+        createOnePlayerMatchButton = new QPushButton(centralwidget);
+        createOnePlayerMatchButton->setObjectName(QString::fromUtf8("createOnePlayerMatchButton"));
+        createOnePlayerMatchButton->setGeometry(QRect(180, 120, 451, 71));
         QFont font;
         font.setFamilies({QString::fromUtf8("Uroob")});
         font.setPointSize(25);
         font.setBold(false);
-        pushButton->setFont(font);
-        pushButton->setCursor(QCursor(Qt::PointingHandCursor));
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(290, 300, 231, 81));
-        pushButton_2->setFont(font);
-        pushButton_2->setCursor(QCursor(Qt::PointingHandCursor));
+        createOnePlayerMatchButton->setFont(font);
+        createOnePlayerMatchButton->setCursor(QCursor(Qt::PointingHandCursor));
+        joinMatchButton = new QPushButton(centralwidget);
+        joinMatchButton->setObjectName(QString::fromUtf8("joinMatchButton"));
+        joinMatchButton->setGeometry(QRect(180, 200, 451, 71));
+        joinMatchButton->setFont(font);
+        joinMatchButton->setCursor(QCursor(Qt::PointingHandCursor));
+        joinMatchButton->setAutoFillBackground(false);
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(270, 70, 271, 71));
+        label->setGeometry(QRect(270, 40, 271, 71));
         QFont font1;
         font1.setFamilies({QString::fromUtf8("Uroob")});
         font1.setPointSize(30);
@@ -96,6 +99,16 @@ public:
         font2.setBold(false);
         label_2->setFont(font2);
         label_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        createTwoPlayerMatchButton = new QPushButton(centralwidget);
+        createTwoPlayerMatchButton->setObjectName(QString::fromUtf8("createTwoPlayerMatchButton"));
+        createTwoPlayerMatchButton->setGeometry(QRect(180, 280, 451, 71));
+        createTwoPlayerMatchButton->setFont(font);
+        createTwoPlayerMatchButton->setCursor(QCursor(Qt::PointingHandCursor));
+        createThreePlayerMatchButton = new QPushButton(centralwidget);
+        createThreePlayerMatchButton->setObjectName(QString::fromUtf8("createThreePlayerMatchButton"));
+        createThreePlayerMatchButton->setGeometry(QRect(180, 360, 451, 71));
+        createThreePlayerMatchButton->setFont(font);
+        createThreePlayerMatchButton->setCursor(QCursor(Qt::PointingHandCursor));
         lobby->setCentralWidget(centralwidget);
         menubar = new QMenuBar(lobby);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -113,10 +126,12 @@ public:
     void retranslateUi(QMainWindow *lobby)
     {
         lobby->setWindowTitle(QCoreApplication::translate("lobby", "Duck Game", nullptr));
-        pushButton->setText(QCoreApplication::translate("lobby", "Create Match", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("lobby", "Join Match", nullptr));
+        createOnePlayerMatchButton->setText(QCoreApplication::translate("lobby", "Create 1P Match", nullptr));
+        joinMatchButton->setText(QCoreApplication::translate("lobby", "Join Match", nullptr));
         label->setText(QCoreApplication::translate("lobby", "D u c k   G a m e", nullptr));
         label_2->setText(QCoreApplication::translate("lobby", "v. 1.0.0", nullptr));
+        createTwoPlayerMatchButton->setText(QCoreApplication::translate("lobby", "Create 2P Match", nullptr));
+        createThreePlayerMatchButton->setText(QCoreApplication::translate("lobby", "Create 3P Match", nullptr));
     } // retranslateUi
 
 };

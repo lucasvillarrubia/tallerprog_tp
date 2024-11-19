@@ -240,4 +240,5 @@ CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o: \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/receiver.h \
  /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_sender.h \
  /home/lucas/CLionProjects/tallerprog_tp/./common/comms/sender.h \
- /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_protocol.h
+ /home/lucas/CLionProjects/tallerprog_tp/./server/server_comms/server_protocol.h \
+ /home/lucas/CLionProjects/tallerprog_tp/./common/hands_on_sockets/liberror.h

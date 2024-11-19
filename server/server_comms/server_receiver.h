@@ -14,11 +14,12 @@
 class ServerReceiver: public Receiver
 {
 private:
+    const int& id;
     ServerProtocol& protocol;
     Queue<Gameaction>& clients_actions;
     void receive_data() override;
 public:
-    ServerReceiver(std::atomic_bool&, ServerProtocol&, Queue<Gameaction>&);
+    ServerReceiver(const int&, std::atomic_bool&, ServerProtocol&, Queue<Gameaction>&);
     ~ServerReceiver() override = default;
 };
 

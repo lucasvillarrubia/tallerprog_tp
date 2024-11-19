@@ -3502,7 +3502,8 @@ CMakeFiles/taller_server.dir/server/server_threads/match_manager.cpp.o: ../serve
   ../common/comms/receiver.h \
   ../server/server_comms/server_sender.h \
   ../common/comms/sender.h \
-  ../server/server_comms/server_protocol.h
+  ../server/server_comms/server_protocol.h \
+  ../common/hands_on_sockets/liberror.h
 
 CMakeFiles/taller_server.dir/server/state_manager.cpp.o: ../server/state_manager.cpp \
   /usr/include/stdc-predef.h \

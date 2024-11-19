@@ -16,18 +16,26 @@ void Server::run() {
         match_creator.start();
         // gameloop.start();
         // cleaner.start();
+
+        // std::string input;
+        // std::getline(std::cin, input);
+        // while (input != END_OF_PROGRAM_CODE) {
+        //     std::getline(std::cin, input);
+        // }
+
         std::string input;
-        std::getline(std::cin, input);
-        while (input != END_OF_PROGRAM_CODE) {
-            std::getline(std::cin, input);
+        while (std::getline(std::cin, input)) {
+            if (input == END_OF_PROGRAM_CODE) {
+                break;
+            }
         }
         user_commands.close();
         // gameloop.stop();
         // gameloop.join();
-        match_creator.stop();
-        match_creator.join();
         acceptor.stop();
         acceptor.join();
+        match_creator.stop();
+        match_creator.join();
         // cleaner.stop();
         // cleaner.join();
         player_list.clear();
@@ -35,6 +43,7 @@ void Server::run() {
     catch (const std::exception& e)
     {
         std::cerr << "Exception caught in the main thread: " << e.what() << '\n';
+        player_list.clear();
     }
     catch (...)
     {

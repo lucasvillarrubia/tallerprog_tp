@@ -16,6 +16,7 @@ struct Character {
     bool is_jumping;
     bool is_flapping;
     bool moving_right;
+    bool is_alive;
     float jump_velocity;
     int movement_phase;
     explicit Character(const int _id):
@@ -26,6 +27,7 @@ struct Character {
         is_jumping(false),
         is_flapping(false),
         moving_right(true),
+        is_alive(true),
         jump_velocity(0.0f),
         movement_phase(0) {}
     // void update_position(unsigned int);

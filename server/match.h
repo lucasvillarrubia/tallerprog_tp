@@ -6,12 +6,14 @@
 class Match {
 private:
     int id;
+    int player_limit;
     int winner_id;
+    bool has_started;
     MonitoredList<Player*> player_list;
     Queue<Gameaction> user_commands;
     Gameplay gameloop;
 public:
-    explicit Match(int);
+    Match(int, int);
     void start();
     void end();
     bool is_connected();
@@ -20,6 +22,8 @@ public:
     bool matches(int);
     bool has_ended();
     void disconnect();
+    int get_player_count() { return player_list.size(); }
+    bool is_full() { return player_list.size() == player_limit; }
 };
 
 

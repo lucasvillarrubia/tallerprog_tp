@@ -20,6 +20,7 @@ struct Gamestate: Gamedata {
     int is_jumping;
     int is_flapping;
     int move_direction;
+    int is_alive;
     float jump_speed;
     std::map<int, Coordinates> positions_by_id;
     std::string message;
@@ -34,6 +35,7 @@ struct Gamestate: Gamedata {
         const int jump,
         const int flap,
         const int direction,
+        const int life,
         const float jumpspeed
     ):
         Gamedata(player),
@@ -44,6 +46,7 @@ struct Gamestate: Gamedata {
         is_jumping(jump),
         is_flapping(flap),
         move_direction(direction),
+        is_alive(life),
         jump_speed(jumpspeed) {}
 
     Gamestate(
@@ -51,14 +54,16 @@ struct Gamestate: Gamedata {
         const int run,
         const int jump,
         const int flap,
-        const int direction
+        const int direction,
+        const int life
         ):
         Gamedata(player),
         type(3),
         is_running(run),
         is_jumping(jump),
         is_flapping(flap),
-        move_direction(direction) {}
+        move_direction(direction),
+        is_alive(life) {}
 
     Gamestate(std::map<int,Coordinates>& positions):
         Gamedata(0),

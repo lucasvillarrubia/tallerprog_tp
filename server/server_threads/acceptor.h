@@ -17,7 +17,7 @@ private:
     Socket acceptor;
     MonitoredList<Player*>& player_list;
     Queue<Gameaction>& user_commands;
-
+    int player_count;
 public:
     Acceptor(const char*, MonitoredList<Player*>&, Queue<Gameaction>&);
     void run() override;
