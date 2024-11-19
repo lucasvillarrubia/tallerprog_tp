@@ -151,7 +151,7 @@ void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y
 
 
 
-void Renderer::run(int frame) {
+void Renderer::render(int frame) {
     try {
         SDL2pp::Texture background(renderer, "resources/fondo_azul.png");
         

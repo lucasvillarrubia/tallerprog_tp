@@ -80,7 +80,7 @@ void Client::run() {
             {
                 event_listener.run();
                 if (not game_on.load()) return;
-                renderloop.run(frame);
+                renderloop.render(frame);
             }, rate);
         }
         connection.end_connection();

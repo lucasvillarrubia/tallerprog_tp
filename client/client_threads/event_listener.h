@@ -28,8 +28,11 @@ private:
     std::map<SDL_Keycode, int> codes_by_key = {
         {SDLK_ESCAPE, 9},
         {SDLK_RIGHT, 1},
+        {SDLK_d, 1},
         {SDLK_LEFT, 2},
-        {SDLK_SPACE, 3}
+        {SDLK_a, 2},
+        {SDLK_SPACE, 3},
+        {SDLK_RETURN, 3}
     };
 public:
     EventListener(std::atomic_bool&, Queue<Gameaction>&);
