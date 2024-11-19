@@ -40,7 +40,8 @@ void Gameplay::send_all_initial_coordinates()
             }
             else
             {
-                Gamestate initial_duck_coordinates(id, 590.0f, 0.0f, 0, 0, 0, 1, 0.0f);
+                Gamestate initial_duck_coordinates(id, 300.0f, 300.0f, 0, 0, 0, 1, 0.0f);
+                duck.set_position(300.0f, 300.0f);
                 // players.broadcast(initial_duck_coordinates);
                 broadcast_for_all_players(initial_duck_coordinates);
             }

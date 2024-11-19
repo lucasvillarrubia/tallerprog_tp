@@ -27,6 +27,16 @@ option(TALLER_MAKE_WARNINGS_AS_ERRORS "Enable / disable warnings as errors." ON)
 
 message(CMAKE_CXX_COMPILER_ID="${CMAKE_CXX_COMPILER_ID}")
 
+# Dependencia de yaml-cpp
+include(FetchContent)
+FetchContent_Declare(
+    yaml-cpp
+    GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
+    GIT_TAG master  # O usa una versión específica, como `yaml-cpp-0.7.0`
+)
+FetchContent_MakeAvailable(yaml-cpp)
+
+
 # Define target: lib common between client, server and editor programs
 # HEY TODO XXX: change the name to something that you like
 # TODO: Hay que mover estos paths al cmake que está en "common/", por ahora están acá porque el CLion los crea rápido!
@@ -126,6 +136,7 @@ if(TALLER_CLIENT)
             client/character.cpp
             client/character.h
             client/state_manager.cpp
+            client/texture_manager.h
             client/state_manager.h
             client/client_threads/updater.cpp
             client/client_threads/updater.h
@@ -154,6 +165,7 @@ if(TALLER_CLIENT)
         SDL2pp::SDL2pp
         Qt${QT_VERSION_MAJOR}::Core
         Qt${QT_VERSION_MAJOR}::Widgets
+        yaml-cpp
     )
 
     # Creo que estoy agregando la carpeta de imágenes acá
@@ -212,7 +224,7 @@ if(TALLER_SERVER)
     set_project_warnings(taller_server ${TALLER_MAKE_WARNINGS_AS_ERRORS} FALSE)
 
     # Link the taller_common lib target
-    target_link_libraries(taller_server taller_common)
+    target_link_libraries(taller_server taller_common yaml-cpp)
 endif()
 
 if(TALLER_EDITOR)
@@ -234,6 +246,7 @@ if(TALLER_EDITOR)
     # Link the taller_common lib target
     target_link_libraries(taller_editor taller_common SDL2pp::SDL2pp)
 endif()
+
 
 
 # Testing section
