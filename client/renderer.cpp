@@ -120,7 +120,7 @@ void Renderer::calculate_required_zoom(const std::vector<Coordinates>& duck_posi
 }
 
 void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y) {
-    YAML::Node config = YAML::LoadFile("resources/mapa_azul.yaml");
+    YAML::Node config = YAML::LoadFile(getCurrentMap());
     if (!config["entities"] || !config["entities"].IsSequence()) {
         throw std::runtime_error("Error al leer entities en el archivo YAML");
     }
@@ -149,11 +149,34 @@ void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y
     }
 }
 
+std::string Renderer::get_fondo(){
+    // Carga el archivo YAML
+    YAML::Node config = YAML::LoadFile("resources/current_map.yaml");
+
+    // Verifica si las claves existen
+    if (!config["current_map"] || !config["mapa_fondos"]) {
+        throw std::runtime_error("Missing 'current_map' or 'mapa_fondos' keys in current_map.yaml");
+    }
+
+    // Obtiene el mapa actual
+    std::string current_map = config["current_map"].as<std::string>();
+
+    // Obtiene el fondo asociado al mapa
+    if (!config["mapa_fondos"][current_map]) {
+        throw std::runtime_error("Background not found for map: " + current_map);
+    }
+
+    std::string fondo = config["mapa_fondos"][current_map].as<std::string>();
+
+    return "resources/" + fondo;
+}
 
 
 void Renderer::render(int frame) {
     try {
-        SDL2pp::Texture background(renderer, "resources/fondo_azul.png");
+
+        std::string fondoPath = get_fondo();
+        SDL2pp::Texture background(renderer, fondoPath);
         
         Gamestate update;
         while (updates_feed.try_pop(update)) {

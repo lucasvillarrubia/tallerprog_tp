@@ -1,7 +1,7 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-
+#include <fstream>
 #include "client/character.h"
 #include "common/gamedata.h"
 #include "common/hands_on_threads/queue.h"
@@ -10,7 +10,7 @@
 #include "SDL2pp/Window.hh"
 #include "state_manager.h"
 #include "texture_manager.h"
-
+#include <yaml-cpp/yaml.h>
 class Renderer
 {
 private:
@@ -37,6 +37,16 @@ public:
     void calculate_zoom_offsets(float& offset_x, float& offset_y, float avg_x, float avg_y);
     void dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y);
     void calculate_required_zoom(const std::vector<Coordinates>& duck_positions);
+
+    std::string getCurrentMap() {
+        std::ifstream mapFile("resources/current_map.yaml");
+        YAML::Node config = YAML::Load(mapFile);
+        
+        std::string mapName = config["current_map"].as<std::string>();
+        return "resources/" + mapName + ".yaml";
+    }
+
+    std::string get_fondo();
     ~Renderer() = default;
 };
 

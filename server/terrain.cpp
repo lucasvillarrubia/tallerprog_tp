@@ -6,8 +6,8 @@
 
 Terrain::Terrain() {
     // Leer el archivo YAML
-    YAML::Node config = YAML::LoadFile("resources/mapa_azul.yaml");
-
+    
+    YAML::Node config = YAML::LoadFile(getCurrentMap());
     // Verificar si 'entities' está en el archivo
     if (config["entities"]) {
         // Recorrer las entidades en el archivo YAML
