@@ -1,6 +1,9 @@
 #ifndef MAGNUM_H
 #define MAGNUM_H
 
+#include <list>
+#include <utility>
+
 #include "gun.h"
 #include "common/coordinates.h"
 #include "MagnumAmmo.h"
@@ -13,7 +16,8 @@ private:
 public:
 	Magnum(float x, float y);
 	bool is_duck_position_valid(float x, float y);
-	MagnumAmmo shoot();
+	//MagnumAmmo shoot();
+	bool shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets);
 };
 
 #endif

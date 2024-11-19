@@ -11,6 +11,7 @@ private:
 public:
     Terrain();
     bool is_duck_position_valid(int, int);
+    bool is_bullet_position_valid(int, int);
     ~Terrain() = default;
 };
 

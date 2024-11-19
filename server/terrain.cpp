@@ -17,3 +17,15 @@ bool Terrain::is_duck_position_valid(int x, int y)
     }
     return true;
 }
+
+bool Terrain::is_bullet_position_valid(int x, int y)
+{
+    Rectangulo bullet(x, y, 16.0f, 16.0f);
+    for (auto& entity : map_entities)
+    {
+        if(entity.hay_colision(bullet))
+        // if (entity.hay_colision_y(character) and not entity.hay_colision_x(character))
+            return false;
+    }
+    return true;
+}

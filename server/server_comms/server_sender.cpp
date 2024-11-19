@@ -24,6 +24,16 @@ void ServerSender::send_data()
         case 5:
         	protocol.send_init_gun_message(new_event);
         	break;
+        case 6:
+        	protocol.send_init_bullet_message(new_event);
+        	std::cout<<"se disparo una bala"<<std::endl;
+        	break;
+        case 7:
+        	protocol.send_bullets_positions_message(new_event);
+        	break;
+        case 8:
+        	protocol.send_bullet_destroyed_message(new_event);
+        	break;
         default:
             protocol.send_duck_state_message(new_event);
             // std::cout << "se mandó una actualización de estado\n";

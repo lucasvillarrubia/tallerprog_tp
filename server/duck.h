@@ -40,7 +40,9 @@ public:
     bool wants_to_grab();
     bool have_a_gun();
     void pickup_gun();
+    void stop_grab();
     void drop_gun();
+    bool shooting();
     friend class StateManager;
 };
 

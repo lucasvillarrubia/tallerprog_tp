@@ -15,6 +15,8 @@ struct Gamedata {
 struct Gamestate: Gamedata {
     int type;
     int gun_id;
+    int is_bullet_data;
+    int bullet_id;
     int type_gun;
     float pos_X;
     float pos_Y;
@@ -30,6 +32,7 @@ struct Gamestate: Gamedata {
     float jump_speed;
     std::map<int, Coordinates> positions_by_id;
     std::map<int,std::pair<int, Coordinates>> guns_positions_by_type;
+    std::map<int,std::pair<int, Coordinates>> bullets_positions_by_type;
     //int is_picked_up;
     Gamestate(): Gamedata(-1) {}
     Gamestate(
@@ -99,6 +102,25 @@ struct Gamestate: Gamedata {
         type_gun(_type_gun),
         pos_X(x),
         pos_Y(y) {}
+    Gamestate(const int flag, const int _id, const int _type_gun, const float x, const float y) :
+    	Gamedata(0),
+    	type(6),
+    	is_bullet_data(flag),
+    	bullet_id(_id),
+    	type_gun(_type_gun),
+    	pos_X(x),
+    	pos_Y(y) {}
+    Gamestate(const int flag, std::map<int,std::pair<int, Coordinates>> bullets_positions) :
+    	Gamedata(0),
+    	type(7),
+    	is_bullet_data(flag),
+    	bullets_positions_by_type(bullets_positions) {}
+    Gamestate(const int flag, const int id) :
+    	Gamedata(0),
+    	type(8),
+    	is_bullet_data(flag),
+    	bullet_id(id)
+    	{}
 };
 
 struct Gameaction: Gamedata {

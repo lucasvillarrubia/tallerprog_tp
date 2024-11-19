@@ -36,12 +36,6 @@ void Renderer::draw_character(SDL2pp::Texture& sprites, Character& character, in
     SDL_Rect src_rect = { src_x, src_y, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
     SDL_Rect dst_rect = { static_cast<int>(character.pos_X), static_cast<int>(vcenter - 63 - character.pos_Y), 64, 64 };
     SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
-    /*if (character.with_gun){
-    	SDL_Rect gun_src_rect = { 1, 47, 32, 32 };
-    	SDL_Rect gun_dst_rect = { static_cast<int>(character.pos_X), static_cast<int>(vcenter - 47 - character.pos_Y), 48, 48 };
-    	SDL_RenderCopyEx(renderer.Get(), pistol_sprites.Get(), &gun_src_rect, &gun_dst_rect, 0.0, nullptr, flip);
-    	
-    }*/
 }
 
 
@@ -53,13 +47,18 @@ void Renderer::draw_gun(SDL2pp::Texture& sprites, Gun& gun) {
     SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 }
 
+void Renderer::draw_bullet(SDL2pp::Texture& sprites, Bullet& bullet) {
+	int vcenter = renderer.GetOutputHeight();
+    SDL_RendererFlip flip = SDL_FLIP_NONE;
+    SDL_Rect src_rect = { 1, 89, 16, 16 };
+    SDL_Rect dst_rect = { static_cast<int>(bullet.pos_X), static_cast<int>(vcenter - 47 - bullet.pos_Y), 16, 16 };
+    SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+	std::cout<<std::to_string(bullet.id)<<": "<<std::to_string(bullet.pos_X)<<std::endl;
+}
+
 void Renderer::run(int frame) {
     try
     {
-        //SDL2pp::Texture background(renderer, "resources/fondo.png");
-        // SDL2pp::Surface tempSurface("resources/Duck-removebg-preview.png");
-        //SDL2pp::Surface tempSurface("resources/Duck.png");
-        //SDL2pp::Texture sprites(renderer, tempSurface);
         Gamestate update;
         while (updates_feed.try_pop(update)) {
             state.update(update);
@@ -77,12 +76,20 @@ void Renderer::run(int frame) {
         // DIBUJANDO PERSONAJES
         std::list<Character> character_list = state.get_characters_data();
         std::list<Gun> gun_list = state.get_guns_data();
+        std::list<Bullet> bullet_list = state.get_bullets_data();
         for (auto& character : character_list) {
             draw_character(duck_sprites, character, frame);
         }
         for (auto& gun : gun_list) {
         	draw_gun(pistol_sprites, gun);
         }
+        for (auto& bullet : bullet_list) {
+        	//std::cout<<std::to_string(bullet.id)<<std::endl;
+        	if (!bullet.destroyed){
+        		draw_bullet(pistol_sprites, bullet);
+        	}
+        }
+        std::cout<<std::to_string(bullet_list.size())<<std::endl;
         renderer.Present();
     }
     catch (ClosedQueue const& e)

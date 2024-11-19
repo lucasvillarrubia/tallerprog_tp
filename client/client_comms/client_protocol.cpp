@@ -46,6 +46,18 @@ void ClientProtocol::receive_init_gun_message(Gamestate& received) {
     receive_single_float(pos_Y);
     received = Gamestate(gun_id, type_gun, pos_X, pos_Y);
 }
+
+void ClientProtocol::receive_init_bullet_message(Gamestate& received) {
+	uint8_t is_bullet_data;
+    receive_single_8bit_int(is_bullet_data);
+	uint8_t bullet_id, type_gun;
+	float pos_X, pos_Y;
+    receive_single_8bit_int(bullet_id);
+    receive_single_8bit_int(type_gun);
+    receive_single_float(pos_X);
+    receive_single_float(pos_Y);
+    received = Gamestate(is_bullet_data, bullet_id, type_gun, pos_X, pos_Y);
+}
 // void ClientProtocol::receive_single_character_position_message()
 // {
 // }
@@ -88,6 +100,36 @@ void ClientProtocol::receive_guns_positions_message(Gamestate& received)
     received = Gamestate(positions_by_type);
 }
 
+void ClientProtocol::receive_bullets_positions_message(Gamestate& received)
+{
+    if (not client_is_connected.load()) return;
+    uint8_t is_bullet_data;
+    receive_single_8bit_int(is_bullet_data);
+    std::map<int, std::pair<int, Coordinates>> positions_by_type;
+    uint8_t positions_count;
+    receive_single_8bit_int(positions_count);
+    for (int i = 0; i < positions_count; i++)
+    {
+        uint8_t type, id;
+        float pos_X, pos_Y;
+        receive_single_8bit_int(id);
+        receive_single_8bit_int(type);
+        receive_single_float(pos_X);
+        receive_single_float(pos_Y);
+        Coordinates coords = {pos_X, pos_Y};
+        positions_by_type.insert( {id,std::make_pair(type, coords)});
+    }
+    received = Gamestate(is_bullet_data, positions_by_type);
+}
+
+void ClientProtocol::receive_bullet_destroyed_message(Gamestate& received) {
+	if (not client_is_connected.load()) return;
+    uint8_t is_bullet_data, id;
+    receive_single_8bit_int(is_bullet_data);
+    receive_single_8bit_int(id);
+    received = Gamestate(is_bullet_data, id);
+}
+
 void ClientProtocol::receive_character_update_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
@@ -123,6 +165,15 @@ void ClientProtocol::receive_message(Gamestate& received)
     	break;
     case 5:
     	receive_init_gun_message(received);
+    	break;
+    case 6:
+    	receive_init_bullet_message(received);
+    	break;
+    case 7:
+    	receive_bullets_positions_message(received);
+    	break;
+    case 8:
+    	receive_bullet_destroyed_message(received);
     	break;
     default:
         receive_character_update_message(received);

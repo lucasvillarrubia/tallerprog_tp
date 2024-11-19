@@ -6,13 +6,15 @@
 
 #include "server//state_manager.h"
 
+#define FLAG 1
+
 
 Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_cmds):
         is_running(false), players(player_list), user_commands(usr_cmds) {
     ducks_by_id.insert({1, Duck()});
     ducks_by_id.insert({2, Duck()});
     gun = new Magnum(125.0f, 50.0f);
-    //guns[1] = gun;
+    balas_disparadas = 0;
 }
 
 void Gameplay::process_users_commands() {
@@ -27,8 +29,8 @@ void Gameplay::process_users_commands() {
         players.broadcast(update);
         // Coordinates pato = StateManager::get_duck_coordinates(ducks_by_id.at(command.player_id));
         // std::cout << "x: " << pato.pos_X << " y: " << pato.pos_Y << "\n";
-        float pato_velocidad = StateManager::get_duck_speed(ducks_by_id.at(command.player_id));
-        std::cout << "velocidad: " << pato_velocidad << "\n";
+        //float pato_velocidad = StateManager::get_duck_speed(ducks_by_id.at(command.player_id));
+        //std::cout << "velocidad: " << pato_velocidad << "\n";
     }
 }
 
@@ -78,16 +80,25 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
         if (duck.wants_to_grab()) {
         	if (duck.have_a_gun()) {
         		duck.drop_gun();
+        		duck.stop_grab();
         	} else if (gun->is_duck_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y)) {
         		duck.pickup_gun();
-        		std::cout<<"arma recogida"<<std::endl;
+        		duck.stop_grab();
         	}
         }
         if (duck.have_a_gun()) {
         	gun->updatePosition(after_coordinates.pos_X, after_coordinates.pos_Y);
+        	if (duck.shooting()) {
+        		if (gun->shoot(balas_disparadas, bullets)) {
+        			Coordinates bullet_position = bullets.back().second->getPosition();
+        			Gamestate initial_bullet_coordinates(FLAG, balas_disparadas,gun->getType(), bullet_position.pos_X, bullet_position.pos_Y);
+        			players.broadcast(initial_bullet_coordinates);
+        		}
+        	}else{
+        		gun->stopShoot();
+        	}
         }
-        //positions_by_id.insert({id, StateManager::get_duck_coordinates(duck)});
-        positions_by_id[id] = StateManager::get_duck_coordinates(duck);
+        positions_by_id.insert({id, StateManager::get_duck_coordinates(duck)});
     }
     Gamestate update(positions_by_id);
     players.broadcast(update);
@@ -102,22 +113,33 @@ void Gameplay::send_guns_positions_updates() {
 	players.broadcast(update);
 }
 
-/*
+
 void Gameplay::send_bullets_positions_updates(const unsigned int frame_delta) {
+	std::map<int, std::pair<int, Coordinates>> bullets_positions;
 	for (auto& bullet : bullets) {
-		Coordinates before_coordinates = StateManager::get_bullet_coordinates(bullet);
-		bullet.update_position(frame_delta);
-		Coordinates after_coordinates = StateManager::get_bullet_coordinates(bullet);
-		if (not terrain.is_bullet_position_valida(after_coordinates.pos_X, after_coordinates.pos_Y)) {
-			bullet.impact();
+		//Coordinates before_coordinates = bullet->getPosition();
+		bullet.second->update_position(frame_delta);
+		Coordinates after_coordinates = bullet.second->getPosition();
+		/*if (not terrain.is_bullet_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y)) {
+			bullet.second->impact();
+			//enviar coords de impacto
+			continue;
+		}*/
+		//if (colision contra pato){
+			//duck.damage(bullet.impact)
+		//}
+		if (bullet.second->is_destroyed()) {
+			Gamestate update(FLAG, bullet.first);
+			players.broadcast(update);
+			std::cout<<std::to_string(bullet.first)<<": destroyed"<<std::endl;
+			continue;
 		}
-		if (colision contra pato){
-			duck.damage(bullet.impact)
-		}
+		bullets_positions.insert({bullet.first, std::make_pair(bullet.second->getType(), after_coordinates)});
 	}
-	//limpiar balas destruidas
+	bullets.remove_if([](auto& bullet){ return bullet.second->is_destroyed(); });
+	Gamestate update(FLAG, bullets_positions);
+	players.broadcast(update);
 }
-*/
 
 void Gameplay::run() {
     try
@@ -136,7 +158,9 @@ void Gameplay::run() {
             prev_time = current_time;
             send_ducks_positions_updates(frame_delta);
             send_guns_positions_updates();
-            //send_bullets_positions_updates(frame_delta);
+            if (bullets.size()>0) {
+            	send_bullets_positions_updates(frame_delta);
+            }
             std::this_thread::sleep_for(std::chrono::milliseconds(16)); // Maso 60 FPS
         }
     }

@@ -16,7 +16,7 @@ StateManager::StateManager() {}
 void StateManager::update(const Gamestate& update)
 {
     std::unique_lock<std::mutex> lck(mtx);
-    // std::cout << "el tipo de update que llegó es: " << update.type << "\n";
+    //std::cout << "el tipo de update que llegó es: " << update.type << "\n";
     switch (update.type)
     {
     case 1:
@@ -37,6 +37,28 @@ void StateManager::update(const Gamestate& update)
     	{
     	Gun new_gun(update.gun_id, update.type_gun, update.pos_X, update.pos_Y);
     	guns.push_back(new_gun);
+    	break;
+    	}
+    case 6:
+    	{
+    	Bullet new_bullet(update.bullet_id, update.type_gun, update.pos_X, update.pos_Y);
+    	bullets.push_back(new_bullet);
+    	break;
+    	}
+    case 7:
+    	{
+    	update_bullets(update);
+    	break;
+    	}
+    case 8:
+    	{
+    	for (auto& bullet : bullets) {
+    		if (bullet.id == update.bullet_id) {
+    			bullet.destroyed = true;
+    			std::cout<<"se destruyo una bala "<<std::endl;
+    		}
+    	}
+    	//bullets.remove_if([](auto& bullet){ return bullet.destroyed; });
     	break;
     	}
     default:
@@ -61,6 +83,16 @@ void StateManager::update_guns(const Gamestate& update)
     {
         if (update.guns_positions_by_type.contains(gun.id))
             update_gun_position(gun, update.guns_positions_by_type.at(gun.id).second);
+    }
+}
+
+void StateManager::update_bullets(const Gamestate& update) {
+	for (auto& bullet : bullets)
+    {
+        if (update.bullets_positions_by_type.contains(bullet.id)){
+            bullet.pos_X = update.bullets_positions_by_type.at(bullet.id).second.pos_X;
+    		bullet.pos_Y = update.bullets_positions_by_type.at(bullet.id).second.pos_Y;
+    	}
     }
 }
 
@@ -120,4 +152,8 @@ std::list<Character> StateManager::get_characters_data()
 
 std::list<Gun> StateManager::get_guns_data() {
 	return guns;
+}
+
+std::list<Bullet> StateManager::get_bullets_data() {
+	return bullets;
 }

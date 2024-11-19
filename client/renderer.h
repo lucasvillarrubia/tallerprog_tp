@@ -42,6 +42,7 @@ public:
     Renderer(std::atomic_bool&, SDL2pp::Window&, SDL2pp::Renderer&, Queue<Gamestate>&, StateManager&);
     void draw_character(SDL2pp::Texture&, Character&, int);
     void draw_gun(SDL2pp::Texture& sprites, Gun& gun);
+    void draw_bullet(SDL2pp::Texture& sprites, Bullet& bullet);
     // void run();
     void run(int);
     ~Renderer() = default;

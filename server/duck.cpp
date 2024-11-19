@@ -84,6 +84,14 @@ void Duck::pickup_gun() {
 	with_gun = true;
 }
 
+void Duck::stop_grab() {
+	is_grabbing = false;
+}
+
 void Duck::drop_gun() {
 	with_gun = false;
+}
+
+bool Duck::shooting() {
+	return is_shooting;
 }

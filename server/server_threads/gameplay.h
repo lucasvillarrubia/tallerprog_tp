@@ -2,6 +2,7 @@
 #define GAMEPLAY_H
 
 #include <atomic>
+#include <utility>
 #include <map>
 
 #include "common/hands_on_threads/queue.h"
@@ -11,6 +12,7 @@
 #include "server/duck.h"
 #include "server/monitored_list.h"
 #include "server/gun.h"
+#include "server/ammo.h"
 #include "server/Magnum.h"
 
 class Gameplay: public Thread
@@ -24,6 +26,8 @@ private:
     bool primera_caida;
     Terrain terrain;
     Magnum* gun;
+    std::list<std::pair<int,Ammo*>> bullets;
+    int balas_disparadas;
     //std::map<int, Gun> guns
     // Duck duck;
     void process_users_commands();
@@ -31,6 +35,7 @@ private:
     void send_all_initial_coordinates();
     void send_ducks_positions_updates(unsigned int);
     void send_guns_positions_updates();
+    void send_bullets_positions_updates(unsigned int);
     void check_for_projectile_hit();
     void check_for_boxes_reappearances();
     void send_player_loss_update();

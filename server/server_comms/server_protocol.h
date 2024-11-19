@@ -14,8 +14,11 @@ public:
     ServerProtocol(Socket&&, std::atomic_bool&);
     void send_init_duck_message(const Gamestate&);
     void send_init_gun_message(const Gamestate&);
+    void send_init_bullet_message(const Gamestate&);
     void send_ducks_positions_message(const Gamestate&);
     void send_guns_positions_message(const Gamestate&);
+    void send_bullets_positions_message(const Gamestate&);
+    void send_bullet_destroyed_message(const Gamestate&);
     void send_duck_state_message(const Gamestate&);
     void receive_message(Gameaction&);
     ~ServerProtocol() override = default;

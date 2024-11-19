@@ -32,6 +32,15 @@ void ServerProtocol::send_init_gun_message(const Gamestate& message) {
     send_single_float(message.pos_Y);
 }
 
+void ServerProtocol::send_init_bullet_message(const Gamestate& message) {
+	send_single_8bit_int(message.type);
+	send_single_8bit_int(message.bullet_id);
+	send_single_8bit_int(message.is_bullet_data);
+	send_single_8bit_int(message.type_gun);
+    send_single_float(message.pos_X);
+    send_single_float(message.pos_Y);
+}
+
 void ServerProtocol::send_single_duck_position_message(const int id, const Coordinates& position)
 {
     send_single_8bit_int(id);
@@ -63,6 +72,27 @@ void ServerProtocol::send_guns_positions_message(const Gamestate& message)
         send_single_float(gunData.second.pos_X);
     	send_single_float(gunData.second.pos_Y);
     }
+}
+
+void ServerProtocol::send_bullets_positions_message(const Gamestate& message)
+{
+    send_single_8bit_int(message.type);
+    send_single_8bit_int(message.is_bullet_data);
+    uint8_t positions_count = message.bullets_positions_by_type.size();
+    send_single_8bit_int(positions_count);
+    for (auto& [id, bulletData] : message.bullets_positions_by_type)
+    {
+        send_single_8bit_int(id);
+        send_single_8bit_int(bulletData.first);
+        send_single_float(bulletData.second.pos_X);
+    	send_single_float(bulletData.second.pos_Y);
+    }
+}
+
+void ServerProtocol::send_bullet_destroyed_message(const Gamestate& message) {
+	send_single_8bit_int(message.type);
+    send_single_8bit_int(message.is_bullet_data);
+    send_single_8bit_int(message.bullet_id);
 }
 
 void ServerProtocol::send_duck_state_message(const Gamestate& message)
