@@ -117,6 +117,7 @@ if(TALLER_CLIENT)
             client/character.cpp
             client/character.h
             client/state_manager.cpp
+            client/texture_manager.h
             client/state_manager.h
             client/client_threads/updater.cpp
             client/client_threads/updater.h
