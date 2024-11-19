@@ -5,15 +5,25 @@
 
 class Match {
 private:
-    //MonitoredList<Player*> player_list;
-    //Queue<Gameaction> user_commands;
-    //Gameplay gameloop;
+    int id;
+    int player_limit;
+    int winner_id;
+    bool has_started;
+    MonitoredList<Player*> player_list;
+    Queue<Gameaction> user_commands;
+    Gameplay gameloop;
 public:
-    Match();
+    Match(int, int);
     void start();
     void end();
     bool is_connected();
+    void add_player(Player*);
+    void add_action(const Gameaction&);
+    bool matches(int);
+    bool has_ended();
     void disconnect();
+    int get_player_count() { return player_list.size(); }
+    bool is_full() { return player_list.size() == player_limit; }
 };
 
 

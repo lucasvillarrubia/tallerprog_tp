@@ -15,6 +15,7 @@ public:
     static Gamestate get_duck_state(Duck&, int);
     static Coordinates get_duck_coordinates(Duck&);
     static float get_duck_speed(Duck& duck);
+    static int get_duck_is_alive(Duck& duck);
 };
 
 

@@ -10,13 +10,22 @@
 #include "common/gamedata.h"
 #include "SDL2pp/Renderer.hh"
 #include "SDL2pp/Window.hh"
-#include "mapa.h"
+#include "lobby/lobby.h"
+#include <QApplication>
+#include <QObject>
 
-class Client
+
+
+
+class Client: public QObject
 {
+    Q_OBJECT
 private:
-    SDL2pp::Window window;
-    SDL2pp::Renderer renderer;
+    // SDL2pp::Window window;
+    // SDL2pp::Renderer renderer;
+    int argc = 0;
+    char** argv = nullptr;
+    QApplication app;
     std::atomic_bool connected;
     std::atomic_bool game_on;
     Queue<Gameaction> events;
@@ -24,8 +33,9 @@ private:
     LocalPlayer connection;
     EventListener event_listener;
     StateManager state;
-    Renderer renderloop;
+    // Renderer renderloop;
     Updater updater;
+    lobby gamelobby;
     void constant_rate_loop(std::function<void(int)>, std::chrono::milliseconds);
 public:
     Client(const char*, const char*);
@@ -36,6 +46,11 @@ public:
     Client(Client&& other) = delete;
     Client& operator=(Client&& other) = delete;
     ~Client() = default;
+public slots:
+    void handle_create_one_player_match();
+    void handle_create_two_player_match();
+    void handle_create_three_player_match();
+    void handle_join_match();
 };
 
 

@@ -1,0 +1,13 @@
+# ninja log v6
+26	70	1731435562131740615	/home/lucas/duck_game_lobby/build/Desktop_Qt_6_8_0-Debug/CMakeFiles/cmake.verify_globs	3bf5d45f12ddae88
+73	119	1731435562177740271	duck_game_lobby_autogen/timestamp	938518a544f0e2c6
+73	119	1731435562177740271	duck_game_lobby_autogen/mocs_compilation.cpp	938518a544f0e2c6
+73	119	1731435562177740271	/home/lucas/duck_game_lobby/build/Desktop_Qt_6_8_0-Debug/duck_game_lobby_autogen/timestamp	938518a544f0e2c6
+73	119	1731435562177740271	/home/lucas/duck_game_lobby/build/Desktop_Qt_6_8_0-Debug/duck_game_lobby_autogen/mocs_compilation.cpp	938518a544f0e2c6
+315	2426	1731313891375127932	CMakeFiles/duck_game_lobby.dir/duck_game_lobby_autogen/mocs_compilation.cpp.o	fdada45fe745ab07
+316	2497	1731313891376127931	CMakeFiles/duck_game_lobby.dir/main.cpp.o	7e30f8f748fdf79
+120	1636	1731435562225739912	CMakeFiles/duck_game_lobby.dir/lobby.cpp.o	e2705543a780d6ae
+53	273	1731314317993250301	build.ninja	677eacf87a86779a
+1636	2077	1731435563741728588	duck_game_lobby	12a446d09f9f8487
+2	29	1731435577423628542	/home/lucas/duck_game_lobby/build/Desktop_Qt_6_8_0-Debug/CMakeFiles/cmake.verify_globs	3bf5d45f12ddae88
+1	41	1731436062179522593	/home/lucas/duck_game_lobby/build/Desktop_Qt_6_8_0-Debug/CMakeFiles/cmake.verify_globs	3bf5d45f12ddae88

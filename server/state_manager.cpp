@@ -27,28 +27,39 @@ void StateManager::update_duck_state(Duck& duck, const Gameaction& event)
             // duck.exited = true;
             return;
         case RIGHT:
-            duck.is_running = true;
-            duck.moving_right = true;
+            if (not duck.is_stomping_on_wall_from_right) {
+                duck.is_running = true;
+                duck.moving_right = true;
+            }
+            if (duck.is_stomping_on_wall_from_right) {
+                duck.is_stomping_on_wall_from_right = false;
+            }
             break;
         case LEFT:
-            duck.is_running = true;
-            duck.moving_right = false;
+            if (not duck.is_stomping_on_wall_from_left) {
+                duck.is_running = true;
+                duck.moving_right = false;
+            }
+            if (duck.is_stomping_on_wall_from_left) {
+                duck.is_stomping_on_wall_from_left = false;
+            }
             break;
         case SPACE:
             if (!duck.is_jumping)
             {
                 duck.is_jumping = true;
-                // duck.is_flapping = true;
+                duck.is_on_the_floor = false;          
+                duck.is_flapping = true;
                 duck.jump_velocity = JUMP_STRENGTH;
             }
-            // else if (duck.is_jumping && duck.jump_velocity < 0) {
-            //     duck.is_flapping = true;
-            //     duck.jump_velocity = FLAP_STRENGTH;
-            // }
-            // if (!duck.is_flapping && duck.jump_velocity < 0) {
-            //     duck.is_flapping = true;
-            //     duck.jump_velocity = FLAP_STRENGTH;
-            // }
+             else if (duck.is_jumping && duck.jump_velocity < 0) {
+                 duck.is_flapping = true;
+                 duck.jump_velocity = FLAP_STRENGTH;
+             }
+             if (!duck.is_flapping && duck.jump_velocity < 0) {
+                 duck.is_flapping = true;
+                 duck.jump_velocity = FLAP_STRENGTH;
+             }
             break;
         }
     } else if (event.type == KEYUP) {
@@ -71,7 +82,8 @@ Gamestate StateManager::get_duck_state(Duck& duck, int id)
         duck.is_running ? 1 : 0,
         duck.is_jumping ? 1 : 0,
         duck.is_flapping ? 1 : 0,
-        duck.moving_right ? 1 : 0
+        duck.moving_right ? 1 : 0,
+        duck.is_alive ? 1 : 0
     };
 }
 
@@ -83,4 +95,9 @@ Coordinates StateManager::get_duck_coordinates(Duck& duck)
 float StateManager::get_duck_speed(Duck& duck)
 {
     return duck.jump_velocity;
+}
+
+int StateManager::get_duck_is_alive(Duck& duck)
+{
+    return duck.is_alive;
 }

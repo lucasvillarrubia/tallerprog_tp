@@ -11,14 +11,8 @@ void Updater::run()
         is_running.store(true);
         while (is_running.load())
         {
-            // Gamestate update;
             Gamestate update = updates_feed.pop();
-            // while (updates_feed.try_pop(update))
-            {
-            }
             state.update(update);
-            // std::cout << "actualicé el estado del pato\n";
-            // std::this_thread::sleep_for(std::chrono::milliseconds(16)); // Maso 60 FPS
         }
     }
     catch (ClosedQueue const& e)

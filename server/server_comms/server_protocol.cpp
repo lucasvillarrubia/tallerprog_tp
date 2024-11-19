@@ -16,6 +16,7 @@ void ServerProtocol::send_init_duck_message(const Gamestate& message)
     send_single_8bit_int(message.is_jumping);
     send_single_8bit_int(message.is_flapping);
     send_single_8bit_int(message.move_direction);
+    send_single_8bit_int(message.is_alive);
     send_single_float(message.jump_speed);
 }
 
@@ -47,14 +48,16 @@ void ServerProtocol::send_duck_state_message(const Gamestate& message)
     send_single_8bit_int(message.is_jumping);
     send_single_8bit_int(message.is_flapping);
     send_single_8bit_int(message.move_direction);
+    send_single_8bit_int(message.is_alive);
 }
 
 void ServerProtocol::receive_message(Gameaction& received)
 {
     if (not client_is_connected.load()) return;
-    uint8_t player, type, key;
+    uint8_t player, match, type, key;
     receive_single_8bit_int(player);
+    receive_single_8bit_int(match);
     receive_single_8bit_int(type);
     receive_single_8bit_int(key);
-    received = Gameaction(player, type, key);
+    received = Gameaction(player, match, type, key);
 }

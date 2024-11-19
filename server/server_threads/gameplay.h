@@ -19,7 +19,7 @@ private:
     MonitoredList<Player*>& players;
     Queue<Gameaction>& user_commands;
     std::map<int, Duck> ducks_by_id;
-    bool ya_entro_cliente;
+    // bool ya_entro_cliente;
     bool primera_caida;
     Terrain terrain;
     // Duck duck;
@@ -32,6 +32,7 @@ private:
     void send_player_loss_update();
     void start_new_round();
     void send_victory_update();
+    void broadcast_for_all_players(const Gamestate&);
 public:
     Gameplay(MonitoredList<Player*>&, Queue<Gameaction>&);
     void run() override;

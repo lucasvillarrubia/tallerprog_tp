@@ -20,6 +20,7 @@
 class Player
 {
 private:
+    int id;
     Queue<Gameaction>& server_messages;
     std::atomic_bool client_is_connected;
     ServerProtocol protocol;
@@ -31,7 +32,9 @@ public:
     void start();
     void add_message_to_queue(const Gamestate&);
     bool is_connected();
+    bool matches(int) const;
     void disconnect();
+    void set_id(int _id) { id = _id; }
     Player(const Player&) = delete;
     Player& operator=(const Player&) = delete;
     Player(Player&& other) = delete;

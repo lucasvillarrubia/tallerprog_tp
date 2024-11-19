@@ -1,59 +1,73 @@
 #include <iostream>
 
-#include "common/message.h"
-
 #include "gameplay.h"
 
-#include "server//state_manager.h"
+#include "common/message.h"
+#include "server/state_manager.h"
 
 
 Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_cmds):
         is_running(false), players(player_list), user_commands(usr_cmds) {
-    ducks_by_id.insert({1, Duck()});
-    ducks_by_id.insert({2, Duck()});
+    // patos de prueba para el zoom
+    Duck hugo, paco, luis;
+    hugo.set_position(210.0f, 300.0f);
+    paco.set_position(300.0f, 300.0f);
+    luis.set_position(220.0f, 350.0f);
+    luis.set_is_NOT_alive();
+    ducks_by_id.insert({2, hugo});
+    ducks_by_id.insert({3, paco});
+    ducks_by_id.insert({4, luis});
 }
 
-void Gameplay::process_users_commands() {
-    if (primera_caida) {
-        ducks_by_id.at(1).set_is_NOT_on_the_floor();
-        primera_caida = false;
-    }
-    Gameaction command;
-    while (user_commands.try_pop(command)) {
-        StateManager::update_duck_state(ducks_by_id.at(command.player_id), command);
-        Gamestate update = StateManager::get_duck_state(ducks_by_id.at(command.player_id), command.player_id);
-        players.broadcast(update);
-        // Coordinates pato = StateManager::get_duck_coordinates(ducks_by_id.at(command.player_id));
-        // std::cout << "x: " << pato.pos_X << " y: " << pato.pos_Y << "\n";
-        float pato_velocidad = StateManager::get_duck_speed(ducks_by_id.at(command.player_id));
-        std::cout << "velocidad: " << pato_velocidad << "\n";
-    }
+void Gameplay::broadcast_for_all_players(const Gamestate& state)
+{
+    players.for_each([&state](Player* player) {
+        player->add_message_to_queue(state);
+    });
 }
 
 void Gameplay::send_all_initial_coordinates()
 {
-    if ((players.size() == 1))
+    // for (int i = 1; i <= players.size(); i++)
+    // {
+    //     if (i == 1) {
+            float x = 300.0f;
+            float y = 300.0f;
+            Duck duck;
+            duck.set_position(x, y);
+            duck.set_is_on_the_floor();
+            ducks_by_id.insert({1, duck});
+            Gamestate initial_duck_coordinates(1, x, y, 0, 0, 0, 1, 1, 0.0f);
+            broadcast_for_all_players(initial_duck_coordinates);
+        // }
+    // }
+    for (auto& [id, duck]: ducks_by_id)
     {
-        for (auto& [id, duck]: ducks_by_id)
-        {
-            if (id == 1)
-            {
-                float x = 125.0f;
-                float y = 300.0f;
-                Gamestate initial_duck_coordinates(id, x, y, 0, 0, 0, 1, 0.0f);
-                duck.set_position(x, y);
-                duck.set_is_on_the_floor();
-                players.broadcast(initial_duck_coordinates);
-            }
-            else
-            {
-                Gamestate initial_duck_coordinates(id, 590.0f, 0.0f, 0, 0, 0, 1, 0.0f);
-                players.broadcast(initial_duck_coordinates);
-            }
-        }
-        ya_entro_cliente = true;
+        if (id != 1) {
+            Coordinates position = StateManager::get_duck_coordinates(duck);
+            Gamestate initial_duck_coordinates(
+                id,
+                position.pos_X,
+                position.pos_Y,
+                0,
+                0,
+                0,
+                1,
+                StateManager::get_duck_is_alive(duck),
+                0.0f
+            );
+            broadcast_for_all_players(initial_duck_coordinates);
+        }   
     }
+}
 
+void Gameplay::process_users_commands() {
+    Gameaction command;
+    while (user_commands.try_pop(command)) {
+        StateManager::update_duck_state(ducks_by_id.at(command.player_id), command);
+        Gamestate update = StateManager::get_duck_state(ducks_by_id.at(command.player_id), command.player_id);
+        broadcast_for_all_players(update);
+    }
 }
 
 void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
@@ -64,42 +78,36 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
         Coordinates before_coordinates = StateManager::get_duck_coordinates(duck);
         duck.update_position(frame_delta);
         Coordinates after_coordinates = StateManager::get_duck_coordinates(duck);
-        if (not terrain.is_duck_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y)) {
-            duck.set_position(before_coordinates.pos_X, before_coordinates.pos_Y);
-            duck.set_is_on_the_floor();
+        terrain.adjust_position_for_collisions(duck, before_coordinates, after_coordinates);
+        Coordinates updated_position = StateManager::get_duck_coordinates(duck);
+        if ((id == 1) and ((updated_position.pos_Y != after_coordinates.pos_Y) or (updated_position.pos_X != after_coordinates.pos_X)))
+        {
+            std::cout << "x: " << updated_position.pos_X << " y: " << updated_position.pos_Y << "\n";
         }
-        else {
-            duck.set_is_NOT_on_the_floor();
-        }
-        positions_by_id.insert({id, StateManager::get_duck_coordinates(duck)});
+        positions_by_id.insert({id, updated_position});
     }
     Gamestate update(positions_by_id);
-    players.broadcast(update);
-    // std::cout << "x: " << positions_by_id.at(1).pos_X << " y: " << positions_by_id.at(1).pos_Y << "\n";
+    broadcast_for_all_players(update);
 }
 
 void Gameplay::run() {
     try
     {
-        primera_caida = true;
-        ya_entro_cliente = false;
         is_running.store(true);
         auto prev_time = std::chrono::steady_clock::now();
         send_all_initial_coordinates();
         while (is_running.load()) {
-            if (not ya_entro_cliente)
-                send_all_initial_coordinates();
             auto current_time = std::chrono::steady_clock::now();
-            process_users_commands();
             auto frame_delta = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - prev_time).count();
             prev_time = current_time;
+            process_users_commands();
             send_ducks_positions_updates(frame_delta);
-            std::this_thread::sleep_for(std::chrono::milliseconds(16)); // Maso 60 FPS
+            std::this_thread::sleep_for(std::chrono::milliseconds(16));
         }
     }
     catch (ClosedQueue const& e)
     {
-        std::cerr << "Se cerró la queue del juego?! " << e.what() << '\n';
+        std::cerr << "A queue was closed whilst in gameloop " << e.what() << '\n';
         is_running.store(false);
     }
     catch (const std::exception& e)

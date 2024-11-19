@@ -7,11 +7,12 @@
 
 
 Player::Player(Socket&& skt, Queue<Gameaction>& usr_entr):
+        id(1),
         server_messages(usr_entr),
         client_is_connected(false),
         protocol(std::move(skt), client_is_connected),
         sender(client_is_connected, protocol, messages_queue),
-        receiver(client_is_connected, protocol, server_messages) {}
+        receiver(id, client_is_connected, protocol, server_messages) {}
 
 void Player::start() {
     try {
@@ -35,6 +36,11 @@ void Player::add_message_to_queue(const Gamestate& to_send) {
 }
 
 bool Player::is_connected() { return client_is_connected.load(); }
+
+bool Player::matches(int) const
+{
+    return true;
+}
 
 void Player::disconnect() {
     client_is_connected.store(false);
