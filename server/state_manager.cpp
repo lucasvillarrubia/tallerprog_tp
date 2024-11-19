@@ -49,17 +49,17 @@ void StateManager::update_duck_state(Duck& duck, const Gameaction& event)
             {
                 duck.is_jumping = true;
                 duck.is_on_the_floor = false;          
-                // duck.is_flapping = true;
+                duck.is_flapping = true;
                 duck.jump_velocity = JUMP_STRENGTH;
             }
-            // else if (duck.is_jumping && duck.jump_velocity < 0) {
-            //     duck.is_flapping = true;
-            //     duck.jump_velocity = FLAP_STRENGTH;
-            // }
-            // if (!duck.is_flapping && duck.jump_velocity < 0) {
-            //     duck.is_flapping = true;
-            //     duck.jump_velocity = FLAP_STRENGTH;
-            // }
+             else if (duck.is_jumping && duck.jump_velocity < 0) {
+                 duck.is_flapping = true;
+                 duck.jump_velocity = FLAP_STRENGTH;
+             }
+             if (!duck.is_flapping && duck.jump_velocity < 0) {
+                 duck.is_flapping = true;
+                 duck.jump_velocity = FLAP_STRENGTH;
+             }
             break;
         }
     } else if (event.type == KEYUP) {
