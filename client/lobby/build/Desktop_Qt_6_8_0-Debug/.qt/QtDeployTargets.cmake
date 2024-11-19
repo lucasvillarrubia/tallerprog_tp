@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_duck_game_lobby_FILE /home/lucas/duck_game_lobby/build/Desktop_Qt_6_8_0-Debug/duck_game_lobby)
+set(__QT_DEPLOY_TARGET_duck_game_lobby_TYPE EXECUTABLE)

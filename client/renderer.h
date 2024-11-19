@@ -16,8 +16,10 @@ class Renderer
 private:
     
     std::atomic_bool& connected;
-    SDL2pp::Window& window;
-    SDL2pp::Renderer& renderer;
+    SDL2pp::Window window;
+    // SDL2pp::Window& window;
+    SDL2pp::Renderer renderer;
+    // SDL2pp::Renderer& renderer;
     Queue<Gamestate>& updates_feed;
     StateManager& state;
     TextureManager textureManager;
@@ -25,7 +27,7 @@ private:
 
     
 public:
-    Renderer(std::atomic_bool&, SDL2pp::Window&, SDL2pp::Renderer&, Queue<Gamestate>&, StateManager&);
+    Renderer(std::atomic_bool&, Queue<Gamestate>&, StateManager&);
     
     float get_zoom_factor() const { return zoom_factor; }
     void set_zoom_factor(float new_zoom_factor) { zoom_factor = new_zoom_factor; }

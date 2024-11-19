@@ -1,9 +1,9 @@
 #ifndef EVENT_LISTENER_H
 #define EVENT_LISTENER_H
 
-
+#include <atomic>
 #include <map>
-#include <SDL_events.h>
+#include <SDL2/SDL_events.h>
 #include <SDL_keycode.h>
 
 #include "common/gamedata.h"
@@ -21,6 +21,9 @@ private:
         {SDL_QUIT, 1},
         {SDL_KEYDOWN, 2},
         {SDL_KEYUP, 3}
+        // 4 para crear partida
+        // 5 para unirse a partida
+        // 6 para comenzar partida
     };
     std::map<SDL_Keycode, int> codes_by_key = {
         {SDLK_ESCAPE, 9},

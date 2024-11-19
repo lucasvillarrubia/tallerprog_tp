@@ -19,7 +19,7 @@ private:
     MonitoredList<Player*>& players;
     Queue<Gameaction>& user_commands;
     std::map<int, Duck> ducks_by_id;
-    bool ya_entro_cliente;
+    // bool ya_entro_cliente;
     bool primera_caida;
     Terrain terrain;
     // Duck duck;

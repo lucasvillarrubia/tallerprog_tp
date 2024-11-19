@@ -20,7 +20,18 @@ const int DUCK_SPRITE_HEIGHT = 64;
 const int DUCK_MOVEMENT_SPRITES_LINE = 0;
 
 
-Renderer::Renderer(std::atomic_bool& con_stat, SDL2pp::Window& w, SDL2pp::Renderer& r, Queue<Gamestate>& q, StateManager& s): connected(con_stat), window(w), renderer(r), updates_feed(q), state(s), textureManager(r) {}
+// Renderer::Renderer(std::atomic_bool& con_stat, SDL2pp::Window& w, SDL2pp::Renderer& r, Queue<Gamestate>& q, StateManager& s): connected(con_stat), window(w), renderer(r), updates_feed(q), state(s) {}
+Renderer::Renderer(std::atomic_bool& con_stat, Queue<Gamestate>& q, StateManager& s):
+        connected(con_stat),
+        window("Duck Game",
+            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+            640, 480,
+            SDL_WINDOW_RESIZABLE),
+        renderer(window, -1, SDL_RENDERER_ACCELERATED),
+        updates_feed(q),
+        textureManager(r),
+        state(s) {}
+
 
 
 void Renderer::draw_character(Character& character, int frame, const float zoom_offset_x, const float zoom_offset_y)

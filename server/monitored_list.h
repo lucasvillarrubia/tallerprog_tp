@@ -22,7 +22,7 @@ class MonitoredList {
 private:
     std::list<T> list;
     //std::list<Player*> list;
-    std::mutex mtx;
+    mutable std::mutex mtx;
 
 public:
     //MonitoredList();
@@ -43,16 +43,32 @@ public:
 
     MonitoredList() = default;
 
+    // method that acceses the first element of the list
+    T front() {
+        std::unique_lock<std::mutex> lck(mtx);
+        return list.front();
+    }
+
     void push_back(T player) {
         std::unique_lock<std::mutex> lck(mtx);
         list.push_back(player);
     }
 
     void for_each(std::function<void(T&)> func) {
-        std::lock_guard<std::mutex> lock(mtx);
+        std::unique_lock<std::mutex> lck(mtx);
         for (auto& gameobject : list) {
             func(gameobject);
         }
+    }
+
+    T get_by_id(int id) {
+        std::unique_lock<std::mutex> lck(mtx);
+        for (auto& gameobject : list) {
+            if (gameobject->matches(id)) {
+                return gameobject;
+            }
+        }
+        return nullptr;
     }
 
     void broadcast(const Gamestate& announce) {
@@ -62,9 +78,25 @@ public:
         }
     }
 
-    MonitoredList select_if()
-    {
-        return {};
+    T select_one_if(std::function<bool(const T&)> predicate) {
+        std::unique_lock<std::mutex> lck(mtx);
+        for (const auto& item : list) {
+            if (predicate(item)) {
+                return item;
+            }
+        }
+        return nullptr;
+    }
+
+    MonitoredList select_if(std::function<bool(const T&)> predicate) {
+        MonitoredList<T> result;
+        std::unique_lock<std::mutex> lck(mtx);
+        for (const auto& item : list) {
+            if (predicate(item)) {
+                result.push_back(item);
+            }
+        }
+        return result;
     }
 
     void clean_up() {
@@ -79,6 +111,11 @@ public:
         });
     }
 
+    void remove_if(std::function<bool(const T&)> predicate) {
+        std::unique_lock<std::mutex> lck(mtx);
+        list.remove_if(predicate);
+    }
+
     void clear() {
         std::unique_lock<std::mutex> lck(mtx);
         for (auto player: list) {
@@ -89,13 +126,15 @@ public:
 
     int size()
     {
+        std::unique_lock<std::mutex> lck(mtx);
         return list.size();
     }
 
-    bool contains(int player)
+    bool contains(int player) const
     {
+        std::unique_lock<std::mutex> lck(mtx);
         for (auto gameobject: list) {
-            if (gameobject.matches(player))
+            if (gameobject->matches(player))
                 return true;
         }
         return false;
