@@ -3,17 +3,16 @@
 
 #include <cmath>
 #include "ammo.h"
-#include "coordinates.h"
+#include "common/coordinates.h"
 
 class DuelPistolAmmo : public Ammo {
 private:
 	float damagePoints;
-	float scope;
 public:
 	DuelPistolAmmo(float x, float y, bool right);
-	DuelPistolAmmo();
-	void updatePosition(const unsigned int frame_delta);
-	float impact();
+	void update_position(const unsigned int frame_delta) override;
+	bool is_destroyed() override;
+	float impact() override;
 };
 
 #endif

@@ -1,14 +1,21 @@
 #include "CowboyPistol.h"
 
-CowboyPistol::CowboyPistol(float x, float y): Gun(x,y), ammo(6) {}
+CowboyPistol::CowboyPistol(float x, float y): Gun(x,y,32,32,7), ammo(6) {}
 
-CowboyPistolAmmo CowboyPistol::shoot() {
-	if (!shooting && pickedUp && (ammo > 0)) {
+bool CowboyPistol::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
+	if (!shooting && (ammo > 0)) {
 		int dir = rightDirection ? 36 : -12;
 		shooting = true;
 		ammo--;
-		return CowboyPistolAmmo(positionX+dir, positionY, rightDirection);
+		id++;
+		bullets.push_back(std::make_pair(id, new CowboyPistolAmmo(positionX+dir, positionY, rightDirection)));
+		return true;
 	}
-	return CowboyPistolAmmo();
+	return false;
 }
 
+bool CowboyPistol::is_duck_position_valid(float x, float y)
+{
+    Rectangulo character(x, y, 64.0f, 64.0f);
+    return hitbox.hay_colision(character);
+}

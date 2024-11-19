@@ -1,6 +1,9 @@
 #ifndef COWBOYPISTOL_H
 #define COWBOYPISTOL_H
 
+#include <list>
+#include <utility>
+
 #include "gun.h"
 #include "common/coordinates.h"
 #include "CowboyPistolAmmo.h"
@@ -10,7 +13,8 @@ private:
 	int ammo;
 public:
 	CowboyPistol(float x, float y);
-	CowboyPistolAmmo shoot();
+	bool is_duck_position_valid(float x, float y);
+	bool shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) override;
 };
 
 #endif

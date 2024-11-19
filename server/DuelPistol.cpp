@@ -1,14 +1,22 @@
 #include "DuelPistol.h"
 
-DuelPistol::DuelPistol(float x, float y): Gun(x,y), ammo(1) {}
+DuelPistol::DuelPistol(float x, float y): Gun(x,y,32,32,6), ammo(1) {}
 
-DuelPistolAmmo DuelPistol::shoot() {
-	if (!shooting && pickedUp && (ammo > 0)) {
+bool DuelPistol::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
+	if (!shooting && (ammo > 0)) {
 		int dir = rightDirection ? 36 : -12;
 		shooting = true;
 		ammo--;
-		return DuelPistolAmmo(positionX+dir, positionY, rightDirection);
+		id++;
+		bullets.push_back(std::make_pair(id, new DuelPistolAmmo(positionX+dir, positionY, rightDirection)));
+		return true;
+		
 	}
-	return DuelPistolAmmo();
+	return false;
 }
 
+bool DuelPistol::is_duck_position_valid(float x, float y)
+{
+    Rectangulo character(x, y, 64.0f, 64.0f);
+    return hitbox.hay_colision(character);
+}

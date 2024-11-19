@@ -19,6 +19,7 @@ private:
     bool moving_right;
     bool is_on_the_floor;
     float jump_velocity;
+    int gun_id;
 public:
     // esto para el primer intento nomás
     // bool exited = false;
@@ -39,10 +40,11 @@ public:
     // int get_movement_phase () const;
     bool wants_to_grab();
     bool have_a_gun();
-    void pickup_gun();
+    void pickup_gun(int _gun_id);
     void stop_grab();
     void drop_gun();
     bool shooting();
+    int get_gun_id() const;
     friend class StateManager;
 };
 

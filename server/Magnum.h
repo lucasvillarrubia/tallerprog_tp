@@ -16,8 +16,7 @@ private:
 public:
 	Magnum(float x, float y);
 	bool is_duck_position_valid(float x, float y);
-	//MagnumAmmo shoot();
-	bool shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets);
+	bool shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) override;
 };
 
 #endif

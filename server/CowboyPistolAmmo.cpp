@@ -1,12 +1,8 @@
 #include "CowboyPistolAmmo.h"
 
-CowboyPistolAmmo::CowboyPistolAmmo(float x, float y, bool right) : Ammo(x,y,right), damagePoints(7), scope(20*16) {}
+CowboyPistolAmmo::CowboyPistolAmmo(float x, float y, bool right) : Ammo(x,y,right, 7, 20*16), damagePoints(7) {}
 
-CowboyPistolAmmo::CowboyPistolAmmo() :  Ammo(0, 0, true), damagePoints(7), scope(20) {
-	destroyed = true;
-}
-
-void CowboyPistolAmmo::updatePosition(const unsigned int frame_delta)  {
+void CowboyPistolAmmo::update_position(const unsigned int frame_delta)  {
 	if (!destroyed){
 		if (movingRight) {
 			positionX += frame_delta * 0.3;
@@ -17,6 +13,10 @@ void CowboyPistolAmmo::updatePosition(const unsigned int frame_delta)  {
 			destroyed = true;
 		}
 	}
+}
+
+bool CowboyPistolAmmo::is_destroyed() {
+	return this->destroyed;
 }
 
 float CowboyPistolAmmo::impact() {

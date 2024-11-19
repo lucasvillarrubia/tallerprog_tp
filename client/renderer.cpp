@@ -42,9 +42,31 @@ void Renderer::draw_character(SDL2pp::Texture& sprites, Character& character, in
 void Renderer::draw_gun(SDL2pp::Texture& sprites, Gun& gun) {
 	int vcenter = renderer.GetOutputHeight();
     SDL_RendererFlip flip = gun.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
-    SDL_Rect src_rect = { 1, 47, 32, 32 };
-    SDL_Rect dst_rect = { static_cast<int>(gun.pos_X), static_cast<int>(vcenter - 47 - gun.pos_Y), 48, 48 };
+    SDL_Rect src_rect = search_sprite(gun.type);
+    SDL_Rect dst_rect = search_dimension_sprite(vcenter, gun);
     SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+}
+
+SDL_Rect Renderer::search_sprite(const int type) {
+	switch (type) {
+		case 6:
+			return {75, 152, 32, 32};
+		case 7:
+			return {1, 20, 22, 11};
+		default:
+			return {1, 47, 32, 32};
+	}
+}
+
+SDL_Rect Renderer::search_dimension_sprite(int vcenter, Gun& gun) {
+	switch (gun.type) {
+		case 6:
+			return { static_cast<int>(gun.pos_X), static_cast<int>(vcenter - 47 - gun.pos_Y), 64, 64 };
+		case 7:
+			return { static_cast<int>(gun.pos_X), static_cast<int>(vcenter - 47 - gun.pos_Y), 44, 22 };
+		default:
+			return { static_cast<int>(gun.pos_X), static_cast<int>(vcenter - 47 - gun.pos_Y), 64, 64 };
+	}
 }
 
 void Renderer::draw_bullet(SDL2pp::Texture& sprites, Bullet& bullet) {

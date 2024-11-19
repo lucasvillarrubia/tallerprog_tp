@@ -1,12 +1,9 @@
 #include "DuelPistolAmmo.h"
 
-DuelPistolAmmo::DuelPistolAmmo(float x, float y, bool right) : Ammo(x,y,right), damagePoints(10), scope(5*16) {}
+DuelPistolAmmo::DuelPistolAmmo(float x, float y, bool right) : Ammo(x,y,right, 6, 5*16), damagePoints(10) {}
 
-DuelPistolAmmo::DuelPistolAmmo() :  Ammo(0, 0, true), damagePoints(10), scope(20) {
-	destroyed = true;
-}
 
-void DuelPistolAmmo::updatePosition(const unsigned int frame_delta)  {
+void DuelPistolAmmo::update_position(const unsigned int frame_delta)  {
 	if (!destroyed){
 		if (movingRight) {
 			positionX += frame_delta * 0.3;
@@ -17,6 +14,10 @@ void DuelPistolAmmo::updatePosition(const unsigned int frame_delta)  {
 			destroyed = true;
 		}
 	}
+}
+
+bool DuelPistolAmmo::is_destroyed() {
+	return this->destroyed;
 }
 
 float DuelPistolAmmo::impact() {

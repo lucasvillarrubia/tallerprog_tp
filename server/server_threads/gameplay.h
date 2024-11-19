@@ -14,6 +14,8 @@
 #include "server/gun.h"
 #include "server/ammo.h"
 #include "server/Magnum.h"
+#include "server/DuelPistol.h"
+#include "server/CowboyPistol.h"
 
 class Gameplay: public Thread
 {
@@ -25,10 +27,10 @@ private:
     bool ya_entro_cliente;
     bool primera_caida;
     Terrain terrain;
-    Magnum* gun;
+    //Magnum* gun;
     std::list<std::pair<int,Ammo*>> bullets;
     int balas_disparadas;
-    //std::map<int, Gun> guns
+    std::map<int, Gun*> guns;
     // Duck duck;
     void process_users_commands();
     void initialize_players();

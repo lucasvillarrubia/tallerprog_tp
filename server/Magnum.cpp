@@ -2,17 +2,7 @@
 
 #include "ammo.h"
 
-Magnum::Magnum(float x, float y): Gun(x,y,32,32, 8), ammo(60) {}
-/*
-MagnumAmmo Magnum::shoot() {
-	if (!shooting && pickedUp && (ammo > 0)) {
-		int dir = rightDirection ? 36 : -12;
-		shooting = true;
-		ammo--;
-		return MagnumAmmo(positionX+dir, positionY, rightDirection);
-	}
-	return MagnumAmmo();
-}*/
+Magnum::Magnum(float x, float y): Gun(x,y,32,32, 8), ammo(6) {}
 
 bool Magnum::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
 	if (!shooting && (ammo > 0)) {

@@ -27,7 +27,8 @@ Duck::Duck():
     	with_helmet(false),
         moving_right(true),
         is_on_the_floor(false),
-        jump_velocity(0.0f){}
+        jump_velocity(0.0f),
+        gun_id(0){}
 
 void Duck::update_position(unsigned int frame_delta)
 {
@@ -84,7 +85,8 @@ bool Duck::have_a_gun() {
 	return with_gun;
 }
 
-void Duck::pickup_gun() {
+void Duck::pickup_gun(int _gun_id) {
+	gun_id = _gun_id;
 	with_gun = true;
 }
 
@@ -93,9 +95,14 @@ void Duck::stop_grab() {
 }
 
 void Duck::drop_gun() {
+	gun_id = 0;
 	with_gun = false;
 }
 
 bool Duck::shooting() {
 	return is_shooting;
+}
+
+int Duck::get_gun_id() const{
+	return gun_id;
 }

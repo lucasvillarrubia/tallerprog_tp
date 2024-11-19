@@ -11,7 +11,6 @@ private:
 	//float scope;
 public:
 	MagnumAmmo(float x, float y, bool right);
-	//MagnumAmmo();
 	void update_position(const unsigned int frame_delta) override;
 	bool is_destroyed() override;
 	float impact() override;

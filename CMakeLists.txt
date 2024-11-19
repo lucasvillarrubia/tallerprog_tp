@@ -178,6 +178,14 @@ if(TALLER_SERVER)
             server/gun.cpp
             server/ammo.h
             server/ammo.cpp
+            server/DuelPistol.h
+            server/DuelPistol.cpp
+            server/DuelPistolAmmo.h
+            server/DuelPistolAmmo.cpp
+            server/CowboyPistol.h
+            server/CowboyPistol.cpp
+            server/CowboyPistolAmmo.h
+            server/CowboyPistolAmmo.cpp
             server/Magnum.h
             server/Magnum.cpp
             server/MagnumAmmo.h
