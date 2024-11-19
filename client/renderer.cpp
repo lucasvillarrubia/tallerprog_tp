@@ -22,6 +22,8 @@ Renderer::Renderer(std::atomic_bool& con_stat, SDL2pp::Window& w, SDL2pp::Render
 	background(renderer, "resources/fondo.png"),
 	duck_surface("resources/Duck.png"),
     duck_sprites(renderer, duck_surface),
+    ak_47_surface("resources/ak47.png"),
+    ak_47_sprites(renderer, ak_47_surface),
     pistol_surface("resources/PC Computer - Duck Game - Pistol.png"),
     pistol_sprites(renderer, pistol_surface) {
 	
@@ -39,16 +41,45 @@ void Renderer::draw_character(SDL2pp::Texture& sprites, Character& character, in
 }
 
 
-void Renderer::draw_gun(SDL2pp::Texture& sprites, Gun& gun) {
+void Renderer::draw_gun(Gun& gun) {
+	//int vcenter = renderer.GetOutputHeight();
+    //SDL_RendererFlip flip = gun.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+    switch (gun.type) {
+    	case 5:
+    		draw_ak_47(gun);
+    		break;
+    	default:
+    		draw_pistol(gun);
+    		break;
+    }
+    //SDL2pp::Texture sprite = search_texture(gun.type);
+    //SDL_Rect src_rect = search_sprite(gun.type);
+    //SDL_Rect dst_rect = search_dimension_sprite(vcenter, gun);
+    //SDL_RenderCopyEx(renderer.Get(), sprite.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+}
+
+void Renderer::draw_ak_47(Gun& gun) {
 	int vcenter = renderer.GetOutputHeight();
-    SDL_RendererFlip flip = gun.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+	SDL_RendererFlip flip = gun.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
     SDL_Rect src_rect = search_sprite(gun.type);
     SDL_Rect dst_rect = search_dimension_sprite(vcenter, gun);
-    SDL_RenderCopyEx(renderer.Get(), sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+    SDL_RenderCopyEx(renderer.Get(), ak_47_sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+	
+}
+
+void Renderer::draw_pistol(Gun& gun) {
+	int vcenter = renderer.GetOutputHeight();
+	SDL_RendererFlip flip = gun.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+    SDL_Rect src_rect = search_sprite(gun.type);
+    SDL_Rect dst_rect = search_dimension_sprite(vcenter, gun);
+    SDL_RenderCopyEx(renderer.Get(), pistol_sprites.Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+	
 }
 
 SDL_Rect Renderer::search_sprite(const int type) {
 	switch (type) {
+		case 5:
+			return {0, 0, 32, 32};
 		case 6:
 			return {75, 152, 32, 32};
 		case 7:
@@ -58,8 +89,11 @@ SDL_Rect Renderer::search_sprite(const int type) {
 	}
 }
 
+
 SDL_Rect Renderer::search_dimension_sprite(int vcenter, Gun& gun) {
 	switch (gun.type) {
+		case 5:
+			return { static_cast<int>(gun.pos_X), static_cast<int>(vcenter - 47 - gun.pos_Y), 64, 64 };
 		case 6:
 			return { static_cast<int>(gun.pos_X), static_cast<int>(vcenter - 47 - gun.pos_Y), 64, 64 };
 		case 7:
@@ -103,7 +137,7 @@ void Renderer::run(int frame) {
             draw_character(duck_sprites, character, frame);
         }
         for (auto& gun : gun_list) {
-        	draw_gun(pistol_sprites, gun);
+        	draw_gun(gun);
         }
         for (auto& bullet : bullet_list) {
         	//std::cout<<std::to_string(bullet.id)<<std::endl;

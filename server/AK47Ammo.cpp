@@ -1,12 +1,8 @@
 #include "AK47Ammo.h"
 
-AK47Ammo::AK47Ammo(float x, float y, bool right) : Ammo(x,y,right), damagePoints(10), scope(13*16) {}
+AK47Ammo::AK47Ammo(float x, float y, bool right) : Ammo(x,y,right,5,13*16), damagePoints(10), scope(13*16) {}
 
-AK47Ammo::AK47Ammo() :  Ammo(0, 0, true), damagePoints(10), scope(20) {
-	destroyed = true;
-}
-
-void AK47Ammo::updatePosition(const unsigned int frame_delta)  {
+void AK47Ammo::update_position(const unsigned int frame_delta)  {
 	if (!destroyed){
 		if (movingRight) {
 			positionX += frame_delta * 0.4;
@@ -24,3 +20,6 @@ float AK47Ammo::impact() {
 	return damagePoints;
 }
 
+bool AK47Ammo::is_destroyed() {
+	return destroyed;
+}

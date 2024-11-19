@@ -28,7 +28,8 @@ private:
 	//SDL2pp::Texture banana_sprites;
 	//SDL2pp::Texture pew_pew_lase_sprites;
 	//SDL2pp::Texture laser_rifle_sprites;
-	//SDL2pp::Texture ak_47_sprites;
+	SDL2pp::Surface ak_47_surface;
+	SDL2pp::Texture ak_47_sprites;
 	//SDL2pp::Texture duel_pistol_sprites;
 	//SDL2pp::Texture cowboy_pistol_sprites;
 	SDL2pp::Surface pistol_surface;
@@ -41,7 +42,9 @@ private:
 public:
     Renderer(std::atomic_bool&, SDL2pp::Window&, SDL2pp::Renderer&, Queue<Gamestate>&, StateManager&);
     void draw_character(SDL2pp::Texture&, Character&, int);
-    void draw_gun(SDL2pp::Texture& sprites, Gun& gun);
+    void draw_gun(Gun& gun);
+    void draw_ak_47(Gun& gun);
+    void draw_pistol(Gun& gun);
     SDL_Rect search_sprite(const int type);
     SDL_Rect search_dimension_sprite(int vcenter, Gun& gun);
     void draw_bullet(SDL2pp::Texture& sprites, Bullet& bullet);

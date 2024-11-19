@@ -3,7 +3,7 @@
 
 #include <cmath>
 #include "ammo.h"
-#include "coordinates.h"
+#include "common/coordinates.h"
 
 class AK47Ammo : public Ammo {
 private:
@@ -11,9 +11,9 @@ private:
 	float scope;
 public:
 	AK47Ammo(float x, float y, bool right);
-	AK47Ammo();
-	void updatePosition(const unsigned int frame_delta);
-	float impact();
+	void update_position(const unsigned int frame_delta) override;
+	float impact() override;
+	bool is_destroyed() override;
 };
 
 #endif

@@ -17,6 +17,7 @@ Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_c
     guns.insert({1, new Magnum(125.0f, 50.0f)});
     guns.insert({2, new DuelPistol(180.0f, 50.0f)});
     guns.insert({3, new CowboyPistol(245.0f, 50.0f)});
+    guns.insert({4, new AK47(300.0f, 50.0f)});
     balas_disparadas = 0;
 }
 

@@ -14,11 +14,6 @@ bool Gun::isShooting() {
 
 bool Gun::shoot([[maybe_unused]] int& id, [[maybe_unused]] std::list<std::pair<int, Ammo*>>& bullets) {
 	std::cout<<"disparo desde gun"<<std::endl;
-	/*if (!shooting) {
-		shooting = true;
-		bullets.push_back(std::make_pair(id, new Ammo(positionX, positionY, rightDirection, 0, 0)));
-		return true;
-	}*/
 	return false;
 }
 

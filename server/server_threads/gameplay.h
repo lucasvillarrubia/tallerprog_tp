@@ -16,6 +16,7 @@
 #include "server/Magnum.h"
 #include "server/DuelPistol.h"
 #include "server/CowboyPistol.h"
+#include "server/AK47.h"
 
 class Gameplay: public Thread
 {

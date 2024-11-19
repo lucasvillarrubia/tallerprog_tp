@@ -189,7 +189,11 @@ if(TALLER_SERVER)
             server/Magnum.h
             server/Magnum.cpp
             server/MagnumAmmo.h
-            server/MagnumAmmo.cpp)
+            server/MagnumAmmo.cpp
+			server/AK47.h
+            server/AK47.cpp
+			server/AK47Ammo.h
+			server/AK47Ammo.cpp)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)
