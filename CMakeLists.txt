@@ -10,7 +10,7 @@ endif()
 
 # strongly encouraged to enable this globally to avoid conflicts between
 # -Wpedantic being enabled and -std=c++20 and -std=gnu++20 for example
-# when compiling with PCH enabled
+# when compiling with PCH enableD
 set(CMAKE_CXX_EXTENSIONS ON)
 
 project(taller_tp
@@ -26,6 +26,16 @@ option(TALLER_EDITOR "Enable / disable editor program." ON)
 option(TALLER_MAKE_WARNINGS_AS_ERRORS "Enable / disable warnings as errors." ON)
 
 message(CMAKE_CXX_COMPILER_ID="${CMAKE_CXX_COMPILER_ID}")
+
+# Dependencia de yaml-cpp
+include(FetchContent)
+FetchContent_Declare(
+    yaml-cpp
+    GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
+    GIT_TAG master  # O usa una versión específica, como `yaml-cpp-0.7.0`
+)
+FetchContent_MakeAvailable(yaml-cpp)
+
 
 # Define target: lib common between client, server and editor programs
 # HEY TODO XXX: change the name to something that you like
@@ -50,6 +60,8 @@ add_library(taller_common STATIC
         common/comms/protocol.cpp
         common/comms/protocol.h
         common/gamedata.h
+        common/rectangulo.h
+        common/coordinates.h
 )
 
 # add the source files that make the lib
@@ -84,6 +96,25 @@ endif()
 # Program section
 # ---------------
 if(TALLER_CLIENT)
+    ## lobby!
+    if(NOT DEFINED QT_VERSION_MAJOR)
+        set(QT_VERSION_MAJOR 6)
+    endif()
+
+    find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+
+    # set_target_properties(taller_client PROPERTIES
+    #     AUTOMOC ON
+    #     AUTORCC ON
+    #     AUTOUIC ON
+    # )
+    set(CMAKE_AUTOUIC ON)
+    set(CMAKE_AUTOMOC ON)
+    set(CMAKE_AUTORCC ON)
+
+    # find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
+    # find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+
     # HEY!! TODO XXX: Change the name of the executable to the one you like!
     # TODO: Hay que mover estos paths al cmake que está en "client/", por ahora están acá porque el CLion los crea rápido!
     add_executable(taller_client
@@ -94,19 +125,26 @@ if(TALLER_CLIENT)
             client/client_comms/client_receiver.h
             client/client.cpp
             client/client_comms/client_protocol.cpp
-            client/client_threads/renderer.h
+            client/renderer.h
             client/client_threads/event_listener.h
             client/local_player.h
             client/local_player.cpp
             client/client_comms/client_sender.cpp
             client/client_comms/client_receiver.cpp
-            client/client_threads/renderer.cpp
+            client/renderer.cpp
             client/client_threads/event_listener.cpp
             client/character.cpp
             client/character.h
+            client/mapa.h
             client/state_manager.cpp
+            client/texture_manager.h
             client/state_manager.h
-            client/coordinates.h)
+            client/client_threads/updater.cpp
+            client/client_threads/updater.h
+            client/lobby/lobby.cpp
+            client/lobby/lobby.h
+            client/lobby/lobby.ui
+    )
 
     # Make them depend on taller_common lib
     add_dependencies(taller_client taller_common SDL2pp::SDL2pp)
@@ -114,6 +152,7 @@ if(TALLER_CLIENT)
     # Add source files and enable warnings
     # HEY!! TODO XXX: add more subfolders here
     add_subdirectory(client)
+    # add_subdirectory(client/lobby)
 
     set_project_warnings(taller_client ${TALLER_MAKE_WARNINGS_AS_ERRORS} FALSE)
 
@@ -121,7 +160,14 @@ if(TALLER_CLIENT)
     target_include_directories(taller_client PRIVATE ${libSDL2pp_SOURCE_DIR})
 
     # Link the taller_common lib target
-    target_link_libraries(taller_client taller_common SDL2pp::SDL2pp)
+    target_link_libraries(
+        taller_client
+        taller_common
+        SDL2pp::SDL2pp
+        Qt${QT_VERSION_MAJOR}::Core
+        Qt${QT_VERSION_MAJOR}::Widgets
+        yaml-cpp
+    )
 
     # Creo que estoy agregando la carpeta de imágenes acá
     add_custom_target(copy_resources ALL
@@ -150,14 +196,24 @@ if(TALLER_SERVER)
             server/weapon.h
             server/server_threads/acceptor.cpp
             server/server_threads/gameplay.cpp
-            server/monitored_list.cpp
+            # server/monitored_list.cpp
             server/player.cpp
             server/server_comms/server_protocol.cpp
             server/server_comms/server_receiver.cpp
             server/server_comms/server_sender.cpp
             server/server.cpp
             server/server_threads/cleaner.cpp
-            server/server_threads/cleaner.h)
+            server/server_threads/cleaner.h
+            server/duck.cpp
+            server/duck.h
+            server/state_manager.cpp
+            server/state_manager.h
+            server/server_threads/match_manager.cpp
+            server/server_threads/match_manager.h
+            server/match.cpp
+            server/match.h
+            server/terrain.cpp
+            server/terrain.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)
@@ -169,7 +225,7 @@ if(TALLER_SERVER)
     set_project_warnings(taller_server ${TALLER_MAKE_WARNINGS_AS_ERRORS} FALSE)
 
     # Link the taller_common lib target
-    target_link_libraries(taller_server taller_common)
+    target_link_libraries(taller_server taller_common yaml-cpp)
 endif()
 
 if(TALLER_EDITOR)
@@ -191,6 +247,7 @@ if(TALLER_EDITOR)
     # Link the taller_common lib target
     target_link_libraries(taller_editor taller_common SDL2pp::SDL2pp)
 endif()
+
 
 
 # Testing section

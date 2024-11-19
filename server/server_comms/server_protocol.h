@@ -6,19 +6,16 @@
 #include "common/hands_on_sockets/socket.h"
 
 
-// Clase de protocolo de servidor. Pensada para ser de un único cliente.
-// Maneja (y posee) el Socket en el que se comparten los enviós
-// y recibimientos (con los dos streams que tiene el Socket).
-// Es compartido por el Sender y el Receiver!
-// RAII: no permite copia.
-
-
 class ServerProtocol: public Protocol
 {
+private:
+    void send_single_duck_position_message(int, const Coordinates&);
 public:
     ServerProtocol(Socket&&, std::atomic_bool&);
-    void send_message(const Gamedata&) override;
-    Gamedata receive_message() override;
+    void send_init_duck_message(const Gamestate&);
+    void send_ducks_positions_message(const Gamestate&);
+    void send_duck_state_message(const Gamestate&);
+    void receive_message(Gameaction&);
     ~ServerProtocol() override = default;
 };
 

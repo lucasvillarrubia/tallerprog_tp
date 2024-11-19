@@ -1,8 +1,29 @@
 #include "server_sender.h"
 
 
-ServerSender::ServerSender(ServerProtocol& srv_prot, std::atomic_bool& con_stat): Sender(con_stat), protocol(srv_prot) {}
+ServerSender::ServerSender(std::atomic_bool& con_stat, ServerProtocol& srv_prot, Queue<Gamestate>& q): Sender(con_stat), protocol(srv_prot), server_messages(q) {}
 
-void ServerSender::send_data() {}
+void ServerSender::send_data()
+{
+    Gamestate new_event = server_messages.pop();
+    if (client_is_connected.load())
+    {
+        switch (new_event.type)
+        {
+        case 1:
+            protocol.send_init_duck_message(new_event);
+            // std::cout << "se mandó que hay un pato inicializado\n";
+            break;
+        case 2:
+            protocol.send_ducks_positions_message(new_event);
+            // std::cout << "se mandó una lista de posiciones\n";
+            break;
+        default:
+            protocol.send_duck_state_message(new_event);
+            // std::cout << "se mandó una actualización de estado\n";
+            break;
+        }
+    }
+}
 
 

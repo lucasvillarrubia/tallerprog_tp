@@ -1,9 +1,9 @@
 #ifndef EVENT_LISTENER_H
 #define EVENT_LISTENER_H
 
-
+#include <atomic>
 #include <map>
-#include <SDL_events.h>
+#include <SDL2/SDL_events.h>
 #include <SDL_keycode.h>
 
 #include "common/gamedata.h"
@@ -11,29 +11,34 @@
 #include "common/hands_on_threads/thread.h"
 
 
-class EventListener: public Thread
+class EventListener
 {
 private:
-    std::atomic_bool is_running;
-    std::atomic_bool& game_on;
-    std::condition_variable& connection_ended;
+    std::atomic_bool& connected;
     Queue<Gameaction>& events;
     // Por lo que leí también se puede usar SDL_EventFilter
     std::map<Uint32, int> codes_by_event_type = {
         {SDL_QUIT, 1},
         {SDL_KEYDOWN, 2},
         {SDL_KEYUP, 3}
+        // 4 para crear partida
+        // 5 para unirse a partida
+        // 6 para comenzar partida
     };
     std::map<SDL_Keycode, int> codes_by_key = {
         {SDLK_ESCAPE, 9},
         {SDLK_RIGHT, 1},
+        // {SDLK_d, 1},
         {SDLK_LEFT, 2},
-        {SDLK_SPACE, 3}
+        // {SDLK_a, 2},
+        {SDLK_SPACE, 3},
+        // {SDLK_RETURN, 3}
     };
 public:
-    EventListener(std::atomic_bool&, std::condition_variable&, Queue<Gameaction>&);
-    void run() override;
-    ~EventListener() override = default;
+    EventListener(std::atomic_bool&, Queue<Gameaction>&);
+    void run();
+    void stop();
+    ~EventListener() = default;
 };
 
 
