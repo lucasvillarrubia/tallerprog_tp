@@ -135,6 +135,7 @@ if(TALLER_CLIENT)
             client/client_threads/event_listener.cpp
             client/character.cpp
             client/character.h
+            client/mapa.h
             client/state_manager.cpp
             client/texture_manager.h
             client/state_manager.h

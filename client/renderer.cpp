@@ -16,7 +16,7 @@
 #include <fstream>
 
 const int DUCK_SPRITE_WIDTH = 64;
-const int DUCK_SPRITE_HEIGHT = 64;
+const int DUCK_SPRITE_HEIGHT = 70;
 const int DUCK_MOVEMENT_SPRITES_LINE = 0;
 
 
@@ -177,14 +177,13 @@ void Renderer::render(int frame) {
 
         std::string fondoPath = get_fondo();
         SDL2pp::Texture background(renderer, fondoPath);
-        
+  
         Gamestate update;
         while (updates_feed.try_pop(update)) {
             state.update(update);
         }
 
         renderer.Clear();
-
         std::list<Character> character_list = state.get_characters_data();
         
         // CALCULO ZOOM Y POSICIONES
