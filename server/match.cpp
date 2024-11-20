@@ -39,7 +39,7 @@ bool Match::is_connected()
 
 void Match::disconnect()
 {
-    if (gameloop.is_alive())
-        gameloop.stop();
+    user_commands.close();
+    gameloop.stop();
     gameloop.join();
 }
