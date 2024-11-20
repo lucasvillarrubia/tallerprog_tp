@@ -33,6 +33,8 @@ private:
         // {SDLK_a, 2},
         {SDLK_SPACE, 3},
         // {SDLK_RETURN, 3}
+        {SDLK_g, 4},
+        {SDLK_f, 5}
     };
 public:
     EventListener(std::atomic_bool&, Queue<Gameaction>&);

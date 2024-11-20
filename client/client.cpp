@@ -55,7 +55,7 @@ void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono
         ++it;
     }
 }
-
+/*
 void Client::cargar_mapa(Mapa& mapa) {
     // Definir las plataformas y sus posiciones
     Rectangulo plataforma(120.0f, renderer.GetOutputHeight() - 50.0f, 400.0f, 50.0f);
@@ -81,7 +81,7 @@ void Client::cargar_mapa(Mapa& mapa) {
 
     // Asignar la textura base "piso" a todas las plataformas de tipo "piso"
     mapa.asignarTextura("piso", texturaPiso);
-}
+}*/
 
 void Client::run() {
     try

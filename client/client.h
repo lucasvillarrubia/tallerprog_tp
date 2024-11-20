@@ -39,7 +39,7 @@ private:
     void constant_rate_loop(std::function<void(int)>, std::chrono::milliseconds);
 public:
     Client(const char*, const char*);
-    void cargar_mapa(Mapa&);
+    //void cargar_mapa(Mapa&);
     void run();
     Client(const Client&) = delete;
     Client& operator=(const Client&) = delete;
