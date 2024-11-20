@@ -51,6 +51,55 @@ void ServerProtocol::send_duck_state_message(const Gamestate& message)
     send_single_8bit_int(message.is_alive);
 }
 
+
+void ServerProtocol::send_init_gun_message(const Gamestate& message) {
+	if (not client_is_connected.load()) return;
+	send_single_8bit_int(message.type);
+    send_single_8bit_int(message.object_id);
+    send_single_float(message.pos_X);
+    send_single_float(message.pos_Y);
+    send_single_8bit_int(message.type_gun);
+    send_single_8bit_int(message.move_direction);
+}
+void ServerProtocol::send_guns_positions_message(const Gamestate& message) {
+	if (not client_is_connected.load()) return;
+    send_single_8bit_int(message.type);
+    uint8_t positions_count = message.guns_positions_by_id.size();
+    send_single_8bit_int(positions_count);
+    for (auto& [id, gun_data] : message.guns_positions_by_id)
+    {
+    	send_single_8bit_int(id);
+        send_single_8bit_int(gun_data.first.type);
+        send_single_8bit_int(gun_data.first.right);
+    	send_single_float(gun_data.second.pos_X);
+    	send_single_float(gun_data.second.pos_Y);
+    }
+}
+void ServerProtocol::send_bullet_init_message(const Gamestate& message) {
+	if (not client_is_connected.load()) return;
+	send_single_8bit_int(message.type);
+    send_single_8bit_int(message.object_id);
+    send_single_float(message.pos_X);
+    send_single_float(message.pos_Y);
+    send_single_8bit_int(message.type_gun);
+    send_single_8bit_int(message.move_direction);
+}
+void ServerProtocol::send_bullets_positions_message(const Gamestate& message) {
+	if (not client_is_connected.load()) return;
+	send_single_8bit_int(message.type);
+	send_single_8bit_int(message.bullet_flag);
+	for (auto& [id, bullet_data] : message.bullets_positions_by_id){
+    	send_single_8bit_int(id);
+    	send_single_float(bullet_data.pos_X);
+    	send_single_float(bullet_data.pos_Y);
+    }
+}
+void ServerProtocol::send_bullet_destroy_message(const Gamestate& message) {
+	if (not client_is_connected.load()) return;
+	send_single_8bit_int(message.type);
+    send_single_8bit_int(message.object_id);
+}
+
 void ServerProtocol::receive_message(Gameaction& received)
 {
     if (not client_is_connected.load()) return;

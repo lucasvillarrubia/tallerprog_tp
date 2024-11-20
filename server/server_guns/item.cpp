@@ -5,8 +5,7 @@ Item::Item(float x, float y, float width, float height, int type) : positionX(x)
 void Item::updatePosition(float x, float y){
 	positionX = x;
 	positionY = y;
-	hitbox.x = x;
-	hitbox.y = y;
+	hitbox.update_position(x,y);
 }
 
 void Item::updateDirection(bool right) {
