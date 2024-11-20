@@ -5,12 +5,15 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/build/_deps/libsdl2pp-src",
-                "/usr/include/SDL2"
+                "/usr/include/SDL2",
+                "/usr/include/x86_64-linux-gnu/qt6/QtWidgets",
+                "/usr/include/x86_64-linux-gnu/qt6/QtCore",
+                "/usr/include/x86_64-linux-gnu/qt6"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c17",
-            "cppStandard": "c++17",
+            "cppStandard": "gnu++20",
             "intelliSenseMode": "linux-clang-x64"
         }
     ],
