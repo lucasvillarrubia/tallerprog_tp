@@ -15,8 +15,24 @@ lobby::lobby(QWidget *parent)
 void lobby::on_createOnePlayerMatchButton_clicked()
 {
     // This will emit the signal
-    emit create_one_player_match();
-    this->close();  // This will close the window
+    // qDebug() << "Button clicked!";
+    // // Prevent multiple clicks
+    // if (match_button_pressed) {
+    //     return;
+    // }
+    // match_button_pressed = true;
+    // ui->createOnePlayerMatchButton->setEnabled(false);
+    // this->blockSignals(true);
+    // // Emit signal before any cleanup
+    // emit create_one_player_match();
+    
+    // // Schedule deletion for next event loop
+    // this->close();
+    if (not match_button_pressed) {
+        match_button_pressed = true;
+        emit create_one_player_match();
+        this->close();
+    }
 }
 
 void lobby::on_createTwoPlayerMatchButton_clicked()

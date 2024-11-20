@@ -5,9 +5,10 @@
 #include <QString>
 
 
-EventListener::EventListener(std::atomic_bool& connection, Queue<Gameaction>& q):
+EventListener::EventListener(std::atomic_bool& connection, Queue<Gameaction>& q, const bool& mode):
         connected(connection),
-        events(q) {}
+        events(q),
+        is_multiplayer(mode) {}
 
 void EventListener::run() {
     try

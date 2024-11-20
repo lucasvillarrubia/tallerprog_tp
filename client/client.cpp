@@ -8,8 +8,13 @@
 #include "SDL2pp/SDL.hh"
 #include <QApplication>
 #include "lobby/lobby.h"
+#include <QMessageBox>
+#include <QIcon>
+#include <QAbstractButton>
+#include <QString>
 
 
+const int MULTIPLAYER_MODE = 0;
 
 
 Client::Client(const char* hostname, const char* servname):
@@ -22,12 +27,15 @@ Client::Client(const char* hostname, const char* servname):
         connected(false),
         game_on(false),
         connection(std::move(Socket(hostname, servname)), events, updates, connected),
-        event_listener(game_on, events),
+        event_listener(game_on, events, multiplayer_mode),
         // renderloop(game_on, updates, state),
         // renderloop(game_on, window, renderer, updates, state),
-        updater(updates, state) {
-            connect(&gamelobby, &lobby::create_one_player_match, this, &Client::handle_create_one_player_match);
-        }
+        updater(updates, state),
+        gamelobby(nullptr),
+        multiplayer_mode(false)
+{
+    connect(&gamelobby, &lobby::create_one_player_match, this, &Client::handle_create_one_player_match);
+}
 
 void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono::milliseconds rate)
 {
@@ -126,6 +134,41 @@ void Client::run() {
 void Client::handle_create_one_player_match()
 {
     std::cout << "create one player match\n";
+
+    QString styleSheet = 
+        "QMessageBox {"
+        "    background-color: #FF7900;"
+        "    color: #ffffff;"
+        "    max-width: 200px;"
+        "    min-height: 400px;"
+        "    font-size: 40px;" 
+        "    font-family: Uroob;" 
+        "}"
+        "QMessageBox QPushButton {"
+        "    background-color: #FFA500;"
+        "    color: #000000;"
+        "    min-width: 80px;"
+        "    padding: 5px;"
+        "    border-radius: 4px;"
+        "    font-size: 30px;" 
+        "    font-family: Uroob;"
+        "}"
+        "QMessageBox QPushButton:hover {"
+        "    background-color: #1565c0;"
+        "}";
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Game Mode");
+    msgBox.setText("Select your game mode:");
+    msgBox.addButton("Two-Player", QMessageBox::YesRole);
+    msgBox.addButton("Single-Player", QMessageBox::NoRole);
+    msgBox.setDefaultButton(QMessageBox::Yes);
+    msgBox.setIcon(QMessageBox::NoIcon);  // Remove the main icon
+    msgBox.setStyleSheet(styleSheet);
+    int result = msgBox.exec();
+    if (result == MULTIPLAYER_MODE) {  // First button returns 0
+        multiplayer_mode = true;
+        std::cout << "Multiplayer mode!\n";
+    }
     Gameaction create(1, 0, 4, 0);
     events.try_push(create);
 }
