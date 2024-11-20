@@ -18,7 +18,7 @@ private:
     Queue<Gameaction>& events;
     // Por lo que leí también se puede usar SDL_EventFilter
     std::map<Uint32, int> codes_by_event_type = {
-        {SDL_QUIT, 1},
+        {SDL_QUIT, 9},
         {SDL_KEYDOWN, 2},
         {SDL_KEYUP, 3}
         // 4 para crear partida

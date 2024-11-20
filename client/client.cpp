@@ -68,7 +68,7 @@ void Client::run() {
         // lobby lobby;
 
 
-        // botón de refres y NO actualizaciones en vivo de partidas disponibles
+        // botón de refresh y NO actualizaciones en vivo de partidas disponibles
         gamelobby.show();
         app.exec();
         SDL2pp::SDL sdl(SDL_INIT_VIDEO);
@@ -85,15 +85,14 @@ void Client::run() {
             constant_rate_loop([&](int frame)
             {
                 event_listener.run();
-                if (not game_on.load()) return;
                 renderloop.render(frame);
             }, rate);
         }
-        connection.end_connection();
         updates.close();
+        events.close();
+        connection.end_connection();
         // updater.stop();
         // updater.join();
-        events.close();
     }
     catch (ClosedQueue const& e)
     {
