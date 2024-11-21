@@ -3,60 +3,30 @@
 # Exit on any error
 set -e
 
-# Update package lists
-sudo apt-get update
+echo "Installing DuckGame dependencies..."
 
-# Install required development libraries
-echo "Installing required development libraries..."
-sudo apt-get install -y \
-    libjpeg-dev \
-    libpng-dev \
-    libfreetype-dev \
-    libopusfile-dev \
-    libflac-dev \
-    libxmp-dev \
-    libfluidsynth-dev \
-    libwavpack-dev \
+# Check if running as root
+if [ "$EUID" -ne 0 ]; then 
+    echo "Please run as root (sudo)"
+    exit 1
+fi
+
+# Install dependencies
+echo "Installing dependencies..."
+apt-get update
+apt-get install -y \
+    build-essential \
     cmake \
-    libmodplug-dev \
-    libsdl2-dev
+    libsdl2-dev \
+    libsdl2-image-dev \
+    libsdl2-ttf-dev \
+    libsdl2-mixer-dev \
+    qt6-base-dev \
+    qt6-tools-dev
 
-# Create a directory for SDL libraries
-mkdir -p ~/sdl-libraries
-cd ~/sdl-libraries
-
-# SDL Libraries to download
-SDL_LIBS=(
-    "https://github.com/libsdl-org/SDL_image/archive/refs/tags/release-2.6.3.tar.gz"
-    "https://github.com/libsdl-org/SDL_mixer/archive/refs/tags/release-2.6.3.tar.gz"
-    "https://github.com/libsdl-org/SDL_ttf/archive/refs/tags/release-2.20.2.tar.gz"
-)
-
-# Download and install each SDL library
-for lib in "${SDL_LIBS[@]}"; do
-    # Extract filename from URL
-    filename=$(basename "$lib")
-    libname="${filename%.*}"
-    
-    # Download
-    wget "$lib"
-    tar -xzvf "$filename"
-    
-    # Compile and install
-    cd "$libname"
-    mkdir -p build
-    cd build
-    cmake ..
-    make -j4
-    sudo make install
-    
-    # Return to parent directory and clean up
-    cd ../..
-    rm "$filename"
-done
-
-# Install Qt6
-echo "Installing Qt6..."
-sudo apt-get install -y qt6-base-dev qt6-declarative-dev
-
-echo "SDL and Qt6 installation completed successfully!"
+echo "Dependencies installed successfully!"
+echo ""
+echo "To build the project:"
+echo "1. mkdir -p build && cd build"
+echo "2. cmake .."
+echo "3. make -j$(nproc)"
