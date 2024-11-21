@@ -45,10 +45,10 @@ void Duck::update_position(unsigned int frame_delta)
     // {
     //     pos_X = 640.0f;
     // }
-    // if (pos_Y < -64.0f)
-    // {
-    //     pos_Y = 544.0f;
-    // }
+    if (pos_Y < -400.0f)
+    {
+        set_is_NOT_alive();
+    }
 }
 
 void Duck::set_position(float x, float y) {

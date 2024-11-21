@@ -218,7 +218,8 @@ void Renderer::render(int frame) {
 
         // DIBUJO PATOS
         for (auto& character : character_list) {
-            draw_character(character, frame, zoom_offset_x, zoom_offset_y);
+            // if (character.is_alive)
+                draw_character(character, frame, zoom_offset_x, zoom_offset_y);
         }
         
         renderer.Present();
