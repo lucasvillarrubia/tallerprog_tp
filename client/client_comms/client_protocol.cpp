@@ -68,6 +68,75 @@ void ClientProtocol::receive_character_update_message(Gamestate& received)
     received = Gamestate(player_id, run, jump, flap, direction, life);
 }
 
+
+void ClientProtocol::receive_init_gun_message(Gamestate& received) {
+	if (not client_is_connected.load()) return;
+    uint8_t gun_id, type_gun, direction;
+    float pos_X, pos_Y;
+    receive_single_8bit_int(gun_id);
+    receive_single_float(pos_X);
+    receive_single_float(pos_Y);
+    receive_single_8bit_int(type_gun);
+    receive_single_8bit_int(direction);
+    received = Gamestate(gun_id, pos_X, pos_Y, type_gun, direction);
+}
+
+void ClientProtocol::receive_guns_positions_message(Gamestate& received) {
+	if (not client_is_connected.load()) return;
+	uint8_t positions_count;
+	std::map<int, std::pair<DrawingData, Coordinates>> guns_positions;
+	receive_single_8bit_int(positions_count);
+    for (int i = 0; i < positions_count; i++) {
+    	uint8_t id, type_gun, direction;
+        float pos_X, pos_Y;
+        receive_single_8bit_int(id);
+        receive_single_8bit_int(type_gun);
+        receive_single_8bit_int(direction);
+        receive_single_float(pos_X);
+        receive_single_float(pos_Y);
+        DrawingData gun_data = { type_gun, direction };
+        Coordinates gun_position = { pos_X, pos_Y};
+        guns_positions.insert({id, std::make_pair(gun_data, gun_position)});
+    }
+    received = Gamestate(guns_positions);    
+}
+
+void ClientProtocol::receive_bullet_init_message(Gamestate& received) {
+	if (not client_is_connected.load()) return;
+    uint8_t gun_id, type_gun, direction;
+    float pos_X, pos_Y;
+    receive_single_8bit_int(gun_id);
+    receive_single_float(pos_X);
+    receive_single_float(pos_Y);
+    receive_single_8bit_int(type_gun);
+    receive_single_8bit_int(direction);
+    received = Gamestate(gun_id, type_gun, direction, pos_X, pos_Y);
+}
+
+void ClientProtocol::receive_bullets_positions_message(Gamestate& received) {
+	if (not client_is_connected.load()) return;
+    std::map<int, Coordinates> bullets_positions_by_id;
+    uint8_t flag, positions_count;
+    receive_single_8bit_int(flag);
+    receive_single_8bit_int(positions_count);
+    for (int i = 0; i < positions_count; i++)
+    {
+        uint8_t id;
+        float pos_X, pos_Y;
+        receive_single_8bit_int(id);
+        receive_single_float(pos_X);
+        receive_single_float(pos_Y);
+        bullets_positions_by_id.insert({id, {pos_X, pos_Y}});
+    }
+    received = Gamestate(flag, bullets_positions_by_id);
+}
+void ClientProtocol::receive_bullet_destroy_message(Gamestate& received) {
+    if (not client_is_connected.load()) return;
+    uint8_t bullet_id;
+    receive_single_8bit_int(bullet_id);
+    received = Gamestate(bullet_id);
+}
+
 void ClientProtocol::receive_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
@@ -80,6 +149,21 @@ void ClientProtocol::receive_message(Gamestate& received)
         break;
     case 2:
         receive_characters_positions_message(received);
+        break;
+	case 5:
+        receive_init_gun_message(received);
+        break;
+	case 6:
+        receive_guns_positions_message(received);
+        break;
+	case 7:
+        receive_bullet_init_message(received);
+        break;
+	case 8:
+        receive_bullets_positions_message(received);
+        break;
+	case 9:
+        receive_bullet_destroy_message(received);
         break;
     default:
         receive_character_update_message(received);

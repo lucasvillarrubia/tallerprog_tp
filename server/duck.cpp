@@ -24,7 +24,11 @@ Duck::Duck():
         is_stomping_on_wall_from_right(false),
         is_stomping_on_wall_from_left(false),
         is_alive(true),
-        jump_velocity(0.0f){}
+        jump_velocity(0.0f),
+        is_grabbing(false),
+        is_shooting(false),
+        with_gun(false),
+        gun_equipped_id(0){}
 
 void Duck::update_position(unsigned int frame_delta)
 {
@@ -45,13 +49,43 @@ void Duck::update_position(unsigned int frame_delta)
     // {
     //     pos_X = 640.0f;
     // }
-    // if (pos_Y < -64.0f)
-    // {
-    //     pos_Y = 544.0f;
-    // }
+    if (pos_Y < -400.0f)
+    {
+        set_is_NOT_alive();
+    }
 }
 
 void Duck::set_position(float x, float y) {
     pos_X = x;
     pos_Y = y;
+}
+
+bool Duck::wants_to_grab() {
+	return is_grabbing;
+}
+
+bool Duck::have_a_gun() {
+	return with_gun;
+}
+
+void Duck::pickup_gun(int _gun_id) {
+	gun_equipped_id = _gun_id;
+	with_gun = true;
+}
+
+void Duck::stop_grab() {
+	is_grabbing = false;
+}
+
+void Duck::drop_gun() {
+	gun_equipped_id = 0;
+	with_gun = false;
+}
+
+bool Duck::shooting() {
+	return is_shooting;
+}
+
+int Duck::get_gun_id() const{
+	return gun_equipped_id;
 }

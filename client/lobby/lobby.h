@@ -12,6 +12,7 @@ QT_END_NAMESPACE
 class lobby : public QMainWindow
 {
     Q_OBJECT
+    bool match_button_pressed = false;
 private slots:
     void on_createOnePlayerMatchButton_clicked();
     void on_createTwoPlayerMatchButton_clicked();

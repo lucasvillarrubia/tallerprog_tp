@@ -18,6 +18,21 @@ void ServerSender::send_data()
             protocol.send_ducks_positions_message(new_event);
             // std::cout << "se mandó una lista de posiciones\n";
             break;
+        case 5:
+        	protocol.send_init_gun_message(new_event);
+        	break;
+        case 6:
+        	protocol.send_guns_positions_message(new_event);
+        	break;
+        case 7:
+        	protocol.send_bullet_init_message(new_event);
+        	break;
+        case 8:
+        	protocol.send_bullets_positions_message(new_event);
+        	break;
+        case 9:
+        	protocol.send_bullet_destroy_message(new_event);
+        	break;
         default:
             protocol.send_duck_state_message(new_event);
             // std::cout << "se mandó una actualización de estado\n";

@@ -24,6 +24,11 @@ public:
     void disconnect();
     int get_player_count() { return player_list.size(); }
     bool is_full() { return player_list.size() == player_limit; }
+    Match(const Match&) = delete;
+    Match& operator=(const Match&) = delete;
+    Match(Match&& other) = delete;
+    Match& operator=(Match&& other) = delete;
+    ~Match() = default;
 };
 
 

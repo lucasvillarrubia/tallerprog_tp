@@ -16,12 +16,14 @@ private:
     std::map<std::string, std::unique_ptr<SDL2pp::Texture>> texturas;
     std::unordered_map<int, std::unique_ptr<SDL2pp::Texture>> duck_sprites;
     std::unordered_map<int, std::unique_ptr<SDL2pp::Texture>> duck_sprites_volando;
+    std::map<std::string, std::unique_ptr<SDL2pp::Texture>> guns_sprites;
     
 public:
     TextureManager(SDL2pp::Renderer& renderer) : renderer(renderer) {
         cargarTexturas();
         cargarDuckSprites();
         cargarDuckSpritesVolando();
+        cargarGunsSprites();
     }
 
     void cargarTexturas() {
@@ -79,6 +81,27 @@ public:
         return it->second.get();
     }
     return nullptr;
+    }
+    
+    void cargarGunsSprites() {
+    	cargarGunSprite("arrojadizos", "resources/PC Computer - Duck Game - Grenades.png");
+    	cargarGunSprite("lasers", "resources/PC Computer - Duck Game - Laser.png");
+    	cargarGunSprite("ak47", "resources/ak47.png");
+    	cargarGunSprite("pistolas", "resources/PC Computer - Duck Game - Pistol.png");
+    	cargarGunSprite("sniper", "resources/sniper.png");
+    }
+    
+    void cargarGunSprite(const std::string& nombre, const std::string& path) {
+    	SDL2pp::Surface surface(path);
+        guns_sprites[nombre] = std::make_unique<SDL2pp::Texture>(renderer, surface);
+    }
+    
+    SDL2pp::Texture* getGunSprite(const std::string& nombre) {
+    	auto it = guns_sprites.find(nombre);
+        if (it != guns_sprites.end()) {
+            return it->second.get();
+        }
+        return nullptr;
     }
 };
 

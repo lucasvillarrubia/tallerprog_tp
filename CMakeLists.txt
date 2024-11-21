@@ -62,6 +62,7 @@ add_library(taller_common STATIC
         common/gamedata.h
         common/rectangulo.h
         common/coordinates.h
+        common/drawingdata.h
 )
 
 # add the source files that make the lib
@@ -135,7 +136,6 @@ if(TALLER_CLIENT)
             client/client_threads/event_listener.cpp
             client/character.cpp
             client/character.h
-            client/mapa.h
             client/state_manager.cpp
             client/texture_manager.h
             client/state_manager.h
@@ -213,7 +213,29 @@ if(TALLER_SERVER)
             server/match.cpp
             server/match.h
             server/terrain.cpp
-            server/terrain.h)
+            server/terrain.h
+            server/server_guns/AK47.cpp
+			server/server_guns/AK47.h
+			server/server_guns/AK47Ammo.cpp
+			server/server_guns/AK47Ammo.h
+			server/server_guns/ammo.cpp
+			server/server_guns/ammo.h
+			server/server_guns/CowboyPistol.cpp
+			server/server_guns/CowboyPistol.h
+			server/server_guns/CowboyPistolAmmo.cpp
+			server/server_guns/CowboyPistolAmmo.h
+			server/server_guns/DuelPistol.cpp
+			server/server_guns/DuelPistol.h
+			server/server_guns/DuelPistolAmmo.cpp
+			server/server_guns/DuelPistolAmmo.h
+			server/server_guns/gun.cpp
+			server/server_guns/gun.h
+			server/server_guns/item.cpp
+			server/server_guns/item.h
+			server/server_guns/Magnum.cpp
+			server/server_guns/Magnum.h
+			server/server_guns/MagnumAmmo.cpp
+			server/server_guns/MagnumAmmo.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)
