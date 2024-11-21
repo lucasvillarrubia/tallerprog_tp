@@ -115,6 +115,7 @@ void StateManager::destroy_bullet(const int id) {
 			bullet.destroyed = true;
 		}
 	}
+	bullets.remove_if([](auto& bullet){ return bullet.destroyed; });
 }
 
 void StateManager::update_duck_state(const Gamestate& update)

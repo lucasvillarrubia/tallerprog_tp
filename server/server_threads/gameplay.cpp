@@ -17,6 +17,10 @@ Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_c
     ducks_by_id.insert({2, hugo});
     ducks_by_id.insert({3, paco});
     ducks_by_id.insert({4, luis});
+    guns_by_id.insert({1, new AK47(650.0f, 180.0f)});
+    guns_by_id.insert({2, new DuelPistol(630.0f, 180.0f)});
+    guns_by_id.insert({3, new CowboyPistol(200.0f, 300.0f)});
+    guns_by_id.insert({4, new Magnum(670.0f, 189.0f)});
 }
 
 void Gameplay::broadcast_for_all_players(const Gamestate& state)
@@ -150,31 +154,33 @@ void Gameplay::send_guns_positions_updates() {
 }
 
 void Gameplay::send_bullets_positions_updates(const unsigned int frame_delta) {
-	std::map<int, Coordinates> bullets_positions;
-	for (auto& bullet : bullets_by_id) {
-		//Coordinates before_coordinates = bullet->getPosition();
-		bullet.second->update_position(frame_delta);
-		Coordinates after_coordinates = bullet.second->getPosition();
-		/*if (not terrain.is_bullet_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y)) {
-			bullet.second->impact();
-			Gamestate update(FLAG, bullet.first);
-			players.broadcast(update);
-			continue;
+	if (!bullets_by_id.empty()) {
+		std::map<int, Coordinates> bullets_positions;
+		for (auto& [id,bullet] : bullets_by_id) {
+			//Coordinates before_coordinates = bullet->getPosition();
+			bullet->update_position(frame_delta);
+			Coordinates after_coordinates = bullet->getPosition();
+			/*if (not terrain.is_bullet_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y)) {
+				bullet.second->impact();
+				Gamestate update(FLAG, bullet.first);
+				players.broadcast(update);
+				continue;
 			//-----reemplazar por nueva colision
-		}*/
-		//if (colision contra pato){
-			//duck.damage(bullet.impact)
-		//}
-		if (bullet.second->is_destroyed()) {
-			Gamestate update(bullet.first);
-			players.broadcast(update);
-			continue;
+			}*/
+			//if (colision contra pato){
+				//duck.damage(bullet.impact)
+			//}
+			if (bullet->is_destroyed()) {
+				Gamestate update(id);
+				players.broadcast(update);
+				continue;
+			}
+			bullets_positions.insert({id, after_coordinates});
 		}
-		bullets_positions.insert({bullet.first, after_coordinates});
+		Gamestate update(1, bullets_positions);
+		players.broadcast(update);
+		bullets_by_id.remove_if([](auto& bullet){ return bullet.second->is_destroyed(); });
 	}
-	Gamestate update(1, bullets_positions);
-	players.broadcast(update);
-	bullets_by_id.remove_if([](auto& bullet){ return bullet.second->is_destroyed(); });
 }
 
 void Gameplay::run() {
@@ -190,6 +196,7 @@ void Gameplay::run() {
             process_users_commands();
             send_ducks_positions_updates(frame_delta);
             send_guns_positions_updates();
+            send_bullets_positions_updates(frame_delta);
             std::this_thread::sleep_for(std::chrono::milliseconds(16));
         }
     }

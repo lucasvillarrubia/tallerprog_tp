@@ -88,6 +88,8 @@ void ServerProtocol::send_bullets_positions_message(const Gamestate& message) {
 	if (not client_is_connected.load()) return;
 	send_single_8bit_int(message.type);
 	send_single_8bit_int(message.bullet_flag);
+	uint8_t positions_count = message.bullets_positions_by_id.size();
+    send_single_8bit_int(positions_count);
 	for (auto& [id, bullet_data] : message.bullets_positions_by_id){
     	send_single_8bit_int(id);
     	send_single_float(bullet_data.pos_X);

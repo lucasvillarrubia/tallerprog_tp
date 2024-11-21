@@ -5,6 +5,7 @@
 #include <utility>
 
 #include "gun.h"
+#include "ammo.h"
 #include "common/coordinates.h"
 #include "CowboyPistolAmmo.h"
 
