@@ -1,11 +1,14 @@
 #include "event_listener.h"
 
 #include <SDL_events.h>
+#include <QMessageBox>
+#include <QString>
 
 
-EventListener::EventListener(std::atomic_bool& connection, Queue<Gameaction>& q):
+EventListener::EventListener(std::atomic_bool& connection, Queue<Gameaction>& q, const bool& mode):
         connected(connection),
-        events(q) {}
+        events(q),
+        is_multiplayer(mode) {}
 
 void EventListener::run() {
     try
@@ -21,13 +24,43 @@ void EventListener::run() {
             const int key_code = codes_by_key.at(event.key.keysym.sym);
             Gameaction new_action(1, 1, type_code, key_code);
             events.try_push(new_action);
-            if(type == SDL_QUIT || key == SDLK_ESCAPE)
-                connected.store(false);
+            if(key == SDLK_ESCAPE) {
+                QString styleSheet = 
+                    "QMessageBox {"
+                    "    background-color: #FF7900;"
+                    "    color: #ffffff;"
+                    "    max-width: 200px;"
+                    "    min-height: 400px;"
+                    "    font-size: 40px;" 
+                    "    font-family: Uroob;" 
+                    "}"
+                    "QMessageBox QPushButton {"
+                    "    background-color: #FFA500;"
+                    "    color: #000000;"
+                    "    min-width: 80px;"
+                    "    padding: 5px;"
+                    "    border-radius: 4px;"
+                    "    font-size: 30px;" 
+                    "    font-family: Uroob;"
+                    "}"
+                    "QMessageBox QPushButton:hover {"
+                    "    background-color: #1565c0;"
+                    "}";
+                QMessageBox msgBox;
+                msgBox.setWindowTitle("Exit Match");
+                msgBox.setText("Are you sure you want to exit the match?");
+                msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+                msgBox.setDefaultButton(QMessageBox::No);
+                msgBox.setStyleSheet(styleSheet);
+                int ret = msgBox.exec();
+                if(ret == QMessageBox::Yes)
+                    connected.store(false);
+            }
         }
     }
     catch (ClosedQueue const& e)
     {
-        std::cerr << "Se cerró la queue del juego?! " << e.what() << '\n';
+        std::cerr << "The event listener queue was closed. " << e.what() << '\n';
     }
     catch (const std::exception& e)
     {

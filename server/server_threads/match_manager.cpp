@@ -114,8 +114,8 @@ void MatchManager::run()
             auto* match = matches.get_by_id(1);
             if (match != nullptr) {
                 if (match->has_ended()) {
-                    match->disconnect();
-                    delete match;
+                    // match->disconnect();
+                    // delete match;
                     is_running.store(false);
                 }
             }
@@ -135,7 +135,7 @@ void MatchManager::run()
         is_running.store(false);
         _keep_running = false;
         std::cerr << "Se cerró la queue en el match manager!\n";
-        matches.clear();
+        // matches.clear();
     } catch (const LibError& e) {
         is_running.store(false);
     } catch (const std::exception& e) {

@@ -90,6 +90,10 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
     std::map<int, Coordinates> positions_by_id;
     for (auto& [id, duck]: ducks_by_id)
     {
+        if (StateManager::get_duck_is_alive(duck) == 0)
+        {
+            continue;
+        }
         Coordinates before_coordinates = StateManager::get_duck_coordinates(duck);
         duck.update_position(frame_delta);
         Coordinates after_coordinates = StateManager::get_duck_coordinates(duck);
@@ -102,6 +106,12 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
         try_to_grab(duck);
         try_to_shoot(duck);
         positions_by_id.insert({id, updated_position});
+        if (StateManager::get_duck_is_alive(duck) == 0)
+        {
+            // ducks_by_id.erase(id);
+            Gamestate duck_is_dead(StateManager::get_duck_state(duck, id));
+            broadcast_for_all_players(duck_is_dead);
+        }
     }
     Gamestate update(positions_by_id);
     broadcast_for_all_players(update);

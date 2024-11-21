@@ -233,7 +233,10 @@ std::string Renderer::get_fondo(){
 
 void Renderer::render(int frame) {
     try {
-
+        if (not connected.load()) {
+            SDL_Quit();
+            return;
+        }
         std::string fondoPath = get_fondo();
         SDL2pp::Texture background(renderer, fondoPath);
   
@@ -276,7 +279,8 @@ void Renderer::render(int frame) {
 
         // DIBUJO PATOS
         for (auto& character : character_list) {
-            draw_character(character, frame, zoom_offset_x, zoom_offset_y);
+            // if (character.is_alive)
+                draw_character(character, frame, zoom_offset_x, zoom_offset_y);
         }
         
         // DIBUJO ARMAS

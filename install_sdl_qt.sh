@@ -3,12 +3,15 @@
 # Exit on any error
 set -e
 
-# Update package lists
-sudo apt-get update
+if [ "$EUID" -ne 0 ]; then 
+    echo "Please run as root (sudo)"
+    exit 1
+fi
 
-# Install required development libraries
-echo "Installing required development libraries..."
-sudo apt-get install -y \
+# Initial dependencies
+echo "Installing initial dependencies..."
+apt-get update
+apt-get install -y \
     libjpeg-dev \
     libpng-dev \
     libfreetype-dev \
@@ -19,44 +22,55 @@ sudo apt-get install -y \
     libwavpack-dev \
     cmake \
     libmodplug-dev \
-    libsdl2-dev
+    libsdl2-dev \
+    build-essential \
+    wget \
+    qt6-base-dev \
+    qt6-tools-dev
 
-# Create a directory for SDL libraries
-mkdir -p ~/sdl-libraries
-cd ~/sdl-libraries
+# Create temp directory
+TEMP_DIR=$(mktemp -d)
+cd "$TEMP_DIR"
 
-# SDL Libraries to download
-SDL_LIBS=(
-    "https://github.com/libsdl-org/SDL_image/archive/refs/tags/release-2.6.3.tar.gz"
-    "https://github.com/libsdl-org/SDL_mixer/archive/refs/tags/release-2.6.3.tar.gz"
-    "https://github.com/libsdl-org/SDL_ttf/archive/refs/tags/release-2.20.2.tar.gz"
-)
+# Function to download, build and install SDL libraries
+install_sdl_lib() {
+    local NAME=$1
+    local VERSION=$2
+    local URL=$3
+    local DIR_NAME=$4
 
-# Download and install each SDL library
-for lib in "${SDL_LIBS[@]}"; do
-    # Extract filename from URL
-    filename=$(basename "$lib")
-    libname="${filename%.*}"
+    echo "Installing $NAME $VERSION..."
+    echo "Downloading from $URL..."
+    wget "$URL" -O "$NAME.zip"
     
-    # Download
-    wget "$lib"
-    tar -xzvf "$filename"
+    echo "Extracting $NAME.zip..."
+    unzip -o "$NAME.zip"
     
-    # Compile and install
-    cd "$libname"
+    echo "Entering directory $DIR_NAME..."
+    cd "$DIR_NAME"
+    
+    echo "Building..."
     mkdir -p build
     cd build
     cmake ..
-    make -j4
-    sudo make install
-    
-    # Return to parent directory and clean up
-    cd ../..
-    rm "$filename"
-done
+    make -j$(nproc)
+    make install
+    cd "$TEMP_DIR"
+}
 
-# Install Qt6
-echo "Installing Qt6..."
-sudo apt-get install -y qt6-base-dev qt6-declarative-dev
+# Install SDL libraries
+install_sdl_lib "SDL2_image" "2.6.3" "https://github.com/libsdl-org/SDL_image/releases/download/release-2.6.3/SDL2_image-2.6.3.zip" "SDL2_image-2.6.3"
+install_sdl_lib "SDL2_mixer" "2.6.3" "https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.6.3/SDL2_mixer-2.6.3.zip" "SDL2_mixer-2.6.3"
+install_sdl_lib "SDL2_ttf" "2.20.2" "https://github.com/libsdl-org/SDL_ttf/releases/download/release-2.20.2/SDL2_ttf-2.20.2.zip" "SDL2_ttf-2.20.2"
 
-echo "SDL and Qt6 installation completed successfully!"
+# Cleanup
+cd /
+rm -rf "$TEMP_DIR"
+ldconfig
+
+echo "SDL libraries installed successfully!"
+echo ""
+echo "To build your project:"
+echo "1. mkdir -p build && cd build"
+echo "2. cmake .."
+echo "3. make -j$(nproc)"

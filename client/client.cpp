@@ -8,8 +8,13 @@
 #include "SDL2pp/SDL.hh"
 #include <QApplication>
 #include "lobby/lobby.h"
+#include <QMessageBox>
+#include <QIcon>
+#include <QAbstractButton>
+#include <QString>
 
 
+const int MULTIPLAYER_MODE = 0;
 
 
 Client::Client(const char* hostname, const char* servname):
@@ -22,12 +27,15 @@ Client::Client(const char* hostname, const char* servname):
         connected(false),
         game_on(false),
         connection(std::move(Socket(hostname, servname)), events, updates, connected),
-        event_listener(game_on, events),
+        event_listener(game_on, events, multiplayer_mode),
         // renderloop(game_on, updates, state),
         // renderloop(game_on, window, renderer, updates, state),
-        updater(updates, state) {
-            connect(&gamelobby, &lobby::create_one_player_match, this, &Client::handle_create_one_player_match);
-        }
+        updater(updates, state),
+        gamelobby(nullptr),
+        multiplayer_mode(false)
+{
+    connect(&gamelobby, &lobby::create_one_player_match, this, &Client::handle_create_one_player_match);
+}
 
 void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono::milliseconds rate)
 {
@@ -55,33 +63,6 @@ void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono
         ++it;
     }
 }
-/*
-void Client::cargar_mapa(Mapa& mapa) {
-    // Definir las plataformas y sus posiciones
-    Rectangulo plataforma(120.0f, renderer.GetOutputHeight() - 50.0f, 400.0f, 50.0f);
-    Rectangulo plataforma_izq(0.0f, renderer.GetOutputHeight() - 150.0f - 50.0f, 100.0f, 50.0f);
-    Rectangulo plataforma_der(540.0f, renderer.GetOutputHeight() - 150.0f - 50.0f, 100.0f, 50.0f);
-
-    // Agregar las plataformas con nombres únicos
-    mapa.agregarEntidad("piso_1", plataforma);
-    mapa.agregarEntidad("piso_2", plataforma_izq);
-    mapa.agregarEntidad("piso_3", plataforma_der);
-
-    // Cargar la textura para el piso
-    SDL_Surface* tempSurface = IMG_Load("resources/piso.png");
-    if (!tempSurface) {
-        throw std::runtime_error("Error loading image: resources/piso.png");
-    }
-
-    SDL_Texture* texturaPiso = SDL_CreateTextureFromSurface(this->renderer.Get(), tempSurface);
-    SDL_FreeSurface(tempSurface);
-    if (!texturaPiso) {
-        throw std::runtime_error("Error creating texture from surface for piso.png");
-    }
-
-    // Asignar la textura base "piso" a todas las plataformas de tipo "piso"
-    mapa.asignarTextura("piso", texturaPiso);
-}*/
 
 void Client::run() {
     try
@@ -93,6 +74,9 @@ void Client::run() {
         // char** argv = nullptr;
         // QApplication app(argc, argv);
         // lobby lobby;
+
+
+        // botón de refresh y NO actualizaciones en vivo de partidas disponibles
         gamelobby.show();
         app.exec();
         SDL2pp::SDL sdl(SDL_INIT_VIDEO);
@@ -109,15 +93,14 @@ void Client::run() {
             constant_rate_loop([&](int frame)
             {
                 event_listener.run();
-                if (not game_on.load()) return;
                 renderloop.render(frame);
             }, rate);
         }
-        connection.end_connection();
         updates.close();
+        events.close();
+        connection.end_connection();
         // updater.stop();
         // updater.join();
-        events.close();
     }
     catch (ClosedQueue const& e)
     {
@@ -151,6 +134,41 @@ void Client::run() {
 void Client::handle_create_one_player_match()
 {
     std::cout << "create one player match\n";
+
+    QString styleSheet = 
+        "QMessageBox {"
+        "    background-color: #FF7900;"
+        "    color: #ffffff;"
+        "    max-width: 200px;"
+        "    min-height: 400px;"
+        "    font-size: 40px;" 
+        "    font-family: Uroob;" 
+        "}"
+        "QMessageBox QPushButton {"
+        "    background-color: #FFA500;"
+        "    color: #000000;"
+        "    min-width: 80px;"
+        "    padding: 5px;"
+        "    border-radius: 4px;"
+        "    font-size: 30px;" 
+        "    font-family: Uroob;"
+        "}"
+        "QMessageBox QPushButton:hover {"
+        "    background-color: #1565c0;"
+        "}";
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Game Mode");
+    msgBox.setText("Select your game mode:");
+    msgBox.addButton("Two-Player", QMessageBox::YesRole);
+    msgBox.addButton("Single-Player", QMessageBox::NoRole);
+    msgBox.setDefaultButton(QMessageBox::Yes);
+    msgBox.setIcon(QMessageBox::NoIcon);  // Remove the main icon
+    msgBox.setStyleSheet(styleSheet);
+    int result = msgBox.exec();
+    if (result == MULTIPLAYER_MODE) {  // First button returns 0
+        multiplayer_mode = true;
+        std::cout << "Multiplayer mode!\n";
+    }
     Gameaction create(1, 0, 4, 0);
     events.try_push(create);
 }

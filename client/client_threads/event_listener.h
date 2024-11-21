@@ -18,7 +18,7 @@ private:
     Queue<Gameaction>& events;
     // Por lo que leí también se puede usar SDL_EventFilter
     std::map<Uint32, int> codes_by_event_type = {
-        {SDL_QUIT, 1},
+        {SDL_QUIT, 9},
         {SDL_KEYDOWN, 2},
         {SDL_KEYUP, 3}
         // 4 para crear partida
@@ -28,16 +28,21 @@ private:
     std::map<SDL_Keycode, int> codes_by_key = {
         {SDLK_ESCAPE, 9},
         {SDLK_RIGHT, 1},
-        // {SDLK_d, 1},
         {SDLK_LEFT, 2},
-        // {SDLK_a, 2},
         {SDLK_SPACE, 3},
+
         // {SDLK_RETURN, 3}
         {SDLK_g, 4},
         {SDLK_f, 5}
     };
+    std::map<SDL_Keycode, int> codes_for_second_player = {
+        {SDLK_d, 1},
+        {SDLK_a, 2},
+        {SDLK_RETURN, 3},
+    };
+    const bool& is_multiplayer;
 public:
-    EventListener(std::atomic_bool&, Queue<Gameaction>&);
+    EventListener(std::atomic_bool&, Queue<Gameaction>&, const bool&);
     void run();
     void stop();
     ~EventListener() = default;

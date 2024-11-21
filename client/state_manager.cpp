@@ -120,6 +120,7 @@ void StateManager::destroy_bullet(const int id) {
 
 void StateManager::update_duck_state(const Gamestate& update)
 {
+    dukis.remove_if([](const Character& duki) { return not duki.is_alive; });
     for (auto& duki : dukis)
     {
         if (duki.id == update.player_id)
