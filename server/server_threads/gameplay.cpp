@@ -99,10 +99,6 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
         Coordinates after_coordinates = StateManager::get_duck_coordinates(duck);
         terrain.adjust_position_for_collisions(duck, before_coordinates, after_coordinates);
         Coordinates updated_position = StateManager::get_duck_coordinates(duck);
-        if ((id == 1) and ((updated_position.pos_Y != after_coordinates.pos_Y) or (updated_position.pos_X != after_coordinates.pos_X)))
-        {
-            std::cout << "x: " << updated_position.pos_X << " y: " << updated_position.pos_Y << "\n";
-        }
         try_to_grab(duck);
         try_to_shoot(duck);
         positions_by_id.insert({id, updated_position});

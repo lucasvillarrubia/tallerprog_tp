@@ -79,6 +79,16 @@ void Client::run() {
         // botón de refresh y NO actualizaciones en vivo de partidas disponibles
         gamelobby.show();
         app.exec();
+        // std::cout << "Salí del exec\n";
+        // std::cout << app.exec() << '\n';
+        if (gamelobby.was_closed_by_X()) {
+            game_on.store(false);
+            connected.store(false);
+            updates.close();
+            events.close();
+            connection.end_connection();
+            return;
+        }
         SDL2pp::SDL sdl(SDL_INIT_VIDEO);
         Renderer renderloop(game_on, updates, state);
         // updater.start();
@@ -159,16 +169,17 @@ void Client::handle_create_one_player_match()
     QMessageBox msgBox;
     msgBox.setWindowTitle("Game Mode");
     msgBox.setText("Select your game mode:");
-    msgBox.addButton("Two-Player", QMessageBox::YesRole);
+    // msgBox.addButton("Two-Player", QMessageBox::YesRole);
     msgBox.addButton("Single-Player", QMessageBox::NoRole);
-    msgBox.setDefaultButton(QMessageBox::Yes);
+    msgBox.setDefaultButton(QMessageBox::No);
     msgBox.setIcon(QMessageBox::NoIcon);  // Remove the main icon
     msgBox.setStyleSheet(styleSheet);
-    int result = msgBox.exec();
-    if (result == MULTIPLAYER_MODE) {  // First button returns 0
-        multiplayer_mode = true;
-        std::cout << "Multiplayer mode!\n";
-    }
+    msgBox.exec();
+    // int result = msgBox.exec();
+    // if (result == MULTIPLAYER_MODE) {  // First button returns 0
+    //     multiplayer_mode = true;
+    //     std::cout << "Multiplayer mode!\n";
+    // }
     Gameaction create(1, 0, 4, 0);
     events.try_push(create);
 }

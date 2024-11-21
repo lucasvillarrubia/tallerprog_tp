@@ -134,7 +134,7 @@ void MatchManager::run()
     } catch (const ClosedQueue& e) {
         is_running.store(false);
         _keep_running = false;
-        std::cerr << "Se cerró la queue en el match manager!\n";
+        // std::cerr << "Se cerró la queue en el match manager!\n";
         // matches.clear();
     } catch (const LibError& e) {
         is_running.store(false);

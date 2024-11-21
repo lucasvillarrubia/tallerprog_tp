@@ -2,6 +2,7 @@
 #define LOBBY_H
 
 #include <QMainWindow>
+#include <QCloseEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -15,18 +16,22 @@ class lobby : public QMainWindow
     bool match_button_pressed = false;
 private slots:
     void on_createOnePlayerMatchButton_clicked();
-    void on_createTwoPlayerMatchButton_clicked();
-    void on_createThreePlayerMatchButton_clicked();
-    void on_joinMatchButton_clicked();
+    // void on_createTwoPlayerMatchButton_clicked();
+    // void on_createThreePlayerMatchButton_clicked();
+    // void on_joinMatchButton_clicked();
+protected:
+    void closeEvent(QCloseEvent *event) override;
+    bool closed_by_X = false;
 public:
     lobby(QWidget *parent = nullptr);
     // void show();
+    bool was_closed_by_X() const { return closed_by_X; }
     ~lobby();
 signals:
     void create_one_player_match();
-    void create_two_player_match();
-    void create_three_player_match();
-    void join_match();
+    // void create_two_player_match();
+    // void create_three_player_match();
+    // void join_match();
 private:
     Ui::lobby *ui;
 };

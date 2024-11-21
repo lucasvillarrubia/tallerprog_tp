@@ -70,7 +70,4 @@ ldconfig
 
 echo "SDL libraries installed successfully!"
 echo ""
-echo "To build your project:"
-echo "1. mkdir -p build && cd build"
-echo "2. cmake .."
-echo "3. make -j$(nproc)"
+echo "¡Seguí los otros pasos del manual de usuario!"
