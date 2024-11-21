@@ -30,6 +30,10 @@ private:
         {SDLK_RIGHT, 1},
         {SDLK_LEFT, 2},
         {SDLK_SPACE, 3},
+
+        // {SDLK_RETURN, 3}
+        {SDLK_g, 4},
+        {SDLK_f, 5}
     };
     std::map<SDL_Keycode, int> codes_for_second_player = {
         {SDLK_d, 1},

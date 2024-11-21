@@ -31,6 +31,35 @@ void StateManager::update(const Gamestate& update)
     case 3:
         update_duck_state(update);
         break;
+    case 5:
+    	{
+    		Gun new_gun(update.object_id);
+    		new_gun.pos_X = update.pos_X;
+    		new_gun.pos_Y = update.pos_Y;
+    		new_gun.type = update.type_gun;
+    		new_gun.pointing_to_the_right = update.move_direction;
+    		guns.push_back(new_gun);
+    		break;
+    	}
+    case 6:
+    	update_guns(update);
+    	break;
+    case 7:
+    	{
+    		Bullet new_bullet(update.object_id);
+    		new_bullet.pos_X = update.pos_X;
+    		new_bullet.pos_Y = update.pos_Y;
+    		new_bullet.type = update.type_gun;
+    		new_bullet.moving_right = update.move_direction;
+    		bullets.push_back(new_bullet);
+    		break;
+    	}
+    case 8:
+    	update_bullets(update);
+    	break;
+    case 9:
+    	destroy_bullet(update.object_id);
+    	break;
     default:
         update_ducks(update);
         break;
@@ -46,9 +75,47 @@ void StateManager::update_ducks(const Gamestate& update)
     }
 }
 
+void StateManager::update_guns(const Gamestate& update)
+{
+    for (auto& gun : guns)
+    {
+        if (update.guns_positions_by_id.contains(gun.id))
+        	gun.pointing_to_the_right = update.guns_positions_by_id.at(gun.id).first.right;
+            update_gun_position(gun, update.guns_positions_by_id.at(gun.id).second);
+    }
+}
+
+void StateManager::update_bullets(const Gamestate& update)
+{
+    for (auto& bullet : bullets)
+    {
+        if (update.bullets_positions_by_id.contains(bullet.id))
+            update_bullet_position(bullet, update.bullets_positions_by_id.at(bullet.id));
+    }
+}
+
 void StateManager::update_duck_position(Character& duki, const Coordinates& new_position) {
     duki.pos_X = new_position.pos_X;
     duki.pos_Y = new_position.pos_Y;
+}
+
+void StateManager::update_gun_position(Gun& gun, const Coordinates& new_position) {
+    gun.pos_X = new_position.pos_X;
+    gun.pos_Y = new_position.pos_Y;
+}
+
+void StateManager::update_bullet_position(Bullet& bullet, const Coordinates& new_position) {
+    bullet.pos_X = new_position.pos_X;
+    bullet.pos_Y = new_position.pos_Y;
+}
+
+void StateManager::destroy_bullet(const int id) {
+	for (auto& bullet : bullets) {
+		if (bullet.id == id) {
+			bullet.destroyed = true;
+		}
+	}
+	bullets.remove_if([](auto& bullet){ return bullet.destroyed; });
 }
 
 void StateManager::update_duck_state(const Gamestate& update)
@@ -71,4 +138,12 @@ void StateManager::update_duck_state(const Gamestate& update)
 std::list<Character> StateManager::get_characters_data()
 {
     return dukis;
+}
+
+std::list<Gun> StateManager::get_guns_data() {
+	return guns;
+}
+
+std::list<Bullet> StateManager::get_bullets_data() {
+	return bullets;
 }

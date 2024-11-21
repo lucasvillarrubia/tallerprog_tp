@@ -40,6 +40,11 @@ public:
     float get_right_side() const {
         return x + ancho;
     }
+    
+    void update_position(float new_x, float new_y) {
+    	x = new_x;
+    	y = new_y;
+    }
 };
 
 

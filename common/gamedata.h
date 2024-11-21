@@ -5,6 +5,7 @@
 #include <string>
 
 #include "coordinates.h"
+#include "drawingdata.h"
 
 
 struct Gamedata {
@@ -14,15 +15,20 @@ struct Gamedata {
 
 struct Gamestate: Gamedata {
     int type;
+    int object_id;
     float pos_X;
     float pos_Y;
     int is_running;
     int is_jumping;
     int is_flapping;
+    int type_gun;
     int move_direction;
     int is_alive;
     float jump_speed;
     std::map<int, Coordinates> positions_by_id;
+    std::map<int, std::pair<DrawingData, Coordinates>> guns_positions_by_id;
+    int bullet_flag;
+    std::map<int, Coordinates> bullets_positions_by_id;
     std::string message;
 
     Gamestate(): Gamedata(-1) {}
@@ -71,6 +77,61 @@ struct Gamestate: Gamedata {
         positions_by_id(positions) {}
 
     Gamestate(const int player, const std::string& msg): Gamedata(player), type(4), message(msg) {}
+    
+    //envia la inicializacion de un arma
+    Gamestate(
+    	const int _id,
+    	float x,
+    	float y,
+    	const int _type,
+    	const int direction
+    ) :
+    	Gamedata(0),
+    	type(5),
+    	object_id(_id),
+        pos_X(x),
+        pos_Y(y),
+        type_gun(_type),
+    	move_direction(direction) {}
+	
+	//envia las nuevas posiciones de las armas
+	Gamestate(std::map<int, std::pair<DrawingData, Coordinates>>& guns_positions) :
+		Gamedata(0),
+    	type(6),
+    	guns_positions_by_id(guns_positions){}
+    
+    //envia la inicializacion de una bala
+    Gamestate(
+    	const int _id,
+    	const int _type,
+    	const int direction,
+    	float x,
+    	float y
+    ) : 
+    	Gamedata(0),
+    	type(7),
+    	object_id(_id),
+        pos_X(x),
+        pos_Y(y),
+        type_gun(_type),
+    	move_direction(direction) {}
+    
+    //envia las nuevas posiciones de las balas--el flag es para que no se confunda con el del update de posiciones de patos--
+    Gamestate(
+    	int flag,
+    	std::map<int, Coordinates>& bullets_positions
+    ) : 
+		Gamedata(0),
+    	type(8),
+    	bullet_flag(flag),
+    	bullets_positions_by_id(bullets_positions)
+    	{}
+    
+    //envia la señal de bala destruida
+    Gamestate(const int _id) : 
+		Gamedata(0),
+    	type(9),
+    	object_id(_id){}
 };
 
 struct Gameaction: Gamedata {
