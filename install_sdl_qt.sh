@@ -37,12 +37,20 @@ install_sdl_lib() {
     local NAME=$1
     local VERSION=$2
     local URL=$3
+    local DIR_NAME=$4
 
     echo "Installing $NAME $VERSION..."
+    echo "Downloading from $URL..."
     wget "$URL" -O "$NAME.zip"
-    unzip "$NAME.zip"
-    cd "$NAME-$VERSION"
-    mkdir build
+    
+    echo "Extracting $NAME.zip..."
+    unzip -o "$NAME.zip"
+    
+    echo "Entering directory $DIR_NAME..."
+    cd "$DIR_NAME"
+    
+    echo "Building..."
+    mkdir -p build
     cd build
     cmake ..
     make -j$(nproc)
@@ -51,9 +59,9 @@ install_sdl_lib() {
 }
 
 # Install SDL libraries
-install_sdl_lib "SDL_image" "release-2.6.3" "https://github.com/libsdl-org/SDL_image/releases/download/release-2.6.3/SDL2_image-2.6.3.zip"
-install_sdl_lib "SDL_mixer" "release-2.6.3" "https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.6.3/SDL2_mixer-2.6.3.zip"
-install_sdl_lib "SDL_ttf" "release-2.20.2" "https://github.com/libsdl-org/SDL_ttf/releases/download/release-2.20.2/SDL2_ttf-2.20.2.zip"
+install_sdl_lib "SDL2_image" "2.6.3" "https://github.com/libsdl-org/SDL_image/releases/download/release-2.6.3/SDL2_image-2.6.3.zip" "SDL2_image-2.6.3"
+install_sdl_lib "SDL2_mixer" "2.6.3" "https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.6.3/SDL2_mixer-2.6.3.zip" "SDL2_mixer-2.6.3"
+install_sdl_lib "SDL2_ttf" "2.20.2" "https://github.com/libsdl-org/SDL_ttf/releases/download/release-2.20.2/SDL2_ttf-2.20.2.zip" "SDL2_ttf-2.20.2"
 
 # Cleanup
 cd /
