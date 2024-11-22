@@ -6,8 +6,9 @@
 #include "common/hands_on_sockets/socket.h"
 #include "common/hands_on_threads/queue.h"
 #include "common/hands_on_threads/thread.h"
-#include "server/command.h"
 #include "server/monitored_list.h"
+#include "server/player.h"
+#include "common/gamedata.h"
 
 
 class Acceptor: public Thread

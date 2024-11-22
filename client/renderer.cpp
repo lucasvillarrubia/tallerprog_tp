@@ -83,8 +83,7 @@ void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_of
     SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 }
 
-void Renderer::draw_bullet(Bullet& bullet,  const float zoom_offset_x, const float zoom_offset_y) {	
-	std::cout<<"antes del fault"<<std::endl;
+void Renderer::draw_bullet(Bullet& bullet,  const float zoom_offset_x, const float zoom_offset_y) {
 	SDL2pp::Texture* sprite = textureManager.getGunSprite("pistolas");
 	int vcenter = renderer.GetOutputHeight();
 	SDL_RendererFlip flip = bullet.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
@@ -290,7 +289,7 @@ void Renderer::render(int frame) {
         
         // DIBUJO BALAS
         for (auto& bullet : bullet_list) {
-        	std::cout<<bullet.id<<"- x:"<<bullet.pos_X<<" y: "<<bullet.pos_Y<<std::endl;
+        	// std::cout<<bullet.id<<"- x:"<<bullet.pos_X<<" y: "<<bullet.pos_Y<<std::endl;
         	draw_bullet(bullet, zoom_offset_x, zoom_offset_y);
         }
         

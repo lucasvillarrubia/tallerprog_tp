@@ -22,7 +22,6 @@ project(taller_tp
 option(TALLER_TESTS "Enable / disable tests." ON)
 option(TALLER_CLIENT "Enable / disable client program." ON)
 option(TALLER_SERVER "Enable / disable server program." ON)
-option(TALLER_EDITOR "Enable / disable editor program." ON)
 option(TALLER_MAKE_WARNINGS_AS_ERRORS "Enable / disable warnings as errors." ON)
 
 message(CMAKE_CXX_COMPILER_ID="${CMAKE_CXX_COMPILER_ID}")
@@ -42,14 +41,14 @@ FetchContent_MakeAvailable(yaml-cpp)
 # TODO: Hay que mover estos paths al cmake que está en "common/", por ahora están acá porque el CLion los crea rápido!
 add_library(taller_common STATIC
         common/hands_on_sockets/socket.h
-        common/message.h
+        # common/message.h
         common/hands_on_threads/queue.h
         common/hands_on_threads/thread.h
         common/hands_on_sockets/resolvererror.h
         common/hands_on_sockets/liberror.h
         common/hands_on_sockets/resolver.h
         common/hands_on_sockets/liberror.cpp
-        common/message.cpp
+        # common/message.cpp
         common/hands_on_sockets/resolver.cpp
         common/hands_on_sockets/resolvererror.cpp
         common/hands_on_sockets/socket.cpp
@@ -81,7 +80,7 @@ target_include_directories(taller_common PUBLIC .)
 
 # Install libSDL2pp (for client or editor)
 # HEY!! TODO XXX: add more dependendies (either for client, server or editor)
-if(TALLER_CLIENT OR TALLER_EDITOR)
+if(TALLER_CLIENT)
     include(FetchContent)
     FetchContent_Declare(
         libSDL2pp
@@ -186,14 +185,14 @@ if(TALLER_SERVER)
     add_executable(taller_server
             server/server.h
             server/server_comms/server_protocol.h
-            server/command.h
+            # server/command.h
             server/server_threads/acceptor.h
             server/server_threads/gameplay.h
             server/monitored_list.h
             server/player.h
             server/server_comms/server_sender.h
             server/server_comms/server_receiver.h
-            server/weapon.h
+            # server/weapon.h
             server/server_threads/acceptor.cpp
             server/server_threads/gameplay.cpp
             # server/monitored_list.cpp
@@ -250,25 +249,6 @@ if(TALLER_SERVER)
     target_link_libraries(taller_server taller_common yaml-cpp)
 endif()
 
-if(TALLER_EDITOR)
-    # HEY!! TODO XXX: Change the name of the executable to the one you like!
-    add_executable(taller_editor)
-
-    # Make them depend on taller_common lib
-    add_dependencies(taller_editor taller_common SDL2pp::SDL2pp)
-
-    # Add source files and enable warnings
-    # HEY!! TODO XXX: add more subfolders here
-    add_subdirectory(editor)
-
-    set_project_warnings(taller_editor ${TALLER_MAKE_WARNINGS_AS_ERRORS} FALSE)
-
-    # add libSDL2pp's headers
-    target_include_directories(taller_editor PRIVATE ${libSDL2pp_SOURCE_DIR})
-
-    # Link the taller_common lib target
-    target_link_libraries(taller_editor taller_common SDL2pp::SDL2pp)
-endif()
 
 
 

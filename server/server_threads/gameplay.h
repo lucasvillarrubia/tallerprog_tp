@@ -8,7 +8,6 @@
 
 #include "common/hands_on_threads/queue.h"
 #include "common/hands_on_threads/thread.h"
-#include "server/command.h"
 #include "server/terrain.h"
 #include "server/duck.h"
 #include "server/monitored_list.h"
@@ -18,6 +17,7 @@
 #include "server/server_guns/DuelPistol.h"
 #include "server/server_guns/CowboyPistol.h"
 #include "server/server_guns/Magnum.h"
+#include "server/player.h"
 
 
 #include "common/drawingdata.h"

@@ -43,8 +43,7 @@ private:
     const bool& is_multiplayer;
 public:
     EventListener(std::atomic_bool&, Queue<Gameaction>&, const bool&);
-    void run();
-    void stop();
+    void listen();
     ~EventListener() = default;
 };
 

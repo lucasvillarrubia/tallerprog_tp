@@ -10,7 +10,7 @@ EventListener::EventListener(std::atomic_bool& connection, Queue<Gameaction>& q,
         events(q),
         is_multiplayer(mode) {}
 
-void EventListener::run() {
+void EventListener::listen() {
     try
     {
         SDL_Event event;

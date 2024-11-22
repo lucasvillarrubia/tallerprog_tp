@@ -2,7 +2,6 @@
 #define SERVER_PLAYER_H
 
 
-#include "command.h"
 
 #include "common/hands_on_sockets/socket.h"
 #include "common/hands_on_threads/queue.h"

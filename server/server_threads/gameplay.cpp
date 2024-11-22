@@ -1,8 +1,6 @@
 #include <iostream>
 
 #include "gameplay.h"
-
-#include "common/message.h"
 #include "server/state_manager.h"
 
 
@@ -11,7 +9,7 @@ Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_c
     // patos de prueba para el zoom
     Duck hugo, paco, luis;
     hugo.set_position(210.0f, 300.0f);
-    paco.set_position(300.0f, 300.0f);
+    paco.set_position(700.0f, 300.0f);
     luis.set_position(220.0f, 350.0f);
     luis.set_is_NOT_alive();
     ducks_by_id.insert({2, hugo});
