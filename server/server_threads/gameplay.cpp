@@ -39,7 +39,10 @@ Gameplay::Gameplay(MonitoredList<Player*>& player_list, const std::map<int, bool
     //         ducks_by_id.insert({id + MULTIPLAYER_ID_OFFSET, second});
     //     }
     // }
-
+    guns_by_id.insert({1, new AK47(650.0f, 180.0f)});
+    guns_by_id.insert({2, new DuelPistol(630.0f, 180.0f)});
+    guns_by_id.insert({3, new CowboyPistol(200.0f, 300.0f)});
+    guns_by_id.insert({4, new Magnum(670.0f, 189.0f)});
 }
 
 void Gameplay::broadcast_for_all_players(const Gamestate& state)

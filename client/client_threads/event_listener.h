@@ -41,7 +41,9 @@ private:
         {SDLK_ESCAPE, 9},
         {SDLK_d, 1},
         {SDLK_a, 2},
-        {SDLK_RETURN, 3}
+        {SDLK_RETURN, 3},
+        {SDLK_x, 4},
+        {SDLK_z, 5}
     };
     const bool& is_multiplayer;
     const int& match_id;

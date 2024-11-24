@@ -19,9 +19,15 @@ void EventListener::listen() {
         {
             Uint32 type = event.type;
             SDL_Keycode key = event.key.keysym.sym;
-            if (not is_multiplayer and codes_by_key_for_second_player.contains(key)) return;
-            else if ((not codes_by_event_type.contains(type) || not codes_by_key.contains(key)) and (is_multiplayer and (not codes_by_key_for_second_player.contains(key) || not codes_by_event_type.contains(type))))
-                return;
+            // if (not is_multiplayer and codes_by_key_for_second_player.contains(key)) return;
+            // else if ((not codes_by_event_type.contains(type) || not codes_by_key.contains(key)) and (is_multiplayer and (not codes_by_key_for_second_player.contains(key) || not codes_by_event_type.contains(type))))
+            //     return;
+            if (is_multiplayer) {
+                if (not codes_by_event_type.contains(type) or (not codes_by_key_for_second_player.contains(key) and not codes_by_key.contains(key))) return;
+            }
+            else {
+                if (not codes_by_event_type.contains(type) || not codes_by_key.contains(key)) return;
+            }
             const int type_code = codes_by_event_type.at(event.type);
             // const int key_code = codes_by_key.at(event.key.keysym.sym);
             int key_code;

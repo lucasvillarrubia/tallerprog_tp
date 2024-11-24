@@ -155,7 +155,7 @@ void Client::handle_create_one_player_match()
     QMessageBox msgBox;
     msgBox.setWindowTitle("Game Mode");
     msgBox.setText("Select your game mode:");
-    // msgBox.addButton("Two-Player", QMessageBox::YesRole);
+    msgBox.addButton("Two-Player", QMessageBox::YesRole);
     msgBox.addButton("Single-Player", QMessageBox::NoRole);
     msgBox.setDefaultButton(QMessageBox::No);
     msgBox.setIcon(QMessageBox::NoIcon);  // Remove the main icon
