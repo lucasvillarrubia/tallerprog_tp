@@ -19,7 +19,3 @@ float AK47Ammo::impact() {
 	destroyed = true;
 	return damagePoints;
 }
-
-bool AK47Ammo::is_destroyed() {
-	return destroyed;
-}

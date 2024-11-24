@@ -75,6 +75,7 @@ void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_of
 			break;
 		default:
 			sprite = textureManager.getGunSprite("sniper");
+			break;
 	}
 	int vcenter = renderer.GetOutputHeight();
 	SDL_RendererFlip flip = gun.pointing_to_the_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
@@ -100,8 +101,10 @@ SDL_Rect Renderer::search_sprite(const int type) {
 			return {75, 152, 32, 32};
 		case 7:
 			return {1, 20, 22, 11};
-		default:
+		case 8:
 			return {1, 47, 32, 32};
+		default:
+			return {0, 0, 33, 9};
 	}
 }
 
@@ -114,8 +117,10 @@ SDL_Rect Renderer::search_dimension_sprite(int vcenter, Gun& gun, const float zo
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 64, 64 };
 		case 7:
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 44, 22 };
-		default:
+		case 8:
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 64, 64 };
+		default:
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 66, 18 };
 	}
 }
 

@@ -2,18 +2,7 @@
 
 Ammo::Ammo(float x, float y, bool right, int type, float _scope) : originX(x), originY(y), positionX(originX), positionY(originY), destroyed(false), movingRight(right), type_gun(type), scope(_scope) {}
 
-void Ammo::update_position(const unsigned int frame_delta)  {
-	if (!destroyed){
-		if (movingRight) {
-			positionX += frame_delta * 0.3;
-		} else {
-			positionX -= frame_delta * 0.3;
-		}
-		if (abs(positionX-originX) > scope) {
-			destroyed = true;
-		}
-	}
-}
+void Ammo::update_position([[maybe_unused]] const unsigned int frame_delta)  {}
 
 float Ammo::impact() {
 	destroyed = true;

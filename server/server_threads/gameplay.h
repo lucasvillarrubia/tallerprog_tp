@@ -17,6 +17,7 @@
 #include "server/server_guns/DuelPistol.h"
 #include "server/server_guns/CowboyPistol.h"
 #include "server/server_guns/Magnum.h"
+#include "server/server_guns/Sniper.h"
 #include "server/player.h"
 
 
