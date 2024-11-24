@@ -22,7 +22,7 @@ void Server::run() {
         // while (input != END_OF_PROGRAM_CODE) {
         //     std::getline(std::cin, input);
         // }
-
+        std::cout << "El servidor está corriendo correctamente. Apretá 'q' para finalizarlo.\n";
         std::string input;
         while (std::getline(std::cin, input)) {
             if (input == END_OF_PROGRAM_CODE) {

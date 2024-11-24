@@ -17,6 +17,10 @@ private:
     bool is_stomping_on_wall_from_left;
     bool is_alive;
     float jump_velocity;
+    bool is_grabbing;
+    bool is_shooting;
+    bool with_gun;
+    int gun_equipped_id;
 public:
     // esto para el primer intento nomás
     // bool exited = false;
@@ -60,6 +64,13 @@ public:
     void set_is_NOT_alive() {
         is_alive = false;
     }
+    bool wants_to_grab();
+    bool have_a_gun();
+    void pickup_gun(int _gun_id);
+    void stop_grab();
+    void drop_gun();
+    bool shooting();
+    int get_gun_id() const;
     // Coordinates get_coordinates() const;
     // int get_movement_phase () const;
     friend class StateManager;

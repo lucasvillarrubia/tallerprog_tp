@@ -70,30 +70,27 @@ void Client::run() {
         std::chrono::milliseconds rate(16);
         game_on.store(true);
         connection.start_communication();
-        // int argc = 0;
-        // char** argv = nullptr;
-        // QApplication app(argc, argv);
-        // lobby lobby;
 
-
-        // botón de refresh y NO actualizaciones en vivo de partidas disponibles
         gamelobby.show();
         app.exec();
+        if (gamelobby.was_closed_by_X()) {
+            game_on.store(false);
+            connected.store(false);
+            updates.close();
+            events.close();
+            connection.end_connection();
+            return;
+        }
         SDL2pp::SDL sdl(SDL_INIT_VIDEO);
         Renderer renderloop(game_on, updates, state);
-        // updater.start();
-        // pantalla de inicio
-        // preguntar para 1 o 2 jugadores -> sólo debería activar las teclas para el jugador 2 y un
-        // Gameaction create(1, 0, 4, 0);
-        // events.try_push(create);
-        // Gameaction start(1, 1, 6, 0);
-        // events.try_push(start);
+
         std::cout << "Client running\n";
+
         while (game_on.load() && connected.load())
         {
             constant_rate_loop([&](int frame)
             {
-                event_listener.run();
+                event_listener.listen();
                 renderloop.render(frame);
             }, rate);
         }
@@ -134,8 +131,6 @@ void Client::run() {
 
 void Client::handle_create_one_player_match()
 {
-    std::cout << "create one player match\n";
-
     QString styleSheet = 
         "QMessageBox {"
         "    background-color: #FF7900;"
@@ -160,11 +155,12 @@ void Client::handle_create_one_player_match()
     QMessageBox msgBox;
     msgBox.setWindowTitle("Game Mode");
     msgBox.setText("Select your game mode:");
-    msgBox.addButton("Two-Player", QMessageBox::YesRole);
+    // msgBox.addButton("Two-Player", QMessageBox::YesRole);
     msgBox.addButton("Single-Player", QMessageBox::NoRole);
-    msgBox.setDefaultButton(QMessageBox::Yes);
+    msgBox.setDefaultButton(QMessageBox::No);
     msgBox.setIcon(QMessageBox::NoIcon);  // Remove the main icon
     msgBox.setStyleSheet(styleSheet);
+
     int result = msgBox.exec();
     if (result == MULTIPLAYER_MODE) {  // First button returns 0
         multiplayer_mode = true;
@@ -172,6 +168,7 @@ void Client::handle_create_one_player_match()
     }
     int mode = multiplayer_mode ? 1 : 0;
     Gameaction create(1, 0, 4, 0, mode);
+
     events.try_push(create);
 }
 

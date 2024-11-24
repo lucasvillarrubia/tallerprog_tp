@@ -188,10 +188,10 @@
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
-     <string>Create 1P Match</string>
+     <string>PLAY</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="joinMatchButton">
+   <!-- <widget class="QPushButton" name="joinMatchButton">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -216,7 +216,7 @@
     <property name="text">
      <string>Join Match</string>
     </property>
-   </widget>
+   </widget> -->
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -257,13 +257,13 @@
      </font>
     </property>
     <property name="text">
-     <string>v. 1.0.0</string>
+     <string>v. 0.0.1 demo</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="createTwoPlayerMatchButton">
+   <!-- <widget class="QPushButton" name="createTwoPlayerMatchButton">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -308,7 +308,7 @@
     <property name="text">
      <string>Create 3P Match</string>
     </property>
-   </widget>
+   </widget> -->
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

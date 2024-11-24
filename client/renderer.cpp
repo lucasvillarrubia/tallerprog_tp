@@ -1,6 +1,7 @@
 #include "renderer.h"
 
 #include <list>
+#include <iostream>
 #include <SDL.h>
 
 #include "client/character.h"
@@ -59,6 +60,63 @@ void Renderer::draw_character(Character& character, int frame, const float zoom_
     };
 
     SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+}
+
+void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_offset_y) {
+	SDL2pp::Texture* sprite;
+	switch (gun.type) {
+		case 5:
+			sprite = textureManager.getGunSprite("ak47");
+			break;
+		case 6:
+		case 7:
+		case 8:
+			sprite = textureManager.getGunSprite("pistolas");
+			break;
+		default:
+			sprite = textureManager.getGunSprite("sniper");
+	}
+	int vcenter = renderer.GetOutputHeight();
+	SDL_RendererFlip flip = gun.pointing_to_the_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+    SDL_Rect src_rect = search_sprite(gun.type);
+    SDL_Rect dst_rect = search_dimension_sprite(vcenter, gun, zoom_offset_x, zoom_offset_y);
+    SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+}
+
+void Renderer::draw_bullet(Bullet& bullet,  const float zoom_offset_x, const float zoom_offset_y) {
+	SDL2pp::Texture* sprite = textureManager.getGunSprite("pistolas");
+	int vcenter = renderer.GetOutputHeight();
+	SDL_RendererFlip flip = bullet.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+    SDL_Rect src_rect = { 1, 89, 16, 16 };
+    SDL_Rect dst_rect = { static_cast<int>(bullet.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - bullet.pos_Y + zoom_offset_y), 16, 16 };
+    SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+}
+
+SDL_Rect Renderer::search_sprite(const int type) {
+	switch (type) {
+		case 5:
+			return {0, 0, 32, 32};
+		case 6:
+			return {75, 152, 32, 32};
+		case 7:
+			return {1, 20, 22, 11};
+		default:
+			return {1, 47, 32, 32};
+	}
+}
+
+
+SDL_Rect Renderer::search_dimension_sprite(int vcenter, Gun& gun, const float zoom_offset_x, const float zoom_offset_y) {
+	switch (gun.type) {
+		case 5:
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 64, 64 };
+		case 6:
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 64, 64 };
+		case 7:
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 44, 22 };
+		default:
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 64, 64 };
+	}
 }
 
 void Renderer::calculate_zoom_offsets(float& offset_x, float& offset_y, float avg_x, float avg_y) {
@@ -188,6 +246,8 @@ void Renderer::render(int frame) {
 
         renderer.Clear();
         std::list<Character> character_list = state.get_characters_data();
+        std::list<Gun> gun_list = state.get_guns_data();
+        std::list<Bullet> bullet_list = state.get_bullets_data();
         
         // CALCULO ZOOM Y POSICIONES
         std::vector<Coordinates> duck_positions;
@@ -221,6 +281,17 @@ void Renderer::render(int frame) {
             // if (character.is_alive)
             // std::cout << "drawing character\n";
                 draw_character(character, frame, zoom_offset_x, zoom_offset_y);
+        }
+        
+        // DIBUJO ARMAS
+        for (auto& gun : gun_list) {
+        	draw_gun(gun, zoom_offset_x, zoom_offset_y);
+        }
+        
+        // DIBUJO BALAS
+        for (auto& bullet : bullet_list) {
+        	// std::cout<<bullet.id<<"- x:"<<bullet.pos_X<<" y: "<<bullet.pos_Y<<std::endl;
+        	draw_bullet(bullet, zoom_offset_x, zoom_offset_y);
         }
         
         renderer.Present();

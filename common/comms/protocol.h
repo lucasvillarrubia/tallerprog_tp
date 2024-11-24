@@ -11,7 +11,6 @@
 #include "common/hands_on_sockets/socket.h"
 
 
-// Clase abstracta protocolo que ofrece a sus clases derivadas envío y recibimiento de mensajes de tipo string y enteros de 8 bytes.
 
 
 class Protocol

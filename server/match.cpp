@@ -7,7 +7,7 @@ void Match::start()
 {
     try
     {
-        std::cout << "comenzó la partida con " << player_list.size() << " jugadores\n";
+        // std::cout << "comenzó la partida con " << player_list.size() << " jugadores\n";
         has_started = true;
         gameloop.start();
     } catch (const ClosedQueue& e) {

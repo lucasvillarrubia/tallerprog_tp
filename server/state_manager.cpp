@@ -9,6 +9,8 @@ const int ESCAPE = 9;
 const int RIGHT = 1;
 const int LEFT = 2;
 const int SPACE = 3;
+const int g = 4;
+const int f = 5;
 
 const float JUMP_STRENGTH = 15.0f;
 const float FLAP_STRENGTH = 1.0f;
@@ -61,6 +63,12 @@ void StateManager::update_duck_state(Duck& duck, const Gameaction& event)
                  duck.jump_velocity = FLAP_STRENGTH;
              }
             break;
+        case g:
+        	duck.is_grabbing = true;
+        	break;
+        case f:
+        	duck.is_shooting = true;
+        	break;
         }
     } else if (event.type == KEYUP) {
         switch (event.key) {
@@ -71,6 +79,12 @@ void StateManager::update_duck_state(Duck& duck, const Gameaction& event)
         // case SPACE:
         //     duck.is_flapping = false;
         //     break;
+        case g:
+        	duck.is_grabbing = false;
+        	break;
+        case f:
+        	duck.is_shooting = false;
+        	break;
         }
     }
 }

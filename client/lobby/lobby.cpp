@@ -7,9 +7,9 @@ lobby::lobby(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->createOnePlayerMatchButton, &QPushButton::clicked, this, &lobby::on_createOnePlayerMatchButton_clicked);
-    connect(ui->joinMatchButton, &QPushButton::clicked, this, &lobby::on_joinMatchButton_clicked);
-    connect(ui->createTwoPlayerMatchButton, &QPushButton::clicked, this, &lobby::on_createTwoPlayerMatchButton_clicked);
-    connect(ui->createThreePlayerMatchButton, &QPushButton::clicked, this, &lobby::on_createThreePlayerMatchButton_clicked);
+    // connect(ui->joinMatchButton, &QPushButton::clicked, this, &lobby::on_joinMatchButton_clicked);
+    // connect(ui->createTwoPlayerMatchButton, &QPushButton::clicked, this, &lobby::on_createTwoPlayerMatchButton_clicked);
+    // connect(ui->createThreePlayerMatchButton, &QPushButton::clicked, this, &lobby::on_createThreePlayerMatchButton_clicked);
 }
 
 void lobby::on_createOnePlayerMatchButton_clicked()
@@ -35,22 +35,29 @@ void lobby::on_createOnePlayerMatchButton_clicked()
     }
 }
 
-void lobby::on_createTwoPlayerMatchButton_clicked()
-{
-    // This will emit the signal
-    emit create_two_player_match();
-}
+// void lobby::on_createTwoPlayerMatchButton_clicked()
+// {
+//     // This will emit the signal
+//     emit create_two_player_match();
+// }
 
-void lobby::on_createThreePlayerMatchButton_clicked()
-{
-    // This will emit the signal
-    emit create_three_player_match();
-}
+// void lobby::on_createThreePlayerMatchButton_clicked()
+// {
+//     // This will emit the signal
+//     emit create_three_player_match();
+// }
 
-void lobby::on_joinMatchButton_clicked()
-{
-    // This will emit the signal
-    emit join_match();
+// void lobby::on_joinMatchButton_clicked()
+// {
+//     // This will emit the signal
+//     emit join_match();
+// }
+
+void lobby::closeEvent(QCloseEvent *event) {
+    if (!match_button_pressed) {
+        closed_by_X = true;
+    }
+    event->accept();
 }
 
 lobby::~lobby()

@@ -5,16 +5,7 @@
 #include <functional>
 #include <list>
 #include <mutex>
-
-#include "command.h"
-#include "player.h"
-
-
-// coming soon acá:
-    // broadcast    ---> for_each   (*función*)
-    // clean_up     ---> remove_if  (*predicado*)
-// dejando clear como está, se tiene que aclarar que la lista sólo va a servir con punteros
-// (de cualquier cosa reservada en el heap, no se puede hacer un delete de cualquier cosa)
+#include "common/gamedata.h"
 
 
 template <typename T>
@@ -25,19 +16,6 @@ private:
     mutable std::mutex mtx;
 
 public:
-    //MonitoredList();
-    //void push_back(T);
-    // void push_back(Player*);
-    //void broadcast(const Gamestate&);
-    // le tiene que llegar un predicado
-    //MonitoredList<T> select_if();
-    //void clean_up();
-    //void clear();
-    // MonitoredList(const MonitoredList&) = delete;
-    // MonitoredList& operator=(const MonitoredList&) = delete;
-    // ~MonitoredList() = default;
-
-
 
 
 

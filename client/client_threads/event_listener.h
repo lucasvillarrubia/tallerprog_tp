@@ -29,7 +29,13 @@ private:
         {SDLK_ESCAPE, 9},
         {SDLK_RIGHT, 1},
         {SDLK_LEFT, 2},
-        {SDLK_SPACE, 3}
+
+        {SDLK_SPACE, 3},
+
+        // {SDLK_RETURN, 3}
+        {SDLK_g, 4},
+        {SDLK_f, 5}
+
     };
     std::map<SDL_Keycode, int> codes_by_key_for_second_player = {
         {SDLK_ESCAPE, 9},
@@ -40,9 +46,10 @@ private:
     const bool& is_multiplayer;
     const int& match_id;
 public:
+
     EventListener(std::atomic_bool&, Queue<Gameaction>&, const bool&, const int&);
-    void run();
-    void stop();
+    void listen();
+
     ~EventListener() = default;
 };
 
