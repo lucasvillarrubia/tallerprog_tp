@@ -54,10 +54,11 @@ void ServerProtocol::send_duck_state_message(const Gamestate& message)
 void ServerProtocol::receive_message(Gameaction& received)
 {
     if (not client_is_connected.load()) return;
-    uint8_t player, match, type, key;
+    uint8_t player, match, type, key, is_multiplayer;
     receive_single_8bit_int(player);
     receive_single_8bit_int(match);
     receive_single_8bit_int(type);
     receive_single_8bit_int(key);
-    received = Gameaction(player, match, type, key);
+    receive_single_8bit_int(is_multiplayer);
+    received = Gameaction(player, match, type, key, is_multiplayer);
 }

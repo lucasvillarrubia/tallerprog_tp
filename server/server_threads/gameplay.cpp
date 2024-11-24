@@ -6,17 +6,40 @@
 #include "server/state_manager.h"
 
 
-Gameplay::Gameplay(MonitoredList<Player*>& player_list, Queue<Gameaction>& usr_cmds):
-        is_running(false), players(player_list), user_commands(usr_cmds) {
+const int MULTIPLAYER_ID_OFFSET = 128;
+
+
+Gameplay::Gameplay(MonitoredList<Player*>& player_list, const std::map<int, bool>& multiplayer_modes, Queue<Gameaction>& usr_cmds):
+        is_running(false), players(player_list), multiplayer_mode_by_player(multiplayer_modes), user_commands(usr_cmds) {
     // patos de prueba para el zoom
-    Duck hugo, paco, luis;
-    hugo.set_position(210.0f, 300.0f);
-    paco.set_position(300.0f, 300.0f);
-    luis.set_position(220.0f, 350.0f);
-    luis.set_is_NOT_alive();
-    ducks_by_id.insert({2, hugo});
-    ducks_by_id.insert({3, paco});
-    ducks_by_id.insert({4, luis});
+    // Duck hugo, paco, luis;
+    // hugo.set_position(210.0f, 300.0f);
+    // paco.set_position(300.0f, 300.0f);
+    // luis.set_position(220.0f, 350.0f);
+    // luis.set_is_NOT_alive();
+    // ducks_by_id.insert({2, hugo});
+    // ducks_by_id.insert({3, paco});
+    // ducks_by_id.insert({4, luis});
+    // for (int i = 1; i <= player_list.size(); i++)
+    // {
+    //     Duck duck;
+    //     ducks_by_id.insert({i, duck});
+    // }
+    // for (auto& [id, is_multiplayer] : multiplayer_mode_by_player)
+    // {
+    //     float x = 300.0f;
+    //     float y = 300.0f;
+    //     Duck duck;
+    //     duck.set_position(x, y);
+    //     duck.set_is_on_the_floor();
+    //     ducks_by_id.insert({id, duck});
+    //     if (is_multiplayer) {
+    //         Duck second;
+    //         second.set_position(210.0f, 300.0f);
+    //         second.set_is_on_the_floor();
+    //         ducks_by_id.insert({id + MULTIPLAYER_ID_OFFSET, second});
+    //     }
+    // }
 }
 
 void Gameplay::broadcast_for_all_players(const Gamestate& state)
@@ -31,39 +54,57 @@ void Gameplay::send_all_initial_coordinates()
     // for (int i = 1; i <= players.size(); i++)
     // {
     //     if (i == 1) {
-            float x = 300.0f;
-            float y = 300.0f;
-            Duck duck;
-            duck.set_position(x, y);
-            duck.set_is_on_the_floor();
-            ducks_by_id.insert({1, duck});
-            Gamestate initial_duck_coordinates(1, x, y, 0, 0, 0, 1, 1, 0.0f);
-            broadcast_for_all_players(initial_duck_coordinates);
+            // float x = 300.0f;
+            // float y = 300.0f;
+            // Duck duck;
+            // duck.set_position(x, y);
+            // duck.set_is_on_the_floor();
+            // ducks_by_id.insert({1, duck});
+            // Gamestate initial_duck_coordinates(1, x, y, 0, 0, 0, 1, 1, 0.0f);
+            // broadcast_for_all_players(initial_duck_coordinates);
         // }
     // }
+    for (auto& [id, is_multiplayer] : multiplayer_mode_by_player)
+    {
+        float x = 300.0f;
+        float y = 300.0f;
+        Duck duck;
+        duck.set_position(x, y);
+        duck.set_is_on_the_floor();
+        ducks_by_id.insert({id, duck});
+        std::cout << "id: " << id << " is_multiplayer: " << is_multiplayer << "\n";
+        if (is_multiplayer) {
+            Duck second;
+            second.set_position(210.0f, 300.0f);
+            second.set_is_on_the_floor();
+            ducks_by_id.insert({id + MULTIPLAYER_ID_OFFSET, second});
+            std::cout << "id: " << id + MULTIPLAYER_ID_OFFSET << "\n";
+        }
+    }
     for (auto& [id, duck]: ducks_by_id)
     {
-        if (id != 1) {
-            Coordinates position = StateManager::get_duck_coordinates(duck);
-            Gamestate initial_duck_coordinates(
-                id,
-                position.pos_X,
-                position.pos_Y,
-                0,
-                0,
-                0,
-                1,
-                StateManager::get_duck_is_alive(duck),
-                0.0f
-            );
-            broadcast_for_all_players(initial_duck_coordinates);
-        }   
+        Coordinates position = StateManager::get_duck_coordinates(duck);
+        Gamestate initial_duck_coordinates(
+            id,
+            position.pos_X,
+            position.pos_Y,
+            0,
+            0,
+            0,
+            1,
+            StateManager::get_duck_is_alive(duck),
+            0.0f
+        );
+        broadcast_for_all_players(initial_duck_coordinates);
     }
 }
 
 void Gameplay::process_users_commands() {
     Gameaction command;
     while (user_commands.try_pop(command)) {
+        if (command.is_multiplayer) {
+            command.player_id += MULTIPLAYER_ID_OFFSET;
+        }
         StateManager::update_duck_state(ducks_by_id.at(command.player_id), command);
         Gamestate update = StateManager::get_duck_state(ducks_by_id.at(command.player_id), command.player_id);
         broadcast_for_all_players(update);

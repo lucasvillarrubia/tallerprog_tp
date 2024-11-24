@@ -77,18 +77,20 @@ struct Gameaction: Gamedata {
     int match;
     int type;
     int key;
-    bool is_multiplayer;
+    int is_multiplayer;
     Gameaction(): Gamedata(-1) {}
     Gameaction(
         const int player,
         const int _match,
         const int _type,
-        const int _key
+        const int _key,
+        const int mode
         ):
         Gamedata(player),
         match(_match),
         type(_type),
-        key(_key) {}
+        key(_key),
+        is_multiplayer(mode) {}
     Gameaction(const int player, const int _type, const bool mode): Gamedata(player), type(_type), is_multiplayer(mode) {}
 };
 

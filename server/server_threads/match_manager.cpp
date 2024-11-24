@@ -14,14 +14,20 @@ MatchManager::MatchManager(Queue<Gameaction>& q, MonitoredList<Player*>& p):
         all_players(p)
 {}
 
-void MatchManager::create_match(int creator_id, int player_limit)
+void MatchManager::create_match(int creator_id, int creator_multiplayer_mode)
 {
+    std::cout << "Creating match\n";
     match_count++;
-    auto* new_match = new Match(match_count, player_limit);
-    auto* new_match_player_list = all_players.get_by_id(creator_id);
-    new_match->add_player(new_match_player_list);
+    auto* new_match = new Match(match_count);
+    std::cout << "Match creating\n";
+    auto* creator = all_players.get_by_id(creator_id);
+    std::cout << "Player getting\n";
+    new_match->add_player(creator, creator_id, (creator_multiplayer_mode == 1));
+    std::cout << "Player added\n";
     matches.push_back(new_match);
+    std::cout << "Match added\n";
     creators_by_match.insert({match_count, creator_id});
+    std::cout << "Match created\n";
 }
 
 void MatchManager::join_to_match(int player, int match_id)
@@ -36,16 +42,10 @@ void MatchManager::join_to_match(int player, int match_id)
         Gamestate error(player, "Match not available");
         player_to_join->add_message_to_queue(error);
         return;
-    } else if (match->is_full()) {
-        Gamestate error(player, "Match is full");
-        player_to_join->add_message_to_queue(error);
-        return;
     }
     player_to_join->set_id(match->get_player_count() + 1);
-    match->add_player(player_to_join);
-    if (match->is_full()) {
-        match->start();
-    }
+    match->add_player(player_to_join, player, false);
+    match->start();
 }
 
 void MatchManager::start_match(int player, int match_id)
@@ -91,7 +91,7 @@ void MatchManager::run()
             // while (users_commands.try_pop(action)) {
                 switch (action.type) {
                     case 4:
-                        create_match(action.player_id, ONE_PLAYER_LIMIT);
+                        create_match(action.player_id, action.is_multiplayer);
                         start_match(action.player_id, 1);
                         break;
                     case 5:
@@ -100,12 +100,12 @@ void MatchManager::run()
                     case 6:
                         start_match(action.player_id, action.match);
                         break;
-                    case 7:
-                        create_match(action.player_id, TWO_PLAYER_LIMIT);
-                        break;
-                    case 8:
-                        create_match(action.player_id, THREE_PLAYER_LIMIT);
-                        break;
+                    // case 7:
+                    //     create_match(action.player_id, TWO_PLAYER_LIMIT);
+                    //     break;
+                    // case 8:
+                    //     create_match(action.player_id, THREE_PLAYER_LIMIT);
+                    //     break;
                     default:
                         add_action_to_match(action);
                         break;
@@ -134,8 +134,8 @@ void MatchManager::run()
     } catch (const ClosedQueue& e) {
         is_running.store(false);
         _keep_running = false;
+        matches.clear();
         std::cerr << "Se cerró la queue en el match manager!\n";
-        // matches.clear();
     } catch (const LibError& e) {
         is_running.store(false);
     } catch (const std::exception& e) {

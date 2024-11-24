@@ -7,7 +7,7 @@
 
 
 Player::Player(Socket&& skt, Queue<Gameaction>& usr_entr):
-        id(1),
+        id(0),
         server_messages(usr_entr),
         client_is_connected(false),
         protocol(std::move(skt), client_is_connected),

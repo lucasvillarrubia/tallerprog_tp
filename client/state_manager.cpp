@@ -20,12 +20,14 @@ void StateManager::update(const Gamestate& update)
     {
     case 1:
         {
+            std::cout << "Initial coordinates received\n";
             if (update.is_alive == DUCK_IS_ALIVE) {
                 Character new_duki(update.player_id);
                 new_duki.pos_X = update.pos_X;
                 new_duki.pos_Y = update.pos_Y;
                 dukis.push_back(new_duki);
             }
+            std::cout << "info received: " << update.player_id << " " << update.pos_X << " " << update.pos_Y << " " << update.is_alive << "\n";
             break;
         }
     case 3:

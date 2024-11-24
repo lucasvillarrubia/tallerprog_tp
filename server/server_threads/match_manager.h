@@ -8,7 +8,6 @@
 class MatchManager: public Thread
 {
 private:
-    int player_limit;
     std::map<int, int> creators_by_match;
     int match_count;
     std::atomic_bool is_running;
