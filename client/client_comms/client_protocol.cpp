@@ -14,6 +14,7 @@ void ClientProtocol::send_message(const Gameaction& message)
     send_single_8bit_int(message.match);
     send_single_8bit_int(message.type);
     send_single_8bit_int(message.key);
+    send_single_8bit_int(message.is_multiplayer);
 }
 
 void ClientProtocol::receive_init_character_message(Gamestate& received)

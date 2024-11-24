@@ -5,10 +5,11 @@
 #include <QString>
 
 
-EventListener::EventListener(std::atomic_bool& connection, Queue<Gameaction>& q, const bool& mode):
+EventListener::EventListener(std::atomic_bool& connection, Queue<Gameaction>& q, const bool& mode, const int& match):
         connected(connection),
         events(q),
-        is_multiplayer(mode) {}
+        is_multiplayer(mode),
+        match_id(match) {}
 
 void EventListener::listen() {
     try
@@ -18,11 +19,23 @@ void EventListener::listen() {
         {
             Uint32 type = event.type;
             SDL_Keycode key = event.key.keysym.sym;
-            if (not codes_by_event_type.contains(type) || not codes_by_key.contains(key))
+            if (not is_multiplayer and codes_by_key_for_second_player.contains(key)) return;
+            else if ((not codes_by_event_type.contains(type) || not codes_by_key.contains(key)) and (is_multiplayer and (not codes_by_key_for_second_player.contains(key) || not codes_by_event_type.contains(type))))
                 return;
             const int type_code = codes_by_event_type.at(event.type);
-            const int key_code = codes_by_key.at(event.key.keysym.sym);
-            Gameaction new_action(1, 1, type_code, key_code);
+            // const int key_code = codes_by_key.at(event.key.keysym.sym);
+            int key_code;
+            bool second_player = false;
+            if (is_multiplayer and codes_by_key_for_second_player.contains(key)) {
+                std::cout << "entered second player move\n";
+                key_code = codes_by_key_for_second_player.at(key);
+                std::cout << "key_code: " << key_code << "\n";
+                second_player = true;
+            }
+            else {
+                key_code = codes_by_key.at(key);
+            }
+            Gameaction new_action(1, 1, type_code, key_code, second_player);
             events.try_push(new_action);
             if(key == SDLK_ESCAPE) {
                 QString styleSheet = 

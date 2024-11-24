@@ -48,7 +48,7 @@ public:
 
     void cargarDuckSprites() {
         cargarDuckSprite(1, "resources/White_Duck_Sprites.png");
-        cargarDuckSprite(2, "resources/Blue_Duck_Sprites.png");
+        cargarDuckSprite(129, "resources/Blue_Duck_Sprites.png");
         cargarDuckSprite(3, "resources/Pink_Duck_Sprites.png");
         cargarDuckSprite(4, "resources/Yellow_Duck_Sprites.png");
     }
@@ -60,6 +60,7 @@ public:
 
     void cargarDuckSpritesVolando() {
         cargarDuckSpriteVolando(1, "resources/aleteo.png");
+        cargarDuckSpriteVolando(129, "resources/aleteo.png");
     }
 
     void cargarDuckSprite(int id, const std::string& path) {

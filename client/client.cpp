@@ -27,7 +27,7 @@ Client::Client(const char* hostname, const char* servname):
         connected(false),
         game_on(false),
         connection(std::move(Socket(hostname, servname)), events, updates, connected),
-        event_listener(game_on, events, multiplayer_mode),
+        event_listener(game_on, events, multiplayer_mode, current_match),
         // renderloop(game_on, updates, state),
         // renderloop(game_on, window, renderer, updates, state),
         updater(updates, state),
@@ -83,6 +83,9 @@ void Client::run() {
         }
         SDL2pp::SDL sdl(SDL_INIT_VIDEO);
         Renderer renderloop(game_on, updates, state);
+
+        std::cout << "Client running\n";
+
         while (game_on.load() && connected.load())
         {
             constant_rate_loop([&](int frame)
@@ -157,30 +160,35 @@ void Client::handle_create_one_player_match()
     msgBox.setDefaultButton(QMessageBox::No);
     msgBox.setIcon(QMessageBox::NoIcon);  // Remove the main icon
     msgBox.setStyleSheet(styleSheet);
-    msgBox.exec();
-    // int result = msgBox.exec();
-    // if (result == MULTIPLAYER_MODE) {  // First button returns 0
-    //     multiplayer_mode = true;
-    //     std::cout << "Multiplayer mode!\n";
-    // }
-    Gameaction create(1, 0, 4, 0);
+
+    int result = msgBox.exec();
+    if (result == MULTIPLAYER_MODE) {  // First button returns 0
+        multiplayer_mode = true;
+        std::cout << "Multiplayer mode!\n";
+    }
+    int mode = multiplayer_mode ? 1 : 0;
+    Gameaction create(1, 0, 4, 0, mode);
+
     events.try_push(create);
 }
 
 void Client::handle_create_two_player_match()
 {
-    Gameaction create(1, 0, 7, 0);
+    int mode = multiplayer_mode ? 1 : 0;
+    Gameaction create(1, 0, 7, 0, mode);
     events.try_push(create);
 }
 
 void Client::handle_create_three_player_match()
 {
-    Gameaction create(1, 0, 8, 0);
+    int mode = multiplayer_mode ? 1 : 0;
+    Gameaction create(1, 0, 8, 0, mode);
     events.try_push(create);
 }
 
 void Client::handle_join_match()
 {
-    Gameaction start(1, 1, 5, 0);
+    int mode = multiplayer_mode ? 1 : 0;
+    Gameaction start(1, 1, 5, 0, mode);
     events.try_push(start);
 }

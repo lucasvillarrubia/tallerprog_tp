@@ -6,24 +6,23 @@
 class Match {
 private:
     int id;
-    int player_limit;
     int winner_id;
     bool has_started;
     MonitoredList<Player*> player_list;
     Queue<Gameaction> user_commands;
     Gameplay gameloop;
+    std::map<int, bool> multiplayer_mode_by_player;
 public:
-    Match(int, int);
+    Match(int);
     void start();
     void end();
     bool is_connected();
-    void add_player(Player*);
+    void add_player(Player*, int, bool);
     void add_action(const Gameaction&);
     bool matches(int);
     bool has_ended();
     void disconnect();
     int get_player_count() { return player_list.size(); }
-    bool is_full() { return player_list.size() == player_limit; }
     Match(const Match&) = delete;
     Match& operator=(const Match&) = delete;
     Match(Match&& other) = delete;

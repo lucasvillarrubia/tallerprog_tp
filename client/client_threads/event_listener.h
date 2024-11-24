@@ -29,21 +29,27 @@ private:
         {SDLK_ESCAPE, 9},
         {SDLK_RIGHT, 1},
         {SDLK_LEFT, 2},
+
         {SDLK_SPACE, 3},
 
         // {SDLK_RETURN, 3}
         {SDLK_g, 4},
         {SDLK_f, 5}
+
     };
-    std::map<SDL_Keycode, int> codes_for_second_player = {
+    std::map<SDL_Keycode, int> codes_by_key_for_second_player = {
+        {SDLK_ESCAPE, 9},
         {SDLK_d, 1},
         {SDLK_a, 2},
-        {SDLK_RETURN, 3},
+        {SDLK_RETURN, 3}
     };
     const bool& is_multiplayer;
+    const int& match_id;
 public:
-    EventListener(std::atomic_bool&, Queue<Gameaction>&, const bool&);
+
+    EventListener(std::atomic_bool&, Queue<Gameaction>&, const bool&, const int&);
     void listen();
+
     ~EventListener() = default;
 };
 

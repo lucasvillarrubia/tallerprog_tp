@@ -37,6 +37,7 @@ private:
     Updater updater;
     lobby gamelobby;
     bool multiplayer_mode;
+    int current_match;
     void constant_rate_loop(std::function<void(int)>, std::chrono::milliseconds);
 public:
     Client(const char*, const char*);

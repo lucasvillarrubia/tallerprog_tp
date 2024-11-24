@@ -1,7 +1,7 @@
 #include "match.h"
 
 
-Match::Match(int _id, int limit): id(_id), player_limit(limit), winner_id(-1), has_started(false), gameloop(player_list, user_commands) {}
+Match::Match(int _id): id(_id), winner_id(-1), has_started(false), gameloop(player_list, multiplayer_mode_by_player, user_commands) {}
 
 void Match::start()
 {
@@ -25,7 +25,10 @@ void Match::end()
     gameloop.join();
 }
 
-void Match::add_player(Player* player) { player_list.push_back(player); }
+void Match::add_player(Player* player, int id, bool is_multiplayer) {
+    player_list.push_back(player);
+    multiplayer_mode_by_player.insert({id, is_multiplayer});
+}
 
 void Match::add_action(const Gameaction& action) { user_commands.push(action); }
 
