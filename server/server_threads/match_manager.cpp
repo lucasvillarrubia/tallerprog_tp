@@ -17,8 +17,8 @@ MatchManager::MatchManager(Queue<Gameaction>& q, MonitoredList<Player*>& p):
 void MatchManager::create_match(int creator_id, int creator_multiplayer_mode)
 {
     match_count++;
-    auto* new_match = new Match(match_count);
-    auto* creator = all_players.get_by_id(creator_id);
+    Match* new_match = new Match(match_count);
+    Player* creator = all_players.get_by_id(creator_id);
     new_match->add_player(creator, creator_id, (creator_multiplayer_mode == 1));
     matches.push_back(new_match);
     creators_by_match.insert({match_count, creator_id});
@@ -70,11 +70,9 @@ void MatchManager::start_match(int player, int match_id)
 
 void MatchManager::add_action_to_match(const Gameaction& action)
 {
-    if (not matches.contains(action.player_id))
-        return;
     auto* match = matches.select_one_if(
         [action](Match* m) {
-            return m->matches(action.player_id);
+            return m->is_player_in_match(action.player_id);
         }
     );
     match->add_action(action);
@@ -82,14 +80,18 @@ void MatchManager::add_action_to_match(const Gameaction& action)
 
 void MatchManager::send_matches_info(int player)
 {
-    std::vector<Gamematch> matches_info;
+    std::cout << "el jugador " << player << " pidió info de los matches\n";
+    std::list<Gamematch> matches_info;
     for (auto& [id, creator] : creators_by_match) {
         auto* match = matches.get_by_id(id);
         Gamematch match_info(id, creator, match->get_player_count());
         matches_info.push_back(match_info);
     }
     Gamestate matches_data(player, matches_info);
-    auto* player_to_send = all_players.get_by_id(player);
+    Player* player_to_send = all_players.get_by_id(player);
+    // print player pointer status or value
+    std::cout << "before segfault??\n";
+    std::cout << "Player to send: " << player_to_send << '\n';
     player_to_send->add_message_to_queue(matches_data);
 }
 
@@ -117,6 +119,7 @@ void MatchManager::run()
                         break;
                     case 7:
                         send_matches_info(action.player_id);
+                        std::cout << "Sending matches info to player " << action.player_id << '\n';
                         break;
                     // case 8:
                     //     create_match(action.player_id, THREE_PLAYER_LIMIT);
@@ -126,14 +129,18 @@ void MatchManager::run()
                         break;
                 }
             // }
-            auto* match = matches.get_by_id(1);
-            if (match != nullptr) {
-                if (match->has_ended()) {
-                    // match->disconnect();
-                    // delete match;
-                    is_running.store(false);
-                }
-            }
+            // auto* match = matches.get_by_id(1);
+            // for (int i = 1; i <= matches.size(); i++) {
+            //     auto* match = matches.get_by_id(i);
+            //     if (match != nullptr) {
+            //         if (match->has_ended()) {
+            //             // match->disconnect();
+            //             // delete match;
+            //             is_running.store(false);
+            //         }
+            //     }
+            // }
+            
 
             // matches.remove_if(
             //     [](auto match) {
@@ -146,6 +153,22 @@ void MatchManager::run()
             //     }
             // );
         }
+        // for (int i = 1; i <= matches.size(); i++) {
+        //     auto* match = matches.get_by_id(i);
+        //     if (match != nullptr) {
+        //         if (not match->is_connected()) {
+        //             match->close_queue();
+        //             delete match;
+        //         }
+        //         else {
+        //             match->disconnect();
+        //             delete match;
+        //         }
+        //     }
+        // }
+        matches.clear();
+        is_running.store(false);
+        _keep_running = false;
     } catch (const ClosedQueue& e) {
         is_running.store(false);
         _keep_running = false;

@@ -32,7 +32,12 @@ void Match::add_player(Player* player, int id, bool is_multiplayer) {
 
 void Match::add_action(const Gameaction& action) { user_commands.push(action); }
 
-bool Match::matches(int player_id) { return player_list.contains(player_id); }
+bool Match::matches(int id) { return this->id == id; }
+
+bool Match::is_player_in_match(int player_id)
+{
+    return player_list.contains(player_id);
+}
 
 bool Match::has_ended() { return (winner_id != -1 or player_list.size() == 0); }
 

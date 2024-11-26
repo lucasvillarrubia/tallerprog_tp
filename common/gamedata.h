@@ -13,6 +13,12 @@ struct Gamedata {
     explicit Gamedata(const int player): player_id(player) {}
 };
 
+struct Gamematch : Gamedata {
+    int match_id;
+    int players_count;
+    Gamematch(const int match, const int creator, const int players): Gamedata(creator), match_id(match), players_count(players) {}
+};
+
 struct Gamestate: Gamedata {
     int type;
     int object_id;
@@ -32,7 +38,7 @@ struct Gamestate: Gamedata {
     int match_errors_flag;
     std::string error_msg;
     int match_id;
-    std::vector<Gamematch> matches_info;
+    std::list<Gamematch> matches_info;
 
     Gamestate(): Gamedata(-1) {}
 
@@ -149,7 +155,7 @@ struct Gamestate: Gamedata {
         match_id(match) {}
 
     // envía información de partidas
-    Gamestate(const int player, std::vector<Gamematch>& matches):
+    Gamestate(const int player, std::list<Gamematch>& matches):
         Gamedata(player),
         type(12),
         matches_info(matches) {}
@@ -174,13 +180,6 @@ struct Gameaction: Gamedata {
         key(_key),
         is_multiplayer(mode) {}
     Gameaction(const int player, const int _type, const bool mode): Gamedata(player), type(_type), is_multiplayer(mode) {}
-};
-
-struct Gamematch {
-    int match_id;
-    int creator_id;
-    int players_count;
-    Gamematch(const int match, const int creator, const int players): match_id(match), creator_id(creator), players_count(players) {}
 };
 
 

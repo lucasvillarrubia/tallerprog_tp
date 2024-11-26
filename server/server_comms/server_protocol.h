@@ -2,6 +2,7 @@
 #define SERVER_PROTOCOL_H
 
 
+#include "common/gamedata.h"
 #include "common/comms/protocol.h"
 #include "common/hands_on_sockets/socket.h"
 

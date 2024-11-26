@@ -20,8 +20,10 @@ public:
     void add_player(Player*, int, bool);
     void add_action(const Gameaction&);
     bool matches(int);
+    bool is_player_in_match(int);
     bool has_ended();
     void disconnect();
+    void close_queue() { user_commands.close(); }
     int get_player_count() { return player_list.size(); }
     Match(const Match&) = delete;
     Match& operator=(const Match&) = delete;

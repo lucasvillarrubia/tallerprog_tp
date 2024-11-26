@@ -50,7 +50,7 @@ public:
     ~Client() = default;
 public slots:
     void handle_create_one_player_match();
-    void handle_join_match();
+    void handle_join_match(int);
     void handle_start_match();
     void handle_refresh_lobby();
 };

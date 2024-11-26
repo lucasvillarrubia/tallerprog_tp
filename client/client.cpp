@@ -36,6 +36,8 @@ Client::Client(const char* hostname, const char* servname):
 {
     connect(&gamelobby, &lobby::create_one_player_match, this, &Client::handle_create_one_player_match);
     connect(&gamelobby, &lobby::start_match, this, &Client::handle_start_match);
+    connect(&gamelobby, &lobby::refresh_lobby, this, &Client::handle_refresh_lobby);
+    connect(&gamelobby, &lobby::join_match, this, &Client::handle_join_match);
 }
 
 void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono::milliseconds rate)
@@ -203,7 +205,7 @@ void Client::handle_start_match()
     game_on.store(true);
 }
 
-void Client::handle_join_match()
+void Client::handle_join_match(int match_id)
 {
     QString styleSheet = 
         "QMessageBox {"
@@ -241,14 +243,29 @@ void Client::handle_join_match()
         std::cout << "Multiplayer mode!\n";
     }
     int mode = multiplayer_mode ? 1 : 0;
-    Gameaction join(1, 1, 5, 0, mode);
+    Gameaction join(1, match_id, 5, 0, mode);
     events.try_push(join);
+    Gamestate created_match_info = updates.pop();
+    if (created_match_info.match_errors_flag == 1) {
+        QMessageBox errorBox;
+        errorBox.setWindowTitle("Error");
+        errorBox.setText(QString::fromStdString(created_match_info.error_msg));
+        errorBox.addButton(QMessageBox::Ok);
+        errorBox.setStyleSheet(styleSheet);
+        errorBox.exec();
+        gamelobby.revert_create_button_actions();
+        return;
+    }
+    current_id = created_match_info.player_id;
+    current_match = created_match_info.match_id;
 }
 
 void Client::handle_refresh_lobby()
 {
+    std::cout << "refreshing lobby\n";
     Gameaction refresh(1, 0, 7, 0, 0);
     events.try_push(refresh);
-    Gamestate matches_info = updates.pop();
-    
+    Gamestate update = updates.pop();
+    std::cout << "llegaron " << update.matches_info.size() << " partidas\n";
+    gamelobby.update_lobby(update.matches_info);
 }

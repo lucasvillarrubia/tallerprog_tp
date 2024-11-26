@@ -2,9 +2,11 @@
 #define CLIENT_PROTOCOL_H
 
 
+#include "common/gamedata.h"
 #include "common/hands_on_sockets/socket.h"
 #include "common/comms/protocol.h"
 #include "common/drawingdata.h"
+
 
 
 class ClientProtocol: public Protocol

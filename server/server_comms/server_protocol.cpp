@@ -130,8 +130,8 @@ void ServerProtocol::send_matches_info_message(const Gamestate& message)
     send_single_8bit_int(matches_count);
     for (auto& match_info : message.matches_info)
     {
+        send_single_8bit_int(match_info.player_id);
         send_single_8bit_int(match_info.match_id);
-        send_single_8bit_int(match_info.creator_id);
         send_single_8bit_int(match_info.players_count);
     }
 }

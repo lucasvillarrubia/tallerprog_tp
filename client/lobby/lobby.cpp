@@ -1,5 +1,8 @@
 #include "lobby.h"
 #include "./ui_lobby.h"
+#include <QPushButton>
+#include <QLabel>
+#include <QVBoxLayout>
 
 lobby::lobby(QWidget *parent)
     : QMainWindow(parent)
@@ -61,7 +64,10 @@ void lobby::on_startMatchButton_clicked()
 
 void lobby::on_refreshButton_clicked()
 {
-    emit refresh_lobby();
+    // if (not refresh_button_pressed) {
+        // refresh_button_pressed = true;
+        emit refresh_lobby();
+    // }
 }
 
 void lobby::closeEvent(QCloseEvent *event) {
@@ -81,6 +87,47 @@ void lobby::revert_create_button_actions()
 void lobby::revert_start_button_actions()
 {
     start_button_pressed = false;
+}
+
+void lobby::update_lobby(const std::list<Gamematch>& matches)
+{
+    // Clear the existing layout
+    QLayoutItem* item;
+    while ((item = ui->verticalLayout->takeAt(0)) != nullptr) {
+        delete item->widget();
+        delete item;
+    }
+    // Clear map of pressed buttons
+    pressed_join_buttons.clear();
+
+    // Add new match blocks
+    for (const auto& match : matches) {
+        QWidget* matchWidget = new QWidget();
+        QHBoxLayout* matchLayout = new QHBoxLayout(matchWidget);
+
+        QLabel* matchInfo = new QLabel(QString("Match ID: %1, Creator ID: %2, Players: %3")
+                                       .arg(match.match_id)
+                                       .arg(match.player_id)
+                                       .arg(match.players_count));
+        QPushButton* joinButton = new QPushButton("JOIN");
+
+        connect(joinButton, &QPushButton::clicked, [this, match]() {
+            this->send_joining_signal(match.match_id);
+        });
+
+        matchLayout->addWidget(matchInfo);
+        matchLayout->addWidget(joinButton);
+        ui->verticalLayout->addWidget(matchWidget);
+        pressed_join_buttons.insert({match.match_id, false});
+    }
+}
+
+void lobby::send_joining_signal(int match_id)
+{
+    if (not pressed_join_buttons.at(match_id)) {
+        pressed_join_buttons.at(match_id) = true;
+        emit join_match(match_id);
+    }
 }
 
 lobby::~lobby()

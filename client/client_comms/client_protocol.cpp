@@ -165,14 +165,14 @@ void ClientProtocol::receive_matches_info_message(Gamestate& received)
     if (not client_is_connected.load()) return;
     uint8_t player;
     uint8_t matches_count;
-    std::vector<Gamematch> matches_info;
+    std::list<Gamematch> matches_info;
     receive_single_8bit_int(player);
     receive_single_8bit_int(matches_count);
     for (int i = 0; i < matches_count; i++)
     {
         uint8_t match_id, creator_id, players_count;
-        receive_single_8bit_int(match_id);
         receive_single_8bit_int(creator_id);
+        receive_single_8bit_int(match_id);
         receive_single_8bit_int(players_count);
         matches_info.push_back({match_id, creator_id, players_count});
     }
