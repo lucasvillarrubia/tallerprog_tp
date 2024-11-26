@@ -16,18 +16,14 @@ MatchManager::MatchManager(Queue<Gameaction>& q, MonitoredList<Player*>& p):
 
 void MatchManager::create_match(int creator_id, int creator_multiplayer_mode)
 {
-    std::cout << "Creating match\n";
     match_count++;
     auto* new_match = new Match(match_count);
-    std::cout << "Match creating\n";
     auto* creator = all_players.get_by_id(creator_id);
-    std::cout << "Player getting\n";
     new_match->add_player(creator, creator_id, (creator_multiplayer_mode == 1));
-    std::cout << "Player added\n";
     matches.push_back(new_match);
-    std::cout << "Match added\n";
     creators_by_match.insert({match_count, creator_id});
-    std::cout << "Match created\n";
+    Gamestate match_created(creator_id, 0, match_count);
+    creator->add_message_to_queue(match_created);
 }
 
 void MatchManager::join_to_match(int player, int match_id)
@@ -35,17 +31,17 @@ void MatchManager::join_to_match(int player, int match_id)
     auto* player_to_join = all_players.get_by_id(player);
     auto* match = matches.get_by_id(match_id);
     if (match == nullptr) {
-        Gamestate error(player, "Match not found");
+        Gamestate error(player, 1, "Match not found");
         player_to_join->add_message_to_queue(error);
         return;
     } else if (match->is_connected()) {
-        Gamestate error(player, "Match not available");
+        Gamestate error(player, 1, "Match not available");
         player_to_join->add_message_to_queue(error);
         return;
     }
-    player_to_join->set_id(match->get_player_count() + 1);
     match->add_player(player_to_join, player, false);
-    match->start();
+    Gamestate match_joined(player, 0, match_id);
+    player_to_join->add_message_to_queue(match_joined);
 }
 
 void MatchManager::start_match(int player, int match_id)
@@ -53,16 +49,23 @@ void MatchManager::start_match(int player, int match_id)
     auto* requestor = all_players.get_by_id(player);
     auto* match = matches.get_by_id(match_id);
     if (match == nullptr) {
-        Gamestate error(player, "Match not found");
+        Gamestate error(player, 1, "Match not found");
         requestor->add_message_to_queue(error);
         return;
     } else if (creators_by_match.at(match_id) != player) {
-        Gamestate error(player, "You cannot start this match");
+        Gamestate error(player, 1, "You cannot start this match");
         requestor->add_message_to_queue(error);
         return;
     }
-    if (not match->is_connected())
+    if (not match->is_connected()) {
+        Gamestate match_started(player, 0, match_id);
+        requestor->add_message_to_queue(match_started);
         match->start();
+        creators_by_match.erase(match_id);
+    } else {
+        Gamestate error(player, 1, "Match already started");
+        requestor->add_message_to_queue(error);
+    }
 }
 
 void MatchManager::add_action_to_match(const Gameaction& action)
@@ -75,6 +78,19 @@ void MatchManager::add_action_to_match(const Gameaction& action)
         }
     );
     match->add_action(action);
+}
+
+void MatchManager::send_matches_info(int player)
+{
+    std::vector<Gamematch> matches_info;
+    for (auto& [id, creator] : creators_by_match) {
+        auto* match = matches.get_by_id(id);
+        Gamematch match_info(id, creator, match->get_player_count());
+        matches_info.push_back(match_info);
+    }
+    Gamestate matches_data(player, matches_info);
+    auto* player_to_send = all_players.get_by_id(player);
+    player_to_send->add_message_to_queue(matches_data);
 }
 
 void MatchManager::close_match()
@@ -92,17 +108,16 @@ void MatchManager::run()
                 switch (action.type) {
                     case 4:
                         create_match(action.player_id, action.is_multiplayer);
-                        start_match(action.player_id, 1);
                         break;
                     case 5:
-                        join_to_match(action.player_id, action.key);
+                        join_to_match(action.player_id, action.match);
                         break;
                     case 6:
                         start_match(action.player_id, action.match);
                         break;
-                    // case 7:
-                    //     create_match(action.player_id, TWO_PLAYER_LIMIT);
-                    //     break;
+                    case 7:
+                        send_matches_info(action.player_id);
+                        break;
                     // case 8:
                     //     create_match(action.player_id, THREE_PLAYER_LIMIT);
                     //     break;

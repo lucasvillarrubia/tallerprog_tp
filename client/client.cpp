@@ -35,6 +35,7 @@ Client::Client(const char* hostname, const char* servname):
         multiplayer_mode(false)
 {
     connect(&gamelobby, &lobby::create_one_player_match, this, &Client::handle_create_one_player_match);
+    connect(&gamelobby, &lobby::start_match, this, &Client::handle_start_match);
 }
 
 void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono::milliseconds rate)
@@ -68,12 +69,12 @@ void Client::run() {
     try
     {
         std::chrono::milliseconds rate(16);
-        game_on.store(true);
         connection.start_communication();
 
         gamelobby.show();
         app.exec();
-        if (gamelobby.was_closed_by_X()) {
+        // if (gamelobby.was_closed_by_X()) {
+        if (not game_on.load()) {
             game_on.store(false);
             connected.store(false);
             updates.close();
@@ -158,37 +159,96 @@ void Client::handle_create_one_player_match()
     msgBox.addButton("Two-Player", QMessageBox::YesRole);
     msgBox.addButton("Single-Player", QMessageBox::NoRole);
     msgBox.setDefaultButton(QMessageBox::No);
-    msgBox.setIcon(QMessageBox::NoIcon);  // Remove the main icon
+    msgBox.setIcon(QMessageBox::NoIcon);
     msgBox.setStyleSheet(styleSheet);
 
     int result = msgBox.exec();
-    if (result == MULTIPLAYER_MODE) {  // First button returns 0
+    if (result == MULTIPLAYER_MODE) {
         multiplayer_mode = true;
         std::cout << "Multiplayer mode!\n";
     }
     int mode = multiplayer_mode ? 1 : 0;
     Gameaction create(1, 0, 4, 0, mode);
-
     events.try_push(create);
+    Gamestate created_match_info = updates.pop();
+    if (created_match_info.match_errors_flag == 1) {
+        QMessageBox errorBox;
+        errorBox.setWindowTitle("Error");
+        errorBox.setText(QString::fromStdString(created_match_info.error_msg));
+        errorBox.addButton(QMessageBox::Ok);
+        errorBox.setStyleSheet(styleSheet);
+        errorBox.exec();
+        gamelobby.revert_create_button_actions();
+        return;
+    }
+    current_id = created_match_info.player_id;
+    current_match = created_match_info.match_id;
 }
 
-void Client::handle_create_two_player_match()
+void Client::handle_start_match()
 {
-    int mode = multiplayer_mode ? 1 : 0;
-    Gameaction create(1, 0, 7, 0, mode);
-    events.try_push(create);
-}
-
-void Client::handle_create_three_player_match()
-{
-    int mode = multiplayer_mode ? 1 : 0;
-    Gameaction create(1, 0, 8, 0, mode);
-    events.try_push(create);
+    Gameaction start(current_id, current_match, 6, 0, 0);
+    events.try_push(start);
+    Gamestate match_started = updates.pop();
+    if (match_started.match_errors_flag == 1) {
+        QMessageBox errorBox;
+        errorBox.setWindowTitle("Error");
+        errorBox.setText(QString::fromStdString(match_started.error_msg));
+        errorBox.addButton(QMessageBox::Ok);
+        errorBox.exec();
+        gamelobby.revert_start_button_actions();
+        return;
+    }
+    gamelobby.close();
+    game_on.store(true);
 }
 
 void Client::handle_join_match()
 {
+    QString styleSheet = 
+        "QMessageBox {"
+        "    background-color: #FF7900;"
+        "    color: #ffffff;"
+        "    max-width: 200px;"
+        "    min-height: 400px;"
+        "    font-size: 40px;" 
+        "    font-family: Uroob;" 
+        "}"
+        "QMessageBox QPushButton {"
+        "    background-color: #FFA500;"
+        "    color: #000000;"
+        "    min-width: 80px;"
+        "    padding: 5px;"
+        "    border-radius: 4px;"
+        "    font-size: 30px;" 
+        "    font-family: Uroob;"
+        "}"
+        "QMessageBox QPushButton:hover {"
+        "    background-color: #1565c0;"
+        "}";
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Game Mode");
+    msgBox.setText("Select your game mode:");
+    msgBox.addButton("Two-Player", QMessageBox::YesRole);
+    msgBox.addButton("Single-Player", QMessageBox::NoRole);
+    msgBox.setDefaultButton(QMessageBox::No);
+    msgBox.setIcon(QMessageBox::NoIcon);
+    msgBox.setStyleSheet(styleSheet);
+
+    int result = msgBox.exec();
+    if (result == MULTIPLAYER_MODE) {
+        multiplayer_mode = true;
+        std::cout << "Multiplayer mode!\n";
+    }
     int mode = multiplayer_mode ? 1 : 0;
-    Gameaction start(1, 1, 5, 0, mode);
-    events.try_push(start);
+    Gameaction join(1, 1, 5, 0, mode);
+    events.try_push(join);
+}
+
+void Client::handle_refresh_lobby()
+{
+    Gameaction refresh(1, 0, 7, 0, 0);
+    events.try_push(refresh);
+    Gamestate matches_info = updates.pop();
+    
 }

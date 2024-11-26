@@ -7,7 +7,9 @@ lobby::lobby(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->createOnePlayerMatchButton, &QPushButton::clicked, this, &lobby::on_createOnePlayerMatchButton_clicked);
+    connect(ui->startMatchButton, &QPushButton::clicked, this, &lobby::on_startMatchButton_clicked);
     // connect(ui->joinMatchButton, &QPushButton::clicked, this, &lobby::on_joinMatchButton_clicked);
+    connect(ui->refreshButton, &QPushButton::clicked, this, &lobby::on_refreshButton_clicked);
     // connect(ui->createTwoPlayerMatchButton, &QPushButton::clicked, this, &lobby::on_createTwoPlayerMatchButton_clicked);
     // connect(ui->createThreePlayerMatchButton, &QPushButton::clicked, this, &lobby::on_createThreePlayerMatchButton_clicked);
 }
@@ -31,7 +33,8 @@ void lobby::on_createOnePlayerMatchButton_clicked()
     if (not match_button_pressed) {
         match_button_pressed = true;
         emit create_one_player_match();
-        this->close();
+        ui->createOnePlayerMatchButton->setVisible(false);
+        ui->startMatchButton->setVisible(true);
     }
 }
 
@@ -47,17 +50,37 @@ void lobby::on_createOnePlayerMatchButton_clicked()
 //     emit create_three_player_match();
 // }
 
-// void lobby::on_joinMatchButton_clicked()
-// {
-//     // This will emit the signal
-//     emit join_match();
-// }
+void lobby::on_startMatchButton_clicked()
+{
+    if (not start_button_pressed) {
+        start_button_pressed = true;
+        emit start_match();
+        this->close();
+    }
+}
+
+void lobby::on_refreshButton_clicked()
+{
+    emit refresh_lobby();
+}
 
 void lobby::closeEvent(QCloseEvent *event) {
-    if (!match_button_pressed) {
+    if (!start_button_pressed) {
         closed_by_X = true;
     }
     event->accept();
+}
+
+void lobby::revert_create_button_actions()
+{
+    match_button_pressed = false;
+    ui->startMatchButton->setVisible(false);
+    ui->createOnePlayerMatchButton->setVisible(true);
+}
+
+void lobby::revert_start_button_actions()
+{
+    start_button_pressed = false;
 }
 
 lobby::~lobby()

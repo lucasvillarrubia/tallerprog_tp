@@ -102,6 +102,40 @@ void ServerProtocol::send_bullet_destroy_message(const Gamestate& message) {
     send_single_8bit_int(message.object_id);
 }
 
+void ServerProtocol::send_match_error_message(const Gamestate& message)
+{
+    if (not client_is_connected.load()) return;
+    send_single_8bit_int(message.type);
+    send_single_8bit_int(message.player_id);
+    send_single_8bit_int(message.match_errors_flag);
+    std::vector<char> message_bytes(message.error_msg.begin(), message.error_msg.end());
+    send_string(message_bytes);
+}
+
+void ServerProtocol::send_match_info_message(const Gamestate& message)
+{
+    if (not client_is_connected.load()) return;
+    send_single_8bit_int(message.type);
+    send_single_8bit_int(message.player_id);
+    send_single_8bit_int(message.match_errors_flag);
+    send_single_8bit_int(message.match_id);
+}
+
+void ServerProtocol::send_matches_info_message(const Gamestate& message)
+{
+    if (not client_is_connected.load()) return;
+    send_single_8bit_int(message.type);
+    send_single_8bit_int(message.player_id);
+    uint8_t matches_count = message.matches_info.size();
+    send_single_8bit_int(matches_count);
+    for (auto& match_info : message.matches_info)
+    {
+        send_single_8bit_int(match_info.match_id);
+        send_single_8bit_int(match_info.creator_id);
+        send_single_8bit_int(match_info.players_count);
+    }
+}
+
 void ServerProtocol::receive_message(Gameaction& received)
 {
     if (not client_is_connected.load()) return;

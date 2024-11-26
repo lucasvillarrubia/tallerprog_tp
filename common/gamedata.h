@@ -29,7 +29,10 @@ struct Gamestate: Gamedata {
     std::map<int, std::pair<DrawingData, Coordinates>> guns_positions_by_id;
     int bullet_flag;
     std::map<int, Coordinates> bullets_positions_by_id;
-    std::string message;
+    int match_errors_flag;
+    std::string error_msg;
+    int match_id;
+    std::vector<Gamematch> matches_info;
 
     Gamestate(): Gamedata(-1) {}
 
@@ -75,8 +78,6 @@ struct Gamestate: Gamedata {
         Gamedata(0),
         type(2),
         positions_by_id(positions) {}
-
-    Gamestate(const int player, const std::string& msg): Gamedata(player), type(4), message(msg) {}
     
     //envia la inicializacion de un arma
     Gamestate(
@@ -132,6 +133,26 @@ struct Gamestate: Gamedata {
 		Gamedata(0),
     	type(9),
     	object_id(_id){}
+
+    //envia la señal de error en el match
+    Gamestate(const int player, const int flag, const std::string& msg):
+        Gamedata(player),
+        type(10),
+        match_errors_flag(flag),
+        error_msg(msg) {}
+
+    // envía partida que creó o a la que se unió el jugador
+    Gamestate(const int player, const int flag, const int match):
+        Gamedata(player),
+        type(11),
+        match_errors_flag(flag),
+        match_id(match) {}
+
+    // envía información de partidas
+    Gamestate(const int player, std::vector<Gamematch>& matches):
+        Gamedata(player),
+        type(12),
+        matches_info(matches) {}
 };
 
 struct Gameaction: Gamedata {
@@ -153,6 +174,13 @@ struct Gameaction: Gamedata {
         key(_key),
         is_multiplayer(mode) {}
     Gameaction(const int player, const int _type, const bool mode): Gamedata(player), type(_type), is_multiplayer(mode) {}
+};
+
+struct Gamematch {
+    int match_id;
+    int creator_id;
+    int players_count;
+    Gamematch(const int match, const int creator, const int players): match_id(match), creator_id(creator), players_count(players) {}
 };
 
 

@@ -33,6 +33,15 @@ void ServerSender::send_data()
         case 9:
         	protocol.send_bullet_destroy_message(new_event);
         	break;
+        case 10:
+            protocol.send_match_error_message(new_event);
+            break;
+        case 11:
+            protocol.send_match_info_message(new_event);
+            break;
+        case 12:
+            protocol.send_matches_info_message(new_event);
+            break;
         default:
             protocol.send_duck_state_message(new_event);
             // std::cout << "se mandó una actualización de estado\n";
