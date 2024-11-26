@@ -6,14 +6,13 @@
 class Banana : public Item{
 private:
 	bool launched;
-	float vertical_velocity;
 public:
 	Banana(float x, float y);
-	void launch(){}
-		//asigna velocidad vertical
-	void update_position(){};
-		//actualiza posición horizontal de la misma forma que las balas,
-		//pero realizando una parabola
+	void launch();
+	//asigna velocidad vertical
+	//void change_direction(); //en caso de rebotar con una pared
+	//void set_trap(); //banana lista para pisarse
+	//void make_the_duck_slip() //el pato resbala. determinar cuanto resbala
 };
 
 #endif

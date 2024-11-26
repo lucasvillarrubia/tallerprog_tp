@@ -18,6 +18,7 @@
 #include "server/server_guns/CowboyPistol.h"
 #include "server/server_guns/Magnum.h"
 #include "server/server_guns/Sniper.h"
+#include "server/server_guns/SpawnPlace.h"
 #include "server/player.h"
 
 
@@ -41,6 +42,8 @@ private:
     std::map<int, Duck> ducks_by_id;
     std::map<int, Gun*> guns_by_id;
     std::list<std::pair<int, Ammo*>> bullets_by_id;
+    std::list<SpawnPlace> spawn_places;
+    int guns_in_map;
     int bullets_fired;
     // bool ya_entro_cliente;
     bool primera_caida;
@@ -65,6 +68,7 @@ private:
     void try_to_shoot(Duck& duck);
     void send_guns_positions_updates();
     void send_bullets_positions_updates(unsigned int);
+    void update_spawn_places();
     void check_for_projectile_hit();
     void check_for_boxes_reappearances();
     void send_player_loss_update();
