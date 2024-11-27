@@ -143,6 +143,7 @@ if(TALLER_CLIENT)
             client/lobby/lobby.cpp
             client/lobby/lobby.h
             client/lobby/lobby.ui
+            client/color.h
     )
 
     # Make them depend on taller_common lib
