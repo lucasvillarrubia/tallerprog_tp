@@ -13,7 +13,6 @@ public:
 	AK47Ammo(float x, float y, bool right);
 	void update_position(const unsigned int frame_delta) override;
 	float impact() override;
-	bool is_destroyed() override;
 };
 
 #endif

@@ -43,6 +43,9 @@ Gameplay::Gameplay(MonitoredList<Player*>& player_list, const std::map<int, bool
     guns_by_id.insert({2, new DuelPistol(630.0f, 180.0f)});
     guns_by_id.insert({3, new CowboyPistol(200.0f, 300.0f)});
     guns_by_id.insert({4, new Magnum(670.0f, 189.0f)});
+    guns_by_id.insert({5, new Sniper(300.0f, 300.0f)});
+    guns_in_map = guns_by_id.size();
+    spawn_places.push_back(SpawnPlace(160.0f, 200.0f));
 }
 
 void Gameplay::broadcast_for_all_players(const Gamestate& state)
@@ -160,6 +163,15 @@ void Gameplay::try_to_grab(Duck& duck) {
         	duck.drop_gun();
         	duck.stop_grab();
         } else {
+        	for (auto& spawn_place : spawn_places) {
+        		if (spawn_place.is_duck_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y)) {
+					std::cout<<"dentro del spawn place"<<guns_in_map<<std::endl;
+        			if (spawn_place.is_gun_spawned()) {
+        				spawn_place.pick_item();
+						std::cout<<"se agarro un arma del spawn place"<<guns_in_map<<std::endl;
+        			}
+        		}
+        	}
         	for (auto& [id,gun] : guns_by_id) {
         		if (gun->is_duck_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y)) {
         			duck.pickup_gun(id);
@@ -229,6 +241,24 @@ void Gameplay::send_bullets_positions_updates(const unsigned int frame_delta) {
 	}
 }
 
+void Gameplay::update_spawn_places() {
+	for (auto& spawn_place : spawn_places) {
+		if (spawn_place.try_spawn_gun(guns_in_map, guns_by_id)) {
+			Gun* gun = guns_by_id[guns_in_map];
+			Coordinates position = gun->getPosition();
+    		Gamestate initial_gun_coordinates(
+    			guns_in_map,
+				position.pos_X,
+            	position.pos_Y,
+            	gun->getType(),
+            	gun->is_pointing_to_the_right() ? 1 : 0
+    		);
+    		broadcast_for_all_players(initial_gun_coordinates);
+			std::cout<<"aparecio un arma con id: "<<guns_in_map<<std::endl;
+		}
+	}
+}
+
 void Gameplay::run() {
     try
     {
@@ -243,6 +273,7 @@ void Gameplay::run() {
             send_ducks_positions_updates(frame_delta);
             send_guns_positions_updates();
             send_bullets_positions_updates(frame_delta);
+            update_spawn_places();
             std::this_thread::sleep_for(std::chrono::milliseconds(16));
         }
     }

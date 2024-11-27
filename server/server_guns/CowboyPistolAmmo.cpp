@@ -15,10 +15,6 @@ void CowboyPistolAmmo::update_position(const unsigned int frame_delta)  {
 	}
 }
 
-bool CowboyPistolAmmo::is_destroyed() {
-	return this->destroyed;
-}
-
 float CowboyPistolAmmo::impact() {
 	destroyed = true;
 	return damagePoints;

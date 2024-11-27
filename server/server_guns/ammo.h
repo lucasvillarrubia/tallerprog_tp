@@ -18,7 +18,7 @@ public:
 	Ammo(float x, float y, bool right, int type, float _scope);
 	virtual void update_position(unsigned int);
 	virtual float impact();
-	virtual bool is_destroyed();
+	bool is_destroyed();
 	Coordinates getPosition();
 	bool isMovingRight();
 	int getType();

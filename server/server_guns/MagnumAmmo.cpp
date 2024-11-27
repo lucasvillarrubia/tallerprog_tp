@@ -15,10 +15,6 @@ void MagnumAmmo::update_position(const unsigned int frame_delta)  {
 	}
 }
 
-bool MagnumAmmo::is_destroyed() {
-	return this->destroyed;
-}
-
 float MagnumAmmo::impact() {
 	destroyed = true;
 	return damagePoints;

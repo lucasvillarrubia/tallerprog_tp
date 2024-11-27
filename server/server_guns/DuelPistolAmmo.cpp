@@ -16,10 +16,6 @@ void DuelPistolAmmo::update_position(const unsigned int frame_delta)  {
 	}
 }
 
-bool DuelPistolAmmo::is_destroyed() {
-	return this->destroyed;
-}
-
 float DuelPistolAmmo::impact() {
 	destroyed = true;
 	return damagePoints;
