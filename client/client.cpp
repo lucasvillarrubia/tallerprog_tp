@@ -101,6 +101,12 @@ void Client::run() {
                 }, rate);
             }
             game_on.store(false);
+            int i = 0;
+            Gamestate end_game;
+            while (updates.try_pop(end_game)) {
+                i++;
+            }
+            std::cout << i << '\n';
         }
         // updates.close();
         // events.close();
@@ -182,6 +188,12 @@ void Client::handle_create_one_player_match()
     Gameaction create(1, 0, 4, 0, mode);
     events.try_push(create);
     Gamestate created_match_info = updates.pop();
+    int i = 0;
+    while ((created_match_info.type != 11) && (created_match_info.type != 10)) {
+        created_match_info = updates.pop();
+        i++;
+    }
+    std::cout << i << '\n';
     if (created_match_info.match_errors_flag == 1) {
         QMessageBox errorBox;
         errorBox.setWindowTitle("Error");
@@ -194,6 +206,7 @@ void Client::handle_create_one_player_match()
     }
     current_id = created_match_info.player_id;
     current_match = created_match_info.match_id;
+    std::cout << "created match " << current_match << '\n';
 }
 
 void Client::handle_start_match()
@@ -212,6 +225,7 @@ void Client::handle_start_match()
     }
     gamelobby.close();
     game_on.store(true);
+    std::cout << "starting match " << current_match << '\n';
 }
 
 void Client::handle_join_match(int match_id)

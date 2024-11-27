@@ -31,6 +31,10 @@ void Player::start() {
 
 void Player::add_message_to_queue(const Gamestate& to_send) {
     if (client_is_connected.load()) {
+        if (to_send.type == 11) {
+            std::cout << "sending message to player " << to_send.player_id << '\n';
+            std::cout << "match id: " << to_send.match_id << '\n';
+        }
         messages_queue.try_push(to_send);
     }
 }
