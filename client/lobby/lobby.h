@@ -39,7 +39,7 @@ public:
     void revert_create_button_actions();
     void revert_start_button_actions();
     void reset_buttons();
-    void update_lobby(const std::list<Gamematch>&);
+    void update_lobby(const std::list<Gamematch>&, int);
     ~lobby();
 signals:
     void create_one_player_match();

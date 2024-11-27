@@ -99,7 +99,7 @@ void lobby::reset_buttons()
     ui->createOnePlayerMatchButton->setVisible(true);
 }
 
-void lobby::update_lobby(const std::list<Gamematch>& matches)
+void lobby::update_lobby(const std::list<Gamematch>& matches, int player_id)
 {
     // Clear the existing layout
     QLayoutItem* item;
@@ -112,6 +112,9 @@ void lobby::update_lobby(const std::list<Gamematch>& matches)
 
     // Add new match blocks
     for (const auto& match : matches) {
+        if (match.player_id == player_id) {
+            continue;
+        }
         QWidget* matchWidget = new QWidget();
         matchWidget->setFixedHeight(50);
         QHBoxLayout* matchLayout = new QHBoxLayout(matchWidget);

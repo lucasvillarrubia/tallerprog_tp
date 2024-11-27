@@ -303,5 +303,5 @@ void Client::handle_refresh_lobby()
     events.try_push(refresh);
     Gamestate update = updates.pop();
     std::cout << "llegaron " << update.matches_info.size() << " partidas\n";
-    gamelobby.update_lobby(update.matches_info);
+    gamelobby.update_lobby(update.matches_info, current_id);
 }
