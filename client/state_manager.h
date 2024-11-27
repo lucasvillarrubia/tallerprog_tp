@@ -29,6 +29,7 @@ public:
     void update_guns(const Gamestate&);
     void update_bullets(const Gamestate&);
     void destroy_bullet(const int id);
+    void reset();
     // bool is_moving_to_the_right();
     // Coordinates get_coordinates();
     // int get_movement_phase(unsigned int);

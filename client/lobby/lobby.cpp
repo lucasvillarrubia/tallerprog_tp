@@ -89,6 +89,16 @@ void lobby::revert_start_button_actions()
     start_button_pressed = false;
 }
 
+void lobby::reset_buttons()
+{
+    match_button_pressed = false;
+    start_button_pressed = false;
+    // refresh_button_pressed = false;
+    pressed_join_buttons.clear();
+    ui->startMatchButton->setVisible(false);
+    ui->createOnePlayerMatchButton->setVisible(true);
+}
+
 void lobby::update_lobby(const std::list<Gamematch>& matches)
 {
     // Clear the existing layout
@@ -103,6 +113,7 @@ void lobby::update_lobby(const std::list<Gamematch>& matches)
     // Add new match blocks
     for (const auto& match : matches) {
         QWidget* matchWidget = new QWidget();
+        matchWidget->setFixedHeight(50);
         QHBoxLayout* matchLayout = new QHBoxLayout(matchWidget);
 
         QLabel* matchInfo = new QLabel(QString("Match ID: %1, Creator ID: %2, Players: %3")

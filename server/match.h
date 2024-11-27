@@ -17,6 +17,7 @@ public:
     void start();
     void end();
     bool is_connected();
+    void send_start_message(int);
     void add_player(Player*, int, bool);
     void add_action(const Gameaction&);
     bool matches(int);

@@ -12,6 +12,7 @@
 #include <QIcon>
 #include <QAbstractButton>
 #include <QString>
+#include "common/hands_on_sockets/liberror.h"
 
 
 const int MULTIPLAYER_MODE = 0;
@@ -72,36 +73,44 @@ void Client::run() {
     {
         std::chrono::milliseconds rate(16);
         connection.start_communication();
+        while (true) {        
+            gamelobby.show();
+            gamelobby.reset_buttons();
+            state.reset();
+            app.exec();
+            // if (gamelobby.was_closed_by_X()) {
+            if (not game_on.load()) {
+                game_on.store(false);
+                connected.store(false);
+                updates.close();
+                events.close();
+                connection.end_connection();
+                break;
+            }
+            SDL2pp::SDL sdl(SDL_INIT_VIDEO);
+            Renderer renderloop(game_on, updates, state);
 
-        gamelobby.show();
-        app.exec();
-        // if (gamelobby.was_closed_by_X()) {
-        if (not game_on.load()) {
-            game_on.store(false);
-            connected.store(false);
-            updates.close();
-            events.close();
-            connection.end_connection();
-            return;
-        }
-        SDL2pp::SDL sdl(SDL_INIT_VIDEO);
-        Renderer renderloop(game_on, updates, state);
+            std::cout << "Client running\n";
 
-        std::cout << "Client running\n";
-
-        while (game_on.load() && connected.load())
-        {
-            constant_rate_loop([&](int frame)
+            while (game_on.load() && connected.load())
             {
-                event_listener.listen();
-                renderloop.render(frame);
-            }, rate);
+                constant_rate_loop([&](int frame)
+                {
+                    event_listener.listen();
+                    renderloop.render(frame);
+                }, rate);
+            }
+            game_on.store(false);
         }
-        updates.close();
-        events.close();
-        connection.end_connection();
+        // updates.close();
+        // events.close();
+        // connection.end_connection();
         // updater.stop();
         // updater.join();
+    }
+    catch (LibError const& e)
+    {
+        std::cerr << "Error de librería: " << e.what() << '\n';
     }
     catch (ClosedQueue const& e)
     {
@@ -207,6 +216,7 @@ void Client::handle_start_match()
 
 void Client::handle_join_match(int match_id)
 {
+    std::cout << "joining match " << match_id << '\n';
     QString styleSheet = 
         "QMessageBox {"
         "    background-color: #FF7900;"
@@ -245,19 +255,31 @@ void Client::handle_join_match(int match_id)
     int mode = multiplayer_mode ? 1 : 0;
     Gameaction join(1, match_id, 5, 0, mode);
     events.try_push(join);
-    Gamestate created_match_info = updates.pop();
-    if (created_match_info.match_errors_flag == 1) {
+    Gamestate joined_match_info = updates.pop();
+    if (joined_match_info.match_errors_flag == 1) {
         QMessageBox errorBox;
         errorBox.setWindowTitle("Error");
-        errorBox.setText(QString::fromStdString(created_match_info.error_msg));
+        errorBox.setText(QString::fromStdString(joined_match_info.error_msg));
         errorBox.addButton(QMessageBox::Ok);
         errorBox.setStyleSheet(styleSheet);
         errorBox.exec();
         gamelobby.revert_create_button_actions();
         return;
     }
-    current_id = created_match_info.player_id;
-    current_match = created_match_info.match_id;
+    current_id = joined_match_info.player_id;
+    current_match = joined_match_info.match_id;
+    Gamestate match_started = updates.pop();
+    if (match_started.match_errors_flag == 1) {
+        QMessageBox errorBox;
+        errorBox.setWindowTitle("Error");
+        errorBox.setText(QString::fromStdString(match_started.error_msg));
+        errorBox.addButton(QMessageBox::Ok);
+        errorBox.exec();
+        gamelobby.revert_start_button_actions();
+        return;
+    }
+    gamelobby.close();
+    game_on.store(true);
 }
 
 void Client::handle_refresh_lobby()

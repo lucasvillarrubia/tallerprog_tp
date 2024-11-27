@@ -189,7 +189,7 @@
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
-     <string>PLAY</string>
+     <string>Create Match</string>
     </property>
    </widget>
    <!-- botón para refresh -->

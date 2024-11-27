@@ -24,6 +24,7 @@ void MatchManager::create_match(int creator_id, int creator_multiplayer_mode)
     creators_by_match.insert({match_count, creator_id});
     Gamestate match_created(creator_id, 0, match_count);
     creator->add_message_to_queue(match_created);
+    std::cout << "the player " << creator_id << " created a match with id " << match_count << '\n';
 }
 
 void MatchManager::join_to_match(int player, int match_id)
@@ -60,6 +61,7 @@ void MatchManager::start_match(int player, int match_id)
     if (not match->is_connected()) {
         Gamestate match_started(player, 0, match_id);
         requestor->add_message_to_queue(match_started);
+        match->send_start_message(player);
         match->start();
         creators_by_match.erase(match_id);
     } else {

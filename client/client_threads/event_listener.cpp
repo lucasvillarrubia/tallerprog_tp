@@ -41,9 +41,7 @@ void EventListener::listen() {
             else {
                 key_code = codes_by_key.at(key);
             }
-            Gameaction new_action(1, 1, type_code, key_code, second_player);
-            events.try_push(new_action);
-            if(key == SDLK_ESCAPE) {
+            if (key == SDLK_ESCAPE) {
                 QString styleSheet = 
                     "QMessageBox {"
                     "    background-color: #FF7900;"
@@ -72,9 +70,13 @@ void EventListener::listen() {
                 msgBox.setDefaultButton(QMessageBox::No);
                 msgBox.setStyleSheet(styleSheet);
                 int ret = msgBox.exec();
-                if(ret == QMessageBox::Yes)
+                if (ret == QMessageBox::Yes)
                     connected.store(false);
+                else
+                    return;
             }
+            Gameaction new_action(1, match_id, type_code, key_code, second_player);
+            events.try_push(new_action);
         }
     }
     catch (ClosedQueue const& e)

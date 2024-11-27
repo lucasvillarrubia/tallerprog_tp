@@ -35,6 +35,7 @@ class Gameplay: public Thread
 private:
     std::atomic_bool is_running;
     MonitoredList<Player*>& players;
+    std::list<int> disconnected_players;
     const std::map<int, bool>& multiplayer_mode_by_player;
     Queue<Gameaction>& user_commands;
     std::map<int, Duck> ducks_by_id;

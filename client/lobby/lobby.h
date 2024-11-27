@@ -38,6 +38,7 @@ public:
     bool was_closed_by_X() const { return closed_by_X; }
     void revert_create_button_actions();
     void revert_start_button_actions();
+    void reset_buttons();
     void update_lobby(const std::list<Gamematch>&);
     ~lobby();
 signals:
