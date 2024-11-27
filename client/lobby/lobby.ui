@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>600</height>
+    <height>680</height>
    </rect>
   </property>
   <property name="palette">
@@ -168,6 +168,7 @@
    <string>Duck Game</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <!-- botón para crear partida -->
    <widget class="QPushButton" name="createOnePlayerMatchButton">
     <property name="geometry">
      <rect>
@@ -188,22 +189,23 @@
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
-     <string>PLAY</string>
+     <string>Create Match</string>
     </property>
    </widget>
-   <!-- <widget class="QPushButton" name="joinMatchButton">
+   <!-- botón para refresh -->
+   <widget class="QPushButton" name="refreshButton">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>255</x>
       <y>200</y>
-      <width>451</width>
-      <height>71</height>
+      <width>300</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Uroob</family>
-      <pointsize>25</pointsize>
+      <pointsize>20</pointsize>
       <bold>false</bold>
      </font>
     </property>
@@ -214,9 +216,10 @@
      <bool>false</bool>
     </property>
     <property name="text">
-     <string>Join Match</string>
+     <string>Refresh</string>
     </property>
-   </widget> -->
+   </widget>
+   <!-- label de título -->
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -240,11 +243,12 @@
      <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
+   <!-- label de versión -->
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
       <x>270</x>
-      <y>440</y>
+      <y>580</y>
       <width>271</width>
       <height>71</height>
      </rect>
@@ -263,6 +267,59 @@
      <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
+   <!-- botón para comenzar partida -->
+   <widget class="QPushButton" name="startMatchButton">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>120</y>
+      <width>451</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Uroob</family>
+      <pointsize>25</pointsize>
+      <bold>false</bold>
+    </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+    <property name="text">
+     <string>START MATCH</string>
+    </property>
+    <property name="visible">
+     <bool>false</bool> <!-- Initially hidden -->
+    </property>
+   </widget>
+   <!-- lista de partidas -->
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+      <rect>
+      <x>50</x>
+      <y>300</y>
+      <width>700</width>
+      <height>250</height>
+      </rect>
+    </property>
+    <property name="widgetResizable">
+      <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>300</y>
+        <width>600</width>
+        <height>350</height>
+      </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout"/>
+    </widget>
+   </widget>
+
    <!-- <widget class="QPushButton" name="createTwoPlayerMatchButton">
     <property name="geometry">
      <rect>

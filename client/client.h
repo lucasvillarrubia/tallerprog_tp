@@ -37,6 +37,7 @@ private:
     Updater updater;
     lobby gamelobby;
     bool multiplayer_mode;
+    int current_id;
     int current_match;
     void constant_rate_loop(std::function<void(int)>, std::chrono::milliseconds);
 public:
@@ -49,9 +50,9 @@ public:
     ~Client() = default;
 public slots:
     void handle_create_one_player_match();
-    void handle_create_two_player_match();
-    void handle_create_three_player_match();
-    void handle_join_match();
+    void handle_join_match(int);
+    void handle_start_match();
+    void handle_refresh_lobby();
 };
 
 

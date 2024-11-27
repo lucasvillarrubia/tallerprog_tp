@@ -1,0 +1,21 @@
+# ninja log v6
+1	26	1732505805062225797	yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-mkdir	138b315ef2a5d219
+1	26	1732505805062225797	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/yaml-cpp-subbuild/yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-mkdir	138b315ef2a5d219
+26	2158	1732505807174273964	yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-download	9495ccef77db3094
+26	2158	1732505807174273964	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/yaml-cpp-subbuild/yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-download	9495ccef77db3094
+2158	3039	1732505807196274454	yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-update	14c3e4778ba55e83
+2158	3039	1732505807196274454	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/yaml-cpp-subbuild/yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-update	14c3e4778ba55e83
+3039	3092	1732505808106294719	yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-patch	c619217ed4261209
+3039	3092	1732505808106294719	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/yaml-cpp-subbuild/yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-patch	c619217ed4261209
+3092	3114	1732505808142295508	yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-configure	136e4e98343feee9
+3092	3114	1732505808142295508	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/yaml-cpp-subbuild/yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-configure	136e4e98343feee9
+3114	3143	1732505808180296343	yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-build	8ceec4da7ade5a61
+3114	3143	1732505808180296343	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/yaml-cpp-subbuild/yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-build	8ceec4da7ade5a61
+3143	3172	1732505808207296936	yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-install	c238ad3b871dcbe4
+3143	3172	1732505808207296936	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/yaml-cpp-subbuild/yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-install	c238ad3b871dcbe4
+3173	3207	1732505808230297440	yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-test	9a683d12884f8d05
+3173	3207	1732505808230297440	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/yaml-cpp-subbuild/yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-test	9a683d12884f8d05
+3208	3259	1732505808295298867	CMakeFiles/yaml-cpp-populate-complete	fd1aec2ff1ee0e63
+3208	3259	1732505808295298867	yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-done	fd1aec2ff1ee0e63
+3208	3259	1732505808295298867	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/yaml-cpp-subbuild/CMakeFiles/yaml-cpp-populate-complete	fd1aec2ff1ee0e63
+3208	3259	1732505808295298867	/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/yaml-cpp-subbuild/yaml-cpp-populate-prefix/src/yaml-cpp-populate-stamp/yaml-cpp-populate-done	fd1aec2ff1ee0e63

@@ -50,7 +50,12 @@ Gameplay::Gameplay(MonitoredList<Player*>& player_list, const std::map<int, bool
 
 void Gameplay::broadcast_for_all_players(const Gamestate& state)
 {
-    players.for_each([&state](Player* player) {
+    players.for_each([&](Player* player) {
+        for (auto& id : disconnected_players)
+        {
+            if (player->matches(id))
+                return;
+        }
         player->add_message_to_queue(state);
     });
 }
@@ -119,6 +124,16 @@ void Gameplay::send_all_initial_coordinates()
 void Gameplay::process_users_commands() {
     Gameaction command;
     while (user_commands.try_pop(command)) {
+        if (command.type == 9 || command.key == 9) {
+            disconnected_players.push_back(command.player_id);
+            ducks_by_id.at(command.player_id).set_is_NOT_alive();
+            Gamestate duck_is_dead(StateManager::get_duck_state(ducks_by_id.at(command.player_id), command.player_id));
+            broadcast_for_all_players(duck_is_dead);
+            ducks_by_id.erase(command.player_id);
+            players.remove_if([&](Player* player) { return player->matches(command.player_id); });
+            std::cout << "the game has " << players.size() << " players\n";
+            continue;
+        }
         if (command.is_multiplayer) {
             command.player_id += MULTIPLAYER_ID_OFFSET;
         }
@@ -275,6 +290,9 @@ void Gameplay::run() {
             send_bullets_positions_updates(frame_delta);
             update_spawn_places();
             std::this_thread::sleep_for(std::chrono::milliseconds(16));
+            if (players.size() == 0) {
+                is_running.store(false);
+            }
         }
     }
     catch (ClosedQueue const& e)

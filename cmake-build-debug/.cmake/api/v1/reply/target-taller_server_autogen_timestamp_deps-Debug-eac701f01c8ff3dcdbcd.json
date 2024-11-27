@@ -1,0 +1,38 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 0,
+			"id" : "taller_common::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "yaml-cpp::@c1fb6b535d5396bcd0b2"
+		}
+	],
+	"id" : "taller_server_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+	"isGeneratorProvided" : true,
+	"name" : "taller_server_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

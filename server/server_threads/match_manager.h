@@ -19,6 +19,7 @@ private:
     void join_to_match(int, int);
     void start_match(int, int);
     void add_action_to_match(const Gameaction&);
+    void send_matches_info(int);
     void close_match();
 public:
     MatchManager(Queue<Gameaction>&, MonitoredList<Player*>&);

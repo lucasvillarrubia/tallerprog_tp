@@ -120,6 +120,13 @@ void StateManager::destroy_bullet(const int id) {
 	bullets.remove_if([](auto& bullet){ return bullet.destroyed; });
 }
 
+void StateManager::reset()
+{
+    dukis.clear();
+    guns.clear();
+    bullets.clear();
+}
+
 void StateManager::update_duck_state(const Gamestate& update)
 {
     dukis.remove_if([](const Character& duki) { return not duki.is_alive; });

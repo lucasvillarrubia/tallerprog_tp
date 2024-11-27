@@ -2,9 +2,11 @@
 #define CLIENT_PROTOCOL_H
 
 
+#include "common/gamedata.h"
 #include "common/hands_on_sockets/socket.h"
 #include "common/comms/protocol.h"
 #include "common/drawingdata.h"
+
 
 
 class ClientProtocol: public Protocol
@@ -19,6 +21,9 @@ private:
     void receive_bullet_init_message(Gamestate&);
     void receive_bullets_positions_message(Gamestate&);
     void receive_bullet_destroy_message(Gamestate&);
+    void receive_match_error_message(Gamestate&);
+    void receive_match_info_message(Gamestate&);
+    void receive_matches_info_message(Gamestate&);
 public:
     ClientProtocol(Socket&&, std::atomic_bool&);
     void send_message(const Gameaction&);
