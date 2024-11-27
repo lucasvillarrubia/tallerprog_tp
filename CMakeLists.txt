@@ -239,6 +239,8 @@ if(TALLER_SERVER)
 			server/server_guns/Sniper.h
 			server/server_guns/SniperAmmo.cpp
 			server/server_guns/SniperAmmo.h
+			server/server_guns/Banana.h
+			server/server_guns/Banana.cpp
 			server/server_guns/SpawnPlace.cpp
 			server/server_guns/SpawnPlace.h)
 

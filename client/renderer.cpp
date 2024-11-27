@@ -65,6 +65,10 @@ void Renderer::draw_character(Character& character, int frame, const float zoom_
 void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_offset_y) {
 	SDL2pp::Texture* sprite;
 	switch (gun.type) {
+		case 1:
+		case 2:
+			sprite = textureManager.getGunSprite("arrojadizos");
+			break;
 		case 5:
 			sprite = textureManager.getGunSprite("ak47");
 			break;
@@ -95,6 +99,8 @@ void Renderer::draw_bullet(Bullet& bullet,  const float zoom_offset_x, const flo
 
 SDL_Rect Renderer::search_sprite(const int type) {
 	switch (type) {
+		case 1:
+			return {1,99,16,16};
 		case 5:
 			return {0, 0, 32, 32};
 		case 6:
@@ -111,14 +117,16 @@ SDL_Rect Renderer::search_sprite(const int type) {
 
 SDL_Rect Renderer::search_dimension_sprite(int vcenter, Gun& gun, const float zoom_offset_x, const float zoom_offset_y) {
 	switch (gun.type) {
+		case 1:
+			return { static_cast<int>(gun.pos_X + 16 + zoom_offset_x), static_cast<int>(vcenter - 48 - gun.pos_Y + zoom_offset_y), 32, 32 };
 		case 5:
-			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 64, 64 };
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };
 		case 6:
-			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 64, 64 };
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };
 		case 7:
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 44, 22 };
 		case 8:
-			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 64, 64 };
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };
 		default:
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 66, 18 };
 	}

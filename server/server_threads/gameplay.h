@@ -14,6 +14,7 @@
 #include "server/server_guns/gun.h"
 #include "server/server_guns/ammo.h"
 #include "server/server_guns/AK47.h"
+#include "server/server_guns/Banana.h"
 #include "server/server_guns/DuelPistol.h"
 #include "server/server_guns/CowboyPistol.h"
 #include "server/server_guns/Magnum.h"

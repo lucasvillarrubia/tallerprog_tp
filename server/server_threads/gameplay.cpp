@@ -44,6 +44,7 @@ Gameplay::Gameplay(MonitoredList<Player*>& player_list, const std::map<int, bool
     guns_by_id.insert({3, new CowboyPistol(200.0f, 300.0f)});
     guns_by_id.insert({4, new Magnum(670.0f, 189.0f)});
     guns_by_id.insert({5, new Sniper(300.0f, 300.0f)});
+    guns_by_id.insert({6, new Banana(100.0f, 200.0f)});
     guns_in_map = guns_by_id.size();
     spawn_places.push_back(SpawnPlace(160.0f, 200.0f));
 }
