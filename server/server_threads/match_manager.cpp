@@ -27,7 +27,7 @@ void MatchManager::create_match(int creator_id, int creator_multiplayer_mode)
     creator->add_message_to_queue(match_created);
 }
 
-void MatchManager::join_to_match(int player, int match_id)
+void MatchManager::join_to_match(int player, int match_id, int joiner_multiplayer_mode)
 {
     auto* player_to_join = all_players.get_by_id(player);
     auto* match = matches.get_by_id(match_id);
@@ -40,7 +40,7 @@ void MatchManager::join_to_match(int player, int match_id)
         player_to_join->add_message_to_queue(error);
         return;
     }
-    match->add_player(player_to_join, player, false);
+    match->add_player(player_to_join, player, (joiner_multiplayer_mode == 1));
     Gamestate match_joined(player, 0, match_id);
     player_to_join->add_message_to_queue(match_joined);
 }
@@ -115,7 +115,7 @@ void MatchManager::run()
                         create_match(action.player_id, action.is_multiplayer);
                         break;
                     case 5:
-                        join_to_match(action.player_id, action.match);
+                        join_to_match(action.player_id, action.match, action.is_multiplayer);
                         break;
                     case 6:
                         start_match(action.player_id, action.match);
