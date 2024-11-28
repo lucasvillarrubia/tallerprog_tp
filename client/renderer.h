@@ -29,6 +29,13 @@ private:
 public:
     Renderer(std::atomic_bool&, Queue<Gamestate>&, StateManager&);
     
+    void open_window() {
+        window.Show();
+    }
+    void close_window() {
+        window.Hide();
+    }
+
     float get_zoom_factor() const { return zoom_factor; }
     void set_zoom_factor(float new_zoom_factor) { zoom_factor = new_zoom_factor; }
 

@@ -240,9 +240,16 @@ void Gameplay::send_bullets_positions_updates(const unsigned int frame_delta) {
 				continue;
 			//-----reemplazar por nueva colision
 			}*/
-			//if (colision contra pato){
-				//duck.damage(bullet.impact)
-			//}
+			for (auto& [duck_id, duck] : ducks_by_id) {
+                Coordinates duck_position = StateManager::get_duck_coordinates(duck);
+                if (StateManager::get_duck_is_alive(duck) && duck_position.pos_X < after_coordinates.pos_X + 10 && duck_position.pos_X > after_coordinates.pos_X - 10 && duck_position.pos_Y < after_coordinates.pos_Y + 10 && duck_position.pos_Y > after_coordinates.pos_Y - 10) {
+                    bullet->impact();
+                    duck.set_is_NOT_alive();
+                    Gamestate duck_is_dead(StateManager::get_duck_state(duck, duck_id));
+                    broadcast_for_all_players(duck_is_dead);
+                    break;
+                }
+            }
 			if (bullet->is_destroyed()) {
 				Gamestate update(id);
 				players.broadcast(update);

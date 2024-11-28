@@ -27,14 +27,12 @@ Renderer::Renderer(std::atomic_bool& con_stat, Queue<Gamestate>& q, StateManager
         window("Duck Game",
             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
             640, 480,
-            SDL_WINDOW_RESIZABLE),
+            SDL_WINDOW_HIDDEN | SDL_WINDOW_RESIZABLE),
         renderer(window, -1, SDL_RENDERER_ACCELERATED),
         updates_feed(q),
         state(s),
         textureManager(renderer)
         {}
-
-
 
 void Renderer::draw_character(Character& character, int frame, const float zoom_offset_x, const float zoom_offset_y)
 {

@@ -29,7 +29,8 @@ Client::Client(const char* hostname, const char* servname):
         game_on(false),
         connection(std::move(Socket(hostname, servname)), events, updates, connected),
         event_listener(game_on, events, multiplayer_mode, current_match),
-        // renderloop(game_on, updates, state),
+        sdl(SDL_INIT_VIDEO),
+        renderloop(game_on, updates, state),
         // renderloop(game_on, window, renderer, updates, state),
         updater(updates, state),
         gamelobby(nullptr),
@@ -87,9 +88,10 @@ void Client::run() {
                 connection.end_connection();
                 break;
             }
-            SDL2pp::SDL sdl(SDL_INIT_VIDEO);
-            Renderer renderloop(game_on, updates, state);
+            // SDL2pp::SDL sdl(SDL_INIT_VIDEO);
+            // Renderer renderloop(game_on, updates, state);
 
+            renderloop.open_window();
             std::cout << "Client running\n";
 
             while (game_on.load() && connected.load())
@@ -100,6 +102,7 @@ void Client::run() {
                     renderloop.render(frame);
                 }, rate);
             }
+            renderloop.close_window();
             game_on.store(false);
             int i = 0;
             Gamestate end_game;

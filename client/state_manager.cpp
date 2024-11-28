@@ -66,6 +66,7 @@ void StateManager::update(const Gamestate& update)
         update_ducks(update);
         break;
     }
+    dukis.remove_if([](const Character& duki) { return not duki.is_alive; });
 }
 
 void StateManager::update_ducks(const Gamestate& update)
@@ -129,7 +130,6 @@ void StateManager::reset()
 
 void StateManager::update_duck_state(const Gamestate& update)
 {
-    dukis.remove_if([](const Character& duki) { return not duki.is_alive; });
     for (auto& duki : dukis)
     {
         if (duki.id == update.player_id)
