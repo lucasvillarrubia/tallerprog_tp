@@ -1,7 +1,3 @@
 # Descomentar el mapa que queres usar y comentar el otro
-# current_map: mapa_laguna
-current_map: mapa_azul
-
-mapa_fondos:
-  mapa_azul: fondo_azul.png
-  mapa_laguna: fondo_laguna.png
+current_map: mapa_laguna
+#current_map: mapa_azul

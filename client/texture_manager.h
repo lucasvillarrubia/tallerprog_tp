@@ -34,6 +34,10 @@ public:
         cargarTextura("pared_laguna", "resources/pared_laguna.png");
         cargarTextura("piso_azul", "resources/piso_azul.png");
         cargarTextura("pared_azul", "resources/pared_azul.png");
+        
+        // Fondos
+        cargarTextura("mapa_azul", "resources/fondo_azul.png");
+        cargarTextura("mapa_laguna", "resources/fondo_laguna.png");
     }
 
     void cargarTextura(const std::string& nombre, const std::string& path) {
