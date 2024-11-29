@@ -211,27 +211,6 @@ void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y
     }
 }
 
-// std::string Renderer::get_fondo(){
-//     // Carga el archivo YAML
-//     YAML::Node config = YAML::LoadFile("resources/current_map.yaml");
-
-//     // Verifica si las claves existen
-//     if (!config["current_map"] || !config["mapa_fondos"]) {
-//         throw std::runtime_error("Missing 'current_map' or 'mapa_fondos' keys in current_map.yaml");
-//     }
-
-//     // Obtiene el mapa actual
-//     std::string current_map = config["current_map"].as<std::string>();
-
-//     // Obtiene el fondo asociado al mapa
-//     if (!config["mapa_fondos"][current_map]) {
-//         throw std::runtime_error("Background not found for map: " + current_map);
-//     }
-
-//     std::string fondo = config["mapa_fondos"][current_map].as<std::string>();
-
-//     return "resources/" + fondo;
-// }
 
 void Renderer::draw_bg(){
     YAML::Node config = YAML::LoadFile("resources/current_map.yaml");
@@ -291,6 +270,7 @@ void Renderer::render(int frame) {
         
         float zoom_offset_x, zoom_offset_y;
         calculate_zoom_offsets(zoom_offset_x, zoom_offset_y, avg_x, avg_y);
+
 
         renderer.SetScale(this->zoom_factor, this->zoom_factor);
 
