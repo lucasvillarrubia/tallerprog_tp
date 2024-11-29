@@ -15,6 +15,7 @@
 #include <yaml-cpp/yaml.h>
 #include <vector>
 #include <fstream>
+#include "SDL2pp/Font.hh"
 
 const int DUCK_SPRITE_WIDTH = 64;
 const int DUCK_SPRITE_HEIGHT = 70;
@@ -237,6 +238,7 @@ void Renderer::render(int frame) {
     try {
         if (not connected.load()) {
             SDL_Quit();
+            TTF_Quit();
             return;
         }
         std::string fondoPath = get_fondo();
@@ -296,7 +298,14 @@ void Renderer::render(int frame) {
         	// std::cout<<bullet.id<<"- x:"<<bullet.pos_X<<" y: "<<bullet.pos_Y<<std::endl;
         	draw_bullet(bullet, zoom_offset_x, zoom_offset_y);
         }
-        
+
+        renderer.SetScale(1.0f, 1.0f);
+        SDL2pp::Font font("resources/Uroob-Regular.ttf", 24);
+        SDL_Color color = {255, 255, 255, 255};
+        SDL2pp::Texture text(renderer, font.RenderText_Solid("Score: 0", color));
+        SDL2pp::Texture text1(renderer, font.RenderText_Solid("Score: 0", color));
+        renderer.Copy(text, SDL2pp::NullOpt, SDL2pp::Rect(50, 50, text.GetWidth(), text.GetHeight()));
+        renderer.Copy(text1, SDL2pp::NullOpt, SDL2pp::Rect(50, 75, text.GetWidth(), text.GetHeight()));
         renderer.Present();
     }
     catch (const std::exception& e) {
