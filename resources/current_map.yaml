@@ -1,5 +1,5 @@
 # Descomentar el mapa que queres usar y comentar el otro
 #current_map: mapa_laguna
-#current_map: mapa_azul
-current_map: mapa_minecraft
+current_map: mapa_azul
+#current_map: mapa_minecraft
 

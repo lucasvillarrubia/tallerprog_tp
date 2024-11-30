@@ -45,4 +45,4 @@ entities:
     height: 30.0
     texture: piso_laguna
 spawn_place_patos:
-  - x:
+  - x: 

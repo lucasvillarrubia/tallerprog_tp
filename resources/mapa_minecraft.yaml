@@ -34,3 +34,44 @@ entities:
     width: 100
     height: 20.0
     texture: piso_minecraft
+spawn_places_patos:
+  - x: 140
+    y: 20
+  - x: 790
+    y: -250
+  - x: 25
+    y: -250
+  - x: 750
+    y: 20
+  - x: 375
+    y: 220
+spawn_places_cajas:
+  - x: 880
+    y: -250
+  - x: 340
+    y: -80
+  - x: 530
+    y: -250
+  - x: 170
+    y: -250
+spawn_places_armas:
+  - x: 225
+    y: 220
+  - x: 260
+    y: -80
+  - x: 30
+    y: -80
+  - x: 240
+    y: -250
+  - x: 470
+    y: -250
+  - x: 665
+    y: -250
+  - x: 615
+    y: -120
+  - x: 615
+    y: 20
+  - x: 440
+    y: 220
+  - x: 695
+    y: 120
