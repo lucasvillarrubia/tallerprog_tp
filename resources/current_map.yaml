@@ -2,5 +2,5 @@
 #current_map: mapa_laguna
 #current_map: mapa_azul
 #current_map: mapa_minecraft
-#current_map: mapa_desierto
-current_map: mapa_ciudad
+current_map: mapa_desierto
+#current_map: mapa_ciudad
