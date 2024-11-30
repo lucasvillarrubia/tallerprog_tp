@@ -1,5 +1,5 @@
 entities:
-  - x: -50.0
+  - x: 100.0
     y: -300.0
     width: 1000.0
     height: 50.0
@@ -44,5 +44,44 @@ entities:
     width: 200.0
     height: 30.0
     texture: piso_laguna
-spawn_place_patos:
-  - x: 
+spawn_places_patos:
+  - x: 985
+    y: 280
+  - x: 135
+    y: 280
+  - x: 960
+    y: -250
+  - x: 200
+    y: -250
+  - x: 215
+    y: 30
+spawn_places_cajas:
+  - x: 320
+    y: 30
+  - x: 755
+    y: -250
+  - x: 360
+    y: -250
+  - x: 570
+    y: 180
+spawn_places_armas:
+  - x: 220
+    y: 280
+  - x: 905
+    y: 280
+  - x: 565
+    y: -20
+  - x: 485
+    y: -250
+  - x: 625
+    y: -250
+  - x: 970
+    y: -120
+  - x: 650
+    y: 180
+  - x: 480
+    y: 180
+  - x: 190
+    y: -250
+  - x: 965
+    y: -250
