@@ -9,12 +9,14 @@ const int MULTIPLAYER_ID_OFFSET = 128;
 
 
 Gameplay::Gameplay(MonitoredList<Player*>& player_list, std::map<int, bool>& multiplayer_modes, Queue<Gameaction>& usr_cmds):
+
         is_running(false),
         players(player_list),
         multiplayer_mode_by_player(multiplayer_modes),
         user_commands(usr_cmds),
         terrain(spawn_places, guns_by_id, ducks_by_id)
 {}
+
 
 void Gameplay::broadcast_for_all_players(const Gamestate& state)
 {
