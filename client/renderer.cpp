@@ -234,8 +234,8 @@ void Renderer::draw_bg(){
 void Renderer::render(int frame) {
     try {
         if (not connected.load()) {
-            SDL_Quit();
-            TTF_Quit();
+            // SDL_Quit();
+            // TTF_Quit();
             return;
         }
 

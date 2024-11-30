@@ -87,6 +87,8 @@ void Client::run() {
             // if (gamelobby.was_closed_by_X()) {
             if (not game_on.load()) {
                 game_on.store(false);
+                SDL_Quit();
+                TTF_Quit();
                 connected.store(false);
                 updates.close();
                 events.close();
