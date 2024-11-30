@@ -9,9 +9,12 @@ const int MULTIPLAYER_ID_OFFSET = 128;
 
 
 Gameplay::Gameplay(MonitoredList<Player*>& player_list, std::map<int, bool>& multiplayer_modes, Queue<Gameaction>& usr_cmds):
-        is_running(false), players(player_list), multiplayer_mode_by_player(multiplayer_modes), user_commands(usr_cmds) {
-    
-}
+        is_running(false),
+        players(player_list),
+        multiplayer_mode_by_player(multiplayer_modes),
+        user_commands(usr_cmds),
+        terrain(spawn_places, guns_by_id, ducks_by_id)
+{}
 
 void Gameplay::broadcast_for_all_players(const Gamestate& state)
 {
@@ -31,22 +34,22 @@ void Gameplay::send_all_initial_coordinates()
     
     for (auto& [id, is_multiplayer] : multiplayer_mode_by_player)
     {
-        float x = 300.0f;
-        float y = 300.0f;
+        // float x = 300.0f;
+        // float y = 300.0f;
         Duck duck;
-        duck.set_position(x, y);
-        duck.set_is_on_the_floor();
+        // duck.set_position(x, y);
+        // duck.set_is_on_the_floor();
         ducks_by_id.insert({id, duck});
         std::cout << "id: " << id << " is_multiplayer: " << is_multiplayer << "\n";
         if (is_multiplayer) {
             Duck second;
-            second.set_position(210.0f, 300.0f);
-            second.set_is_on_the_floor();
+            // second.set_position(210.0f, 300.0f);
+            // second.set_is_on_the_floor();
             ducks_by_id.insert({id + MULTIPLAYER_ID_OFFSET, second});
             std::cout << "id: " << id + MULTIPLAYER_ID_OFFSET << "\n";
         }
     }
-
+    terrain.set_ducks_positions();
     for (auto& [id, duck]: ducks_by_id)
     {
         Coordinates position = StateManager::get_duck_coordinates(duck);
@@ -65,11 +68,11 @@ void Gameplay::send_all_initial_coordinates()
     }
 
 
-    guns_by_id.insert({1, new AK47(650.0f, 180.0f)});
-    guns_by_id.insert({2, new DuelPistol(630.0f, 180.0f)});
-    guns_by_id.insert({3, new CowboyPistol(200.0f, 300.0f)});
-    guns_by_id.insert({4, new Magnum(670.0f, 189.0f)});
-    guns_by_id.insert({5, new Sniper(300.0f, 300.0f)});
+    // guns_by_id.insert({1, new AK47(650.0f, 180.0f)});
+    // guns_by_id.insert({2, new DuelPistol(630.0f, 180.0f)});
+    // guns_by_id.insert({3, new CowboyPistol(200.0f, 300.0f)});
+    // guns_by_id.insert({4, new Magnum(670.0f, 189.0f)});
+    // guns_by_id.insert({5, new Sniper(300.0f, 300.0f)});
     guns_in_map = guns_by_id.size();
     for (auto& [id, gun] : guns_by_id) {
     	Coordinates position = gun->getPosition();

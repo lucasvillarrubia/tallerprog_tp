@@ -4,9 +4,10 @@
 #include <vector>
 #include <fstream>
 
-Terrain::Terrain() {
-    
-    YAML::Node config = YAML::LoadFile(getCurrentMap());
+Terrain::Terrain(std::list<SpawnPlace>& spawn_places, std::map<int, Gun*>& guns_by_id, std::map<int, Duck>& ducks_by_id):
+        config(YAML::LoadFile(getCurrentMap())), spawn_places(spawn_places), guns_by_id(guns_by_id), ducks_by_id(ducks_by_id)
+{    
+    // YAML::Node config = YAML::LoadFile(getCurrentMap());
 
     if (config["entities"]) {
         for (const auto& entity : config["entities"]) {
@@ -19,6 +20,32 @@ Terrain::Terrain() {
         }
     } else {
         std::cerr << "No se encontró la sección 'entities' en el archivo YAML." << std::endl;
+    }
+    if (config["spawn_places_armas"]) {
+        for (const auto& entity : config["spawn_places_armas"]) {
+            float x = entity["x"].as<float>();
+            float y = entity["y"].as<float>();
+            spawn_places.push_back(SpawnPlace(x, y));
+        }
+    } else {
+        std::cerr << "No se encontró la sección 'spawn_places_armas' en el archivo YAML." << std::endl;
+    }
+}
+
+void Terrain::set_ducks_positions()
+{
+    if (config["spawn_places_patos"]) {
+        int i = 0;
+        for (auto& [id, duck] : ducks_by_id) {
+            const auto& entity = config["spawn_places_patos"][i];
+            float x = entity["x"].as<float>();
+            float y = entity["y"].as<float>();
+            duck.set_position(x, y);
+            duck.set_is_on_the_floor();
+            i++;
+        }
+    } else {
+        std::cerr << "No se encontró la sección 'spawn_places_patos' en el archivo YAML." << std::endl;
     }
 }
 
