@@ -16,8 +16,8 @@ class Server
 {
 private:
     // si el servidor va a aguantar varias partidas, un atributo va a ser:
-    MonitoredList<Match*> match_list;
     MonitoredList<Player*> player_list;
+    MonitoredList<Match*> match_list;
     Queue<Gameaction> user_commands;
     Acceptor acceptor;
     MatchManager match_creator;

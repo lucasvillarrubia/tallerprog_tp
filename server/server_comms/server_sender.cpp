@@ -42,6 +42,9 @@ void ServerSender::send_data()
         case 12:
             protocol.send_matches_info_message(new_event);
             break;
+        case 13:
+            protocol.send_round_ended_message(new_event);
+            break;
         default:
             protocol.send_duck_state_message(new_event);
             // std::cout << "se mandó una actualización de estado\n";

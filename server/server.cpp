@@ -5,7 +5,7 @@
 
 Server::Server(const char* servname):
         acceptor(servname, player_list, user_commands),
-        match_creator(user_commands, player_list),
+        match_creator(user_commands, player_list, match_list),
         // gameloop(player_list, user_commands),
         cleaner(match_list) {}
 
@@ -36,6 +36,7 @@ void Server::run() {
         acceptor.join();
         match_creator.stop();
         match_creator.join();
+        match_list.clear();
         // cleaner.stop();
         // cleaner.join();
         player_list.clear();

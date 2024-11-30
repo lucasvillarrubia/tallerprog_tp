@@ -18,7 +18,8 @@ private:
     std::list<Character> dukis;
     std::list<Gun> guns;
     std::list<Bullet> bullets;
-    void update_duck_position(Character&, const Coordinates&);
+    int round;
+    void update_duck_position(Character&, const Coordinates&, const float);
     void update_gun_position(Gun&, const Coordinates&);
     void update_bullet_position(Bullet&, const Coordinates&);
     void update_duck_state(const Gamestate& update);
