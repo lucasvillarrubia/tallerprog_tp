@@ -46,22 +46,10 @@ private:
     std::list<SpawnPlace> spawn_places;
     int guns_in_map;
     int bullets_fired;
-    // bool ya_entro_cliente;
     bool primera_caida;
     Terrain terrain;
-    // Duck duck;
     int current_round;
     bool round_is_over;
-    std::map<int, int> rewards_by_box = {{0x01, 0x10}, {0x02, 0x11}, {0x03, 0x12}, {0x04, 0x13}};
-    std::map<int, int> default_respawn_iterations_by_box = {
-            {0x01, DEFAULT_RESPAWN_ITERATIONS_BOX_1},
-            {0x02, DEFAULT_RESPAWN_ITERATIONS_BOX_2},
-            {0x03, DEFAULT_RESPAWN_ITERATIONS_BOX_3},
-            {0x04, DEFAULT_RESPAWN_ITERATIONS_BOX_4}};
-    std::map<int, int> iterations_left_by_dead_box;
-    std::map<int, bool> boxes;
-    bool is_box_available(int);
-
     void process_users_commands();
     void initialize_players();
     void send_all_initial_coordinates();

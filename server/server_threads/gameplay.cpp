@@ -8,7 +8,7 @@
 const int MULTIPLAYER_ID_OFFSET = 128;
 
 
-Gameplay::Gameplay(MonitoredList<Player*>& player_list, const std::map<int, bool>& multiplayer_modes, Queue<Gameaction>& usr_cmds):
+Gameplay::Gameplay(MonitoredList<Player*>& player_list, std::map<int, bool>& multiplayer_modes, Queue<Gameaction>& usr_cmds):
         is_running(false), players(player_list), multiplayer_mode_by_player(multiplayer_modes), user_commands(usr_cmds) {
     
     guns_by_id.insert({1, new AK47(650.0f, 180.0f)});
