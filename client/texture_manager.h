@@ -35,11 +35,15 @@ public:
         cargarTextura("piso_azul", "resources/piso_azul.png");
         cargarTextura("pared_azul", "resources/pared_azul.png");
         cargarTextura("piso_minecraft", "resources/piso_minecraft.png");
-        
+        cargarTextura("piso_desierto", "resources/piso_desierto.png");
+        cargarTextura("piso_ciudad", "resources/piso_ciudad.png");
+
         // Fondos
         cargarTextura("mapa_azul", "resources/fondo_azul.png");
         cargarTextura("mapa_laguna", "resources/fondo_laguna.png");
         cargarTextura("mapa_minecraft", "resources/fondo_minecraft.png");
+        cargarTextura("mapa_ciudad", "resources/fondo_ciudad.png");
+        cargarTextura("mapa_desierto", "resources/fondo_desierto.png");
     }
 
     void cargarTextura(const std::string& nombre, const std::string& path) {
