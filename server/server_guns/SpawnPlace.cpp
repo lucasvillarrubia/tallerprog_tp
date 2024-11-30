@@ -11,21 +11,7 @@ bool SpawnPlace::is_gun_spawned() {
 bool SpawnPlace::is_item_spawned() {
 	return item_spawned;
 }
-/*
-bool SpawnPlace::try_spawn_item(int& id, std::map<int, Item*>& items) {
-	if (!item_spawned && !gun_spawned) {
-		auto time_now = std::chrono::steady_clock::now();
-		auto t = std::chrono::duration_cast<std::chrono::second> (time_now-last_spawn_time).count();
-		if (t >= min_time_to_respawn) {
-			item_picked = false;
-			item_spawn = true;
-			id++;
-			items.insert({id, new item});
-			return true;
-		}
-	}
-	return false;
-}*/
+
 
 bool SpawnPlace::try_spawn_gun(int& id, std::map<int, Gun*>& guns) {
 	if (!item_spawned && !gun_spawned) {

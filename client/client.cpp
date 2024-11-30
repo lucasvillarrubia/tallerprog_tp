@@ -13,6 +13,7 @@
 #include <QAbstractButton>
 #include <QString>
 #include "common/hands_on_sockets/liberror.h"
+#include <SDL2/SDL_ttf.h>
 
 
 const int MULTIPLAYER_MODE = 0;
@@ -40,6 +41,10 @@ Client::Client(const char* hostname, const char* servname):
     connect(&gamelobby, &lobby::start_match, this, &Client::handle_start_match);
     connect(&gamelobby, &lobby::refresh_lobby, this, &Client::handle_refresh_lobby);
     connect(&gamelobby, &lobby::join_match, this, &Client::handle_join_match);
+    if (TTF_Init() == -1) {
+        std::cerr << "TTF_Init failed: " << TTF_GetError() << std::endl;
+        SDL_Quit();
+    }
 }
 
 void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono::milliseconds rate)

@@ -15,6 +15,7 @@
 #include <yaml-cpp/yaml.h>
 #include <vector>
 #include <fstream>
+#include "SDL2pp/Font.hh"
 
 const int DUCK_SPRITE_WIDTH = 64;
 const int DUCK_SPRITE_HEIGHT = 70;
@@ -210,26 +211,23 @@ void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y
     }
 }
 
-std::string Renderer::get_fondo(){
-    // Carga el archivo YAML
+
+void Renderer::draw_bg(){
     YAML::Node config = YAML::LoadFile("resources/current_map.yaml");
 
-    // Verifica si las claves existen
-    if (!config["current_map"] || !config["mapa_fondos"]) {
-        throw std::runtime_error("Missing 'current_map' or 'mapa_fondos' keys in current_map.yaml");
+    std::string mapa_actual;
+    mapa_actual = config["current_map"].as<std::string>();
+
+
+    SDL2pp::Texture* texture = textureManager.getTextura(mapa_actual);
+
+    if (texture) {
+        // Dibujar la textura
+        renderer.Copy(*texture, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
+    } else {
+        std::cerr << "Error: No se encontró la textura para el mapa: " << mapa_actual << std::endl;
     }
-
-    // Obtiene el mapa actual
-    std::string current_map = config["current_map"].as<std::string>();
-
-    // Obtiene el fondo asociado al mapa
-    if (!config["mapa_fondos"][current_map]) {
-        throw std::runtime_error("Background not found for map: " + current_map);
-    }
-
-    std::string fondo = config["mapa_fondos"][current_map].as<std::string>();
-
-    return "resources/" + fondo;
+    
 }
 
 
@@ -237,17 +235,19 @@ void Renderer::render(int frame) {
     try {
         if (not connected.load()) {
             SDL_Quit();
+            TTF_Quit();
             return;
         }
-        std::string fondoPath = get_fondo();
-        SDL2pp::Texture background(renderer, fondoPath);
+
+        renderer.Clear();
+
+        draw_bg();
   
         Gamestate update;
         while (updates_feed.try_pop(update)) {
             state.update(update);
         }
 
-        renderer.Clear();
         std::list<Character> character_list = state.get_characters_data();
         std::list<Gun> gun_list = state.get_guns_data();
         std::list<Bullet> bullet_list = state.get_bullets_data();
@@ -271,10 +271,8 @@ void Renderer::render(int frame) {
         float zoom_offset_x, zoom_offset_y;
         calculate_zoom_offsets(zoom_offset_x, zoom_offset_y, avg_x, avg_y);
 
+
         renderer.SetScale(this->zoom_factor, this->zoom_factor);
-        
-        renderer.Copy(background, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
-    
 
         // DiIBUJO MAPA
         dibujar_mapa(zoom_offset_x, zoom_offset_y);
@@ -283,7 +281,7 @@ void Renderer::render(int frame) {
         for (auto& character : character_list) {
             // if (character.is_alive)
             // std::cout << "drawing character\n";
-                draw_character(character, frame, zoom_offset_x, zoom_offset_y);
+            draw_character(character, frame, zoom_offset_x, zoom_offset_y);
         }
         
         // DIBUJO ARMAS
@@ -296,7 +294,14 @@ void Renderer::render(int frame) {
         	// std::cout<<bullet.id<<"- x:"<<bullet.pos_X<<" y: "<<bullet.pos_Y<<std::endl;
         	draw_bullet(bullet, zoom_offset_x, zoom_offset_y);
         }
-        
+
+        renderer.SetScale(1.0f, 1.0f);
+        SDL2pp::Font font("resources/Uroob-Regular.ttf", 24);
+        SDL_Color color = {255, 255, 255, 255};
+        SDL2pp::Texture text(renderer, font.RenderText_Solid("Score: 0", color));
+        SDL2pp::Texture text1(renderer, font.RenderText_Solid("Score: 0", color));
+        renderer.Copy(text, SDL2pp::NullOpt, SDL2pp::Rect(50, 50, text.GetWidth(), text.GetHeight()));
+        renderer.Copy(text1, SDL2pp::NullOpt, SDL2pp::Rect(50, 75, text.GetWidth(), text.GetHeight()));
         renderer.Present();
     }
     catch (const std::exception& e) {
