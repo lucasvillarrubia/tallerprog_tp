@@ -62,6 +62,10 @@ void StateManager::update(const Gamestate& update)
     case 9:
     	destroy_bullet(update.object_id);
     	break;
+    case 13:
+        reset();
+        round = update.round;
+        break;
     default:
         update_ducks(update);
         break;
@@ -74,7 +78,7 @@ void StateManager::update_ducks(const Gamestate& update)
     for (auto& duki : dukis)
     {
         if (update.positions_by_id.contains(duki.id))
-            update_duck_position(duki, update.positions_by_id.at(duki.id));
+            update_duck_position(duki, update.positions_by_id.at(duki.id), update.speeds_by_id.at(duki.id));
     }
 }
 
@@ -97,9 +101,10 @@ void StateManager::update_bullets(const Gamestate& update)
     }
 }
 
-void StateManager::update_duck_position(Character& duki, const Coordinates& new_position) {
+void StateManager::update_duck_position(Character& duki, const Coordinates& new_position, const float speed) {
     duki.pos_X = new_position.pos_X;
     duki.pos_Y = new_position.pos_Y;
+    duki.jump_velocity = speed;
 }
 
 void StateManager::update_gun_position(Gun& gun, const Coordinates& new_position) {
@@ -139,6 +144,9 @@ void StateManager::update_duck_state(const Gamestate& update)
             duki.is_flapping = update.is_flapping;
             duki.moving_right = update.move_direction;
             duki.is_alive = update.is_alive;
+            duki.is_slipping = update.is_slipping;
+            duki.is_pointing_upwards = update.is_pointing_upwards;
+            duki.is_ducking = update.is_ducking;
             break;
         }
     }

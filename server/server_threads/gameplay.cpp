@@ -18,6 +18,7 @@ Gameplay::Gameplay(MonitoredList<Player*>& player_list, const std::map<int, bool
     guns_by_id.insert({5, new Sniper(300.0f, 300.0f)});
     guns_in_map = guns_by_id.size();
     spawn_places.push_back(SpawnPlace(160.0f, 200.0f));
+
 }
 
 void Gameplay::broadcast_for_all_players(const Gamestate& state)
@@ -81,6 +82,12 @@ void Gameplay::send_all_initial_coordinates()
         );
         broadcast_for_all_players(initial_duck_coordinates);
     }
+    guns_by_id.insert({1, new AK47(650.0f, 180.0f)});
+    guns_by_id.insert({2, new DuelPistol(630.0f, 180.0f)});
+    guns_by_id.insert({3, new CowboyPistol(200.0f, 300.0f)});
+    guns_by_id.insert({4, new Magnum(670.0f, 189.0f)});
+    guns_by_id.insert({5, new Sniper(300.0f, 300.0f)});
+    guns_in_map = guns_by_id.size();
     for (auto& [id, gun] : guns_by_id) {
     	Coordinates position = gun->getPosition();
     	Gamestate initial_gun_coordinates(
@@ -92,6 +99,7 @@ void Gameplay::send_all_initial_coordinates()
     	);
     	broadcast_for_all_players(initial_gun_coordinates);
     }
+    spawn_places.push_back(SpawnPlace(160.0f, 200.0f));
 }
 
 void Gameplay::process_users_commands() {
@@ -103,6 +111,7 @@ void Gameplay::process_users_commands() {
             Gamestate duck_is_dead(StateManager::get_duck_state(ducks_by_id.at(command.player_id), command.player_id));
             broadcast_for_all_players(duck_is_dead);
             ducks_by_id.erase(command.player_id);
+            multiplayer_mode_by_player.erase(command.player_id);
             players.remove_if([&](Player* player) { return player->matches(command.player_id); });
             std::cout << "the game has " << players.size() << " players\n";
             continue;
@@ -119,6 +128,7 @@ void Gameplay::process_users_commands() {
 void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
 {
     std::map<int, Coordinates> positions_by_id;
+    std::map<int, float> speeds_by_id;
     for (auto& [id, duck]: ducks_by_id)
     {
         if (StateManager::get_duck_is_alive(duck) == 0)
@@ -133,6 +143,7 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
         try_to_grab(duck);
         try_to_shoot(duck);
         positions_by_id.insert({id, updated_position});
+        speeds_by_id.insert({id, StateManager::get_duck_speed(duck)});
         if (StateManager::get_duck_is_alive(duck) == 0)
         {
             // ducks_by_id.erase(id);
@@ -140,7 +151,7 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
             broadcast_for_all_players(duck_is_dead);
         }
     }
-    Gamestate update(positions_by_id);
+    Gamestate update(positions_by_id, speeds_by_id);
     broadcast_for_all_players(update);
 }
 
@@ -254,24 +265,52 @@ void Gameplay::update_spawn_places() {
 	}
 }
 
+void Gameplay::check_for_winner()
+{
+    std::vector<int> survivor_ids;
+    for (auto& [id, duck] : ducks_by_id) {
+        if (StateManager::get_duck_is_alive(duck) == 1) {
+            survivor_ids.push_back(id);
+        }
+    }
+    if (survivor_ids.size() == 1)
+    {
+        round_is_over = true;
+        Gamestate winner(survivor_ids[0], current_round);
+        broadcast_for_all_players(winner);
+        ducks_by_id.clear();
+        guns_by_id.clear();
+        bullets_by_id.clear();
+        spawn_places.clear();
+        guns_in_map = 0;
+        bullets_fired = 0;
+        current_round++;
+    }
+}
+
 void Gameplay::run() {
     try
     {
         is_running.store(true);
-        auto prev_time = std::chrono::steady_clock::now();
-        send_all_initial_coordinates();
         while (is_running.load()) {
-            auto current_time = std::chrono::steady_clock::now();
-            auto frame_delta = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - prev_time).count();
-            prev_time = current_time;
-            process_users_commands();
-            send_ducks_positions_updates(frame_delta);
-            send_guns_positions_updates();
-            send_bullets_positions_updates(frame_delta);
-            update_spawn_places();
-            std::this_thread::sleep_for(std::chrono::milliseconds(16));
-            if (players.size() == 0) {
-                is_running.store(false);
+            auto prev_time = std::chrono::steady_clock::now();
+            send_all_initial_coordinates();
+            round_is_over = false;
+            while (not round_is_over) {
+                auto current_time = std::chrono::steady_clock::now();
+                auto frame_delta = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - prev_time).count();
+                prev_time = current_time;
+                process_users_commands();
+                send_ducks_positions_updates(frame_delta);
+                send_guns_positions_updates();
+                send_bullets_positions_updates(frame_delta);
+                update_spawn_places();
+                check_for_winner();
+                std::this_thread::sleep_for(std::chrono::milliseconds(16));
+                if (players.size() == 0) {
+                    is_running.store(false);
+                    break;
+                }
             }
         }
     }
