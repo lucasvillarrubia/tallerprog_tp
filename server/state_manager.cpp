@@ -97,7 +97,10 @@ Gamestate StateManager::get_duck_state(Duck& duck, int id)
         duck.is_jumping ? 1 : 0,
         duck.is_flapping ? 1 : 0,
         duck.moving_right ? 1 : 0,
-        duck.is_alive ? 1 : 0
+        duck.is_alive ? 1 : 0,
+        duck.is_slipping ? 1 : 0,
+        duck.is_pointing_upwards ? 1 : 0,
+        duck.is_ducking ? 1 : 0,
     };
 }
 

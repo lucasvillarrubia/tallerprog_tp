@@ -56,6 +56,9 @@ void ServerProtocol::send_duck_state_message(const Gamestate& message)
     send_single_8bit_int(message.is_flapping);
     send_single_8bit_int(message.move_direction);
     send_single_8bit_int(message.is_alive);
+    send_single_8bit_int(message.is_slipping);
+    send_single_8bit_int(message.is_pointing_upwards);
+    send_single_8bit_int(message.is_ducking);
 }
 
 

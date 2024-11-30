@@ -28,7 +28,11 @@ Duck::Duck():
         is_grabbing(false),
         is_shooting(false),
         with_gun(false),
-        gun_equipped_id(0){}
+        gun_equipped_id(0),
+        is_slipping(false),
+        is_pointing_upwards(false),
+        is_ducking(false)
+{}
 
 void Duck::update_position(unsigned int frame_delta)
 {

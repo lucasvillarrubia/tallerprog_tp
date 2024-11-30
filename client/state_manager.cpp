@@ -144,6 +144,9 @@ void StateManager::update_duck_state(const Gamestate& update)
             duki.is_flapping = update.is_flapping;
             duki.moving_right = update.move_direction;
             duki.is_alive = update.is_alive;
+            duki.is_slipping = update.is_slipping;
+            duki.is_pointing_upwards = update.is_pointing_upwards;
+            duki.is_ducking = update.is_ducking;
             break;
         }
     }

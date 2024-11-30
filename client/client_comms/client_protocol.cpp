@@ -70,14 +70,17 @@ void ClientProtocol::receive_characters_positions_message(Gamestate& received)
 void ClientProtocol::receive_character_update_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
-    uint8_t player_id, run, jump, flap, direction, life;
+    uint8_t player_id, run, jump, flap, direction, life, slip, point_up, ducking;
     receive_single_8bit_int(player_id);
     receive_single_8bit_int(run);
     receive_single_8bit_int(jump);
     receive_single_8bit_int(flap);
     receive_single_8bit_int(direction);
     receive_single_8bit_int(life);
-    received = Gamestate(player_id, run, jump, flap, direction, life);
+    receive_single_8bit_int(slip);
+    receive_single_8bit_int(point_up);
+    receive_single_8bit_int(ducking);
+    received = Gamestate(player_id, run, jump, flap, direction, life, slip, point_up, ducking);
 }
 
 
@@ -244,7 +247,3 @@ void ClientProtocol::receive_message(Gamestate& received)
         break;
     }
 }
-
-// bool ClientProtocol::theres_more_data_per_code(int msg_code) {
-//     return (msg_code == PICKUP_MESSAGE_CODE) ? true : false;
-// }
