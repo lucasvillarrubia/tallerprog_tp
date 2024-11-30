@@ -7,11 +7,12 @@ const int TWO_PLAYER_LIMIT = 2;
 const int THREE_PLAYER_LIMIT = 3;
 
 
-MatchManager::MatchManager(Queue<Gameaction>& q, MonitoredList<Player*>& p):
+MatchManager::MatchManager(Queue<Gameaction>& q, MonitoredList<Player*>& p, MonitoredList<Match*>& m):
         match_count(0),
         is_running(false),
         users_commands(q),
-        all_players(p)
+        all_players(p),
+        matches(m)
 {}
 
 void MatchManager::create_match(int creator_id, int creator_multiplayer_mode)
@@ -169,14 +170,14 @@ void MatchManager::run()
         //         }
         //     }
         // }
-        matches.clear();
+        // matches.clear();
         is_running.store(false);
         _keep_running = false;
     } catch (const ClosedQueue& e) {
         is_running.store(false);
         _keep_running = false;
 
-        matches.clear();
+        // matches.clear();
         std::cerr << "Se cerró la queue en el match manager!\n";
 
     } catch (const LibError& e) {
@@ -194,12 +195,12 @@ void MatchManager::stop()
 {
     try
     {
-        if (not is_running.load()) {
-            return;
-        }
+        // if (not is_running.load()) {
+        //     return;
+        // }
         _keep_running = false;
         is_running.store(false);
-        matches.clear();
+        // matches.clear();
     }
     catch(const std::exception& e)
     {

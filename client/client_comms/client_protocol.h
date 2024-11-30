@@ -24,6 +24,7 @@ private:
     void receive_match_error_message(Gamestate&);
     void receive_match_info_message(Gamestate&);
     void receive_matches_info_message(Gamestate&);
+    void receive_round_ended_message(Gamestate&);
 public:
     ClientProtocol(Socket&&, std::atomic_bool&);
     void send_message(const Gameaction&);

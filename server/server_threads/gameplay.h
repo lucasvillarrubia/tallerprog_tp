@@ -38,7 +38,7 @@ private:
     std::atomic_bool is_running;
     MonitoredList<Player*>& players;
     std::list<int> disconnected_players;
-    const std::map<int, bool>& multiplayer_mode_by_player;
+    std::map<int, bool>& multiplayer_mode_by_player;
     Queue<Gameaction>& user_commands;
     std::map<int, Duck> ducks_by_id;
     std::map<int, Gun*> guns_by_id;
@@ -50,7 +50,8 @@ private:
     bool primera_caida;
     Terrain terrain;
     // Duck duck;
-
+    int current_round;
+    bool round_is_over;
     std::map<int, int> rewards_by_box = {{0x01, 0x10}, {0x02, 0x11}, {0x03, 0x12}, {0x04, 0x13}};
     std::map<int, int> default_respawn_iterations_by_box = {
             {0x01, DEFAULT_RESPAWN_ITERATIONS_BOX_1},
@@ -70,15 +71,12 @@ private:
     void send_guns_positions_updates();
     void send_bullets_positions_updates(unsigned int);
     void update_spawn_places();
-    void check_for_projectile_hit();
-    void check_for_boxes_reappearances();
-    void send_player_loss_update();
-    void start_new_round();
-    void send_victory_update();
+    void check_for_winner();
     void broadcast_for_all_players(const Gamestate&);
 public:
-    Gameplay(MonitoredList<Player*>&, const std::map<int, bool>&, Queue<Gameaction>&);
+    Gameplay(MonitoredList<Player*>&, std::map<int, bool>&, Queue<Gameaction>&);
     void run() override;
+    bool is_game_on() { return is_running.load(); }
     void stop() override;
     ~Gameplay() override = default;
 };

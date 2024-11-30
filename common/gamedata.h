@@ -32,6 +32,7 @@ struct Gamestate: Gamedata {
     int is_alive;
     float jump_speed;
     std::map<int, Coordinates> positions_by_id;
+    std::map<int, float> speeds_by_id;
     std::map<int, std::pair<DrawingData, Coordinates>> guns_positions_by_id;
     int bullet_flag;
     std::map<int, Coordinates> bullets_positions_by_id;
@@ -39,6 +40,7 @@ struct Gamestate: Gamedata {
     std::string error_msg;
     int match_id;
     std::list<Gamematch> matches_info;
+    int round;
 
     Gamestate(): Gamedata(-1) {}
 
@@ -80,10 +82,11 @@ struct Gamestate: Gamedata {
         move_direction(direction),
         is_alive(life) {}
 
-    Gamestate(std::map<int,Coordinates>& positions):
+    Gamestate(std::map<int,Coordinates>& positions, std::map<int,float>& speeds):
         Gamedata(0),
         type(2),
-        positions_by_id(positions) {}
+        positions_by_id(positions),
+        speeds_by_id(speeds) {}
     
     //envia la inicializacion de un arma
     Gamestate(
@@ -159,6 +162,7 @@ struct Gamestate: Gamedata {
         Gamedata(player),
         type(12),
         matches_info(matches) {}
+    Gamestate(const int player, const int round): Gamedata(player), type(13), round(round) {}
 };
 
 struct Gameaction: Gamedata {
