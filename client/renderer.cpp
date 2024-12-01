@@ -46,8 +46,8 @@ void Renderer::draw_character(Character& character, int frame, const float zoom_
         sprite = textureManager.getDuckSprite(character.id, character.color);
     }
     
-    
 
+    
     int vcenter = renderer.GetOutputHeight();
     int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame);
     int src_y = DUCK_MOVEMENT_SPRITES_LINE;
@@ -62,31 +62,35 @@ void Renderer::draw_character(Character& character, int frame, const float zoom_
     };
     SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 
-    if (true){ // PONER ACA CONDICIONES DE TIENE CASCO O NO (tener en cuenta que si character.is_ducking no renderizarle objetos)
+    if (true){ // poner aca las condiciones tiene casco o no, tiene armadura o no
 
         SDL2pp::Texture* armorTexture = textureManager.getItem("armadura");
-        SDL_Rect armor_src_rect = { 0, 0, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
-        SDL_Rect armor_dst_rect = {
-            static_cast<int>(character.pos_X + zoom_offset_x) + 5,
-            static_cast<int>(vcenter - DUCK_SPRITE_HEIGHT - character.pos_Y + zoom_offset_y + 15),
-            DUCK_SPRITE_WIDTH -10,
-            DUCK_SPRITE_HEIGHT -10
-        };
-        SDL_RenderCopyEx(renderer.Get(), armorTexture->Get(), &armor_src_rect, &armor_dst_rect, 0.0, nullptr, flip);
-
+        if (armorTexture) {
+            SDL_Rect armor_src_rect = { 0, 0, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
+            SDL_Rect armor_dst_rect = {
+                static_cast<int>(character.pos_X + zoom_offset_x) + 5,
+                static_cast<int>(vcenter - DUCK_SPRITE_HEIGHT - character.pos_Y + zoom_offset_y + 15),
+                DUCK_SPRITE_WIDTH -10,
+                DUCK_SPRITE_HEIGHT -10
+            };
+            SDL_RenderCopyEx(renderer.Get(), armorTexture->Get(), &armor_src_rect, &armor_dst_rect, 0.0, nullptr, flip);
+        }
 
         SDL2pp::Texture* cascoTexture = textureManager.getItem("casco");
-        SDL_Rect armor_src_rect = { 0, 0, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
-        int casco_width = DUCK_SPRITE_WIDTH -20;  // Ajusta el factor de reducción (por ejemplo, la mitad del tamaño)
-        int casco_height = DUCK_SPRITE_HEIGHT -20;
-        SDL_Rect armor_dst_rect = {
-            static_cast<int>(character.pos_X + zoom_offset_x + (DUCK_SPRITE_WIDTH - casco_width) / 2 ), // Centrar el casco en X
-            static_cast<int>(vcenter - DUCK_SPRITE_HEIGHT - character.pos_Y + zoom_offset_y - 15 + (DUCK_SPRITE_HEIGHT - casco_height) / 2), // Ajustar en Y
-            casco_width,
-            casco_height
-        };
-        SDL_RenderCopyEx(renderer.Get(), cascoTexture->Get(), &armor_src_rect, &armor_dst_rect, 0.0, nullptr, flip);
+        if (cascoTexture) {
+            SDL_Rect armor_src_rect = { 0, 0, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
+            int casco_width = DUCK_SPRITE_WIDTH -20;  // Ajusta el factor de reducción (por ejemplo, la mitad del tamaño)
+            int casco_height = DUCK_SPRITE_HEIGHT -20;
+            SDL_Rect armor_dst_rect = {
+                static_cast<int>(character.pos_X + zoom_offset_x + (DUCK_SPRITE_WIDTH - casco_width) / 2 ), // Centrar el casco en X
+                static_cast<int>(vcenter - DUCK_SPRITE_HEIGHT - character.pos_Y + zoom_offset_y - 15 + (DUCK_SPRITE_HEIGHT - casco_height) / 2), // Ajustar en Y
+                casco_width,
+                casco_height
+            };
+            SDL_RenderCopyEx(renderer.Get(), cascoTexture->Get(), &armor_src_rect, &armor_dst_rect, 0.0, nullptr, flip);
+        }
     }
+
 }
 
 void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_offset_y) {
