@@ -18,6 +18,9 @@ void ServerProtocol::send_init_duck_message(const Gamestate& message)
     send_single_8bit_int(message.move_direction);
     send_single_8bit_int(message.is_alive);
     send_single_float(message.jump_speed);
+    send_single_8bit_int(message.color.r);
+    send_single_8bit_int(message.color.g);
+    send_single_8bit_int(message.color.b);
 }
 
 void ServerProtocol::send_single_duck_position_message(const int id, const Coordinates& position)

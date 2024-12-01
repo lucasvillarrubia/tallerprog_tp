@@ -25,6 +25,7 @@ void StateManager::update(const Gamestate& update)
                 Character new_duki(update.player_id);
                 new_duki.pos_X = update.pos_X;
                 new_duki.pos_Y = update.pos_Y;
+                new_duki.color = update.color;
                 dukis.push_back(new_duki);
             }
             std::cout << "info received: " << update.player_id << " " << update.pos_X << " " << update.pos_Y << " " << update.is_alive << "\n";

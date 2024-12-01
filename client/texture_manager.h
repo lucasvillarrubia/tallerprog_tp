@@ -10,7 +10,7 @@
 #include <memory>
 #include <string>
 
-#include "color.h"
+#include "common/color.h"
 
 
 class TextureManager {
@@ -60,7 +60,7 @@ public:
     }
 
     void cargarDuckSprites() {
-        cargarDuckSprite(0, "resources/White_Duck_Sprites.png");
+        cargarDuckSprite(0, {}, "resources/White_Duck_Sprites.png");
         // cargarDuckSprite(2, "resources/Blue_Duck_Sprites.png");
         // cargarDuckSprite(129, "resources/Pink_Duck_Sprites.png");
         // cargarDuckSprite(130, "resources/Yellow_Duck_Sprites.png");
@@ -101,15 +101,14 @@ public:
         SDL_UnlockSurface(surface.Get());
     }
 
-    void cargarDuckSprite(int id, const std::string& path) {
+    void cargarDuckSprite(int id, const Color color, const std::string& path) {
         SDL2pp::Surface surface(path);
-        static bool seedInitialized = false;
-        if (!seedInitialized) {
-            std::srand(static_cast<unsigned int>(std::time(nullptr)));
-            seedInitialized = true;
-        }
+        // static bool seedInitialized = false;
+        // if (!seedInitialized) {
+        //     std::srand(static_cast<unsigned int>(std::time(nullptr)));
+        //     seedInitialized = true;
+        // }
         if (id != 0) {
-            Color color = Color(rand() % 255, rand() % 255, rand() % 255);
             // duck_sprites.at(id).get()->SetColorMod(color.r, color.g, color.b);
             changeNearWhitePixelsToColor(surface, color.r, color.g, color.b);
             // duck_sprites.at(id).get()->SetBlendMode(SDL_BLENDMODE_ADD);
@@ -121,10 +120,10 @@ public:
         duck_sprites[id] = std::make_unique<SDL2pp::Texture>(renderer, surface);
     }
 
-    SDL2pp::Texture* getDuckSprite(int id) {
+    SDL2pp::Texture* getDuckSprite(int id, const Color color) {
         auto it = duck_sprites.find(id);
         if (it == duck_sprites.end()) {
-            cargarDuckSprite(id, "resources/White_Duck_Sprites.png");
+            cargarDuckSprite(id, color, "resources/White_Duck_Sprites.png");
             return duck_sprites.at(id).get();
         }
         else {

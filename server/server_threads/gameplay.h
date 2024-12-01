@@ -30,6 +30,7 @@ const int DEFAULT_RESPAWN_ITERATIONS_BOX_4 = 15;
 
 
 #include "common/drawingdata.h"
+#include "common/color.h"
 
 
 class Gameplay: public Thread
@@ -41,6 +42,7 @@ private:
     std::map<int, bool>& multiplayer_mode_by_player;
     Queue<Gameaction>& user_commands;
     std::map<int, Duck> ducks_by_id;
+    std::map<int, Color> duck_colors_by_id;
     std::map<int, Gun*> guns_by_id;
     std::list<std::pair<int, Ammo*>> bullets_by_id;
     std::list<SpawnPlace> spawn_places;

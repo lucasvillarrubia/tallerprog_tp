@@ -7,6 +7,7 @@ const float INITIAL_Y_COORDINATE = 0.0f;
 // const float INITIAL_Y_COORDINATE = -85.0f;
 const int AVAILABLE_MOVEMENT_SPRITES = 6;
 
+#include "common/color.h"
 
 struct Character {
     int id;
@@ -22,6 +23,7 @@ struct Character {
     bool is_ducking;
     float jump_velocity;
     int movement_phase;
+    Color color;
     explicit Character(const int _id):
         id(_id),
         pos_X(INITIAL_X_COORDINATE),
