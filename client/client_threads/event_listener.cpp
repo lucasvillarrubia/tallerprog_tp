@@ -18,30 +18,34 @@ void EventListener::listen() {
         if (SDL_PollEvent(&event) && connected.load())
         {
             Uint32 type = event.type;
-            SDL_Keycode key = event.key.keysym.sym;
-            // if (not is_multiplayer and codes_by_key_for_second_player.contains(key)) return;
-            // else if ((not codes_by_event_type.contains(type) || not codes_by_key.contains(key)) and (is_multiplayer and (not codes_by_key_for_second_player.contains(key) || not codes_by_event_type.contains(type))))
-            //     return;
-            if (is_multiplayer) {
-                if (not codes_by_event_type.contains(type) or (not codes_by_key_for_second_player.contains(key) and not codes_by_key.contains(key))) return;
-            }
-            else {
-                if (not codes_by_event_type.contains(type) || not codes_by_key.contains(key)) return;
-            }
-            const int type_code = codes_by_event_type.at(event.type);
-            // const int key_code = codes_by_key.at(event.key.keysym.sym);
-            int key_code;
+            int type_code, key_code;
             bool second_player = false;
-            if (is_multiplayer and codes_by_key_for_second_player.contains(key)) {
-                std::cout << "entered second player move\n";
-                key_code = codes_by_key_for_second_player.at(key);
-                std::cout << "key_code: " << key_code << "\n";
-                second_player = true;
+            if (type != SDL_QUIT) {
+                SDL_Keycode key = event.key.keysym.sym;
+                if (key == SDLK_ESCAPE) {
+                    type = SDL_QUIT;
+                }
+                else if (is_multiplayer) {
+                    if (not codes_by_event_type.contains(type) or (not codes_by_key_for_second_player.contains(key) and not codes_by_key.contains(key))) return;
+                }
+                else {
+                    if (not codes_by_event_type.contains(type) || not codes_by_key.contains(key)) return;
+                }
+                type_code = codes_by_event_type.at(type);
+                // const int key_code = codes_by_key.at(event.key.keysym.sym);
+                // int key_code;
+                // bool second_player = false;
+                if (is_multiplayer and codes_by_key_for_second_player.contains(key)) {
+                    std::cout << "entered second player move\n";
+                    key_code = codes_by_key_for_second_player.at(key);
+                    std::cout << "key_code: " << key_code << "\n";
+                    second_player = true;
+                }
+                else {
+                    key_code = codes_by_key.at(key);
+                }
             }
-            else {
-                key_code = codes_by_key.at(key);
-            }
-            if (key == SDLK_ESCAPE) {
+            if (type == SDL_QUIT) {
                 QString styleSheet = 
                     "QMessageBox {"
                     "    background-color: #FF7900;"
@@ -70,8 +74,12 @@ void EventListener::listen() {
                 msgBox.setDefaultButton(QMessageBox::No);
                 msgBox.setStyleSheet(styleSheet);
                 int ret = msgBox.exec();
-                if (ret == QMessageBox::Yes)
+                if (ret == QMessageBox::Yes) {
+                    Gameaction exit_action(1, match_id, 9, 9, false);
+                    events.try_push(exit_action);
                     connected.store(false);
+                    return;
+                }
                 else
                     return;
             }

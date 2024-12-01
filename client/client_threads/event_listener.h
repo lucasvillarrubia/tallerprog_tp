@@ -20,7 +20,7 @@ private:
     std::map<Uint32, int> codes_by_event_type = {
         {SDL_QUIT, 9},
         {SDL_KEYDOWN, 2},
-        {SDL_KEYUP, 3}
+        {SDL_KEYUP, 3},
         // 4 para crear partida
         // 5 para unirse a partida
         // 6 para comenzar partida
@@ -29,13 +29,11 @@ private:
         {SDLK_ESCAPE, 9},
         {SDLK_RIGHT, 1},
         {SDLK_LEFT, 2},
-
         {SDLK_SPACE, 3},
-
-        // {SDLK_RETURN, 3}
         {SDLK_g, 4},
-        {SDLK_f, 5}
-
+        {SDLK_f, 5},
+        {SDLK_DOWN, 6},
+        {SDLK_UP, 7}
     };
     std::map<SDL_Keycode, int> codes_by_key_for_second_player = {
         {SDLK_ESCAPE, 9},
@@ -43,7 +41,9 @@ private:
         {SDLK_a, 2},
         {SDLK_RETURN, 3},
         {SDLK_x, 4},
-        {SDLK_z, 5}
+        {SDLK_z, 5},
+        {SDLK_s, 6},
+        {SDLK_w, 7}
     };
     const bool& is_multiplayer;
     const int& match_id;
