@@ -101,6 +101,12 @@ SDL_Rect Renderer::search_sprite(Gun& gun) {
 	switch (gun.type) {
 		case 1:
 			if (gun.shooting) {
+				return {1,21,16,16};
+			} else {
+				return {17,21,16,16};
+			}
+		case 2:
+			if (gun.shooting) {
 				return {1,67,16,16};
 			} else {
 				return {1,99,16,16};
@@ -122,6 +128,8 @@ SDL_Rect Renderer::search_sprite(Gun& gun) {
 SDL_Rect Renderer::search_dimension_sprite(int vcenter, Gun& gun, const float zoom_offset_x, const float zoom_offset_y) {
 	switch (gun.type) {
 		case 1:
+			return { static_cast<int>(gun.pos_X + 16 + zoom_offset_x), static_cast<int>(vcenter - 48 - gun.pos_Y + zoom_offset_y), 32, 32 };
+		case 2:
 			return { static_cast<int>(gun.pos_X + 16 + zoom_offset_x), static_cast<int>(vcenter - 48 - gun.pos_Y + zoom_offset_y), 32, 32 };
 		case 5:
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };

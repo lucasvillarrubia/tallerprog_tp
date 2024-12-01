@@ -15,8 +15,9 @@
 #include "server/server_guns/ammo.h"
 #include "server/server_guns/AK47.h"
 #include "server/server_guns/Banana.h"
-#include "server/server_guns/DuelPistol.h"
 #include "server/server_guns/CowboyPistol.h"
+#include "server/server_guns/DuelPistol.h"
+#include "server/server_guns/Grenade.h"
 #include "server/server_guns/Magnum.h"
 #include "server/server_guns/Sniper.h"
 #include "server/server_guns/SpawnPlace.h"
@@ -68,7 +69,7 @@ private:
     void send_ducks_positions_updates(unsigned int);
     void try_to_grab(Duck& duck);
     void try_to_shoot(Duck& duck);
-    void try_to_slip(Duck& duck);
+    void try_to_slip_or_explode(Duck& duck);
     void send_guns_positions_updates(unsigned int);
     void send_bullets_positions_updates(unsigned int);
     void update_spawn_places();

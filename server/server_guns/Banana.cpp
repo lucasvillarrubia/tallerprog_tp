@@ -1,6 +1,6 @@
 #include "Banana.h"
 
-Banana::Banana(float x, float y) : Gun(x,y,32,32,1), banana_peel(false) {}
+Banana::Banana(float x, float y) : Gun(x,y,32,32,2), banana_peel(false) {}
 
 void Banana::dropped() {
 	pickedUp = false;
