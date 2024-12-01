@@ -83,7 +83,7 @@ void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_of
 	}
 	int vcenter = renderer.GetOutputHeight();
 	SDL_RendererFlip flip = gun.pointing_to_the_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
-    SDL_Rect src_rect = search_sprite(gun.type);
+    SDL_Rect src_rect = search_sprite(gun);
     SDL_Rect dst_rect = search_dimension_sprite(vcenter, gun, zoom_offset_x, zoom_offset_y);
     SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 }
@@ -97,10 +97,14 @@ void Renderer::draw_bullet(Bullet& bullet,  const float zoom_offset_x, const flo
     SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 }
 
-SDL_Rect Renderer::search_sprite(const int type) {
-	switch (type) {
+SDL_Rect Renderer::search_sprite(Gun& gun) {
+	switch (gun.type) {
 		case 1:
-			return {1,99,16,16};
+			if (gun.shooting) {
+				return {1,67,16,16};
+			} else {
+				return {1,99,16,16};
+			}
 		case 5:
 			return {0, 0, 32, 32};
 		case 6:

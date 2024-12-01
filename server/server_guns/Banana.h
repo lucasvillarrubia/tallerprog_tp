@@ -5,11 +5,12 @@
 
 class Banana : public Gun{
 private:
-	bool launched;
+	bool banana_peel;
 public:
 	Banana(float x, float y);
-	void launch();
+	void dropped() override;
 	bool is_duck_position_valid(float x, float y);
+	bool is_banana_peel() override;
 	//asigna velocidad vertical
 	//void change_direction(); //en caso de rebotar con una pared
 	//void set_trap(); //banana lista para pisarse

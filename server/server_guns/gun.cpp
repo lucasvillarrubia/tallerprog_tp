@@ -21,3 +21,6 @@ void Gun::stopShoot() {
 	shooting = false;
 }
 
+bool Gun::is_banana_peel() {
+	return false;
+}

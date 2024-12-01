@@ -10,13 +10,15 @@ struct Gun {
 	float pos_Y;
 	int type;
 	bool pointing_to_the_right;
+	bool shooting;
 	
 	explicit Gun(const int _id) :
 		id(_id),
         pos_X(GUN_INITIAL_X_COORDINATE),
         pos_Y(GUN_INITIAL_Y_COORDINATE),
         type(0),
-        pointing_to_the_right(true) {}
+        pointing_to_the_right(true),
+        shooting(false) {}
 };
 
 #endif

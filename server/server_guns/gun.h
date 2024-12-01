@@ -18,6 +18,7 @@ public:
 	bool isShooting();
 	virtual bool shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets);
 	void stopShoot();
+	virtual bool is_banana_peel();
 	virtual ~Gun() = default;
 };
 

@@ -81,9 +81,11 @@ void StateManager::update_guns(const Gamestate& update)
 {
     for (auto& gun : guns)
     {
-        if (update.guns_positions_by_id.contains(gun.id))
+        if (update.guns_positions_by_id.contains(gun.id)) {
         	gun.pointing_to_the_right = update.guns_positions_by_id.at(gun.id).first.right;
+        	gun.shooting = update.guns_positions_by_id.at(gun.id).first.shooting;
             update_gun_position(gun, update.guns_positions_by_id.at(gun.id).second);
+        }
     }
 }
 

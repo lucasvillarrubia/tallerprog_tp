@@ -68,7 +68,8 @@ private:
     void send_ducks_positions_updates(unsigned int);
     void try_to_grab(Duck& duck);
     void try_to_shoot(Duck& duck);
-    void send_guns_positions_updates();
+    void try_to_slip(Duck& duck);
+    void send_guns_positions_updates(unsigned int);
     void send_bullets_positions_updates(unsigned int);
     void update_spawn_places();
     void check_for_projectile_hit();

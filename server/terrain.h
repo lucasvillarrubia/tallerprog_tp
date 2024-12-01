@@ -6,6 +6,7 @@
 #include "common/rectangulo.h"
 #include <common/coordinates.h>
 #include "duck.h"
+#include "server_guns/gun.h"
 #include <yaml-cpp/yaml.h>
 
 class Terrain {
@@ -16,6 +17,8 @@ public:
     Terrain();
     bool is_duck_position_valid(int, int);
     void adjust_position_for_collisions(Duck&, const Coordinates&, const Coordinates&);
+    void adjust_position_for_collisions(Gun*, const Coordinates&, const Coordinates&);
+    //void adjust_position_for_collisions(Duck&, const Coordinates&, const Coordinates&);
 
     std::string getCurrentMap() {
         std::ifstream mapFile("resources/current_map.yaml");

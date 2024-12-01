@@ -21,6 +21,7 @@ private:
     bool is_shooting;
     bool with_gun;
     int gun_equipped_id;
+    bool is_slipping;
 public:
     // esto para el primer intento nomás
     // bool exited = false;
@@ -33,6 +34,7 @@ public:
     void set_is_NOT_on_the_floor() {
         is_on_the_floor = false;
         // is_jumping = true;
+        is_slipping = false;
     }
     void set_is_on_the_floor() {
         is_on_the_floor = true;
@@ -47,6 +49,7 @@ public:
     void set_is_stomping_on_wall_from_right() {
         is_stomping_on_wall_from_right = true;
         is_running = false;
+        is_slipping = false;
     }
     void set_is_NOT_stomping_on_wall_from_right() {
         is_stomping_on_wall_from_right = false;
@@ -54,6 +57,7 @@ public:
     void set_is_stomping_on_wall_from_left() {
         is_stomping_on_wall_from_left = true;
         is_running = false;
+        is_slipping = false;
     }
     void set_is_NOT_stomping_on_wall_from_left() {
         is_stomping_on_wall_from_left = false;
@@ -71,6 +75,7 @@ public:
     void drop_gun();
     bool shooting();
     int get_gun_id() const;
+    void slip();
     // Coordinates get_coordinates() const;
     // int get_movement_phase () const;
     friend class StateManager;

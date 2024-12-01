@@ -71,6 +71,7 @@ void ServerProtocol::send_guns_positions_message(const Gamestate& message) {
     	send_single_8bit_int(id);
         send_single_8bit_int(gun_data.first.type);
         send_single_8bit_int(gun_data.first.right);
+        send_single_8bit_int(gun_data.first.shooting);
     	send_single_float(gun_data.second.pos_X);
     	send_single_float(gun_data.second.pos_Y);
     }
