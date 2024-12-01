@@ -256,6 +256,8 @@ void Gameplay::send_guns_positions_updates(const unsigned int frame_delta) {
 			}
 			if (gun->try_to_explode_grenade()) {
 				std::cout<<"la granada exploto"<<std::endl;
+				Gamestate explosion(1, id);
+				players.broadcast(explosion);
 				//enviar mensaje de explosion
 			}
 		}

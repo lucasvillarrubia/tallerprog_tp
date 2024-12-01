@@ -88,13 +88,21 @@ void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_of
     SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 }
 
-void Renderer::draw_bullet(Bullet& bullet,  const float zoom_offset_x, const float zoom_offset_y) {
+void Renderer::draw_bullet(Bullet& bullet, const float zoom_offset_x, const float zoom_offset_y) {
 	SDL2pp::Texture* sprite = textureManager.getGunSprite("pistolas");
 	int vcenter = renderer.GetOutputHeight();
 	SDL_RendererFlip flip = bullet.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
     SDL_Rect src_rect = { 1, 89, 16, 16 };
     SDL_Rect dst_rect = { static_cast<int>(bullet.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - bullet.pos_Y + zoom_offset_y), 16, 16 };
     SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+}
+
+void Renderer::draw_explosion(Explosion& explosion, const float zoom_offset_x, const float zoom_offset_y) {
+	SDL2pp::Texture* sprite = textureManager.getGunSprite("explosion");
+	int vcenter = renderer.GetOutputHeight();
+    SDL_Rect src_rect = {explosion.current_state*64,0,64,64};
+    SDL_Rect dst_rect = { static_cast<int>(explosion.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - explosion.pos_Y + zoom_offset_y), 64, 64 };
+    SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, SDL_FLIP_NONE);
 }
 
 SDL_Rect Renderer::search_sprite(Gun& gun) {
@@ -273,6 +281,7 @@ void Renderer::render(int frame) {
         std::list<Character> character_list = state.get_characters_data();
         std::list<Gun> gun_list = state.get_guns_data();
         std::list<Bullet> bullet_list = state.get_bullets_data();
+        std::list<Explosion> explosion_list = state.get_explosions_data();
         
         // CALCULO ZOOM Y POSICIONES
         std::vector<Coordinates> duck_positions;
@@ -319,6 +328,11 @@ void Renderer::render(int frame) {
         	draw_bullet(bullet, zoom_offset_x, zoom_offset_y);
         }
         
+        // DIBUJO EXPLOSIONES
+        for (auto& explosion : explosion_list) {
+        	draw_explosion(explosion, zoom_offset_x, zoom_offset_y);
+        }
+        state.set_explosion_phase(frame);
         renderer.Present();
     }
     catch (const std::exception& e) {

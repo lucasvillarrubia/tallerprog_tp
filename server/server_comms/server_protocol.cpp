@@ -137,6 +137,13 @@ void ServerProtocol::send_matches_info_message(const Gamestate& message)
     }
 }
 
+void ServerProtocol::send_explosion_message(const Gamestate& message) {
+	if (not client_is_connected.load()) return;
+	send_single_8bit_int(message.type);
+	send_single_8bit_int(message.bullet_flag);
+	send_single_8bit_int(message.object_id);
+}
+
 void ServerProtocol::receive_message(Gameaction& received)
 {
     if (not client_is_connected.load()) return;

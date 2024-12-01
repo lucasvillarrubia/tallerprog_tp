@@ -180,6 +180,14 @@ void ClientProtocol::receive_matches_info_message(Gamestate& received)
     received = Gamestate(player, matches_info);
 }
 
+void ClientProtocol::receive_explosion_message(Gamestate& received) {
+    if (not client_is_connected.load()) return;
+    uint8_t flag, grenade_id;
+    receive_single_8bit_int(flag);
+    receive_single_8bit_int(grenade_id);
+    received = Gamestate(flag, grenade_id);
+}
+
 void ClientProtocol::receive_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
@@ -217,6 +225,9 @@ void ClientProtocol::receive_message(Gamestate& received)
     case 12:
         receive_matches_info_message(received);
         break;
+	case 13:
+		receive_explosion_message(received);
+		break;
     default:
         receive_character_update_message(received);
         break;

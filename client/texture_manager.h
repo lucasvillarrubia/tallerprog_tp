@@ -92,6 +92,7 @@ public:
     	cargarGunSprite("ak47", "resources/ak47.png");
     	cargarGunSprite("pistolas", "resources/PC Computer - Duck Game - Pistol.png");
     	cargarGunSprite("sniper", "resources/sniper.png");
+    	cargarGunSprite("explosion", "resources/explode.png");
     }
     
     void cargarGunSprite(const std::string& nombre, const std::string& path) {
