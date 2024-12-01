@@ -21,6 +21,7 @@ private:
     std::unordered_map<int, std::unique_ptr<SDL2pp::Texture>> duck_sprites_volando;
     std::unordered_map<int, std::unique_ptr<SDL2pp::Texture>> duck_sprites_ducking;
     std::map<std::string, std::unique_ptr<SDL2pp::Texture>> guns_sprites;
+    std::map<std::string, std::unique_ptr<SDL2pp::Texture>> items_sprites;
     std::map<int, Color> duck_colors_by_id;
 public:
     TextureManager(SDL2pp::Renderer& renderer) : renderer(renderer) {
@@ -29,6 +30,7 @@ public:
         cargarDuckSpritesVolando();
         cargarDuckSpritesDucking();
         cargarGunsSprites();
+        cargarItemsSprites();
     }
 
     void cargarTexturas() {
@@ -61,24 +63,40 @@ public:
         return nullptr;
     }
 
+    void cargarItemSprite(const std::string& nombre, const std::string& path) {
+        SDL2pp::Surface surface(path);
+        items_sprites[nombre] = std::make_unique<SDL2pp::Texture>(renderer, surface);
+    }
+
+    void cargarItemsSprites() {
+        cargarItemSprite("armadura", "resources/armadura.png");
+        cargarItemSprite("casco", "resources/casco.png");
+    }
+
     void cargarDuckSprites() {
-
         cargarDuckSprite(0, {}, "resources/White_Duck_Sprites.png");
+    }
 
+    SDL2pp::Texture* getItem(const std::string& nombre) {
+        auto it = items_sprites.find(nombre);
+        if (it != items_sprites.end()) {
+            return it->second.get();
+        }
+        return nullptr;
     }
 
     void cargarDuckSpritesDucking() {
-    cargarDuckSpriteDucking(0, "resources/ducking.png");
+        cargarDuckSpriteDucking(0, "resources/ducking.png");
     }
 
     void cargarDuckSpriteDucking(int id, const std::string& path) {
-    SDL2pp::Surface surface(path);
-    if (id != 0) {
-        Color color = duck_colors_by_id.at(id);
-        changeNearWhitePixelsToColor(surface, color.r, color.g, color.b);
+        SDL2pp::Surface surface(path);
+        if (id != 0) {
+            Color color = duck_colors_by_id.at(id);
+            changeNearWhitePixelsToColor(surface, color.r, color.g, color.b);
+        }
+        duck_sprites_ducking[id] = std::make_unique<SDL2pp::Texture>(renderer, surface);
     }
-    duck_sprites_ducking[id] = std::make_unique<SDL2pp::Texture>(renderer, surface);
-}
     
     void cargarDuckSpriteVolando(int id, const std::string& path) {
         SDL2pp::Surface surface(path);
