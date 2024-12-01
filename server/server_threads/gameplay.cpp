@@ -52,9 +52,13 @@ void Gameplay::send_all_initial_coordinates()
         }
     }
     terrain.set_ducks_positions();
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
     for (auto& [id, duck]: ducks_by_id)
     {
         Coordinates position = StateManager::get_duck_coordinates(duck);
+        Color color(rand() % 255, rand() % 255, rand() % 255);
+        if (duck_colors_by_id.find(id) == duck_colors_by_id.end())
+            duck_colors_by_id.insert({id, color});
         Gamestate initial_duck_coordinates(
             id,
             position.pos_X,
@@ -64,7 +68,8 @@ void Gameplay::send_all_initial_coordinates()
             0,
             1,
             StateManager::get_duck_is_alive(duck),
-            0.0f
+            0.0f,
+            color
         );
         broadcast_for_all_players(initial_duck_coordinates);
     }

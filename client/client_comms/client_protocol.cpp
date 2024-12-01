@@ -3,6 +3,8 @@
 #include <iostream>
 #include <utility>
 
+#include "common/color.h"
+
 
 ClientProtocol::ClientProtocol(Socket&& skt, std::atomic_bool& connection_status): Protocol(std::move(skt), connection_status) {}
 
@@ -20,7 +22,7 @@ void ClientProtocol::send_message(const Gameaction& message)
 void ClientProtocol::receive_init_character_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
-    uint8_t character_id, run_state, jump_state, flap_state, move_direction, life;
+    uint8_t character_id, run_state, jump_state, flap_state, move_direction, life, r, g, b;
     float pos_X, pos_Y, velocity_Y;
     receive_single_8bit_int(character_id);
     receive_single_float(pos_X);
@@ -31,7 +33,10 @@ void ClientProtocol::receive_init_character_message(Gamestate& received)
     receive_single_8bit_int(move_direction);
     receive_single_8bit_int(life);
     receive_single_float(velocity_Y);
-    received = Gamestate(character_id, pos_X, pos_Y, run_state, jump_state, flap_state, move_direction, life, velocity_Y);
+    receive_single_8bit_int(r);
+    receive_single_8bit_int(g);
+    receive_single_8bit_int(b);
+    received = Gamestate(character_id, pos_X, pos_Y, run_state, jump_state, flap_state, move_direction, life, velocity_Y, {r, g, b});
 }
 
 // void ClientProtocol::receive_single_character_position_message()

@@ -6,6 +6,7 @@
 
 #include "coordinates.h"
 #include "drawingdata.h"
+#include "color.h"
 
 
 struct Gamedata {
@@ -44,6 +45,7 @@ struct Gamestate: Gamedata {
     int match_id;
     std::list<Gamematch> matches_info;
     int round;
+    Color color;
 
     Gamestate(): Gamedata(-1) {}
 
@@ -56,7 +58,8 @@ struct Gamestate: Gamedata {
         const int flap,
         const int direction,
         const int life,
-        const float jumpspeed
+        const float jumpspeed,
+        const Color& main_color
     ):
         Gamedata(player),
         type(1),
@@ -67,7 +70,8 @@ struct Gamestate: Gamedata {
         is_flapping(flap),
         move_direction(direction),
         is_alive(life),
-        jump_speed(jumpspeed) {}
+        jump_speed(jumpspeed),
+        color(main_color) {}
 
     Gamestate(
         const int player,

@@ -44,7 +44,7 @@ void Renderer::draw_character(Character& character, int frame, const float zoom_
     } else if (character.is_jumping) {
         sprite = textureManager.getDuckSpriteVolando(character.id);
     } else {
-        sprite = textureManager.getDuckSprite(character.id);
+        sprite = textureManager.getDuckSprite(character.id, character.color);
     }
 
     int vcenter = renderer.GetOutputHeight();
