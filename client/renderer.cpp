@@ -259,6 +259,8 @@ void Renderer::render(int frame) {
         
         for (auto& character : character_list) {
             duck_positions.emplace_back(character.pos_X, character.pos_Y);
+            std::cout << "Character position - X: " << character.pos_X 
+              << ", Y: " << character.pos_Y << std::endl;
             sum_x += character.pos_X;
             sum_y += character.pos_Y;
         }

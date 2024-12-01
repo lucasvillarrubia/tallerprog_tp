@@ -4,32 +4,51 @@
 #include <vector>
 #include <fstream>
 
-Terrain::Terrain() {
-    // Leer el archivo YAML
-    
-    YAML::Node config = YAML::LoadFile(getCurrentMap());
-    // Verificar si 'entities' está en el archivo
+Terrain::Terrain(std::list<SpawnPlace>& spawn_places, std::map<int, Gun*>& guns_by_id, std::map<int, Duck>& ducks_by_id):
+        config(YAML::LoadFile(getCurrentMap())), spawn_places(spawn_places), guns_by_id(guns_by_id), ducks_by_id(ducks_by_id)
+{    
+    // YAML::Node config = YAML::LoadFile(getCurrentMap());
+
     if (config["entities"]) {
-        // Recorrer las entidades en el archivo YAML
         for (const auto& entity : config["entities"]) {
             float x = entity["x"].as<float>();
             float y = entity["y"].as<float>();
             float width = entity["width"].as<float>();
             float height = entity["height"].as<float>();
 
-            // Crear un nuevo Rectangulo y agregarlo a la lista
             map_entities.push_back(Rectangulo(x, y, width, height));
         }
     } else {
         std::cerr << "No se encontró la sección 'entities' en el archivo YAML." << std::endl;
     }
+    if (config["spawn_places_armas"]) {
+        for (const auto& entity : config["spawn_places_armas"]) {
+            float x = entity["x"].as<float>();
+            float y = entity["y"].as<float>();
+            spawn_places.push_back(SpawnPlace(x, y));
+        }
+    } else {
+        std::cerr << "No se encontró la sección 'spawn_places_armas' en el archivo YAML." << std::endl;
+    }
 }
-// mapas de distintas rondas iguales
-// 2 para demo
-// posibilidad de agregar mapas desde un archivo
 
-// como crear escenarios propios: agregar a documentación
-// aunque no sea con el editor
+void Terrain::set_ducks_positions()
+{
+    if (config["spawn_places_patos"]) {
+        int i = 0;
+        for (auto& [id, duck] : ducks_by_id) {
+            const auto& entity = config["spawn_places_patos"][i];
+            float x = entity["x"].as<float>();
+            float y = entity["y"].as<float>();
+            duck.set_position(x, y);
+            duck.set_is_on_the_floor();
+            i++;
+        }
+    } else {
+        std::cerr << "No se encontró la sección 'spawn_places_patos' en el archivo YAML." << std::endl;
+    }
+}
+
 bool Terrain::is_duck_position_valid(int x, int y)
 {
     Rectangulo character(x, y, 64.0f, 64.0f);
