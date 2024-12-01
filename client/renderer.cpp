@@ -39,12 +39,14 @@ void Renderer::draw_character(Character& character, int frame, const float zoom_
 {
     SDL2pp::Texture* sprite;
     
-    if (character.is_jumping) {
-
+    if (character.is_ducking) {
+        sprite = textureManager.getDuckSpriteDucking(character.id);
+    } else if (character.is_jumping) {
         sprite = textureManager.getDuckSpriteVolando(character.id);
     } else {
         sprite = textureManager.getDuckSprite(character.id, character.color);
     }
+
     int vcenter = renderer.GetOutputHeight();
     int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame);
     int src_y = DUCK_MOVEMENT_SPRITES_LINE;
@@ -259,8 +261,7 @@ void Renderer::render(int frame) {
         
         for (auto& character : character_list) {
             duck_positions.emplace_back(character.pos_X, character.pos_Y);
-            std::cout << "Character position - X: " << character.pos_X 
-              << ", Y: " << character.pos_Y << std::endl;
+            
             sum_x += character.pos_X;
             sum_y += character.pos_Y;
         }
