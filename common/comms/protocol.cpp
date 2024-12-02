@@ -55,6 +55,7 @@ void Protocol::send_single_8bit_int(uint8_t message) {
         return;
     bool client_was_disconnected = false;
     peer.sendall(&message, sizeof(uint8_t), &client_was_disconnected);
+    // std::cout << "Sending 8bit int: " << (int)message << std::endl;
     if (client_was_disconnected)
         client_is_connected.store(false);
 }

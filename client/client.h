@@ -34,6 +34,7 @@ private:
     EventListener event_listener;
     StateManager state;
     SDL2pp::SDL sdl;
+    int current_player_count;
     Renderer renderloop;
     Updater updater;
     lobby gamelobby;

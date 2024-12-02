@@ -44,7 +44,7 @@ void Match::send_start_message(int creator)
     player_list.for_each([&](Player* player)
     {
         if (player->matches(creator)) return;
-        Gamestate match_started(creator, 0, id);
+        Gamestate match_started(creator, 0, id, player_list.size());
         player->add_message_to_queue(match_started);
     });
 }

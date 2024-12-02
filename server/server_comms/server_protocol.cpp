@@ -1,13 +1,15 @@
 #include "server_protocol.h"
 
 #include <utility>
-
+#include <iostream>
 
 ServerProtocol::ServerProtocol(Socket&& skt, std::atomic_bool& connection_status): Protocol(std::move(skt), connection_status) {}
 
 void ServerProtocol::send_init_duck_message(const Gamestate& message)
 {
+    // std::cout << "Sending init duck message" << std::endl;
     if (not client_is_connected.load()) return;
+    // std::cout << "Client is connected" << std::endl;
     send_single_8bit_int(message.type);
     send_single_8bit_int(message.player_id);
     send_single_float(message.pos_X);
@@ -133,6 +135,7 @@ void ServerProtocol::send_match_info_message(const Gamestate& message)
     send_single_8bit_int(message.player_id);
     send_single_8bit_int(message.match_errors_flag);
     send_single_8bit_int(message.match_id);
+    send_single_8bit_int(message.player_count);
 }
 
 void ServerProtocol::send_matches_info_message(const Gamestate& message)
@@ -166,6 +169,15 @@ void ServerProtocol::send_round_ended_message(const Gamestate& message)
     send_single_8bit_int(message.type);
     send_single_8bit_int(message.player_id);
     send_single_8bit_int(message.round);
+}
+
+void ServerProtocol::send_exit_message(const Gamestate& message)
+{
+    if (not client_is_connected.load()) return;
+    send_single_8bit_int(message.type);
+    send_single_8bit_int(message.player_id);
+    std::vector<char> message_bytes(message.error_msg.begin(), message.error_msg.end());
+    send_string(message_bytes);
 }
 
 void ServerProtocol::receive_message(Gameaction& received)

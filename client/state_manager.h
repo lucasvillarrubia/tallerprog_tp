@@ -11,6 +11,7 @@
 #include "bullet.h"
 #include "explosion.h"
 
+#include "state.h"
 
 class StateManager
 {
@@ -42,6 +43,7 @@ public:
     std::list<Character> get_characters_data();
     std::list<Gun> get_guns_data();
     std::list<Bullet> get_bullets_data();
+    State get_state();
     std::list<Explosion> get_explosions_data();
     ~StateManager() = default;
 };

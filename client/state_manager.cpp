@@ -15,7 +15,7 @@ StateManager::StateManager() {}
 
 void StateManager::update(const Gamestate& update)
 {
-    std::unique_lock<std::mutex> lck(mtx);
+    // std::unique_lock<std::mutex> lck(mtx);
     switch (update.type)
     {
     case 1:
@@ -146,6 +146,7 @@ void StateManager::explode_grenade(const int id) {
 
 void StateManager::reset()
 {
+    // std::unique_lock<std::mutex> lck(mtx);
     dukis.clear();
     guns.clear();
     bullets.clear();
@@ -186,17 +187,27 @@ void StateManager::set_explosion_phase(const unsigned int frame) {
 
 std::list<Character> StateManager::get_characters_data()
 {
+    // std::unique_lock<std::mutex> lck(mtx);
     return dukis;
 }
 
 std::list<Gun> StateManager::get_guns_data() {
+    // std::unique_lock<std::mutex> lck(mtx);
 	return guns;
 }
 
 std::list<Bullet> StateManager::get_bullets_data() {
+    // std::unique_lock<std::mutex> lck(mtx);
 	return bullets;
+}
+
+State StateManager::get_state()
+{
+    // std::unique_lock<std::mutex> lck(mtx);
+    return {dukis, guns, bullets};
 }
 
 std::list<Explosion> StateManager::get_explosions_data() {
 	return explosions;
+
 }
