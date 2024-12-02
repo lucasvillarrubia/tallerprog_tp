@@ -53,12 +53,25 @@ private:
     YAML::Node config_map;
     const int& player_count;
     std::vector<Coordinates> duck_positions;
+    Gamestate current_state;
+    std::list<Character> character_list;
+    std::list<Gun> gun_list;
+    std::list<Bullet> bullet_list;
     
     // float calculate_zoom_from_distance(float);
     // void mark_zoom_dirty();
     int original_window_width;
     int original_window_height;
+    std::unique_ptr<SDL2pp::Texture> map_texture;
+    SDL2pp::Texture* bg_texture;
+    void load_background();
+    void set_draw_settings(const float, const float);
+    // void set_draw_settings();
 
+    int viewport_width;
+    int viewport_height;
+    int viewport_x;
+    int viewport_y;
 public:
     // Renderer(std::atomic_bool&, Queue<Gamestate>&, StateManager&);
     Renderer(std::atomic_bool&, Queue<Gamestate>&, StateManager&, const int&);

@@ -44,6 +44,10 @@ Renderer::Renderer(std::atomic_bool& con_stat, Queue<Gamestate>& q, StateManager
         original_window_width = renderer.GetOutputWidth();
         config_bg = YAML::LoadFile("resources/current_map.yaml");
         config_map = YAML::LoadFile(getCurrentMap());
+        // load_background();
+        std::string mapa_actual;
+        mapa_actual = config_bg["current_map"].as<std::string>();
+        bg_texture = textureManager.getTextura(mapa_actual);
     }
 
 void Renderer::draw_character(Character& character, int frame, const float zoom_offset_x, const float zoom_offset_y)
@@ -222,6 +226,11 @@ void Renderer::calculate_required_zoom() {
     float width = (state.max_x - state.min_x) + PADDING;
     float height = (state.max_y - state.min_y) + PADDING;
 
+    // viewport_x = state.min_x;
+    // viewport_y = state.min_y;
+    // viewport_width = width - PADDING;
+    // viewport_height = height - PADDING;
+
     // Calculate required zoom
     float zoom_x = original_window_width / width;
     float zoom_y = original_window_height / height;
@@ -309,21 +318,89 @@ void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y
 void Renderer::draw_bg(){
     // YAML::Node config_bg = YAML::LoadFile("resources/current_map.yaml");
 
-    std::string mapa_actual;
-    mapa_actual = config_bg["current_map"].as<std::string>();
+    // std::string mapa_actual;
+    // mapa_actual = config_bg["current_map"].as<std::string>();
 
 
-    SDL2pp::Texture* texture = textureManager.getTextura(mapa_actual);
+    // SDL2pp::Texture* texture = textureManager.getTextura(mapa_actual);
 
-    if (texture) {
+    if (bg_texture) {
         // Dibujar la textura
-        renderer.Copy(*texture, SDL2pp::Rect(0, 0, original_window_width, original_window_height));
+        renderer.Copy(*bg_texture, SDL2pp::Rect(0, 0, original_window_width, original_window_height));
     } else {
-        std::cerr << "Error: No se encontró la textura para el mapa: " << mapa_actual << std::endl;
+        std::cerr << "Error: No se encontró la textura para el mapa: " << std::endl;
     }
     
 }
 
+
+void Renderer::load_background(){
+    // Create a render texture
+    map_texture = std::make_unique<SDL2pp::Texture>(
+        renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, original_window_width + 1000.0f, original_window_height + 1333.3f
+    );
+
+    // Set the render target to the map texture
+    renderer.SetTarget(*map_texture);
+
+    // Clear the texture
+    renderer.SetDrawColor(0, 0, 0, 0);
+    renderer.Clear();
+
+    // Draw the background
+    std::string mapa_actual = config_bg["current_map"].as<std::string>();
+    SDL2pp::Texture* bg_texture = textureManager.getTextura(mapa_actual);
+    if (bg_texture) {
+        renderer.Copy(*bg_texture, SDL2pp::Rect(0, 0, original_window_width + 600.0f, original_window_height + 450.0f));
+    } else {
+        std::cerr << "Error: No se encontró la textura para el mapa: " << mapa_actual << std::endl;
+    }
+
+    // Draw the map entities
+    if (!config_map["entities"] || !config_map["entities"].IsSequence()) {
+        throw std::runtime_error("Error al leer entities en el archivo YAML");
+    }
+    for (const auto& entity : config_map["entities"]) {
+        float x = entity["x"].as<float>();
+        float y = entity["y"].as<float>();
+        float width = entity["width"].as<float>();
+        float height = entity["height"].as<float>();
+
+        SDL2pp::Rect rect(
+            static_cast<int>(x + 310.0f),
+            static_cast<int>(original_window_height + 540.0f - y - height),
+            static_cast<int>(width),
+            static_cast<int>(height)
+        );
+
+        if (entity["texture"].IsDefined()) {
+            std::string textureName = entity["texture"].as<std::string>();
+            SDL2pp::Texture* entity_texture = textureManager.getTextura(textureName);
+
+            if (entity_texture) {
+                renderer.Copy(*entity_texture, SDL2pp::NullOpt, rect);
+            }
+        }
+    }
+
+    // Reset the render target to the default
+    renderer.SetTarget();
+}
+
+void Renderer::set_draw_settings(const float zoom_offset_x, const float zoom_offset_y) {
+// void Renderer::set_draw_settings() {
+    // Apply transformations
+    renderer.SetScale(1.0f, 1.0f);
+    renderer.SetViewport(SDL2pp::Rect(zoom_offset_x - 450.0f, zoom_offset_y - 600.0f, original_window_width / zoom_factor, original_window_height /zoom_factor));
+    // renderer.SetViewport(SDL2pp::Rect(-310.0f, 540.0f, original_window_width, original_window_height));
+
+    // Draw the combined texture
+    renderer.Copy(*map_texture, SDL2pp::NullOpt, SDL2pp::NullOpt);
+    renderer.SetScale(zoom_factor, zoom_factor);
+    // Reset transformations
+    // renderer.SetScale(1.0f, 1.0f);
+    renderer.SetViewport(SDL2pp::NullOpt);
+}
 
 void Renderer::render(int frame) {
     try {
@@ -337,16 +414,18 @@ void Renderer::render(int frame) {
 
         draw_bg();
   
-        Gamestate update;
-        while (updates_feed.try_pop(update)) {
-            state.update(update);
+        // Gamestate update;
+        while (updates_feed.try_pop(current_state)) {
+            state.update(current_state);
         }
 
         // State current_state = state.get_state();
-
-        std::list<Character> character_list = state.get_characters_data();
-        std::list<Gun> gun_list = state.get_guns_data();
-        std::list<Bullet> bullet_list = state.get_bullets_data();
+        character_list.clear();
+        gun_list.clear();
+        bullet_list.clear();
+        character_list = state.get_characters_data();
+        gun_list = state.get_guns_data();
+        bullet_list = state.get_bullets_data();
         
         // std::list<Character> character_list = current_state.dukis;
         // std::list<Gun> gun_list = current_state.guns;
@@ -366,8 +445,8 @@ void Renderer::render(int frame) {
             sum_y += character.pos_Y;
         }
         
-        float avg_x = duck_positions.empty() ? 0.0f : sum_x / character_list.size();
-        float avg_y = duck_positions.empty() ? 0.0f : sum_y / character_list.size();
+        float avg_x = duck_positions.empty() ? 0.0f : sum_x / duck_positions.size();
+        float avg_y = duck_positions.empty() ? 0.0f : sum_y / duck_positions.size();
 
         // calculate_required_zoom(duck_positions);
         calculate_required_zoom();
@@ -376,11 +455,12 @@ void Renderer::render(int frame) {
         float zoom_offset_x, zoom_offset_y;
         calculate_zoom_offsets(zoom_offset_x, zoom_offset_y, avg_x, avg_y);
 
-
+        // set_draw_settings(zoom_offset_x, zoom_offset_y);
+        // set_draw_settings();
         renderer.SetScale(this->zoom_factor, this->zoom_factor);
 
-        std::cout << "Zoom: " << zoom_factor 
-              << " Offset: (" << zoom_offset_x << "," << zoom_offset_y << ")\n";
+        // std::cout << "Zoom: " << zoom_factor 
+        //       << " Offset: (" << zoom_offset_x << "," << zoom_offset_y << ")\n";
 
         // DiIBUJO MAPA
         dibujar_mapa(zoom_offset_x, zoom_offset_y);
