@@ -136,6 +136,7 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
         Coordinates updated_position = StateManager::get_duck_coordinates(duck);
         try_to_grab(duck);
         try_to_shoot(duck);
+        try_to_slip_or_explode(duck);
         positions_by_id.insert({id, updated_position});
         speeds_by_id.insert({id, StateManager::get_duck_speed(duck)});
         if (StateManager::get_duck_is_alive(duck) == 0)
@@ -153,6 +154,7 @@ void Gameplay::try_to_grab(Duck& duck) {
 	Coordinates after_coordinates = StateManager::get_duck_coordinates(duck);
 	if (duck.wants_to_grab()) {
 		if (duck.have_a_gun()) {
+        	guns_by_id.at(duck.get_gun_id())->dropped();
         	duck.drop_gun();
         	duck.stop_grab();
         } else {
@@ -168,6 +170,7 @@ void Gameplay::try_to_grab(Duck& duck) {
         	for (auto& [id,gun] : guns_by_id) {
         		if (gun->is_duck_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y)) {
         			duck.pickup_gun(id);
+        			gun->collected();
         			duck.stop_grab();
         		}
         	}
@@ -193,15 +196,56 @@ void Gameplay::try_to_shoot(Duck& duck) {
 	}    
 }
 
-void Gameplay::send_guns_positions_updates() {
-	std::map<int,std::pair<DrawingData, Coordinates>> guns_positions;
+void Gameplay::try_to_slip_or_explode(Duck& duck) {
+	Coordinates after_coordinates = StateManager::get_duck_coordinates(duck);
 	for (auto& [id, gun] : guns_by_id) {
-		DrawingData gun_data = {gun->getType(), gun->is_pointing_to_the_right() ? 1 : 0};
+		if (gun->is_duck_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y) && gun->is_banana_peel()) {
+			duck.slip();
+			std::cout<<"resbalo con banana"<<std::endl;
+		}
+		if (gun->is_a_grenade()) {
+			if (gun->in_explosion_area(after_coordinates.pos_X, after_coordinates.pos_Y)) {
+				std::cout<<"el pato exploto"<<std::endl;
+				if (id == duck.get_gun_id()) {
+					duck.drop_gun();
+				}
+				//muerte del pato
+			}
+		}
+	}
+}
+
+void Gameplay::send_guns_positions_updates(const unsigned int frame_delta) {
+	std::map<int,std::pair<DrawingData, Coordinates>> guns_positions;
+	std::list<int> guns_destroyed_id;
+	for (auto& [id, gun] : guns_by_id) {
+		if (!gun->isPickedUp()) {
+			auto before_coordinates = gun->getPosition(); 
+			gun->update_item_dropped_position(frame_delta);
+			auto after_coordinates = gun->getPosition();
+			terrain.adjust_position_for_collisions(gun, before_coordinates, after_coordinates);
+		}
+		if (gun->is_a_grenade()) {
+			if (gun->is_destroyed()) {
+				guns_destroyed_id.push_back(id);
+				continue;
+			}
+			if (gun->try_to_explode_grenade()) {
+				std::cout<<"la granada exploto"<<std::endl;
+				Gamestate explosion(1, id);
+				players.broadcast(explosion);
+				//enviar mensaje de explosion
+			}
+		}
+		DrawingData gun_data = {gun->getType(), gun->is_pointing_to_the_right() ? 1 : 0, gun->isShooting()};
 		auto gun_position = gun->getPosition();
 		guns_positions.insert({id, std::make_pair(gun_data, gun_position)});
 	}	
 	Gamestate update(guns_positions);
 	players.broadcast(update);
+	for (auto id : guns_destroyed_id) {
+		guns_by_id.erase(id);
+	}
 }
 
 void Gameplay::send_bullets_positions_updates(const unsigned int frame_delta) {

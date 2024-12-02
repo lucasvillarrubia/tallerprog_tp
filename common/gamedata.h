@@ -175,8 +175,16 @@ struct Gamestate: Gamedata {
     Gamestate(const int player, std::list<Gamematch>& matches):
         Gamedata(player),
         type(12),
-        matches_info(matches) {}
+        matches_info(matches) {}      
+	//envia la explosiónde la granada
+    Gamestate(const int flag, const int _id) : 
+		Gamedata(0),
+    	type(13),
+    	object_id(_id),
+    	bullet_flag(flag) {}
+  
     Gamestate(const int player, const int round): Gamedata(player), type(13), round(round) {}
+
 };
 
 struct Gameaction: Gamedata {

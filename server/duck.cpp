@@ -34,9 +34,13 @@ Duck::Duck():
         is_ducking(false)
 {}
 
+
 void Duck::update_position(unsigned int frame_delta)
 {
-    if (is_running) {
+	if (is_slipping and is_on_the_floor) {
+		pos_X += X_CONSTANT_VELOCITY * (moving_right ? 1 : -1) ;
+	}
+    if (is_running and not is_slipping) {
         pos_X += X_CONSTANT_VELOCITY * (moving_right ? 1 : -1) ;
     }
     if (is_jumping or not is_on_the_floor) {
@@ -93,3 +97,8 @@ bool Duck::shooting() {
 int Duck::get_gun_id() const{
 	return gun_equipped_id;
 }
+
+void Duck::slip() {
+	is_slipping = true;
+}
+

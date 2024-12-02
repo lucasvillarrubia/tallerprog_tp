@@ -42,6 +42,9 @@ void ServerSender::send_data()
         case 12:
             protocol.send_matches_info_message(new_event);
             break;
+        case 15:
+        	protocol.send_explosion_message(new_event);
+        	break;
         case 13:
             protocol.send_round_ended_message(new_event);
             break;
