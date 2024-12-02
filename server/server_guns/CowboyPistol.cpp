@@ -8,7 +8,7 @@ bool CowboyPistol::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
 		shooting = true;
 		ammo--;
 		id++;
-		bullets.push_back(std::make_pair(id, new CowboyPistolAmmo(positionX+dir, positionY, rightDirection)));
+		bullets.push_back(std::make_pair(id, new CowboyPistolAmmo(positionX+dir, positionY, rightDirection, pointing_up)));
 		return true;
 	}
 	return false;

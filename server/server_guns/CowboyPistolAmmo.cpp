@@ -1,6 +1,6 @@
 #include "CowboyPistolAmmo.h"
 
-CowboyPistolAmmo::CowboyPistolAmmo(float x, float y, bool right) : Ammo(x,y,right, 7, 20*16), damagePoints(7) {}
+CowboyPistolAmmo::CowboyPistolAmmo(float x, float y, bool right, bool up) : Ammo(x,y,right,up, 7, 20*16), damagePoints(7) {}
 
 void CowboyPistolAmmo::update_position(const unsigned int frame_delta)  {
 	if (!destroyed){

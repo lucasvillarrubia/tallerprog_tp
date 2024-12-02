@@ -102,3 +102,7 @@ void Duck::slip() {
 	is_slipping = true;
 }
 
+bool Duck::is_pointing_up() {
+	return is_pointing_upwards;
+}
+

@@ -10,6 +10,7 @@ struct Bullet {
 	float pos_Y;
 	int type;
 	bool moving_right;
+	bool moving_up;
 	bool destroyed;
 	
 	explicit Bullet(const int _id) : 
@@ -18,6 +19,7 @@ struct Bullet {
 		pos_Y(BULLET_INITIAL_Y_COORDINATE),
 		type(0),
 		moving_right(true),
+		moving_up(false),
 		destroyed(false) {}
 };
 

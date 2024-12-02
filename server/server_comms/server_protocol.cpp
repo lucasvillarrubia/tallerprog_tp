@@ -85,6 +85,7 @@ void ServerProtocol::send_guns_positions_message(const Gamestate& message) {
         send_single_8bit_int(gun_data.first.type);
         send_single_8bit_int(gun_data.first.right);
         send_single_8bit_int(gun_data.first.shooting);
+        send_single_8bit_int(gun_data.first.up);
     	send_single_float(gun_data.second.pos_X);
     	send_single_float(gun_data.second.pos_Y);
     }
@@ -97,6 +98,7 @@ void ServerProtocol::send_bullet_init_message(const Gamestate& message) {
     send_single_float(message.pos_Y);
     send_single_8bit_int(message.type_gun);
     send_single_8bit_int(message.move_direction);
+    send_single_8bit_int(message.is_pointing_upwards);
 }
 void ServerProtocol::send_bullets_positions_message(const Gamestate& message) {
 	if (not client_is_connected.load()) return;

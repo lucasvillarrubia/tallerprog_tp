@@ -12,7 +12,7 @@ bool AK47::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
 		int dir = rightDirection ? 36 : -12;
 		ammo--;
 		id++;
-		bullets.push_back(std::make_pair(id, new AK47Ammo(positionX+dir, positionY, rightDirection)));
+		bullets.push_back(std::make_pair(id, new AK47Ammo(positionX+dir, positionY, rightDirection, pointing_up)));
 		return true;
 	}
 	return false;

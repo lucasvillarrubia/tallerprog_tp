@@ -12,6 +12,7 @@ struct Gun {
 	float pos_Y;
 	int type;
 	bool pointing_to_the_right;
+	bool pointing_up;
 	bool shooting;
 	bool is_destroyed;
 	bool is_exploding;
@@ -23,6 +24,7 @@ struct Gun {
         pos_Y(GUN_INITIAL_Y_COORDINATE),
         type(0),
         pointing_to_the_right(true),
+        pointing_up(false),
         shooting(false),
         is_destroyed(false),
         is_exploding(false),

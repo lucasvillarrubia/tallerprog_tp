@@ -182,12 +182,12 @@ void Gameplay::try_to_shoot(Duck& duck) {
 	Coordinates after_coordinates = StateManager::get_duck_coordinates(duck);
 	if (duck.have_a_gun()) {
         guns_by_id.at(duck.get_gun_id())->updatePosition(after_coordinates.pos_X, after_coordinates.pos_Y);
-        guns_by_id.at(duck.get_gun_id())->updateDirection(duck.is_moving_to_the_right());
+        guns_by_id.at(duck.get_gun_id())->updateDirection(duck.is_moving_to_the_right(), duck.is_pointing_up());
         if (duck.shooting()) {
         	if (guns_by_id.at(duck.get_gun_id())->shoot(bullets_fired, bullets_by_id)) {
         		Coordinates bullet_position = bullets_by_id.back().second->getPosition();
         		int direction = guns_by_id.at(duck.get_gun_id())->is_pointing_to_the_right() ? 1 : 0;
-        		Gamestate initial_bullet_coordinates(bullets_fired, guns_by_id.at(duck.get_gun_id())->getType(), direction, bullet_position.pos_X, bullet_position.pos_Y);
+        		Gamestate initial_bullet_coordinates(bullets_fired, guns_by_id.at(duck.get_gun_id())->getType(), direction,guns_by_id.at(duck.get_gun_id())->is_pointing_up(), bullet_position.pos_X, bullet_position.pos_Y);
         		players.broadcast(initial_bullet_coordinates);
         	}
         }else{
@@ -240,7 +240,7 @@ void Gameplay::send_guns_positions_updates(const unsigned int frame_delta) {
 				//enviar mensaje de explosion
 			}
 		}
-		DrawingData gun_data = {gun->getType(), gun->is_pointing_to_the_right() ? 1 : 0, gun->isShooting()};
+		DrawingData gun_data = {gun->getType(), gun->is_pointing_to_the_right() ? 1 : 0, gun->isShooting(), gun->is_pointing_up() ? 1 : 0};
 		auto gun_position = gun->getPosition();
 		guns_positions.insert({id, std::make_pair(gun_data, gun_position)});
 	}	

@@ -10,7 +10,7 @@ private:
 	float damagePoints;
 	float scope;
 public:
-	AK47Ammo(float x, float y, bool right);
+	AK47Ammo(float x, float y, bool right, bool up);
 	void update_position(const unsigned int frame_delta) override;
 	float impact() override;
 };

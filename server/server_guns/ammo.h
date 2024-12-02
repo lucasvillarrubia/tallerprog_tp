@@ -12,10 +12,11 @@ protected:
 	float positionY;
 	bool destroyed;
 	bool movingRight;
+	bool moving_up;
 	int type_gun;
 	float scope;
 public:
-	Ammo(float x, float y, bool right, int type, float _scope);
+	Ammo(float x, float y, bool right, bool up, int type, float _scope);
 	virtual void update_position(unsigned int);
 	virtual float impact();
 	bool is_destroyed();

@@ -12,9 +12,12 @@
 class Gun : public Item{
 protected:
 	bool shooting;
+	bool pointing_up;
 public:
 	Gun(float x, float y, float width, float height, int type);
 	bool is_duck_position_valid(float x, float y);
+	void updateDirection(bool right, bool up);
+	bool is_pointing_up();
 	virtual bool isShooting();
 	virtual bool shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets);
 	void stopShoot();

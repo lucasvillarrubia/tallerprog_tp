@@ -83,19 +83,23 @@ void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_of
 			break;
 	}
 	int vcenter = renderer.GetOutputHeight();
+	float angle = gun.pointing_up ? 90.0f : 0.0f;
+	angle = angle * (gun.pointing_to_the_right ? -1 : 1);
 	SDL_RendererFlip flip = gun.pointing_to_the_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
     SDL_Rect src_rect = search_sprite(gun);
     SDL_Rect dst_rect = search_dimension_sprite(vcenter, gun, zoom_offset_x, zoom_offset_y);
-    SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+    SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, angle, nullptr, flip);
 }
 
 void Renderer::draw_bullet(Bullet& bullet, const float zoom_offset_x, const float zoom_offset_y) {
 	SDL2pp::Texture* sprite = textureManager.getGunSprite("pistolas");
 	int vcenter = renderer.GetOutputHeight();
+	float angle = bullet.moving_up ? 90.0f : 0.0f;
+	angle = angle * (bullet.moving_right ? -1 : 1);
 	SDL_RendererFlip flip = bullet.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
     SDL_Rect src_rect = { 1, 89, 16, 16 };
     SDL_Rect dst_rect = { static_cast<int>(bullet.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - bullet.pos_Y + zoom_offset_y), 16, 16 };
-    SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+    SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, angle, nullptr, flip);
 }
 
 void Renderer::draw_explosion(Explosion& explosion, const float zoom_offset_x, const float zoom_offset_y) {
