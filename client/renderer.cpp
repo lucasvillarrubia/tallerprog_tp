@@ -129,7 +129,9 @@ SDL_Rect Renderer::search_sprite(Gun& gun) {
 				return {1,99,16,16};
 			}
 		case 3:
-			return {336, 94, 32,32};
+			return {336, 94, 32, 32};
+		case 4:
+			return {1, 97, 32, 32};
 		case 5:
 			return {0, 0, 32, 32};
 		case 6:
@@ -151,6 +153,8 @@ SDL_Rect Renderer::search_dimension_sprite(int vcenter, Gun& gun, const float zo
 		case 2:
 			return { static_cast<int>(gun.pos_X + 16 + zoom_offset_x), static_cast<int>(vcenter - 48 - gun.pos_Y + zoom_offset_y), 32, 32 };
 		case 3:
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };
+		case 4:
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };
 		case 5:
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };

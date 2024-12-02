@@ -23,6 +23,7 @@
 #include "server/server_guns/Sniper.h"
 #include "server/server_guns/SpawnPlace.h"
 #include "server/server_guns/PewPewLaser.h"
+#include "server/server_guns/LaserRifle.h"
 #include "server/player.h"
 
 
