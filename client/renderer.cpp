@@ -6,6 +6,7 @@
 
 #include "client/character.h"
 #include "client/state_manager.h"
+#include "client/caja.h"
 #include "SDL2pp/Renderer.hh"
 #include "SDL2pp/SDL.hh"
 #include "SDL2pp/Surface.hh"
@@ -243,6 +244,41 @@ void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y
     }
 }
 
+void Renderer::dibujar_cajas(const float zoom_offset_x, const float zoom_offset_y) {
+    YAML::Node config = YAML::LoadFile(getCurrentMap());
+
+    std::vector<Caja> cajas;
+
+    (void)zoom_offset_x; // Marcado como no usado
+    (void)zoom_offset_y; 
+
+    for (const auto& spawn : config["spawn_places_cajas"]) {
+        float x = spawn["x"].as<float>();
+        float y = spawn["y"].as<float>();
+        cajas.emplace_back(x, y); // Crear una nueva instancia de Caja y agregarla al vector
+    }
+
+    for (const auto& caja : cajas) {
+        
+        float width = 50.0f;
+        float height = 50.0f;
+
+        SDL2pp::Rect rect(
+            static_cast<int>(caja.x + zoom_offset_x),
+            static_cast<int>(renderer.GetOutputHeight() + zoom_offset_y - caja.y - height),
+            static_cast<int>(width),
+            static_cast<int>(height)
+        );
+
+        
+        SDL2pp::Texture* texture = textureManager.getItem("caja");
+        
+        if (texture) {
+            renderer.Copy(*texture, SDL2pp::NullOpt, rect);
+        } 
+    }
+}
+
 
 void Renderer::draw_bg(){
     YAML::Node config = YAML::LoadFile("resources/current_map.yaml");
@@ -309,6 +345,8 @@ void Renderer::render(int frame) {
 
         // DiIBUJO MAPA
         dibujar_mapa(zoom_offset_x, zoom_offset_y);
+
+        dibujar_cajas(zoom_offset_x, zoom_offset_y);
 
         // DIBUJO PATOS
         for (auto& character : character_list) {

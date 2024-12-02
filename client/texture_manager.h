@@ -71,6 +71,7 @@ public:
     void cargarItemsSprites() {
         cargarItemSprite("armadura", "resources/armadura.png");
         cargarItemSprite("casco", "resources/casco.png");
+        cargarItemSprite("caja", "resources/caja.png");
     }
 
     void cargarDuckSprites() {
