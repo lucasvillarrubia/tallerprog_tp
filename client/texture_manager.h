@@ -19,6 +19,7 @@ private:
     std::map<std::string, std::unique_ptr<SDL2pp::Texture>> texturas;
     std::unordered_map<int, std::unique_ptr<SDL2pp::Texture>> duck_sprites;
     std::unordered_map<int, std::unique_ptr<SDL2pp::Texture>> duck_sprites_volando;
+    std::unordered_map<int, std::unique_ptr<SDL2pp::Texture>> duck_sprites_ducking;
     std::map<std::string, std::unique_ptr<SDL2pp::Texture>> guns_sprites;
     std::map<int, Color> duck_colors_by_id;
 public:
@@ -26,6 +27,7 @@ public:
         cargarTexturas();
         cargarDuckSprites();
         cargarDuckSpritesVolando();
+        cargarDuckSpritesDucking();
         cargarGunsSprites();
     }
 
@@ -60,11 +62,23 @@ public:
     }
 
     void cargarDuckSprites() {
+
         cargarDuckSprite(0, {}, "resources/White_Duck_Sprites.png");
-        // cargarDuckSprite(2, "resources/Blue_Duck_Sprites.png");
-        // cargarDuckSprite(129, "resources/Pink_Duck_Sprites.png");
-        // cargarDuckSprite(130, "resources/Yellow_Duck_Sprites.png");
+
     }
+
+    void cargarDuckSpritesDucking() {
+    cargarDuckSpriteDucking(0, "resources/ducking.png");
+    }
+
+    void cargarDuckSpriteDucking(int id, const std::string& path) {
+    SDL2pp::Surface surface(path);
+    if (id != 0) {
+        Color color = duck_colors_by_id.at(id);
+        changeNearWhitePixelsToColor(surface, color.r, color.g, color.b);
+    }
+    duck_sprites_ducking[id] = std::make_unique<SDL2pp::Texture>(renderer, surface);
+}
     
     void cargarDuckSpriteVolando(int id, const std::string& path) {
         SDL2pp::Surface surface(path);
@@ -77,9 +91,6 @@ public:
 
     void cargarDuckSpritesVolando() {
         cargarDuckSpriteVolando(0, "resources/aleteo.png");
-        // cargarDuckSpriteVolando(2, "resources/aleteo.png");
-        // cargarDuckSpriteVolando(129, "resources/aleteo.png");
-        // cargarDuckSpriteVolando(130, "resources/aleteo.png");
     }
 
     void changeNearWhitePixelsToColor(SDL2pp::Surface& surface, Uint8 r, Uint8 g, Uint8 b, Uint8 tolerance = 60) {
@@ -132,6 +143,18 @@ public:
         return nullptr; 
     }
 
+    SDL2pp::Texture* getDuckSpriteDucking(int id) {
+    auto it = duck_sprites_ducking.find(id);
+    if (it == duck_sprites_ducking.end()) {
+        cargarDuckSpriteDucking(id, "resources/ducking.png");
+        return duck_sprites_ducking.at(id).get();
+    }
+    else {
+        return it->second.get();
+    }
+    return nullptr;
+    }
+
     SDL2pp::Texture* getDuckSpriteVolando(int id) {
         auto it = duck_sprites_volando.find(id);
         if (it == duck_sprites_volando.end()) {
@@ -150,6 +173,7 @@ public:
     	cargarGunSprite("ak47", "resources/ak47.png");
     	cargarGunSprite("pistolas", "resources/PC Computer - Duck Game - Pistol.png");
     	cargarGunSprite("sniper", "resources/sniper.png");
+    	cargarGunSprite("explosion", "resources/explode.png");
     }
     
     void cargarGunSprite(const std::string& nombre, const std::string& path) {

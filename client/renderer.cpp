@@ -54,12 +54,14 @@ void Renderer::draw_character(Character& character, int frame, const float zoom_
 {
     SDL2pp::Texture* sprite;
     
-    if (character.is_jumping) {
-
+    if (character.is_ducking) {
+        sprite = textureManager.getDuckSpriteDucking(character.id);
+    } else if (character.is_jumping) {
         sprite = textureManager.getDuckSpriteVolando(character.id);
     } else {
         sprite = textureManager.getDuckSprite(character.id, character.color);
     }
+
     int vcenter = renderer.GetOutputHeight();
     int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame);
     int src_y = DUCK_MOVEMENT_SPRITES_LINE;
@@ -79,6 +81,10 @@ void Renderer::draw_character(Character& character, int frame, const float zoom_
 void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_offset_y) {
 	SDL2pp::Texture* sprite;
 	switch (gun.type) {
+		case 1:
+		case 2:
+			sprite = textureManager.getGunSprite("arrojadizos");
+			break;
 		case 5:
 			sprite = textureManager.getGunSprite("ak47");
 			break;
@@ -93,12 +99,12 @@ void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_of
 	}
 	int vcenter = renderer.GetOutputHeight();
 	SDL_RendererFlip flip = gun.pointing_to_the_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
-    SDL_Rect src_rect = search_sprite(gun.type);
+    SDL_Rect src_rect = search_sprite(gun);
     SDL_Rect dst_rect = search_dimension_sprite(vcenter, gun, zoom_offset_x, zoom_offset_y);
     SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 }
 
-void Renderer::draw_bullet(Bullet& bullet,  const float zoom_offset_x, const float zoom_offset_y) {
+void Renderer::draw_bullet(Bullet& bullet, const float zoom_offset_x, const float zoom_offset_y) {
 	SDL2pp::Texture* sprite = textureManager.getGunSprite("pistolas");
 	int vcenter = renderer.GetOutputHeight();
 	SDL_RendererFlip flip = bullet.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
@@ -107,8 +113,28 @@ void Renderer::draw_bullet(Bullet& bullet,  const float zoom_offset_x, const flo
     SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
 }
 
-SDL_Rect Renderer::search_sprite(const int type) {
-	switch (type) {
+void Renderer::draw_explosion(Explosion& explosion, const float zoom_offset_x, const float zoom_offset_y) {
+	SDL2pp::Texture* sprite = textureManager.getGunSprite("explosion");
+	int vcenter = renderer.GetOutputHeight();
+    SDL_Rect src_rect = {explosion.current_state*64,0,64,64};
+    SDL_Rect dst_rect = { static_cast<int>(explosion.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - explosion.pos_Y + zoom_offset_y), 64, 64 };
+    SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, SDL_FLIP_NONE);
+}
+
+SDL_Rect Renderer::search_sprite(Gun& gun) {
+	switch (gun.type) {
+		case 1:
+			if (gun.shooting) {
+				return {1,21,16,16};
+			} else {
+				return {17,21,16,16};
+			}
+		case 2:
+			if (gun.shooting) {
+				return {1,67,16,16};
+			} else {
+				return {1,99,16,16};
+			}
 		case 5:
 			return {0, 0, 32, 32};
 		case 6:
@@ -125,14 +151,18 @@ SDL_Rect Renderer::search_sprite(const int type) {
 
 SDL_Rect Renderer::search_dimension_sprite(int vcenter, Gun& gun, const float zoom_offset_x, const float zoom_offset_y) {
 	switch (gun.type) {
+		case 1:
+			return { static_cast<int>(gun.pos_X + 16 + zoom_offset_x), static_cast<int>(vcenter - 48 - gun.pos_Y + zoom_offset_y), 32, 32 };
+		case 2:
+			return { static_cast<int>(gun.pos_X + 16 + zoom_offset_x), static_cast<int>(vcenter - 48 - gun.pos_Y + zoom_offset_y), 32, 32 };
 		case 5:
-			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 64, 64 };
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };
 		case 6:
-			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 64, 64 };
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };
 		case 7:
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 44, 22 };
 		case 8:
-			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 64, 64 };
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };
 		default:
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 66, 18 };
 	}
@@ -419,6 +449,7 @@ void Renderer::render(int frame) {
             state.update(current_state);
         }
 
+
         // State current_state = state.get_state();
         character_list.clear();
         gun_list.clear();
@@ -426,6 +457,9 @@ void Renderer::render(int frame) {
         character_list = state.get_characters_data();
         gun_list = state.get_guns_data();
         bullet_list = state.get_bullets_data();
+
+        std::list<Explosion> explosion_list = state.get_explosions_data();
+
         
         // std::list<Character> character_list = current_state.dukis;
         // std::list<Gun> gun_list = current_state.guns;
@@ -439,8 +473,6 @@ void Renderer::render(int frame) {
         
         for (auto& character : character_list) {
             duck_positions.emplace_back(character.pos_X, character.pos_Y);
-            // std::cout << "Character position - X: " << character.pos_X 
-            //   << ", Y: " << character.pos_Y << std::endl;
             sum_x += character.pos_X;
             sum_y += character.pos_Y;
         }
@@ -482,6 +514,12 @@ void Renderer::render(int frame) {
         	// std::cout<<bullet.id<<"- x:"<<bullet.pos_X<<" y: "<<bullet.pos_Y<<std::endl;
         	draw_bullet(bullet, zoom_offset_x, zoom_offset_y);
         }
+
+        // DIBUJO EXPLOSIONES
+        for (auto& explosion : explosion_list) {
+        	draw_explosion(explosion, zoom_offset_x, zoom_offset_y);
+        }
+        state.set_explosion_phase(frame);
 
         renderer.SetScale(1.0f, 1.0f);
         SDL2pp::Font font("resources/Uroob-Regular.ttf", 24);

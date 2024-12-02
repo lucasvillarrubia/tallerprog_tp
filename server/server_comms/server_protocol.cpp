@@ -86,6 +86,7 @@ void ServerProtocol::send_guns_positions_message(const Gamestate& message) {
     	send_single_8bit_int(id);
         send_single_8bit_int(gun_data.first.type);
         send_single_8bit_int(gun_data.first.right);
+        send_single_8bit_int(gun_data.first.shooting);
     	send_single_float(gun_data.second.pos_X);
     	send_single_float(gun_data.second.pos_Y);
     }
@@ -150,6 +151,16 @@ void ServerProtocol::send_matches_info_message(const Gamestate& message)
         send_single_8bit_int(match_info.match_id);
         send_single_8bit_int(match_info.players_count);
     }
+}
+
+
+void ServerProtocol::send_explosion_message(const Gamestate& message) {
+	if (not client_is_connected.load()) return;
+	send_single_8bit_int(message.type);
+	send_single_8bit_int(message.bullet_flag);
+	send_single_8bit_int(message.object_id);
+	send_single_float(message.match_errors_flag);
+	
 }
 
 void ServerProtocol::send_round_ended_message(const Gamestate& message)

@@ -2,11 +2,11 @@
 
 #include "ammo.h"
 
-Magnum::Magnum(float x, float y): Gun(x,y,32,32, 8), ammo(6) {}
+Magnum::Magnum(float x, float y): Gun(x,y,64,64, 8), ammo(6) {}
 
 bool Magnum::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
 	if (!shooting && (ammo > 0)) {
-		int dir = rightDirection ? 36 : -12;
+		int dir = rightDirection ? 36 : 0;
 		shooting = true;
 		ammo--;
 		id++;

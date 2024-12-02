@@ -63,6 +63,9 @@ void StateManager::update(const Gamestate& update)
     case 9:
     	destroy_bullet(update.object_id);
     	break;
+    case 15:
+    	explode_grenade(update.object_id);
+    	break;
     case 13:
         reset();
         round = update.round;
@@ -87,9 +90,11 @@ void StateManager::update_guns(const Gamestate& update)
 {
     for (auto& gun : guns)
     {
-        if (update.guns_positions_by_id.contains(gun.id))
+        if (update.guns_positions_by_id.contains(gun.id)) {
         	gun.pointing_to_the_right = update.guns_positions_by_id.at(gun.id).first.right;
+        	gun.shooting = update.guns_positions_by_id.at(gun.id).first.shooting;
             update_gun_position(gun, update.guns_positions_by_id.at(gun.id).second);
+        }
     }
 }
 
@@ -127,6 +132,18 @@ void StateManager::destroy_bullet(const int id) {
 	bullets.remove_if([](auto& bullet){ return bullet.destroyed; });
 }
 
+void StateManager::explode_grenade(const int id) {
+	for (auto& gun : guns) {
+		if (gun.id == id) {
+			Explosion explosion(gun.pos_X, gun.pos_Y);
+			explosions.push_back(explosion);
+			gun.is_destroyed = true;
+		}
+	}
+	std::cout<<"se recibió la explosion"<<std::endl;
+	clear_destroyed_gun(id);
+}
+
 void StateManager::reset()
 {
     // std::unique_lock<std::mutex> lck(mtx);
@@ -154,6 +171,20 @@ void StateManager::update_duck_state(const Gamestate& update)
     }
 }
 
+void StateManager::clear_destroyed_gun(int id) {
+	std::cout<<"size antes del remove: "<<guns.size()<<std::endl;
+	guns.remove_if([&id](auto& gun){ return gun.id == id; });
+	std::cout<<"size despues del remove: "<<guns.size()<<std::endl;
+}
+
+void StateManager::set_explosion_phase(const unsigned int frame) {
+	for (auto& explosion : explosions) {
+		if (!explosion.end)
+			explosion.set_next_phase(frame);
+	}
+	explosions.remove_if([](auto& explosion){ return explosion.end; });
+}
+
 std::list<Character> StateManager::get_characters_data()
 {
     // std::unique_lock<std::mutex> lck(mtx);
@@ -174,4 +205,9 @@ State StateManager::get_state()
 {
     // std::unique_lock<std::mutex> lck(mtx);
     return {dukis, guns, bullets};
+}
+
+std::list<Explosion> StateManager::get_explosions_data() {
+	return explosions;
+
 }
