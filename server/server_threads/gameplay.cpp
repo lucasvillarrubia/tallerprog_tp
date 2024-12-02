@@ -136,7 +136,7 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
         Coordinates updated_position = StateManager::get_duck_coordinates(duck);
         try_to_grab(duck);
         try_to_shoot(duck);
-        try_to_slip_or_explode(duck);
+        try_to_slip_or_explode(duck, id);
         positions_by_id.insert({id, updated_position});
         speeds_by_id.insert({id, StateManager::get_duck_speed(duck)});
         if (StateManager::get_duck_is_alive(duck) == 0)
@@ -196,7 +196,7 @@ void Gameplay::try_to_shoot(Duck& duck) {
 	}    
 }
 
-void Gameplay::try_to_slip_or_explode(Duck& duck) {
+void Gameplay::try_to_slip_or_explode(Duck& duck, int duck_id) {
 	Coordinates after_coordinates = StateManager::get_duck_coordinates(duck);
 	for (auto& [id, gun] : guns_by_id) {
 		if (gun->is_duck_position_valid(after_coordinates.pos_X, after_coordinates.pos_Y) && gun->is_banana_peel()) {
@@ -209,6 +209,9 @@ void Gameplay::try_to_slip_or_explode(Duck& duck) {
 				if (id == duck.get_gun_id()) {
 					duck.drop_gun();
 				}
+                duck.set_is_NOT_alive();
+                Gamestate duck_is_dead(StateManager::get_duck_state(duck, duck_id));
+                broadcast_for_all_players(duck_is_dead);
 				//muerte del pato
 			}
 		}
@@ -232,7 +235,7 @@ void Gameplay::send_guns_positions_updates(const unsigned int frame_delta) {
 			}
 			if (gun->try_to_explode_grenade()) {
 				std::cout<<"la granada exploto"<<std::endl;
-				Gamestate explosion(1, id);
+				Gamestate explosion(1, id, 1.0f);
 				players.broadcast(explosion);
 				//enviar mensaje de explosion
 			}
@@ -340,7 +343,7 @@ void Gameplay::run() {
                 prev_time = current_time;
                 process_users_commands();
                 send_ducks_positions_updates(frame_delta);
-                send_guns_positions_updates();
+                send_guns_positions_updates(frame_delta);
                 send_bullets_positions_updates(frame_delta);
                 update_spawn_places();
                 check_for_winner();

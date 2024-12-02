@@ -202,9 +202,11 @@ void ClientProtocol::receive_matches_info_message(Gamestate& received)
 void ClientProtocol::receive_explosion_message(Gamestate& received) {
     if (not client_is_connected.load()) return;
     uint8_t flag, grenade_id;
+    float flag2;
     receive_single_8bit_int(flag);
     receive_single_8bit_int(grenade_id);
-    received = Gamestate(flag, grenade_id);
+    receive_single_float(flag2);
+    received = Gamestate(flag, grenade_id, flag2);
 }
 
 void ClientProtocol::receive_round_ended_message(Gamestate& received)

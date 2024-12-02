@@ -156,6 +156,8 @@ void ServerProtocol::send_explosion_message(const Gamestate& message) {
 	send_single_8bit_int(message.type);
 	send_single_8bit_int(message.bullet_flag);
 	send_single_8bit_int(message.object_id);
+	send_single_float(message.match_errors_flag);
+	
 }
 
 void ServerProtocol::send_round_ended_message(const Gamestate& message)

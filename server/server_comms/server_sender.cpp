@@ -44,6 +44,7 @@ void ServerSender::send_data()
             break;
         case 15:
         	protocol.send_explosion_message(new_event);
+        	std::cout << "se mandó una explosion\n";
         	break;
         case 13:
             protocol.send_round_ended_message(new_event);

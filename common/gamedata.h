@@ -177,11 +177,12 @@ struct Gamestate: Gamedata {
         type(12),
         matches_info(matches) {}      
 	//envia la explosiónde la granada
-    Gamestate(const int flag, const int _id) : 
+    Gamestate(const int flag, const int _id, float flag2) : 
 		Gamedata(0),
-    	type(13),
+    	type(15),
     	object_id(_id),
-    	bullet_flag(flag) {}
+    	bullet_flag(flag),
+    	match_errors_flag(flag2) {}
   
     Gamestate(const int player, const int round): Gamedata(player), type(13), round(round) {}
 
