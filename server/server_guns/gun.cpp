@@ -38,6 +38,10 @@ bool Gun::is_a_grenade() {
 	return false;
 }
 
+bool Gun::is_pew_pew_laser() {
+	return false;
+}
+
 bool Gun::in_explosion_area([[maybe_unused]] float x, [[maybe_unused]] float y) {
 	return false;
 }

@@ -70,6 +70,10 @@ void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_of
 		case 2:
 			sprite = textureManager.getGunSprite("arrojadizos");
 			break;
+		case 3:
+		case 4:
+			sprite = textureManager.getGunSprite("lasers");
+			break;
 		case 5:
 			sprite = textureManager.getGunSprite("ak47");
 			break;
@@ -124,6 +128,8 @@ SDL_Rect Renderer::search_sprite(Gun& gun) {
 			} else {
 				return {1,99,16,16};
 			}
+		case 3:
+			return {336, 94, 32,32};
 		case 5:
 			return {0, 0, 32, 32};
 		case 6:
@@ -144,6 +150,8 @@ SDL_Rect Renderer::search_dimension_sprite(int vcenter, Gun& gun, const float zo
 			return { static_cast<int>(gun.pos_X + 16 + zoom_offset_x), static_cast<int>(vcenter - 48 - gun.pos_Y + zoom_offset_y), 32, 32 };
 		case 2:
 			return { static_cast<int>(gun.pos_X + 16 + zoom_offset_x), static_cast<int>(vcenter - 48 - gun.pos_Y + zoom_offset_y), 32, 32 };
+		case 3:
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };
 		case 5:
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };
 		case 6:
