@@ -6,6 +6,7 @@
 
 #include "coordinates.h"
 #include "drawingdata.h"
+#include "color.h"
 
 
 struct Gamedata {
@@ -30,8 +31,12 @@ struct Gamestate: Gamedata {
     int type_gun;
     int move_direction;
     int is_alive;
+    int is_slipping;
+    int is_pointing_upwards;
+    int is_ducking;
     float jump_speed;
     std::map<int, Coordinates> positions_by_id;
+    std::map<int, float> speeds_by_id;
     std::map<int, std::pair<DrawingData, Coordinates>> guns_positions_by_id;
     int bullet_flag;
     std::map<int, Coordinates> bullets_positions_by_id;
@@ -39,6 +44,8 @@ struct Gamestate: Gamedata {
     std::string error_msg;
     int match_id;
     std::list<Gamematch> matches_info;
+    int round;
+    Color color;
 
     Gamestate(): Gamedata(-1) {}
 
@@ -51,7 +58,8 @@ struct Gamestate: Gamedata {
         const int flap,
         const int direction,
         const int life,
-        const float jumpspeed
+        const float jumpspeed,
+        const Color& main_color
     ):
         Gamedata(player),
         type(1),
@@ -62,7 +70,8 @@ struct Gamestate: Gamedata {
         is_flapping(flap),
         move_direction(direction),
         is_alive(life),
-        jump_speed(jumpspeed) {}
+        jump_speed(jumpspeed),
+        color(main_color) {}
 
     Gamestate(
         const int player,
@@ -70,7 +79,10 @@ struct Gamestate: Gamedata {
         const int jump,
         const int flap,
         const int direction,
-        const int life
+        const int life,
+        const int slip,
+        const int point,
+        const int ducking
         ):
         Gamedata(player),
         type(3),
@@ -78,12 +90,17 @@ struct Gamestate: Gamedata {
         is_jumping(jump),
         is_flapping(flap),
         move_direction(direction),
-        is_alive(life) {}
+        is_alive(life),
+        is_slipping(slip),
+        is_pointing_upwards(point),
+        is_ducking(ducking)
+        {}
 
-    Gamestate(std::map<int,Coordinates>& positions):
+    Gamestate(std::map<int,Coordinates>& positions, std::map<int,float>& speeds):
         Gamedata(0),
         type(2),
-        positions_by_id(positions) {}
+        positions_by_id(positions),
+        speeds_by_id(speeds) {}
     
     //envia la inicializacion de un arma
     Gamestate(
@@ -158,14 +175,16 @@ struct Gamestate: Gamedata {
     Gamestate(const int player, std::list<Gamematch>& matches):
         Gamedata(player),
         type(12),
-        matches_info(matches) {}
-        
+        matches_info(matches) {}      
 	//envia la explosiónde la granada
     Gamestate(const int flag, const int _id) : 
 		Gamedata(0),
     	type(13),
     	object_id(_id),
     	bullet_flag(flag) {}
+  
+    Gamestate(const int player, const int round): Gamedata(player), type(13), round(round) {}
+
 };
 
 struct Gameaction: Gamedata {

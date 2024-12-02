@@ -13,6 +13,7 @@
 #include <QAbstractButton>
 #include <QString>
 #include "common/hands_on_sockets/liberror.h"
+#include <SDL2/SDL_ttf.h>
 
 
 const int MULTIPLAYER_MODE = 0;
@@ -29,7 +30,8 @@ Client::Client(const char* hostname, const char* servname):
         game_on(false),
         connection(std::move(Socket(hostname, servname)), events, updates, connected),
         event_listener(game_on, events, multiplayer_mode, current_match),
-        // renderloop(game_on, updates, state),
+        sdl(SDL_INIT_VIDEO),
+        renderloop(game_on, updates, state),
         // renderloop(game_on, window, renderer, updates, state),
         updater(updates, state),
         gamelobby(nullptr),
@@ -39,6 +41,10 @@ Client::Client(const char* hostname, const char* servname):
     connect(&gamelobby, &lobby::start_match, this, &Client::handle_start_match);
     connect(&gamelobby, &lobby::refresh_lobby, this, &Client::handle_refresh_lobby);
     connect(&gamelobby, &lobby::join_match, this, &Client::handle_join_match);
+    if (TTF_Init() == -1) {
+        std::cerr << "TTF_Init failed: " << TTF_GetError() << std::endl;
+        SDL_Quit();
+    }
 }
 
 void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono::milliseconds rate)
@@ -81,15 +87,18 @@ void Client::run() {
             // if (gamelobby.was_closed_by_X()) {
             if (not game_on.load()) {
                 game_on.store(false);
+                SDL_Quit();
+                TTF_Quit();
                 connected.store(false);
                 updates.close();
                 events.close();
                 connection.end_connection();
                 break;
             }
-            SDL2pp::SDL sdl(SDL_INIT_VIDEO);
-            Renderer renderloop(game_on, updates, state);
+            // SDL2pp::SDL sdl(SDL_INIT_VIDEO);
+            // Renderer renderloop(game_on, updates, state);
 
+            renderloop.open_window();
             std::cout << "Client running\n";
 
             while (game_on.load() && connected.load())
@@ -100,6 +109,7 @@ void Client::run() {
                     renderloop.render(frame);
                 }, rate);
             }
+            renderloop.close_window();
             game_on.store(false);
             int i = 0;
             Gamestate end_game;

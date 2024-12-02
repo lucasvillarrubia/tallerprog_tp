@@ -3,6 +3,8 @@
 #include <iostream>
 #include <utility>
 
+#include "common/color.h"
+
 
 ClientProtocol::ClientProtocol(Socket&& skt, std::atomic_bool& connection_status): Protocol(std::move(skt), connection_status) {}
 
@@ -20,7 +22,7 @@ void ClientProtocol::send_message(const Gameaction& message)
 void ClientProtocol::receive_init_character_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
-    uint8_t character_id, run_state, jump_state, flap_state, move_direction, life;
+    uint8_t character_id, run_state, jump_state, flap_state, move_direction, life, r, g, b;
     float pos_X, pos_Y, velocity_Y;
     receive_single_8bit_int(character_id);
     receive_single_float(pos_X);
@@ -31,7 +33,10 @@ void ClientProtocol::receive_init_character_message(Gamestate& received)
     receive_single_8bit_int(move_direction);
     receive_single_8bit_int(life);
     receive_single_float(velocity_Y);
-    received = Gamestate(character_id, pos_X, pos_Y, run_state, jump_state, flap_state, move_direction, life, velocity_Y);
+    receive_single_8bit_int(r);
+    receive_single_8bit_int(g);
+    receive_single_8bit_int(b);
+    received = Gamestate(character_id, pos_X, pos_Y, run_state, jump_state, flap_state, move_direction, life, velocity_Y, {r, g, b});
 }
 
 // void ClientProtocol::receive_single_character_position_message()
@@ -42,6 +47,7 @@ void ClientProtocol::receive_characters_positions_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
     std::map<int, Coordinates> positions_by_id;
+    std::map<int, float> speeds_by_id;
     uint8_t positions_count;
     receive_single_8bit_int(positions_count);
     for (int i = 0; i < positions_count; i++)
@@ -53,20 +59,33 @@ void ClientProtocol::receive_characters_positions_message(Gamestate& received)
         receive_single_float(pos_Y);
         positions_by_id.insert({id, {pos_X, pos_Y}});
     }
-    received = Gamestate(positions_by_id);
+    uint8_t speeds_count;
+    receive_single_8bit_int(speeds_count);
+    for (int i = 0; i < speeds_count; i++)
+    {
+        uint8_t id;
+        float speed;
+        receive_single_8bit_int(id);
+        receive_single_float(speed);
+        speeds_by_id.insert({id, speed});
+    }
+    received = Gamestate(positions_by_id, speeds_by_id);
 }
 
 void ClientProtocol::receive_character_update_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
-    uint8_t player_id, run, jump, flap, direction, life;
+    uint8_t player_id, run, jump, flap, direction, life, slip, point_up, ducking;
     receive_single_8bit_int(player_id);
     receive_single_8bit_int(run);
     receive_single_8bit_int(jump);
     receive_single_8bit_int(flap);
     receive_single_8bit_int(direction);
     receive_single_8bit_int(life);
-    received = Gamestate(player_id, run, jump, flap, direction, life);
+    receive_single_8bit_int(slip);
+    receive_single_8bit_int(point_up);
+    receive_single_8bit_int(ducking);
+    received = Gamestate(player_id, run, jump, flap, direction, life, slip, point_up, ducking);
 }
 
 
@@ -188,6 +207,15 @@ void ClientProtocol::receive_explosion_message(Gamestate& received) {
     received = Gamestate(flag, grenade_id);
 }
 
+void ClientProtocol::receive_round_ended_message(Gamestate& received)
+{
+    if (not client_is_connected.load()) return;
+    uint8_t player, round;
+    receive_single_8bit_int(player);
+    receive_single_8bit_int(round);
+    received = Gamestate(player, round);
+}
+
 void ClientProtocol::receive_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
@@ -225,15 +253,14 @@ void ClientProtocol::receive_message(Gamestate& received)
     case 12:
         receive_matches_info_message(received);
         break;
-	case 13:
+	case 15:
 		receive_explosion_message(received);
 		break;
+    case 13:
+        receive_round_ended_message(received);
+        break;
     default:
         receive_character_update_message(received);
         break;
     }
 }
-
-// bool ClientProtocol::theres_more_data_per_code(int msg_code) {
-//     return (msg_code == PICKUP_MESSAGE_CODE) ? true : false;
-// }

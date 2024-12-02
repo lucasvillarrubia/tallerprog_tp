@@ -25,6 +25,7 @@ void StateManager::update(const Gamestate& update)
                 Character new_duki(update.player_id);
                 new_duki.pos_X = update.pos_X;
                 new_duki.pos_Y = update.pos_Y;
+                new_duki.color = update.color;
                 dukis.push_back(new_duki);
             }
             std::cout << "info received: " << update.player_id << " " << update.pos_X << " " << update.pos_Y << " " << update.is_alive << "\n";
@@ -62,13 +63,18 @@ void StateManager::update(const Gamestate& update)
     case 9:
     	destroy_bullet(update.object_id);
     	break;
-    case 13:
+    case 15:
     	explode_grenade(update.object_id);
     	break;
+    caso 13:
+        reset();
+        round = update.round;
+        break;
     default:
         update_ducks(update);
         break;
     }
+    dukis.remove_if([](const Character& duki) { return not duki.is_alive; });
 }
 
 void StateManager::update_ducks(const Gamestate& update)
@@ -76,7 +82,7 @@ void StateManager::update_ducks(const Gamestate& update)
     for (auto& duki : dukis)
     {
         if (update.positions_by_id.contains(duki.id))
-            update_duck_position(duki, update.positions_by_id.at(duki.id));
+            update_duck_position(duki, update.positions_by_id.at(duki.id), update.speeds_by_id.at(duki.id));
     }
 }
 
@@ -101,9 +107,10 @@ void StateManager::update_bullets(const Gamestate& update)
     }
 }
 
-void StateManager::update_duck_position(Character& duki, const Coordinates& new_position) {
+void StateManager::update_duck_position(Character& duki, const Coordinates& new_position, const float speed) {
     duki.pos_X = new_position.pos_X;
     duki.pos_Y = new_position.pos_Y;
+    duki.jump_velocity = speed;
 }
 
 void StateManager::update_gun_position(Gun& gun, const Coordinates& new_position) {
@@ -145,7 +152,6 @@ void StateManager::reset()
 
 void StateManager::update_duck_state(const Gamestate& update)
 {
-    dukis.remove_if([](const Character& duki) { return not duki.is_alive; });
     for (auto& duki : dukis)
     {
         if (duki.id == update.player_id)
@@ -155,6 +161,9 @@ void StateManager::update_duck_state(const Gamestate& update)
             duki.is_flapping = update.is_flapping;
             duki.moving_right = update.move_direction;
             duki.is_alive = update.is_alive;
+            duki.is_slipping = update.is_slipping;
+            duki.is_pointing_upwards = update.is_pointing_upwards;
+            duki.is_ducking = update.is_ducking;
             break;
         }
     }

@@ -15,7 +15,6 @@ private:
 public:
     Match(int);
     void start();
-    void end();
     bool is_connected();
     void send_start_message(int);
     void add_player(Player*, int, bool);

@@ -23,10 +23,12 @@ void Updater::run()
     catch (const std::exception& e)
     {
         std::cerr << "Exception caught in the updater thread: " << e.what() << '\n';
+        stop();
     }
     catch (...)
     {
         std::cerr << "Unknown exception on the updateloop.\n";
+        stop();
     }
 }
 

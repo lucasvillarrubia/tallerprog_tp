@@ -22,9 +22,9 @@ private:
     bool with_gun;
     int gun_equipped_id;
     bool is_slipping;
+    bool is_pointing_upwards;
+    bool is_ducking;
 public:
-    // esto para el primer intento nomás
-    // bool exited = false;
     Duck();
     void set_position(float, float);
     void set_position(const Coordinates& coordinates) {

@@ -19,12 +19,6 @@ void Match::start()
     }
 }
 
-void Match::end()
-{
-    gameloop.stop();
-    gameloop.join();
-}
-
 void Match::add_player(Player* player, int id, bool is_multiplayer) {
     player_list.push_back(player);
     multiplayer_mode_by_player.insert({id, is_multiplayer});
@@ -42,7 +36,7 @@ bool Match::is_player_in_match(int player_id)
 bool Match::has_ended() { return (winner_id != -1 or player_list.size() == 0); }
 
 bool Match::is_connected()
-{ return has_started;
+{ return gameloop.is_game_on();
 }
 
 void Match::send_start_message(int creator)
@@ -58,6 +52,10 @@ void Match::send_start_message(int creator)
 void Match::disconnect()
 {
     user_commands.close();
-    gameloop.stop();
-    gameloop.join();
+    if (gameloop.is_game_on()) {
+        gameloop.stop();
+    }
+    if (has_started) {
+        gameloop.join();
+    }
 }

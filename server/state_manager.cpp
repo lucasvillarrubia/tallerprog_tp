@@ -9,8 +9,10 @@ const int ESCAPE = 9;
 const int RIGHT = 1;
 const int LEFT = 2;
 const int SPACE = 3;
-const int g = 4;
-const int f = 5;
+const int GRAB = 4;
+const int FIRE = 5;
+const int DUCK = 6;
+const int POINT_UP = 7;
 
 const float JUMP_STRENGTH = 15.0f;
 const float FLAP_STRENGTH = 1.0f;
@@ -63,12 +65,18 @@ void StateManager::update_duck_state(Duck& duck, const Gameaction& event)
                  duck.jump_velocity = FLAP_STRENGTH;
              }
             break;
-        case g:
+        case GRAB:
         	duck.is_grabbing = true;
         	break;
-        case f:
+        case FIRE:
         	duck.is_shooting = true;
         	break;
+        case DUCK:
+            duck.is_ducking = true;
+            break;
+        case POINT_UP:
+            duck.is_pointing_upwards = true;
+            break;
         }
     } else if (event.type == KEYUP) {
         switch (event.key) {
@@ -79,12 +87,18 @@ void StateManager::update_duck_state(Duck& duck, const Gameaction& event)
         // case SPACE:
         //     duck.is_flapping = false;
         //     break;
-        case g:
+        case GRAB:
         	duck.is_grabbing = false;
         	break;
-        case f:
+        case FIRE:
         	duck.is_shooting = false;
         	break;
+        case DUCK:
+            duck.is_ducking = false;
+            break;
+        case POINT_UP:
+            duck.is_pointing_upwards = false;
+            break;
         }
     }
 }
@@ -97,7 +111,10 @@ Gamestate StateManager::get_duck_state(Duck& duck, int id)
         duck.is_jumping ? 1 : 0,
         duck.is_flapping ? 1 : 0,
         duck.moving_right ? 1 : 0,
-        duck.is_alive ? 1 : 0
+        duck.is_alive ? 1 : 0,
+        duck.is_slipping ? 1 : 0,
+        duck.is_pointing_upwards ? 1 : 0,
+        duck.is_ducking ? 1 : 0,
     };
 }
 

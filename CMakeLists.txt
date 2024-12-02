@@ -62,6 +62,7 @@ add_library(taller_common STATIC
         common/rectangulo.h
         common/coordinates.h
         common/drawingdata.h
+        common/color.h
 )
 
 # add the source files that make the lib
@@ -143,6 +144,7 @@ if(TALLER_CLIENT)
             client/lobby/lobby.cpp
             client/lobby/lobby.h
             client/lobby/lobby.ui
+            # client/color.h
     )
 
     # Make them depend on taller_common lib

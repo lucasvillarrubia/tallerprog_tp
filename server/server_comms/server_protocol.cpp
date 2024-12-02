@@ -18,6 +18,9 @@ void ServerProtocol::send_init_duck_message(const Gamestate& message)
     send_single_8bit_int(message.move_direction);
     send_single_8bit_int(message.is_alive);
     send_single_float(message.jump_speed);
+    send_single_8bit_int(message.color.r);
+    send_single_8bit_int(message.color.g);
+    send_single_8bit_int(message.color.b);
 }
 
 void ServerProtocol::send_single_duck_position_message(const int id, const Coordinates& position)
@@ -37,6 +40,13 @@ void ServerProtocol::send_ducks_positions_message(const Gamestate& message)
     {
         send_single_duck_position_message(id, position);
     }
+    uint8_t speeds_count = message.speeds_by_id.size();
+    send_single_8bit_int(speeds_count);
+    for (auto& [id, speed] : message.speeds_by_id)
+    {
+        send_single_8bit_int(id);
+        send_single_float(speed);
+    }
 }
 
 void ServerProtocol::send_duck_state_message(const Gamestate& message)
@@ -49,6 +59,9 @@ void ServerProtocol::send_duck_state_message(const Gamestate& message)
     send_single_8bit_int(message.is_flapping);
     send_single_8bit_int(message.move_direction);
     send_single_8bit_int(message.is_alive);
+    send_single_8bit_int(message.is_slipping);
+    send_single_8bit_int(message.is_pointing_upwards);
+    send_single_8bit_int(message.is_ducking);
 }
 
 
@@ -137,11 +150,20 @@ void ServerProtocol::send_matches_info_message(const Gamestate& message)
     }
 }
 
+
 void ServerProtocol::send_explosion_message(const Gamestate& message) {
 	if (not client_is_connected.load()) return;
 	send_single_8bit_int(message.type);
 	send_single_8bit_int(message.bullet_flag);
 	send_single_8bit_int(message.object_id);
+}
+
+void ServerProtocol::send_round_ended_message(const Gamestate& message)
+{
+    if (not client_is_connected.load()) return;
+    send_single_8bit_int(message.type);
+    send_single_8bit_int(message.player_id);
+    send_single_8bit_int(message.round);
 }
 
 void ServerProtocol::receive_message(Gameaction& received)

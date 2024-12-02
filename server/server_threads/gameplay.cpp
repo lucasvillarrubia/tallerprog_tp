@@ -8,47 +8,15 @@
 const int MULTIPLAYER_ID_OFFSET = 128;
 
 
-Gameplay::Gameplay(MonitoredList<Player*>& player_list, const std::map<int, bool>& multiplayer_modes, Queue<Gameaction>& usr_cmds):
-        is_running(false), players(player_list), multiplayer_mode_by_player(multiplayer_modes), user_commands(usr_cmds) {
-    // patos de prueba para el zoom
-    // Duck hugo, paco, luis;
-    // hugo.set_position(210.0f, 300.0f);
-    // paco.set_position(300.0f, 300.0f);
-    // luis.set_position(220.0f, 350.0f);
-    // luis.set_is_NOT_alive();
-    // ducks_by_id.insert({2, hugo});
-    // ducks_by_id.insert({3, paco});
-    // ducks_by_id.insert({4, luis});
-    // for (int i = 1; i <= player_list.size(); i++)
-    // {
-    //     Duck duck;
-    //     ducks_by_id.insert({i, duck});
-    // }
-    // for (auto& [id, is_multiplayer] : multiplayer_mode_by_player)
-    // {
-    //     float x = 300.0f;
-    //     float y = 300.0f;
-    //     Duck duck;
-    //     duck.set_position(x, y);
-    //     duck.set_is_on_the_floor();
-    //     ducks_by_id.insert({id, duck});
-    //     if (is_multiplayer) {
-    //         Duck second;
-    //         second.set_position(210.0f, 300.0f);
-    //         second.set_is_on_the_floor();
-    //         ducks_by_id.insert({id + MULTIPLAYER_ID_OFFSET, second});
-    //     }
-    // }
-    guns_by_id.insert({1, new AK47(650.0f, 180.0f)});
-    guns_by_id.insert({2, new DuelPistol(630.0f, 180.0f)});
-    guns_by_id.insert({3, new CowboyPistol(200.0f, 300.0f)});
-    guns_by_id.insert({4, new Magnum(670.0f, 189.0f)});
-    guns_by_id.insert({5, new Sniper(300.0f, 300.0f)});
-    guns_by_id.insert({6, new Banana(100.0f, 200.0f)});
-    guns_by_id.insert({7, new Grenade(150.0f, 200.0f)});
-    guns_in_map = guns_by_id.size();
-    spawn_places.push_back(SpawnPlace(160.0f, 200.0f));
-}
+Gameplay::Gameplay(MonitoredList<Player*>& player_list, std::map<int, bool>& multiplayer_modes, Queue<Gameaction>& usr_cmds):
+
+        is_running(false),
+        players(player_list),
+        multiplayer_mode_by_player(multiplayer_modes),
+        user_commands(usr_cmds),
+        terrain(spawn_places, guns_by_id, ducks_by_id)
+{}
+
 
 void Gameplay::broadcast_for_all_players(const Gamestate& state)
 {
@@ -59,44 +27,38 @@ void Gameplay::broadcast_for_all_players(const Gamestate& state)
                 return;
         }
         player->add_message_to_queue(state);
-    });
+    }
+    );
 }
 
 void Gameplay::send_all_initial_coordinates()
 {
-    // for (int i = 1; i <= players.size(); i++)
-    // {
-    //     if (i == 1) {
-            // float x = 300.0f;
-            // float y = 300.0f;
-            // Duck duck;
-            // duck.set_position(x, y);
-            // duck.set_is_on_the_floor();
-            // ducks_by_id.insert({1, duck});
-            // Gamestate initial_duck_coordinates(1, x, y, 0, 0, 0, 1, 1, 0.0f);
-            // broadcast_for_all_players(initial_duck_coordinates);
-        // }
-    // }
+    
     for (auto& [id, is_multiplayer] : multiplayer_mode_by_player)
     {
-        float x = 300.0f;
-        float y = 300.0f;
+        // float x = 300.0f;
+        // float y = 300.0f;
         Duck duck;
-        duck.set_position(x, y);
-        duck.set_is_on_the_floor();
+        // duck.set_position(x, y);
+        // duck.set_is_on_the_floor();
         ducks_by_id.insert({id, duck});
         std::cout << "id: " << id << " is_multiplayer: " << is_multiplayer << "\n";
         if (is_multiplayer) {
             Duck second;
-            second.set_position(210.0f, 300.0f);
-            second.set_is_on_the_floor();
+            // second.set_position(210.0f, 300.0f);
+            // second.set_is_on_the_floor();
             ducks_by_id.insert({id + MULTIPLAYER_ID_OFFSET, second});
             std::cout << "id: " << id + MULTIPLAYER_ID_OFFSET << "\n";
         }
     }
+    terrain.set_ducks_positions();
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
     for (auto& [id, duck]: ducks_by_id)
     {
         Coordinates position = StateManager::get_duck_coordinates(duck);
+        Color color(rand() % 255, rand() % 255, rand() % 255);
+        if (duck_colors_by_id.find(id) == duck_colors_by_id.end())
+            duck_colors_by_id.insert({id, color});
         Gamestate initial_duck_coordinates(
             id,
             position.pos_X,
@@ -106,10 +68,19 @@ void Gameplay::send_all_initial_coordinates()
             0,
             1,
             StateManager::get_duck_is_alive(duck),
-            0.0f
+            0.0f,
+            color
         );
         broadcast_for_all_players(initial_duck_coordinates);
     }
+
+
+    // guns_by_id.insert({1, new AK47(650.0f, 180.0f)});
+    // guns_by_id.insert({2, new DuelPistol(630.0f, 180.0f)});
+    // guns_by_id.insert({3, new CowboyPistol(200.0f, 300.0f)});
+    // guns_by_id.insert({4, new Magnum(670.0f, 189.0f)});
+    // guns_by_id.insert({5, new Sniper(300.0f, 300.0f)});
+    guns_in_map = guns_by_id.size();
     for (auto& [id, gun] : guns_by_id) {
     	Coordinates position = gun->getPosition();
     	Gamestate initial_gun_coordinates(
@@ -121,6 +92,8 @@ void Gameplay::send_all_initial_coordinates()
     	);
     	broadcast_for_all_players(initial_gun_coordinates);
     }
+    spawn_places.push_back(SpawnPlace(160.0f, 200.0f));
+
 }
 
 void Gameplay::process_users_commands() {
@@ -132,6 +105,7 @@ void Gameplay::process_users_commands() {
             Gamestate duck_is_dead(StateManager::get_duck_state(ducks_by_id.at(command.player_id), command.player_id));
             broadcast_for_all_players(duck_is_dead);
             ducks_by_id.erase(command.player_id);
+            multiplayer_mode_by_player.erase(command.player_id);
             players.remove_if([&](Player* player) { return player->matches(command.player_id); });
             std::cout << "the game has " << players.size() << " players\n";
             continue;
@@ -148,6 +122,7 @@ void Gameplay::process_users_commands() {
 void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
 {
     std::map<int, Coordinates> positions_by_id;
+    std::map<int, float> speeds_by_id;
     for (auto& [id, duck]: ducks_by_id)
     {
         if (StateManager::get_duck_is_alive(duck) == 0)
@@ -163,6 +138,7 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
         try_to_shoot(duck);
         try_to_slip_or_explode(duck);
         positions_by_id.insert({id, updated_position});
+        speeds_by_id.insert({id, StateManager::get_duck_speed(duck)});
         if (StateManager::get_duck_is_alive(duck) == 0)
         {
             // ducks_by_id.erase(id);
@@ -170,7 +146,7 @@ void Gameplay::send_ducks_positions_updates(const unsigned int frame_delta)
             broadcast_for_all_players(duck_is_dead);
         }
     }
-    Gamestate update(positions_by_id);
+    Gamestate update(positions_by_id, speeds_by_id);
     broadcast_for_all_players(update);
 }
 
@@ -286,9 +262,16 @@ void Gameplay::send_bullets_positions_updates(const unsigned int frame_delta) {
 				continue;
 			//-----reemplazar por nueva colision
 			}*/
-			//if (colision contra pato){
-				//duck.damage(bullet.impact)
-			//}
+			for (auto& [duck_id, duck] : ducks_by_id) {
+                Coordinates duck_position = StateManager::get_duck_coordinates(duck);
+                if (StateManager::get_duck_is_alive(duck) && duck_position.pos_X < after_coordinates.pos_X + 10 && duck_position.pos_X > after_coordinates.pos_X - 10 && duck_position.pos_Y < after_coordinates.pos_Y + 10 && duck_position.pos_Y > after_coordinates.pos_Y - 10) {
+                    bullet->impact();
+                    duck.set_is_NOT_alive();
+                    Gamestate duck_is_dead(StateManager::get_duck_state(duck, duck_id));
+                    broadcast_for_all_players(duck_is_dead);
+                    break;
+                }
+            }
 			if (bullet->is_destroyed()) {
 				Gamestate update(id);
 				players.broadcast(update);
@@ -320,24 +303,52 @@ void Gameplay::update_spawn_places() {
 	}
 }
 
+void Gameplay::check_for_winner()
+{
+    std::vector<int> survivor_ids;
+    for (auto& [id, duck] : ducks_by_id) {
+        if (StateManager::get_duck_is_alive(duck) == 1) {
+            survivor_ids.push_back(id);
+        }
+    }
+    if (survivor_ids.size() == 1)
+    {
+        round_is_over = true;
+        Gamestate winner(survivor_ids[0], current_round);
+        broadcast_for_all_players(winner);
+        ducks_by_id.clear();
+        guns_by_id.clear();
+        bullets_by_id.clear();
+        spawn_places.clear();
+        guns_in_map = 0;
+        bullets_fired = 0;
+        current_round++;
+    }
+}
+
 void Gameplay::run() {
     try
     {
         is_running.store(true);
-        auto prev_time = std::chrono::steady_clock::now();
-        send_all_initial_coordinates();
         while (is_running.load()) {
-            auto current_time = std::chrono::steady_clock::now();
-            auto frame_delta = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - prev_time).count();
-            prev_time = current_time;
-            process_users_commands();
-            send_ducks_positions_updates(frame_delta);
-            send_guns_positions_updates(frame_delta);
-            send_bullets_positions_updates(frame_delta);
-            update_spawn_places();
-            std::this_thread::sleep_for(std::chrono::milliseconds(16));
-            if (players.size() == 0) {
-                is_running.store(false);
+            auto prev_time = std::chrono::steady_clock::now();
+            send_all_initial_coordinates();
+            round_is_over = false;
+            while (not round_is_over) {
+                auto current_time = std::chrono::steady_clock::now();
+                auto frame_delta = std::chrono::duration_cast<std::chrono::milliseconds>(current_time - prev_time).count();
+                prev_time = current_time;
+                process_users_commands();
+                send_ducks_positions_updates(frame_delta);
+                send_guns_positions_updates();
+                send_bullets_positions_updates(frame_delta);
+                update_spawn_places();
+                check_for_winner();
+                std::this_thread::sleep_for(std::chrono::milliseconds(16));
+                if (players.size() == 0) {
+                    is_running.store(false);
+                    break;
+                }
             }
         }
     }

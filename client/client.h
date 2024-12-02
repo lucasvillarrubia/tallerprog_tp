@@ -33,7 +33,8 @@ private:
     LocalPlayer connection;
     EventListener event_listener;
     StateManager state;
-    // Renderer renderloop;
+    SDL2pp::SDL sdl;
+    Renderer renderloop;
     Updater updater;
     lobby gamelobby;
     bool multiplayer_mode;

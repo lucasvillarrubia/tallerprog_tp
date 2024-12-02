@@ -1,24 +1,10 @@
 entities:
-  # - x: -50.0
-  #   y: 400.0
-  #   width: 1300.0
-  #   height: 50.0
-  #   texture: piso_azul
+
   - x: -50.0
     y: -300.0
-    width: 1300.0
+    width: 1000.0
     height: 50.0
     texture: piso_azul
-  # - x: -50.0
-  #   y: -300.0
-  #   width: 50.0
-  #   height: 700.0
-  #   texture: pared_azul
-  # - x: 1200.0
-  #   y: -300.0
-  #   width: 50.0
-  #   height: 700.0
-  #   texture: pared_azul
   - x: 300.0
     y: 400.0
     width: 250.0
@@ -69,3 +55,51 @@ entities:
     width: 30.0
     height: 100.0
     texture: pared_azul
+  - x: 600
+    y: 300.0
+    width: 100.0
+    height: 30.0
+    texture: pared_azul
+spawn_places_patos:
+  - x: 300.0
+    y: 300.0
+  - x: 220.0
+    y: 30.0
+  - x: 835
+    y: -250
+  - x: 125
+    y: -250
+  - x: 965
+    y: 180
+spawn_places_cajas:
+  - x: 505
+    y: -20
+  - x: 355
+    y: -250
+  - x: 330
+    y: 180
+  - x: 480
+    y: 430
+  - x: 540
+    y: -250
+spawn_places_armas:
+  - x: 610
+    y: -250
+  - x: 905
+    y: -120
+  - x: 550
+    y: 130
+  - x: 220
+    y: 30
+  - x: 720
+    y: -20
+  - x: 900
+    y: 130
+  - x: 390
+    y: 430
+  - x: 865
+    y: 430
+  - x: 110
+    y: 180
+  - x: -40
+    y: 250

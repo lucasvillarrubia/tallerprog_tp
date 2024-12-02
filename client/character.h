@@ -7,6 +7,7 @@ const float INITIAL_Y_COORDINATE = 0.0f;
 // const float INITIAL_Y_COORDINATE = -85.0f;
 const int AVAILABLE_MOVEMENT_SPRITES = 6;
 
+#include "common/color.h"
 
 struct Character {
     int id;
@@ -17,8 +18,12 @@ struct Character {
     bool is_flapping;
     bool moving_right;
     bool is_alive;
+    bool is_slipping;
+    bool is_pointing_upwards;
+    bool is_ducking;
     float jump_velocity;
     int movement_phase;
+    Color color;
     explicit Character(const int _id):
         id(_id),
         pos_X(INITIAL_X_COORDINATE),
@@ -28,6 +33,9 @@ struct Character {
         is_flapping(false),
         moving_right(true),
         is_alive(true),
+        is_slipping(false),
+        is_pointing_upwards(false),
+        is_ducking(false),
         jump_velocity(0.0f),
         movement_phase(0) {}
     // void update_position(unsigned int);
