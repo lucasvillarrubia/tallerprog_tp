@@ -249,8 +249,6 @@ void Renderer::dibujar_cajas(const float zoom_offset_x, const float zoom_offset_
 
     std::vector<Caja> cajas;
 
-    (void)zoom_offset_x; // Marcado como no usado
-    (void)zoom_offset_y; 
 
     for (const auto& spawn : config["spawn_places_cajas"]) {
         float x = spawn["x"].as<float>();
@@ -272,7 +270,7 @@ void Renderer::dibujar_cajas(const float zoom_offset_x, const float zoom_offset_
 
         
         SDL2pp::Texture* texture = textureManager.getItem("caja");
-        
+
         if (texture) {
             renderer.Copy(*texture, SDL2pp::NullOpt, rect);
         } 

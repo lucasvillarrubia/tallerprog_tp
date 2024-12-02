@@ -4,6 +4,7 @@
 
 #include "client_threads/event_listener.h"
 #include "local_player.h"
+#include <SDL2/SDL_mixer.h>
 #include "renderer.h"
 #include "state_manager.h"
 #include "client_threads/updater.h"
@@ -37,6 +38,7 @@ private:
     Renderer renderloop;
     Updater updater;
     lobby gamelobby;
+    Mix_Music* background_music;
     bool multiplayer_mode;
     int current_id;
     int current_match;
