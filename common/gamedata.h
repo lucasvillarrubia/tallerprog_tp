@@ -130,6 +130,7 @@ struct Gamestate: Gamedata {
     	const int _id,
     	const int _type,
     	const int direction,
+    	const int up,
     	float x,
     	float y
     ) : 
@@ -139,7 +140,8 @@ struct Gamestate: Gamedata {
         pos_X(x),
         pos_Y(y),
         type_gun(_type),
-    	move_direction(direction) {}
+    	move_direction(direction),
+    	is_pointing_upwards(up) {}
     
     //envia las nuevas posiciones de las balas--el flag es para que no se confunda con el del update de posiciones de patos--
     Gamestate(

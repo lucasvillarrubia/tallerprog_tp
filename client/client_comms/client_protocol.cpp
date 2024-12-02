@@ -107,15 +107,16 @@ void ClientProtocol::receive_guns_positions_message(Gamestate& received) {
 	std::map<int, std::pair<DrawingData, Coordinates>> guns_positions;
 	receive_single_8bit_int(positions_count);
     for (int i = 0; i < positions_count; i++) {
-    	uint8_t id, type_gun, direction, shooting;
+    	uint8_t id, type_gun, direction, shooting, up;
         float pos_X, pos_Y;
         receive_single_8bit_int(id);
         receive_single_8bit_int(type_gun);
         receive_single_8bit_int(direction);
         receive_single_8bit_int(shooting);
+        receive_single_8bit_int(up);
         receive_single_float(pos_X);
         receive_single_float(pos_Y);
-        DrawingData gun_data = { type_gun, direction, shooting };
+        DrawingData gun_data = { type_gun, direction, shooting, up };
         Coordinates gun_position = { pos_X, pos_Y};
         guns_positions.insert({id, std::make_pair(gun_data, gun_position)});
     }
@@ -124,14 +125,15 @@ void ClientProtocol::receive_guns_positions_message(Gamestate& received) {
 
 void ClientProtocol::receive_bullet_init_message(Gamestate& received) {
 	if (not client_is_connected.load()) return;
-    uint8_t gun_id, type_gun, direction;
+    uint8_t gun_id, type_gun, direction, up;
     float pos_X, pos_Y;
     receive_single_8bit_int(gun_id);
     receive_single_float(pos_X);
     receive_single_float(pos_Y);
     receive_single_8bit_int(type_gun);
     receive_single_8bit_int(direction);
-    received = Gamestate(gun_id, type_gun, direction, pos_X, pos_Y);
+    receive_single_8bit_int(up);
+    received = Gamestate(gun_id, type_gun, direction, up, pos_X, pos_Y);
 }
 
 void ClientProtocol::receive_bullets_positions_message(Gamestate& received) {

@@ -80,6 +80,7 @@ void Gameplay::send_all_initial_coordinates()
     // guns_by_id.insert({3, new CowboyPistol(200.0f, 300.0f)});
     // guns_by_id.insert({4, new Magnum(670.0f, 189.0f)});
     // guns_by_id.insert({5, new Sniper(300.0f, 300.0f)});
+    guns_by_id.insert({500, new LaserRifle(300.0f, -240.0f)});
     guns_in_map = guns_by_id.size();
     for (auto& [id, gun] : guns_by_id) {
     	Coordinates position = gun->getPosition();
@@ -184,15 +185,23 @@ void Gameplay::try_to_shoot(Duck& duck) {
 	Coordinates after_coordinates = StateManager::get_duck_coordinates(duck);
 	if (duck.have_a_gun()) {
         guns_by_id.at(duck.get_gun_id())->updatePosition(after_coordinates.pos_X, after_coordinates.pos_Y);
-        guns_by_id.at(duck.get_gun_id())->updateDirection(duck.is_moving_to_the_right());
+        guns_by_id.at(duck.get_gun_id())->updateDirection(duck.is_moving_to_the_right(), duck.is_pointing_up());
         if (duck.shooting()) {
         	if (guns_by_id.at(duck.get_gun_id())->shoot(bullets_fired, bullets_by_id)) {
         		Coordinates bullet_position = bullets_by_id.back().second->getPosition();
         		int direction = guns_by_id.at(duck.get_gun_id())->is_pointing_to_the_right() ? 1 : 0;
-        		Gamestate initial_bullet_coordinates(bullets_fired, guns_by_id.at(duck.get_gun_id())->getType(), direction, bullet_position.pos_X, bullet_position.pos_Y);
+        		Gamestate initial_bullet_coordinates(bullets_fired, guns_by_id.at(duck.get_gun_id())->getType(), direction,guns_by_id.at(duck.get_gun_id())->is_pointing_up(), bullet_position.pos_X, bullet_position.pos_Y);
         		players.broadcast(initial_bullet_coordinates);
         	}
         }else{
+        	if (guns_by_id.at(duck.get_gun_id())->is_pew_pew_laser()) {
+        		if (guns_by_id.at(duck.get_gun_id())->shoot(bullets_fired, bullets_by_id)) {
+        			Coordinates bullet_position = bullets_by_id.back().second->getPosition();
+        			int direction = guns_by_id.at(duck.get_gun_id())->is_pointing_to_the_right() ? 1 : 0;
+        			Gamestate initial_bullet_coordinates(bullets_fired, guns_by_id.at(duck.get_gun_id())->getType(), direction,guns_by_id.at(duck.get_gun_id())->is_pointing_up(), bullet_position.pos_X, bullet_position.pos_Y);
+        			players.broadcast(initial_bullet_coordinates);
+        		}	
+        	}
         	guns_by_id.at(duck.get_gun_id())->stopShoot();
         }
 	}    
@@ -242,7 +251,7 @@ void Gameplay::send_guns_positions_updates(const unsigned int frame_delta) {
 				//enviar mensaje de explosion
 			}
 		}
-		DrawingData gun_data = {gun->getType(), gun->is_pointing_to_the_right() ? 1 : 0, gun->isShooting()};
+		DrawingData gun_data = {gun->getType(), gun->is_pointing_to_the_right() ? 1 : 0, gun->isShooting(), gun->is_pointing_up() ? 1 : 0};
 		auto gun_position = gun->getPosition();
 		guns_positions.insert({id, std::make_pair(gun_data, gun_position)});
 	}	
@@ -303,7 +312,7 @@ void Gameplay::update_spawn_places() {
             	gun->is_pointing_to_the_right() ? 1 : 0
     		);
     		broadcast_for_all_players(initial_gun_coordinates);
-			std::cout<<"aparecio un arma con id: "<<guns_in_map<<std::endl;
+			std::cout<<"aparecio un arma con id: "<<guns_in_map<<"en la posicion x:"<<position.pos_X<<" y:"<<position.pos_Y<<std::endl;
 		}
 	}
 }

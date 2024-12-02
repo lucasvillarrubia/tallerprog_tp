@@ -13,6 +13,7 @@
 #include "Sniper.h"
 #include "Banana.h"
 #include "Grenade.h"
+#include "PewPewLaser.h"
 
 class SpawnPlace {
 private:
@@ -32,6 +33,8 @@ public:
 	bool try_spawn_gun(int& id, std::map<int,Gun*>& guns);
 	void spawn_grenade(const int id, std::map<int,Gun*>& guns);
 	void spawn_banana(const int id, std::map<int,Gun*>& guns);
+	void spawn_pew_pew_laser(const int id, std::map<int,Gun*>& guns);
+	void spawn_laser_rifle(const int id, std::map<int,Gun*>& guns);
 	void spawn_ak47(const int id, std::map<int,Gun*>& guns);
 	void spawn_duel_pistol(const int id, std::map<int,Gun*>& guns);
 	void spawn_cowboy_pistol(const int id, std::map<int,Gun*>& guns);

@@ -76,6 +76,7 @@ public:
     bool shooting();
     int get_gun_id() const;
     void slip();
+    bool is_pointing_up();
     // Coordinates get_coordinates() const;
     // int get_movement_phase () const;
     friend class StateManager;

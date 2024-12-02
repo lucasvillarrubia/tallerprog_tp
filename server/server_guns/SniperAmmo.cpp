@@ -1,6 +1,6 @@
 #include "SniperAmmo.h"
 
-SniperAmmo::SniperAmmo(float x, float y, bool right) : Ammo(x,y,right,10, 64*64), damagePoints(10) {}
+SniperAmmo::SniperAmmo(float x, float y, bool right, bool up) : Ammo(x,y,right,up,10, 64*64), damagePoints(10) {}
 
 void SniperAmmo::update_position(const unsigned int frame_delta)  {
 	if (!destroyed){

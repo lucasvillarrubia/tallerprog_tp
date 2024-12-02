@@ -248,7 +248,15 @@ if(TALLER_SERVER)
 			server/server_guns/SpawnPlace.cpp
 			server/server_guns/SpawnPlace.h
 			server/server_guns/Grenade.cpp
-			server/server_guns/Grenade.h)
+			server/server_guns/Grenade.h
+			server/server_guns/PewPewLaser.cpp
+			server/server_guns/PewPewLaser.h
+			server/server_guns/PewPewLaserAmmo.cpp
+			server/server_guns/PewPewLaserAmmo.h
+			server/server_guns/LaserRifle.cpp
+			server/server_guns/LaserRifle.h
+			server/server_guns/LaserRifleAmmo.cpp
+			server/server_guns/LaserRifleAmmo.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)

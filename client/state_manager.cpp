@@ -54,6 +54,7 @@ void StateManager::update(const Gamestate& update)
     		new_bullet.pos_Y = update.pos_Y;
     		new_bullet.type = update.type_gun;
     		new_bullet.moving_right = update.move_direction;
+    		new_bullet.moving_up = update.is_pointing_upwards;
     		bullets.push_back(new_bullet);
     		break;
     	}
@@ -93,6 +94,7 @@ void StateManager::update_guns(const Gamestate& update)
         if (update.guns_positions_by_id.contains(gun.id)) {
         	gun.pointing_to_the_right = update.guns_positions_by_id.at(gun.id).first.right;
         	gun.shooting = update.guns_positions_by_id.at(gun.id).first.shooting;
+        	gun.pointing_up = update.guns_positions_by_id.at(gun.id).first.up;
             update_gun_position(gun, update.guns_positions_by_id.at(gun.id).second);
         }
     }
