@@ -6,6 +6,7 @@
 
 #include "client/character.h"
 #include "client/state_manager.h"
+#include "client/caja.h"
 #include "SDL2pp/Renderer.hh"
 #include "SDL2pp/SDL.hh"
 #include "SDL2pp/Surface.hh"
@@ -16,6 +17,7 @@
 #include <vector>
 #include <fstream>
 #include "SDL2pp/Font.hh"
+#include <SDL2/SDL_mixer.h>
 
 #include "state.h"
 
@@ -53,7 +55,6 @@ Renderer::Renderer(std::atomic_bool& con_stat, Queue<Gamestate>& q, StateManager
 void Renderer::draw_character(Character& character, int frame, const float zoom_offset_x, const float zoom_offset_y)
 {
     SDL2pp::Texture* sprite;
-    
     if (character.is_ducking) {
         sprite = textureManager.getDuckSpriteDucking(character.id);
     } else if (character.is_jumping) {
@@ -61,21 +62,52 @@ void Renderer::draw_character(Character& character, int frame, const float zoom_
     } else {
         sprite = textureManager.getDuckSprite(character.id, character.color);
     }
+    
 
+    
     int vcenter = renderer.GetOutputHeight();
     int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame);
     int src_y = DUCK_MOVEMENT_SPRITES_LINE;
     SDL_RendererFlip flip = character.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
     
     SDL_Rect src_rect = { src_x, src_y, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
-    SDL_Rect dst_rect = { 
-        static_cast<int>(character.pos_X + zoom_offset_x), 
-        static_cast<int>(vcenter - DUCK_SPRITE_HEIGHT - character.pos_Y + zoom_offset_y), 
-        DUCK_SPRITE_WIDTH, 
-        DUCK_SPRITE_HEIGHT 
+    SDL_Rect dst_rect = {
+        static_cast<int>(character.pos_X + zoom_offset_x),
+        static_cast<int>(vcenter - DUCK_SPRITE_HEIGHT - character.pos_Y + zoom_offset_y),
+        DUCK_SPRITE_WIDTH,
+        DUCK_SPRITE_HEIGHT
     };
-
     SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, flip);
+
+    if (true){ // poner aca las condiciones tiene casco o no, tiene armadura o no
+
+        SDL2pp::Texture* armorTexture = textureManager.getItem("armadura");
+        if (armorTexture) {
+            SDL_Rect armor_src_rect = { 0, 0, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
+            SDL_Rect armor_dst_rect = {
+                static_cast<int>(character.pos_X + zoom_offset_x) + 5,
+                static_cast<int>(vcenter - DUCK_SPRITE_HEIGHT - character.pos_Y + zoom_offset_y + 15),
+                DUCK_SPRITE_WIDTH -10,
+                DUCK_SPRITE_HEIGHT -10
+            };
+            SDL_RenderCopyEx(renderer.Get(), armorTexture->Get(), &armor_src_rect, &armor_dst_rect, 0.0, nullptr, flip);
+        }
+
+        SDL2pp::Texture* cascoTexture = textureManager.getItem("casco");
+        if (cascoTexture) {
+            SDL_Rect armor_src_rect = { 0, 0, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
+            int casco_width = DUCK_SPRITE_WIDTH -20;  // Ajusta el factor de reducción (por ejemplo, la mitad del tamaño)
+            int casco_height = DUCK_SPRITE_HEIGHT -20;
+            SDL_Rect armor_dst_rect = {
+                static_cast<int>(character.pos_X + zoom_offset_x + (DUCK_SPRITE_WIDTH - casco_width) / 2 ), // Centrar el casco en X
+                static_cast<int>(vcenter - DUCK_SPRITE_HEIGHT - character.pos_Y + zoom_offset_y - 15 + (DUCK_SPRITE_HEIGHT - casco_height) / 2), // Ajustar en Y
+                casco_width,
+                casco_height
+            };
+            SDL_RenderCopyEx(renderer.Get(), cascoTexture->Get(), &armor_src_rect, &armor_dst_rect, 0.0, nullptr, flip);
+        }
+    }
+
 }
 
 void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_offset_y) {
@@ -345,6 +377,39 @@ void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y
     }
 }
 
+void Renderer::dibujar_cajas(const float zoom_offset_x, const float zoom_offset_y) {
+    YAML::Node config = YAML::LoadFile(getCurrentMap());
+
+    std::vector<Caja> cajas;
+
+
+    for (const auto& spawn : config["spawn_places_cajas"]) {
+        float x = spawn["x"].as<float>();
+        float y = spawn["y"].as<float>();
+        cajas.emplace_back(x, y); // Crear una nueva instancia de Caja y agregarla al vector
+    }
+
+    for (const auto& caja : cajas) {
+        
+        float width = 50.0f;
+        float height = 50.0f;
+
+        SDL2pp::Rect rect(
+            static_cast<int>(caja.x + zoom_offset_x),
+            static_cast<int>(renderer.GetOutputHeight() + zoom_offset_y - caja.y - height),
+            static_cast<int>(width),
+            static_cast<int>(height)
+        );
+
+        
+        SDL2pp::Texture* texture = textureManager.getItem("caja");
+
+        if (texture) {
+            renderer.Copy(*texture, SDL2pp::NullOpt, rect);
+        } 
+    }
+}
+
 
 void Renderer::draw_bg(){
     // YAML::Node config_bg = YAML::LoadFile("resources/current_map.yaml");
@@ -364,6 +429,9 @@ void Renderer::draw_bg(){
     
 }
 
+void Renderer::playJumpSound(const std::string& soundName, int volume) {
+    textureManager.playPreloadedSound(soundName, volume);
+}
 
 void Renderer::load_background(){
     // Create a render texture
@@ -451,15 +519,28 @@ void Renderer::render(int frame) {
         }
 
 
-        // State current_state = state.get_state();
         character_list.clear();
+        character_list = state.get_characters_data();
+        // std::list<Character> character_list = state.get_characters_data();
+
+        for (const auto& character : character_list) {
+            if (character.jump_velocity > 13.0f) {
+                
+                playJumpSound("salto", 128);
+            }
+        }
+
+
+        // State current_state = state.get_state();
+        // character_list.clear();
         gun_list.clear();
         bullet_list.clear();
-        character_list = state.get_characters_data();
+        // character_list = state.get_characters_data();
         gun_list = state.get_guns_data();
         bullet_list = state.get_bullets_data();
 
         std::list<Explosion> explosion_list = state.get_explosions_data();
+
 
         
         // std::list<Character> character_list = current_state.dukis;
@@ -476,7 +557,10 @@ void Renderer::render(int frame) {
             duck_positions.emplace_back(character.pos_X, character.pos_Y);
             sum_x += character.pos_X;
             sum_y += character.pos_Y;
+          //  std::cout << "Character jump_velocity: " << character.jump_velocity << std::endl;
         }
+
+        
         
         float avg_x = duck_positions.empty() ? 0.0f : sum_x / duck_positions.size();
         float avg_y = duck_positions.empty() ? 0.0f : sum_y / duck_positions.size();
@@ -498,10 +582,11 @@ void Renderer::render(int frame) {
         // DiIBUJO MAPA
         dibujar_mapa(zoom_offset_x, zoom_offset_y);
 
+        dibujar_cajas(zoom_offset_x, zoom_offset_y);
+
         // DIBUJO PATOS
         for (auto& character : character_list) {
             // if (character.is_alive)
-            // std::cout << "drawing character\n";
             draw_character(character, frame, zoom_offset_x, zoom_offset_y);
         }
         
@@ -512,7 +597,6 @@ void Renderer::render(int frame) {
         
         // DIBUJO BALAS
         for (auto& bullet : bullet_list) {
-        	// std::cout<<bullet.id<<"- x:"<<bullet.pos_X<<" y: "<<bullet.pos_Y<<std::endl;
         	draw_bullet(bullet, zoom_offset_x, zoom_offset_y);
         }
 

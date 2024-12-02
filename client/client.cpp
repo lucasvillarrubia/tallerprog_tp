@@ -6,6 +6,7 @@
 #include <utility>
 
 #include "SDL2pp/SDL.hh"
+#include <SDL2/SDL_mixer.h>
 #include <QApplication>
 #include "lobby/lobby.h"
 #include <QMessageBox>
@@ -36,6 +37,7 @@ Client::Client(const char* hostname, const char* servname):
         // renderloop(game_on, window, renderer, updates, state),
         updater(updates, state),
         gamelobby(nullptr),
+        background_music(nullptr),
         multiplayer_mode(false)
 {
     connect(&gamelobby, &lobby::create_one_player_match, this, &Client::handle_create_one_player_match);
@@ -46,7 +48,27 @@ Client::Client(const char* hostname, const char* servname):
         std::cerr << "TTF_Init failed: " << TTF_GetError() << std::endl;
         SDL_Quit();
     }
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+        std::cerr << "SDL_mixer could not initialize! SDL_mixer Error: " 
+                  << Mix_GetError() << std::endl;
+    }
+    background_music = Mix_LoadMUS("resources/musica_fondo.wav");
+    if (!background_music) {
+        std::cerr << "Failed to load background music! SDL_mixer Error: " 
+                  << Mix_GetError() << std::endl;
+    }
 }
+
+// Client::~Client() {
+//     // Free the music
+//     if (background_music) {
+//         Mix_FreeMusic(background_music);
+//         background_music = nullptr;
+//     }
+    
+//     // Close SDL_mixer
+//     Mix_CloseAudio();
+// }
 
 void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono::milliseconds rate)
 {
@@ -131,6 +153,9 @@ void Client::run() {
         while (true) {        
             gamelobby.show();
             gamelobby.reset_buttons();
+            if (background_music) {
+                Mix_PlayMusic(background_music, -1); // -1 means loop indefinitely
+            }
             state.reset();
             app.exec();
             // if (gamelobby.was_closed_by_X()) {

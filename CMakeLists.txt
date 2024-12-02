@@ -139,6 +139,7 @@ if(TALLER_CLIENT)
             client/state_manager.cpp
             client/texture_manager.h
             client/state_manager.h
+            client/caja.h
             client/client_threads/updater.cpp
             client/client_threads/updater.h
             client/lobby/lobby.cpp
