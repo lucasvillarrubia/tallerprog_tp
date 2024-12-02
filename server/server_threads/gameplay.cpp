@@ -310,7 +310,7 @@ void Gameplay::update_spawn_places() {
             	gun->is_pointing_to_the_right() ? 1 : 0
     		);
     		broadcast_for_all_players(initial_gun_coordinates);
-			std::cout<<"aparecio un arma con id: "<<guns_in_map<<std::endl;
+			std::cout<<"aparecio un arma con id: "<<guns_in_map<<"en la posicion x:"<<position.pos_X<<" y:"<<position.pos_Y<<std::endl;
 		}
 	}
 }

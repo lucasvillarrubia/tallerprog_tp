@@ -1,6 +1,6 @@
 #include "SpawnPlace.h"
 
-SpawnPlace::SpawnPlace(float x, float y) : pos_X(y), pos_Y(y), item_spawned(false), gun_spawned(false), item_picked(false), hitbox(x,y,32,32), min_time_to_respawn(5) {
+SpawnPlace::SpawnPlace(float x, float y) : pos_X(x), pos_Y(y), item_spawned(false), gun_spawned(false), item_picked(false), hitbox(x,y,32,32), min_time_to_respawn(5) {
 	last_spawn_time = std::chrono::steady_clock::now();
 }
 
