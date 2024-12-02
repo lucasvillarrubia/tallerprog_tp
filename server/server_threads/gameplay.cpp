@@ -106,6 +106,8 @@ void Gameplay::process_users_commands() {
             broadcast_for_all_players(duck_is_dead);
             ducks_by_id.erase(command.player_id);
             multiplayer_mode_by_player.erase(command.player_id);
+            // Gamestate exit(command.player_id, "You have exited the game.");
+            // players.get_by_id(command.player_id)->add_message_to_queue(exit);
             players.remove_if([&](Player* player) { return player->matches(command.player_id); });
             std::cout << "the game has " << players.size() << " players\n";
             continue;
@@ -300,7 +302,7 @@ void Gameplay::run() {
                 send_bullets_positions_updates(frame_delta);
                 update_spawn_places();
                 check_for_winner();
-                std::this_thread::sleep_for(std::chrono::milliseconds(16));
+                std::this_thread::sleep_for(std::chrono::milliseconds(17));
                 if (players.size() == 0) {
                     is_running.store(false);
                     break;

@@ -23,7 +23,7 @@ void MatchManager::create_match(int creator_id, int creator_multiplayer_mode)
     new_match->add_player(creator, creator_id, (creator_multiplayer_mode == 1));
     matches.push_back(new_match);
     creators_by_match.insert({match_count, creator_id});
-    Gamestate match_created(creator_id, 0, match_count);
+    Gamestate match_created(creator_id, 0, match_count, 1);
     std::cout << "the player " << match_created.player_id << " created a match with id " << match_created.match_id << '\n';
     creator->add_message_to_queue(match_created);
 }
@@ -42,7 +42,7 @@ void MatchManager::join_to_match(int player, int match_id, int joiner_multiplaye
         return;
     }
     match->add_player(player_to_join, player, (joiner_multiplayer_mode == 1));
-    Gamestate match_joined(player, 0, match_id);
+    Gamestate match_joined(player, 0, match_id, match->get_player_count());
     player_to_join->add_message_to_queue(match_joined);
 }
 
@@ -61,7 +61,7 @@ void MatchManager::start_match(int player, int match_id)
         return;
     }
     if (not match->is_connected()) {
-        Gamestate match_started(player, 0, match_id);
+        Gamestate match_started(player, 0, match_id, match->get_player_count());
         requestor->add_message_to_queue(match_started);
         match->send_start_message(player);
         match->start();

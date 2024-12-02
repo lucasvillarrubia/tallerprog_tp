@@ -10,6 +10,7 @@
 #include "gun.h"
 #include "bullet.h"
 
+#include "state.h"
 
 class StateManager
 {
@@ -23,13 +24,13 @@ private:
     void update_gun_position(Gun&, const Coordinates&);
     void update_bullet_position(Bullet&, const Coordinates&);
     void update_duck_state(const Gamestate& update);
-public:
-    StateManager();
-    void update(const Gamestate&);
     void update_ducks(const Gamestate&);
     void update_guns(const Gamestate&);
     void update_bullets(const Gamestate&);
     void destroy_bullet(const int id);
+public:
+    StateManager();
+    void update(const Gamestate&);
     void reset();
     // bool is_moving_to_the_right();
     // Coordinates get_coordinates();
@@ -37,6 +38,7 @@ public:
     std::list<Character> get_characters_data();
     std::list<Gun> get_guns_data();
     std::list<Bullet> get_bullets_data();
+    State get_state();
     ~StateManager() = default;
 };
 

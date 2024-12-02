@@ -17,23 +17,34 @@
 #include <fstream>
 #include "SDL2pp/Font.hh"
 
+#include "state.h"
+
 const int DUCK_SPRITE_WIDTH = 64;
 const int DUCK_SPRITE_HEIGHT = 70;
 const int DUCK_MOVEMENT_SPRITES_LINE = 0;
 
 
 // Renderer::Renderer(std::atomic_bool& con_stat, SDL2pp::Window& w, SDL2pp::Renderer& r, Queue<Gamestate>& q, StateManager& s): connected(con_stat), window(w), renderer(r), updates_feed(q), state(s) {}
-Renderer::Renderer(std::atomic_bool& con_stat, Queue<Gamestate>& q, StateManager& s):
+Renderer::Renderer(std::atomic_bool& con_stat, Queue<Gamestate>& q, StateManager& s, const int& player_count):
         connected(con_stat),
         window("Duck Game",
             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
             640, 480,
-            SDL_WINDOW_HIDDEN | SDL_WINDOW_RESIZABLE),
+            SDL_WINDOW_HIDDEN),
+            // SDL_WINDOW_HIDDEN | SDL_WINDOW_RESIZABLE),
         renderer(window, -1, SDL_RENDERER_ACCELERATED),
         updates_feed(q),
         state(s),
-        textureManager(renderer)
-        {}
+        textureManager(renderer),
+        player_count(player_count)
+        // original_window_width(original_window_width),
+        // original_window_height(original_window_height)
+    {
+        original_window_height = renderer.GetOutputHeight();
+        original_window_width = renderer.GetOutputWidth();
+        config_bg = YAML::LoadFile("resources/current_map.yaml");
+        config_map = YAML::LoadFile(getCurrentMap());
+    }
 
 void Renderer::draw_character(Character& character, int frame, const float zoom_offset_x, const float zoom_offset_y)
 {
@@ -123,71 +134,153 @@ SDL_Rect Renderer::search_dimension_sprite(int vcenter, Gun& gun, const float zo
 	}
 }
 
-void Renderer::calculate_zoom_offsets(float& offset_x, float& offset_y, float avg_x, float avg_y) {
-    int window_width = window.GetWidth();
-    int window_height = window.GetHeight();
+// void Renderer::calculate_zoom_offsets(float& offset_x, float& offset_y, float avg_x, float avg_y) {
+//     int window_width = original_window_width;
+//     int window_height = original_window_height;
     
-    float target_center_x = window_width / 2.0f;
-    float target_center_y = window_height * 0.7f;  
+//     float target_center_x = window_width / 2.0f;
+//     float target_center_y = window_height * 0.7f;  
     
-    float center_offset_x = target_center_x - avg_x;
+//     float center_offset_x = target_center_x - avg_x;
     
-    float center_offset_y = (target_center_y - (window_height - avg_y));
+//     float center_offset_y = (target_center_y - (window_height - avg_y));
     
-    float zoomed_width = window_width * zoom_factor;
-    float zoomed_height = window_height * zoom_factor;
-    float width_diff = zoomed_width - window_width;
-    float height_diff = zoomed_height - window_height;
+//     float zoomed_width = window_width * zoom_factor;
+//     float zoomed_height = window_height * zoom_factor;
+//     float width_diff = zoomed_width - window_width;
+//     float height_diff = zoomed_height - window_height;
     
-    offset_x = center_offset_x + (width_diff / -2.0f);
-    offset_y = center_offset_y + (height_diff / -2.0f);
+//     offset_x = center_offset_x + (width_diff / -2.0f);
+//     offset_y = center_offset_y + (height_diff / -2.0f);
+// }
+
+void Renderer::calculate_zoom_offsets(float& offset_x, float& offset_y, 
+                                    const float avg_x, const float avg_y) {
+    float screen_center_x = original_window_width * 0.5f;
+    float screen_center_y = original_window_height * 0.5f;
+
+    offset_x = screen_center_x - (avg_x * zoom_factor);
+    offset_y = screen_center_y - ((original_window_height - avg_y) * zoom_factor);
 }
 
+void Renderer::calculate_required_zoom() {
+    // if (duck_positions.empty()) {
+    //     zoom_factor = 1.0f;
+    //     return;
+    // }
 
-void Renderer::calculate_required_zoom(const std::vector<Coordinates>& duck_positions) {
+    // // Single pass through positions
+    // auto& state = zoom_state;
+    // state.min_x = state.max_x = duck_positions[0].pos_X;
+    // state.min_y = state.max_y = duck_positions[0].pos_Y;
+
+    // for (const auto& pos : duck_positions) {
+    //     // Branchless min/max
+    //     state.min_x += (pos.pos_X - state.min_x) * (pos.pos_X < state.min_x);
+    //     state.max_x += (pos.pos_X - state.max_x) * (pos.pos_X > state.max_x);
+    //     state.min_y += (pos.pos_Y - state.min_y) * (pos.pos_Y < state.min_y);
+    //     state.max_y += (pos.pos_Y - state.max_y) * (pos.pos_Y > state.max_y);
+    // }
+
+    // // Combine calculations
+    // const float width_scale = original_window_width / 
+    //     ((state.max_x - state.min_x) + DUCK_SPRITE_WIDTH * PADDING_FACTOR);
+    // const float height_scale = original_window_height / 
+    //     ((state.max_y - state.min_y) + DUCK_SPRITE_HEIGHT * PADDING_FACTOR);
+
+    // // Calculate new zoom
+    // const float new_zoom = std::min(width_scale, height_scale) * 0.8f;
+    // const float clamped_zoom = std::clamp(new_zoom, MIN_ZOOM, MAX_ZOOM);
+    
+    // // Apply smoothing
+    // zoom_factor = state.last_zoom + (clamped_zoom - state.last_zoom) * SMOOTH_FACTOR;
+    // state.last_zoom = zoom_factor;
+
     if (duck_positions.empty()) {
         zoom_factor = 1.0f;
         return;
     }
 
-    float min_x = duck_positions[0].pos_X;
-    float max_x = duck_positions[0].pos_X;
-    float min_y = duck_positions[0].pos_Y;
-    float max_y = duck_positions[0].pos_Y;
+    // Find bounds
+    auto& state = zoom_state;
+    state.min_x = state.max_x = duck_positions[0].pos_X;
+    state.min_y = state.max_y = duck_positions[0].pos_Y;
+
+    state.min_y = -100.0f;
+    state.max_y = 100.0f;
+    state.min_x = -100.0f;
+    state.max_x = 100.0f; 
 
     for (const auto& pos : duck_positions) {
-        min_x = std::min(min_x, pos.pos_X);
-        max_x = std::max(max_x, pos.pos_X);
-        min_y = std::min(min_y, pos.pos_Y);
-        max_y = std::max(max_y, pos.pos_Y);
+        state.min_x = std::min(state.min_x, pos.pos_X);
+        state.max_x = std::max(state.max_x, pos.pos_X);
+        state.min_y = std::min(state.min_y, pos.pos_Y);
+        state.max_y = std::max(state.max_y, pos.pos_Y);
     }
 
-    const float PADDING_FACTOR = 4.0f;  
-    float width_needed = (max_x - min_x) + DUCK_SPRITE_WIDTH * PADDING_FACTOR;
-    float height_needed = (max_y - min_y) + DUCK_SPRITE_HEIGHT * PADDING_FACTOR;
+    // Add padding
+    float width = (state.max_x - state.min_x) + PADDING;
+    float height = (state.max_y - state.min_y) + PADDING;
 
-    float zoom_x = window.GetWidth() / width_needed;
-    float zoom_y = window.GetHeight() / height_needed;
-
-    zoom_factor = std::min(zoom_x, zoom_y) * 0.8f;  
-
-    const float MIN_ZOOM = 0.1f;  
-    const float MAX_ZOOM = 1.0f;
-    zoom_factor = std::max(MIN_ZOOM, std::min(zoom_factor, MAX_ZOOM));
-
-    static float last_zoom = 1.0f;
-    const float SMOOTH_FACTOR = 0.1f;
-    zoom_factor = last_zoom + (zoom_factor - last_zoom) * SMOOTH_FACTOR;
-    last_zoom = zoom_factor;
+    // Calculate required zoom
+    float zoom_x = original_window_width / width;
+    float zoom_y = original_window_height / height;
+    state.target_zoom = std::min(zoom_x, zoom_y);
+    
+    // Clamp and smooth
+    state.target_zoom = std::clamp(state.target_zoom, MIN_ZOOM, MAX_ZOOM);
+    zoom_factor = state.current_zoom + 
+                  (state.target_zoom - state.current_zoom) * ZOOM_SMOOTH;
+    state.current_zoom = zoom_factor;
 }
 
+// void Renderer::calculate_required_zoom(const std::vector<Coordinates>& duck_positions) {
+// void Renderer::calculate_required_zoom() {
+//     if (duck_positions.empty()) {
+//         zoom_factor = 1.0f;
+//         return;
+//     }
+
+//     float min_x = duck_positions[0].pos_X;
+//     float max_x = duck_positions[0].pos_X;
+//     float min_y = duck_positions[0].pos_Y;
+//     float max_y = duck_positions[0].pos_Y;
+
+//     for (const auto& pos : duck_positions) {
+//         min_x = std::min(min_x, pos.pos_X);
+//         max_x = std::max(max_x, pos.pos_X);
+//         min_y = std::min(min_y, pos.pos_Y);
+//         max_y = std::max(max_y, pos.pos_Y);
+//     }
+
+//     const float PADDING_FACTOR = 4.0f;  
+//     float width_needed = (max_x - min_x) + DUCK_SPRITE_WIDTH * PADDING_FACTOR;
+//     float height_needed = (max_y - min_y) + DUCK_SPRITE_HEIGHT * PADDING_FACTOR;
+
+//     float zoom_x = original_window_width / width_needed;
+//     float zoom_y = original_window_height / height_needed;
+
+//     zoom_factor = std::min(zoom_x, zoom_y) * 0.8f;  
+
+//     const float MIN_ZOOM = 0.1f;  
+//     const float MAX_ZOOM = 1.0f;
+//     zoom_factor = std::max(MIN_ZOOM, std::min(zoom_factor, MAX_ZOOM));
+
+//     static float last_zoom = 1.0f;
+//     const float SMOOTH_FACTOR = 0.1f;
+//     zoom_factor = last_zoom + (zoom_factor - last_zoom) * SMOOTH_FACTOR;
+//     last_zoom = zoom_factor;
+// }
+
+
+
 void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y) {
-    YAML::Node config = YAML::LoadFile(getCurrentMap());
-    if (!config["entities"] || !config["entities"].IsSequence()) {
+    // YAML::Node config_map = YAML::LoadFile(getCurrentMap());
+    if (!config_map["entities"] || !config_map["entities"].IsSequence()) {
         throw std::runtime_error("Error al leer entities en el archivo YAML");
     }
 
-    for (const auto& entity : config["entities"]) {
+    for (const auto& entity : config_map["entities"]) {
         float x = entity["x"].as<float>();
         float y = entity["y"].as<float>();
         float width = entity["width"].as<float>();
@@ -195,7 +288,8 @@ void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y
         
         SDL2pp::Rect rect(
             static_cast<int>(x + zoom_offset_x),
-            static_cast<int>(renderer.GetOutputHeight() + zoom_offset_y - y - height),
+            // static_cast<int>(renderer.GetOutputHeight() + zoom_offset_y - y - height),
+            static_cast<int>(original_window_height + zoom_offset_y - y - height),
             static_cast<int>(width),
             static_cast<int>(height)
         );
@@ -213,17 +307,17 @@ void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y
 
 
 void Renderer::draw_bg(){
-    YAML::Node config = YAML::LoadFile("resources/current_map.yaml");
+    // YAML::Node config_bg = YAML::LoadFile("resources/current_map.yaml");
 
     std::string mapa_actual;
-    mapa_actual = config["current_map"].as<std::string>();
+    mapa_actual = config_bg["current_map"].as<std::string>();
 
 
     SDL2pp::Texture* texture = textureManager.getTextura(mapa_actual);
 
     if (texture) {
         // Dibujar la textura
-        renderer.Copy(*texture, SDL2pp::Rect(0, 0, window.GetWidth(), window.GetHeight()));
+        renderer.Copy(*texture, SDL2pp::Rect(0, 0, original_window_width, original_window_height));
     } else {
         std::cerr << "Error: No se encontró la textura para el mapa: " << mapa_actual << std::endl;
     }
@@ -248,33 +342,45 @@ void Renderer::render(int frame) {
             state.update(update);
         }
 
+        // State current_state = state.get_state();
+
         std::list<Character> character_list = state.get_characters_data();
         std::list<Gun> gun_list = state.get_guns_data();
         std::list<Bullet> bullet_list = state.get_bullets_data();
         
+        // std::list<Character> character_list = current_state.dukis;
+        // std::list<Gun> gun_list = current_state.guns;
+        // std::list<Bullet> bullet_list = current_state.bullets;
+
+        duck_positions.clear();
         // CALCULO ZOOM Y POSICIONES
-        std::vector<Coordinates> duck_positions;
+        // std::vector<Coordinates> duck_positions;
         float sum_x = 0.0f;
         float sum_y = 0.0f;
         
         for (auto& character : character_list) {
             duck_positions.emplace_back(character.pos_X, character.pos_Y);
-            std::cout << "Character position - X: " << character.pos_X 
-              << ", Y: " << character.pos_Y << std::endl;
+            // std::cout << "Character position - X: " << character.pos_X 
+            //   << ", Y: " << character.pos_Y << std::endl;
             sum_x += character.pos_X;
             sum_y += character.pos_Y;
         }
         
-        float avg_x = duck_positions.empty() ? 0.0f : sum_x / duck_positions.size();
-        float avg_y = duck_positions.empty() ? 0.0f : sum_y / duck_positions.size();
+        float avg_x = duck_positions.empty() ? 0.0f : sum_x / character_list.size();
+        float avg_y = duck_positions.empty() ? 0.0f : sum_y / character_list.size();
 
-        calculate_required_zoom(duck_positions);
+        // calculate_required_zoom(duck_positions);
+        calculate_required_zoom();
+        // duck_positions.clear();
         
         float zoom_offset_x, zoom_offset_y;
         calculate_zoom_offsets(zoom_offset_x, zoom_offset_y, avg_x, avg_y);
 
 
         renderer.SetScale(this->zoom_factor, this->zoom_factor);
+
+        std::cout << "Zoom: " << zoom_factor 
+              << " Offset: (" << zoom_offset_x << "," << zoom_offset_y << ")\n";
 
         // DiIBUJO MAPA
         dibujar_mapa(zoom_offset_x, zoom_offset_y);
