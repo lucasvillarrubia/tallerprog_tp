@@ -66,7 +66,7 @@ void StateManager::update(const Gamestate& update)
     case 15:
     	explode_grenade(update.object_id);
     	break;
-    caso 13:
+    case 13:
         reset();
         round = update.round;
         break;
@@ -140,6 +140,7 @@ void StateManager::explode_grenade(const int id) {
 			gun.is_destroyed = true;
 		}
 	}
+	std::cout<<"se recibió la explosion"<<std::endl;
 	clear_destroyed_gun(id);
 }
 
