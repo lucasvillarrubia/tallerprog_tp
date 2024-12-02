@@ -29,10 +29,11 @@ Client::Client(const char* hostname, const char* servname):
         // renderer(window, -1, SDL_RENDERER_ACCELERATED),
         connected(false),
         game_on(false),
-        connection(std::move(Socket(hostname, servname)), events, updates, connected),
+        connection(std::move(Socket(hostname, servname)), events, updates, connected, state),
         event_listener(game_on, events, multiplayer_mode, current_match),
         sdl(SDL_INIT_VIDEO),
-        renderloop(game_on, updates, state),
+        current_player_count(0),
+        renderloop(game_on, updates, state, current_player_count),
         // renderloop(game_on, window, renderer, updates, state),
         updater(updates, state),
         gamelobby(nullptr),
@@ -73,25 +74,73 @@ void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono
 {
     auto t1 = std::chrono::steady_clock::now();
     int it = 0;
+    const auto min_sleep = std::chrono::milliseconds(1);
     while (true)
     {
-        processing(it);
+        // tratando de hacer lo de martín
+        // processing(it);
+        // if (not game_on.load() or not connected.load()) break;
+        // auto t2 = std::chrono::steady_clock::now();
+        // auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1);
+        // auto rest = rate - elapsed;
+        // if (rest.count() < 0)
+        // {
+        //     auto behind = -rest;
+        //     auto lost = behind - (behind % rate);
+        //     t1 += lost;
+        //     it += static_cast<int>(lost.count() / rate.count());
+        // }
+        // else
+        // {
+        //     std::this_thread::sleep_for(rest);
+        //     t1 += rate;
+        // }
+
+        // gpt
+        // if (rest.count() > 0)
+        // {
+        //     std::this_thread::sleep_for(rest);
+        //     t1 += rate;
+        // }
+        // else
+        // {
+        //     // std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        //     t1 = t2;
+        // }
+        // ++it;
+
+        //claudio
         if (not game_on.load() or not connected.load()) break;
+        
+        processing(it);
+        
         auto t2 = std::chrono::steady_clock::now();
         auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1);
         auto rest = rate - elapsed;
+
         if (rest.count() < 0)
         {
+            // We're behind schedule
             auto behind = -rest;
-            auto lost = behind - behind % rate;
-            t1 += lost;
-            it += static_cast<int>(lost.count() / rate.count());
+            if (behind > rate * 10) // If severely behind, reset
+            {
+                t1 = t2;
+                it = 0;
+            }
+            else 
+            {
+                auto lost = behind - (behind % rate);
+                t1 += lost;
+                it += static_cast<int>(lost.count() / rate.count());
+            }
+            std::this_thread::sleep_for(min_sleep); // Prevent CPU spin
+            std::this_thread::yield(); // Let other threads run
         }
         else
         {
-            std::this_thread::sleep_for(rate);
+            std::this_thread::sleep_for(rest);
+            t1 += rate;
         }
-        t1 += rate;
         ++it;
     }
 }
@@ -99,7 +148,7 @@ void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono
 void Client::run() {
     try
     {
-        std::chrono::milliseconds rate(16);
+        std::chrono::milliseconds rate(17);
         connection.start_communication();
         while (true) {        
             gamelobby.show();
@@ -118,14 +167,16 @@ void Client::run() {
                 updates.close();
                 events.close();
                 connection.end_connection();
+                // updater.stop();
+                // updater.join();
                 break;
             }
             // SDL2pp::SDL sdl(SDL_INIT_VIDEO);
             // Renderer renderloop(game_on, updates, state);
-
+            renderloop.reserve_for_players();
             renderloop.open_window();
             std::cout << "Client running\n";
-
+            // updater.start();
             while (game_on.load() && connected.load())
             {
                 constant_rate_loop([&](int frame)
@@ -135,6 +186,8 @@ void Client::run() {
                 }, rate);
             }
             renderloop.close_window();
+            // updater.stop();
+            // updater.join();
             game_on.store(false);
             int i = 0;
             Gamestate end_game;
@@ -258,6 +311,7 @@ void Client::handle_start_match()
         gamelobby.revert_start_button_actions();
         return;
     }
+    current_player_count = match_started.player_count;
     gamelobby.close();
     game_on.store(true);
     std::cout << "starting match " << current_match << '\n';
@@ -327,6 +381,7 @@ void Client::handle_join_match(int match_id)
         gamelobby.revert_start_button_actions();
         return;
     }
+    current_player_count = match_started.player_count;
     gamelobby.close();
     game_on.store(true);
 }

@@ -107,14 +107,15 @@ void ClientProtocol::receive_guns_positions_message(Gamestate& received) {
 	std::map<int, std::pair<DrawingData, Coordinates>> guns_positions;
 	receive_single_8bit_int(positions_count);
     for (int i = 0; i < positions_count; i++) {
-    	uint8_t id, type_gun, direction;
+    	uint8_t id, type_gun, direction, shooting;
         float pos_X, pos_Y;
         receive_single_8bit_int(id);
         receive_single_8bit_int(type_gun);
         receive_single_8bit_int(direction);
+        receive_single_8bit_int(shooting);
         receive_single_float(pos_X);
         receive_single_float(pos_Y);
-        DrawingData gun_data = { type_gun, direction };
+        DrawingData gun_data = { type_gun, direction, shooting };
         Coordinates gun_position = { pos_X, pos_Y};
         guns_positions.insert({id, std::make_pair(gun_data, gun_position)});
     }
@@ -172,11 +173,12 @@ void ClientProtocol::receive_match_error_message(Gamestate& received)
 void ClientProtocol::receive_match_info_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
-    uint8_t player, match_errors_flag, match_id;
+    uint8_t player, match_errors_flag, match_id, player_count;
     receive_single_8bit_int(player);
     receive_single_8bit_int(match_errors_flag);
     receive_single_8bit_int(match_id);
-    received = Gamestate(player, match_errors_flag, match_id);
+    receive_single_8bit_int(player_count);
+    received = Gamestate(player, match_errors_flag, match_id, player_count);
 }
 
 void ClientProtocol::receive_matches_info_message(Gamestate& received)
@@ -198,6 +200,16 @@ void ClientProtocol::receive_matches_info_message(Gamestate& received)
     received = Gamestate(player, matches_info);
 }
 
+void ClientProtocol::receive_explosion_message(Gamestate& received) {
+    if (not client_is_connected.load()) return;
+    uint8_t flag, grenade_id;
+    float flag2;
+    receive_single_8bit_int(flag);
+    receive_single_8bit_int(grenade_id);
+    receive_single_float(flag2);
+    received = Gamestate(flag, grenade_id, flag2);
+}
+
 void ClientProtocol::receive_round_ended_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
@@ -205,6 +217,17 @@ void ClientProtocol::receive_round_ended_message(Gamestate& received)
     receive_single_8bit_int(player);
     receive_single_8bit_int(round);
     received = Gamestate(player, round);
+}
+
+void ClientProtocol::receive_exit_message(Gamestate& received)
+{
+    if (not client_is_connected.load()) return;
+    uint8_t player;
+    std::vector<char> exit_msg;
+    receive_single_8bit_int(player);
+    receive_string(exit_msg);
+    std::string exit_message(exit_msg.begin(), exit_msg.end());
+    received = Gamestate(player, exit_message);
 }
 
 void ClientProtocol::receive_message(Gamestate& received)
@@ -244,8 +267,14 @@ void ClientProtocol::receive_message(Gamestate& received)
     case 12:
         receive_matches_info_message(received);
         break;
+	case 15:
+		receive_explosion_message(received);
+		break;
     case 13:
         receive_round_ended_message(received);
+        break;
+    case 14:
+        receive_exit_message(received);
         break;
     default:
         receive_character_update_message(received);

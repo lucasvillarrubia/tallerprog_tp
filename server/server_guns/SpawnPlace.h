@@ -11,6 +11,8 @@
 #include "CowboyPistol.h"
 #include "Magnum.h"
 #include "Sniper.h"
+#include "Banana.h"
+#include "Grenade.h"
 
 class SpawnPlace {
 private:
@@ -28,6 +30,8 @@ public:
 	bool is_item_spawned();
 	//bool try_spawn_item(int& id, std::list<Item*>& items);
 	bool try_spawn_gun(int& id, std::map<int,Gun*>& guns);
+	void spawn_grenade(const int id, std::map<int,Gun*>& guns);
+	void spawn_banana(const int id, std::map<int,Gun*>& guns);
 	void spawn_ak47(const int id, std::map<int,Gun*>& guns);
 	void spawn_duel_pistol(const int id, std::map<int,Gun*>& guns);
 	void spawn_cowboy_pistol(const int id, std::map<int,Gun*>& guns);

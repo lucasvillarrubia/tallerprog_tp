@@ -23,9 +23,15 @@ bool SpawnPlace::try_spawn_gun(int& id, std::map<int, Gun*>& guns) {
 			id++;
 			std::random_device rd;
 			std::mt19937 gen(rd());
-			std::uniform_int_distribution<> random(5,10);
+			std::uniform_int_distribution<> random(1,10);
 			int gun_code = random(gen);
 			switch (gun_code) {
+				case 1:
+					spawn_grenade(id, guns);
+					break;
+				case 2:
+					spawn_banana(id, guns);
+					break;
 				case 5:
 					spawn_ak47(id, guns);
 					break;
@@ -46,6 +52,14 @@ bool SpawnPlace::try_spawn_gun(int& id, std::map<int, Gun*>& guns) {
 		}
 	}
 	return false;
+}
+
+void SpawnPlace::spawn_grenade(const int id, std::map<int,Gun*>& guns) {
+	guns.insert({id, new Grenade(pos_X,pos_Y)});
+}
+
+void SpawnPlace::spawn_banana(const int id, std::map<int,Gun*>& guns) {
+	guns.insert({id, new Banana(pos_X,pos_Y)});
 }
 
 void SpawnPlace::spawn_ak47(const int id, std::map<int,Gun*>& guns) {

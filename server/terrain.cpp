@@ -113,3 +113,55 @@ void Terrain::adjust_position_for_collisions(Duck& duck, const Coordinates& posi
         duck.set_is_NOT_stomping_on_wall_from_right();
 }
 
+void Terrain::adjust_position_for_collisions(Gun* gun, const Coordinates& position_before, const Coordinates& position_after)
+{
+    Rectangulo character(position_after.pos_X, position_after.pos_Y, 64.0f, 64.0f);
+    Rectangulo character_before(position_before.pos_X, position_before.pos_Y, 64.0f, 64.0f);
+    //bool is_falling = true;
+    //bool can_move_to_the_right = true;
+    //bool can_move_to_the_left = true;
+    Coordinates adjusted = position_after;
+    for (auto& entity : map_entities)
+    {
+        if(entity.hay_colision(character)) {
+            if (gun->is_on_the_ground()) {
+                //is_falling = false;
+            }
+            if(gun->is_falling() and not entity.hay_colision_y(character_before) and entity.hay_colision_x(character_before)) {
+                adjusted.pos_Y = entity.get_ground_level();
+                gun->set_is_on_the_floor();
+                //is_falling = false;
+                gun->updatePosition(adjusted.pos_X,adjusted.pos_Y);
+            } else if (gun->is_falling() and entity.hay_colision_y(character_before) and not entity.hay_colision_x(character_before)) {
+                gun->updatePosition(position_before.pos_X, position_after.pos_Y);
+                if (entity.get_ground_level() <= position_after.pos_Y) {
+                    gun->set_is_on_the_floor();
+                    //is_falling = false;
+                }
+            } else if (not gun->is_falling() and entity.hay_colision_y(character_before) and not entity.hay_colision_x(character_before)) {
+                gun->updatePosition(position_before.pos_X,position_before.pos_Y);
+                //duck.stop_flying();
+            } else if (not gun->is_falling() and entity.hay_colision_y(character_before) and entity.hay_colision_x(character_before)) {
+                gun->updatePosition(position_after.pos_X, position_before.pos_Y);
+                //duck.stop_flying();
+                if (entity.get_ground_level() <= position_after.pos_Y) {
+                    gun->set_is_on_the_floor();
+                    //is_falling = false;
+                }
+            }
+            else {
+                gun->updatePosition(position_before.pos_X, position_after.pos_Y);
+                if (entity.get_ground_level() <= position_after.pos_Y) {
+                    gun->set_is_on_the_floor();
+                    //is_falling = false;
+                }
+            }
+        }
+    }
+    /*if (is_falling)
+        duck.set_is_NOT_on_the_floor();
+    if (can_move_to_the_right)
+        duck.set_is_NOT_stomping_on_wall_from_left();
+    if (can_move_to_the_left)
+        duck.set_is_NOT_stomping_on_wall_from_right();*/
+}

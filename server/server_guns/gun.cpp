@@ -21,3 +21,22 @@ void Gun::stopShoot() {
 	shooting = false;
 }
 
+bool Gun::is_banana_peel() {
+	return false;
+}
+
+bool Gun::is_a_grenade() {
+	return false;
+}
+
+bool Gun::in_explosion_area([[maybe_unused]] float x, [[maybe_unused]] float y) {
+	return false;
+}
+
+bool Gun::try_to_explode_grenade() {
+	return false;
+}
+
+bool Gun::is_destroyed() {
+	return false;
+}

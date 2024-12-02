@@ -24,7 +24,9 @@ public:
     void send_match_error_message(const Gamestate&);
     void send_match_info_message(const Gamestate&);
     void send_matches_info_message(const Gamestate&);
+    void send_explosion_message(const Gamestate&);
     void send_round_ended_message(const Gamestate&);
+    void send_exit_message(const Gamestate&);
     void receive_message(Gameaction&);
     ~ServerProtocol() override = default;
 };

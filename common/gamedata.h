@@ -46,6 +46,7 @@ struct Gamestate: Gamedata {
     std::list<Gamematch> matches_info;
     int round;
     Color color;
+    int player_count;
 
     Gamestate(): Gamedata(-1) {}
 
@@ -165,18 +166,31 @@ struct Gamestate: Gamedata {
         error_msg(msg) {}
 
     // envía partida que creó o a la que se unió el jugador
-    Gamestate(const int player, const int flag, const int match):
+    Gamestate(const int player, const int flag, const int match, const int player_count):
         Gamedata(player),
         type(11),
         match_errors_flag(flag),
-        match_id(match) {}
+        match_id(match),
+        player_count(player_count)
+        {}
 
     // envía información de partidas
     Gamestate(const int player, std::list<Gamematch>& matches):
         Gamedata(player),
         type(12),
-        matches_info(matches) {}
+        matches_info(matches) {}      
+	//envia la explosiónde la granada
+    Gamestate(const int flag, const int _id, float flag2) : 
+		Gamedata(0),
+    	type(15),
+    	object_id(_id),
+    	bullet_flag(flag),
+    	match_errors_flag(flag2) {}
+  
     Gamestate(const int player, const int round): Gamedata(player), type(13), round(round) {}
+
+    Gamestate(const int player, const std::string& exit_msg): Gamedata(player), type(14), error_msg(exit_msg) {}
+
 };
 
 struct Gameaction: Gamedata {

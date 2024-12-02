@@ -18,7 +18,7 @@ private:
     ClientSender sender;
     ClientReceiver receiver;
 public:
-    LocalPlayer(Socket&&, Queue<Gameaction>&, Queue<Gamestate>&, std::atomic_bool&);
+    LocalPlayer(Socket&&, Queue<Gameaction>&, Queue<Gamestate>&, std::atomic_bool&, StateManager&);
     void start_communication();
     void end_connection();
     LocalPlayer(const LocalPlayer&) = delete;

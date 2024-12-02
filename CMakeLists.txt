@@ -146,6 +146,7 @@ if(TALLER_CLIENT)
             client/lobby/lobby.h
             client/lobby/lobby.ui
             # client/color.h
+            client/state.h
     )
 
     # Make them depend on taller_common lib
@@ -242,8 +243,12 @@ if(TALLER_SERVER)
 			server/server_guns/Sniper.h
 			server/server_guns/SniperAmmo.cpp
 			server/server_guns/SniperAmmo.h
+			server/server_guns/Banana.h
+			server/server_guns/Banana.cpp
 			server/server_guns/SpawnPlace.cpp
-			server/server_guns/SpawnPlace.h)
+			server/server_guns/SpawnPlace.h
+			server/server_guns/Grenade.cpp
+			server/server_guns/Grenade.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)
@@ -279,8 +284,12 @@ if(TALLER_TESTS)
     include(GoogleTest)
 
     # target for testing
-    # HEY!! TODO XXX: Change the name of the executable to the one you like!
-    add_executable(taller_tests)
+    # HEY!! TODO XXX: Change the name of the executable to the one you like
+    add_executable(taller_tests
+        client/client_comms/client_protocol.cpp
+        server/server_comms/server_protocol.cpp
+        common/hands_on_sockets/socket.cpp
+    )
 
     # HEY!! TODO XXX: I'm assuming that the code under testing is in taller_common
     # Change this if you have to.
@@ -308,6 +317,8 @@ if(TALLER_TESTS)
     # Change this if you have to.
     target_link_libraries(taller_tests
         taller_common
+        GTest::gtest
+        GTest::gmock
         GTest::gtest_main
     )
 endif()
