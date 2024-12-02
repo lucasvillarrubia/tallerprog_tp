@@ -35,10 +35,10 @@ private:
         float current_zoom = 1.0f;
     } zoom_state;
 
-    static constexpr float MIN_ZOOM = 0.5f;
-    static constexpr float MAX_ZOOM = 2.0f;
+    static constexpr float MIN_ZOOM = 0.1f;
+    static constexpr float MAX_ZOOM = 1.0f;
     static constexpr float ZOOM_SMOOTH = 0.1f;
-    static constexpr float PADDING = 200.0f;
+    static constexpr float PADDING = 300.0f;
 
     std::atomic_bool& connected;
     SDL2pp::Window window;

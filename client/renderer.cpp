@@ -240,10 +240,10 @@ void Renderer::calculate_required_zoom() {
     state.min_x = state.max_x = duck_positions[0].pos_X;
     state.min_y = state.max_y = duck_positions[0].pos_Y;
 
-    state.min_y = -100.0f;
-    state.max_y = 100.0f;
-    state.min_x = -100.0f;
-    state.max_x = 100.0f; 
+    state.min_y = 600.0f;
+    state.max_y = -400.0f;
+    state.min_x = 1200.0f;
+    state.max_x = -300.0f; 
 
     for (const auto& pos : duck_positions) {
         state.min_x = std::min(state.min_x, pos.pos_X);
@@ -265,6 +265,7 @@ void Renderer::calculate_required_zoom() {
     float zoom_x = original_window_width / width;
     float zoom_y = original_window_height / height;
     state.target_zoom = std::min(zoom_x, zoom_y);
+    std::cout << "target_zoom: " << state.target_zoom << std::endl;
     
     // Clamp and smooth
     state.target_zoom = std::clamp(state.target_zoom, MIN_ZOOM, MAX_ZOOM);
