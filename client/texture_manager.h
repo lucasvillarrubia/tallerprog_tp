@@ -9,6 +9,7 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <SDL2/SDL_mixer.h>
 
 #include "common/color.h"
 
@@ -22,15 +23,42 @@ private:
     std::unordered_map<int, std::unique_ptr<SDL2pp::Texture>> duck_sprites_ducking;
     std::map<std::string, std::unique_ptr<SDL2pp::Texture>> guns_sprites;
     std::map<std::string, std::unique_ptr<SDL2pp::Texture>> items_sprites;
+    std::map<std::string, Mix_Chunk*> preloaded_sounds;
     std::map<int, Color> duck_colors_by_id;
 public:
     TextureManager(SDL2pp::Renderer& renderer) : renderer(renderer) {
+        if (Mix_Init(MIX_INIT_MP3) < 0) {
+            std::cerr << "SDL_mixer initialization error: " << Mix_GetError() << std::endl;
+        }
+        
+        // Open audio device
+        if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+            std::cerr << "SDL_mixer audio device error: " << Mix_GetError() << std::endl;
+        }
         cargarTexturas();
         cargarDuckSprites();
         cargarDuckSpritesVolando();
         cargarDuckSpritesDucking();
         cargarGunsSprites();
         cargarItemsSprites();
+        cargarSonidos();
+    }
+
+    ~TextureManager() {
+        // Free preloaded sounds
+        for (auto& sound : preloaded_sounds) {
+            if (sound.second) {
+                Mix_FreeChunk(sound.second);
+            }
+        }
+        
+        // Close audio device and quit SDL_mixer
+        Mix_CloseAudio();
+        Mix_Quit();
+    }
+
+    void cargarSonidos() {
+        preloadSound("salto", "resources/sonidos/salto.wav");
     }
 
     void cargarTexturas() {
@@ -48,6 +76,35 @@ public:
         cargarTextura("mapa_minecraft", "resources/fondo_minecraft.png");
         cargarTextura("mapa_ciudad", "resources/fondo_ciudad.png");
         cargarTextura("mapa_desierto", "resources/fondo_desierto.png");
+    }
+
+    void preloadSound(const std::string& soundName, const std::string& soundPath) {
+        // Check if sound is already preloaded
+        if (preloaded_sounds.find(soundName) != preloaded_sounds.end()) {
+            return;
+        }
+
+        Mix_Chunk* sound = Mix_LoadWAV(soundPath.c_str());
+        if (!sound) {
+            std::cerr << "Error preloading sound file " << soundPath << ": " << Mix_GetError() << std::endl;
+            return;
+        }
+
+        preloaded_sounds[soundName] = sound;
+    }
+
+    void playPreloadedSound(const std::string& soundName, int volume = MIX_MAX_VOLUME) {
+        auto it = preloaded_sounds.find(soundName);
+        if (it == preloaded_sounds.end()) {
+            std::cerr << "Sound not preloaded: " << soundName << std::endl;
+            return;
+        }
+
+        Mix_VolumeChunk(it->second, volume);
+        int channel = Mix_PlayChannel(-1, it->second, 0);
+        if (channel == -1) {
+            std::cerr << "Error playing sound: " << Mix_GetError() << std::endl;
+        }
     }
 
     void cargarTextura(const std::string& nombre, const std::string& path) {

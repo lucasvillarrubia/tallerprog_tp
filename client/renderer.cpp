@@ -17,6 +17,7 @@
 #include <vector>
 #include <fstream>
 #include "SDL2pp/Font.hh"
+#include <SDL2/SDL_mixer.h>
 
 const int DUCK_SPRITE_WIDTH = 64;
 const int DUCK_SPRITE_HEIGHT = 70;
@@ -296,6 +297,9 @@ void Renderer::draw_bg(){
     
 }
 
+void Renderer::playJumpSound(const std::string& soundName, int volume) {
+    textureManager.playPreloadedSound(soundName, volume);
+}
 
 void Renderer::render(int frame) {
     try {
@@ -315,6 +319,14 @@ void Renderer::render(int frame) {
         }
 
         std::list<Character> character_list = state.get_characters_data();
+
+        for (const auto& character : character_list) {
+            if (character.jump_velocity > 13.0f) {
+                
+                playJumpSound("salto", 128);
+            }
+        }
+
         std::list<Gun> gun_list = state.get_guns_data();
         std::list<Bullet> bullet_list = state.get_bullets_data();
         
@@ -328,7 +340,10 @@ void Renderer::render(int frame) {
             
             sum_x += character.pos_X;
             sum_y += character.pos_Y;
+          //  std::cout << "Character jump_velocity: " << character.jump_velocity << std::endl;
         }
+
+        
         
         float avg_x = duck_positions.empty() ? 0.0f : sum_x / duck_positions.size();
         float avg_y = duck_positions.empty() ? 0.0f : sum_y / duck_positions.size();
