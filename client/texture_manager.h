@@ -59,6 +59,7 @@ public:
 
     void cargarSonidos() {
         preloadSound("salto", "resources/sonidos/salto.wav");
+        preloadSound("explosion", "resources/sonidos/explosion.wav");
     }
 
     void cargarTexturas() {

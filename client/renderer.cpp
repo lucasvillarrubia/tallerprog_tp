@@ -157,6 +157,7 @@ void Renderer::draw_explosion(Explosion& explosion, const float zoom_offset_x, c
     SDL_Rect src_rect = {explosion.current_state*64,0,64,64};
     SDL_Rect dst_rect = { static_cast<int>(explosion.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - explosion.pos_Y + zoom_offset_y), 64, 64 };
     SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, 0.0, nullptr, SDL_FLIP_NONE);
+    textureManager.playPreloadedSound("explosion", 128);
 }
 
 SDL_Rect Renderer::search_sprite(Gun& gun) {
