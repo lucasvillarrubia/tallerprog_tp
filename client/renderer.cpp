@@ -603,6 +603,9 @@ void Renderer::render(int frame) {
         // DIBUJO PATOS
         for (auto& character : character_list) {
             // if (character.is_alive)
+            std::cout << "Character position: X = " << character.pos_X 
+              << ", Y = " << character.pos_Y << std::endl;
+
             draw_character(character, frame, zoom_offset_x, zoom_offset_y);
         }
         
