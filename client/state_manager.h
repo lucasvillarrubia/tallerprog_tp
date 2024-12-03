@@ -16,19 +16,25 @@
 class StateManager
 {
 private:
-    std::mutex mtx;
+    // std::mutex mtx;
+    const int& current_id;
+    int& match_winner;
+    const bool& is_multiplayer;
     std::list<Character> dukis;
     std::list<Gun> guns;
     std::list<Bullet> bullets;
     std::list<Explosion> explosions;
+    std::map<int, int> scores_by_id;
     int round;
+    bool alive;
+    bool match_ended;
     void update_duck_position(Character&, const Coordinates&, const float);
     void update_gun_position(Gun&, const Coordinates&);
     void update_bullet_position(Bullet&, const Coordinates&);
     void update_duck_state(const Gamestate& update);
     void explode_grenade(const int id);
 public:
-    StateManager();
+    StateManager(const int&, int&, const bool&);
     void update(const Gamestate&);
     void update_ducks(const Gamestate&);
     void update_guns(const Gamestate&);
@@ -36,7 +42,10 @@ public:
     void destroy_bullet(const int id);
     void clear_destroyed_gun(int id);
     void set_explosion_phase(const unsigned int);
+    bool you_are_alive() { return alive; }
+    bool there_is_a_winner() { return match_ended;}
     void reset();
+    void set_new_game();
     // bool is_moving_to_the_right();
     // Coordinates get_coordinates();
     // int get_movement_phase(unsigned int);
@@ -45,6 +54,8 @@ public:
     std::list<Bullet> get_bullets_data();
     State get_state();
     std::list<Explosion> get_explosions_data();
+    std::map<int, int> get_scores();
+    int get_round() { return round; }
     ~StateManager() = default;
 };
 

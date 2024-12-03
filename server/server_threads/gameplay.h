@@ -46,10 +46,12 @@ private:
     std::list<int> disconnected_players;
     std::map<int, bool>& multiplayer_mode_by_player;
     Queue<Gameaction>& user_commands;
+    int& winner_id;
     std::map<int, Duck> ducks_by_id;
     std::map<int, Color> duck_colors_by_id;
     std::map<int, Gun*> guns_by_id;
     std::list<std::pair<int, Ammo*>> bullets_by_id;
+    std::map<int, int> scores_by_id;
     std::list<SpawnPlace> spawn_places;
     int guns_in_map;
     int bullets_fired;
@@ -70,7 +72,7 @@ private:
     void check_for_winner();
     void broadcast_for_all_players(const Gamestate&);
 public:
-    Gameplay(MonitoredList<Player*>&, std::map<int, bool>&, Queue<Gameaction>&);
+    Gameplay(MonitoredList<Player*>&, std::map<int, bool>&, Queue<Gameaction>&, int&);
     void run() override;
     bool is_game_on() { return is_running.load(); }
     void stop() override;

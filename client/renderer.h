@@ -57,34 +57,20 @@ private:
     std::list<Character> character_list;
     std::list<Gun> gun_list;
     std::list<Bullet> bullet_list;
+    std::list<Explosion> explosion_list;
     
-    // float calculate_zoom_from_distance(float);
-    // void mark_zoom_dirty();
     int original_window_width;
     int original_window_height;
     std::unique_ptr<SDL2pp::Texture> map_texture;
     SDL2pp::Texture* bg_texture;
-    void load_background();
-    void set_draw_settings(const float, const float);
-    // void set_draw_settings();
-
-    int viewport_width;
-    int viewport_height;
-    int viewport_x;
-    int viewport_y;
 public:
-    // Renderer(std::atomic_bool&, Queue<Gamestate>&, StateManager&);
     Renderer(std::atomic_bool&, Queue<Gamestate>&, StateManager&, const int&);
-    
     void open_window() {
         window.Show();
     }
     void close_window() {
         window.Hide();
     }
-
-
-
     float get_zoom_factor() const { return zoom_factor; }
     void set_zoom_factor(float new_zoom_factor) { zoom_factor = new_zoom_factor; }
 

@@ -18,9 +18,9 @@ private:
     void create_match(int, int);
     void join_to_match(int, int, int);
     void start_match(int, int);
-    void add_action_to_match(const Gameaction&);
+    void add_action_to_match(const Gameaction&, const int);
     void send_matches_info(int);
-    void close_match();
+    void close_match(int, int);
 public:
     MatchManager(Queue<Gameaction>&, MonitoredList<Player*>&, MonitoredList<Match*>&);
     void run() override;

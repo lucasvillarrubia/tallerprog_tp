@@ -32,13 +32,8 @@ void EventListener::listen() {
                     if (not codes_by_event_type.contains(type) || not codes_by_key.contains(key)) return;
                 }
                 type_code = codes_by_event_type.at(type);
-                // const int key_code = codes_by_key.at(event.key.keysym.sym);
-                // int key_code;
-                // bool second_player = false;
                 if (is_multiplayer and codes_by_key_for_second_player.contains(key)) {
-                    // std::cout << "entered second player move\n";
                     key_code = codes_by_key_for_second_player.at(key);
-                    // std::cout << "key_code: " << key_code << "\n";
                     second_player = true;
                 }
                 else {

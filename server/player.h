@@ -26,14 +26,18 @@ private:
     Queue<Gamestate> messages_queue;
     ServerSender sender;
     ServerReceiver receiver;
+    int score;
 public:
     Player(Socket&&, Queue<Gameaction>&);
     void start();
     void add_message_to_queue(const Gamestate&);
     bool is_connected();
     bool matches(int) const;
+    bool has_inside(int) const;
     void disconnect();
     void set_id(int _id) { id = _id; }
+    int get_score() { return score; }
+    void add_score() { score++; }
     Player(const Player&) = delete;
     Player& operator=(const Player&) = delete;
     Player(Player&& other) = delete;
