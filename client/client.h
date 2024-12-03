@@ -43,7 +43,9 @@ private:
     bool multiplayer_mode;
     int current_id;
     int current_match;
+    int current_match_winner;
     void constant_rate_loop(std::function<void(int)>, std::chrono::milliseconds);
+    void show_winner_message();
 public:
     Client(const char*, const char*);
     void run();

@@ -4,8 +4,11 @@
 #include <QMainWindow>
 #include <QCloseEvent>
 #include <map>
+#include <atomic>
 
 #include "common/gamedata.h"
+#include "common/hands_on_threads/queue.h"
+#include <QTimer>
 
 
 QT_BEGIN_NAMESPACE
@@ -21,6 +24,7 @@ class lobby : public QMainWindow
     bool start_button_pressed = false;
     // bool refresh_button_pressed = false;
     std::map<int, bool> pressed_join_buttons;
+    QTimer* waiting_timer;
     void send_joining_signal(int);
 private slots:
     void on_createOnePlayerMatchButton_clicked();
@@ -38,7 +42,12 @@ public:
     bool was_closed_by_X() const { return closed_by_X; }
     void revert_create_button_actions();
     void revert_start_button_actions();
+    void revert_join_button_actions(int);
     void reset_buttons();
+    void restart_lobby();
+    void set_waiting_for_match(Queue<Gamestate>&, std::atomic_bool&, int&, int&);
+    void wait_for_match();
+    void stop_waiting();
     void update_lobby(const std::list<Gamematch>&, int);
     ~lobby();
 signals:

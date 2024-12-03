@@ -13,32 +13,33 @@
 #include <QIcon>
 #include <QAbstractButton>
 #include <QString>
+#include <QTimer>
 #include "common/hands_on_sockets/liberror.h"
 #include <SDL2/SDL_ttf.h>
 
 
 const int MULTIPLAYER_MODE = 0;
+const int RATE_60FPS = 17;
+const int ID_OFFSET = 128;
 
 
 Client::Client(const char* hostname, const char* servname):
         app(argc, argv),
-        // window("Duck Game",
-        //     SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-        //     640, 480,
-        //     SDL_WINDOW_RESIZABLE),
-        // renderer(window, -1, SDL_RENDERER_ACCELERATED),
         connected(false),
         game_on(false),
         connection(std::move(Socket(hostname, servname)), events, updates, connected, state),
         event_listener(game_on, events, multiplayer_mode, current_match),
+        state(current_id, current_match_winner, multiplayer_mode),
         sdl(SDL_INIT_VIDEO),
         current_player_count(0),
         renderloop(game_on, updates, state, current_player_count),
-        // renderloop(game_on, window, renderer, updates, state),
         updater(updates, state),
         gamelobby(nullptr),
         background_music(nullptr),
-        multiplayer_mode(false)
+        multiplayer_mode(false),
+        current_id(0),
+        current_match(0),
+        current_match_winner(-1)
 {
     connect(&gamelobby, &lobby::create_one_player_match, this, &Client::handle_create_one_player_match);
     connect(&gamelobby, &lobby::start_match, this, &Client::handle_start_match);
@@ -59,17 +60,6 @@ Client::Client(const char* hostname, const char* servname):
     }
 }
 
-// Client::~Client() {
-//     // Free the music
-//     if (background_music) {
-//         Mix_FreeMusic(background_music);
-//         background_music = nullptr;
-//     }
-    
-//     // Close SDL_mixer
-//     Mix_CloseAudio();
-// }
-
 void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono::milliseconds rate)
 {
     auto t1 = std::chrono::steady_clock::now();
@@ -77,39 +67,6 @@ void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono
     const auto min_sleep = std::chrono::milliseconds(1);
     while (true)
     {
-        // tratando de hacer lo de martín
-        // processing(it);
-        // if (not game_on.load() or not connected.load()) break;
-        // auto t2 = std::chrono::steady_clock::now();
-        // auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1);
-        // auto rest = rate - elapsed;
-        // if (rest.count() < 0)
-        // {
-        //     auto behind = -rest;
-        //     auto lost = behind - (behind % rate);
-        //     t1 += lost;
-        //     it += static_cast<int>(lost.count() / rate.count());
-        // }
-        // else
-        // {
-        //     std::this_thread::sleep_for(rest);
-        //     t1 += rate;
-        // }
-
-        // gpt
-        // if (rest.count() > 0)
-        // {
-        //     std::this_thread::sleep_for(rest);
-        //     t1 += rate;
-        // }
-        // else
-        // {
-        //     // std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        //     t1 = t2;
-        // }
-        // ++it;
-
-        //claudio
         if (not game_on.load() or not connected.load()) break;
         
         processing(it);
@@ -120,9 +77,8 @@ void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono
 
         if (rest.count() < 0)
         {
-            // We're behind schedule
             auto behind = -rest;
-            if (behind > rate * 10) // If severely behind, reset
+            if (behind > rate * 10)
             {
                 t1 = t2;
                 it = 0;
@@ -133,8 +89,8 @@ void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono
                 t1 += lost;
                 it += static_cast<int>(lost.count() / rate.count());
             }
-            std::this_thread::sleep_for(min_sleep); // Prevent CPU spin
-            std::this_thread::yield(); // Let other threads run
+            std::this_thread::sleep_for(min_sleep);
+            std::this_thread::yield();
         }
         else
         {
@@ -145,21 +101,59 @@ void Client::constant_rate_loop(std::function<void(int)> processing, std::chrono
     }
 }
 
+void Client::show_winner_message()
+{
+    QString styleSheet = 
+        "QMessageBox {"
+        "    background-color: #FF7900;"
+        "    color: #ffffff;"
+        "    max-width: 200px;"
+        "    min-height: 400px;"
+        "    font-size: 40px;" 
+        "    font-family: Uroob;" 
+        "}"
+        "QMessageBox QPushButton {"
+        "    background-color: #FFA500;"
+        "    color: #000000;"
+        "    min-width: 80px;"
+        "    padding: 5px;"
+        "    border-radius: 4px;"
+        "    font-size: 30px;" 
+        "    font-family: Uroob;"
+        "}"
+        "QMessageBox QPushButton:hover {"
+        "    background-color: #1565c0;"
+        "}";
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Match ended!");
+    if ((current_match_winner == current_id) and not multiplayer_mode) {
+        msgBox.setText("Congratulations! You are the winner Player 1!");
+    } else if (multiplayer_mode and (current_match_winner == (current_id + ID_OFFSET))) {
+        msgBox.setText("Congratulations! You are the winner Player 2!");
+    } else {
+        msgBox.setText("The winner is player " + QString::number(current_match_winner) + "!");
+    }
+    msgBox.addButton(QMessageBox::Ok);
+    msgBox.setStyleSheet(styleSheet);
+    msgBox.exec();
+}
+
 void Client::run() {
     try
     {
-        std::chrono::milliseconds rate(17);
+        std::chrono::milliseconds rate(RATE_60FPS);
         connection.start_communication();
         while (true) {        
             gamelobby.show();
             gamelobby.reset_buttons();
             if (background_music) {
-                Mix_PlayMusic(background_music, -1); // -1 means loop indefinitely
+                Mix_PlayMusic(background_music, -1);
             }
             state.reset();
             app.exec();
-            // if (gamelobby.was_closed_by_X()) {
             if (not game_on.load()) {
+                Gameaction end(current_id, current_match, 8, 0, 0);
+                events.try_push(end);
                 game_on.store(false);
                 SDL_Quit();
                 TTF_Quit();
@@ -167,40 +161,28 @@ void Client::run() {
                 updates.close();
                 events.close();
                 connection.end_connection();
-                // updater.stop();
-                // updater.join();
                 break;
             }
-            // SDL2pp::SDL sdl(SDL_INIT_VIDEO);
-            // Renderer renderloop(game_on, updates, state);
+            current_match_winner = -1;
             renderloop.reserve_for_players();
             renderloop.open_window();
-            std::cout << "Client running\n";
-            // updater.start();
             while (game_on.load() && connected.load())
             {
                 constant_rate_loop([&](int frame)
                 {
                     event_listener.listen();
                     renderloop.render(frame);
+                    if (state.there_is_a_winner()) {
+                        game_on.store(false);
+                        show_winner_message();
+                    }
                 }, rate);
             }
             renderloop.close_window();
-            // updater.stop();
-            // updater.join();
             game_on.store(false);
-            int i = 0;
             Gamestate end_game;
-            while (updates.try_pop(end_game)) {
-                i++;
-            }
-            std::cout << i << '\n';
+            while (updates.try_pop(end_game)) {}
         }
-        // updates.close();
-        // events.close();
-        // connection.end_connection();
-        // updater.stop();
-        // updater.join();
     }
     catch (LibError const& e)
     {
@@ -211,8 +193,6 @@ void Client::run() {
         std::cerr << "Se cerró la queue del cliente?! " << e.what() << '\n';
         connection.end_connection();
         updates.close();
-        // updater.stop();
-        // updater.join();
         events.close();
     }
     catch (const std::exception& e)
@@ -220,8 +200,6 @@ void Client::run() {
         std::cerr << "Exception thrown on a client's side: " << e.what() << '\n';
         connection.end_connection();
         updates.close();
-        // updater.stop();
-        // updater.join();
         events.close();
     }
     catch (...)
@@ -229,8 +207,6 @@ void Client::run() {
         std::cerr << "Unknown exception on a client's side." << '\n';
         connection.end_connection();
         updates.close();
-        // updater.stop();
-        // updater.join();
         events.close();
     }
 }
@@ -270,7 +246,6 @@ void Client::handle_create_one_player_match()
     int result = msgBox.exec();
     if (result == MULTIPLAYER_MODE) {
         multiplayer_mode = true;
-        std::cout << "Multiplayer mode!\n";
     }
     int mode = multiplayer_mode ? 1 : 0;
     Gameaction create(1, 0, 4, 0, mode);
@@ -281,7 +256,6 @@ void Client::handle_create_one_player_match()
         created_match_info = updates.pop();
         i++;
     }
-    std::cout << i << '\n';
     if (created_match_info.match_errors_flag == 1) {
         QMessageBox errorBox;
         errorBox.setWindowTitle("Error");
@@ -294,7 +268,6 @@ void Client::handle_create_one_player_match()
     }
     current_id = created_match_info.player_id;
     current_match = created_match_info.match_id;
-    std::cout << "created match " << current_match << '\n';
 }
 
 void Client::handle_start_match()
@@ -314,12 +287,10 @@ void Client::handle_start_match()
     current_player_count = match_started.player_count;
     gamelobby.close();
     game_on.store(true);
-    std::cout << "starting match " << current_match << '\n';
 }
 
 void Client::handle_join_match(int match_id)
 {
-    std::cout << "joining match " << match_id << '\n';
     QString styleSheet = 
         "QMessageBox {"
         "    background-color: #FF7900;"
@@ -366,32 +337,19 @@ void Client::handle_join_match(int match_id)
         errorBox.addButton(QMessageBox::Ok);
         errorBox.setStyleSheet(styleSheet);
         errorBox.exec();
-        gamelobby.revert_create_button_actions();
+        gamelobby.revert_join_button_actions(match_id);
         return;
     }
     current_id = joined_match_info.player_id;
     current_match = joined_match_info.match_id;
-    Gamestate match_started = updates.pop();
-    if (match_started.match_errors_flag == 1) {
-        QMessageBox errorBox;
-        errorBox.setWindowTitle("Error");
-        errorBox.setText(QString::fromStdString(match_started.error_msg));
-        errorBox.addButton(QMessageBox::Ok);
-        errorBox.exec();
-        gamelobby.revert_start_button_actions();
-        return;
-    }
-    current_player_count = match_started.player_count;
-    gamelobby.close();
-    game_on.store(true);
+    gamelobby.set_waiting_for_match(updates, game_on, current_player_count, current_match);
+    gamelobby.wait_for_match();
 }
 
 void Client::handle_refresh_lobby()
 {
-    std::cout << "refreshing lobby\n";
     Gameaction refresh(1, 0, 7, 0, 0);
     events.try_push(refresh);
     Gamestate update = updates.pop();
-    std::cout << "llegaron " << update.matches_info.size() << " partidas\n";
     gamelobby.update_lobby(update.matches_info, current_id);
 }

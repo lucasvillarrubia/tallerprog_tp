@@ -19,7 +19,6 @@ void Acceptor::run() {
         is_running.store(true);
         while (is_running.load()) {
             Socket new_client = acceptor.accept();
-            std::cout << "New player accepted\n";
             player_count++;
             Player* new_player = new Player(std::move(new_client), user_commands);
             new_player->set_id(player_count);

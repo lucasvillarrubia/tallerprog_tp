@@ -191,6 +191,9 @@
     <property name="text">
      <string>Create Match</string>
     </property>
+    <property name="visible">
+     <bool>true</bool>
+    </property>
    </widget>
    <!-- botón para refresh -->
    <widget class="QPushButton" name="refreshButton">
@@ -217,6 +220,9 @@
     </property>
     <property name="text">
      <string>Refresh</string>
+    </property>
+    <property name="visible">
+     <bool>true</bool>
     </property>
    </widget>
    <!-- label de título -->
@@ -291,7 +297,7 @@
      <string>START MATCH</string>
     </property>
     <property name="visible">
-     <bool>false</bool> <!-- Initially hidden -->
+     <bool>false</bool>
     </property>
    </widget>
    <!-- lista de partidas -->

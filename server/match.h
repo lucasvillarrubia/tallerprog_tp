@@ -17,11 +17,13 @@ public:
     void start();
     bool is_connected();
     void send_start_message(int);
+    void send_cancel_message(int);
     void add_player(Player*, int, bool);
     void add_action(const Gameaction&);
     bool matches(int);
     bool is_player_in_match(int);
     bool has_ended();
+    bool has_inside(int id) const;
     void disconnect();
     void close_queue() { user_commands.close(); }
     int get_player_count() { return player_list.size(); }

@@ -2,6 +2,7 @@
 
 #include <list>
 #include <iostream>
+#include <string>
 #include <SDL.h>
 
 #include "client/character.h"
@@ -25,28 +26,28 @@ const int DUCK_SPRITE_WIDTH = 64;
 const int DUCK_SPRITE_HEIGHT = 70;
 const int DUCK_MOVEMENT_SPRITES_LINE = 0;
 
+const float MIN_Y_BOUNDS = 600.0f;
+const float MAX_Y_BOUNDS = -400.0f;
+const float MIN_X_BOUNDS = 1200.0f;
+const float MAX_X_BOUNDS = -300.0f;
 
-// Renderer::Renderer(std::atomic_bool& con_stat, SDL2pp::Window& w, SDL2pp::Renderer& r, Queue<Gamestate>& q, StateManager& s): connected(con_stat), window(w), renderer(r), updates_feed(q), state(s) {}
+
 Renderer::Renderer(std::atomic_bool& con_stat, Queue<Gamestate>& q, StateManager& s, const int& player_count):
         connected(con_stat),
         window("Duck Game",
             SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
             640, 480,
             SDL_WINDOW_HIDDEN),
-            // SDL_WINDOW_HIDDEN | SDL_WINDOW_RESIZABLE),
         renderer(window, -1, SDL_RENDERER_ACCELERATED),
         updates_feed(q),
         state(s),
         textureManager(renderer),
         player_count(player_count)
-        // original_window_width(original_window_width),
-        // original_window_height(original_window_height)
     {
         original_window_height = renderer.GetOutputHeight();
         original_window_width = renderer.GetOutputWidth();
         config_bg = YAML::LoadFile("resources/current_map.yaml");
         config_map = YAML::LoadFile(getCurrentMap());
-        // load_background();
         std::string mapa_actual;
         mapa_actual = config_bg["current_map"].as<std::string>();
         bg_texture = textureManager.getTextura(mapa_actual);
@@ -62,9 +63,6 @@ void Renderer::draw_character(Character& character, int frame, const float zoom_
     } else {
         sprite = textureManager.getDuckSprite(character.id, character.color);
     }
-    
-
-    
     int vcenter = renderer.GetOutputHeight();
     int src_x = DUCK_SPRITE_WIDTH * character.get_movement_phase(frame);
     int src_y = DUCK_MOVEMENT_SPRITES_LINE;
@@ -96,11 +94,11 @@ void Renderer::draw_character(Character& character, int frame, const float zoom_
         SDL2pp::Texture* cascoTexture = textureManager.getItem("casco");
         if (cascoTexture) {
             SDL_Rect armor_src_rect = { 0, 0, DUCK_SPRITE_WIDTH, DUCK_SPRITE_HEIGHT };
-            int casco_width = DUCK_SPRITE_WIDTH -20;  // Ajusta el factor de reducción (por ejemplo, la mitad del tamaño)
+            int casco_width = DUCK_SPRITE_WIDTH -20;
             int casco_height = DUCK_SPRITE_HEIGHT -20;
             SDL_Rect armor_dst_rect = {
-                static_cast<int>(character.pos_X + zoom_offset_x + (DUCK_SPRITE_WIDTH - casco_width) / 2 ), // Centrar el casco en X
-                static_cast<int>(vcenter - DUCK_SPRITE_HEIGHT - character.pos_Y + zoom_offset_y - 15 + (DUCK_SPRITE_HEIGHT - casco_height) / 2), // Ajustar en Y
+                static_cast<int>(character.pos_X + zoom_offset_x + (DUCK_SPRITE_WIDTH - casco_width) / 2 ),
+                static_cast<int>(vcenter - DUCK_SPRITE_HEIGHT - character.pos_Y + zoom_offset_y - 15 + (DUCK_SPRITE_HEIGHT - casco_height) / 2),
                 casco_width,
                 casco_height
             };
@@ -216,26 +214,6 @@ SDL_Rect Renderer::search_dimension_sprite(int vcenter, Gun& gun, const float zo
 	}
 }
 
-// void Renderer::calculate_zoom_offsets(float& offset_x, float& offset_y, float avg_x, float avg_y) {
-//     int window_width = original_window_width;
-//     int window_height = original_window_height;
-    
-//     float target_center_x = window_width / 2.0f;
-//     float target_center_y = window_height * 0.7f;  
-    
-//     float center_offset_x = target_center_x - avg_x;
-    
-//     float center_offset_y = (target_center_y - (window_height - avg_y));
-    
-//     float zoomed_width = window_width * zoom_factor;
-//     float zoomed_height = window_height * zoom_factor;
-//     float width_diff = zoomed_width - window_width;
-//     float height_diff = zoomed_height - window_height;
-    
-//     offset_x = center_offset_x + (width_diff / -2.0f);
-//     offset_y = center_offset_y + (height_diff / -2.0f);
-// }
-
 void Renderer::calculate_zoom_offsets(float& offset_x, float& offset_y, 
                                     const float avg_x, const float avg_y) {
     float screen_center_x = original_window_width * 0.5f;
@@ -246,124 +224,33 @@ void Renderer::calculate_zoom_offsets(float& offset_x, float& offset_y,
 }
 
 void Renderer::calculate_required_zoom() {
-    // if (duck_positions.empty()) {
-    //     zoom_factor = 1.0f;
-    //     return;
-    // }
-
-    // // Single pass through positions
-    // auto& state = zoom_state;
-    // state.min_x = state.max_x = duck_positions[0].pos_X;
-    // state.min_y = state.max_y = duck_positions[0].pos_Y;
-
-    // for (const auto& pos : duck_positions) {
-    //     // Branchless min/max
-    //     state.min_x += (pos.pos_X - state.min_x) * (pos.pos_X < state.min_x);
-    //     state.max_x += (pos.pos_X - state.max_x) * (pos.pos_X > state.max_x);
-    //     state.min_y += (pos.pos_Y - state.min_y) * (pos.pos_Y < state.min_y);
-    //     state.max_y += (pos.pos_Y - state.max_y) * (pos.pos_Y > state.max_y);
-    // }
-
-    // // Combine calculations
-    // const float width_scale = original_window_width / 
-    //     ((state.max_x - state.min_x) + DUCK_SPRITE_WIDTH * PADDING_FACTOR);
-    // const float height_scale = original_window_height / 
-    //     ((state.max_y - state.min_y) + DUCK_SPRITE_HEIGHT * PADDING_FACTOR);
-
-    // // Calculate new zoom
-    // const float new_zoom = std::min(width_scale, height_scale) * 0.8f;
-    // const float clamped_zoom = std::clamp(new_zoom, MIN_ZOOM, MAX_ZOOM);
-    
-    // // Apply smoothing
-    // zoom_factor = state.last_zoom + (clamped_zoom - state.last_zoom) * SMOOTH_FACTOR;
-    // state.last_zoom = zoom_factor;
-
     if (duck_positions.empty()) {
         zoom_factor = 1.0f;
         return;
     }
-
-    // Find bounds
     auto& state = zoom_state;
-    state.min_x = state.max_x = duck_positions[0].pos_X;
-    state.min_y = state.max_y = duck_positions[0].pos_Y;
-
-    state.min_y = 600.0f;
-    state.max_y = -400.0f;
-    state.min_x = 1200.0f;
-    state.max_x = -300.0f; 
-
+    state.min_y = MIN_Y_BOUNDS;
+    state.max_y = MAX_Y_BOUNDS;
+    state.min_x = MIN_X_BOUNDS;
+    state.max_x = MAX_X_BOUNDS; 
     for (const auto& pos : duck_positions) {
         state.min_x = std::min(state.min_x, pos.pos_X);
         state.max_x = std::max(state.max_x, pos.pos_X);
         state.min_y = std::min(state.min_y, pos.pos_Y);
         state.max_y = std::max(state.max_y, pos.pos_Y);
     }
-
-    // Add padding
     float width = (state.max_x - state.min_x) + PADDING;
     float height = (state.max_y - state.min_y) + PADDING;
-
-    // viewport_x = state.min_x;
-    // viewport_y = state.min_y;
-    // viewport_width = width - PADDING;
-    // viewport_height = height - PADDING;
-
-    // Calculate required zoom
     float zoom_x = original_window_width / width;
     float zoom_y = original_window_height / height;
     state.target_zoom = std::min(zoom_x, zoom_y);
-    std::cout << "target_zoom: " << state.target_zoom << std::endl;
-    
-    // Clamp and smooth
     state.target_zoom = std::clamp(state.target_zoom, MIN_ZOOM, MAX_ZOOM);
     zoom_factor = state.current_zoom + 
                   (state.target_zoom - state.current_zoom) * ZOOM_SMOOTH;
     state.current_zoom = zoom_factor;
 }
 
-// void Renderer::calculate_required_zoom(const std::vector<Coordinates>& duck_positions) {
-// void Renderer::calculate_required_zoom() {
-//     if (duck_positions.empty()) {
-//         zoom_factor = 1.0f;
-//         return;
-//     }
-
-//     float min_x = duck_positions[0].pos_X;
-//     float max_x = duck_positions[0].pos_X;
-//     float min_y = duck_positions[0].pos_Y;
-//     float max_y = duck_positions[0].pos_Y;
-
-//     for (const auto& pos : duck_positions) {
-//         min_x = std::min(min_x, pos.pos_X);
-//         max_x = std::max(max_x, pos.pos_X);
-//         min_y = std::min(min_y, pos.pos_Y);
-//         max_y = std::max(max_y, pos.pos_Y);
-//     }
-
-//     const float PADDING_FACTOR = 4.0f;  
-//     float width_needed = (max_x - min_x) + DUCK_SPRITE_WIDTH * PADDING_FACTOR;
-//     float height_needed = (max_y - min_y) + DUCK_SPRITE_HEIGHT * PADDING_FACTOR;
-
-//     float zoom_x = original_window_width / width_needed;
-//     float zoom_y = original_window_height / height_needed;
-
-//     zoom_factor = std::min(zoom_x, zoom_y) * 0.8f;  
-
-//     const float MIN_ZOOM = 0.1f;  
-//     const float MAX_ZOOM = 1.0f;
-//     zoom_factor = std::max(MIN_ZOOM, std::min(zoom_factor, MAX_ZOOM));
-
-//     static float last_zoom = 1.0f;
-//     const float SMOOTH_FACTOR = 0.1f;
-//     zoom_factor = last_zoom + (zoom_factor - last_zoom) * SMOOTH_FACTOR;
-//     last_zoom = zoom_factor;
-// }
-
-
-
 void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y) {
-    // YAML::Node config_map = YAML::LoadFile(getCurrentMap());
     if (!config_map["entities"] || !config_map["entities"].IsSequence()) {
         throw std::runtime_error("Error al leer entities en el archivo YAML");
     }
@@ -376,7 +263,6 @@ void Renderer::dibujar_mapa(const float zoom_offset_x, const float zoom_offset_y
         
         SDL2pp::Rect rect(
             static_cast<int>(x + zoom_offset_x),
-            // static_cast<int>(renderer.GetOutputHeight() + zoom_offset_y - y - height),
             static_cast<int>(original_window_height + zoom_offset_y - y - height),
             static_cast<int>(width),
             static_cast<int>(height)
@@ -402,7 +288,7 @@ void Renderer::dibujar_cajas(const float zoom_offset_x, const float zoom_offset_
     for (const auto& spawn : config["spawn_places_cajas"]) {
         float x = spawn["x"].as<float>();
         float y = spawn["y"].as<float>();
-        cajas.emplace_back(x, y); // Crear una nueva instancia de Caja y agregarla al vector
+        cajas.emplace_back(x, y);
     }
 
     for (const auto& caja : cajas) {
@@ -449,79 +335,9 @@ void Renderer::playJumpSound(const std::string& soundName, int volume) {
     textureManager.playPreloadedSound(soundName, volume);
 }
 
-void Renderer::load_background(){
-    // Create a render texture
-    map_texture = std::make_unique<SDL2pp::Texture>(
-        renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, original_window_width + 1000.0f, original_window_height + 1333.3f
-    );
-
-    // Set the render target to the map texture
-    renderer.SetTarget(*map_texture);
-
-    // Clear the texture
-    renderer.SetDrawColor(0, 0, 0, 0);
-    renderer.Clear();
-
-    // Draw the background
-    std::string mapa_actual = config_bg["current_map"].as<std::string>();
-    SDL2pp::Texture* bg_texture = textureManager.getTextura(mapa_actual);
-    if (bg_texture) {
-        renderer.Copy(*bg_texture, SDL2pp::Rect(0, 0, original_window_width + 600.0f, original_window_height + 450.0f));
-    } else {
-        std::cerr << "Error: No se encontró la textura para el mapa: " << mapa_actual << std::endl;
-    }
-
-    // Draw the map entities
-    if (!config_map["entities"] || !config_map["entities"].IsSequence()) {
-        throw std::runtime_error("Error al leer entities en el archivo YAML");
-    }
-    for (const auto& entity : config_map["entities"]) {
-        float x = entity["x"].as<float>();
-        float y = entity["y"].as<float>();
-        float width = entity["width"].as<float>();
-        float height = entity["height"].as<float>();
-
-        SDL2pp::Rect rect(
-            static_cast<int>(x + 310.0f),
-            static_cast<int>(original_window_height + 540.0f - y - height),
-            static_cast<int>(width),
-            static_cast<int>(height)
-        );
-
-        if (entity["texture"].IsDefined()) {
-            std::string textureName = entity["texture"].as<std::string>();
-            SDL2pp::Texture* entity_texture = textureManager.getTextura(textureName);
-
-            if (entity_texture) {
-                renderer.Copy(*entity_texture, SDL2pp::NullOpt, rect);
-            }
-        }
-    }
-
-    // Reset the render target to the default
-    renderer.SetTarget();
-}
-
-void Renderer::set_draw_settings(const float zoom_offset_x, const float zoom_offset_y) {
-// void Renderer::set_draw_settings() {
-    // Apply transformations
-    renderer.SetScale(1.0f, 1.0f);
-    renderer.SetViewport(SDL2pp::Rect(zoom_offset_x - 450.0f, zoom_offset_y - 600.0f, original_window_width / zoom_factor, original_window_height /zoom_factor));
-    // renderer.SetViewport(SDL2pp::Rect(-310.0f, 540.0f, original_window_width, original_window_height));
-
-    // Draw the combined texture
-    renderer.Copy(*map_texture, SDL2pp::NullOpt, SDL2pp::NullOpt);
-    renderer.SetScale(zoom_factor, zoom_factor);
-    // Reset transformations
-    // renderer.SetScale(1.0f, 1.0f);
-    renderer.SetViewport(SDL2pp::NullOpt);
-}
-
 void Renderer::render(int frame) {
     try {
         if (not connected.load()) {
-            // SDL_Quit();
-            // TTF_Quit();
             return;
         }
 
@@ -545,27 +361,13 @@ void Renderer::render(int frame) {
                 playJumpSound("salto", 128);
             }
         }
-
-
-        // State current_state = state.get_state();
-        // character_list.clear();
         gun_list.clear();
         bullet_list.clear();
-        // character_list = state.get_characters_data();
         gun_list = state.get_guns_data();
         bullet_list = state.get_bullets_data();
-
-        std::list<Explosion> explosion_list = state.get_explosions_data();
-
-
-        
-        // std::list<Character> character_list = current_state.dukis;
-        // std::list<Gun> gun_list = current_state.guns;
-        // std::list<Bullet> bullet_list = current_state.bullets;
+        explosion_list = state.get_explosions_data();
 
         duck_positions.clear();
-        // CALCULO ZOOM Y POSICIONES
-        // std::vector<Coordinates> duck_positions;
         float sum_x = 0.0f;
         float sum_y = 0.0f;
         
@@ -573,27 +375,17 @@ void Renderer::render(int frame) {
             duck_positions.emplace_back(character.pos_X, character.pos_Y);
             sum_x += character.pos_X;
             sum_y += character.pos_Y;
-          //  std::cout << "Character jump_velocity: " << character.jump_velocity << std::endl;
         }
-
-        
         
         float avg_x = duck_positions.empty() ? 0.0f : sum_x / duck_positions.size();
         float avg_y = duck_positions.empty() ? 0.0f : sum_y / duck_positions.size();
 
-        // calculate_required_zoom(duck_positions);
         calculate_required_zoom();
-        // duck_positions.clear();
         
         float zoom_offset_x, zoom_offset_y;
         calculate_zoom_offsets(zoom_offset_x, zoom_offset_y, avg_x, avg_y);
 
-        // set_draw_settings(zoom_offset_x, zoom_offset_y);
-        // set_draw_settings();
         renderer.SetScale(this->zoom_factor, this->zoom_factor);
-
-        // std::cout << "Zoom: " << zoom_factor 
-        //       << " Offset: (" << zoom_offset_x << "," << zoom_offset_y << ")\n";
 
         // DiIBUJO MAPA
         dibujar_mapa(zoom_offset_x, zoom_offset_y);
@@ -624,11 +416,24 @@ void Renderer::render(int frame) {
 
         renderer.SetScale(1.0f, 1.0f);
         SDL2pp::Font font("resources/Uroob-Regular.ttf", 24);
-        SDL_Color color = {255, 255, 255, 255};
-        SDL2pp::Texture text(renderer, font.RenderText_Solid("Score: 0", color));
-        SDL2pp::Texture text1(renderer, font.RenderText_Solid("Score: 0", color));
-        renderer.Copy(text, SDL2pp::NullOpt, SDL2pp::Rect(50, 50, text.GetWidth(), text.GetHeight()));
-        renderer.Copy(text1, SDL2pp::NullOpt, SDL2pp::Rect(50, 75, text.GetWidth(), text.GetHeight()));
+        SDL_Color color = {0, 0, 0, 255};
+        int i = 25;
+        std::string score;
+        std::map<int, int> scores = state.get_scores();
+        for (const auto& [id, score] : scores) {
+            i += 25;
+            std::string score_str = "Score: " + std::to_string(score);
+            SDL2pp::Texture text(renderer, font.RenderText_Solid(score_str.c_str(), color));
+            renderer.Copy(text, SDL2pp::NullOpt, SDL2pp::Rect(50, i, text.GetWidth(), text.GetHeight()));
+        }
+        if (not state.you_are_alive()) {
+            SDL2pp::Texture text(renderer, font.RenderText_Solid("You are dead", color));
+            renderer.Copy(text, SDL2pp::NullOpt, SDL2pp::Rect(250, 220, text.GetWidth(), text.GetHeight()));
+        }
+        // draw round number
+        std::string round_str = "Round: " + std::to_string(state.get_round());
+        SDL2pp::Texture text(renderer, font.RenderText_Solid(round_str.c_str(), color));
+        renderer.Copy(text, SDL2pp::NullOpt, SDL2pp::Rect(520, 50, text.GetWidth(), text.GetHeight()));
         renderer.Present();
     }
     catch (const std::exception& e) {
