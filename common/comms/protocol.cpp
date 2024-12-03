@@ -45,7 +45,7 @@ void Protocol::receive_string(std::vector<char>& message) {
         client_is_connected.store(false);
         return;
     }
-    from_server.push_back(END_OF_MESSAGE);
+    // from_server.push_back(END_OF_MESSAGE);
     message.resize(from_server.size());
     message = from_server;
 }
@@ -64,6 +64,7 @@ void Protocol::send_string(const std::vector<char>& message) {
     if (not client_is_connected.load())
         return;
     bool client_was_disconnected = false;
+    // message.push_back(END_OF_MESSAGE);
     uint16_t message_size = htons(message.size());
     peer.sendall(&message_size, sizeof(uint16_t), &client_was_disconnected);
     if (client_was_disconnected) {
