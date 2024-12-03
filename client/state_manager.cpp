@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "common/gamedata.h"
-
+#include "texture_manager.h"
 
 const float JUMP_STRENGTH = 15.0f;
 const float FLAP_STRENGTH = 1.0f;
@@ -119,8 +119,10 @@ void StateManager::update_bullets(const Gamestate& update)
 {
     for (auto& bullet : bullets)
     {
-        if (update.bullets_positions_by_id.contains(bullet.id))
+        if (update.bullets_positions_by_id.contains(bullet.id)){
             update_bullet_position(bullet, update.bullets_positions_by_id.at(bullet.id));
+            bullet.reproducir_sonido = false;
+        }
     }
 }
 

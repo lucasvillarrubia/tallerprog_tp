@@ -12,6 +12,7 @@ struct Bullet {
 	bool moving_right;
 	bool moving_up;
 	bool destroyed;
+	bool reproducir_sonido;
 	
 	explicit Bullet(const int _id) : 
 		id(_id),
@@ -20,7 +21,8 @@ struct Bullet {
 		type(0),
 		moving_right(true),
 		moving_up(false),
-		destroyed(false) {}
+		destroyed(false),
+		reproducir_sonido(true) {}
 };
 
 #endif
