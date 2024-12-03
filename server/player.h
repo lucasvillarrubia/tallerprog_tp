@@ -10,12 +10,6 @@
 #include "server_comms/server_protocol.h"
 
 
-// Clase que representa un cliente del lado del servidor.
-// Lanza los hilos Sender y Receiver correspondientes al cliente. Se puede
-// desconectar.
-// RAII: no permite copia ni movimiento (contiene Threads).
-
-
 class Player
 {
 private:

@@ -139,6 +139,8 @@ void Client::show_winner_message()
     QMessageBox msgBox;
     msgBox.setWindowTitle("Match ended!");
     if ((current_match_winner == current_id) and not multiplayer_mode) {
+        msgBox.setText("Congratulations! You are the winner!");
+    } else if ((current_match_winner == current_id) and multiplayer_mode) {
         msgBox.setText("Congratulations! You are the winner Player 1!");
     } else if (multiplayer_mode and (current_match_winner == (current_id + ID_OFFSET))) {
         msgBox.setText("Congratulations! You are the winner Player 2!");

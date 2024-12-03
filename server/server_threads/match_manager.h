@@ -14,7 +14,6 @@ private:
     Queue<Gameaction>& users_commands;
     MonitoredList<Player*>& all_players;
     MonitoredList<Match*>& matches;
-    // void create_match(int);
     void create_match(int, int);
     void join_to_match(int, int, int);
     void start_match(int, int);

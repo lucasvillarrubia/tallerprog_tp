@@ -74,7 +74,7 @@ void StateManager::update(const Gamestate& update)
         } else {
             round = update.round;
             scores_by_id.at(update.player_id) += 1;
-            std::cout << "Round: " << round << std::endl;
+            // std::cout << "Round: " << round << std::endl;
         }
         break;
     default:
@@ -157,7 +157,7 @@ void StateManager::explode_grenade(const int id) {
 			gun.is_destroyed = true;
 		}
 	}
-	std::cout<<"se recibió la explosion"<<std::endl;
+	// std::cout<<"se recibió la explosion"<<std::endl;
 	clear_destroyed_gun(id);
 }
 
@@ -197,9 +197,9 @@ void StateManager::update_duck_state(const Gamestate& update)
 }
 
 void StateManager::clear_destroyed_gun(int id) {
-	std::cout<<"size antes del remove: "<<guns.size()<<std::endl;
+	// std::cout<<"size antes del remove: "<<guns.size()<<std::endl;
 	guns.remove_if([&id](auto& gun){ return gun.id == id; });
-	std::cout<<"size despues del remove: "<<guns.size()<<std::endl;
+	// std::cout<<"size despues del remove: "<<guns.size()<<std::endl;
 }
 
 void StateManager::set_explosion_phase(const unsigned int frame) {
