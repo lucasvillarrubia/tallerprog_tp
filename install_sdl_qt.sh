@@ -73,6 +73,20 @@ make compile-debug
 echo "Running tests..."
 make run-tests
 
+# Move binaries to /usr/bin
+echo "Moving binaries to /usr/bin..."
+cp -r "$SCRIPT_DIR/bin/*" /usr/bin/
+
+# Move YAML files in resources to /etc/duckgame_20
+echo "Moving YAML files to /etc/duckgame_20..."
+mkdir -p /etc/duckgame_20
+find "$SCRIPT_DIR/resources" -name "*.yaml" -exec cp {} /etc/duckgame_20/ \;
+
+# Move the rest of the files in resources to /var/duckgame_20
+echo "Moving other resource files to /var/duckgame_20..."
+mkdir -p /var/duckgame_20
+find "$SCRIPT_DIR/resources" ! -name "*.yaml" -exec cp -r {} /var/duckgame_20/ \;
+
 # Cleanup
 cd /
 rm -rf "$TEMP_DIR"
