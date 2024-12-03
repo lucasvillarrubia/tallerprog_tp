@@ -254,7 +254,11 @@ if(TALLER_SERVER)
 			server/server_guns/LaserRifle.cpp
 			server/server_guns/LaserRifle.h
 			server/server_guns/LaserRifleAmmo.cpp
-			server/server_guns/LaserRifleAmmo.h)
+			server/server_guns/LaserRifleAmmo.h
+			server/server_guns/Shotgun.cpp
+			server/server_guns/Shotgun.h
+			server/server_guns/ShotgunAmmo.cpp
+			server/server_guns/ShotgunAmmo.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)

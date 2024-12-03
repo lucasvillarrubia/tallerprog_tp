@@ -80,7 +80,6 @@ void Gameplay::send_all_initial_coordinates()
     // guns_by_id.insert({3, new CowboyPistol(200.0f, 300.0f)});
     // guns_by_id.insert({4, new Magnum(670.0f, 189.0f)});
     // guns_by_id.insert({5, new Sniper(300.0f, 300.0f)});
-    guns_by_id.insert({500, new LaserRifle(300.0f, -240.0f)});
     guns_in_map = guns_by_id.size();
     for (auto& [id, gun] : guns_by_id) {
     	Coordinates position = gun->getPosition();

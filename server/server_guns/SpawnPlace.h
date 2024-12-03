@@ -14,6 +14,8 @@
 #include "Banana.h"
 #include "Grenade.h"
 #include "PewPewLaser.h"
+#include "LaserRifle.h"
+#include "Shotgun.h"
 
 class SpawnPlace {
 private:
@@ -39,6 +41,7 @@ public:
 	void spawn_duel_pistol(const int id, std::map<int,Gun*>& guns);
 	void spawn_cowboy_pistol(const int id, std::map<int,Gun*>& guns);
 	void spawn_magnum(const int id, std::map<int,Gun*>& guns);
+	void spawn_shotgun(const int id, std::map<int,Gun*>& guns);
 	void spawn_sniper(const int id, std::map<int,Gun*>& guns);
 	void pick_item();
 	bool is_duck_position_valid(float x, float y);

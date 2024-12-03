@@ -50,6 +50,9 @@ bool SpawnPlace::try_spawn_gun(int& id, std::map<int, Gun*>& guns) {
 				case 8:
 					spawn_magnum(id, guns);
 					break;
+				case 9:
+					spawn_shotgun(id, guns);
+					break;
 				default:
 					spawn_sniper(id, guns);
 					break;
@@ -90,6 +93,10 @@ void SpawnPlace::spawn_cowboy_pistol(const int id, std::map<int,Gun*>& guns) {
 
 void SpawnPlace::spawn_magnum(const int id, std::map<int,Gun*>& guns) {
 	guns.insert({id, new Magnum(pos_X,pos_Y)});
+}
+
+void SpawnPlace::spawn_shotgun(const int id, std::map<int,Gun*>& guns) {
+	guns.insert({id, new Shotgun(pos_X,pos_Y)});
 }
 
 void SpawnPlace::spawn_sniper(const int id, std::map<int,Gun*>& guns) {
