@@ -2,7 +2,13 @@
 
 #include <iostream>
 
-Grenade::Grenade(float x, float y) : Gun(x,y,32,32,1), activated(false), explosion_area(positionX-(5*64),positionY+(5*64), 640.0f, 640.0f), detonation_time(4), detonated(false) {}
+Grenade::Grenade(float x, float y, std::map<std::string, float> config) : 
+	Gun(x,y,config["DIMENSION_X"],config["DIMENSION_Y"],static_cast<int>(config["TYPE"])),
+	activated(false),
+	explosion_area(positionX-(config["EXPLOSION_RADIUS"]),
+	positionY+config["EXPLOSION_RADIUS"], 2*config["EXPLOSION_RADIUS"], 2*config["EXPLOSION_RADIUS"]),
+	detonation_time(config["DETONATION_TIME"]),
+	detonated(false) {}
 
 void Grenade::updatePosition(float x, float y){
 	positionX = x;

@@ -1,6 +1,7 @@
 #include "CowboyPistol.h"
 
-CowboyPistol::CowboyPistol(float x, float y): Gun(x,y,32,32,7), ammo(6) {}
+CowboyPistol::CowboyPistol(float x, float y, std::map<std::string, float> config): 
+	Gun(x,y,config["DIMENSION_X"],config["DIMENSION_Y"],static_cast<int>(config["TYPE"])), ammo(static_cast<int>(config["AMMO"])) {}
 
 bool CowboyPistol::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
 	if (!shooting && (ammo > 0)) {

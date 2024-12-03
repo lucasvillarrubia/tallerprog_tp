@@ -1,6 +1,9 @@
 #include "Sniper.h"
 
-Sniper::Sniper(float x, float y) : Gun(x,y,32,32,10), ammo(3), time_between_shots(1.0) {
+Sniper::Sniper(float x, float y, std::map<std::string, float> config) : 
+	Gun(x,y,config["DIMENSION_X"],config["DIMENSION_Y"],static_cast<int>(config["TYPE"])),
+	ammo(static_cast<int>(config["AMMO"])),
+	time_between_shots(config["TIME_BETWEEN_SHOTS"]) {
 	last_shot_time = std::chrono::steady_clock::now();
 }
 

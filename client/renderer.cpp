@@ -109,6 +109,19 @@ void Renderer::draw_bullet(Bullet& bullet, const float zoom_offset_x, const floa
     SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, angle, nullptr, flip);
 }
 
+void Renderer::draw_trace(Bullet& bullet, const float zoom_offset_x, const float zoom_offset_y) {
+	SDL2pp::Texture* sprite = textureManager.getGunSprite("lasers");
+	int vcenter = renderer.GetOutputHeight();
+	float angle = bullet.moving_up ? 90.0f : 0.0f;
+	angle = angle * (bullet.moving_right ? -1 : 1);
+	SDL_RendererFlip flip = bullet.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+    SDL_Rect src_rect = { 36, 121, 1, 8 };
+    int width = bullet.pos_X - bullet.origin_X;
+    int height = bullet.pos_Y - bullet.origin_Y;
+    SDL_Rect dst_rect = { static_cast<int>(bullet.origin_X + zoom_offset_x), static_cast<int>(vcenter - 47 - bullet.origin_Y + zoom_offset_y), 1+ width, 1+height };
+    SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, angle, nullptr, flip);
+}
+
 void Renderer::draw_explosion(Explosion& explosion, const float zoom_offset_x, const float zoom_offset_y) {
 	SDL2pp::Texture* sprite = textureManager.getGunSprite("explosion");
 	int vcenter = renderer.GetOutputHeight();
@@ -347,6 +360,7 @@ void Renderer::render(int frame) {
         // DIBUJO BALAS
         for (auto& bullet : bullet_list) {
         	// std::cout<<bullet.id<<"- x:"<<bullet.pos_X<<" y: "<<bullet.pos_Y<<std::endl;
+        	//draw_trace(bullet,zoom_offset_x,zoom_offset_y);
         	draw_bullet(bullet, zoom_offset_x, zoom_offset_y);
         }
 

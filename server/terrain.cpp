@@ -22,10 +22,11 @@ Terrain::Terrain(std::list<SpawnPlace>& spawn_places, std::map<int, Gun*>& guns_
         std::cerr << "No se encontró la sección 'entities' en el archivo YAML." << std::endl;
     }
     if (config["spawn_places_armas"]) {
+    	std::cout<<"antes del bad conversion"<<std::endl;
         for (const auto& entity : config["spawn_places_armas"]) {
             float x = entity["x"].as<float>();
             float y = entity["y"].as<float>();
-            spawn_places.push_back(SpawnPlace(x, y));
+            spawn_places.push_back(SpawnPlace(x, y, config_guns));
         }
     } else {
         std::cerr << "No se encontró la sección 'spawn_places_armas' en el archivo YAML." << std::endl;

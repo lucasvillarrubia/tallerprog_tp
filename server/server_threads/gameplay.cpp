@@ -92,7 +92,7 @@ void Gameplay::send_all_initial_coordinates()
     	);
     	broadcast_for_all_players(initial_gun_coordinates);
     }
-    spawn_places.push_back(SpawnPlace(160.0f, 200.0f));
+    //spawn_places.push_back(SpawnPlace(160.0f, 200.0f));
 
 }
 

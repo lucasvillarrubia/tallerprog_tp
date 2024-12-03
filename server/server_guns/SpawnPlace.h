@@ -16,9 +16,11 @@
 #include "PewPewLaser.h"
 #include "LaserRifle.h"
 #include "Shotgun.h"
+#include "ConfigGuns.h"
 
 class SpawnPlace {
 private:
+	ConfigGuns config;
 	const float pos_X;
 	const float pos_Y;
 	bool item_spawned;
@@ -28,7 +30,7 @@ private:
 	float min_time_to_respawn;
 	std::chrono::time_point<std::chrono::_V2::steady_clock> last_spawn_time;
 public:
-	SpawnPlace(float x, float y);
+	SpawnPlace(float x, float y, ConfigGuns& config_guns);
 	bool is_gun_spawned();
 	bool is_item_spawned();
 	//bool try_spawn_item(int& id, std::list<Item*>& items);

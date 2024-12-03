@@ -1,7 +1,10 @@
 #include "AK47.h"
 
-AK47::AK47(float x, float y): Gun(x,y,32,32,5), ammo(30), time_between_shots(0.5) {
-	last_shot_time = std::chrono::steady_clock::now(); 
+AK47::AK47(float x, float y, std::map<std::string, float> config): 
+	Gun(x,y,config["DIMENSION_X"],config["DIMENSION_Y"],static_cast<int>(config["TYPE"])),
+	ammo(static_cast<int>(config["AMMO"])),
+	time_between_shots(config["TIME_BETWEEN_SHOTS"]) {
+		last_shot_time = std::chrono::steady_clock::now(); 
 }
 
 bool AK47::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
