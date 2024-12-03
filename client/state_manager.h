@@ -33,6 +33,7 @@ private:
     void update_bullet_position(Bullet&, const Coordinates&);
     void update_duck_state(const Gamestate& update);
     void explode_grenade(const int id);
+    int shots;
 public:
     StateManager(const int&, int&, const bool&);
     void update(const Gamestate&);
@@ -56,6 +57,7 @@ public:
     std::list<Explosion> get_explosions_data();
     std::map<int, int> get_scores();
     int get_round() { return round; }
+    bool reproducir_disparo();
     ~StateManager() = default;
 };
 
