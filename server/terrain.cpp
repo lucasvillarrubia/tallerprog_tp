@@ -21,15 +21,7 @@ Terrain::Terrain(std::list<SpawnPlace>& spawn_places, std::map<int, Gun*>& guns_
     } else {
         std::cerr << "No se encontró la sección 'entities' en el archivo YAML." << std::endl;
     }
-    if (config["spawn_places_armas"]) {
-        for (const auto& entity : config["spawn_places_armas"]) {
-            float x = entity["x"].as<float>();
-            float y = entity["y"].as<float>();
-            spawn_places.push_back(SpawnPlace(x, y));
-        }
-    } else {
-        std::cerr << "No se encontró la sección 'spawn_places_armas' en el archivo YAML." << std::endl;
-    }
+    set_spawn_places();
 }
 
 void Terrain::set_ducks_positions()
@@ -46,6 +38,19 @@ void Terrain::set_ducks_positions()
         }
     } else {
         std::cerr << "No se encontró la sección 'spawn_places_patos' en el archivo YAML." << std::endl;
+    }
+}
+
+void Terrain::set_spawn_places()
+{
+    if (config["spawn_places_armas"]) {
+        for (const auto& entity : config["spawn_places_armas"]) {
+            float x = entity["x"].as<float>();
+            float y = entity["y"].as<float>();
+            spawn_places.push_back(SpawnPlace(x, y));
+        }
+    } else {
+        std::cerr << "No se encontró la sección 'spawn_places_armas' en el archivo YAML." << std::endl;
     }
 }
 
@@ -158,10 +163,4 @@ void Terrain::adjust_position_for_collisions(Gun* gun, const Coordinates& positi
             }
         }
     }
-    /*if (is_falling)
-        duck.set_is_NOT_on_the_floor();
-    if (can_move_to_the_right)
-        duck.set_is_NOT_stomping_on_wall_from_left();
-    if (can_move_to_the_left)
-        duck.set_is_NOT_stomping_on_wall_from_right();*/
 }

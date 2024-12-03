@@ -59,6 +59,7 @@ private:
     Terrain terrain;
     int current_round;
     bool round_is_over;
+    bool test_mode;
     void process_users_commands();
     void initialize_players();
     void send_all_initial_coordinates();
