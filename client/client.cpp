@@ -49,14 +49,26 @@ Client::Client(const char* hostname, const char* servname):
         std::cerr << "TTF_Init failed: " << TTF_GetError() << std::endl;
         SDL_Quit();
     }
+    // Inicialización de SDL_mixer
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
         std::cerr << "SDL_mixer could not initialize! SDL_mixer Error: " 
                   << Mix_GetError() << std::endl;
     }
-    background_music = Mix_LoadMUS("resources/musica_fondo.wav");
+
+    // Cargar música de fondo
+    background_music = Mix_LoadMUS("resources/sonidos/musica_fondo_duck.wav");
     if (!background_music) {
         std::cerr << "Failed to load background music! SDL_mixer Error: " 
                   << Mix_GetError() << std::endl;
+    } else {
+        // Establecer el volumen al 50% del máximo
+        Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
+
+        // Reproducir música de fondo en bucle
+        if (Mix_PlayMusic(background_music, -1) == -1) {
+            std::cerr << "Failed to play background music! SDL_mixer Error: " 
+                      << Mix_GetError() << std::endl;
+        }
     }
 }
 
