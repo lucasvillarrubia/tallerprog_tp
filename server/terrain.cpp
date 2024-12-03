@@ -47,7 +47,7 @@ void Terrain::set_spawn_places()
         for (const auto& entity : config["spawn_places_armas"]) {
             float x = entity["x"].as<float>();
             float y = entity["y"].as<float>();
-            spawn_places.push_back(SpawnPlace(x, y));
+            spawn_places.push_back(SpawnPlace(x, y, config_guns));
         }
     } else {
         std::cerr << "No se encontró la sección 'spawn_places_armas' en el archivo YAML." << std::endl;
