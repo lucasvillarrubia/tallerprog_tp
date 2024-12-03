@@ -23,6 +23,7 @@ private:
 public:
     Terrain(std::list<SpawnPlace>&, std::map<int, Gun*>&, std::map<int, Duck>&);
     void set_ducks_positions();
+    void set_spawn_places();
     bool is_duck_position_valid(int, int);
     void adjust_position_for_collisions(Duck&, const Coordinates&, const Coordinates&);
     void adjust_position_for_collisions(Gun*, const Coordinates&, const Coordinates&);

@@ -116,7 +116,7 @@ public:
     {
         std::unique_lock<std::mutex> lck(mtx);
         for (auto gameobject: list) {
-            if (gameobject->matches(player))
+            if (gameobject->has_inside(player))
                 return true;
         }
         return false;

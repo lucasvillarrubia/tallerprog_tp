@@ -45,7 +45,7 @@ void Protocol::receive_string(std::vector<char>& message) {
         client_is_connected.store(false);
         return;
     }
-    from_server.push_back(END_OF_MESSAGE);
+    // from_server.push_back(END_OF_MESSAGE);
     message.resize(from_server.size());
     message = from_server;
 }
@@ -55,6 +55,7 @@ void Protocol::send_single_8bit_int(uint8_t message) {
         return;
     bool client_was_disconnected = false;
     peer.sendall(&message, sizeof(uint8_t), &client_was_disconnected);
+    // std::cout << "Sending 8bit int: " << (int)message << std::endl;
     if (client_was_disconnected)
         client_is_connected.store(false);
 }
@@ -63,6 +64,7 @@ void Protocol::send_string(const std::vector<char>& message) {
     if (not client_is_connected.load())
         return;
     bool client_was_disconnected = false;
+    // message.push_back(END_OF_MESSAGE);
     uint16_t message_size = htons(message.size());
     peer.sendall(&message_size, sizeof(uint16_t), &client_was_disconnected);
     if (client_was_disconnected) {

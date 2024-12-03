@@ -8,7 +8,7 @@ void Cleaner::run() {
     {
         is_running.store(true);
         while (is_running.load()) {
-            // capaz estaría bueno agregar un sleep acá
+            // capaz estaría bueno agregar un sleep acá, capaz no
             // si no, ver la manera de implementar un wait acá y que en el gameloop se notifique
             // cuando se desconecte un jugador (y se broadcastee ese estado a los jugadores)
             // la std::condition_variable la tendría Server (main thread), Cleaner y Gameloop sólo refs

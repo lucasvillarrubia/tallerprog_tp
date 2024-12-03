@@ -2,6 +2,10 @@
 
 #include "client/state_manager.h"
 
+
+const int ENDGAME = 14;
+
+
 Updater::Updater(Queue<Gamestate>& q, StateManager& s): is_running(false), updates_feed(q), state(s) {}
 
 void Updater::run()
@@ -12,7 +16,23 @@ void Updater::run()
         while (is_running.load())
         {
             Gamestate update = updates_feed.pop();
+            if (update.type == ENDGAME)
+            {
+                stop();
+                std::cout << "Game ended\n";
+                break;
+            }
+            if (update.type == 13)
+            {
+                std::cout << "Round advanced\n";
+                state.reset();
+                continue;
+            }
             state.update(update);
+            while (updates_feed.try_pop(update))
+            {
+                state.update(update);
+            }
         }
     }
     catch (ClosedQueue const& e)

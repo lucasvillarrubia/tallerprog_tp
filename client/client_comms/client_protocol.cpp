@@ -175,11 +175,12 @@ void ClientProtocol::receive_match_error_message(Gamestate& received)
 void ClientProtocol::receive_match_info_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
-    uint8_t player, match_errors_flag, match_id;
+    uint8_t player, match_errors_flag, match_id, player_count;
     receive_single_8bit_int(player);
     receive_single_8bit_int(match_errors_flag);
     receive_single_8bit_int(match_id);
-    received = Gamestate(player, match_errors_flag, match_id);
+    receive_single_8bit_int(player_count);
+    received = Gamestate(player, match_errors_flag, match_id, player_count);
 }
 
 void ClientProtocol::receive_matches_info_message(Gamestate& received)
@@ -218,6 +219,17 @@ void ClientProtocol::receive_round_ended_message(Gamestate& received)
     receive_single_8bit_int(player);
     receive_single_8bit_int(round);
     received = Gamestate(player, round);
+}
+
+void ClientProtocol::receive_exit_message(Gamestate& received)
+{
+    if (not client_is_connected.load()) return;
+    uint8_t player;
+    std::vector<char> exit_msg;
+    receive_single_8bit_int(player);
+    receive_string(exit_msg);
+    std::string exit_message(exit_msg.begin(), exit_msg.end());
+    received = Gamestate(player, exit_message);
 }
 
 void ClientProtocol::receive_message(Gamestate& received)
@@ -262,6 +274,9 @@ void ClientProtocol::receive_message(Gamestate& received)
 		break;
     case 13:
         receive_round_ended_message(received);
+        break;
+    case 14:
+        receive_exit_message(received);
         break;
     default:
         receive_character_update_message(received);

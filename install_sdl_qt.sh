@@ -8,6 +8,8 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
 # Initial dependencies
 echo "Installing initial dependencies..."
 apt-get update
@@ -62,6 +64,14 @@ install_sdl_lib() {
 install_sdl_lib "SDL2_image" "2.6.3" "https://github.com/libsdl-org/SDL_image/releases/download/release-2.6.3/SDL2_image-2.6.3.zip" "SDL2_image-2.6.3"
 install_sdl_lib "SDL2_mixer" "2.6.3" "https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.6.3/SDL2_mixer-2.6.3.zip" "SDL2_mixer-2.6.3"
 install_sdl_lib "SDL2_ttf" "2.20.2" "https://github.com/libsdl-org/SDL_ttf/releases/download/release-2.20.2/SDL2_ttf-2.20.2.zip" "SDL2_ttf-2.20.2"
+
+echo "Compiling the project..."
+cd "$SCRIPT_DIR"
+make compile-debug
+
+# Run tests
+echo "Running tests..."
+make run-tests
 
 # Cleanup
 cd /

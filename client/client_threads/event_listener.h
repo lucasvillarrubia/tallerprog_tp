@@ -36,7 +36,7 @@ private:
         {SDLK_UP, 7}
     };
     std::map<SDL_Keycode, int> codes_by_key_for_second_player = {
-        {SDLK_ESCAPE, 9},
+        // {SDLK_ESCAPE, 9},
         {SDLK_d, 1},
         {SDLK_a, 2},
         {SDLK_RETURN, 3},

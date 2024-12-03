@@ -11,24 +11,23 @@ const int DUCK_IS_ALIVE = 1;
 // const int AVAILABLE_MOVEMENT_SPRITES = 6;
 
 
-StateManager::StateManager() {}
+StateManager::StateManager(const int& id, int& winner, const bool& mode): current_id(id), match_winner(winner), is_multiplayer(mode), round(1), alive(true), match_ended(false) {}
 
 void StateManager::update(const Gamestate& update)
 {
-    std::unique_lock<std::mutex> lck(mtx);
+    // std::unique_lock<std::mutex> lck(mtx);
     switch (update.type)
     {
     case 1:
         {
-            std::cout << "Initial coordinates received\n";
             if (update.is_alive == DUCK_IS_ALIVE) {
                 Character new_duki(update.player_id);
                 new_duki.pos_X = update.pos_X;
                 new_duki.pos_Y = update.pos_Y;
                 new_duki.color = update.color;
                 dukis.push_back(new_duki);
+                scores_by_id.insert({update.player_id, 0});
             }
-            std::cout << "info received: " << update.player_id << " " << update.pos_X << " " << update.pos_Y << " " << update.is_alive << "\n";
             break;
         }
     case 3:
@@ -71,13 +70,29 @@ void StateManager::update(const Gamestate& update)
     	break;
     case 13:
         reset();
-        round = update.round;
+        if (update.round == 0) {
+            match_ended = true;
+            match_winner = update.player_id;
+        } else {
+            round = update.round;
+            scores_by_id.at(update.player_id) += 1;
+            // std::cout << "Round: " << round << std::endl;
+        }
         break;
     default:
         update_ducks(update);
         break;
     }
-    dukis.remove_if([](const Character& duki) { return not duki.is_alive; });
+    dukis.remove_if([this](const Character& duki) {
+        if (not duki.is_alive) {
+            if ((current_id == duki.id) and not is_multiplayer) {
+                alive = false;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    });
 }
 
 void StateManager::update_ducks(const Gamestate& update)
@@ -144,15 +159,24 @@ void StateManager::explode_grenade(const int id) {
 			gun.is_destroyed = true;
 		}
 	}
-	std::cout<<"se recibió la explosion"<<std::endl;
+	// std::cout<<"se recibió la explosion"<<std::endl;
 	clear_destroyed_gun(id);
 }
 
 void StateManager::reset()
 {
+    // std::unique_lock<std::mutex> lck(mtx);
+    alive = true;
     dukis.clear();
     guns.clear();
     bullets.clear();
+}
+
+void StateManager::set_new_game()
+{
+    match_ended = false;
+    round = 1;
+    alive = true;
 }
 
 void StateManager::update_duck_state(const Gamestate& update)
@@ -175,9 +199,9 @@ void StateManager::update_duck_state(const Gamestate& update)
 }
 
 void StateManager::clear_destroyed_gun(int id) {
-	std::cout<<"size antes del remove: "<<guns.size()<<std::endl;
+	// std::cout<<"size antes del remove: "<<guns.size()<<std::endl;
 	guns.remove_if([&id](auto& gun){ return gun.id == id; });
-	std::cout<<"size despues del remove: "<<guns.size()<<std::endl;
+	// std::cout<<"size despues del remove: "<<guns.size()<<std::endl;
 }
 
 void StateManager::set_explosion_phase(const unsigned int frame) {
@@ -190,17 +214,31 @@ void StateManager::set_explosion_phase(const unsigned int frame) {
 
 std::list<Character> StateManager::get_characters_data()
 {
+    // std::unique_lock<std::mutex> lck(mtx);
     return dukis;
 }
 
 std::list<Gun> StateManager::get_guns_data() {
+    // std::unique_lock<std::mutex> lck(mtx);
 	return guns;
 }
 
 std::list<Bullet> StateManager::get_bullets_data() {
+    // std::unique_lock<std::mutex> lck(mtx);
 	return bullets;
+}
+
+State StateManager::get_state()
+{
+    // std::unique_lock<std::mutex> lck(mtx);
+    return {dukis, guns, bullets};
 }
 
 std::list<Explosion> StateManager::get_explosions_data() {
 	return explosions;
+
+}
+
+std::map<int, int> StateManager::get_scores() {
+    return scores_by_id;
 }

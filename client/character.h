@@ -24,6 +24,7 @@ struct Character {
     float jump_velocity;
     int movement_phase;
     Color color;
+    int score;
     explicit Character(const int _id):
         id(_id),
         pos_X(INITIAL_X_COORDINATE),
@@ -37,7 +38,8 @@ struct Character {
         is_pointing_upwards(false),
         is_ducking(false),
         jump_velocity(0.0f),
-        movement_phase(0) {}
+        movement_phase(0),
+        score(0) {}
     // void update_position(unsigned int);
     // bool is_moving_to_the_right() const;
     // Coordinates get_coordinates() const;
