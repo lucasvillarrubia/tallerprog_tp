@@ -75,7 +75,9 @@ make run-tests
 
 # Move binaries to /usr/bin
 echo "Moving binaries to /usr/bin..."
-cp -r "$SCRIPT_DIR/bin/*" /usr/bin/
+# cp -r "$SCRIPT_DIR/bin/*" /usr/bin/
+cp "$SCRIPT_DIR/build/taller_client" /usr/bin/
+cp "$SCRIPT_DIR/build/taller_server" /usr/bin/
 
 # Move YAML files in resources to /etc/duckgame_20
 echo "Moving YAML files to /etc/duckgame_20..."
