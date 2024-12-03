@@ -180,6 +180,10 @@ if(TALLER_CLIENT)
 
     # Para la instalación??
     #install(DIRECTORY resources/ DESTINATION ${CMAKE_INSTALL_PREFIX}/resources)
+    install(TARGETS taller_client RUNTIME DESTINATION /usr/bin)
+    install(DIRECTORY ${CMAKE_SOURCE_DIR}/resources/ DESTINATION /etc/duckgame_20 FILES_MATCHING PATTERN "*.yaml")
+    install(DIRECTORY ${CMAKE_SOURCE_DIR}/resources/ DESTINATION /var/duckgame_20 FILES_MATCHING PATTERN "*.*" EXCLUDE PATTERN "*.yaml")
+    install(DIRECTORY ${CMAKE_SOURCE_DIR}/resources/ DESTINATION ${CMAKE_BINARY_DIR}/resources)
 
 endif()
 
