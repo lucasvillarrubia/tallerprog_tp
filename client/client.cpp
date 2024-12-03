@@ -55,7 +55,7 @@ Client::Client(const char* hostname, const char* servname):
     }
 
     // Cargar música de fondo
-    background_music = Mix_LoadMUS("resources/musica_fondo.wav");
+    background_music = Mix_LoadMUS("resources/sonidos/musica_fondo_duck.wav");
     if (!background_music) {
         std::cerr << "Failed to load background music! SDL_mixer Error: " 
                   << Mix_GetError() << std::endl;
