@@ -14,6 +14,7 @@
 #include "Banana.h"
 #include "Grenade.h"
 #include "PewPewLaser.h"
+#include "LaserRifle.h"
 
 class SpawnPlace {
 private:
