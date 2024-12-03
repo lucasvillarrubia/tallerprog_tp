@@ -3,7 +3,7 @@
 #include <iostream>
 
 #include "common/gamedata.h"
-
+#include "texture_manager.h"
 
 const float JUMP_STRENGTH = 15.0f;
 const float FLAP_STRENGTH = 1.0f;
@@ -11,7 +11,7 @@ const int DUCK_IS_ALIVE = 1;
 // const int AVAILABLE_MOVEMENT_SPRITES = 6;
 
 
-StateManager::StateManager(const int& id, int& winner, const bool& mode): current_id(id), match_winner(winner), is_multiplayer(mode), round(1), alive(true), match_ended(false) {}
+StateManager::StateManager(const int& id, int& winner, const bool& mode): current_id(id), match_winner(winner), is_multiplayer(mode), round(1), alive(true), match_ended(false), shots(0) {}
 
 void StateManager::update(const Gamestate& update)
 {
@@ -57,6 +57,7 @@ void StateManager::update(const Gamestate& update)
     		new_bullet.moving_right = update.move_direction;
     		new_bullet.moving_up = update.is_pointing_upwards;
     		bullets.push_back(new_bullet);
+    		shots++;
     		break;
     	}
     case 8:
@@ -121,8 +122,9 @@ void StateManager::update_bullets(const Gamestate& update)
 {
     for (auto& bullet : bullets)
     {
-        if (update.bullets_positions_by_id.contains(bullet.id))
+        if (update.bullets_positions_by_id.contains(bullet.id)){
             update_bullet_position(bullet, update.bullets_positions_by_id.at(bullet.id));
+        }
     }
 }
 
@@ -241,4 +243,12 @@ std::list<Explosion> StateManager::get_explosions_data() {
 
 std::map<int, int> StateManager::get_scores() {
     return scores_by_id;
+}
+
+bool StateManager::reproducir_disparo() {
+	if (shots > 0) {
+		shots--;
+		return true;
+	}
+	return false;
 }

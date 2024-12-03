@@ -145,6 +145,9 @@ void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_of
 
 void Renderer::draw_bullet(Bullet& bullet, const float zoom_offset_x, const float zoom_offset_y) {
 	SDL2pp::Texture* sprite = textureManager.getGunSprite("pistolas");
+    if (state.reproducir_disparo()){
+        textureManager.playPreloadedSound("disparo", 100);
+    }
 	int vcenter = renderer.GetOutputHeight();
 	float angle = bullet.moving_up ? 90.0f : 0.0f;
 	angle = angle * (bullet.moving_right ? -1 : 1);
