@@ -10,7 +10,6 @@
 class StateManager
 {
 public:
-    // Por ahora esto es static porque la clase no tiene atributos, falta completarla.
     static void update_duck_state(Duck&, const Gameaction&);
     static Gamestate get_duck_state(Duck&, int);
     static Coordinates get_duck_coordinates(Duck&);

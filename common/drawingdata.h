@@ -4,6 +4,8 @@
 struct DrawingData {
 	int type;
 	int right;
+	int shooting;
+	int up;
 };
 
 #endif

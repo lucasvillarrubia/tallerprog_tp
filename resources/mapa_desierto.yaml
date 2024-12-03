@@ -1,0 +1,112 @@
+entities:
+  - x: 100.0
+    y: -300.0
+    width: 1000.0
+    height: 50.0
+    texture: piso_desierto
+  - x: 100.0
+    y: 250.0
+    width: 200.0
+    height: 30.0
+    texture: piso_desierto
+  - x: 900.0
+    y: 250.0
+    width: 200.0
+    height: 30.0
+    texture: piso_desierto
+  - x: 550.0
+    y: 180.0
+    width: 100.0
+    height: 100.0
+    texture: piso_desierto
+  - x: 550.0
+    y: -50.0
+    width: 100.0
+    height: 30.0
+    texture: piso_desierto
+  - x: 90.0
+    y: -150.0
+    width: 200.0
+    height: 30.0
+    texture: piso_desierto
+  - x: 900.0
+    y: -150.0
+    width: 200.0
+    height: 30.0
+    texture: piso_desierto
+  - x: 950.0
+    y: 0.0
+    width: 50.0
+    height: 30.0
+    texture: piso_desierto
+  - x: 200.0
+    y: 0.0
+    width: 50.0
+    height: 30.0
+    texture: piso_desierto
+  - x: 1000.0
+    y: 120.0
+    width: 150.0
+    height: 30.0
+    texture: piso_desierto
+  - x: 350.0
+    y: 50.0
+    width: 180.0
+    height: 30.0
+    texture: piso_desierto
+  - x: 700.0
+    y: 50.0
+    width: 180.0
+    height: 30.0
+    texture: piso_desierto
+  - x: 700.0
+    y: 200.0
+    width: 70.0
+    height: 30.0
+    texture: piso_desierto
+  - x: 400.0
+    y: 200.0
+    width: 70.0
+    height: 30.0
+    texture: piso_desierto
+spawn_places_patos:
+  - x: 985
+    y: 280
+  - x: 135
+    y: 280
+  - x: 1020
+    y: -120
+  - x: 110
+    y: -120
+  - x: 550
+    y: -230
+spawn_places_cajas:
+  - x: 705
+    y: 230
+  - x: 755
+    y: -250
+  - x: 360
+    y: -250
+  - x: 400
+    y: 230
+spawn_places_armas:
+  - x: 220
+    y: 280
+  - x: 905
+    y: 280
+  - x: 565
+    y: -20
+  - x: 485
+    y: -250
+  - x: 625
+    y: -250
+  - x: 970
+    y: -120
+  - x: 750
+    y: 80
+  - x: 410
+    y: 80
+  - x: 190
+    y: -250
+  - x: 965
+    y: -250

@@ -6,11 +6,18 @@
 
 #include "coordinates.h"
 #include "drawingdata.h"
+#include "color.h"
 
 
 struct Gamedata {
     int player_id;
     explicit Gamedata(const int player): player_id(player) {}
+};
+
+struct Gamematch : Gamedata {
+    int match_id;
+    int players_count;
+    Gamematch(const int match, const int creator, const int players): Gamedata(creator), match_id(match), players_count(players) {}
 };
 
 struct Gamestate: Gamedata {
@@ -24,12 +31,22 @@ struct Gamestate: Gamedata {
     int type_gun;
     int move_direction;
     int is_alive;
+    int is_slipping;
+    int is_pointing_upwards;
+    int is_ducking;
     float jump_speed;
     std::map<int, Coordinates> positions_by_id;
+    std::map<int, float> speeds_by_id;
     std::map<int, std::pair<DrawingData, Coordinates>> guns_positions_by_id;
     int bullet_flag;
     std::map<int, Coordinates> bullets_positions_by_id;
-    std::string message;
+    int match_errors_flag;
+    std::string error_msg;
+    int match_id;
+    std::list<Gamematch> matches_info;
+    int round;
+    Color color;
+    int player_count;
 
     Gamestate(): Gamedata(-1) {}
 
@@ -42,7 +59,8 @@ struct Gamestate: Gamedata {
         const int flap,
         const int direction,
         const int life,
-        const float jumpspeed
+        const float jumpspeed,
+        const Color& main_color
     ):
         Gamedata(player),
         type(1),
@@ -53,7 +71,8 @@ struct Gamestate: Gamedata {
         is_flapping(flap),
         move_direction(direction),
         is_alive(life),
-        jump_speed(jumpspeed) {}
+        jump_speed(jumpspeed),
+        color(main_color) {}
 
     Gamestate(
         const int player,
@@ -61,7 +80,10 @@ struct Gamestate: Gamedata {
         const int jump,
         const int flap,
         const int direction,
-        const int life
+        const int life,
+        const int slip,
+        const int point,
+        const int ducking
         ):
         Gamedata(player),
         type(3),
@@ -69,14 +91,17 @@ struct Gamestate: Gamedata {
         is_jumping(jump),
         is_flapping(flap),
         move_direction(direction),
-        is_alive(life) {}
+        is_alive(life),
+        is_slipping(slip),
+        is_pointing_upwards(point),
+        is_ducking(ducking)
+        {}
 
-    Gamestate(std::map<int,Coordinates>& positions):
+    Gamestate(std::map<int,Coordinates>& positions, std::map<int,float>& speeds):
         Gamedata(0),
         type(2),
-        positions_by_id(positions) {}
-
-    Gamestate(const int player, const std::string& msg): Gamedata(player), type(4), message(msg) {}
+        positions_by_id(positions),
+        speeds_by_id(speeds) {}
     
     //envia la inicializacion de un arma
     Gamestate(
@@ -105,6 +130,7 @@ struct Gamestate: Gamedata {
     	const int _id,
     	const int _type,
     	const int direction,
+    	const int up,
     	float x,
     	float y
     ) : 
@@ -114,7 +140,8 @@ struct Gamestate: Gamedata {
         pos_X(x),
         pos_Y(y),
         type_gun(_type),
-    	move_direction(direction) {}
+    	move_direction(direction),
+    	is_pointing_upwards(up) {}
     
     //envia las nuevas posiciones de las balas--el flag es para que no se confunda con el del update de posiciones de patos--
     Gamestate(
@@ -132,24 +159,60 @@ struct Gamestate: Gamedata {
 		Gamedata(0),
     	type(9),
     	object_id(_id){}
+
+    //envia la señal de error en el match
+    Gamestate(const int player, const int flag, const std::string& msg):
+        Gamedata(player),
+        type(10),
+        match_errors_flag(flag),
+        error_msg(msg) {}
+
+    // envía partida que creó o a la que se unió el jugador
+    Gamestate(const int player, const int flag, const int match, const int player_count):
+        Gamedata(player),
+        type(11),
+        match_errors_flag(flag),
+        match_id(match),
+        player_count(player_count)
+        {}
+
+    // envía información de partidas
+    Gamestate(const int player, std::list<Gamematch>& matches):
+        Gamedata(player),
+        type(12),
+        matches_info(matches) {}      
+	//envia la explosiónde la granada
+    Gamestate(const int flag, const int _id, float flag2) : 
+		Gamedata(0),
+    	type(15),
+    	object_id(_id),
+    	bullet_flag(flag),
+    	match_errors_flag(flag2) {}
+  
+    Gamestate(const int player, const int round): Gamedata(player), type(13), round(round) {}
+
+    Gamestate(const int player, const std::string& exit_msg): Gamedata(player), type(14), error_msg(exit_msg) {}
+
 };
 
 struct Gameaction: Gamedata {
     int match;
     int type;
     int key;
-    bool is_multiplayer;
+    int is_multiplayer;
     Gameaction(): Gamedata(-1) {}
     Gameaction(
         const int player,
         const int _match,
         const int _type,
-        const int _key
+        const int _key,
+        const int mode
         ):
         Gamedata(player),
         match(_match),
         type(_type),
-        key(_key) {}
+        key(_key),
+        is_multiplayer(mode) {}
     Gameaction(const int player, const int _type, const bool mode): Gamedata(player), type(_type), is_multiplayer(mode) {}
 };
 

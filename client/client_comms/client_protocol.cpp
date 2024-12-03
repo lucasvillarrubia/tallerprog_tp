@@ -3,6 +3,8 @@
 #include <iostream>
 #include <utility>
 
+#include "common/color.h"
+
 
 ClientProtocol::ClientProtocol(Socket&& skt, std::atomic_bool& connection_status): Protocol(std::move(skt), connection_status) {}
 
@@ -14,12 +16,13 @@ void ClientProtocol::send_message(const Gameaction& message)
     send_single_8bit_int(message.match);
     send_single_8bit_int(message.type);
     send_single_8bit_int(message.key);
+    send_single_8bit_int(message.is_multiplayer);
 }
 
 void ClientProtocol::receive_init_character_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
-    uint8_t character_id, run_state, jump_state, flap_state, move_direction, life;
+    uint8_t character_id, run_state, jump_state, flap_state, move_direction, life, r, g, b;
     float pos_X, pos_Y, velocity_Y;
     receive_single_8bit_int(character_id);
     receive_single_float(pos_X);
@@ -30,7 +33,10 @@ void ClientProtocol::receive_init_character_message(Gamestate& received)
     receive_single_8bit_int(move_direction);
     receive_single_8bit_int(life);
     receive_single_float(velocity_Y);
-    received = Gamestate(character_id, pos_X, pos_Y, run_state, jump_state, flap_state, move_direction, life, velocity_Y);
+    receive_single_8bit_int(r);
+    receive_single_8bit_int(g);
+    receive_single_8bit_int(b);
+    received = Gamestate(character_id, pos_X, pos_Y, run_state, jump_state, flap_state, move_direction, life, velocity_Y, {r, g, b});
 }
 
 // void ClientProtocol::receive_single_character_position_message()
@@ -41,6 +47,7 @@ void ClientProtocol::receive_characters_positions_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
     std::map<int, Coordinates> positions_by_id;
+    std::map<int, float> speeds_by_id;
     uint8_t positions_count;
     receive_single_8bit_int(positions_count);
     for (int i = 0; i < positions_count; i++)
@@ -52,20 +59,33 @@ void ClientProtocol::receive_characters_positions_message(Gamestate& received)
         receive_single_float(pos_Y);
         positions_by_id.insert({id, {pos_X, pos_Y}});
     }
-    received = Gamestate(positions_by_id);
+    uint8_t speeds_count;
+    receive_single_8bit_int(speeds_count);
+    for (int i = 0; i < speeds_count; i++)
+    {
+        uint8_t id;
+        float speed;
+        receive_single_8bit_int(id);
+        receive_single_float(speed);
+        speeds_by_id.insert({id, speed});
+    }
+    received = Gamestate(positions_by_id, speeds_by_id);
 }
 
 void ClientProtocol::receive_character_update_message(Gamestate& received)
 {
     if (not client_is_connected.load()) return;
-    uint8_t player_id, run, jump, flap, direction, life;
+    uint8_t player_id, run, jump, flap, direction, life, slip, point_up, ducking;
     receive_single_8bit_int(player_id);
     receive_single_8bit_int(run);
     receive_single_8bit_int(jump);
     receive_single_8bit_int(flap);
     receive_single_8bit_int(direction);
     receive_single_8bit_int(life);
-    received = Gamestate(player_id, run, jump, flap, direction, life);
+    receive_single_8bit_int(slip);
+    receive_single_8bit_int(point_up);
+    receive_single_8bit_int(ducking);
+    received = Gamestate(player_id, run, jump, flap, direction, life, slip, point_up, ducking);
 }
 
 
@@ -87,14 +107,16 @@ void ClientProtocol::receive_guns_positions_message(Gamestate& received) {
 	std::map<int, std::pair<DrawingData, Coordinates>> guns_positions;
 	receive_single_8bit_int(positions_count);
     for (int i = 0; i < positions_count; i++) {
-    	uint8_t id, type_gun, direction;
+    	uint8_t id, type_gun, direction, shooting, up;
         float pos_X, pos_Y;
         receive_single_8bit_int(id);
         receive_single_8bit_int(type_gun);
         receive_single_8bit_int(direction);
+        receive_single_8bit_int(shooting);
+        receive_single_8bit_int(up);
         receive_single_float(pos_X);
         receive_single_float(pos_Y);
-        DrawingData gun_data = { type_gun, direction };
+        DrawingData gun_data = { type_gun, direction, shooting, up };
         Coordinates gun_position = { pos_X, pos_Y};
         guns_positions.insert({id, std::make_pair(gun_data, gun_position)});
     }
@@ -103,14 +125,15 @@ void ClientProtocol::receive_guns_positions_message(Gamestate& received) {
 
 void ClientProtocol::receive_bullet_init_message(Gamestate& received) {
 	if (not client_is_connected.load()) return;
-    uint8_t gun_id, type_gun, direction;
+    uint8_t gun_id, type_gun, direction, up;
     float pos_X, pos_Y;
     receive_single_8bit_int(gun_id);
     receive_single_float(pos_X);
     receive_single_float(pos_Y);
     receive_single_8bit_int(type_gun);
     receive_single_8bit_int(direction);
-    received = Gamestate(gun_id, type_gun, direction, pos_X, pos_Y);
+    receive_single_8bit_int(up);
+    received = Gamestate(gun_id, type_gun, direction, up, pos_X, pos_Y);
 }
 
 void ClientProtocol::receive_bullets_positions_message(Gamestate& received) {
@@ -135,6 +158,78 @@ void ClientProtocol::receive_bullet_destroy_message(Gamestate& received) {
     uint8_t bullet_id;
     receive_single_8bit_int(bullet_id);
     received = Gamestate(bullet_id);
+}
+
+void ClientProtocol::receive_match_error_message(Gamestate& received)
+{
+    if (not client_is_connected.load()) return;
+    uint8_t player, match_errors_flag;
+    std::vector<char> error;
+    receive_single_8bit_int(player);
+    receive_single_8bit_int(match_errors_flag);
+    receive_string(error);
+    std::string error_msg(error.begin(), error.end());
+    received = Gamestate(player, match_errors_flag, error_msg);
+}
+
+void ClientProtocol::receive_match_info_message(Gamestate& received)
+{
+    if (not client_is_connected.load()) return;
+    uint8_t player, match_errors_flag, match_id, player_count;
+    receive_single_8bit_int(player);
+    receive_single_8bit_int(match_errors_flag);
+    receive_single_8bit_int(match_id);
+    receive_single_8bit_int(player_count);
+    received = Gamestate(player, match_errors_flag, match_id, player_count);
+}
+
+void ClientProtocol::receive_matches_info_message(Gamestate& received)
+{
+    if (not client_is_connected.load()) return;
+    uint8_t player;
+    uint8_t matches_count;
+    std::list<Gamematch> matches_info;
+    receive_single_8bit_int(player);
+    receive_single_8bit_int(matches_count);
+    for (int i = 0; i < matches_count; i++)
+    {
+        uint8_t match_id, creator_id, players_count;
+        receive_single_8bit_int(creator_id);
+        receive_single_8bit_int(match_id);
+        receive_single_8bit_int(players_count);
+        matches_info.push_back({match_id, creator_id, players_count});
+    }
+    received = Gamestate(player, matches_info);
+}
+
+void ClientProtocol::receive_explosion_message(Gamestate& received) {
+    if (not client_is_connected.load()) return;
+    uint8_t flag, grenade_id;
+    float flag2;
+    receive_single_8bit_int(flag);
+    receive_single_8bit_int(grenade_id);
+    receive_single_float(flag2);
+    received = Gamestate(flag, grenade_id, flag2);
+}
+
+void ClientProtocol::receive_round_ended_message(Gamestate& received)
+{
+    if (not client_is_connected.load()) return;
+    uint8_t player, round;
+    receive_single_8bit_int(player);
+    receive_single_8bit_int(round);
+    received = Gamestate(player, round);
+}
+
+void ClientProtocol::receive_exit_message(Gamestate& received)
+{
+    if (not client_is_connected.load()) return;
+    uint8_t player;
+    std::vector<char> exit_msg;
+    receive_single_8bit_int(player);
+    receive_string(exit_msg);
+    std::string exit_message(exit_msg.begin(), exit_msg.end());
+    received = Gamestate(player, exit_message);
 }
 
 void ClientProtocol::receive_message(Gamestate& received)
@@ -165,12 +260,26 @@ void ClientProtocol::receive_message(Gamestate& received)
 	case 9:
         receive_bullet_destroy_message(received);
         break;
+    case 10:
+        receive_match_error_message(received);
+        break;
+    case 11:
+        receive_match_info_message(received);
+        break;
+    case 12:
+        receive_matches_info_message(received);
+        break;
+	case 15:
+		receive_explosion_message(received);
+		break;
+    case 13:
+        receive_round_ended_message(received);
+        break;
+    case 14:
+        receive_exit_message(received);
+        break;
     default:
         receive_character_update_message(received);
         break;
     }
 }
-
-// bool ClientProtocol::theres_more_data_per_code(int msg_code) {
-//     return (msg_code == PICKUP_MESSAGE_CODE) ? true : false;
-// }

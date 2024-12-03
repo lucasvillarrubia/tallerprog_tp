@@ -44,11 +44,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  include("/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/yaml-cpp-build/cmake_install.cmake")
   include("/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/common/cmake_install.cmake")
   include("/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/libsdl2pp-build/cmake_install.cmake")
   include("/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/client/cmake_install.cmake")
   include("/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/server/cmake_install.cmake")
-  include("/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/editor/cmake_install.cmake")
   include("/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/_deps/googletest-build/cmake_install.cmake")
   include("/home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug/tests/cmake_install.cmake")
 

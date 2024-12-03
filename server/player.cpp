@@ -7,7 +7,7 @@
 
 
 Player::Player(Socket&& skt, Queue<Gameaction>& usr_entr):
-        id(1),
+        id(0),
         server_messages(usr_entr),
         client_is_connected(false),
         protocol(std::move(skt), client_is_connected),
@@ -31,15 +31,22 @@ void Player::start() {
 
 void Player::add_message_to_queue(const Gamestate& to_send) {
     if (client_is_connected.load()) {
+        if (to_send.type == 11) {
+        }
         messages_queue.try_push(to_send);
     }
 }
 
 bool Player::is_connected() { return client_is_connected.load(); }
 
-bool Player::matches(int) const
+bool Player::matches(int id) const
 {
-    return true;
+    return this->id == id;
+}
+
+bool Player::has_inside(int id) const
+{
+    return matches(id);
 }
 
 void Player::disconnect() {

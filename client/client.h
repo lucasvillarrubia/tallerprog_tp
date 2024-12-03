@@ -4,6 +4,7 @@
 
 #include "client_threads/event_listener.h"
 #include "local_player.h"
+#include <SDL2/SDL_mixer.h>
 #include "renderer.h"
 #include "state_manager.h"
 #include "client_threads/updater.h"
@@ -33,11 +34,18 @@ private:
     LocalPlayer connection;
     EventListener event_listener;
     StateManager state;
-    // Renderer renderloop;
+    SDL2pp::SDL sdl;
+    int current_player_count;
+    Renderer renderloop;
     Updater updater;
     lobby gamelobby;
+    Mix_Music* background_music;
     bool multiplayer_mode;
+    int current_id;
+    int current_match;
+    int current_match_winner;
     void constant_rate_loop(std::function<void(int)>, std::chrono::milliseconds);
+    void show_winner_message();
 public:
     Client(const char*, const char*);
     void run();
@@ -48,9 +56,9 @@ public:
     ~Client() = default;
 public slots:
     void handle_create_one_player_match();
-    void handle_create_two_player_match();
-    void handle_create_three_player_match();
-    void handle_join_match();
+    void handle_join_match(int);
+    void handle_start_match();
+    void handle_refresh_lobby();
 };
 
 

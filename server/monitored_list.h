@@ -41,9 +41,11 @@ public:
 
     T get_by_id(int id) {
         std::unique_lock<std::mutex> lck(mtx);
+        // std::cout << "se está buscando el jugador con id " << id << '\n';
         for (auto& gameobject : list) {
-            if (gameobject->matches(id)) {
-                return gameobject;
+            if (gameobject != nullptr) {
+                if (gameobject->matches(id))
+                    return gameobject;
             }
         }
         return nullptr;
@@ -114,7 +116,7 @@ public:
     {
         std::unique_lock<std::mutex> lck(mtx);
         for (auto gameobject: list) {
-            if (gameobject->matches(player))
+            if (gameobject->has_inside(player))
                 return true;
         }
         return false;

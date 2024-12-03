@@ -8,13 +8,11 @@
 class MagnumAmmo : public Ammo {
 private:
 	float damagePoints;
-	//float scope;
 public:
-	MagnumAmmo(float x, float y, bool right);
+	MagnumAmmo(float x, float y, bool right, bool up);
 	void update_position(const unsigned int frame_delta) override;
-	bool is_destroyed() override;
 	float impact() override;
-	~MagnumAmmo() = default;
+	//~MagnumAmmo() = default;
 };
 
 #endif

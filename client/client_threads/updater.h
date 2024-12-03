@@ -14,7 +14,7 @@ private:
     Queue<Gamestate>& updates_feed;
     StateManager& state;
 public:
-    explicit Updater(Queue<Gamestate>&, StateManager&);
+    Updater(Queue<Gamestate>&, StateManager&);
     void run() override;
     void stop() override;
     ~Updater() override = default;

@@ -3,11 +3,11 @@
 #include "common/hands_on_sockets/liberror.h"
 
 
-LocalPlayer::LocalPlayer(Socket&& skt, Queue<Gameaction>& evn, Queue<Gamestate>& upd, std::atomic_bool& con_stat):
+LocalPlayer::LocalPlayer(Socket&& skt, Queue<Gameaction>& evn, Queue<Gamestate>& upd, std::atomic_bool& con_stat, StateManager& state):
         is_online(con_stat),
         protocol(std::move(skt), is_online),
         sender(is_online, protocol, evn),
-        receiver(is_online, protocol, upd)
+        receiver(is_online, protocol, upd, state)
 {}
 
 void LocalPlayer::start_communication()

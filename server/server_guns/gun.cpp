@@ -1,11 +1,20 @@
 #include "gun.h"
 
-Gun::Gun(float x, float y, float width, float height, int type) : Item(x, y, width, height, type), shooting(false) {}
+Gun::Gun(float x, float y, float width, float height, int type) : Item(x, y, width, height, type), shooting(false), pointing_up(false) {}
 
 bool Gun::is_duck_position_valid(float x, float y)
 {
     Rectangulo character(x, y, 64.0f, 64.0f);
     return hitbox.hay_colision(character);
+}
+
+void Gun::updateDirection(bool right, bool up) {
+	rightDirection = right;
+	pointing_up = up;
+}
+
+bool Gun::is_pointing_up() {
+	return pointing_up;
 }
 
 bool Gun::isShooting() {
@@ -21,3 +30,26 @@ void Gun::stopShoot() {
 	shooting = false;
 }
 
+bool Gun::is_banana_peel() {
+	return false;
+}
+
+bool Gun::is_a_grenade() {
+	return false;
+}
+
+bool Gun::is_pew_pew_laser() {
+	return false;
+}
+
+bool Gun::in_explosion_area([[maybe_unused]] float x, [[maybe_unused]] float y) {
+	return false;
+}
+
+bool Gun::try_to_explode_grenade() {
+	return false;
+}
+
+bool Gun::is_destroyed() {
+	return false;
+}

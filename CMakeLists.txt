@@ -62,6 +62,7 @@ add_library(taller_common STATIC
         common/rectangulo.h
         common/coordinates.h
         common/drawingdata.h
+        common/color.h
 )
 
 # add the source files that make the lib
@@ -138,11 +139,14 @@ if(TALLER_CLIENT)
             client/state_manager.cpp
             client/texture_manager.h
             client/state_manager.h
+            client/caja.h
             client/client_threads/updater.cpp
             client/client_threads/updater.h
             client/lobby/lobby.cpp
             client/lobby/lobby.h
             client/lobby/lobby.ui
+            # client/color.h
+            client/state.h
     )
 
     # Make them depend on taller_common lib
@@ -176,6 +180,10 @@ if(TALLER_CLIENT)
 
     # Para la instalación??
     #install(DIRECTORY resources/ DESTINATION ${CMAKE_INSTALL_PREFIX}/resources)
+    install(TARGETS taller_client RUNTIME DESTINATION /usr/bin)
+    install(DIRECTORY ${CMAKE_SOURCE_DIR}/resources/ DESTINATION /etc/duckgame_20 FILES_MATCHING PATTERN "*.yaml")
+    install(DIRECTORY ${CMAKE_SOURCE_DIR}/resources/ DESTINATION /var/duckgame_20 FILES_MATCHING PATTERN "*.*" EXCLUDE PATTERN "*.yaml")
+    install(DIRECTORY ${CMAKE_SOURCE_DIR}/resources/ DESTINATION ${CMAKE_BINARY_DIR}/resources)
 
 endif()
 
@@ -234,7 +242,29 @@ if(TALLER_SERVER)
 			server/server_guns/Magnum.cpp
 			server/server_guns/Magnum.h
 			server/server_guns/MagnumAmmo.cpp
-			server/server_guns/MagnumAmmo.h)
+			server/server_guns/MagnumAmmo.h
+			server/server_guns/Sniper.cpp
+			server/server_guns/Sniper.h
+			server/server_guns/SniperAmmo.cpp
+			server/server_guns/SniperAmmo.h
+			server/server_guns/Banana.h
+			server/server_guns/Banana.cpp
+			server/server_guns/SpawnPlace.cpp
+			server/server_guns/SpawnPlace.h
+			server/server_guns/Grenade.cpp
+			server/server_guns/Grenade.h
+			server/server_guns/PewPewLaser.cpp
+			server/server_guns/PewPewLaser.h
+			server/server_guns/PewPewLaserAmmo.cpp
+			server/server_guns/PewPewLaserAmmo.h
+			server/server_guns/LaserRifle.cpp
+			server/server_guns/LaserRifle.h
+			server/server_guns/LaserRifleAmmo.cpp
+			server/server_guns/LaserRifleAmmo.h
+			server/server_guns/Shotgun.cpp
+			server/server_guns/Shotgun.h
+			server/server_guns/ShotgunAmmo.cpp
+			server/server_guns/ShotgunAmmo.h)
 
     # Make them depend on taller_common lib
     add_dependencies(taller_server taller_common)
@@ -270,8 +300,12 @@ if(TALLER_TESTS)
     include(GoogleTest)
 
     # target for testing
-    # HEY!! TODO XXX: Change the name of the executable to the one you like!
-    add_executable(taller_tests)
+    # HEY!! TODO XXX: Change the name of the executable to the one you like
+    add_executable(taller_tests
+        client/client_comms/client_protocol.cpp
+        server/server_comms/server_protocol.cpp
+        common/hands_on_sockets/socket.cpp
+    )
 
     # HEY!! TODO XXX: I'm assuming that the code under testing is in taller_common
     # Change this if you have to.
@@ -299,6 +333,8 @@ if(TALLER_TESTS)
     # Change this if you have to.
     target_link_libraries(taller_tests
         taller_common
+        GTest::gtest
+        GTest::gmock
         GTest::gtest_main
     )
 endif()

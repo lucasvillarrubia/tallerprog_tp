@@ -10,6 +10,7 @@
 #include <chrono>
 #include <list>
 #include <utility>
+#include <map>
 
 class AK47 : public Gun {
 private:
@@ -18,7 +19,7 @@ private:
 	const float time_between_shots;
 	std::chrono::time_point<std::chrono::_V2::steady_clock> last_shot_time;
 public:
-	AK47(float x, float y);
+	AK47(float x, float y, std::map<std::string, float> config);
 	bool shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) override;
 	bool is_duck_position_valid(float x, float y);
 };

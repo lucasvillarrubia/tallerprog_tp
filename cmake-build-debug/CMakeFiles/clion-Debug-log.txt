@@ -1,5 +1,12 @@
 /home/lucas/utilities/CLion-2024.2.2/clion-2024.2.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/lucas/utilities/CLion-2024.2.2/clion-2024.2.2/bin/ninja/linux/x64/ninja -G Ninja -S /home/lucas/CLionProjects/tallerprog_tp -B /home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug
 CMAKE_CXX_COMPILER_ID="GNU"
--- Configuring done (3.0s)
--- Generating done (0.0s)
+-- Performing Test HAVE_STDATOMIC
+-- Performing Test HAVE_STDATOMIC - Success
+-- Found WrapAtomic: TRUE
+-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so
+-- Found WrapOpenGL: TRUE
+-- Found XKB: /usr/lib/x86_64-linux-gnu/libxkbcommon.so (found suitable version "1.4.0", minimum required is "0.5.0")
+-- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
+-- Configuring done (6.6s)
+-- Generating done (0.1s)
 -- Build files have been written to: /home/lucas/CLionProjects/tallerprog_tp/cmake-build-debug
