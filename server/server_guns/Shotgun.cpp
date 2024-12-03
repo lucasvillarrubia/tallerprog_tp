@@ -10,11 +10,13 @@ bool Shotgun::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
 	}
 	if (!shooting && !must_recharge && (ammo > 0)) {
 		int dir = rightDirection ? 36 : -12;
+		int dir_y = pointing_up ? 36 : 0;
+		dir = pointing_up ? 24 : dir;
 		shooting = true;
 		must_recharge = true;
 		ammo--;
 		id++;
-		bullets.push_back(std::make_pair(id, new ShotgunAmmo(positionX + dir, positionY, rightDirection, pointing_up)));
+		bullets.push_back(std::make_pair(id, new ShotgunAmmo(positionX + dir, positionY+dir_y, rightDirection, pointing_up)));
 		return true;
 	}
 	return false;

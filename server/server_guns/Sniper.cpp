@@ -1,6 +1,6 @@
 #include "Sniper.h"
 
-Sniper::Sniper(float x, float y) : Gun(x,y,32,32,10), ammo(3), time_between_shots(1.5) {
+Sniper::Sniper(float x, float y) : Gun(x,y,32,32,10), ammo(3), time_between_shots(1.0) {
 	last_shot_time = std::chrono::steady_clock::now();
 }
 
@@ -17,10 +17,12 @@ bool Sniper::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
 	if (!shooting && ammo > 0 && (t) >= time_between_shots) {
 		last_shot_time = time_now;
 		int dir = rightDirection ? 36 : -12;
+		int dir_y = pointing_up ? 36 : 0;
+		dir = pointing_up ? 24 : dir;
 		shooting = true;
 		ammo--;
 		id++;
-		bullets.push_back(std::make_pair(id, new SniperAmmo(positionX+dir, positionY,rightDirection, pointing_up)));
+		bullets.push_back(std::make_pair(id, new SniperAmmo(positionX+dir, positionY+dir_y,rightDirection, pointing_up)));
 		return true;
 	}
 	return false;

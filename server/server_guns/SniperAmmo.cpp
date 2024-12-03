@@ -4,7 +4,9 @@ SniperAmmo::SniperAmmo(float x, float y, bool right, bool up) : Ammo(x,y,right,u
 
 void SniperAmmo::update_position(const unsigned int frame_delta)  {
 	if (!destroyed){
-		if (movingRight) {
+		if (moving_up) {
+			positionY += frame_delta * 0.7;
+		} else if (movingRight) {
 			positionX += frame_delta * 0.7;
 		} else {
 			positionX -= frame_delta * 0.7;

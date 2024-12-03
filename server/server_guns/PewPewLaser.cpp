@@ -17,9 +17,11 @@ bool PewPewLaser::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
 		if (t >= time_between_shots) {
 			last_shot_time = time_now;
 			int dir = rightDirection ? 36 : -12;
+			int dir_y = pointing_up ? 36 : 0;
+			dir = pointing_up ? 24 : dir;
 			shots_remaining--;
 			id++;
-			bullets.push_back(std::make_pair(id, new PewPewLaserAmmo(positionX+dir, positionY, rightDirection, pointing_up)));
+			bullets.push_back(std::make_pair(id, new PewPewLaserAmmo(positionX+dir, positionY+dir_y, rightDirection, pointing_up)));
 			burst = (shots_remaining > 0);
 			return true;
 		}
