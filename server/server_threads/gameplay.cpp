@@ -17,7 +17,8 @@ Gameplay::Gameplay(MonitoredList<Player*>& player_list, std::map<int, bool>& mul
         user_commands(usr_cmds),
         winner_id(winner),
         terrain(spawn_places, guns_by_id, ducks_by_id),
-        current_round(1)
+        current_round(1),
+        test_mode(false)
 {}
 
 
@@ -70,7 +71,8 @@ void Gameplay::send_all_initial_coordinates()
     	);
     	broadcast_for_all_players(initial_gun_coordinates);
     }
-    spawn_places.push_back(SpawnPlace(160.0f, 200.0f));
+    terrain.set_spawn_places();
+    // spawn_places.push_back(SpawnPlace(160.0f, 200.0f));
 }
 
 void Gameplay::process_users_commands() {
@@ -97,11 +99,23 @@ void Gameplay::process_users_commands() {
 
 void Gameplay::initialize_players()
 {
+    if ((players.size() == 1) and not multiplayer_mode_by_player.begin()->second) {
+        test_mode = true;   
+    }
     for (auto& [id, is_multiplayer] : multiplayer_mode_by_player)
     {
         Duck duck;
         ducks_by_id.insert({id, duck});
         scores_by_id.insert({id, 0});
+        if (test_mode) {
+            for (int i = 2; i < 5; i++) {
+                if (i != id) {
+                    Duck test_duck;
+                    ducks_by_id.insert({i, test_duck});
+                }
+            }
+            break;
+        }
         if (is_multiplayer) {
             Duck second;
             ducks_by_id.insert({id + MULTIPLAYER_ID_OFFSET, second});
