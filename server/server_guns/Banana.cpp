@@ -1,6 +1,7 @@
 #include "Banana.h"
 
-Banana::Banana(float x, float y) : Gun(x,y,32,32,2), banana_peel(false) {}
+Banana::Banana(float x, float y, std::map<std::string, float> config) : 
+	Gun(x,y,config["DIMENSION_X"],config["DIMENSION_Y"],static_cast<int>(config["TYPE"])), banana_peel(false) {}
 
 void Banana::dropped() {
 	pickedUp = false;

@@ -8,6 +8,7 @@
 #include "duck.h"
 #include "server_guns/gun.h"
 #include "server/server_guns/SpawnPlace.h"
+#include "server/server_guns/ConfigGuns.h"
 #include <yaml-cpp/yaml.h>
 
 class Terrain {
@@ -18,6 +19,7 @@ private:
     std::list<SpawnPlace>& spawn_places;
     std::map<int, Gun*>& guns_by_id;
     std::map<int, Duck>& ducks_by_id;
+    ConfigGuns config_guns;
 public:
     Terrain(std::list<SpawnPlace>&, std::map<int, Gun*>&, std::map<int, Duck>&);
     void set_ducks_positions();

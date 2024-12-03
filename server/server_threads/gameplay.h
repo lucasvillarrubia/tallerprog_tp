@@ -24,6 +24,7 @@
 #include "server/server_guns/SpawnPlace.h"
 #include "server/server_guns/PewPewLaser.h"
 #include "server/server_guns/LaserRifle.h"
+#include "server/server_guns/Shotgun.h"
 #include "server/player.h"
 
 

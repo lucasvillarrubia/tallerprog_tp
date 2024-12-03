@@ -5,6 +5,8 @@
 #include "ammo.h"
 
 #include <chrono>
+#include <map>
+#include <string>
 
 class Grenade : public Gun {
 private:
@@ -14,7 +16,7 @@ private:
 	std::chrono::time_point<std::chrono::_V2::steady_clock> activation_time;
 	bool detonated;
 public:
-	Grenade(float x, float y);
+	Grenade(float x, float y, std::map<std::string, float> config);
 	void updatePosition(float x, float y) override;
 	bool is_duck_position_valid(float x, float y);
 	bool shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) override;

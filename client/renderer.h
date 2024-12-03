@@ -61,6 +61,7 @@ private:
     void draw_character(Character&, int, const float zoom_offset_x, const float zoom_offset_y);
     void draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_offset_y);
     void draw_bullet(Bullet& bullet, const float zoom_offset_x, const float zoom_offset_y);
+    void draw_trace(Bullet& bullet, const float zoom_offset_x, const float zoom_offset_y);
     void draw_explosion(Explosion& explosion, const float zoom_offset_x, const float zoom_offset_y);
     SDL_Rect search_sprite(Gun& gun);
     SDL_Rect search_dimension_sprite(int vcenter, Gun& gun, const float zoom_offset_x, const float zoom_offset_y);

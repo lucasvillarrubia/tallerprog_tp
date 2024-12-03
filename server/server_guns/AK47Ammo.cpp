@@ -4,7 +4,9 @@ AK47Ammo::AK47Ammo(float x, float y, bool right, bool up) : Ammo(x,y,right,up,5,
 
 void AK47Ammo::update_position(const unsigned int frame_delta)  {
 	if (!destroyed){
-		if (movingRight) {
+		if (moving_up) {
+			positionY += frame_delta * 0.4;
+		} else if (movingRight) {
 			positionX += frame_delta * 0.4;
 		} else {
 			positionX -= frame_delta * 0.4;

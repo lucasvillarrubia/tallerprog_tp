@@ -1,7 +1,13 @@
 #include "PewPewLaser.h"
 
-PewPewLaser::PewPewLaser(float x, float y) : Gun(x,y,32,32,3), ammo(12), time_between_shots(1), shots_remaining(3), burst(false) {
-	last_shot_time = std::chrono::steady_clock::now();
+PewPewLaser::PewPewLaser(float x, float y, std::map<std::string, float> config) : 
+	Gun(x,y,config["DIMENSION_X"],config["DIMENSION_Y"],static_cast<int>(config["TYPE"])),
+	ammo(static_cast<int>(config["AMMO"])),
+	time_between_shots(config["TIME_BETWEEN_SHOTS"]), 
+	burst_shots(config["BURST_SHOTS"]), 
+	shots_remaining(0),
+	burst(false) {
+		last_shot_time = std::chrono::steady_clock::now();
 }
 
 bool PewPewLaser::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
@@ -9,7 +15,7 @@ bool PewPewLaser::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
 		shooting = true;
 		ammo--;
 		burst = true;
-		shots_remaining = 3;
+		shots_remaining = burst_shots;
 	}
 	if (burst && shots_remaining>0) {
 		auto time_now = std::chrono::steady_clock::now();
@@ -17,9 +23,11 @@ bool PewPewLaser::shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) {
 		if (t >= time_between_shots) {
 			last_shot_time = time_now;
 			int dir = rightDirection ? 36 : -12;
+			int dir_y = pointing_up ? 36 : 0;
+			dir = pointing_up ? 24 : dir;
 			shots_remaining--;
 			id++;
-			bullets.push_back(std::make_pair(id, new PewPewLaserAmmo(positionX+dir, positionY, rightDirection, pointing_up)));
+			bullets.push_back(std::make_pair(id, new PewPewLaserAmmo(positionX+dir, positionY+dir_y, rightDirection, pointing_up)));
 			burst = (shots_remaining > 0);
 			return true;
 		}

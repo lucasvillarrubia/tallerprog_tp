@@ -49,6 +49,8 @@ void StateManager::update(const Gamestate& update)
     case 7:
     	{
     		Bullet new_bullet(update.object_id);
+    		new_bullet.origin_X = update.pos_X;
+    		new_bullet.origin_Y = update.pos_Y;
     		new_bullet.pos_X = update.pos_X;
     		new_bullet.pos_Y = update.pos_Y;
     		new_bullet.type = update.type_gun;

@@ -1,6 +1,6 @@
 #include "SpawnPlace.h"
 
-SpawnPlace::SpawnPlace(float x, float y) : pos_X(x), pos_Y(y), item_spawned(false), gun_spawned(false), item_picked(false), hitbox(x,y,32,32), min_time_to_respawn(5) {
+SpawnPlace::SpawnPlace(float x, float y, ConfigGuns& config_guns) : config(config_guns), pos_X(x), pos_Y(y), item_spawned(false), gun_spawned(false), item_picked(false), hitbox(x,y,32,32), min_time_to_respawn(5) {
 	last_spawn_time = std::chrono::steady_clock::now();
 }
 
@@ -50,6 +50,9 @@ bool SpawnPlace::try_spawn_gun(int& id, std::map<int, Gun*>& guns) {
 				case 8:
 					spawn_magnum(id, guns);
 					break;
+				case 9:
+					spawn_shotgun(id, guns);
+					break;
 				default:
 					spawn_sniper(id, guns);
 					break;
@@ -61,39 +64,43 @@ bool SpawnPlace::try_spawn_gun(int& id, std::map<int, Gun*>& guns) {
 }
 
 void SpawnPlace::spawn_grenade(const int id, std::map<int,Gun*>& guns) {
-	guns.insert({id, new Grenade(pos_X,pos_Y)});
+	guns.insert({id, new Grenade(pos_X,pos_Y,config.get_grenade_settings())});
 }
 
 void SpawnPlace::spawn_banana(const int id, std::map<int,Gun*>& guns) {
-	guns.insert({id, new Banana(pos_X,pos_Y)});
+	guns.insert({id, new Banana(pos_X,pos_Y,config.get_banana_settings())});
 }
 
 void SpawnPlace::spawn_ak47(const int id, std::map<int,Gun*>& guns) {
-	guns.insert({id, new AK47(pos_X,pos_Y)});
+	guns.insert({id, new AK47(pos_X,pos_Y,config.get_ak47_settings())});
 }
 
 void SpawnPlace::spawn_pew_pew_laser(const int id, std::map<int,Gun*>& guns) {
-	guns.insert({id, new PewPewLaser(pos_X,pos_Y)});
+	guns.insert({id, new PewPewLaser(pos_X,pos_Y,config.get_pew_pew_laser_settings())});
 }
 
 void SpawnPlace::spawn_laser_rifle(const int id, std::map<int,Gun*>& guns) {
-	guns.insert({id, new LaserRifle(pos_X,pos_Y)});
+	guns.insert({id, new LaserRifle(pos_X,pos_Y,config.get_laser_rifle_settings())});
 }
 
 void SpawnPlace::spawn_duel_pistol(const int id, std::map<int,Gun*>& guns) {
-	guns.insert({id, new DuelPistol(pos_X,pos_Y)});
+	guns.insert({id, new DuelPistol(pos_X,pos_Y,config.get_duel_pistol_settings())});
 }
 
 void SpawnPlace::spawn_cowboy_pistol(const int id, std::map<int,Gun*>& guns) {
-	guns.insert({id, new CowboyPistol(pos_X,pos_Y)});
+	guns.insert({id, new CowboyPistol(pos_X,pos_Y,config.get_cowboy_pistol_settings())});
 }
 
 void SpawnPlace::spawn_magnum(const int id, std::map<int,Gun*>& guns) {
-	guns.insert({id, new Magnum(pos_X,pos_Y)});
+	guns.insert({id, new Magnum(pos_X,pos_Y,config.get_magnum_settings())});
+}
+
+void SpawnPlace::spawn_shotgun(const int id, std::map<int,Gun*>& guns) {
+	guns.insert({id, new Shotgun(pos_X,pos_Y,config.get_shotgun_settings())});
 }
 
 void SpawnPlace::spawn_sniper(const int id, std::map<int,Gun*>& guns) {
-	guns.insert({id, new Sniper(pos_X,pos_Y)});
+	guns.insert({id, new Sniper(pos_X,pos_Y,config.get_sniper_settings())});
 }
 
 void SpawnPlace::pick_item() {

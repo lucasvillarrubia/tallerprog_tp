@@ -6,6 +6,7 @@
 #include <chrono>
 #include <list>
 #include <utility>
+#include <map>
 
 #include "ammo.h"
 #include "gun.h"
@@ -17,7 +18,7 @@ class Sniper : public Gun {
 	const float time_between_shots;
 	std::chrono::time_point<std::chrono::_V2::steady_clock> last_shot_time;
 public:
-	Sniper(float x, float y);
+	Sniper(float x, float y, std::map<std::string, float> config);
 	bool is_duck_position_valid(float x, float y);
 	bool shoot(int& id, std::list<std::pair<int, Ammo*>>& bullets) override;
 };

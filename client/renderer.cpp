@@ -127,6 +127,9 @@ void Renderer::draw_gun(Gun& gun, const float zoom_offset_x, const float zoom_of
 		case 8:
 			sprite = textureManager.getGunSprite("pistolas");
 			break;
+		case 9:
+			sprite = textureManager.getGunSprite("shotgun");
+			break;
 		default:
 			sprite = textureManager.getGunSprite("sniper");
 			break;
@@ -148,6 +151,19 @@ void Renderer::draw_bullet(Bullet& bullet, const float zoom_offset_x, const floa
 	SDL_RendererFlip flip = bullet.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
     SDL_Rect src_rect = { 1, 89, 16, 16 };
     SDL_Rect dst_rect = { static_cast<int>(bullet.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - bullet.pos_Y + zoom_offset_y), 16, 16 };
+    SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, angle, nullptr, flip);
+}
+
+void Renderer::draw_trace(Bullet& bullet, const float zoom_offset_x, const float zoom_offset_y) {
+	SDL2pp::Texture* sprite = textureManager.getGunSprite("lasers");
+	int vcenter = renderer.GetOutputHeight();
+	float angle = bullet.moving_up ? 90.0f : 0.0f;
+	angle = angle * (bullet.moving_right ? -1 : 1);
+	SDL_RendererFlip flip = bullet.moving_right ? SDL_FLIP_NONE : SDL_FLIP_HORIZONTAL;
+    SDL_Rect src_rect = { 36, 121, 1, 8 };
+    int width = bullet.pos_X - bullet.origin_X;
+    int height = bullet.pos_Y - bullet.origin_Y;
+    SDL_Rect dst_rect = { static_cast<int>(bullet.origin_X + zoom_offset_x), static_cast<int>(vcenter - 47 - bullet.origin_Y + zoom_offset_y), 1+ width, 1+height };
     SDL_RenderCopyEx(renderer.Get(), sprite->Get(), &src_rect, &dst_rect, angle, nullptr, flip);
 }
 
@@ -186,6 +202,8 @@ SDL_Rect Renderer::search_sprite(Gun& gun) {
 			return {1, 20, 22, 11};
 		case 8:
 			return {1, 47, 32, 32};
+		case 9:
+			return {0, 0, 32, 32};
 		default:
 			return {0, 0, 33, 9};
 	}
@@ -209,6 +227,8 @@ SDL_Rect Renderer::search_dimension_sprite(int vcenter, Gun& gun, const float zo
 		case 7:
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 44, 22 };
 		case 8:
+			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };
+		case 9:
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 64 - gun.pos_Y + zoom_offset_y), 64, 64 };
 		default:
 			return { static_cast<int>(gun.pos_X + zoom_offset_x), static_cast<int>(vcenter - 47 - gun.pos_Y + zoom_offset_y), 66, 18 };
@@ -354,7 +374,6 @@ void Renderer::render(int frame) {
 
         character_list.clear();
         character_list = state.get_characters_data();
-        // std::list<Character> character_list = state.get_characters_data();
 
         for (const auto& character : character_list) {
             if (character.jump_velocity > 13.0f) {
@@ -430,7 +449,6 @@ void Renderer::render(int frame) {
             SDL2pp::Texture text(renderer, font.RenderText_Solid("You are dead", color));
             renderer.Copy(text, SDL2pp::NullOpt, SDL2pp::Rect(250, 220, text.GetWidth(), text.GetHeight()));
         }
-        // draw round number
         std::string round_str = "Round: " + std::to_string(state.get_round());
         SDL2pp::Texture text(renderer, font.RenderText_Solid(round_str.c_str(), color));
         renderer.Copy(text, SDL2pp::NullOpt, SDL2pp::Rect(520, 50, text.GetWidth(), text.GetHeight()));

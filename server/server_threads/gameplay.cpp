@@ -58,7 +58,6 @@ void Gameplay::send_all_initial_coordinates()
         );
         broadcast_for_all_players(initial_duck_coordinates);
     }
-    guns_by_id.insert({500, new LaserRifle(300.0f, -240.0f)});
     guns_in_map = guns_by_id.size();
     for (auto& [id, gun] : guns_by_id) {
     	Coordinates position = gun->getPosition();
@@ -72,7 +71,6 @@ void Gameplay::send_all_initial_coordinates()
     	broadcast_for_all_players(initial_gun_coordinates);
     }
     terrain.set_spawn_places();
-    // spawn_places.push_back(SpawnPlace(160.0f, 200.0f));
 }
 
 void Gameplay::process_users_commands() {

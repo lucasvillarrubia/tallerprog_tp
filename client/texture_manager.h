@@ -249,6 +249,7 @@ public:
     	cargarGunSprite("lasers", "resources/PC Computer - Duck Game - Laser.png");
     	cargarGunSprite("ak47", "resources/ak47.png");
     	cargarGunSprite("pistolas", "resources/PC Computer - Duck Game - Pistol.png");
+    	cargarGunSprite("shotgun", "resources/shotgun.png");
     	cargarGunSprite("sniper", "resources/sniper.png");
     	cargarGunSprite("explosion", "resources/explode.png");
     }
